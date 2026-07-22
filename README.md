@@ -36,21 +36,6 @@ Dependency rule: `presentation → usecase → domain ← data`. Errors never th
 
 Compose Multiplatform · ViewModel + StateFlow (MVI) · Koin (manual DSL, ADR-001) · SQLDelight · Compose Navigation (type-safe routes) · kotlinx-datetime · kotlinx.serialization · every dependency via `gradle/libs.versions.toml`.
 
-## Development Workflow (Claude agent)
-
-`.claude/` symlinks to the shared [`claude-kmp-agent`](../../claude-kmp-agent) repo (rules, commands, subagents). Feature flow:
-
-1. `/techspec <US file | issue>` — brainstorm edge cases, write `docs/techspec/<feature>.md` (with AC traceability table)
-2. `/code <techspec>` — implement layer by layer, mirroring existing patterns
-3. `/audit [scope]` — read-only Clean Architecture audit (kmp-auditor)
-4. `/unittest <techspec>` — AC-driven unit tests (kmp-tester)
-
-Rules of the road:
-
-- **Agents never run Gradle** — builds/tests are always run by the dev (use `! <command>` in the prompt so output lands in the conversation).
-- Deviations from locked decisions require dev approval, recorded in `docs/decisions.md`.
-- UI copy in Bahasa Indonesia via Compose resources; never persist user-facing text in the DB (codes/enums only).
-
 ## Building & Testing (run by the dev)
 
 - Android app: `./gradlew :androidApp:assembleDebug`
