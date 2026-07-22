@@ -1,0 +1,22 @@
+CREATE TABLE quick_assessment_result (
+    id TEXT NOT NULL PRIMARY KEY,
+    answered_at INTEGER NOT NULL,
+    experience TEXT NOT NULL,
+    goal TEXT NOT NULL,
+    equipment TEXT NOT NULL,
+    frequency TEXT NOT NULL,
+    split_preference TEXT NOT NULL,
+    resolved_split TEXT NOT NULL,
+    level TEXT NOT NULL,
+    template_id TEXT NOT NULL,
+    split_educational_note TEXT
+);
+
+insertQuickAssessmentResult:
+INSERT INTO quick_assessment_result(
+    id, answered_at, experience, goal, equipment, frequency, split_preference,
+    resolved_split, level, template_id, split_educational_note
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+getLatestQuickAssessmentResult:
+SELECT * FROM quick_assessment_result ORDER BY answered_at DESC LIMIT 1;

@@ -1,0 +1,16 @@
+CREATE TABLE body_measurement (
+    id TEXT NOT NULL PRIMARY KEY,
+    recorded_at INTEGER NOT NULL,
+    height_cm REAL,
+    weight_kg REAL
+);
+
+insertBodyMeasurement:
+INSERT INTO body_measurement(id, recorded_at, height_cm, weight_kg)
+VALUES (?, ?, ?, ?);
+
+getAllBodyMeasurements:
+SELECT * FROM body_measurement ORDER BY recorded_at DESC;
+
+getLatestBodyMeasurement:
+SELECT * FROM body_measurement ORDER BY recorded_at DESC LIMIT 1;

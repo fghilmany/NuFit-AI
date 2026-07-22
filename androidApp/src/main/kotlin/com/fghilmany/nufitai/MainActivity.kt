@@ -6,11 +6,20 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.fghilmany.nufitai.db.DatabaseDriverFactory
+import com.fghilmany.nufitai.di.initKoin
+
+private var koinStarted = false
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        if (!koinStarted) {
+            initKoin(driverFactory = DatabaseDriverFactory(applicationContext))
+            koinStarted = true
+        }
 
         setContent {
             App()

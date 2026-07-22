@@ -1,0 +1,19 @@
+CREATE TABLE par_q_result (
+    id TEXT NOT NULL PRIMARY KEY,
+    answered_at INTEGER NOT NULL,
+    requires_doctor_consult INTEGER NOT NULL,
+    consult_acknowledged_at INTEGER
+);
+
+insertParQResult:
+INSERT INTO par_q_result(id, answered_at, requires_doctor_consult, consult_acknowledged_at)
+VALUES (?, ?, ?, ?);
+
+getLatestParQResult:
+SELECT * FROM par_q_result ORDER BY answered_at DESC LIMIT 1;
+
+getParQResultById:
+SELECT * FROM par_q_result WHERE id = ?;
+
+acknowledgeConsult:
+UPDATE par_q_result SET consult_acknowledged_at = ? WHERE id = ?;

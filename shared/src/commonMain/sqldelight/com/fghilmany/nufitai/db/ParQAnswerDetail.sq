@@ -1,0 +1,14 @@
+CREATE TABLE par_q_answer_detail (
+    id TEXT NOT NULL PRIMARY KEY,
+    par_q_result_id TEXT NOT NULL,
+    question_id TEXT NOT NULL,
+    answer INTEGER NOT NULL,
+    FOREIGN KEY (par_q_result_id) REFERENCES par_q_result(id)
+);
+
+insertParQAnswerDetail:
+INSERT INTO par_q_answer_detail(id, par_q_result_id, question_id, answer)
+VALUES (?, ?, ?, ?);
+
+getAnswersForResult:
+SELECT * FROM par_q_answer_detail WHERE par_q_result_id = ?;
