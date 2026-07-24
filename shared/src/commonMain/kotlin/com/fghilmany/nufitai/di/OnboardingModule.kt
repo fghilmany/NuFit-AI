@@ -10,6 +10,7 @@ import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentVi
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
 import com.fghilmany.nufitai.usecase.onboarding.AcknowledgeDoctorConsult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLocalProfileStatus
 import com.fghilmany.nufitai.usecase.onboarding.ResolveQuickAssessment
 import com.fghilmany.nufitai.usecase.onboarding.SaveBodyMeasurement
@@ -33,6 +34,7 @@ val onboardingModule = module {
     factory { SubmitParQAnswers(repository = get()) }
     factory { AcknowledgeDoctorConsult(repository = get()) }
     factory { GetLatestParQResult(repository = get()) }
+    factory { GetLatestQuickAssessmentResult(repository = get()) }
     factory { SubmitQuickAssessment(repository = get(), resolveQuickAssessment = get()) }
     factory { SaveBodyMeasurement(repository = get()) }
     factory { GetLocalProfileStatus(repository = get()) }
@@ -40,6 +42,11 @@ val onboardingModule = module {
     viewModel { SplashViewModel(getLocalProfileStatus = get()) }
     viewModel { ParQViewModel(submitParQAnswers = get()) }
     viewModel { DoctorConsultViewModel(getLatestParQResult = get(), acknowledgeDoctorConsult = get()) }
-    viewModel { QuickAssessmentViewModel(submitQuickAssessment = get()) }
+    viewModel {
+        QuickAssessmentViewModel(
+            submitQuickAssessment = get(),
+            generateLocalTemplatePlan = get(), // registered in monthlyPlanModule -- both load together in KoinInit
+        )
+    }
     viewModel { BodyDataViewModel(saveBodyMeasurement = get()) }
 }

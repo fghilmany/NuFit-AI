@@ -7,6 +7,12 @@ import org.koin.dsl.KoinAppDeclaration
 fun initKoin(driverFactory: DatabaseDriverFactory, appDeclaration: KoinAppDeclaration = {}) {
     startKoin {
         appDeclaration()
-        modules(databaseModule(driverFactory), onboardingModule)
+        modules(
+            databaseModule(driverFactory),
+            onboardingModule,
+            exerciseLibraryModule,
+            fullAssessmentModule,
+            monthlyPlanModule,
+        )
     }
 }

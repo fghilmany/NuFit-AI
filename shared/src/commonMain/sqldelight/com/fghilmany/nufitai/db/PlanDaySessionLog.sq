@@ -1,0 +1,21 @@
+CREATE TABLE plan_day_session_log (
+    id TEXT NOT NULL PRIMARY KEY,
+    plan_day_id TEXT NOT NULL,
+    completed_at INTEGER,
+    skipped_at INTEGER,
+    rpe_reported INTEGER,
+    pain_reported TEXT,
+    FOREIGN KEY (plan_day_id) REFERENCES plan_day(id)
+);
+
+insertPlanDaySessionLog:
+INSERT OR REPLACE INTO plan_day_session_log(id, plan_day_id, completed_at, skipped_at, rpe_reported, pain_reported)
+VALUES (?, ?, ?, ?, ?, ?);
+
+getSessionLogsForPlan:
+SELECT plan_day_session_log.* FROM plan_day_session_log
+INNER JOIN plan_day ON plan_day.id = plan_day_session_log.plan_day_id
+WHERE plan_day.monthly_plan_id = ?;
+
+getSessionLogForDay:
+SELECT * FROM plan_day_session_log WHERE plan_day_id = ?;

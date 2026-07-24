@@ -3,13 +3,14 @@ package com.fghilmany.nufitai.presentation.onboarding.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
-import com.fghilmany.nufitai.domain.onboarding.entity.EquipmentType
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.Experience
 import com.fghilmany.nufitai.domain.onboarding.entity.FrequencyBucket
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
+import com.fghilmany.nufitai.usecase.monthlyplan.GenerateLocalTemplatePlan
 import com.fghilmany.nufitai.usecase.onboarding.SubmitQuickAssessment
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,7 +25,7 @@ sealed interface QuickAssessmentState {
         val stepIndex: Int = 1,
         val experience: Experience? = null,
         val goal: GoalCategory? = null,
-        val equipment: Set<EquipmentType> = emptySet(),
+        val equipment: Set<EquipmentCategory> = emptySet(),
         val frequency: FrequencyBucket? = null,
         val splitPreference: SplitPreference? = null,
     ) : QuickAssessmentState {
@@ -44,13 +45,13 @@ sealed interface QuickAssessmentState {
     data class Error(val message: String) : QuickAssessmentState
 }
 
-/** All equipment categories except CARDIO, which is its own always-visible card in the design. */
-private val SELECT_ALL_EQUIPMENT = EquipmentType.entries.filterNot { it == EquipmentType.CARDIO }.toSet()
+/** All equipment categories except CARDIO_EQUIPMENT, which is its own always-visible card in the design. */
+private val SELECT_ALL_EQUIPMENT = EquipmentCategory.entries.filterNot { it == EquipmentCategory.CARDIO_EQUIPMENT }.toSet()
 
 sealed interface QuickAssessmentEvent {
     data class SelectExperience(val value: Experience) : QuickAssessmentEvent
     data class SelectGoal(val value: GoalCategory) : QuickAssessmentEvent
-    data class ToggleEquipment(val value: EquipmentType) : QuickAssessmentEvent
+    data class ToggleEquipment(val value: EquipmentCategory) : QuickAssessmentEvent
     data object SelectAllEquipment : QuickAssessmentEvent
     data class SelectFrequency(val value: FrequencyBucket) : QuickAssessmentEvent
     data class SelectSplit(val value: SplitPreference) : QuickAssessmentEvent
@@ -58,7 +59,10 @@ sealed interface QuickAssessmentEvent {
     data object PreviousStep : QuickAssessmentEvent
 }
 
-class QuickAssessmentViewModel(private val submitQuickAssessment: SubmitQuickAssessment) : ViewModel() {
+class QuickAssessmentViewModel(
+    private val submitQuickAssessment: SubmitQuickAssessment,
+    private val generateLocalTemplatePlan: GenerateLocalTemplatePlan,
+) : ViewModel() {
     private val _state = MutableStateFlow<QuickAssessmentState>(QuickAssessmentState.Step())
     val state: StateFlow<QuickAssessmentState> = _state.asStateFlow()
 
@@ -79,7 +83,7 @@ class QuickAssessmentViewModel(private val submitQuickAssessment: SubmitQuickAss
         _state.update { current -> if (current is QuickAssessmentState.Step) transform(current) else current }
     }
 
-    private fun toggleEquipment(value: EquipmentType) = updateStep { step ->
+    private fun toggleEquipment(value: EquipmentCategory) = updateStep { step ->
         val updated = if (value in step.equipment) step.equipment - value else step.equipment + value
         step.copy(equipment = updated)
     }
@@ -118,7 +122,14 @@ class QuickAssessmentViewModel(private val submitQuickAssessment: SubmitQuickAss
         viewModelScope.launch {
             _state.value = QuickAssessmentState.Generating
             when (val result = submitQuickAssessment(answer)) {
-                is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
+                is AppResult.Success -> {
+                    // Local tier: template-matrix plan generation happens right after Quick
+                    // Assessment, so P-03 has an active plan the moment onboarding finishes.
+                    when (val planResult = generateLocalTemplatePlan(result.data)) {
+                        is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
+                        is AppResult.Error -> _state.value = QuickAssessmentState.Error(planResult.failure.message)
+                    }
+                }
                 is AppResult.Error -> _state.value = QuickAssessmentState.Error(result.failure.message)
             }
         }

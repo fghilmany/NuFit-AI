@@ -1,0 +1,3238 @@
+[
+  {
+    "id": "BB-SQUAT-000",
+    "name": "Barbell Back Squat",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "SQUAT",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_knee_valgus",
+      "flag_ankle_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-SQUAT-002",
+    "rantaiProgresi": "BB-SQUAT-001",
+    "syaratNaik": "3x8 rep form bersih (tanpa punggung membulat/lutut valgus), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-SQUAT-001",
+    "name": "Barbell Front Squat",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-SQUAT-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung tujuan dan preferensi tubuh",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-HINGE-000",
+    "name": "Barbell Romanian Deadlift",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "HINGE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Teaching",
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-HINGE-000",
+    "rantaiProgresi": "BB-HINGE-001",
+    "syaratNaik": "3x10 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-HINGE-001",
+    "name": "Barbell Conventional Deadlift",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "HINGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-HINGE-000",
+    "rantaiProgresi": "BB-HINGE-003",
+    "syaratNaik": "3x6 rep form bersih (punggung netral penuh ROM dari lantai), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-HINGE-002",
+    "name": "Barbell Hip Thrust",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-HINGE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen dalam program tergantung tujuan (glute-focused)",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-HINGE-003",
+    "name": "Barbell Sumo Deadlift",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi"
+    ],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-HINGE-001",
+    "rantaiProgresi": "BB-HINGE-004",
+    "syaratNaik": "3x8 rep form bersih, siap overload lanjutan — atau tetap di sini jika preferensi tetap sumo",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-HINGE-004",
+    "name": "Barbell Rack Pull",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-HINGE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik, ini gerakan aksesori/overload, bukan gerakan utama harian",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PUSHH-000",
+    "name": "Barbell Bench Press",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHH-001",
+    "rantaiProgresi": "BB-PUSHH-001",
+    "syaratNaik": "3x8 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PUSHH-001",
+    "name": "Barbell Incline Bench Press",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-PUSHH-000",
+    "rantaiProgresi": "BB-PUSHH-002",
+    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung tujuan",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PUSHH-002",
+    "name": "Close-Grip Bench Press",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-PUSHH-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — gerakan aksesori/variasi",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PUSHV-000",
+    "name": "Barbell Overhead Press",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHV-001",
+    "rantaiProgresi": "BB-PUSHV-001",
+    "syaratNaik": "3x8 rep form bersih (tanpa lengkungan punggung berlebihan), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PUSHV-001",
+    "name": "Barbell Push Press",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility",
+      "flag_ankle_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-PUSHV-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik, ini variasi power/aksesori, bukan gerakan wajib harian",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PULLH-000",
+    "name": "Barbell Bent-Over Row",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PULLH-000",
+    "rantaiProgresi": "BB-PULLH-001",
+    "syaratNaik": "3x8 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BB-PULLH-001",
+    "name": "Pendlay Row",
+    "equipmentCategory": "BARBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BB-PULLH-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik, ini variasi lanjutan/aksesori",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-SQUAT-000",
+    "name": "Box Squat / Sit-to-Stand",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "SQUAT",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_balance_asimetri"
+    ],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-SQUAT-001",
+    "syaratNaik": "bisa selesaikan 3x12 rep dengan kontrol penuh (tanpa \"jatuh\" ke kursi), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-SQUAT-001",
+    "name": "Bodyweight Squat",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "SQUAT",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "dumbbell": "DB-SQUAT-000",
+      "mesin": "MC-SQUAT-000"
+    },
+    "rantaiRegresi": "BW-SQUAT-000",
+    "rantaiProgresi": "DB-SQUAT-000",
+    "syaratNaik": "3x15 rep form bersih, 2 sesi berturut-turut, tanpa flag_knee_valgus aktif",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-SQUAT-002",
+    "name": "Jump Squat",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi",
+      "flag_osteoporosis",
+      "flag_knee_valgus"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-SQUAT-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "Syarat naik dari Bodyweight Squat ke gerakan ini: 3x15 rep Bodyweight Squat form bersih tanpa flag_knee_valgus aktif, DAN tidak ada flag_sendi/flag_osteoporosis aktif",
+    "polaGerakTerkait": null,
+    "highImpact": true,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-HINGE-000",
+    "name": "Hip Hinge with Dowel",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "HINGE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-HINGE-002",
+    "syaratNaik": "bisa jaga 3 titik kontak tongkat sepanjang ROM penuh, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-HINGE-001",
+    "name": "Glute Bridge",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "HINGE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back",
+      "flag_apt"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-HINGE-002",
+    "syaratNaik": "3x15 rep dengan kontraksi glute jelas terasa tiap rep, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-HINGE-002",
+    "name": "Bodyweight Good Morning",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "HINGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "dumbbell": "DB-HINGE-000",
+      "mesin": "MC-HINGE-001"
+    },
+    "rantaiRegresi": "BW-HINGE-000",
+    "rantaiProgresi": "BW-HINGE-003",
+    "syaratNaik": "3x15 rep dengan punggung netral sepanjang ROM, 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-HINGE-003",
+    "name": "Single-Leg RDL",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-HINGE-002",
+    "rantaiProgresi": "DB-HINGE-001",
+    "syaratNaik": "3x10 rep per sisi dengan keseimbangan stabil tanpa pegangan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PUSHH-000",
+    "name": "Wall Push-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "REGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-PUSHH-001",
+    "syaratNaik": "3x15 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PUSHH-001",
+    "name": "Incline Push-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "REGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-PUSHH-000",
+    "rantaiProgresi": "BW-PUSHH-002",
+    "syaratNaik": "3x15 rep form bersih di ketinggian setara bangku, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PUSHH-002",
+    "name": "Knee Push-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "REGRESI",
+    "levelVariant": 3,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_core_instability"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-PUSHH-001",
+    "rantaiProgresi": "BW-PUSHH-003",
+    "syaratNaik": "3x12 rep form bersih (dada menyentuh dekat lantai, tanpa pinggul menekuk), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PUSHH-003",
+    "name": "Push-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_core_instability"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": {
+      "dumbbell": "DB-PUSHH-001",
+      "mesin": "MC-PUSHH-000"
+    },
+    "rantaiRegresi": "BW-PUSHH-002",
+    "rantaiProgresi": "DB-PUSHH-001",
+    "syaratNaik": "3x15 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PUSHV-000",
+    "name": "Pike Push-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility",
+      "flag_rounded_shoulder"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "DB-PUSHV-000",
+    "syaratNaik": "3x10 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PULLH-000",
+    "name": "Inverted Row",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "dumbbell": "DB-PULLH-000",
+      "mesin": "MC-PULLH-000"
+    },
+    "rantaiRegresi": "BW-PULLH-001",
+    "rantaiProgresi": "DB-PULLH-000",
+    "syaratNaik": "3x12 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PULLH-001",
+    "name": "Towel Doorway Row",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-PULLH-000",
+    "syaratNaik": "3x15 rep form bersih (badan tetap lurus), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PULLH-002",
+    "name": "Prone Y-T-W Raise",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "KOREKTIF",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_forward_head"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-PULLH-001",
+    "syaratNaik": "3x10 per posisi form bersih tanpa mengayun, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-PULLH-003",
+    "name": "Reverse Snow Angel",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "KOREKTIF",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_forward_head"
+    ],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-PULLH-002",
+    "rantaiProgresi": "BW-PULLH-001",
+    "syaratNaik": "3x12 rep form bersih (lengan tetap menempel lantai), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-LUNGE-000",
+    "name": "Static Lunge",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "LUNGE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_balance_asimetri"
+    ],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-LUNGE-001",
+    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-LUNGE-001",
+    "name": "Reverse Lunge",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "LUNGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-LUNGE-000",
+    "rantaiProgresi": "BW-LUNGE-003",
+    "syaratNaik": "3x10 rep per sisi form bersih tanpa goyah, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-LUNGE-002",
+    "name": "Step-Up",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "LUNGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_balance_asimetri"
+    ],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-LUNGE-004",
+    "syaratNaik": "3x10 rep per sisi dengan kontrol penuh naik-turun, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-LUNGE-003",
+    "name": "Walking Lunge",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "LUNGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-LUNGE-001",
+    "rantaiProgresi": "BW-LUNGE-004",
+    "syaratNaik": "3x10 langkah per sisi form bersih tanpa goyah signifikan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-LUNGE-004",
+    "name": "Bulgarian Split Squat",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "LUNGE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri",
+      "flag_knee_valgus"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-LUNGE-003",
+    "rantaiProgresi": "DB-LUNGE-003",
+    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut, level user sudah Intermediate",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-000",
+    "name": "Dead Bug",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_apt",
+      "flag_core_instability"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-CORE-002",
+    "syaratNaik": "3x10 rep per sisi dengan punggung bawah tetap menempel lantai, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-001",
+    "name": "Bird Dog",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-000",
+    "rantaiProgresi": "BW-CORR-008",
+    "syaratNaik": "3x10 rep per sisi tanpa pinggul berputar, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-002",
+    "name": "Plank",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_apt"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-000",
+    "rantaiProgresi": "BW-CORE-003",
+    "syaratNaik": "tahan 60 detik dengan form bersih (tanpa pinggul turun/naik), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": true,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-003",
+    "name": "Side Plank",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-002",
+    "rantaiProgresi": null,
+    "syaratNaik": "tahan 40 detik per sisi dengan form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": true,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-004",
+    "name": "Hollow Hold",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_apt",
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-000",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": true,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORE-005",
+    "name": "Mountain Climber",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi",
+      "flag_jantung",
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-002",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-000",
+    "name": "Chin Tuck",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_forward_head"
+    ],
+    "areaTerbebani": [
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-001",
+    "name": "Cat-Cow",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "BW-CORR-002",
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-002",
+    "name": "Thoracic Rotation",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_shoulder_mobility"
+    ],
+    "areaTerbebani": [],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORR-001",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-003",
+    "name": "Hip Flexor Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_apt"
+    ],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "SQUAT",
+      "LUNGE"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-004",
+    "name": "Glute Bridge March",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_apt",
+      "flag_knee_valgus"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-HINGE-001",
+    "rantaiProgresi": "BW-HINGE-003",
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-005",
+    "name": "Side-Lying Leg Raise",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_knee_valgus"
+    ],
+    "areaTerbebani": [],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-006",
+    "name": "Ankle Circles",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_ankle_mobility"
+    ],
+    "areaTerbebani": [],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-007",
+    "name": "Wall Chest Opener",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder"
+    ],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "PUSH_HORIZONTAL",
+      "PUSH_VERTICAL"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CORR-008",
+    "name": "Superman",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CORRECTIVE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-CARRY-000",
+    "name": "Isometric Suitcase Hold",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "CARRY",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_asimetri_bahu",
+      "flag_asimetri_pinggul"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "DB-CARRY-001",
+    "syaratNaik": "3x30 detik/sisi form bersih (bahu level) tanpa keluhan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": true,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-000",
+    "name": "Standing Quad Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "SQUAT",
+      "LUNGE",
+      "CARDIO"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-001",
+    "name": "Hamstring Stretch (Berdiri)",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "HINGE",
+      "CARDIO"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-002",
+    "name": "Figure-4 Glute Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "SQUAT",
+      "HINGE",
+      "LUNGE"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-003",
+    "name": "Child's Pose",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "PULL_HORIZONTAL",
+      "PULL_VERTICAL",
+      "CORE"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-004",
+    "name": "Overhead Triceps Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "PUSH_HORIZONTAL",
+      "PUSH_VERTICAL"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-005",
+    "name": "Upper Trap & Neck Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "PULL_HORIZONTAL",
+      "PULL_VERTICAL",
+      "CARRY"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-006",
+    "name": "Wall Calf Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_ankle_mobility"
+    ],
+    "areaTerbebani": [],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "CARDIO",
+      "SQUAT"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "BW-STRETCH-007",
+    "name": "Sphinx Stretch",
+    "equipmentCategory": "BODYWEIGHT",
+    "movementPattern": "STRETCH",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "stretch (single-tier, no regresi/progresi chain)",
+    "flagExclusion": [
+      "flag_apt"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": [
+      "CORE"
+    ],
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-001",
+    "name": "Jalan Cepat (Treadmill)",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Entry",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_jantung",
+      "flag_tekanan_darah",
+      "flag_sendi"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "CE-002",
+    "syaratNaik": "bisa selesaikan 30 menit dengan RPE ≤4 secara konsisten, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-002",
+    "name": "Sepeda Statis",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "menuju Standar (raw: Regresi-Standar)",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_sendi"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-001",
+    "rantaiProgresi": "CE-003",
+    "syaratNaik": "bisa selesaikan 30 menit steady-state RPE 5 dengan nyaman, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-003",
+    "name": "Elliptical",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_sendi"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-002",
+    "rantaiProgresi": "CE-004",
+    "syaratNaik": "bisa selesaikan 30 menit RPE 5 dengan nyaman, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-004",
+    "name": "Rowing Machine",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [
+      "flag_sendi"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-002",
+    "rantaiProgresi": "CE-006",
+    "syaratNaik": "teknik \"kaki-badan-tangan\" konsisten tanpa arms-first rowing, bisa selesaikan 20 menit RPE 5, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-005",
+    "name": "Jogging/Lari Ringan",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi",
+      "flag_jantung",
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-001",
+    "rantaiProgresi": "CE-006",
+    "syaratNaik": "bisa jogging kontinyu 25-30 menit RPE ≤6 tanpa nyeri sendi, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-006",
+    "name": "Stair Climber/Stepper",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-005",
+    "rantaiProgresi": "CE-007",
+    "syaratNaik": "bisa selesaikan 15 menit tanpa menumpu tangan ke pegangan, RPE ≤6, 2 minggu berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-007",
+    "name": "Jump Rope",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi",
+      "flag_tekanan_darah",
+      "flag_jantung",
+      "flag_osteoporosis"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-006",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — ini modalitas puncak, kombinasikan dengan Battle Ropes (CE-008) untuk variasi tanpa dampak lompat",
+    "polaGerakTerkait": null,
+    "highImpact": true,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "CE-008",
+    "name": "Battle Ropes",
+    "equipmentCategory": "CARDIO_EQUIPMENT",
+    "movementPattern": "CARDIO",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah",
+      "flag_jantung",
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [
+      "flag_sendi"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "CE-004",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — modalitas finisher/variasi conditioning",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-SQUAT-000",
+    "name": "Goblet Squat",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "SQUAT",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_knee_valgus"
+    ],
+    "flagPrioritas": [
+      "flag_forward_head",
+      "flag_rounded_shoulder"
+    ],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-SQUAT-001",
+    "rantaiProgresi": "DB-SQUAT-001",
+    "syaratNaik": "3x10 rep form bersih dengan beban RPE ≤5, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-SQUAT-001",
+    "name": "Dumbbell Squat",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "SQUAT",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "bodyweight": "BW-SQUAT-001",
+      "mesin": "MC-SQUAT-000"
+    },
+    "rantaiRegresi": "DB-SQUAT-000",
+    "rantaiProgresi": "DB-SQUAT-002",
+    "syaratNaik": "3x12 rep form bersih di beban yang membuat grip jadi faktor pembatas (bukan kaki), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-SQUAT-002",
+    "name": "Dumbbell Front Squat",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut",
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-SQUAT-001",
+    "rantaiProgresi": "DB-SQUAT-003",
+    "syaratNaik": "3x10 rep form stabil tanpa siku turun, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-SQUAT-003",
+    "name": "Dumbbell Split Squat",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-SQUAT-002",
+    "rantaiProgresi": "DB-LUNGE-003",
+    "syaratNaik": "3x10 rep per kaki form stabil tanpa goyah, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-HINGE-000",
+    "name": "Dumbbell Romanian Deadlift",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "HINGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "bodyweight": "BW-HINGE-002",
+      "mesin": "MC-HINGE-001"
+    },
+    "rantaiRegresi": "BW-HINGE-002",
+    "rantaiProgresi": "DB-HINGE-001",
+    "syaratNaik": "3x12 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-HINGE-001",
+    "name": "Dumbbell Single-Leg RDL",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-HINGE-000",
+    "rantaiProgresi": "DB-HINGE-002",
+    "syaratNaik": "3x10 rep per kaki form stabil tanpa asimetri jelas, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-HINGE-002",
+    "name": "Dumbbell Deadlift (dari lantai)",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-HINGE-001",
+    "rantaiProgresi": "DB-HINGE-003",
+    "syaratNaik": "3x8 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-HINGE-003",
+    "name": "Dumbbell Sumo Deadlift",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 3,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi"
+    ],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-HINGE-002",
+    "rantaiProgresi": null,
+    "syaratNaik": "3x10 rep form bersih, siap lanjut ke barbell — atau tetap di sini jika preferensi tetap dumbbell",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHH-000",
+    "name": "Dumbbell Floor Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_shoulder_mobility"
+    ],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-PUSHH-003",
+    "rantaiProgresi": "DB-PUSHH-001",
+    "syaratNaik": "3x12 rep form bersih, RPE ≤5, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHH-001",
+    "name": "Dumbbell Bench Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": {
+      "bodyweight": "BW-PUSHH-003",
+      "mesin": "MC-PUSHH-000"
+    },
+    "rantaiRegresi": "DB-PUSHH-000",
+    "rantaiProgresi": "DB-PUSHH-002",
+    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHH-002",
+    "name": "Dumbbell Incline Bench Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHH-001",
+    "rantaiProgresi": "DB-PUSHH-003",
+    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHH-003",
+    "name": "Single-Arm DB Bench Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_core_instability"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHH-002",
+    "rantaiProgresi": "BB-PUSHH-000",
+    "syaratNaik": "3x10 rep per sisi form stabil tanpa rotasi torso, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHV-000",
+    "name": "Seated DB Shoulder Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-PUSHV-000",
+    "rantaiProgresi": "DB-PUSHV-001",
+    "syaratNaik": "3x12 rep form bersih tanpa punggung melengkung berlebihan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHV-001",
+    "name": "Standing DB Shoulder Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_core_instability",
+      "flag_apt"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "leher",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHV-000",
+    "rantaiProgresi": "DB-PUSHV-002",
+    "syaratNaik": "3x10 rep form bersih tanpa lengkungan punggung berlebihan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PUSHV-002",
+    "name": "Single-Arm DB Overhead Press",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_asimetri_bahu"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "leher"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHV-001",
+    "rantaiProgresi": "BB-PUSHV-000",
+    "syaratNaik": "3x10 rep per sisi form stabil, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PULLH-000",
+    "name": "Dumbbell Bent-Over Row",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "bodyweight": "BW-PULLH-000",
+      "mesin": "MC-PULLH-000"
+    },
+    "rantaiRegresi": "BW-PULLH-000",
+    "rantaiProgresi": "DB-PULLH-002",
+    "syaratNaik": "3x12 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PULLH-001",
+    "name": "Single-Arm DB Row (pakai bangku)",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PULLH-000",
+    "rantaiProgresi": "DB-PULLH-003",
+    "syaratNaik": "3x12 rep per sisi form bersih tanpa rotasi torso, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PULLH-002",
+    "name": "Chest-Supported DB Row",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": [
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "DB-PULLH-000",
+    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen jika preferensi/kondisi punggung tetap ada",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-PULLH-003",
+    "name": "Renegade Row",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_core_instability",
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PULLH-001",
+    "rantaiProgresi": "BB-PULLH-000",
+    "syaratNaik": "3x8 rep per sisi form stabil tanpa rotasi pinggul, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-LUNGE-000",
+    "name": "Dumbbell Reverse Lunge",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "LUNGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-LUNGE-001",
+    "rantaiProgresi": "DB-LUNGE-001",
+    "syaratNaik": "3x10 rep per kaki form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-LUNGE-001",
+    "name": "Dumbbell Walking Lunge",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "LUNGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-LUNGE-000",
+    "rantaiProgresi": "DB-LUNGE-003",
+    "syaratNaik": "3x12 langkah per kaki form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-LUNGE-002",
+    "name": "Dumbbell Lateral Lunge",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "LUNGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt",
+    "flagExclusion": [
+      "flag_knee_valgus"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-LUNGE-000",
+    "rantaiProgresi": "DB-LUNGE-003",
+    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-LUNGE-003",
+    "name": "Dumbbell Bulgarian Split Squat",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "LUNGE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_balance_asimetri"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": [
+      "lutut"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-SQUAT-003",
+    "rantaiProgresi": null,
+    "syaratNaik": "3x10 rep per kaki form stabil tanpa goyah signifikan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CORE-000",
+    "name": "Weighted Dead Bug",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CORE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Entry",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_apt"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-000",
+    "rantaiProgresi": "DB-CORE-001",
+    "syaratNaik": "3x10 rep per sisi form bersih (punggung bawah tetap menempel lantai), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CORE-001",
+    "name": "Dumbbell Russian Twist",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": {
+      "bodyweight": "BW-CORE-005",
+      "mesin": "MC-CORE-001"
+    },
+    "rantaiRegresi": "DB-CORE-000",
+    "rantaiProgresi": "DB-CORE-002",
+    "syaratNaik": "3x12 rep per sisi form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CORE-002",
+    "name": "Dumbbell Side Bend",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-CORE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CARRY-000",
+    "name": "Farmer's Carry",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CARRY",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu",
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "DB-CARRY-001",
+    "syaratNaik": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CARRY-001",
+    "name": "Suitcase Carry",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CARRY",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_pinggul",
+      "flag_asimetri_bahu"
+    ],
+    "areaTerbebani": [
+      "punggung_bawah",
+      "bahu"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-CARRY-000",
+    "rantaiProgresi": "DB-CARRY-002",
+    "syaratNaik": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "DB-CARRY-002",
+    "name": "Overhead Carry",
+    "equipmentCategory": "DUMBBELL",
+    "movementPattern": "CARRY",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": [
+      "bahu",
+      "leher",
+      "punggung_bawah"
+    ],
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-CARRY-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik, ini level puncak pola carry di kategori ini",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-HINGE-000",
+    "name": "Kettlebell Deadlift",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "HINGE",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Teaching",
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-HINGE-002",
+    "rantaiProgresi": "KB-HINGE-001",
+    "syaratNaik": "3x12 rep form bersih (punggung netral, lockout penuh tiap rep), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-HINGE-001",
+    "name": "Kettlebell Swing (Two-Hand)",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "HINGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back",
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-HINGE-000",
+    "rantaiProgresi": "KB-HINGE-002",
+    "syaratNaik": "3x15 rep form bersih (hip hinge eksplosif, tanpa \"squat and lift\"), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-HINGE-002",
+    "name": "Kettlebell Single-Arm Swing",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_core_instability"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-HINGE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — variasi/pilihan sesuai kebutuhan core",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-SQUAT-000",
+    "name": "Kettlebell Goblet Squat",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "SQUAT",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_knee_valgus"
+    ],
+    "flagPrioritas": [
+      "flag_forward_head",
+      "flag_rounded_shoulder"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-SQUAT-001",
+    "rantaiProgresi": "KB-SQUAT-001",
+    "syaratNaik": "3x10 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-SQUAT-001",
+    "name": "Double Kettlebell Front Squat",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-SQUAT-000",
+    "rantaiProgresi": "BB-SQUAT-001",
+    "syaratNaik": "3x10 rep form stabil (rack position tetap terjaga), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-PUSHV-000",
+    "name": "Kettlebell Single-Arm Overhead Press",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHV-001",
+    "rantaiProgresi": "KB-PUSHV-001",
+    "syaratNaik": "3x8 rep per sisi form stabil (tanpa torso miring), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-PUSHV-001",
+    "name": "Kettlebell Push Press",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility",
+      "flag_ankle_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-PUSHV-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik, ini variasi power/aksesori",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-PULLH-000",
+    "name": "Kettlebell Single-Arm Row",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PULLH-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung alat yang tersedia",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-CARRY-000",
+    "name": "Farmer's Carry (KB)",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "CARRY",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu",
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "KB-CARRY-001",
+    "syaratNaik": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-CARRY-001",
+    "name": "Suitcase Carry (KB)",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "CARRY",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_tekanan_darah"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-CARRY-000",
+    "rantaiProgresi": "KB-CARRY-002",
+    "syaratNaik": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-CARRY-002",
+    "name": "Rack Carry (KB)",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "CARRY",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt — unik Kettlebell",
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "KB-CARRY-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — variasi/pelengkap program",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "KB-FULLBODY-000",
+    "name": "Turkish Get-Up",
+    "equipmentCategory": "KETTLEBELL",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": "lanjutan; pola gerak asli 'Full-Body' — dipetakan ke CORE sebagai pola dominan (lihat gaps report)",
+    "flagExclusion": [
+      "flag_shoulder_mobility",
+      "flag_hinge_from_back",
+      "flag_core_instability"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": "bisa selesaikan seluruh 7 tahap (naik dan turun) dengan kontrol penuh tanpa goyah signifikan pada beban saat ini, 3 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-SQUAT-000",
+    "name": "Leg Press",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "SQUAT",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-SQUAT-000",
+    "rantaiProgresi": "MC-SQUAT-001",
+    "syaratNaik": "3x12 rep form bersih (punggung tetap menempel, tanpa valgus), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-SQUAT-001",
+    "name": "Hack Squat Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "SQUAT",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-SQUAT-000",
+    "rantaiProgresi": "DB-SQUAT-000",
+    "syaratNaik": "tidak wajib naik — bisa jadi pilihan tetap tergantung preferensi/akses alat",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-SQUAT-002",
+    "name": "Leg Extension",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "SQUAT",
+    "level": "AKSESORI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_sendi"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-HINGE-000",
+    "name": "Seated Leg Curl",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "HINGE",
+    "level": "AKSESORI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-HINGE-001",
+    "name": "Cable Pull-Through",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "HINGE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_hinge_from_back"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-HINGE-000",
+    "rantaiProgresi": "MC-HINGE-002",
+    "syaratNaik": "3x15 rep form bersih (punggung netral, lutut fixed), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-HINGE-002",
+    "name": "Back Extension (Hyperextension)",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "HINGE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-HINGE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "3x15 rep bodyweight form bersih sebelum tambah beban eksternal, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PUSHH-000",
+    "name": "Chest Press Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_shoulder_mobility"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHH-000",
+    "rantaiProgresi": "MC-PUSHH-001",
+    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PUSHH-001",
+    "name": "Cable Chest Fly",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PUSH_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Aksesori",
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PUSHV-000",
+    "name": "Shoulder Press Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_shoulder_mobility"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PUSHV-000",
+    "rantaiProgresi": "MC-PUSHV-001",
+    "syaratNaik": "3x12 rep form bersih tanpa punggung terangkat, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PUSHV-001",
+    "name": "Cable Lateral Raise",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PUSH_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Aksesori",
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [
+      "flag_asimetri_bahu"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLH-000",
+    "name": "Seated Cable Row",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_rounded_shoulder",
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "DB-PULLH-002",
+    "rantaiProgresi": "MC-PULLH-001",
+    "syaratNaik": "3x12 rep form bersih (punggung netral sepanjang set), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLH-001",
+    "name": "Chest-Supported Row Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "Alt",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-PULLH-000",
+    "rantaiProgresi": "MC-PULLH-002",
+    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen tergantung preferensi/kondisi punggung",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLH-002",
+    "name": "Cable Face Pull",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_HORIZONTAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_forward_head",
+      "flag_rounded_shoulder",
+      "flag_kyphosis"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-PULLH-000",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — cocok jadi bagian tetap program jangka panjang",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLV-000",
+    "name": "Lat Pulldown",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Standar (raw: Regresi/Standar)",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "MC-PULLV-001",
+    "syaratNaik": "3x12 rep form bersih dengan beban mendekati berat badan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLV-001",
+    "name": "Assisted Pull-Up Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-PULLV-000",
+    "rantaiProgresi": "PUB-PULLV-003",
+    "syaratNaik": "3x10 rep dengan beban bantuan minimal (mendekati 0) form bersih, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-PULLV-002",
+    "name": "Straight-Arm Pulldown",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": "Alt — isolasi lat",
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-CORE-000",
+    "name": "Cable Pallof Press",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "CORE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [
+      "flag_core_instability",
+      "flag_asimetri_pinggul"
+    ],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-002",
+    "rantaiProgresi": "MC-CORE-001",
+    "syaratNaik": "3x10 rep per sisi form bersih tanpa rotasi badan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-CORE-001",
+    "name": "Cable Woodchop",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "MC-CORE-000",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "MC-CORE-002",
+    "name": "Ab Crunch Machine",
+    "equipmentCategory": "MACHINE_CABLE",
+    "movementPattern": "CORE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": "Alt",
+    "flagExclusion": [
+      "flag_hinge_from_back"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-002",
+    "rantaiProgresi": null,
+    "syaratNaik": null,
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-PULLV-000",
+    "name": "Dead Hang",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": "Entry",
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": null,
+    "rantaiProgresi": "PUB-PULLV-001",
+    "syaratNaik": "bisa tahan dead hang 20-30 detik dengan nyaman, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": true,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-PULLV-001",
+    "name": "Scapular Pull-Up",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "REGRESI",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-PULLV-000",
+    "rantaiProgresi": "PUB-PULLV-002",
+    "syaratNaik": "3x10 rep dengan aktivasi scapula jelas terasa tanpa menekuk siku, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-PULLV-002",
+    "name": "Negative Pull-Up (Eccentric)",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-PULLV-001",
+    "rantaiProgresi": "PUB-PULLV-003",
+    "syaratNaik": "bisa turun terkontrol 5 detik penuh, 4-5 repetisi, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-PULLV-003",
+    "name": "Chin-Up",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-PULLV-002",
+    "rantaiProgresi": "PUB-PULLV-004",
+    "syaratNaik": "3x6 rep form bersih (ROM penuh, tanpa ayunan), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-PULLV-004",
+    "name": "Pull-Up",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "PULL_VERTICAL",
+    "level": "PROGRESI",
+    "levelVariant": 3,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-PULLV-003",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — ini titik puncak/tujuan akhir pola Pull Vertical, banyak user berhenti di sini sebagai maintenance",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-CORE-000",
+    "name": "Hanging Knee Raise",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "CORE",
+    "level": "STANDAR",
+    "levelVariant": null,
+    "levelNote": null,
+    "flagExclusion": [
+      "flag_shoulder_mobility"
+    ],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "BW-CORE-004",
+    "rantaiProgresi": "PUB-CORE-001",
+    "syaratNaik": "3x12 rep form bersih tanpa ayunan badan, 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-CORE-001",
+    "name": "Hanging Leg Raise (Straight Leg)",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 1,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-CORE-000",
+    "rantaiProgresi": "PUB-CORE-002",
+    "syaratNaik": "3x10 rep form bersih (kaki lurus, tanpa ayunan), 2 sesi berturut-turut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  },
+  {
+    "id": "PUB-CORE-002",
+    "name": "Toes-to-Bar",
+    "equipmentCategory": "PULL_UP_BAR",
+    "movementPattern": "CORE",
+    "level": "PROGRESI",
+    "levelVariant": 2,
+    "levelNote": null,
+    "flagExclusion": [],
+    "flagPrioritas": [],
+    "areaTerbebani": null,
+    "substitusiSetara": null,
+    "rantaiRegresi": "PUB-CORE-001",
+    "rantaiProgresi": null,
+    "syaratNaik": "tidak wajib naik — ini level puncak, variasi lanjut (weighted, strict tanpa kipping) bisa jadi pengembangan lebih lanjut",
+    "polaGerakTerkait": null,
+    "highImpact": false,
+    "isometricHeavy": false,
+    "mediaSlug": null
+  }
+]

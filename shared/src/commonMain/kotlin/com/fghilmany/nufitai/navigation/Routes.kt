@@ -18,7 +18,19 @@ sealed interface Route {
     @Serializable
     data object BodyData : Route
 
-    /** Stub only -- the real Home / Monthly Plan feature (P-03) is a separate, not-yet-built spec. */
+    /** P-03 -- Monthly Plan Home (issue #76). */
     @Serializable
     data object Home : Route
+
+    /** P-04 -- Session Detail (issue #76). */
+    @Serializable
+    data class SessionDetail(val planDayId: String) : Route
+
+    /** Entry: Home upsell or Profile & Settings, when tier is Logged-In but no result exists yet (issue #76 §7). */
+    @Serializable
+    data object FullAssessmentStub : Route
+
+    /** Placeholder target for "Mulai Sesi Ini"/"Mulai Latihan" until PT Mode (`05-pt-mode.md`) ships. */
+    @Serializable
+    data object PtModeStub : Route
 }

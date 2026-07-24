@@ -7,7 +7,7 @@ import com.fghilmany.nufitai.db.Body_measurement as BodyMeasurementRow
 import com.fghilmany.nufitai.db.Par_q_result as ParQResultRow
 import com.fghilmany.nufitai.db.Quick_assessment_result as QuickAssessmentResultRow
 import com.fghilmany.nufitai.domain.onboarding.entity.BodyMeasurement
-import com.fghilmany.nufitai.domain.onboarding.entity.EquipmentType
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.FrequencyBucket
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
@@ -107,7 +107,7 @@ private fun QuickAssessmentResultRow.toEntity(): QuickAssessmentResult = QuickAs
     input = QuickAssessmentAnswer(
         experience = Experience.valueOf(experience),
         goal = GoalCategory.valueOf(goal),
-        equipment = equipment.split(",").filter { it.isNotBlank() }.map { EquipmentType.valueOf(it) }.toSet(),
+        equipment = equipment.split(",").filter { it.isNotBlank() }.map { EquipmentCategory.valueOf(it) }.toSet(),
         frequency = FrequencyBucket.valueOf(frequency),
         splitPreference = SplitPreference.valueOf(split_preference),
     ),

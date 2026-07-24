@@ -1,0 +1,14 @@
+CREATE TABLE full_assessment_flag_detail (
+    id TEXT NOT NULL PRIMARY KEY,
+    full_assessment_result_id TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    flag_name TEXT NOT NULL,
+    FOREIGN KEY (full_assessment_result_id) REFERENCES full_assessment_result(id)
+);
+
+insertFullAssessmentFlagDetail:
+INSERT INTO full_assessment_flag_detail(id, full_assessment_result_id, kind, flag_name)
+VALUES (?, ?, ?, ?);
+
+getFlagsForResult:
+SELECT * FROM full_assessment_flag_detail WHERE full_assessment_result_id = ?;

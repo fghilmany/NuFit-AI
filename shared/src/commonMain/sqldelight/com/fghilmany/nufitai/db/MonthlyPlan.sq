@@ -1,0 +1,26 @@
+CREATE TABLE monthly_plan (
+    id TEXT NOT NULL PRIMARY KEY,
+    started_at INTEGER NOT NULL,
+    cycle_number INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    status TEXT NOT NULL,
+    level_meta TEXT NOT NULL,
+    goal_meta TEXT NOT NULL,
+    smart_goal_meta TEXT,
+    flags_aktif TEXT NOT NULL,
+    starting_level_per_pola TEXT NOT NULL,
+    mode TEXT NOT NULL,
+    checkpoint_days TEXT NOT NULL
+);
+
+insertMonthlyPlan:
+INSERT INTO monthly_plan(
+    id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
+    flags_aktif, starting_level_per_pola, mode, checkpoint_days
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+getActiveMonthlyPlan:
+SELECT * FROM monthly_plan WHERE status = 'ACTIVE' LIMIT 1;
+
+archiveMonthlyPlan:
+UPDATE monthly_plan SET status = 'ARCHIVED' WHERE id = ?;

@@ -25,7 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fghilmany.nufitai.domain.onboarding.entity.EquipmentType
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.presentation.onboarding.component.CardioOption
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridCard
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridOptions
@@ -146,7 +146,7 @@ private fun LazyListScope.equipmentStep(
     step: QuickAssessmentState.Step,
     onEvent: (QuickAssessmentEvent) -> Unit,
 ) {
-    val allSelected = EquipmentType.entries.filterNot { it == EquipmentType.CARDIO }.all { it in step.equipment }
+    val allSelected = EquipmentCategory.entries.filterNot { it == EquipmentCategory.CARDIO_EQUIPMENT }.all { it in step.equipment }
 
     item {
         EquipmentRowCard(
@@ -179,8 +179,8 @@ private fun LazyListScope.equipmentStep(
             icon = CardioOption.icon,
             title = CardioOption.title,
             subtitle = CardioOption.subtitle,
-            isSelected = EquipmentType.CARDIO in step.equipment,
-            onClick = { onEvent(QuickAssessmentEvent.ToggleEquipment(EquipmentType.CARDIO)) },
+            isSelected = EquipmentCategory.CARDIO_EQUIPMENT in step.equipment,
+            onClick = { onEvent(QuickAssessmentEvent.ToggleEquipment(EquipmentCategory.CARDIO_EQUIPMENT)) },
         )
     }
     item {

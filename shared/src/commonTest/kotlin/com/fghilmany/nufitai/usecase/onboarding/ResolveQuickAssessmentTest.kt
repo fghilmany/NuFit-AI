@@ -1,6 +1,6 @@
 package com.fghilmany.nufitai.usecase.onboarding
 
-import com.fghilmany.nufitai.domain.onboarding.entity.EquipmentType
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.Experience
 import com.fghilmany.nufitai.domain.onboarding.entity.FrequencyBucket
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
@@ -20,7 +20,7 @@ class ResolveQuickAssessmentTest {
     private fun answer(
         experience: Experience = Experience.BELUM_PERNAH,
         goal: GoalCategory = GoalCategory.FAT_LOSS,
-        equipment: Set<EquipmentType> = setOf(EquipmentType.BODYWEIGHT),
+        equipment: Set<EquipmentCategory> = setOf(EquipmentCategory.BODYWEIGHT),
         frequency: FrequencyBucket = FrequencyBucket.TWO_TO_THREE,
         splitPreference: SplitPreference = SplitPreference.FULL_BODY,
     ) = QuickAssessmentAnswer(experience, goal, equipment, frequency, splitPreference)

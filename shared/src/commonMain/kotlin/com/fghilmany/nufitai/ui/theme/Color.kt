@@ -51,4 +51,7 @@ object NuFitColors {
     // banners) that are deliberately NOT theme-reactive, unlike the roles above.
     val TertiaryFixed = Color(0xFFA0F4C8)
     val OnTertiaryFixed = Color(0xFF002113)
+    val TertiaryFixedDim = Color(0xFF85D7AD)
+    val SecondaryFixed = Color(0xFFCEE9D3)
+    val OnSecondaryFixed = Color(0xFF092012)
 }

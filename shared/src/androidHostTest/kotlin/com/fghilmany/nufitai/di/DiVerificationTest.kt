@@ -25,6 +25,9 @@ class DiVerificationTest {
             modules(
                 module { single { NuFitDatabase(driver = driver) } },
                 onboardingModule,
+                exerciseLibraryModule,
+                fullAssessmentModule,
+                monthlyPlanModule,
             )
             checkModules()
         }
