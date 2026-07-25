@@ -8,14 +8,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 
 /** PAR-Q question card: text + Ya/Tidak buttons, matching the "Cek Kesehatan Dulu" Figma pattern (node 12:26). */
 @Composable
@@ -26,11 +25,10 @@ fun QuestionCard(
     onAnswer: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Card(
+    AppElevatedCard(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+        elevation = 4.dp,
     ) {
         Text(
             text = "$questionNumber. $questionText",

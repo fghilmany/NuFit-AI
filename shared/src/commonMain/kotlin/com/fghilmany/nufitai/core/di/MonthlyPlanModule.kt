@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.di
+package com.fghilmany.nufitai.core.di
 
 import com.fghilmany.nufitai.data.monthlyplan.datasource.MonthlyPlanLocalDataSource
 import com.fghilmany.nufitai.data.monthlyplan.repository.MonthlyPlanRepositoryImpl

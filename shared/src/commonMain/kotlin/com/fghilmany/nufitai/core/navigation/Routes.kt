@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.navigation
+package com.fghilmany.nufitai.core.navigation
 
 import kotlinx.serialization.Serializable
 

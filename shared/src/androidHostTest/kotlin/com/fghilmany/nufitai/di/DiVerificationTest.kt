@@ -1,6 +1,11 @@
 package com.fghilmany.nufitai.di
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
+import com.fghilmany.nufitai.core.di.assessmentDetailModule
+import com.fghilmany.nufitai.core.di.exerciseLibraryModule
+import com.fghilmany.nufitai.core.di.fullAssessmentModule
+import com.fghilmany.nufitai.core.di.monthlyPlanModule
+import com.fghilmany.nufitai.core.di.onboardingModule
 import com.fghilmany.nufitai.db.NuFitDatabase
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin

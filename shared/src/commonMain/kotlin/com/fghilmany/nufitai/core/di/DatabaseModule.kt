@@ -1,6 +1,6 @@
-package com.fghilmany.nufitai.di
+package com.fghilmany.nufitai.core.di
 
-import com.fghilmany.nufitai.db.DatabaseDriverFactory
+import com.fghilmany.nufitai.core.db.DatabaseDriverFactory
 import com.fghilmany.nufitai.db.NuFitDatabase
 import org.koin.dsl.module
 

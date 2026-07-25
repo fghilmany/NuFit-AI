@@ -16,10 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.presentation.monthlyplan.component.estimatedDurationMinutes
 import com.fghilmany.nufitai.presentation.monthlyplan.component.exerciseCount
@@ -39,7 +39,6 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailSta
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailViewModel
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.TipsBanner
-import com.fghilmany.nufitai.ui.theme.NuFitColors
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
@@ -108,7 +107,7 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
                 )
             }
         }
-        Button(
+        AppButton(
             onClick = onStartSession,
             colors = ButtonDefaults.buttonColors(containerColor = NuFitColors.PrimaryContainer),
             modifier = Modifier.fillMaxWidth().padding(24.dp),
@@ -131,10 +130,9 @@ private fun SummaryChip(icon: ImageVector, label: String) {
 
 @Composable
 private fun ExerciseRow(exercise: PlannedExercise, name: String) {
-    Card(
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
+    AppElevatedCard(
         modifier = Modifier.fillMaxWidth(),
+        backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             Box(modifier = Modifier.size(48.dp).background(MaterialTheme.colorScheme.surfaceContainerHighest, RoundedCornerShape(12.dp)))

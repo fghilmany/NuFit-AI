@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.ui.theme
+package com.fghilmany.nufitai.core.designsystem.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme

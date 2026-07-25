@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,7 +17,6 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.WarningAmber
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,6 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
@@ -34,45 +37,42 @@ import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridOpti
 import com.fghilmany.nufitai.presentation.onboarding.component.ExperienceOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.FrequencyOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.GoalOptions
-import com.fghilmany.nufitai.ui.theme.NuFitColors
 
 /** Figma node 12:994 "Top Section: Beginner Badge & Explainer" (issue #77). */
 @Composable
 fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(NuFitColors.SecondaryContainer, RoundedCornerShape(24.dp))
-            .padding(24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+    AppCard(
+        modifier = modifier.fillMaxWidth(),
+        backgroundColor = NuFitColors.SecondaryContainer,
+        contentPadding = PaddingValues(24.dp),
     ) {
-        Text(
-            "STATUS KAMU",
-            style = MaterialTheme.typography.labelMedium,
-            color = NuFitColors.Primary,
-        )
-        Text(
-            quickAssessment.level.shortLabel(),
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.ExtraBold,
-            color = NuFitColors.Primary,
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-                .background(Color.White.copy(alpha = 0.8f), RoundedCornerShape(12.dp))
-                .padding(17.dp),
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            val goalTitle = GoalOptions.first { it.first == quickAssessment.input.goal }.second.title
-            val frequencyTitle = FrequencyOptions.first { it.first == quickAssessment.input.frequency }.second.title
+            Text("STATUS KAMU", style = MaterialTheme.typography.labelMedium, color = NuFitColors.Primary)
             Text(
-                "Karena kamu ${quickAssessment.level.shortLabel()} dengan goal " +
-                    "$goalTitle dan $frequencyTitle, plan kamu ${quickAssessment.resolvedSplit.shortLabel()}.",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                quickAssessment.level.shortLabel(),
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.ExtraBold,
+                color = NuFitColors.Primary,
             )
+            AppCard(
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                backgroundColor = Color.White.copy(alpha = 0.8f),
+                shape = RoundedCornerShape(12.dp),
+                contentPadding = PaddingValues(17.dp),
+            ) {
+                val goalTitle = GoalOptions.first { it.first == quickAssessment.input.goal }.second.title
+                val frequencyTitle = FrequencyOptions.first { it.first == quickAssessment.input.frequency }.second.title
+                Text(
+                    "Karena kamu ${quickAssessment.level.shortLabel()} dengan goal " +
+                        "$goalTitle dan $frequencyTitle, plan kamu ${quickAssessment.resolvedSplit.shortLabel()}.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }
@@ -80,24 +80,25 @@ fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = 
 /** Figma node 12:1004 "PAR-Q Safety Section" -- AC-3, one card per active flag (issue #77). */
 @Composable
 fun FlagExplanationCard(label: String, impact: String, modifier: Modifier = Modifier) {
-    Row(
+    AppCard(
         modifier = modifier
             .fillMaxWidth()
-            .background(NuFitColors.WarningContainer, RoundedCornerShape(24.dp))
-            .border(1.dp, NuFitColors.Warning.copy(alpha = 0.4f), RoundedCornerShape(24.dp))
-            .padding(17.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+            .border(1.dp, NuFitColors.Warning.copy(alpha = 0.4f), RoundedCornerShape(24.dp)),
+        backgroundColor = NuFitColors.WarningContainer,
+        contentPadding = PaddingValues(17.dp),
     ) {
-        Box(
-            modifier = Modifier.size(38.dp).background(NuFitColors.Warning, RoundedCornerShape(percent = 50)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(Icons.Filled.WarningAmber, contentDescription = null, tint = NuFitColors.OnWarning)
-        }
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("Perhatian Keamanan", style = MaterialTheme.typography.labelLarge, color = NuFitColors.OnWarningContainer)
-            Text(label, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = NuFitColors.OnWarningContainerBody)
-            Text(impact, style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnWarningContainerBody)
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Box(
+                modifier = Modifier.size(38.dp).background(NuFitColors.Warning, RoundedCornerShape(percent = 50)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Filled.WarningAmber, contentDescription = null, tint = NuFitColors.OnWarning)
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text("Perhatian Keamanan", style = MaterialTheme.typography.labelLarge, color = NuFitColors.OnWarningContainer)
+                Text(label, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = NuFitColors.OnWarningContainerBody)
+                Text(impact, style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnWarningContainerBody)
+            }
         }
     }
 }
@@ -124,14 +125,11 @@ fun AnswerSummaryGrid(quickAssessment: QuickAssessmentResult, modifier: Modifier
 
 @Composable
 private fun SummaryCell(label: String, value: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .background(Color.White, RoundedCornerShape(24.dp))
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-    ) {
-        Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = NuFitColors.Primary)
+    AppCard(modifier = modifier, backgroundColor = Color.White) {
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = NuFitColors.Primary)
+        }
     }
 }
 
@@ -148,35 +146,35 @@ private fun Set<EquipmentCategory>.summaryLabel(): String {
 /** Figma node 12:1040 "Rencana Terpilih" -- no bundled hero image yet, uses a solid tone instead (issue #77). */
 @Composable
 fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(NuFitColors.PrimaryContainer, RoundedCornerShape(24.dp))
-            .padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+    AppCard(
+        modifier = modifier.fillMaxWidth(),
+        backgroundColor = NuFitColors.PrimaryContainer,
+        contentPadding = PaddingValues(24.dp),
     ) {
-        val badgeLabel = when (plan.source) {
-            PlanSource.LOCAL_TEMPLATE -> "TEMPLATE"
-            PlanSource.LOGGED_IN_RULE_ENGINE -> "REKOMENDASI AI"
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            val badgeLabel = when (plan.source) {
+                PlanSource.LOCAL_TEMPLATE -> "TEMPLATE"
+                PlanSource.LOGGED_IN_RULE_ENGINE -> "REKOMENDASI AI"
+            }
+            AppCard(
+                backgroundColor = NuFitColors.TertiaryFixed,
+                shape = RoundedCornerShape(4.dp),
+                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+            ) {
+                Text(badgeLabel, style = MaterialTheme.typography.labelSmall, color = NuFitColors.OnTertiaryFixed)
+            }
+            Text(
+                "${quickAssessment.resolvedSplit.shortLabel()} ${quickAssessment.level.shortLabel()}",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+            )
+            Text(
+                "Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = NuFitColors.OnPrimaryContainer,
+            )
         }
-        Box(
-            modifier = Modifier
-                .background(NuFitColors.TertiaryFixed, RoundedCornerShape(4.dp))
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-        ) {
-            Text(badgeLabel, style = MaterialTheme.typography.labelSmall, color = NuFitColors.OnTertiaryFixed)
-        }
-        Text(
-            "${quickAssessment.resolvedSplit.shortLabel()} ${quickAssessment.level.shortLabel()}",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-        )
-        Text(
-            "Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.",
-            style = MaterialTheme.typography.bodyMedium,
-            color = NuFitColors.OnPrimaryContainer,
-        )
     }
 }
 
@@ -205,7 +203,7 @@ fun FullAssessmentCtaCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
-        Button(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
+        AppButton(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
             Text("Masuk & Lengkapi Assessment")
             Icon(Icons.Filled.ChevronRight, contentDescription = null, modifier = Modifier.padding(start = 8.dp))
         }

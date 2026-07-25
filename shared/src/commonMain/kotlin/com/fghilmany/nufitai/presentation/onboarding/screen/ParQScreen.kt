@@ -18,7 +18,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.Shield
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +30,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.onboarding.entity.ParQQuestionId
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.ParQQuestionCopy
@@ -38,7 +40,6 @@ import com.fghilmany.nufitai.presentation.onboarding.component.QuestionCard
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQViewModel
-import com.fghilmany.nufitai.ui.theme.NuFitColors
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -100,7 +101,7 @@ private fun ParQContent(
             item { SafetyNote() }
         }
 
-        Button(
+        AppButton(
             onClick = onSubmit,
             enabled = canProceed,
             modifier = Modifier.fillMaxWidth().padding(24.dp),
@@ -138,26 +139,26 @@ private fun ProgressRow(answeredCount: Int) {
 
 @Composable
 private fun IntroCard() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(24.dp))
-            .background(NuFitColors.SecondaryContainer.copy(alpha = 0.3f))
-            .padding(25.dp),
+    AppCard(
+        modifier = Modifier.fillMaxWidth(),
+        backgroundColor = NuFitColors.SecondaryContainer.copy(alpha = 0.3f),
+        contentPadding = PaddingValues(25.dp),
     ) {
-        Box(
-            modifier = Modifier.size(40.dp).clip(CircleShape).background(NuFitColors.PrimaryContainer),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(Icons.Filled.HealthAndSafety, contentDescription = null, tint = NuFitColors.OnPrimary, modifier = Modifier.size(20.dp))
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier.size(40.dp).clip(CircleShape).background(NuFitColors.PrimaryContainer),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Filled.HealthAndSafety, contentDescription = null, tint = NuFitColors.OnPrimary, modifier = Modifier.size(20.dp))
+            }
+            Text(
+                "Sebelum mulai, mari pastikan latihan Anda aman. Jawab pertanyaan berikut dengan " +
+                    "jujur agar kami bisa menyesuaikan program yang tepat untuk Anda.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 16.dp),
+            )
         }
-        Text(
-            "Sebelum mulai, mari pastikan latihan Anda aman. Jawab pertanyaan berikut dengan " +
-                "jujur agar kami bisa menyesuaikan program yang tepat untuk Anda.",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(start = 16.dp),
-        )
     }
 }
 

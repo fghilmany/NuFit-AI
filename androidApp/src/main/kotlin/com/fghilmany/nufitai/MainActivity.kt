@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.fghilmany.nufitai.db.DatabaseDriverFactory
-import com.fghilmany.nufitai.di.initKoin
+import com.fghilmany.nufitai.core.db.DatabaseDriverFactory
+import com.fghilmany.nufitai.core.di.initKoin
 
 private var koinStarted = false
 

@@ -27,7 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

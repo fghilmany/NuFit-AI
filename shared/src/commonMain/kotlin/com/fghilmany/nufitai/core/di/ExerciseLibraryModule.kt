@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.di
+package com.fghilmany.nufitai.core.di
 
 import com.fghilmany.nufitai.data.exerciselibrary.datasource.ExerciseLibraryLocalDataSource
 import com.fghilmany.nufitai.data.exerciselibrary.datasource.ExerciseLibrarySeedDataSource

@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.di
+package com.fghilmany.nufitai.core.di
 
 import com.fghilmany.nufitai.data.fullassessment.datasource.FullAssessmentLocalDataSource
 import com.fghilmany.nufitai.data.fullassessment.repository.FullAssessmentRepositoryImpl

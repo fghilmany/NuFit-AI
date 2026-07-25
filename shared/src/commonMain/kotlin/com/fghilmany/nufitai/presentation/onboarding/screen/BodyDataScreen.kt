@@ -6,10 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +16,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.BodyDataEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.BodyDataState
@@ -50,22 +50,22 @@ fun BodyDataScreen(
                 style = MaterialTheme.typography.bodyMedium,
             )
 
-            OutlinedTextField(
+            AppTextField(
                 value = content.heightCm,
                 onValueChange = { viewModel.onEvent(BodyDataEvent.UpdateHeight(it)) },
-                label = { Text("Tinggi badan (cm)") },
+                label = "Tinggi badan (cm)",
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
             )
-            OutlinedTextField(
+            AppTextField(
                 value = content.weightKg,
                 onValueChange = { viewModel.onEvent(BodyDataEvent.UpdateWeight(it)) },
-                label = { Text("Berat badan (kg)") },
+                label = "Berat badan (kg)",
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
             )
 
-            Button(
+            AppButton(
                 onClick = { viewModel.onEvent(BodyDataEvent.Save) },
                 modifier = Modifier.fillMaxWidth(),
             ) {

@@ -16,10 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
-import com.fghilmany.nufitai.ui.theme.NuFitColors
 
 /** P-09 Riwayat tab -- not designed in Figma, reuses the "Ringkasan Jawaban" card visual language (issue #77 §9 item 4). */
 @Composable
@@ -42,22 +43,21 @@ fun AssessmentHistoryList(history: List<MonthlyPlan>, modifier: Modifier = Modif
 
 @Composable
 private fun AssessmentHistoryRow(plan: MonthlyPlan, modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(Color.White, RoundedCornerShape(24.dp))
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(plan.levelMeta, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = NuFitColors.Primary)
-            Text(plan.source.shortLabel(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-        val badgeColor = if (plan.status == PlanStatus.ACTIVE) NuFitColors.SecondaryContainer else NuFitColors.SurfaceContainerHigh
-        val badgeTextColor = if (plan.status == PlanStatus.ACTIVE) NuFitColors.OnSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant
-        Box(modifier = Modifier.background(badgeColor, RoundedCornerShape(percent = 50)).padding(horizontal = 12.dp, vertical = 4.dp)) {
-            Text(plan.status.shortLabel(), style = MaterialTheme.typography.labelSmall, color = badgeTextColor)
+    AppCard(modifier = modifier.fillMaxWidth(), backgroundColor = Color.White) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(plan.levelMeta, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = NuFitColors.Primary)
+                Text(plan.source.shortLabel(), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            val badgeColor = if (plan.status == PlanStatus.ACTIVE) NuFitColors.SecondaryContainer else NuFitColors.SurfaceContainerHigh
+            val badgeTextColor = if (plan.status == PlanStatus.ACTIVE) NuFitColors.OnSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant
+            Box(modifier = Modifier.background(badgeColor, RoundedCornerShape(percent = 50)).padding(horizontal = 12.dp, vertical = 4.dp)) {
+                Text(plan.status.shortLabel(), style = MaterialTheme.typography.labelSmall, color = badgeTextColor)
+            }
         }
     }
 }

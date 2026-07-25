@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -47,7 +47,7 @@ import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.AssessmentD
 import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.AssessmentDetailViewModel
 import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.RetakeDialogState
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel as exerciseFlagShortLabel
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -102,7 +102,7 @@ private fun AssessmentDetailContent(
         TabBar(
             activeTab = state.activeTab,
             onTabSelected = { viewModel.onEvent(AssessmentDetailEvent.SwitchTab(it)) },
-            modifier = Modifier.padding(top = 80.dp),
+            modifier = Modifier.padding(top = 104.dp), // 64dp bar + status-bar inset buffer
         )
 
         when (state.activeTab) {
@@ -240,8 +240,8 @@ private fun TopBar(onBack: () -> Unit, modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .height(64.dp)
-            .padding(horizontal = 24.dp),
+            .statusBarsPadding()
+            .padding(horizontal = 24.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {

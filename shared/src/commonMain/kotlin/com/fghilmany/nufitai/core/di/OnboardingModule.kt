@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.di
+package com.fghilmany.nufitai.core.di
 
 import com.fghilmany.nufitai.data.onboarding.datasource.OnboardingLocalDataSource
 import com.fghilmany.nufitai.data.onboarding.repository.OnboardingRepositoryImpl

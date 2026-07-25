@@ -14,10 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DirectionsRun
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,9 +25,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.monthlyplan.entity.DayType
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
-import com.fghilmany.nufitai.ui.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
 
 /** P-03's 4 card variants (Figma node 12:539: Completed/Today-Active/Rest/Upcoming), 1:1 with [SessionStatus]. */
@@ -45,11 +44,10 @@ fun SessionCard(day: PlanDay, status: SessionStatus, onClick: () -> Unit, onStar
 
 @Composable
 private fun TodayCard(day: PlanDay, onStartClick: () -> Unit, modifier: Modifier = Modifier) {
-    Card(
+    AppElevatedCard(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = NuFitColors.PrimaryContainer),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        backgroundColor = NuFitColors.PrimaryContainer,
+        elevation = 4.dp,
     ) {
         Column(modifier = Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
@@ -64,7 +62,7 @@ private fun TodayCard(day: PlanDay, onStartClick: () -> Unit, modifier: Modifier
                 Text("${day.exerciseCount()} gerakan", style = MaterialTheme.typography.labelSmall, color = Color.White)
                 Text("${day.estimatedDurationMinutes()} menit", style = MaterialTheme.typography.labelSmall, color = Color.White)
             }
-            Button(
+            AppButton(
                 onClick = onStartClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = NuFitColors.PrimaryContainer),
                 shape = RoundedCornerShape(16.dp),
@@ -77,11 +75,10 @@ private fun TodayCard(day: PlanDay, onStartClick: () -> Unit, modifier: Modifier
 @Composable
 private fun StandardCard(day: PlanDay, status: SessionStatus, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val isCompleted = status == SessionStatus.DONE
-    Card(
+    AppElevatedCard(
         onClick = onClick,
         modifier = modifier.fillMaxWidth().alpha(if (isCompleted) 0.75f else 1f),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
+        backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
     ) {
         Row(modifier = Modifier.padding(17.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -105,11 +102,10 @@ private fun StandardCard(day: PlanDay, status: SessionStatus, onClick: () -> Uni
 
 @Composable
 private fun RestCard(day: PlanDay, status: SessionStatus, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Card(
+    AppElevatedCard(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
+        backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
     ) {
         Row(modifier = Modifier.padding(17.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {

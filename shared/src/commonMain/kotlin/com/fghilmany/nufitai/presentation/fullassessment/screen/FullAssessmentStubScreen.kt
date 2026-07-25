@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,6 +20,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
@@ -94,7 +94,7 @@ private fun ParQPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentV
             )
         }
         item {
-            Button(
+            AppButton(
                 onClick = { viewModel.onEvent(FullAssessmentEvent.SubmitParQ) },
                 enabled = step.canSubmitParQ,
                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
@@ -107,7 +107,7 @@ private fun ParQPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentV
 private fun GateBlockedPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
     val flagged = step.gateResult?.flaggedHardStopQuestions.orEmpty()
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Card(modifier = Modifier.fillMaxWidth()) {
+        AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Sebaiknya konsultasi ke dokter dulu", style = MaterialTheme.typography.titleMedium)
                 Text(
@@ -124,7 +124,7 @@ private fun GateBlockedPhase(step: FullAssessmentState.Step, viewModel: FullAsse
             onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleGateAcknowledge) },
             modifier = Modifier.padding(top = 16.dp),
         )
-        Button(
+        AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.ContinueFromGate) },
             enabled = step.canProceedFromGate,
             modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
@@ -141,10 +141,10 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item {
-            OutlinedTextField(
+            AppTextField(
                 value = step.usia,
                 onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetUsia(it)) },
-                label = { Text("Usia") },
+                label = "Usia",
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -165,10 +165,10 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             }
         }
         item {
-            OutlinedTextField(
+            AppTextField(
                 value = step.frekuensiPerMinggu,
                 onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetFrekuensiPerMinggu(it)) },
-                label = { Text("Frekuensi latihan per minggu") },
+                label = "Frekuensi latihan per minggu",
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -183,10 +183,10 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             }
         }
         item {
-            OutlinedTextField(
+            AppTextField(
                 value = step.durasiSesiMenit,
                 onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetDurasiSesiMenit(it)) },
-                label = { Text("Durasi sesi (menit)") },
+                label = "Durasi sesi (menit)",
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -207,7 +207,7 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             )
         }
         item {
-            Button(
+            AppButton(
                 onClick = { viewModel.onEvent(FullAssessmentEvent.NextFromInterview) },
                 enabled = step.canProceedFromInterview,
                 modifier = Modifier.fillMaxWidth(),
@@ -227,7 +227,7 @@ private fun PosturalPhase(step: FullAssessmentState.Step, viewModel: FullAssessm
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.TogglePosturalFlag(flag)) },
             )
         }
-        Button(
+        AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.NextFromPostural) },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
         ) { Text("Lanjutkan") }
@@ -245,7 +245,7 @@ private fun MovementPhase(step: FullAssessmentState.Step, viewModel: FullAssessm
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleMovementFlag(flag)) },
             )
         }
-        Button(
+        AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.NextFromMovement) },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
         ) { Text("Lanjutkan") }
@@ -256,24 +256,24 @@ private fun MovementPhase(step: FullAssessmentState.Step, viewModel: FullAssessm
 private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
     Column(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text("Tes kapasitas fisik (opsional)", style = MaterialTheme.typography.titleSmall)
-        OutlinedTextField(
+        AppTextField(
             value = step.pushupReps,
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPushupReps(it)) },
-            label = { Text("Push-up (reps)") },
+            label = "Push-up (reps)",
             enabled = !step.capacityTestSkipped,
             modifier = Modifier.fillMaxWidth(),
         )
-        OutlinedTextField(
+        AppTextField(
             value = step.plankDetik,
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPlankDetik(it)) },
-            label = { Text("Plank (detik)") },
+            label = "Plank (detik)",
             enabled = !step.capacityTestSkipped,
             modifier = Modifier.fillMaxWidth(),
         )
-        OutlinedTextField(
+        AppTextField(
             value = step.sitToStandReps,
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSitToStandReps(it)) },
-            label = { Text("Sit-to-Stand 30 detik (reps)") },
+            label = "Sit-to-Stand 30 detik (reps)",
             enabled = !step.capacityTestSkipped,
             modifier = Modifier.fillMaxWidth(),
         )
@@ -281,7 +281,7 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             onClick = { viewModel.onEvent(FullAssessmentEvent.ToggleSkipCapacityTest) },
             modifier = Modifier.fillMaxWidth(),
         ) { Text(if (step.capacityTestSkipped) "Batal lewati" else "Lewati tes ini") }
-        Button(
+        AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.Submit) },
             enabled = step.canSubmit,
             modifier = Modifier.fillMaxWidth(),
@@ -292,7 +292,7 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
 @Composable
 private fun ToggleButton(label: String, isSelected: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
     if (isSelected) {
-        Button(onClick = onClick, modifier = modifier) { Text(label) }
+        AppButton(onClick = onClick, modifier = modifier) { Text(label) }
     } else {
         OutlinedButton(onClick = onClick, modifier = modifier) { Text(label) }
     }

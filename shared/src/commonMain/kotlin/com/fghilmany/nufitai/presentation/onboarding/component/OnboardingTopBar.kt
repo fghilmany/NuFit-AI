@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -16,12 +16,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 
 /**
  * Shared top app bar for the onboarding flow (PAR-Q, wizard, consult-doctor, body data) --
  * back button (only if [onBack] is provided) + title, matching the Figma header pattern
- * (nodes 12:26, 12:117, 77:146: bg = background, 64dp height, title in Primary color).
+ * (nodes 12:26, 12:117, 77:146: bg = background, title in Primary color). Height is content-
+ * driven (status bar inset + compact vertical padding), not a fixed 64dp, so it stays compact.
  */
 @Composable
 fun OnboardingTopBar(
@@ -34,8 +35,8 @@ fun OnboardingTopBar(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .height(64.dp)
-            .padding(horizontal = if (onBack != null) 8.dp else 24.dp),
+            .statusBarsPadding()
+            .padding(horizontal = if (onBack != null) 8.dp else 24.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (onBack != null) {

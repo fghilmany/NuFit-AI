@@ -8,9 +8,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -41,7 +41,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.HomeState
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.HomeViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.WeekEntry
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -80,7 +80,7 @@ private fun HomeContent(
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
-        contentPadding = PaddingValues(top = 80.dp, bottom = 96.dp),
+        contentPadding = PaddingValues(top = 104.dp, bottom = 96.dp), // 64dp bar + status-bar inset buffer
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
         item { GreetingSection(state.currentWeekNumber, state.progressPercent) }
@@ -161,8 +161,8 @@ private fun TopAppBarSection(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .height(64.dp)
-            .padding(horizontal = 24.dp),
+            .statusBarsPadding()
+            .padding(horizontal = 24.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {

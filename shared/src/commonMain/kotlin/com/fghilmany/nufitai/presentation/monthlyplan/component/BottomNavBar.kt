@@ -23,7 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 
 private enum class NavTab(val label: String, val icon: ImageVector) {
     HOME("Home", Icons.Filled.Home),

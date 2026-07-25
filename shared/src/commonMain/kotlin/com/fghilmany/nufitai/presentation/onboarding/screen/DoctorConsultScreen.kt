@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,6 +16,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.domain.onboarding.entity.ParQQuestionId
 import com.fghilmany.nufitai.presentation.onboarding.component.CheckboxRow
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
@@ -66,10 +65,7 @@ private fun DoctorConsultContent(
     onContinueClick: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Card(
-            shape = RoundedCornerShape(24.dp),
-            modifier = Modifier.fillMaxWidth(),
-        ) {
+        AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(25.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Sebaiknya konsultasi ke dokter dulu", style = MaterialTheme.typography.titleMedium)
                 Text(
@@ -81,10 +77,7 @@ private fun DoctorConsultContent(
             }
         }
 
-        Card(
-            shape = RoundedCornerShape(24.dp),
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-        ) {
+        AppElevatedCard(modifier = Modifier.fillMaxWidth().padding(top = 16.dp)) {
             Column(modifier = Modifier.padding(25.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Kondisi yang Anda tandai:", style = MaterialTheme.typography.titleSmall)
                 flaggedQuestions.forEach { questionId ->
@@ -106,7 +99,7 @@ private fun DoctorConsultContent(
             modifier = Modifier.padding(top = 8.dp),
         )
 
-        Button(
+        AppButton(
             onClick = onContinueClick,
             enabled = acknowledged,
             modifier = Modifier.fillMaxWidth().padding(top = 24.dp),

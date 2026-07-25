@@ -1,4 +1,4 @@
-package com.fghilmany.nufitai.navigation
+package com.fghilmany.nufitai.core.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

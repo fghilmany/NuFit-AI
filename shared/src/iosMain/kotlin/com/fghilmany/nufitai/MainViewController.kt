@@ -1,8 +1,8 @@
 package com.fghilmany.nufitai
 
 import androidx.compose.ui.window.ComposeUIViewController
-import com.fghilmany.nufitai.db.DatabaseDriverFactory
-import com.fghilmany.nufitai.di.initKoin
+import com.fghilmany.nufitai.core.db.DatabaseDriverFactory
+import com.fghilmany.nufitai.core.di.initKoin
 
 private var koinStarted = false
 

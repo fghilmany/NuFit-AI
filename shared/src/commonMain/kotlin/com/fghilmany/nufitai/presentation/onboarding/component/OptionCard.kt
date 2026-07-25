@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,7 +19,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.fghilmany.nufitai.ui.theme.NuFitColors
+import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 
 /**
  * Card-style single-select option matching the Quick Assessment wizard's Figma pattern
@@ -36,17 +35,16 @@ fun OptionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Card(
+    AppElevatedCard(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest),
+        backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
         border = if (isSelected) {
             BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
         } else {
             BorderStroke(2.dp, Color.Transparent)
         },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        elevation = 2.dp,
     ) {
         Row(
             modifier = Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
