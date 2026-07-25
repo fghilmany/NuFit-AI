@@ -33,10 +33,10 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
-import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridOptions
-import com.fghilmany.nufitai.presentation.onboarding.component.ExperienceOptions
-import com.fghilmany.nufitai.presentation.onboarding.component.FrequencyOptions
-import com.fghilmany.nufitai.presentation.onboarding.component.GoalOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.equipmentGridOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.experienceOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.frequencyOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.goalOptions
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.assessmentdetail_answer_summary_title
 import nufitai.shared.generated.resources.assessmentdetail_equipment_bodyweight_only
@@ -84,8 +84,8 @@ fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = 
                 shape = RoundedCornerShape(12.dp),
                 contentPadding = PaddingValues(17.dp),
             ) {
-                val goalTitle = GoalOptions.first { it.first == quickAssessment.input.goal }.second.title
-                val frequencyTitle = FrequencyOptions.first { it.first == quickAssessment.input.frequency }.second.title
+                val goalTitle = goalOptions().first { it.first == quickAssessment.input.goal }.second.title
+                val frequencyTitle = frequencyOptions().first { it.first == quickAssessment.input.frequency }.second.title
                 Text(
                     stringResource(
                         Res.string.assessmentdetail_level_explainer,
@@ -131,9 +131,9 @@ fun FlagExplanationCard(label: String, impact: String, modifier: Modifier = Modi
 /** Figma node 12:1016 "Ringkasan Jawaban" 2x2 grid (issue #77). */
 @Composable
 fun AnswerSummaryGrid(quickAssessment: QuickAssessmentResult, modifier: Modifier = Modifier) {
-    val goalTitle = GoalOptions.first { it.first == quickAssessment.input.goal }.second.title
-    val frequencyTitle = FrequencyOptions.first { it.first == quickAssessment.input.frequency }.second.title
-    val experienceTitle = ExperienceOptions.first { it.first == quickAssessment.input.experience }.second.title
+    val goalTitle = goalOptions().first { it.first == quickAssessment.input.goal }.second.title
+    val frequencyTitle = frequencyOptions().first { it.first == quickAssessment.input.frequency }.second.title
+    val experienceTitle = experienceOptions().first { it.first == quickAssessment.input.experience }.second.title
     val equipmentSummary = quickAssessment.input.equipment.summaryLabel()
 
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -160,12 +160,13 @@ private fun SummaryCell(label: String, value: String, modifier: Modifier = Modif
 
 @Composable
 private fun Set<EquipmentCategory>.summaryLabel(): String {
-    val fullGymSet = EquipmentGridOptions.map { it.first }.toSet() - EquipmentCategory.BODYWEIGHT
+    val equipmentGridOptions = equipmentGridOptions()
+    val fullGymSet = equipmentGridOptions.map { it.first }.toSet() - EquipmentCategory.BODYWEIGHT
     return when {
         isEmpty() -> stringResource(Res.string.assessmentdetail_equipment_none)
         this == setOf(EquipmentCategory.BODYWEIGHT) -> stringResource(Res.string.assessmentdetail_equipment_bodyweight_only)
         fullGymSet.all { it in this } -> stringResource(Res.string.assessmentdetail_equipment_full_gym)
-        else -> EquipmentGridOptions.filter { it.first in this }.joinToString(", ") { it.second.title }
+        else -> equipmentGridOptions.filter { it.first in this }.joinToString(", ") { it.second.title }
     }
 }
 

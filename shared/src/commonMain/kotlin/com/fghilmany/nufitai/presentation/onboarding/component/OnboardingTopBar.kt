@@ -17,6 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_back
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Shared top app bar for the onboarding flow (PAR-Q, wizard, consult-doctor, body data) --
@@ -41,7 +44,7 @@ fun OnboardingTopBar(
     ) {
         if (onBack != null) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Kembali", tint = NuFitColors.Primary)
+                Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(Res.string.common_action_back), tint = NuFitColors.Primary)
             }
         }
         Text(

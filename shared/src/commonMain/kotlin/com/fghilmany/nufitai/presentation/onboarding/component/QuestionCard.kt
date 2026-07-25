@@ -15,6 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_no
+import nufitai.shared.generated.resources.common_action_yes
+import org.jetbrains.compose.resources.stringResource
 
 /** PAR-Q question card: text + Ya/Tidak buttons, matching the "Cek Kesehatan Dulu" Figma pattern (node 12:26). */
 @Composable
@@ -41,13 +45,13 @@ fun QuestionCard(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             AnswerButton(
-                label = "Ya",
+                label = stringResource(Res.string.common_action_yes),
                 isSelected = selected == true,
                 onClick = { onAnswer(true) },
                 modifier = Modifier.weight(1f),
             )
             AnswerButton(
-                label = "Tidak",
+                label = stringResource(Res.string.common_action_no),
                 isSelected = selected == false,
                 onClick = { onAnswer(false) },
                 modifier = Modifier.weight(1f),

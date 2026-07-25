@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.exercisedetail_not_found
+import org.jetbrains.compose.resources.getString
 
 sealed interface ExerciseDetailState {
     data object Loading : ExerciseDetailState
@@ -29,7 +32,7 @@ class ExerciseDetailViewModel(
         viewModelScope.launch {
             val exercise = when (val result = getExerciseDetail(exerciseId)) {
                 is AppResult.Success -> result.data ?: run {
-                    _state.value = ExerciseDetailState.Error("Gerakan tidak ditemukan")
+                    _state.value = ExerciseDetailState.Error(getString(Res.string.exercisedetail_not_found))
                     return@launch
                 }
                 is AppResult.Error -> {

@@ -22,6 +22,15 @@ import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.BodyDataEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.BodyDataState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.BodyDataViewModel
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_save
+import nufitai.shared.generated.resources.common_action_skip
+import nufitai.shared.generated.resources.onboarding_bodydata_body
+import nufitai.shared.generated.resources.onboarding_bodydata_heading
+import nufitai.shared.generated.resources.onboarding_bodydata_height_label
+import nufitai.shared.generated.resources.onboarding_bodydata_top_bar_title
+import nufitai.shared.generated.resources.onboarding_bodydata_weight_label
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -38,29 +47,29 @@ fun BodyDataScreen(
     val content = state as? BodyDataState.Content ?: return
 
     Column(modifier = Modifier.fillMaxSize()) {
-        OnboardingTopBar(title = "Data Tubuh")
+        OnboardingTopBar(title = stringResource(Res.string.onboarding_bodydata_top_bar_title))
 
         Column(
             modifier = Modifier.weight(1f).padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Text("Data tubuh (opsional)", style = MaterialTheme.typography.headlineSmall)
+            Text(stringResource(Res.string.onboarding_bodydata_heading), style = MaterialTheme.typography.headlineSmall)
             Text(
-                "Isi kalau mau, atau lewati saja -- kamu tetap bisa mengisinya nanti di pengaturan.",
+                stringResource(Res.string.onboarding_bodydata_body),
                 style = MaterialTheme.typography.bodyMedium,
             )
 
             AppTextField(
                 value = content.heightCm,
                 onValueChange = { viewModel.onEvent(BodyDataEvent.UpdateHeight(it)) },
-                label = "Tinggi badan (cm)",
+                label = stringResource(Res.string.onboarding_bodydata_height_label),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
             )
             AppTextField(
                 value = content.weightKg,
                 onValueChange = { viewModel.onEvent(BodyDataEvent.UpdateWeight(it)) },
-                label = "Berat badan (kg)",
+                label = stringResource(Res.string.onboarding_bodydata_weight_label),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -69,13 +78,13 @@ fun BodyDataScreen(
                 onClick = { viewModel.onEvent(BodyDataEvent.Save) },
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text("Simpan")
+                Text(stringResource(Res.string.common_action_save))
             }
             OutlinedButton(
                 onClick = { viewModel.onEvent(BodyDataEvent.Skip) },
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text("Lewati")
+                Text(stringResource(Res.string.common_action_skip))
             }
         }
     }

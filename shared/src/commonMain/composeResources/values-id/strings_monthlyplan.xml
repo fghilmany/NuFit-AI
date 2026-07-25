@@ -47,4 +47,6 @@
     <string name="monthlyplan_nav_chat_ai">Chat AI</string>
     <string name="monthlyplan_nav_meal">Makan</string>
     <string name="monthlyplan_nav_account">Akun</string>
+    <string name="monthlyplan_home_week_complete_message">Minggu ini selesai, kerja bagus!</string>
+    <string name="monthlyplan_session_detail_not_found">Sesi tidak ditemukan</string>
 </resources>

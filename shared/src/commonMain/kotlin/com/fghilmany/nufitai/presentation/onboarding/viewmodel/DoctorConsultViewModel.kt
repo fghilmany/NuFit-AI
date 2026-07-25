@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.onboarding_doctor_consult_result_not_found
+import org.jetbrains.compose.resources.getString
 
 sealed interface DoctorConsultState {
     data object Loading : DoctorConsultState
@@ -46,7 +49,7 @@ class DoctorConsultViewModel(
                             flaggedQuestions = parQResult.answers.filter { it.answer }.map { it.questionId },
                         )
                     } else {
-                        DoctorConsultState.Error("PAR-Q result tidak ditemukan")
+                        DoctorConsultState.Error(getString(Res.string.onboarding_doctor_consult_result_not_found))
                     }
                 }
                 is AppResult.Error -> _state.value = DoctorConsultState.Error(result.failure.message)

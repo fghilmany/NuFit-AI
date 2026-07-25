@@ -14,6 +14,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_session_detail_not_found
+import org.jetbrains.compose.resources.getString
 
 sealed interface SessionDetailState {
     data object Loading : SessionDetailState
@@ -47,7 +50,7 @@ class SessionDetailViewModel(
             }
             val planDay = overview?.days?.find { it.id == planDayId }
             if (overview == null || planDay == null) {
-                _state.value = SessionDetailState.Error("Sesi tidak ditemukan")
+                _state.value = SessionDetailState.Error(getString(Res.string.monthlyplan_session_detail_not_found))
                 return@launch
             }
 

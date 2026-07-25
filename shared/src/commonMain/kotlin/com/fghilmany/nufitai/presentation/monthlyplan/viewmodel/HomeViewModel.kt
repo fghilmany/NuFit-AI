@@ -13,6 +13,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_home_week_complete_message
+import org.jetbrains.compose.resources.getString
 
 data class WeekEntry(val weekNumber: Int, val days: List<PlanDay>, val statuses: Map<String, SessionStatus>)
 
@@ -92,7 +95,7 @@ class HomeViewModel(
                             weeks = weeks,
                             todaySessionId = todayDay?.id,
                             expandedWeek = null,
-                            weekCompleteMessage = if (currentWeekDone) "Minggu ini selesai, kerja bagus!" else null,
+                            weekCompleteMessage = if (currentWeekDone) getString(Res.string.monthlyplan_home_week_complete_message) else null,
                         )
                     }
                 }

@@ -25,6 +25,15 @@ import com.fghilmany.nufitai.presentation.onboarding.component.shortLabel
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.DoctorConsultEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.DoctorConsultState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.DoctorConsultViewModel
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_continue
+import nufitai.shared.generated.resources.onboarding_doctorconsult_ack_label
+import nufitai.shared.generated.resources.onboarding_doctorconsult_body
+import nufitai.shared.generated.resources.onboarding_doctorconsult_disclaimer
+import nufitai.shared.generated.resources.onboarding_doctorconsult_flagged_title
+import nufitai.shared.generated.resources.onboarding_doctorconsult_title
+import nufitai.shared.generated.resources.onboarding_doctorconsult_top_bar_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -39,7 +48,7 @@ fun DoctorConsultScreen(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        OnboardingTopBar(title = "Perhatian Kesehatan")
+        OnboardingTopBar(title = stringResource(Res.string.onboarding_doctorconsult_top_bar_title))
 
         Box(modifier = Modifier.weight(1f)) {
             when (val current = state) {
@@ -67,11 +76,9 @@ private fun DoctorConsultContent(
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
         AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(25.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Sebaiknya konsultasi ke dokter dulu", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(Res.string.onboarding_doctorconsult_title), style = MaterialTheme.typography.titleMedium)
                 Text(
-                    "Berdasarkan jawaban Anda, ada kondisi yang sebaiknya didiskusikan dengan dokter " +
-                        "sebelum memulai program. Kami tetap menyesuaikan latihan Anda agar aman, tapi " +
-                        "konsultasi medis kami sarankan.",
+                    stringResource(Res.string.onboarding_doctorconsult_body),
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
@@ -79,7 +86,7 @@ private fun DoctorConsultContent(
 
         AppElevatedCard(modifier = Modifier.fillMaxWidth().padding(top = 16.dp)) {
             Column(modifier = Modifier.padding(25.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Kondisi yang Anda tandai:", style = MaterialTheme.typography.titleSmall)
+                Text(stringResource(Res.string.onboarding_doctorconsult_flagged_title), style = MaterialTheme.typography.titleSmall)
                 flaggedQuestions.forEach { questionId ->
                     Text("• ${questionId.shortLabel()}", style = MaterialTheme.typography.bodyMedium)
                 }
@@ -88,13 +95,13 @@ private fun DoctorConsultContent(
 
         CheckboxRow(
             checked = acknowledged,
-            label = "Saya memahami dan akan/sudah berkonsultasi dengan dokter mengenai kondisi ini.",
+            label = stringResource(Res.string.onboarding_doctorconsult_ack_label),
             onToggle = onToggleAcknowledge,
             modifier = Modifier.padding(top = 16.dp),
         )
 
         Text(
-            "Ini bukan diagnosis medis. Aplikasi ini bukan pengganti konsultasi dengan tenaga medis profesional.",
+            stringResource(Res.string.onboarding_doctorconsult_disclaimer),
             style = MaterialTheme.typography.labelSmall,
             modifier = Modifier.padding(top = 8.dp),
         )
@@ -104,7 +111,7 @@ private fun DoctorConsultContent(
             enabled = acknowledged,
             modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
         ) {
-            Text("Lanjutkan")
+            Text(stringResource(Res.string.common_action_continue))
         }
     }
 }

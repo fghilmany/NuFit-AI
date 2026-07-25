@@ -26,23 +26,36 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
-import com.fghilmany.nufitai.presentation.onboarding.component.CardioOption
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridCard
-import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentRowCard
-import com.fghilmany.nufitai.presentation.onboarding.component.ExperienceOptions
-import com.fghilmany.nufitai.presentation.onboarding.component.FrequencyOptions
-import com.fghilmany.nufitai.presentation.onboarding.component.GoalOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.OptionCard
+import com.fghilmany.nufitai.presentation.onboarding.component.OptionCopy
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
 import com.fghilmany.nufitai.presentation.onboarding.component.SelectAllIcon
-import com.fghilmany.nufitai.presentation.onboarding.component.SplitOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.TipsBanner
+import com.fghilmany.nufitai.presentation.onboarding.component.cardioOption
+import com.fghilmany.nufitai.presentation.onboarding.component.equipmentGridOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.experienceOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.frequencyOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.goalOptions
+import com.fghilmany.nufitai.presentation.onboarding.component.splitOptions
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QUICK_ASSESSMENT_TOTAL_STEPS
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentViewModel
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_back
+import nufitai.shared.generated.resources.common_action_continue
+import nufitai.shared.generated.resources.common_action_done
+import nufitai.shared.generated.resources.onboarding_wizard_percent_complete
+import nufitai.shared.generated.resources.onboarding_wizard_select_all_subtitle
+import nufitai.shared.generated.resources.onboarding_wizard_select_all_title
+import nufitai.shared.generated.resources.onboarding_wizard_step_label
+import nufitai.shared.generated.resources.onboarding_wizard_tips_body
+import nufitai.shared.generated.resources.onboarding_wizard_tips_title
+import nufitai.shared.generated.resources.onboarding_wizard_top_bar_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -71,7 +84,7 @@ fun QuickAssessmentWizardScreen(
 private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAssessmentEvent) -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         OnboardingTopBar(
-            title = "Quick Assessment",
+            title = stringResource(Res.string.onboarding_wizard_top_bar_title),
             onBack = if (step.canGoBack) {
                 { onEvent(QuickAssessmentEvent.PreviousStep) }
             } else {
@@ -82,11 +95,11 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
         Column(modifier = Modifier.weight(1f).padding(24.dp)) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
-                    "Langkah ${step.stepIndex} dari $QUICK_ASSESSMENT_TOTAL_STEPS",
+                    stringResource(Res.string.onboarding_wizard_step_label, step.stepIndex, QUICK_ASSESSMENT_TOTAL_STEPS),
                     style = MaterialTheme.typography.labelMedium,
                 )
                 Text(
-                    "${(step.stepIndex * 100 / QUICK_ASSESSMENT_TOTAL_STEPS)}% Selesai",
+                    stringResource(Res.string.onboarding_wizard_percent_complete, step.stepIndex * 100 / QUICK_ASSESSMENT_TOTAL_STEPS),
                     style = MaterialTheme.typography.labelLarge,
                 )
             }
@@ -95,9 +108,22 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
                 modifier = Modifier.padding(top = 8.dp, bottom = 16.dp),
             )
 
+            // Resolved here (composable context) -- LazyListScope's content lambda is not
+            // @Composable itself, so stringResource()-backed option lists can't be built inline below.
+            val experienceOptions = experienceOptions()
+            val goalOptions = goalOptions()
+            val frequencyOptions = frequencyOptions()
+            val splitOptions = splitOptions()
+            val equipmentGridOptions = equipmentGridOptions()
+            val cardioOption = cardioOption()
+            val selectAllTitle = stringResource(Res.string.onboarding_wizard_select_all_title)
+            val selectAllSubtitle = stringResource(Res.string.onboarding_wizard_select_all_subtitle)
+            val tipsTitle = stringResource(Res.string.onboarding_wizard_tips_title)
+            val tipsBody = stringResource(Res.string.onboarding_wizard_tips_body)
+
             LazyColumn(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 when (step.stepIndex) {
-                    1 -> items(ExperienceOptions) { (value, copy) ->
+                    1 -> items(experienceOptions) { (value, copy) ->
                         OptionCard(
                             icon = copy.icon,
                             title = copy.title,
@@ -106,7 +132,7 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
                             onClick = { onEvent(QuickAssessmentEvent.SelectExperience(value)) },
                         )
                     }
-                    2 -> items(GoalOptions) { (value, copy) ->
+                    2 -> items(goalOptions) { (value, copy) ->
                         OptionCard(
                             icon = copy.icon,
                             title = copy.title,
@@ -115,8 +141,17 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
                             onClick = { onEvent(QuickAssessmentEvent.SelectGoal(value)) },
                         )
                     }
-                    3 -> equipmentStep(step, onEvent)
-                    4 -> items(FrequencyOptions) { (value, copy) ->
+                    3 -> equipmentStep(
+                        step = step,
+                        onEvent = onEvent,
+                        selectAllTitle = selectAllTitle,
+                        selectAllSubtitle = selectAllSubtitle,
+                        equipmentGridOptions = equipmentGridOptions,
+                        cardioOption = cardioOption,
+                        tipsTitle = tipsTitle,
+                        tipsBody = tipsBody,
+                    )
+                    4 -> items(frequencyOptions) { (value, copy) ->
                         OptionCard(
                             icon = copy.icon,
                             title = copy.title,
@@ -125,7 +160,7 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
                             onClick = { onEvent(QuickAssessmentEvent.SelectFrequency(value)) },
                         )
                     }
-                    5 -> items(SplitOptions) { (value, copy) ->
+                    5 -> items(splitOptions) { (value, copy) ->
                         OptionCard(
                             icon = copy.icon,
                             title = copy.title,
@@ -145,19 +180,25 @@ private fun WizardStepContent(step: QuickAssessmentState.Step, onEvent: (QuickAs
 private fun LazyListScope.equipmentStep(
     step: QuickAssessmentState.Step,
     onEvent: (QuickAssessmentEvent) -> Unit,
+    selectAllTitle: String,
+    selectAllSubtitle: String,
+    equipmentGridOptions: List<Pair<EquipmentCategory, OptionCopy>>,
+    cardioOption: OptionCopy,
+    tipsTitle: String,
+    tipsBody: String,
 ) {
     val allSelected = EquipmentCategory.entries.filterNot { it == EquipmentCategory.CARDIO_EQUIPMENT }.all { it in step.equipment }
 
     item {
         EquipmentRowCard(
             icon = SelectAllIcon,
-            title = "Pilih Semua",
-            subtitle = "Saya punya akses gym lengkap",
+            title = selectAllTitle,
+            subtitle = selectAllSubtitle,
             isSelected = allSelected,
             onClick = { onEvent(QuickAssessmentEvent.SelectAllEquipment) },
         )
     }
-    items(EquipmentGridOptions.chunked(2)) { pair ->
+    items(equipmentGridOptions.chunked(2)) { pair ->
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             pair.forEach { (value, copy) ->
                 EquipmentGridCard(
@@ -176,9 +217,9 @@ private fun LazyListScope.equipmentStep(
     }
     item {
         EquipmentRowCard(
-            icon = CardioOption.icon,
-            title = CardioOption.title,
-            subtitle = CardioOption.subtitle,
+            icon = cardioOption.icon,
+            title = cardioOption.title,
+            subtitle = cardioOption.subtitle,
             isSelected = EquipmentCategory.CARDIO_EQUIPMENT in step.equipment,
             onClick = { onEvent(QuickAssessmentEvent.ToggleEquipment(EquipmentCategory.CARDIO_EQUIPMENT)) },
         )
@@ -186,9 +227,8 @@ private fun LazyListScope.equipmentStep(
     item {
         TipsBanner(
             icon = Icons.Filled.SmartToy,
-            title = "Tips NuFit AI",
-            body = "Jika kamu latihan di rumah tanpa alat, pilih Bodyweight saja. Kami akan " +
-                "mencarikan gerakan yang efektif hanya dengan berat tubuhmu!",
+            title = tipsTitle,
+            body = tipsBody,
         )
     }
 }
@@ -204,7 +244,7 @@ private fun WizardNavigationButtons(step: QuickAssessmentState.Step, onEvent: (Q
                 onClick = { onEvent(QuickAssessmentEvent.PreviousStep) },
                 modifier = Modifier.weight(1f),
             ) {
-                Text("Kembali")
+                Text(stringResource(Res.string.common_action_back))
             }
         }
         AppButton(
@@ -212,7 +252,15 @@ private fun WizardNavigationButtons(step: QuickAssessmentState.Step, onEvent: (Q
             enabled = step.canGoNext,
             modifier = Modifier.weight(1f),
         ) {
-            Text(if (step.stepIndex < QUICK_ASSESSMENT_TOTAL_STEPS) "Lanjutkan" else "Selesai")
+            Text(
+                stringResource(
+                    if (step.stepIndex < QUICK_ASSESSMENT_TOTAL_STEPS) {
+                        Res.string.common_action_continue
+                    } else {
+                        Res.string.common_action_done
+                    },
+                ),
+            )
         }
     }
 }

@@ -47,4 +47,6 @@
     <string name="monthlyplan_nav_chat_ai">Chat AI</string>
     <string name="monthlyplan_nav_meal">Meal</string>
     <string name="monthlyplan_nav_account">Account</string>
+    <string name="monthlyplan_home_week_complete_message">This week is complete, great job!</string>
+    <string name="monthlyplan_session_detail_not_found">Session not found</string>
 </resources>

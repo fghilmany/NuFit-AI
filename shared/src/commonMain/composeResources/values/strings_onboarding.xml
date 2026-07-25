@@ -98,4 +98,5 @@
     <string name="onboarding_equipment_pullup_bar_subtitle">Pull-Up Bar</string>
     <string name="onboarding_equipment_cardio_title">Cardio</string>
     <string name="onboarding_equipment_cardio_subtitle">Treadmill, Bike, etc.</string>
+    <string name="onboarding_doctor_consult_result_not_found">PAR-Q result not found</string>
 </resources>

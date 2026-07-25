@@ -35,11 +35,19 @@ import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.onboarding.entity.ParQQuestionId
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
-import com.fghilmany.nufitai.presentation.onboarding.component.ParQQuestionCopy
 import com.fghilmany.nufitai.presentation.onboarding.component.QuestionCard
+import com.fghilmany.nufitai.presentation.onboarding.component.parQQuestionCopy
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQEvent
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQViewModel
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_continue
+import nufitai.shared.generated.resources.onboarding_parq_answered_count
+import nufitai.shared.generated.resources.onboarding_parq_intro_body
+import nufitai.shared.generated.resources.onboarding_parq_safety_note
+import nufitai.shared.generated.resources.onboarding_parq_step_label
+import nufitai.shared.generated.resources.onboarding_parq_top_bar_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -75,10 +83,11 @@ private fun ParQContent(
     onSubmit: () -> Unit,
 ) {
     val answeredCount = answers.values.count { it != null }
+    val questionCopy = parQQuestionCopy()
 
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         OnboardingTopBar(
-            title = "Cek Kesehatan Dulu",
+            title = stringResource(Res.string.onboarding_parq_top_bar_title),
             trailing = { Icon(Icons.Filled.Shield, contentDescription = null, tint = NuFitColors.Primary) },
         )
 
@@ -87,10 +96,10 @@ private fun ParQContent(
             contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            item { ProgressRow(answeredCount) }
+            item { ProgressRow(answeredCount, questionCopy.size) }
             item { IntroCard() }
-            items(ParQQuestionCopy) { (questionId, text) ->
-                val index = ParQQuestionCopy.indexOfFirst { it.first == questionId } + 1
+            items(questionCopy) { (questionId, text) ->
+                val index = questionCopy.indexOfFirst { it.first == questionId } + 1
                 QuestionCard(
                     questionNumber = index,
                     questionText = text,
@@ -106,22 +115,22 @@ private fun ParQContent(
             enabled = canProceed,
             modifier = Modifier.fillMaxWidth().padding(24.dp),
         ) {
-            Text("Lanjutkan")
+            Text(stringResource(Res.string.common_action_continue))
         }
     }
 }
 
 @Composable
-private fun ProgressRow(answeredCount: Int) {
+private fun ProgressRow(answeredCount: Int, totalCount: Int) {
     Column {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(
-                "LANGKAH 1 DARI 1",
+                stringResource(Res.string.onboarding_parq_step_label),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.outline,
             )
             Text(
-                "$answeredCount / ${ParQQuestionCopy.size} Dijawab",
+                stringResource(Res.string.onboarding_parq_answered_count, answeredCount, totalCount),
                 style = MaterialTheme.typography.labelLarge,
                 color = NuFitColors.Primary,
             )
@@ -152,8 +161,7 @@ private fun IntroCard() {
                 Icon(Icons.Filled.HealthAndSafety, contentDescription = null, tint = NuFitColors.OnPrimary, modifier = Modifier.size(20.dp))
             }
             Text(
-                "Sebelum mulai, mari pastikan latihan Anda aman. Jawab pertanyaan berikut dengan " +
-                    "jujur agar kami bisa menyesuaikan program yang tepat untuk Anda.",
+                stringResource(Res.string.onboarding_parq_intro_body),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp),
@@ -172,7 +180,7 @@ private fun SafetyNote() {
             modifier = Modifier.size(16.dp),
         )
         Text(
-            "Data Anda dijaga kerahasiaannya dan hanya digunakan untuk optimasi algoritma latihan NuFit AI.",
+            stringResource(Res.string.onboarding_parq_safety_note),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
             modifier = Modifier.padding(start = 12.dp),
