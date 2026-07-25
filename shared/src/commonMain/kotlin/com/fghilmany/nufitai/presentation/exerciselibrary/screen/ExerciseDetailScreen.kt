@@ -35,6 +35,10 @@ import com.fghilmany.nufitai.presentation.exerciselibrary.component.SafetyTipsCa
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.TargetMuscleChips
 import com.fghilmany.nufitai.presentation.exerciselibrary.viewmodel.ExerciseDetailState
 import com.fghilmany.nufitai.presentation.exerciselibrary.viewmodel.ExerciseDetailViewModel
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_back
+import nufitai.shared.generated.resources.exercisedetail_target_muscle_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
@@ -86,7 +90,7 @@ private fun DetailContent(state: ExerciseDetailState.Loaded, onAlternativeClick:
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("Otot Target", style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
+                Text(stringResource(Res.string.exercisedetail_target_muscle_title), style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
                 TargetMuscleChips(exercise.targetMusclesPrimary)
             }
         }
@@ -109,7 +113,7 @@ private fun TopBar(onBack: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         IconButton(onClick = onBack) {
-            Icon(Icons.Filled.ArrowBack, contentDescription = "Kembali", tint = NuFitColors.Primary)
+            Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(Res.string.common_action_back), tint = NuFitColors.Primary)
         }
     }
 }

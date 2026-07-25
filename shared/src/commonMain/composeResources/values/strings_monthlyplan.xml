@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="monthlyplan_home_empty_state">No active plan yet</string>
+    <string name="monthlyplan_home_notification_content_description">Notifications</string>
+    <string name="monthlyplan_home_greeting">Hi, User! 👋</string>
+    <string name="monthlyplan_home_week_progress">Week %1$d of 4</string>
+    <string name="monthlyplan_home_progress_percent">Progress: %1$d%%</string>
+    <string name="monthlyplan_home_this_week_title">This Week\'s Sessions</string>
+
+    <string name="monthlyplan_session_detail_top_bar_title">Session Detail</string>
+    <string name="monthlyplan_session_detail_description_templated">Session %1$s -- focus on today\'s main movement pattern.</string>
+    <string name="monthlyplan_session_detail_description_fallback">Today\'s workout session.</string>
+    <string name="monthlyplan_session_detail_main_exercises_title">Main Exercises</string>
+    <string name="monthlyplan_session_detail_tip_title">NuFit AI Suggestion</string>
+    <string name="monthlyplan_session_detail_tip_body">Focus on proper technique before adding weight. Movement quality matters more than rep count.</string>
+    <string name="monthlyplan_session_detail_start_button">Start This Session</string>
+    <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
+
+    <string name="monthlyplan_exercise_count_label">%1$d exercises</string>
+    <string name="monthlyplan_duration_minutes_label">%1$d minutes</string>
+
+    <string name="monthlyplan_session_card_today_badge">TODAY</string>
+    <string name="monthlyplan_session_card_session_letter">Session %1$s</string>
+    <string name="monthlyplan_session_card_today_fallback">Today\'s Session</string>
+    <string name="monthlyplan_session_card_fallback">Session</string>
+    <string name="monthlyplan_session_card_start_button">Start Workout</string>
+    <string name="monthlyplan_session_card_summary_line">%1$d exercises • %2$d minutes</string>
+    <string name="monthlyplan_session_card_light_activity_title">Light Activity</string>
+    <string name="monthlyplan_session_card_rest_day_title">Rest Day</string>
+    <string name="monthlyplan_session_card_rest_subtitle">Take a moment to relax</string>
+
+    <string name="monthlyplan_status_done">Done</string>
+    <string name="monthlyplan_status_skipped">Skipped</string>
+    <string name="monthlyplan_status_upcoming">Upcoming</string>
+    <string name="monthlyplan_status_tomorrow">Tomorrow</string>
+    <string name="monthlyplan_status_today">Today</string>
+
+    <string name="monthlyplan_quick_access_title">Explore Movements</string>
+    <string name="monthlyplan_quick_access_subtitle">Exercise Library</string>
+    <string name="monthlyplan_assessment_banner_title">Assessment Result</string>
+    <string name="monthlyplan_assessment_banner_subtitle">See your level &amp; why your plan looks like this</string>
+
+    <string name="monthlyplan_week_accordion_title">Week %1$d</string>
+
+    <string name="monthlyplan_nav_home">Home</string>
+    <string name="monthlyplan_nav_plans">Plans</string>
+    <string name="monthlyplan_nav_chat_ai">Chat AI</string>
+    <string name="monthlyplan_nav_meal">Meal</string>
+    <string name="monthlyplan_nav_account">Account</string>
+</resources>

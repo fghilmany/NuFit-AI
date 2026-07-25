@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_splash_tagline">Smart training, real results</string>
+    <string name="onboarding_splash_loading_message">Preparing your experience...</string>
+
+    <string name="onboarding_parq_top_bar_title">Health Check First</string>
+    <string name="onboarding_parq_step_label">STEP 1 OF 1</string>
+    <string name="onboarding_parq_answered_count">%1$d / %2$d Answered</string>
+    <string name="onboarding_parq_intro_body">Before you start, let\'s make sure your training is safe. Answer the following questions honestly so we can tailor the right program for you.</string>
+    <string name="onboarding_parq_safety_note">Your data is kept confidential and only used to optimize NuFit AI\'s training algorithm.</string>
+
+    <string name="onboarding_parq_question_jantung_diagnosis">Has a doctor ever said you have a heart condition and recommended you only do physical activity as advised by a doctor?</string>
+    <string name="onboarding_parq_question_nyeri_aktivitas">Do you ever feel chest pain during physical activity (brisk walking, climbing stairs, etc.)?</string>
+    <string name="onboarding_parq_question_nyeri_istirahat">In the past month, have you felt chest pain while not being physically active (resting/sitting still)?</string>
+    <string name="onboarding_parq_question_pusing_pingsan">Have you ever lost your balance due to dizziness, or fainted, for no clear reason?</string>
+    <string name="onboarding_parq_question_tekanan_darah">Has a doctor ever told you that your blood pressure is high and not well controlled?</string>
+    <string name="onboarding_parq_question_masalah_sendi">Do you have a bone or joint problem that could get worse if you change your physical activity pattern?</string>
+    <string name="onboarding_parq_question_operasi_recent">Have you recently had bone, joint, or spine surgery in the past 12 months?</string>
+    <string name="onboarding_parq_question_obat_rutin">Are you currently taking regular medication for blood pressure or your heart?</string>
+    <string name="onboarding_parq_question_diabetes">Do you have diabetes, with blood sugar that has recently been unstable, going up and down?</string>
+    <string name="onboarding_parq_question_kanker_aktif">Are you currently undergoing active treatment for cancer (chemotherapy/radiotherapy)?</string>
+    <string name="onboarding_parq_question_kehamilan">Are you currently pregnant?</string>
+    <string name="onboarding_parq_question_kondisi_lain">Is there any other health condition we should know about, not covered above?</string>
+
+    <string name="onboarding_parq_short_jantung_diagnosis">History of heart problems</string>
+    <string name="onboarding_parq_short_nyeri_aktivitas">Chest pain during activity</string>
+    <string name="onboarding_parq_short_nyeri_istirahat">Chest pain while inactive (resting)</string>
+    <string name="onboarding_parq_short_pusing_pingsan">Dizziness or fainting for no clear reason</string>
+    <string name="onboarding_parq_short_tekanan_darah">High blood pressure, not yet controlled</string>
+    <string name="onboarding_parq_short_masalah_sendi">Bone or joint problems</string>
+    <string name="onboarding_parq_short_operasi_recent">Bone/joint surgery in the past 12 months</string>
+    <string name="onboarding_parq_short_obat_rutin">Regular medication for heart/blood pressure</string>
+    <string name="onboarding_parq_short_diabetes">Diabetes with unstable blood sugar</string>
+    <string name="onboarding_parq_short_kanker_aktif">Active cancer treatment</string>
+    <string name="onboarding_parq_short_kehamilan">Currently pregnant</string>
+    <string name="onboarding_parq_short_kondisi_lain">Other health condition</string>
+
+    <string name="onboarding_doctorconsult_top_bar_title">Health Notice</string>
+    <string name="onboarding_doctorconsult_title">You should consult a doctor first</string>
+    <string name="onboarding_doctorconsult_body">Based on your answers, there\'s a condition you should discuss with a doctor before starting the program. We\'ll still adjust your training to keep it safe, but we recommend a medical consultation.</string>
+    <string name="onboarding_doctorconsult_flagged_title">Conditions you flagged:</string>
+    <string name="onboarding_doctorconsult_ack_label">I understand and will/have consulted a doctor about this condition.</string>
+    <string name="onboarding_doctorconsult_disclaimer">This is not a medical diagnosis. This app is not a substitute for consultation with a licensed medical professional.</string>
+
+    <string name="onboarding_wizard_top_bar_title">Quick Assessment</string>
+    <string name="onboarding_wizard_step_label">Step %1$d of %2$d</string>
+    <string name="onboarding_wizard_percent_complete">%1$d%% Complete</string>
+    <string name="onboarding_wizard_select_all_title">Select All</string>
+    <string name="onboarding_wizard_select_all_subtitle">I have access to a full gym</string>
+    <string name="onboarding_wizard_tips_title">NuFit AI Tips</string>
+    <string name="onboarding_wizard_tips_body">If you\'re training at home with no equipment, just pick Bodyweight. We\'ll find effective movements using just your body weight!</string>
+
+    <string name="onboarding_bodydata_top_bar_title">Body Data</string>
+    <string name="onboarding_bodydata_heading">Body data (optional)</string>
+    <string name="onboarding_bodydata_body">Fill this in if you want, or skip it -- you can always fill it in later in settings.</string>
+    <string name="onboarding_bodydata_height_label">Height (cm)</string>
+    <string name="onboarding_bodydata_weight_label">Weight (kg)</string>
+
+    <string name="onboarding_experience_never_title">Never been</string>
+    <string name="onboarding_experience_never_subtitle">This is my first time at the gym</string>
+    <string name="onboarding_experience_under_1y_title">Less than 1 year</string>
+    <string name="onboarding_experience_under_1y_subtitle">Still new, not very consistent yet</string>
+    <string name="onboarding_experience_years_routine_title">Regular for years</string>
+    <string name="onboarding_experience_years_routine_subtitle">Already used to training regularly</string>
+
+    <string name="onboarding_goal_fat_loss_title">Lose weight</string>
+    <string name="onboarding_goal_fat_loss_subtitle">Burn fat efficiently</string>
+    <string name="onboarding_goal_muscle_gain_title">Build muscle</string>
+    <string name="onboarding_goal_muscle_gain_subtitle">Increase mass and definition</string>
+    <string name="onboarding_goal_general_health_title">Health &amp; fitness</string>
+    <string name="onboarding_goal_general_health_subtitle">Stamina for daily activities</string>
+    <string name="onboarding_goal_strength_title">Get stronger</string>
+    <string name="onboarding_goal_strength_subtitle">Focus on functional strength</string>
+
+    <string name="onboarding_frequency_two_to_three_title">2-3x per week</string>
+    <string name="onboarding_frequency_two_to_three_subtitle">A realistic way to get started</string>
+    <string name="onboarding_frequency_four_to_five_title">4-5x per week</string>
+    <string name="onboarding_frequency_four_to_five_subtitle">For those ready for more intensity</string>
+
+    <string name="onboarding_split_full_body_title">Full Body</string>
+    <string name="onboarding_split_full_body_subtitle">Whole body trained every session</string>
+    <string name="onboarding_split_upper_lower_title">Upper/Lower</string>
+    <string name="onboarding_split_upper_lower_subtitle">Split between upper and lower body</string>
+    <string name="onboarding_split_unknown_title">Not sure</string>
+    <string name="onboarding_split_unknown_subtitle">Let the system decide</string>
+
+    <string name="onboarding_equipment_bodyweight_title">Bodyweight</string>
+    <string name="onboarding_equipment_bodyweight_subtitle">No Equipment</string>
+    <string name="onboarding_equipment_dumbbell_title">Dumbbell</string>
+    <string name="onboarding_equipment_dumbbell_subtitle">A Pair of Dumbbells</string>
+    <string name="onboarding_equipment_barbell_title">Barbell</string>
+    <string name="onboarding_equipment_barbell_subtitle">Weightlifting</string>
+    <string name="onboarding_equipment_kettlebell_title">Kettlebell</string>
+    <string name="onboarding_equipment_kettlebell_subtitle">Swing Weight</string>
+    <string name="onboarding_equipment_machine_title">Machine</string>
+    <string name="onboarding_equipment_machine_subtitle">Cable &amp; Station</string>
+    <string name="onboarding_equipment_pullup_bar_title">Pull-Up Bar</string>
+    <string name="onboarding_equipment_pullup_bar_subtitle">Pull-Up Bar</string>
+    <string name="onboarding_equipment_cardio_title">Cardio</string>
+    <string name="onboarding_equipment_cardio_subtitle">Treadmill, Bike, etc.</string>
+</resources>

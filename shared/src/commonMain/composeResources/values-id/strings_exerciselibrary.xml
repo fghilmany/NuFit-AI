@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exerciselibrary_title">Jelajahi Gerakan</string>
+    <string name="exerciselibrary_search_placeholder">Cari gerakan...</string>
+    <string name="exerciselibrary_filter_muscle_group">Otot Target</string>
+    <string name="exerciselibrary_filter_equipment">Alat</string>
+    <string name="exerciselibrary_filter_level">Level</string>
+    <string name="exerciselibrary_empty_title">Gerakan tidak ditemukan</string>
+    <string name="exerciselibrary_empty_body">Coba hapus filter atau kata kunci pencarian.</string>
+    <string name="exerciselibrary_empty_clear_filters">Hapus Filter</string>
+    <string name="exerciselibrary_ai_banner_title">Butuh Saran?</string>
+    <string name="exerciselibrary_ai_banner_body">Tanyakan NuFit AI gerakan yang cocok untukmu hari ini.</string>
+
+    <string name="exerciselibrary_muscle_group_kaki">Kaki</string>
+    <string name="exerciselibrary_muscle_group_dada">Dada</string>
+    <string name="exerciselibrary_muscle_group_punggung">Punggung</string>
+    <string name="exerciselibrary_muscle_group_bahu">Bahu</string>
+    <string name="exerciselibrary_muscle_group_lengan">Lengan</string>
+    <string name="exerciselibrary_muscle_group_inti">Inti</string>
+    <string name="exerciselibrary_muscle_group_glutes">Glutes</string>
+    <string name="exerciselibrary_muscle_group_kardio">Kardio</string>
+
+    <string name="exerciselibrary_level_regresi">Pemula</string>
+    <string name="exerciselibrary_level_standar">Menengah</string>
+    <string name="exerciselibrary_level_progresi">Lanjutan</string>
+    <string name="exerciselibrary_level_korektif">Korektif</string>
+    <string name="exerciselibrary_level_aksesori">Aksesori</string>
+
+    <string name="exerciselibrary_equipment_bodyweight">Bodyweight</string>
+    <string name="exerciselibrary_equipment_dumbbell">Dumbbell</string>
+    <string name="exerciselibrary_equipment_barbell">Barbell</string>
+    <string name="exerciselibrary_equipment_kettlebell">Kettlebell</string>
+    <string name="exerciselibrary_equipment_machine">Machine</string>
+    <string name="exerciselibrary_equipment_pullupbar">Pull-Up Bar</string>
+    <string name="exerciselibrary_equipment_cardio">Cardio</string>
+
+    <string name="exercisedetail_target_muscle_title">Otot Target</string>
+    <string name="exercisedetail_instructions_title">Instruksi Langkah-demi-Langkah</string>
+    <string name="exercisedetail_mistakes_title">Hindari Hal Ini</string>
+    <string name="exercisedetail_tips_title">Saran NuFit AI</string>
+    <string name="exercisedetail_alternatives_title">Gerakan Alternatif</string>
+    <string name="exercisedetail_not_found">Gerakan tidak ditemukan</string>
+</resources>

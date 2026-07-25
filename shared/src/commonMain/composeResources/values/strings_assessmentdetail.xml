@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="assessmentdetail_status_label">YOUR STATUS</string>
+    <string name="assessmentdetail_level_explainer">Because you\'re %1$s with a %2$s goal and %3$s, your plan is %4$s.</string>
+    <string name="assessmentdetail_parq_title">Safety Notice</string>
+    <string name="assessmentdetail_answer_summary_title">Answer Summary</string>
+    <string name="assessmentdetail_summary_goal">Main Goal</string>
+    <string name="assessmentdetail_summary_frequency">Frequency</string>
+    <string name="assessmentdetail_summary_experience">Experience</string>
+    <string name="assessmentdetail_summary_equipment">Equipment</string>
+    <string name="assessmentdetail_equipment_none">Bodyweight</string>
+    <string name="assessmentdetail_equipment_bodyweight_only">No Equipment (Bodyweight)</string>
+    <string name="assessmentdetail_equipment_full_gym">Full Gym</string>
+    <string name="assessmentdetail_plan_badge_template">TEMPLATE</string>
+    <string name="assessmentdetail_plan_badge_ai">AI RECOMMENDATION</string>
+    <string name="assessmentdetail_plan_description">A 4-week program focused on learning basic movements and boosting metabolism.</string>
+    <string name="assessmentdetail_selected_plan_title">Selected Plan</string>
+    <string name="assessmentdetail_full_assessment_cta_title">Assessment Not Complete</string>
+    <string name="assessmentdetail_full_assessment_cta_body">Unlock Nutrition and AI Posture Analysis by completing the full assessment.</string>
+    <string name="assessmentdetail_full_assessment_cta_button">Sign In &amp; Complete Assessment</string>
+    <string name="assessmentdetail_retake_footer_link">Retake Assessment</string>
+    <string name="assessmentdetail_tab_hasil">Result</string>
+    <string name="assessmentdetail_tab_riwayat">History</string>
+    <string name="assessmentdetail_full_data_title">Full Assessment Data</string>
+    <string name="assessmentdetail_capacity_pushup">Push-up: %1$s</string>
+    <string name="assessmentdetail_capacity_plank">Plank: %1$s</string>
+    <string name="assessmentdetail_capacity_sit_to_stand">Sit-to-stand: %1$s</string>
+    <string name="assessmentdetail_capacity_reps">%1$d reps</string>
+    <string name="assessmentdetail_capacity_seconds">%1$d sec</string>
+    <string name="assessmentdetail_capacity_not_filled">Not filled in</string>
+    <string name="assessmentdetail_retake_dialog_title">Retake Assessment?</string>
+    <string name="assessmentdetail_retake_dialog_body">Your current active plan will be archived and you\'ll go through the assessment again from the start. Your log history stays safe.</string>
+    <string name="assessmentdetail_retake_dialog_confirm">Retake</string>
+    <string name="assessmentdetail_retake_blocked_title">Can\'t retake assessment yet</string>
+    <string name="assessmentdetail_retake_blocked_body">Finish or end your current workout session before retaking the assessment.</string>
+    <string name="assessmentdetail_top_bar_title">Assessment Result</string>
+    <string name="assessmentdetail_history_empty">No other history yet -- history will appear once you retake or a new plan is created.</string>
+    <string name="assessmentdetail_history_source_template">Template</string>
+    <string name="assessmentdetail_history_source_personalized">Personalized</string>
+    <string name="assessmentdetail_history_status_active">Active</string>
+    <string name="assessmentdetail_history_status_archived">Archived</string>
+
+    <string name="assessmentdetail_level_beginner">Beginner</string>
+    <string name="assessmentdetail_level_intermediate">Intermediate</string>
+    <string name="assessmentdetail_split_full_body">Full Body</string>
+    <string name="assessmentdetail_split_upper_lower">Upper/Lower</string>
+
+    <string name="assessmentdetail_flag_jantung_label">Heart history</string>
+    <string name="assessmentdetail_flag_tekanan_darah_label">Blood pressure</string>
+    <string name="assessmentdetail_flag_sendi_label">Joint pain history</string>
+    <string name="assessmentdetail_flag_sendi_operasi_label">Recent joint surgery</string>
+    <string name="assessmentdetail_flag_diabetes_label">Diabetes</string>
+    <string name="assessmentdetail_flag_kanker_label">Active cancer treatment</string>
+    <string name="assessmentdetail_flag_kehamilan_label">Pregnancy</string>
+    <string name="assessmentdetail_flag_lainnya_label">Other condition</string>
+
+    <string name="assessmentdetail_flag_jantung_impact">High-intensity movements that strain the heart will be avoided or modified in your training plan.</string>
+    <string name="assessmentdetail_flag_tekanan_darah_impact">Movements that involve breath-holding or strain blood pressure will be modified in your training plan.</string>
+    <string name="assessmentdetail_flag_sendi_impact">High-impact movements like Jumping Jacks will be filtered out of your training plan.</string>
+    <string name="assessmentdetail_flag_sendi_operasi_impact">Movements that load the surgery site will be avoided until you\'ve fully recovered.</string>
+    <string name="assessmentdetail_flag_diabetes_impact">Training intensity is adjusted to stay safe for your blood sugar condition.</string>
+    <string name="assessmentdetail_flag_kanker_impact">Your workouts are adjusted to stay light and safe during treatment.</string>
+    <string name="assessmentdetail_flag_kehamilan_impact">High-risk movements for pregnancy will be avoided in your training plan.</string>
+    <string name="assessmentdetail_flag_lainnya_impact">Your training plan is adjusted generally as a precaution.</string>
+
+    <string name="assessmentdetail_flag_health_impact">Movements that are risky for this condition will be avoided or modified in your training plan.</string>
+    <string name="assessmentdetail_flag_postural_impact">Corrective exercises will be added and movements that worsen this posture will be adjusted.</string>
+    <string name="assessmentdetail_flag_movement_impact">Movements will be adjusted or given a safer variation for your movement pattern.</string>
+</resources>

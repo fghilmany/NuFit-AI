@@ -37,6 +37,26 @@ import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridOpti
 import com.fghilmany.nufitai.presentation.onboarding.component.ExperienceOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.FrequencyOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.GoalOptions
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.assessmentdetail_answer_summary_title
+import nufitai.shared.generated.resources.assessmentdetail_equipment_bodyweight_only
+import nufitai.shared.generated.resources.assessmentdetail_equipment_full_gym
+import nufitai.shared.generated.resources.assessmentdetail_equipment_none
+import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_body
+import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_button
+import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_title
+import nufitai.shared.generated.resources.assessmentdetail_level_explainer
+import nufitai.shared.generated.resources.assessmentdetail_parq_title
+import nufitai.shared.generated.resources.assessmentdetail_plan_badge_ai
+import nufitai.shared.generated.resources.assessmentdetail_plan_badge_template
+import nufitai.shared.generated.resources.assessmentdetail_plan_description
+import nufitai.shared.generated.resources.assessmentdetail_retake_footer_link
+import nufitai.shared.generated.resources.assessmentdetail_status_label
+import nufitai.shared.generated.resources.assessmentdetail_summary_equipment
+import nufitai.shared.generated.resources.assessmentdetail_summary_experience
+import nufitai.shared.generated.resources.assessmentdetail_summary_frequency
+import nufitai.shared.generated.resources.assessmentdetail_summary_goal
+import org.jetbrains.compose.resources.stringResource
 
 /** Figma node 12:994 "Top Section: Beginner Badge & Explainer" (issue #77). */
 @Composable
@@ -51,7 +71,7 @@ fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = 
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Text("STATUS KAMU", style = MaterialTheme.typography.labelMedium, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.assessmentdetail_status_label), style = MaterialTheme.typography.labelMedium, color = NuFitColors.Primary)
             Text(
                 quickAssessment.level.shortLabel(),
                 style = MaterialTheme.typography.headlineMedium,
@@ -67,8 +87,13 @@ fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = 
                 val goalTitle = GoalOptions.first { it.first == quickAssessment.input.goal }.second.title
                 val frequencyTitle = FrequencyOptions.first { it.first == quickAssessment.input.frequency }.second.title
                 Text(
-                    "Karena kamu ${quickAssessment.level.shortLabel()} dengan goal " +
-                        "$goalTitle dan $frequencyTitle, plan kamu ${quickAssessment.resolvedSplit.shortLabel()}.",
+                    stringResource(
+                        Res.string.assessmentdetail_level_explainer,
+                        quickAssessment.level.shortLabel(),
+                        goalTitle,
+                        frequencyTitle,
+                        quickAssessment.resolvedSplit.shortLabel(),
+                    ),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -95,7 +120,7 @@ fun FlagExplanationCard(label: String, impact: String, modifier: Modifier = Modi
                 Icon(Icons.Filled.WarningAmber, contentDescription = null, tint = NuFitColors.OnWarning)
             }
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("Perhatian Keamanan", style = MaterialTheme.typography.labelLarge, color = NuFitColors.OnWarningContainer)
+                Text(stringResource(Res.string.assessmentdetail_parq_title), style = MaterialTheme.typography.labelLarge, color = NuFitColors.OnWarningContainer)
                 Text(label, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = NuFitColors.OnWarningContainerBody)
                 Text(impact, style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnWarningContainerBody)
             }
@@ -113,12 +138,12 @@ fun AnswerSummaryGrid(quickAssessment: QuickAssessmentResult, modifier: Modifier
 
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-            SummaryCell("Goal Utama", goalTitle, Modifier.weight(1f))
-            SummaryCell("Frekuensi", frequencyTitle, Modifier.weight(1f))
+            SummaryCell(stringResource(Res.string.assessmentdetail_summary_goal), goalTitle, Modifier.weight(1f))
+            SummaryCell(stringResource(Res.string.assessmentdetail_summary_frequency), frequencyTitle, Modifier.weight(1f))
         }
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-            SummaryCell("Pengalaman", experienceTitle, Modifier.weight(1f))
-            SummaryCell("Peralatan", equipmentSummary, Modifier.weight(1f))
+            SummaryCell(stringResource(Res.string.assessmentdetail_summary_experience), experienceTitle, Modifier.weight(1f))
+            SummaryCell(stringResource(Res.string.assessmentdetail_summary_equipment), equipmentSummary, Modifier.weight(1f))
         }
     }
 }
@@ -133,12 +158,13 @@ private fun SummaryCell(label: String, value: String, modifier: Modifier = Modif
     }
 }
 
+@Composable
 private fun Set<EquipmentCategory>.summaryLabel(): String {
     val fullGymSet = EquipmentGridOptions.map { it.first }.toSet() - EquipmentCategory.BODYWEIGHT
     return when {
-        isEmpty() -> "Bodyweight"
-        this == setOf(EquipmentCategory.BODYWEIGHT) -> "Tanpa Alat (Bodyweight)"
-        fullGymSet.all { it in this } -> "Lengkap (Gym)"
+        isEmpty() -> stringResource(Res.string.assessmentdetail_equipment_none)
+        this == setOf(EquipmentCategory.BODYWEIGHT) -> stringResource(Res.string.assessmentdetail_equipment_bodyweight_only)
+        fullGymSet.all { it in this } -> stringResource(Res.string.assessmentdetail_equipment_full_gym)
         else -> EquipmentGridOptions.filter { it.first in this }.joinToString(", ") { it.second.title }
     }
 }
@@ -153,8 +179,8 @@ fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, 
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             val badgeLabel = when (plan.source) {
-                PlanSource.LOCAL_TEMPLATE -> "TEMPLATE"
-                PlanSource.LOGGED_IN_RULE_ENGINE -> "REKOMENDASI AI"
+                PlanSource.LOCAL_TEMPLATE -> stringResource(Res.string.assessmentdetail_plan_badge_template)
+                PlanSource.LOGGED_IN_RULE_ENGINE -> stringResource(Res.string.assessmentdetail_plan_badge_ai)
             }
             AppCard(
                 backgroundColor = NuFitColors.TertiaryFixed,
@@ -170,7 +196,7 @@ fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, 
                 color = Color.White,
             )
             Text(
-                "Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.",
+                stringResource(Res.string.assessmentdetail_plan_description),
                 style = MaterialTheme.typography.bodyMedium,
                 color = NuFitColors.OnPrimaryContainer,
             )
@@ -196,15 +222,15 @@ fun FullAssessmentCtaCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
             Icon(Icons.Filled.Lock, contentDescription = null, tint = NuFitColors.Primary)
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("Assessment Belum Lengkap", style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.assessmentdetail_full_assessment_cta_title), style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
             Text(
-                "Buka fitur Nutrisi dan Analisis Postur AI dengan menyelesaikan assessment penuh.",
+                stringResource(Res.string.assessmentdetail_full_assessment_cta_body),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
         AppButton(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
-            Text("Masuk & Lengkapi Assessment")
+            Text(stringResource(Res.string.assessmentdetail_full_assessment_cta_button))
             Icon(Icons.Filled.ChevronRight, contentDescription = null, modifier = Modifier.padding(start = 8.dp))
         }
     }
@@ -219,6 +245,6 @@ fun RetakeFooterLink(onClick: () -> Unit, modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(Icons.Filled.Refresh, contentDescription = null, tint = NuFitColors.Primary, modifier = Modifier.size(16.dp))
-        Text("Ulangi Assessment", style = MaterialTheme.typography.labelLarge, color = NuFitColors.Primary)
+        Text(stringResource(Res.string.assessmentdetail_retake_footer_link), style = MaterialTheme.typography.labelLarge, color = NuFitColors.Primary)
     }
 }

@@ -43,6 +43,15 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.WeekEntry
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_app_name
+import nufitai.shared.generated.resources.monthlyplan_home_empty_state
+import nufitai.shared.generated.resources.monthlyplan_home_greeting
+import nufitai.shared.generated.resources.monthlyplan_home_notification_content_description
+import nufitai.shared.generated.resources.monthlyplan_home_progress_percent
+import nufitai.shared.generated.resources.monthlyplan_home_this_week_title
+import nufitai.shared.generated.resources.monthlyplan_home_week_progress
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 /** issue #76 P-03 (Figma node 12:539). */
@@ -60,7 +69,7 @@ fun HomeScreen(
         when (val current = state) {
             HomeState.Loading -> LoadingBox()
             HomeState.Empty -> Box(Modifier.fillMaxSize(), Alignment.Center) {
-                Text("Belum ada plan aktif", style = MaterialTheme.typography.bodyLarge)
+                Text(stringResource(Res.string.monthlyplan_home_empty_state), style = MaterialTheme.typography.bodyLarge)
             }
             is HomeState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
             is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick, onExerciseLibraryClick)
@@ -90,7 +99,7 @@ private fun HomeContent(
         item {
             val currentWeek = state.weeks.find { it.weekNumber == state.currentWeekNumber }
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("Sesi Minggu Ini", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(Res.string.monthlyplan_home_this_week_title), style = MaterialTheme.typography.titleLarge)
                 Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     currentWeek?.days.orEmpty().forEach { day ->
                         val status = currentWeek?.statuses?.get(day.id) ?: SessionStatus.UPCOMING
@@ -147,11 +156,11 @@ private fun WeekSection(
 private fun GreetingSection(currentWeekNumber: Int, progressPercent: Int) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("Halo, User! 👋", style = MaterialTheme.typography.headlineLarge)
-            Text("Minggu $currentWeekNumber dari 4", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(Res.string.monthlyplan_home_greeting), style = MaterialTheme.typography.headlineLarge)
+            Text(stringResource(Res.string.monthlyplan_home_week_progress, currentWeekNumber), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("Progress: $progressPercent%", style = MaterialTheme.typography.bodyMedium, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.monthlyplan_home_progress_percent, progressPercent), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.Primary)
             ProgressBar(progress = progressPercent / 100f, modifier = Modifier.width(96.dp))
         }
     }
@@ -175,10 +184,10 @@ private fun TopAppBarSection(modifier: Modifier = Modifier) {
             ) {
                 Icon(Icons.Filled.Person, contentDescription = null, tint = NuFitColors.OnPrimaryContainer)
             }
-            Text("NuFit AI", style = MaterialTheme.typography.headlineMedium, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.common_app_name), style = MaterialTheme.typography.headlineMedium, color = NuFitColors.Primary)
         }
         IconButton(onClick = {}) {
-            Icon(Icons.Filled.Notifications, contentDescription = "Notifikasi", tint = MaterialTheme.colorScheme.onSurface)
+            Icon(Icons.Filled.Notifications, contentDescription = stringResource(Res.string.monthlyplan_home_notification_content_description), tint = MaterialTheme.colorScheme.onSurface)
         }
     }
 }

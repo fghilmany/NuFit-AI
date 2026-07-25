@@ -31,6 +31,12 @@ import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.CommonMistake
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.exercisedetail_alternatives_title
+import nufitai.shared.generated.resources.exercisedetail_instructions_title
+import nufitai.shared.generated.resources.exercisedetail_mistakes_title
+import nufitai.shared.generated.resources.exercisedetail_tips_title
+import org.jetbrains.compose.resources.stringResource
 
 /** P-08 "Otot Target" chip row (issue #79, Figma node 12:835). */
 @Composable
@@ -53,7 +59,7 @@ fun TargetMuscleChips(targetMuscles: List<String>, modifier: Modifier = Modifier
 fun InstructionsCard(instructions: List<String>, modifier: Modifier = Modifier) {
     AppCard(modifier = modifier.fillMaxWidth(), contentPadding = PaddingValues(24.dp)) {
         Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            Text("Instruksi Langkah-demi-Langkah", style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.exercisedetail_instructions_title), style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
             instructions.forEachIndexed { index, step ->
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Box(
@@ -80,7 +86,7 @@ fun CommonMistakesCard(mistakes: List<CommonMistake>, modifier: Modifier = Modif
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Filled.WarningAmber, contentDescription = null, tint = MaterialTheme.colorScheme.error)
-                Text("Hindari Hal Ini", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.error)
+                Text(stringResource(Res.string.exercisedetail_mistakes_title), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.error)
             }
             mistakes.forEach { mistake ->
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
@@ -101,7 +107,7 @@ fun SafetyTipsCard(tips: List<String>, modifier: Modifier = Modifier) {
         contentPadding = PaddingValues(20.dp),
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("Saran NuFit AI", style = MaterialTheme.typography.titleMedium, color = NuFitColors.OnTertiaryFixed)
+            Text(stringResource(Res.string.exercisedetail_tips_title), style = MaterialTheme.typography.titleMedium, color = NuFitColors.OnTertiaryFixed)
             tips.forEach { tip ->
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon(Icons.Filled.CheckCircle, contentDescription = null, tint = NuFitColors.OnTertiaryFixed, modifier = Modifier.size(20.dp))
@@ -118,7 +124,7 @@ fun AlternativesRow(alternatives: List<Exercise>, onAlternativeClick: (String) -
     if (alternatives.isEmpty()) return
 
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Text("Gerakan Alternatif", style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
+        Text(stringResource(Res.string.exercisedetail_alternatives_title), style = MaterialTheme.typography.titleLarge, color = NuFitColors.Primary)
         LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             items(alternatives) { alternative ->
                 Column(

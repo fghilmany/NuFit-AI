@@ -18,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_week_accordion_title
+import org.jetbrains.compose.resources.stringResource
 
 /** Collapsed accordion row for a non-current week (Figma node 12:629 "Collapsed Accordion Sections"). */
 @Composable
@@ -33,7 +36,7 @@ fun WeekAccordionHeader(weekNumber: Int, isExpanded: Boolean, onClick: () -> Uni
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("Minggu $weekNumber", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(Res.string.monthlyplan_week_accordion_title, weekNumber), style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Icon(
                 if (isExpanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                 contentDescription = null,

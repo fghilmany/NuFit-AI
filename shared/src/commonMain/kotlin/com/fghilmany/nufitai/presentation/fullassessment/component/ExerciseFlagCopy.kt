@@ -1,26 +1,49 @@
 package com.fghilmany.nufitai.presentation.fullassessment.component
 
+import androidx.compose.runtime.Composable
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.fullassessment_flag_health_asma
+import nufitai.shared.generated.resources.fullassessment_flag_health_diabetes
+import nufitai.shared.generated.resources.fullassessment_flag_health_jantung
+import nufitai.shared.generated.resources.fullassessment_flag_health_osteoporosis
+import nufitai.shared.generated.resources.fullassessment_flag_health_sendi
+import nufitai.shared.generated.resources.fullassessment_flag_health_tekanan_darah
+import nufitai.shared.generated.resources.fullassessment_flag_movement_ankle_mobility
+import nufitai.shared.generated.resources.fullassessment_flag_movement_balance_asimetri
+import nufitai.shared.generated.resources.fullassessment_flag_movement_core_instability
+import nufitai.shared.generated.resources.fullassessment_flag_movement_hinge_from_back
+import nufitai.shared.generated.resources.fullassessment_flag_movement_knee_valgus
+import nufitai.shared.generated.resources.fullassessment_flag_movement_shoulder_mobility
+import nufitai.shared.generated.resources.fullassessment_flag_postural_apt
+import nufitai.shared.generated.resources.fullassessment_flag_postural_asimetri_bahu
+import nufitai.shared.generated.resources.fullassessment_flag_postural_asimetri_pinggul
+import nufitai.shared.generated.resources.fullassessment_flag_postural_forward_head
+import nufitai.shared.generated.resources.fullassessment_flag_postural_kyphosis
+import nufitai.shared.generated.resources.fullassessment_flag_postural_ppt
+import nufitai.shared.generated.resources.fullassessment_flag_postural_rounded_shoulder
+import org.jetbrains.compose.resources.stringResource
 
 /** Plain-language labels for the postural/movement screening checklists (stub scope). */
+@Composable
 fun ExerciseFlag.shortLabel(): String = when (this) {
-    ExerciseFlag.HEALTH_JANTUNG -> "Jantung"
-    ExerciseFlag.HEALTH_TEKANAN_DARAH -> "Tekanan darah"
-    ExerciseFlag.HEALTH_DIABETES -> "Diabetes"
-    ExerciseFlag.HEALTH_ASMA -> "Asma"
-    ExerciseFlag.HEALTH_SENDI -> "Sendi"
-    ExerciseFlag.HEALTH_OSTEOPOROSIS -> "Osteoporosis"
-    ExerciseFlag.POSTURAL_FORWARD_HEAD -> "Kepala maju (forward head)"
-    ExerciseFlag.POSTURAL_ROUNDED_SHOULDER -> "Bahu membulat ke depan"
-    ExerciseFlag.POSTURAL_KYPHOSIS -> "Kyphosis (punggung atas membulat)"
-    ExerciseFlag.POSTURAL_APT -> "Anterior pelvic tilt"
-    ExerciseFlag.POSTURAL_PPT -> "Posterior pelvic tilt"
-    ExerciseFlag.POSTURAL_ASIMETRI_BAHU -> "Asimetri bahu"
-    ExerciseFlag.POSTURAL_ASIMETRI_PINGGUL -> "Asimetri pinggul"
-    ExerciseFlag.MOVEMENT_ANKLE_MOBILITY -> "Mobilitas pergelangan kaki terbatas"
-    ExerciseFlag.MOVEMENT_KNEE_VALGUS -> "Lutut masuk ke dalam saat squat (knee valgus)"
-    ExerciseFlag.MOVEMENT_HINGE_FROM_BACK -> "Hip hinge dari punggung, bukan pinggul"
-    ExerciseFlag.MOVEMENT_SHOULDER_MOBILITY -> "Mobilitas bahu terbatas"
-    ExerciseFlag.MOVEMENT_CORE_INSTABILITY -> "Core kurang stabil"
-    ExerciseFlag.MOVEMENT_BALANCE_ASIMETRI -> "Keseimbangan tidak simetris"
+    ExerciseFlag.HEALTH_JANTUNG -> stringResource(Res.string.fullassessment_flag_health_jantung)
+    ExerciseFlag.HEALTH_TEKANAN_DARAH -> stringResource(Res.string.fullassessment_flag_health_tekanan_darah)
+    ExerciseFlag.HEALTH_DIABETES -> stringResource(Res.string.fullassessment_flag_health_diabetes)
+    ExerciseFlag.HEALTH_ASMA -> stringResource(Res.string.fullassessment_flag_health_asma)
+    ExerciseFlag.HEALTH_SENDI -> stringResource(Res.string.fullassessment_flag_health_sendi)
+    ExerciseFlag.HEALTH_OSTEOPOROSIS -> stringResource(Res.string.fullassessment_flag_health_osteoporosis)
+    ExerciseFlag.POSTURAL_FORWARD_HEAD -> stringResource(Res.string.fullassessment_flag_postural_forward_head)
+    ExerciseFlag.POSTURAL_ROUNDED_SHOULDER -> stringResource(Res.string.fullassessment_flag_postural_rounded_shoulder)
+    ExerciseFlag.POSTURAL_KYPHOSIS -> stringResource(Res.string.fullassessment_flag_postural_kyphosis)
+    ExerciseFlag.POSTURAL_APT -> stringResource(Res.string.fullassessment_flag_postural_apt)
+    ExerciseFlag.POSTURAL_PPT -> stringResource(Res.string.fullassessment_flag_postural_ppt)
+    ExerciseFlag.POSTURAL_ASIMETRI_BAHU -> stringResource(Res.string.fullassessment_flag_postural_asimetri_bahu)
+    ExerciseFlag.POSTURAL_ASIMETRI_PINGGUL -> stringResource(Res.string.fullassessment_flag_postural_asimetri_pinggul)
+    ExerciseFlag.MOVEMENT_ANKLE_MOBILITY -> stringResource(Res.string.fullassessment_flag_movement_ankle_mobility)
+    ExerciseFlag.MOVEMENT_KNEE_VALGUS -> stringResource(Res.string.fullassessment_flag_movement_knee_valgus)
+    ExerciseFlag.MOVEMENT_HINGE_FROM_BACK -> stringResource(Res.string.fullassessment_flag_movement_hinge_from_back)
+    ExerciseFlag.MOVEMENT_SHOULDER_MOBILITY -> stringResource(Res.string.fullassessment_flag_movement_shoulder_mobility)
+    ExerciseFlag.MOVEMENT_CORE_INSTABILITY -> stringResource(Res.string.fullassessment_flag_movement_core_instability)
+    ExerciseFlag.MOVEMENT_BALANCE_ASIMETRI -> stringResource(Res.string.fullassessment_flag_movement_balance_asimetri)
 }

@@ -28,6 +28,11 @@ import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_app_name
+import nufitai.shared.generated.resources.onboarding_splash_loading_message
+import nufitai.shared.generated.resources.onboarding_splash_tagline
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -78,9 +83,9 @@ fun SplashScreen(
                 )
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("NuFit AI", style = MaterialTheme.typography.headlineLarge, color = NuFitColors.Primary)
+                Text(stringResource(Res.string.common_app_name), style = MaterialTheme.typography.headlineLarge, color = NuFitColors.Primary)
                 Text(
-                    "Latihan cerdas, hasil nyata",
+                    stringResource(Res.string.onboarding_splash_tagline),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -93,7 +98,7 @@ fun SplashScreen(
         ) {
             CircularProgressIndicator(color = NuFitColors.Primary, modifier = Modifier.size(28.dp))
             Text(
-                "Menyiapkan pengalaman Anda...",
+                stringResource(Res.string.onboarding_splash_loading_message),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 12.dp),

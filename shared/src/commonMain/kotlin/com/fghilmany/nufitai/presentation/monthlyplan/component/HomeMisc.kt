@@ -25,6 +25,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_assessment_banner_subtitle
+import nufitai.shared.generated.resources.monthlyplan_assessment_banner_title
+import nufitai.shared.generated.resources.monthlyplan_quick_access_subtitle
+import nufitai.shared.generated.resources.monthlyplan_quick_access_title
+import org.jetbrains.compose.resources.stringResource
 
 /** Figma node 12:617 "Quick Access Bento Section" -- navigates to Exercise Library (P-07, issue #79). */
 @Composable
@@ -47,8 +53,8 @@ fun QuickAccessBanner(onClick: () -> Unit, modifier: Modifier = Modifier) {
                     Icon(Icons.Filled.Explore, contentDescription = null, tint = NuFitColors.OnSecondaryFixed)
                 }
                 Column {
-                    Text("Jelajahi Gerakan", style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnSecondaryFixed)
-                    Text("Perpustakaan Latihan", style = MaterialTheme.typography.labelSmall, color = NuFitColors.OnSecondaryFixed)
+                    Text(stringResource(Res.string.monthlyplan_quick_access_title), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnSecondaryFixed)
+                    Text(stringResource(Res.string.monthlyplan_quick_access_subtitle), style = MaterialTheme.typography.labelSmall, color = NuFitColors.OnSecondaryFixed)
                 }
             }
             Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = NuFitColors.OnSecondaryFixed)
@@ -77,8 +83,8 @@ fun AssessmentDetailBanner(onClick: () -> Unit, modifier: Modifier = Modifier) {
                     Icon(Icons.Filled.Insights, contentDescription = null, tint = NuFitColors.OnSecondaryContainer)
                 }
                 Column {
-                    Text("Hasil Assessment", style = MaterialTheme.typography.bodyMedium, color = NuFitColors.Primary)
-                    Text("Lihat level & alasan plan kamu", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(stringResource(Res.string.monthlyplan_assessment_banner_title), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.Primary)
+                    Text(stringResource(Res.string.monthlyplan_assessment_banner_subtitle), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
             Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = NuFitColors.Primary)

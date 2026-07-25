@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fullassessment_top_bar_title">Full Assessment</string>
+
+    <string name="fullassessment_parq_q1_nyeri_dada">Have you ever felt chest pain during physical activity?</string>
+    <string name="fullassessment_parq_q2_pingsan_saat_aktivitas">Have you ever fainted or lost your balance from dizziness during physical activity?</string>
+    <string name="fullassessment_parq_q3_sesak_napas_aktivitas_ringan">Do you get short of breath easily, even during light activity?</string>
+    <string name="fullassessment_parq_q4_operasi_besar_belum_pulih">Have you had major surgery in the last 12 months that you haven\'t fully recovered from?</string>
+    <string name="fullassessment_parq_q5_pengobatan_kanker_aktif">Are you currently undergoing active cancer treatment (chemotherapy/radiotherapy)?</string>
+    <string name="fullassessment_parq_q6_kehamilan">Are you currently pregnant?</string>
+    <string name="fullassessment_parq_q7_diabetes_terkontrol">Do you have diabetes that is currently controlled?</string>
+    <string name="fullassessment_parq_q8_hipertensi_terkontrol">Do you have high blood pressure that is currently controlled?</string>
+    <string name="fullassessment_parq_q9_asma_terkontrol">Do you have asthma that is currently controlled?</string>
+    <string name="fullassessment_parq_q10_cedera_lama_pulih">Do you have an old injury that has healed but still needs attention?</string>
+    <string name="fullassessment_parq_q11_osteoporosis_ringan">Do you have mild osteoporosis?</string>
+
+    <string name="fullassessment_parq_short_nyeri_dada">Chest pain during activity</string>
+    <string name="fullassessment_parq_short_pingsan_saat_aktivitas">Fainting/dizziness during activity</string>
+    <string name="fullassessment_parq_short_sesak_napas_aktivitas_ringan">Shortness of breath in light activity</string>
+    <string name="fullassessment_parq_short_operasi_besar_belum_pulih">Major surgery, not yet recovered</string>
+    <string name="fullassessment_parq_short_pengobatan_kanker_aktif">Active cancer treatment</string>
+    <string name="fullassessment_parq_short_kehamilan">Currently pregnant</string>
+    <string name="fullassessment_parq_short_diabetes_terkontrol">Controlled diabetes</string>
+    <string name="fullassessment_parq_short_hipertensi_terkontrol">Controlled hypertension</string>
+    <string name="fullassessment_parq_short_asma_terkontrol">Controlled asthma</string>
+    <string name="fullassessment_parq_short_cedera_lama_pulih">Old injury, already recovered</string>
+    <string name="fullassessment_parq_short_osteoporosis_ringan">Mild osteoporosis</string>
+
+    <string name="fullassessment_gate_blocked_title">You should consult a doctor first</string>
+    <string name="fullassessment_gate_blocked_body">Based on your answers, there are conditions you should discuss with a doctor before continuing this assessment.</string>
+    <string name="fullassessment_gate_blocked_ack_label">I understand and will/have consulted a doctor about this condition.</string>
+
+    <string name="fullassessment_interview_age_label">Age</string>
+    <string name="fullassessment_interview_gender_male">Male</string>
+    <string name="fullassessment_interview_gender_female">Female</string>
+    <string name="fullassessment_interview_goal_title">Training goal</string>
+    <string name="fullassessment_interview_frequency_label">Training frequency per week</string>
+    <string name="fullassessment_interview_training_days_title">Training days</string>
+    <string name="fullassessment_interview_session_duration_label">Session duration (minutes)</string>
+    <string name="fullassessment_interview_equipment_title">Equipment preference</string>
+    <string name="fullassessment_interview_injury_history_title">Injury / pain history (area)</string>
+
+    <string name="fullassessment_day_mon">Mon</string>
+    <string name="fullassessment_day_tue">Tue</string>
+    <string name="fullassessment_day_wed">Wed</string>
+    <string name="fullassessment_day_thu">Thu</string>
+    <string name="fullassessment_day_fri">Fri</string>
+    <string name="fullassessment_day_sat">Sat</string>
+    <string name="fullassessment_day_sun">Sun</string>
+
+    <string name="fullassessment_postural_title">Postural assessment findings</string>
+    <string name="fullassessment_movement_title">Movement screening findings</string>
+
+    <string name="fullassessment_capacity_title">Physical capacity test (optional)</string>
+    <string name="fullassessment_capacity_pushup_label">Push-up (reps)</string>
+    <string name="fullassessment_capacity_plank_label">Plank (seconds)</string>
+    <string name="fullassessment_capacity_sit_to_stand_label">30-Second Sit-to-Stand (reps)</string>
+    <string name="fullassessment_capacity_skip_test">Skip this test</string>
+    <string name="fullassessment_capacity_cancel_skip">Cancel skip</string>
+    <string name="fullassessment_capacity_submit">Done</string>
+
+    <string name="fullassessment_body_area_punggung_bawah">Lower back</string>
+    <string name="fullassessment_body_area_lutut">Knee</string>
+    <string name="fullassessment_body_area_bahu">Shoulder</string>
+    <string name="fullassessment_body_area_leher">Neck</string>
+
+    <string name="fullassessment_flag_health_jantung">Heart</string>
+    <string name="fullassessment_flag_health_tekanan_darah">Blood pressure</string>
+    <string name="fullassessment_flag_health_diabetes">Diabetes</string>
+    <string name="fullassessment_flag_health_asma">Asthma</string>
+    <string name="fullassessment_flag_health_sendi">Joint</string>
+    <string name="fullassessment_flag_health_osteoporosis">Osteoporosis</string>
+    <string name="fullassessment_flag_postural_forward_head">Forward head</string>
+    <string name="fullassessment_flag_postural_rounded_shoulder">Rounded shoulders</string>
+    <string name="fullassessment_flag_postural_kyphosis">Kyphosis (rounded upper back)</string>
+    <string name="fullassessment_flag_postural_apt">Anterior pelvic tilt</string>
+    <string name="fullassessment_flag_postural_ppt">Posterior pelvic tilt</string>
+    <string name="fullassessment_flag_postural_asimetri_bahu">Shoulder asymmetry</string>
+    <string name="fullassessment_flag_postural_asimetri_pinggul">Hip asymmetry</string>
+    <string name="fullassessment_flag_movement_ankle_mobility">Limited ankle mobility</string>
+    <string name="fullassessment_flag_movement_knee_valgus">Knee caves in during squat (knee valgus)</string>
+    <string name="fullassessment_flag_movement_hinge_from_back">Hip hinge from the back, not the hips</string>
+    <string name="fullassessment_flag_movement_shoulder_mobility">Limited shoulder mobility</string>
+    <string name="fullassessment_flag_movement_core_instability">Unstable core</string>
+    <string name="fullassessment_flag_movement_balance_asimetri">Asymmetric balance</string>
+</resources>

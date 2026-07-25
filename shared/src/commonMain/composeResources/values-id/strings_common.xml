@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_action_continue">Lanjutkan</string>
+    <string name="common_action_back">Kembali</string>
+    <string name="common_action_cancel">Batal</string>
+    <string name="common_action_save">Simpan</string>
+    <string name="common_action_skip">Lewati</string>
+    <string name="common_action_done">Selesai</string>
+    <string name="common_action_understood">Mengerti</string>
+    <string name="common_action_yes">Ya</string>
+    <string name="common_action_no">Tidak</string>
+    <string name="common_app_name">NuFit AI</string>
+</resources>

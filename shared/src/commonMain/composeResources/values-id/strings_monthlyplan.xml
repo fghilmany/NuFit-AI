@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="monthlyplan_home_empty_state">Belum ada plan aktif</string>
+    <string name="monthlyplan_home_notification_content_description">Notifikasi</string>
+    <string name="monthlyplan_home_greeting">Halo, User! 👋</string>
+    <string name="monthlyplan_home_week_progress">Minggu %1$d dari 4</string>
+    <string name="monthlyplan_home_progress_percent">Progress: %1$d%%</string>
+    <string name="monthlyplan_home_this_week_title">Sesi Minggu Ini</string>
+
+    <string name="monthlyplan_session_detail_top_bar_title">Detail Sesi</string>
+    <string name="monthlyplan_session_detail_description_templated">Sesi %1$s -- fokus pada pola gerak utama hari ini.</string>
+    <string name="monthlyplan_session_detail_description_fallback">Sesi latihan hari ini.</string>
+    <string name="monthlyplan_session_detail_main_exercises_title">Latihan Utama</string>
+    <string name="monthlyplan_session_detail_tip_title">Saran NuFit AI</string>
+    <string name="monthlyplan_session_detail_tip_body">Fokus pada teknik yang benar sebelum menambah beban. Kualitas gerakan lebih penting dari jumlah repetisi.</string>
+    <string name="monthlyplan_session_detail_start_button">Mulai Sesi Ini</string>
+    <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
+
+    <string name="monthlyplan_exercise_count_label">%1$d gerakan</string>
+    <string name="monthlyplan_duration_minutes_label">%1$d menit</string>
+
+    <string name="monthlyplan_session_card_today_badge">HARI INI</string>
+    <string name="monthlyplan_session_card_session_letter">Sesi %1$s</string>
+    <string name="monthlyplan_session_card_today_fallback">Sesi Hari Ini</string>
+    <string name="monthlyplan_session_card_fallback">Sesi</string>
+    <string name="monthlyplan_session_card_start_button">Mulai Latihan</string>
+    <string name="monthlyplan_session_card_summary_line">%1$d gerakan • %2$d menit</string>
+    <string name="monthlyplan_session_card_light_activity_title">Aktivitas Ringan</string>
+    <string name="monthlyplan_session_card_rest_day_title">Rest Day</string>
+    <string name="monthlyplan_session_card_rest_subtitle">Santai sejenak</string>
+
+    <string name="monthlyplan_status_done">Selesai</string>
+    <string name="monthlyplan_status_skipped">Dilewati</string>
+    <string name="monthlyplan_status_upcoming">Akan datang</string>
+    <string name="monthlyplan_status_tomorrow">Besok</string>
+    <string name="monthlyplan_status_today">Hari Ini</string>
+
+    <string name="monthlyplan_quick_access_title">Jelajahi Gerakan</string>
+    <string name="monthlyplan_quick_access_subtitle">Perpustakaan Latihan</string>
+    <string name="monthlyplan_assessment_banner_title">Hasil Assessment</string>
+    <string name="monthlyplan_assessment_banner_subtitle">Lihat level &amp; alasan plan kamu</string>
+
+    <string name="monthlyplan_week_accordion_title">Minggu %1$d</string>
+
+    <string name="monthlyplan_nav_home">Home</string>
+    <string name="monthlyplan_nav_plans">Rencana</string>
+    <string name="monthlyplan_nav_chat_ai">Chat AI</string>
+    <string name="monthlyplan_nav_meal">Makan</string>
+    <string name="monthlyplan_nav_account">Akun</string>
+</resources>

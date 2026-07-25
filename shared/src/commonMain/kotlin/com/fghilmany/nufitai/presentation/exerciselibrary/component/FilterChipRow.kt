@@ -29,6 +29,11 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.usecase.exerciselibrary.ExerciseFilter
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.exerciselibrary_filter_equipment
+import nufitai.shared.generated.resources.exerciselibrary_filter_level
+import nufitai.shared.generated.resources.exerciselibrary_filter_muscle_group
+import org.jetbrains.compose.resources.stringResource
 
 /** P-07's 3 dropdown-style filter chips (Otot Target/Alat/Level), Figma node 12:683 (issue #79). */
 @Composable
@@ -41,7 +46,7 @@ fun FilterChipRow(
 ) {
     Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         FilterChip(
-            label = "Otot Target",
+            label = stringResource(Res.string.exerciselibrary_filter_muscle_group),
             isActive = filter.muscleGroups.isNotEmpty(),
         ) { dismiss ->
             MuscleGroup.entries.forEach { value ->
@@ -52,7 +57,7 @@ fun FilterChipRow(
                 )
             }
         }
-        FilterChip(label = "Alat", isActive = filter.equipment.isNotEmpty()) {
+        FilterChip(label = stringResource(Res.string.exerciselibrary_filter_equipment), isActive = filter.equipment.isNotEmpty()) {
             EquipmentCategory.entries.forEach { value ->
                 DropdownMenuItem(
                     text = { Text(value.shortLabel()) },
@@ -61,7 +66,7 @@ fun FilterChipRow(
                 )
             }
         }
-        FilterChip(label = "Level", isActive = filter.levels.isNotEmpty()) {
+        FilterChip(label = stringResource(Res.string.exerciselibrary_filter_level), isActive = filter.levels.isNotEmpty()) {
             BrowsableExerciseLevels.forEach { value ->
                 DropdownMenuItem(
                     text = { Text(value.shortLabel()) },

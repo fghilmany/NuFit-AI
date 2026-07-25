@@ -49,6 +49,28 @@ import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.RetakeDialo
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel as exerciseFlagShortLabel
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.assessmentdetail_answer_summary_title
+import nufitai.shared.generated.resources.assessmentdetail_capacity_not_filled
+import nufitai.shared.generated.resources.assessmentdetail_capacity_plank
+import nufitai.shared.generated.resources.assessmentdetail_capacity_pushup
+import nufitai.shared.generated.resources.assessmentdetail_capacity_reps
+import nufitai.shared.generated.resources.assessmentdetail_capacity_seconds
+import nufitai.shared.generated.resources.assessmentdetail_capacity_sit_to_stand
+import nufitai.shared.generated.resources.assessmentdetail_full_data_title
+import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_body
+import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_title
+import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_body
+import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_confirm
+import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_title
+import nufitai.shared.generated.resources.assessmentdetail_selected_plan_title
+import nufitai.shared.generated.resources.assessmentdetail_tab_hasil
+import nufitai.shared.generated.resources.assessmentdetail_tab_riwayat
+import nufitai.shared.generated.resources.assessmentdetail_top_bar_title
+import nufitai.shared.generated.resources.common_action_cancel
+import nufitai.shared.generated.resources.common_action_back
+import nufitai.shared.generated.resources.common_action_understood
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 /** P-09 (03-assessment-detail.md, issue #77, Figma node 12:987). */
@@ -141,14 +163,14 @@ private fun HasilTabContent(summary: AssessmentDetailSummary, onRetakeClick: () 
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("Ringkasan Jawaban", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(Res.string.assessmentdetail_answer_summary_title), style = MaterialTheme.typography.titleLarge)
                 AnswerSummaryGrid(summary.quickAssessment)
             }
         }
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("Rencana Terpilih", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(Res.string.assessmentdetail_selected_plan_title), style = MaterialTheme.typography.titleLarge)
                 SelectedPlanCard(summary.quickAssessment, summary.activePlan)
             }
         }
@@ -168,22 +190,32 @@ private fun HasilTabContent(summary: AssessmentDetailSummary, onRetakeClick: () 
 @Composable
 private fun FullAssessmentDetailsSection(fullAssessment: FullAssessmentResult, modifier: Modifier = Modifier) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Text("Data Full Assessment", style = MaterialTheme.typography.titleLarge)
+        Text(stringResource(Res.string.assessmentdetail_full_data_title), style = MaterialTheme.typography.titleLarge)
 
         val allFlags: Set<ExerciseFlag> = fullAssessment.parQKategoriB + fullAssessment.flagsPostural + fullAssessment.flagsGerak
         allFlags.forEach { flag -> FlagExplanationCard(flag.exerciseFlagShortLabel(), flag.explanationImpact()) }
 
+        val notFilled = stringResource(Res.string.assessmentdetail_capacity_not_filled)
         val capacityTest = fullAssessment.capacityTest
         Text(
-            "Push-up: ${capacityTest?.pushup?.reps?.let { "$it reps" } ?: "Belum diisi"}",
+            stringResource(
+                Res.string.assessmentdetail_capacity_pushup,
+                capacityTest?.pushup?.reps?.let { stringResource(Res.string.assessmentdetail_capacity_reps, it) } ?: notFilled,
+            ),
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            "Plank: ${capacityTest?.plank?.detik?.let { "$it detik" } ?: "Belum diisi"}",
+            stringResource(
+                Res.string.assessmentdetail_capacity_plank,
+                capacityTest?.plank?.detik?.let { stringResource(Res.string.assessmentdetail_capacity_seconds, it) } ?: notFilled,
+            ),
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            "Sit-to-stand: ${capacityTest?.sitToStand?.reps?.let { "$it reps" } ?: "Belum diisi"}",
+            stringResource(
+                Res.string.assessmentdetail_capacity_sit_to_stand,
+                capacityTest?.sitToStand?.reps?.let { stringResource(Res.string.assessmentdetail_capacity_reps, it) } ?: notFilled,
+            ),
             style = MaterialTheme.typography.bodyMedium,
         )
     }
@@ -198,8 +230,8 @@ private fun TabBar(activeTab: AssessmentDetailTab, onTabSelected: (AssessmentDet
             .padding(bottom = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(32.dp),
     ) {
-        TabItem("Hasil", isActive = activeTab == AssessmentDetailTab.HASIL, onClick = { onTabSelected(AssessmentDetailTab.HASIL) })
-        TabItem("Riwayat", isActive = activeTab == AssessmentDetailTab.RIWAYAT, onClick = { onTabSelected(AssessmentDetailTab.RIWAYAT) })
+        TabItem(stringResource(Res.string.assessmentdetail_tab_hasil), isActive = activeTab == AssessmentDetailTab.HASIL, onClick = { onTabSelected(AssessmentDetailTab.HASIL) })
+        TabItem(stringResource(Res.string.assessmentdetail_tab_riwayat), isActive = activeTab == AssessmentDetailTab.RIWAYAT, onClick = { onTabSelected(AssessmentDetailTab.RIWAYAT) })
     }
 }
 
@@ -217,10 +249,10 @@ private fun TabItem(label: String, isActive: Boolean, onClick: () -> Unit) {
 private fun RetakeConfirmDialog(onConfirm: () -> Unit, onCancel: () -> Unit) {
     AlertDialog(
         onDismissRequest = onCancel,
-        title = { Text("Ulangi Assessment?") },
-        text = { Text("Plan aktif saat ini akan diarsipkan dan kamu akan menjalani assessment dari awal. Riwayat log kamu tetap aman.") },
-        confirmButton = { TextButton(onClick = onConfirm) { Text("Ulangi") } },
-        dismissButton = { TextButton(onClick = onCancel) { Text("Batal") } },
+        title = { Text(stringResource(Res.string.assessmentdetail_retake_dialog_title)) },
+        text = { Text(stringResource(Res.string.assessmentdetail_retake_dialog_body)) },
+        confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(Res.string.assessmentdetail_retake_dialog_confirm)) } },
+        dismissButton = { TextButton(onClick = onCancel) { Text(stringResource(Res.string.common_action_cancel)) } },
     )
 }
 
@@ -228,9 +260,9 @@ private fun RetakeConfirmDialog(onConfirm: () -> Unit, onCancel: () -> Unit) {
 private fun RetakeBlockedDialog(onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Belum bisa mengulang assessment") },
-        text = { Text("Selesaikan atau akhiri sesi latihan yang sedang berjalan terlebih dahulu sebelum mengulang assessment.") },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Mengerti") } },
+        title = { Text(stringResource(Res.string.assessmentdetail_retake_blocked_title)) },
+        text = { Text(stringResource(Res.string.assessmentdetail_retake_blocked_body)) },
+        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(Res.string.common_action_understood)) } },
     )
 }
 
@@ -247,9 +279,9 @@ private fun TopBar(onBack: () -> Unit, modifier: Modifier = Modifier) {
     ) {
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Kembali")
+                Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(Res.string.common_action_back))
             }
-            Text("Hasil Assessment", style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(Res.string.assessmentdetail_top_bar_title), style = MaterialTheme.typography.titleMedium)
         }
         Icon(Icons.Filled.Share, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant) // inert -- no share target this pass
     }

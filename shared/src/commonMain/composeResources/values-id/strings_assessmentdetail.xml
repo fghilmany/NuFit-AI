@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="assessmentdetail_status_label">STATUS KAMU</string>
+    <string name="assessmentdetail_level_explainer">Karena kamu %1$s dengan goal %2$s dan %3$s, plan kamu %4$s.</string>
+    <string name="assessmentdetail_parq_title">Perhatian Keamanan</string>
+    <string name="assessmentdetail_answer_summary_title">Ringkasan Jawaban</string>
+    <string name="assessmentdetail_summary_goal">Goal Utama</string>
+    <string name="assessmentdetail_summary_frequency">Frekuensi</string>
+    <string name="assessmentdetail_summary_experience">Pengalaman</string>
+    <string name="assessmentdetail_summary_equipment">Peralatan</string>
+    <string name="assessmentdetail_equipment_none">Bodyweight</string>
+    <string name="assessmentdetail_equipment_bodyweight_only">Tanpa Alat (Bodyweight)</string>
+    <string name="assessmentdetail_equipment_full_gym">Lengkap (Gym)</string>
+    <string name="assessmentdetail_plan_badge_template">TEMPLATE</string>
+    <string name="assessmentdetail_plan_badge_ai">REKOMENDASI AI</string>
+    <string name="assessmentdetail_plan_description">Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.</string>
+    <string name="assessmentdetail_selected_plan_title">Rencana Terpilih</string>
+    <string name="assessmentdetail_full_assessment_cta_title">Assessment Belum Lengkap</string>
+    <string name="assessmentdetail_full_assessment_cta_body">Buka fitur Nutrisi dan Analisis Postur AI dengan menyelesaikan assessment penuh.</string>
+    <string name="assessmentdetail_full_assessment_cta_button">Masuk &amp; Lengkapi Assessment</string>
+    <string name="assessmentdetail_retake_footer_link">Ulangi Assessment</string>
+    <string name="assessmentdetail_tab_hasil">Hasil</string>
+    <string name="assessmentdetail_tab_riwayat">Riwayat</string>
+    <string name="assessmentdetail_full_data_title">Data Full Assessment</string>
+    <string name="assessmentdetail_capacity_pushup">Push-up: %1$s</string>
+    <string name="assessmentdetail_capacity_plank">Plank: %1$s</string>
+    <string name="assessmentdetail_capacity_sit_to_stand">Sit-to-stand: %1$s</string>
+    <string name="assessmentdetail_capacity_reps">%1$d reps</string>
+    <string name="assessmentdetail_capacity_seconds">%1$d detik</string>
+    <string name="assessmentdetail_capacity_not_filled">Belum diisi</string>
+    <string name="assessmentdetail_retake_dialog_title">Ulangi Assessment?</string>
+    <string name="assessmentdetail_retake_dialog_body">Plan aktif saat ini akan diarsipkan dan kamu akan menjalani assessment dari awal. Riwayat log kamu tetap aman.</string>
+    <string name="assessmentdetail_retake_dialog_confirm">Ulangi</string>
+    <string name="assessmentdetail_retake_blocked_title">Belum bisa mengulang assessment</string>
+    <string name="assessmentdetail_retake_blocked_body">Selesaikan atau akhiri sesi latihan yang sedang berjalan terlebih dahulu sebelum mengulang assessment.</string>
+    <string name="assessmentdetail_top_bar_title">Hasil Assessment</string>
+    <string name="assessmentdetail_history_empty">Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
+    <string name="assessmentdetail_history_source_template">Template</string>
+    <string name="assessmentdetail_history_source_personalized">Personalisasi</string>
+    <string name="assessmentdetail_history_status_active">Aktif</string>
+    <string name="assessmentdetail_history_status_archived">Arsip</string>
+
+    <string name="assessmentdetail_level_beginner">Beginner</string>
+    <string name="assessmentdetail_level_intermediate">Intermediate</string>
+    <string name="assessmentdetail_split_full_body">Full Body</string>
+    <string name="assessmentdetail_split_upper_lower">Upper/Lower</string>
+
+    <string name="assessmentdetail_flag_jantung_label">Riwayat jantung</string>
+    <string name="assessmentdetail_flag_tekanan_darah_label">Tekanan darah</string>
+    <string name="assessmentdetail_flag_sendi_label">Riwayat nyeri sendi</string>
+    <string name="assessmentdetail_flag_sendi_operasi_label">Operasi sendi baru-baru ini</string>
+    <string name="assessmentdetail_flag_diabetes_label">Diabetes</string>
+    <string name="assessmentdetail_flag_kanker_label">Pengobatan kanker aktif</string>
+    <string name="assessmentdetail_flag_kehamilan_label">Kehamilan</string>
+    <string name="assessmentdetail_flag_lainnya_label">Kondisi lain</string>
+
+    <string name="assessmentdetail_flag_jantung_impact">Gerakan intensitas tinggi yang membebani jantung akan dihindari atau dimodifikasi dari rencana latihanmu.</string>
+    <string name="assessmentdetail_flag_tekanan_darah_impact">Gerakan yang menahan napas atau membebani tekanan darah akan dimodifikasi dari rencana latihanmu.</string>
+    <string name="assessmentdetail_flag_sendi_impact">Gerakan high-impact seperti Jumping Jacks akan difilter dari rencana latihanmu.</string>
+    <string name="assessmentdetail_flag_sendi_operasi_impact">Gerakan yang membebani area operasi akan dihindari sampai kamu benar-benar pulih.</string>
+    <string name="assessmentdetail_flag_diabetes_impact">Intensitas latihan disesuaikan agar tetap aman untuk kondisi gula darahmu.</string>
+    <string name="assessmentdetail_flag_kanker_impact">Latihan disesuaikan agar tetap ringan dan aman selama masa pengobatan.</string>
+    <string name="assessmentdetail_flag_kehamilan_impact">Gerakan berisiko tinggi untuk kehamilan akan dihindari dari rencana latihanmu.</string>
+    <string name="assessmentdetail_flag_lainnya_impact">Rencana latihanmu disesuaikan secara umum untuk berjaga-jaga.</string>
+
+    <string name="assessmentdetail_flag_health_impact">Gerakan yang berisiko untuk kondisi ini akan dihindari atau dimodifikasi dari rencana latihanmu.</string>
+    <string name="assessmentdetail_flag_postural_impact">Latihan korektif akan ditambahkan dan gerakan yang memperparah postur ini akan disesuaikan.</string>
+    <string name="assessmentdetail_flag_movement_impact">Gerakan akan disesuaikan atau diberi variasi yang lebih aman untuk pola gerakmu.</string>
+</resources>

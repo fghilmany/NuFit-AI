@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fullassessment_top_bar_title">Full Assessment</string>
+
+    <string name="fullassessment_parq_q1_nyeri_dada">Apakah Anda pernah merasa nyeri di dada saat beraktivitas fisik?</string>
+    <string name="fullassessment_parq_q2_pingsan_saat_aktivitas">Apakah Anda pernah pingsan atau kehilangan keseimbangan karena pusing saat beraktivitas?</string>
+    <string name="fullassessment_parq_q3_sesak_napas_aktivitas_ringan">Apakah Anda mudah sesak napas bahkan saat aktivitas ringan?</string>
+    <string name="fullassessment_parq_q4_operasi_besar_belum_pulih">Apakah Anda baru menjalani operasi besar dalam 12 bulan terakhir dan belum pulih sepenuhnya?</string>
+    <string name="fullassessment_parq_q5_pengobatan_kanker_aktif">Apakah Anda sedang menjalani pengobatan aktif untuk kanker (kemoterapi/radioterapi)?</string>
+    <string name="fullassessment_parq_q6_kehamilan">Apakah Anda sedang hamil?</string>
+    <string name="fullassessment_parq_q7_diabetes_terkontrol">Apakah Anda memiliki diabetes yang sudah terkontrol?</string>
+    <string name="fullassessment_parq_q8_hipertensi_terkontrol">Apakah Anda memiliki tekanan darah tinggi yang sudah terkontrol?</string>
+    <string name="fullassessment_parq_q9_asma_terkontrol">Apakah Anda memiliki asma yang sudah terkontrol?</string>
+    <string name="fullassessment_parq_q10_cedera_lama_pulih">Apakah Anda punya cedera lama yang sudah pulih tapi masih perlu diperhatikan?</string>
+    <string name="fullassessment_parq_q11_osteoporosis_ringan">Apakah Anda memiliki osteoporosis ringan?</string>
+
+    <string name="fullassessment_parq_short_nyeri_dada">Nyeri dada saat beraktivitas</string>
+    <string name="fullassessment_parq_short_pingsan_saat_aktivitas">Pingsan/pusing saat beraktivitas</string>
+    <string name="fullassessment_parq_short_sesak_napas_aktivitas_ringan">Sesak napas di aktivitas ringan</string>
+    <string name="fullassessment_parq_short_operasi_besar_belum_pulih">Operasi besar belum pulih</string>
+    <string name="fullassessment_parq_short_pengobatan_kanker_aktif">Pengobatan kanker aktif</string>
+    <string name="fullassessment_parq_short_kehamilan">Sedang hamil</string>
+    <string name="fullassessment_parq_short_diabetes_terkontrol">Diabetes terkontrol</string>
+    <string name="fullassessment_parq_short_hipertensi_terkontrol">Hipertensi terkontrol</string>
+    <string name="fullassessment_parq_short_asma_terkontrol">Asma terkontrol</string>
+    <string name="fullassessment_parq_short_cedera_lama_pulih">Cedera lama, sudah pulih</string>
+    <string name="fullassessment_parq_short_osteoporosis_ringan">Osteoporosis ringan</string>
+
+    <string name="fullassessment_gate_blocked_title">Sebaiknya konsultasi ke dokter dulu</string>
+    <string name="fullassessment_gate_blocked_body">Berdasarkan jawaban Anda, ada kondisi yang sebaiknya didiskusikan dengan dokter sebelum melanjutkan asesmen ini.</string>
+    <string name="fullassessment_gate_blocked_ack_label">Saya memahami dan akan/sudah berkonsultasi dengan dokter mengenai kondisi ini.</string>
+
+    <string name="fullassessment_interview_age_label">Usia</string>
+    <string name="fullassessment_interview_gender_male">Pria</string>
+    <string name="fullassessment_interview_gender_female">Wanita</string>
+    <string name="fullassessment_interview_goal_title">Tujuan latihan</string>
+    <string name="fullassessment_interview_frequency_label">Frekuensi latihan per minggu</string>
+    <string name="fullassessment_interview_training_days_title">Hari latihan</string>
+    <string name="fullassessment_interview_session_duration_label">Durasi sesi (menit)</string>
+    <string name="fullassessment_interview_equipment_title">Preferensi alat</string>
+    <string name="fullassessment_interview_injury_history_title">Riwayat cedera / nyeri (area)</string>
+
+    <string name="fullassessment_day_mon">Sen</string>
+    <string name="fullassessment_day_tue">Sel</string>
+    <string name="fullassessment_day_wed">Rab</string>
+    <string name="fullassessment_day_thu">Kam</string>
+    <string name="fullassessment_day_fri">Jum</string>
+    <string name="fullassessment_day_sat">Sab</string>
+    <string name="fullassessment_day_sun">Min</string>
+
+    <string name="fullassessment_postural_title">Temuan asesmen postur</string>
+    <string name="fullassessment_movement_title">Temuan movement screening</string>
+
+    <string name="fullassessment_capacity_title">Tes kapasitas fisik (opsional)</string>
+    <string name="fullassessment_capacity_pushup_label">Push-up (reps)</string>
+    <string name="fullassessment_capacity_plank_label">Plank (detik)</string>
+    <string name="fullassessment_capacity_sit_to_stand_label">Sit-to-Stand 30 detik (reps)</string>
+    <string name="fullassessment_capacity_skip_test">Lewati tes ini</string>
+    <string name="fullassessment_capacity_cancel_skip">Batal lewati</string>
+    <string name="fullassessment_capacity_submit">Selesai</string>
+
+    <string name="fullassessment_body_area_punggung_bawah">Punggung bawah</string>
+    <string name="fullassessment_body_area_lutut">Lutut</string>
+    <string name="fullassessment_body_area_bahu">Bahu</string>
+    <string name="fullassessment_body_area_leher">Leher</string>
+
+    <string name="fullassessment_flag_health_jantung">Jantung</string>
+    <string name="fullassessment_flag_health_tekanan_darah">Tekanan darah</string>
+    <string name="fullassessment_flag_health_diabetes">Diabetes</string>
+    <string name="fullassessment_flag_health_asma">Asma</string>
+    <string name="fullassessment_flag_health_sendi">Sendi</string>
+    <string name="fullassessment_flag_health_osteoporosis">Osteoporosis</string>
+    <string name="fullassessment_flag_postural_forward_head">Kepala maju (forward head)</string>
+    <string name="fullassessment_flag_postural_rounded_shoulder">Bahu membulat ke depan</string>
+    <string name="fullassessment_flag_postural_kyphosis">Kyphosis (punggung atas membulat)</string>
+    <string name="fullassessment_flag_postural_apt">Anterior pelvic tilt</string>
+    <string name="fullassessment_flag_postural_ppt">Posterior pelvic tilt</string>
+    <string name="fullassessment_flag_postural_asimetri_bahu">Asimetri bahu</string>
+    <string name="fullassessment_flag_postural_asimetri_pinggul">Asimetri pinggul</string>
+    <string name="fullassessment_flag_movement_ankle_mobility">Mobilitas pergelangan kaki terbatas</string>
+    <string name="fullassessment_flag_movement_knee_valgus">Lutut masuk ke dalam saat squat (knee valgus)</string>
+    <string name="fullassessment_flag_movement_hinge_from_back">Hip hinge dari punggung, bukan pinggul</string>
+    <string name="fullassessment_flag_movement_shoulder_mobility">Mobilitas bahu terbatas</string>
+    <string name="fullassessment_flag_movement_core_instability">Core kurang stabil</string>
+    <string name="fullassessment_flag_movement_balance_asimetri">Keseimbangan tidak simetris</string>
+</resources>

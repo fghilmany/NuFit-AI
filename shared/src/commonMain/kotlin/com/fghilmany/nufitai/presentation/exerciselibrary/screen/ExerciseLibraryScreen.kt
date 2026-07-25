@@ -42,6 +42,16 @@ import com.fghilmany.nufitai.presentation.exerciselibrary.viewmodel.ExerciseLibr
 import com.fghilmany.nufitai.presentation.exerciselibrary.viewmodel.ExerciseLibraryState
 import com.fghilmany.nufitai.presentation.exerciselibrary.viewmodel.ExerciseLibraryViewModel
 import com.fghilmany.nufitai.usecase.exerciselibrary.ExerciseFilter
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.common_action_back
+import nufitai.shared.generated.resources.exerciselibrary_ai_banner_body
+import nufitai.shared.generated.resources.exerciselibrary_ai_banner_title
+import nufitai.shared.generated.resources.exerciselibrary_empty_body
+import nufitai.shared.generated.resources.exerciselibrary_empty_clear_filters
+import nufitai.shared.generated.resources.exerciselibrary_empty_title
+import nufitai.shared.generated.resources.exerciselibrary_search_placeholder
+import nufitai.shared.generated.resources.exerciselibrary_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 /** P-07 (issue #79, Figma node 12:683). */
@@ -118,15 +128,15 @@ private fun EmptyContent(
         SearchAndFilters(query, filter, viewModel, modifier = Modifier.padding(top = 16.dp))
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Gerakan tidak ditemukan", style = MaterialTheme.typography.titleMedium, color = NuFitColors.Primary)
+                Text(stringResource(Res.string.exerciselibrary_empty_title), style = MaterialTheme.typography.titleMedium, color = NuFitColors.Primary)
                 if (hasActiveFilters) {
                     Text(
-                        "Coba hapus filter atau kata kunci pencarian.",
+                        stringResource(Res.string.exerciselibrary_empty_body),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                     Text(
-                        "Hapus Filter",
+                        stringResource(Res.string.exerciselibrary_empty_clear_filters),
                         style = MaterialTheme.typography.labelLarge,
                         color = NuFitColors.Primary,
                         modifier = Modifier.padding(top = 8.dp).clickable { viewModel.onEvent(ExerciseLibraryEvent.ClearFilters) },
@@ -148,7 +158,7 @@ private fun SearchAndFilters(
         AppTextField(
             value = query,
             onValueChange = { viewModel.onEvent(ExerciseLibraryEvent.SearchQueryChanged(it)) },
-            placeholder = "Cari gerakan...",
+            placeholder = stringResource(Res.string.exerciselibrary_search_placeholder),
             modifier = Modifier.fillMaxWidth(),
         )
         FilterChipRow(
@@ -170,9 +180,9 @@ private fun AiSuggestionBanner() {
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
             Column {
-                Text("Butuh Saran?", style = MaterialTheme.typography.titleMedium, color = Color.White)
+                Text(stringResource(Res.string.exerciselibrary_ai_banner_title), style = MaterialTheme.typography.titleMedium, color = Color.White)
                 Text(
-                    "Tanyakan NuFit AI gerakan yang cocok untukmu hari ini.",
+                    stringResource(Res.string.exerciselibrary_ai_banner_body),
                     style = MaterialTheme.typography.bodyMedium,
                     color = NuFitColors.InversePrimary,
                 )
@@ -200,9 +210,9 @@ private fun TopBar(onBack: () -> Unit) {
     ) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Kembali")
+                Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(Res.string.common_action_back))
             }
-            Text("Jelajahi Gerakan", style = MaterialTheme.typography.titleMedium, color = NuFitColors.Primary)
+            Text(stringResource(Res.string.exerciselibrary_title), style = MaterialTheme.typography.titleMedium, color = NuFitColors.Primary)
         }
         Box(
             modifier = Modifier.size(36.dp).clip(CircleShape).background(NuFitColors.PrimaryContainer),

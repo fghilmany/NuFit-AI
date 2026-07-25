@@ -24,13 +24,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_nav_account
+import nufitai.shared.generated.resources.monthlyplan_nav_chat_ai
+import nufitai.shared.generated.resources.monthlyplan_nav_home
+import nufitai.shared.generated.resources.monthlyplan_nav_meal
+import nufitai.shared.generated.resources.monthlyplan_nav_plans
+import org.jetbrains.compose.resources.stringResource
 
-private enum class NavTab(val label: String, val icon: ImageVector) {
-    HOME("Home", Icons.Filled.Home),
-    RENCANA("Rencana", Icons.Filled.ListAlt),
-    CHAT_AI("Chat AI", Icons.Filled.Forum),
-    MAKAN("Makan", Icons.Filled.Restaurant),
-    AKUN("Akun", Icons.Filled.Person),
+private enum class NavTab(val icon: ImageVector) {
+    HOME(Icons.Filled.Home),
+    RENCANA(Icons.Filled.ListAlt),
+    CHAT_AI(Icons.Filled.Forum),
+    MAKAN(Icons.Filled.Restaurant),
+    AKUN(Icons.Filled.Person),
+}
+
+@Composable
+private fun NavTab.label(): String = when (this) {
+    NavTab.HOME -> stringResource(Res.string.monthlyplan_nav_home)
+    NavTab.RENCANA -> stringResource(Res.string.monthlyplan_nav_plans)
+    NavTab.CHAT_AI -> stringResource(Res.string.monthlyplan_nav_chat_ai)
+    NavTab.MAKAN -> stringResource(Res.string.monthlyplan_nav_meal)
+    NavTab.AKUN -> stringResource(Res.string.monthlyplan_nav_account)
 }
 
 /**
@@ -60,14 +76,15 @@ private fun NavTabItem(tab: NavTab, isActive: Boolean) {
             .padding(horizontal = 16.dp, vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        val label = tab.label()
         Icon(
             tab.icon,
-            contentDescription = tab.label,
+            contentDescription = label,
             tint = if (isActive) NuFitColors.OnSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(20.dp),
         )
         Text(
-            tab.label,
+            label,
             style = MaterialTheme.typography.labelSmall,
             color = if (isActive) NuFitColors.OnSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant,
         )

@@ -39,6 +39,18 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailSta
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailViewModel
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.TipsBanner
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.monthlyplan_duration_minutes_label
+import nufitai.shared.generated.resources.monthlyplan_exercise_count_label
+import nufitai.shared.generated.resources.monthlyplan_session_detail_description_fallback
+import nufitai.shared.generated.resources.monthlyplan_session_detail_description_templated
+import nufitai.shared.generated.resources.monthlyplan_session_detail_exercise_meta
+import nufitai.shared.generated.resources.monthlyplan_session_detail_main_exercises_title
+import nufitai.shared.generated.resources.monthlyplan_session_detail_start_button
+import nufitai.shared.generated.resources.monthlyplan_session_detail_tip_body
+import nufitai.shared.generated.resources.monthlyplan_session_detail_tip_title
+import nufitai.shared.generated.resources.monthlyplan_session_detail_top_bar_title
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 /**
@@ -61,7 +73,7 @@ fun SessionDetailScreen(
     LaunchedEffect(planDayId) { viewModel.load(planDayId) }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        OnboardingTopBar(title = "Detail Sesi", onBack = onBack)
+        OnboardingTopBar(title = stringResource(Res.string.monthlyplan_session_detail_top_bar_title), onBack = onBack)
         Box(modifier = Modifier.weight(1f)) {
             when (val current = state) {
                 SessionDetailState.Loading -> LoadingBox()
@@ -83,26 +95,27 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
         ) {
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    SummaryChip(Icons.Filled.FitnessCenter, "${day.exerciseCount()} gerakan")
-                    SummaryChip(Icons.Filled.Timer, "${day.estimatedDurationMinutes()} menit")
+                    SummaryChip(Icons.Filled.FitnessCenter, stringResource(Res.string.monthlyplan_exercise_count_label, day.exerciseCount()))
+                    SummaryChip(Icons.Filled.Timer, stringResource(Res.string.monthlyplan_duration_minutes_label, day.estimatedDurationMinutes()))
                 }
             }
             item {
                 Text(
-                    day.templateLetter?.let { "Sesi $it -- fokus pada pola gerak utama hari ini." } ?: "Sesi latihan hari ini.",
+                    day.templateLetter?.let { stringResource(Res.string.monthlyplan_session_detail_description_templated, it) }
+                        ?: stringResource(Res.string.monthlyplan_session_detail_description_fallback),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
             val mainExercises = day.mainExercises.orEmpty()
             if (mainExercises.isNotEmpty()) {
-                item { Text("Latihan Utama", style = MaterialTheme.typography.titleLarge) }
+                item { Text(stringResource(Res.string.monthlyplan_session_detail_main_exercises_title), style = MaterialTheme.typography.titleLarge) }
                 items(mainExercises) { exercise -> ExerciseRow(exercise, state.exercisesById[exercise.exerciseId]?.name ?: exercise.exerciseId) }
             }
             item {
                 TipsBanner(
-                    title = "Saran NuFit AI",
-                    body = "Fokus pada teknik yang benar sebelum menambah beban. Kualitas gerakan lebih penting dari jumlah repetisi.",
+                    title = stringResource(Res.string.monthlyplan_session_detail_tip_title),
+                    body = stringResource(Res.string.monthlyplan_session_detail_tip_body),
                     icon = Icons.Filled.FitnessCenter,
                 )
             }
@@ -111,7 +124,7 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
             onClick = onStartSession,
             colors = ButtonDefaults.buttonColors(containerColor = NuFitColors.PrimaryContainer),
             modifier = Modifier.fillMaxWidth().padding(24.dp),
-        ) { Text("Mulai Sesi Ini") }
+        ) { Text(stringResource(Res.string.monthlyplan_session_detail_start_button)) }
     }
 }
 
@@ -139,7 +152,13 @@ private fun ExerciseRow(exercise: PlannedExercise, name: String) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(name, style = MaterialTheme.typography.titleSmall)
                 Text(
-                    "${exercise.sets}x ${exercise.repRangeOrDuration} • RPE ${exercise.rpeTargetMin}-${exercise.rpeTargetMax}",
+                    stringResource(
+                        Res.string.monthlyplan_session_detail_exercise_meta,
+                        exercise.sets,
+                        exercise.repRangeOrDuration,
+                        exercise.rpeTargetMin,
+                        exercise.rpeTargetMax,
+                    ),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

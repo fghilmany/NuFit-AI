@@ -21,6 +21,13 @@ import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.assessmentdetail_history_empty
+import nufitai.shared.generated.resources.assessmentdetail_history_source_personalized
+import nufitai.shared.generated.resources.assessmentdetail_history_source_template
+import nufitai.shared.generated.resources.assessmentdetail_history_status_active
+import nufitai.shared.generated.resources.assessmentdetail_history_status_archived
+import org.jetbrains.compose.resources.stringResource
 
 /** P-09 Riwayat tab -- not designed in Figma, reuses the "Ringkasan Jawaban" card visual language (issue #77 §9 item 4). */
 @Composable
@@ -28,7 +35,7 @@ fun AssessmentHistoryList(history: List<MonthlyPlan>, modifier: Modifier = Modif
     if (history.size <= 1) {
         Box(modifier = modifier.fillMaxWidth().padding(vertical = 32.dp), contentAlignment = Alignment.Center) {
             Text(
-                "Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.",
+                stringResource(Res.string.assessmentdetail_history_empty),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -62,12 +69,14 @@ private fun AssessmentHistoryRow(plan: MonthlyPlan, modifier: Modifier = Modifie
     }
 }
 
+@Composable
 private fun PlanSource.shortLabel(): String = when (this) {
-    PlanSource.LOCAL_TEMPLATE -> "Template"
-    PlanSource.LOGGED_IN_RULE_ENGINE -> "Personalisasi"
+    PlanSource.LOCAL_TEMPLATE -> stringResource(Res.string.assessmentdetail_history_source_template)
+    PlanSource.LOGGED_IN_RULE_ENGINE -> stringResource(Res.string.assessmentdetail_history_source_personalized)
 }
 
+@Composable
 private fun PlanStatus.shortLabel(): String = when (this) {
-    PlanStatus.ACTIVE -> "Aktif"
-    PlanStatus.ARCHIVED -> "Arsip"
+    PlanStatus.ACTIVE -> stringResource(Res.string.assessmentdetail_history_status_active)
+    PlanStatus.ARCHIVED -> stringResource(Res.string.assessmentdetail_history_status_archived)
 }

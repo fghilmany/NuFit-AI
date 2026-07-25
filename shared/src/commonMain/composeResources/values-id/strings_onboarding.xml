@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_splash_tagline">Latihan cerdas, hasil nyata</string>
+    <string name="onboarding_splash_loading_message">Menyiapkan pengalaman Anda...</string>
+
+    <string name="onboarding_parq_top_bar_title">Cek Kesehatan Dulu</string>
+    <string name="onboarding_parq_step_label">LANGKAH 1 DARI 1</string>
+    <string name="onboarding_parq_answered_count">%1$d / %2$d Dijawab</string>
+    <string name="onboarding_parq_intro_body">Sebelum mulai, mari pastikan latihan Anda aman. Jawab pertanyaan berikut dengan jujur agar kami bisa menyesuaikan program yang tepat untuk Anda.</string>
+    <string name="onboarding_parq_safety_note">Data Anda dijaga kerahasiaannya dan hanya digunakan untuk optimasi algoritma latihan NuFit AI.</string>
+
+    <string name="onboarding_parq_question_jantung_diagnosis">Apakah dokter pernah mengatakan Anda punya masalah jantung, dan menyarankan Anda hanya boleh berolahraga sesuai anjuran dokter?</string>
+    <string name="onboarding_parq_question_nyeri_aktivitas">Apakah Anda pernah merasa nyeri di dada saat beraktivitas fisik (jalan cepat, naik tangga, dll)?</string>
+    <string name="onboarding_parq_question_nyeri_istirahat">Dalam sebulan terakhir, apakah Anda pernah merasa nyeri dada saat sedang tidak beraktivitas (istirahat/duduk diam)?</string>
+    <string name="onboarding_parq_question_pusing_pingsan">Apakah Anda pernah kehilangan keseimbangan karena pusing, atau pernah pingsan, tanpa sebab yang jelas?</string>
+    <string name="onboarding_parq_question_tekanan_darah">Apakah dokter pernah bilang tekanan darah Anda tinggi dan belum terkontrol dengan baik?</string>
+    <string name="onboarding_parq_question_masalah_sendi">Apakah Anda punya masalah tulang atau sendi yang bisa bertambah parah jika Anda mengubah pola aktivitas fisik?</string>
+    <string name="onboarding_parq_question_operasi_recent">Apakah Anda baru saja menjalani operasi tulang, sendi, atau tulang belakang dalam 12 bulan terakhir?</string>
+    <string name="onboarding_parq_question_obat_rutin">Apakah Anda sedang mengonsumsi obat rutin untuk tekanan darah atau jantung?</string>
+    <string name="onboarding_parq_question_diabetes">Apakah Anda memiliki diabetes, dengan gula darah yang akhir-akhir ini sering naik-turun tidak stabil?</string>
+    <string name="onboarding_parq_question_kanker_aktif">Apakah Anda sedang menjalani pengobatan aktif untuk kanker (kemoterapi/radioterapi)?</string>
+    <string name="onboarding_parq_question_kehamilan">Apakah Anda sedang hamil?</string>
+    <string name="onboarding_parq_question_kondisi_lain">Apakah ada kondisi kesehatan lain yang perlu kami ketahui, yang belum tercakup di atas?</string>
+
+    <string name="onboarding_parq_short_jantung_diagnosis">Riwayat masalah jantung</string>
+    <string name="onboarding_parq_short_nyeri_aktivitas">Nyeri dada saat beraktivitas</string>
+    <string name="onboarding_parq_short_nyeri_istirahat">Nyeri dada saat tidak beraktivitas (istirahat)</string>
+    <string name="onboarding_parq_short_pusing_pingsan">Pusing atau pingsan tanpa sebab jelas</string>
+    <string name="onboarding_parq_short_tekanan_darah">Tekanan darah tinggi belum terkontrol</string>
+    <string name="onboarding_parq_short_masalah_sendi">Masalah tulang atau sendi</string>
+    <string name="onboarding_parq_short_operasi_recent">Operasi tulang/sendi dalam 12 bulan terakhir</string>
+    <string name="onboarding_parq_short_obat_rutin">Obat rutin untuk jantung/tekanan darah</string>
+    <string name="onboarding_parq_short_diabetes">Diabetes dengan gula darah tidak stabil</string>
+    <string name="onboarding_parq_short_kanker_aktif">Pengobatan kanker aktif</string>
+    <string name="onboarding_parq_short_kehamilan">Sedang hamil</string>
+    <string name="onboarding_parq_short_kondisi_lain">Kondisi kesehatan lain</string>
+
+    <string name="onboarding_doctorconsult_top_bar_title">Perhatian Kesehatan</string>
+    <string name="onboarding_doctorconsult_title">Sebaiknya konsultasi ke dokter dulu</string>
+    <string name="onboarding_doctorconsult_body">Berdasarkan jawaban Anda, ada kondisi yang sebaiknya didiskusikan dengan dokter sebelum memulai program. Kami tetap menyesuaikan latihan Anda agar aman, tapi konsultasi medis kami sarankan.</string>
+    <string name="onboarding_doctorconsult_flagged_title">Kondisi yang Anda tandai:</string>
+    <string name="onboarding_doctorconsult_ack_label">Saya memahami dan akan/sudah berkonsultasi dengan dokter mengenai kondisi ini.</string>
+    <string name="onboarding_doctorconsult_disclaimer">Ini bukan diagnosis medis. Aplikasi ini bukan pengganti konsultasi dengan tenaga medis profesional.</string>
+
+    <string name="onboarding_wizard_top_bar_title">Quick Assessment</string>
+    <string name="onboarding_wizard_step_label">Langkah %1$d dari %2$d</string>
+    <string name="onboarding_wizard_percent_complete">%1$d%% Selesai</string>
+    <string name="onboarding_wizard_select_all_title">Pilih Semua</string>
+    <string name="onboarding_wizard_select_all_subtitle">Saya punya akses gym lengkap</string>
+    <string name="onboarding_wizard_tips_title">Tips NuFit AI</string>
+    <string name="onboarding_wizard_tips_body">Jika kamu latihan di rumah tanpa alat, pilih Bodyweight saja. Kami akan mencarikan gerakan yang efektif hanya dengan berat tubuhmu!</string>
+
+    <string name="onboarding_bodydata_top_bar_title">Data Tubuh</string>
+    <string name="onboarding_bodydata_heading">Data tubuh (opsional)</string>
+    <string name="onboarding_bodydata_body">Isi kalau mau, atau lewati saja -- kamu tetap bisa mengisinya nanti di pengaturan.</string>
+    <string name="onboarding_bodydata_height_label">Tinggi badan (cm)</string>
+    <string name="onboarding_bodydata_weight_label">Berat badan (kg)</string>
+
+    <string name="onboarding_experience_never_title">Belum pernah</string>
+    <string name="onboarding_experience_never_subtitle">Ini pertama kalinya saya ke gym</string>
+    <string name="onboarding_experience_under_1y_title">Kurang dari 1 tahun</string>
+    <string name="onboarding_experience_under_1y_subtitle">Masih baru, belum terlalu konsisten</string>
+    <string name="onboarding_experience_years_routine_title">Rutin bertahun-tahun</string>
+    <string name="onboarding_experience_years_routine_subtitle">Sudah terbiasa latihan secara rutin</string>
+
+    <string name="onboarding_goal_fat_loss_title">Turun berat badan</string>
+    <string name="onboarding_goal_fat_loss_subtitle">Bakar lemak secara efisien</string>
+    <string name="onboarding_goal_muscle_gain_title">Bentuk otot</string>
+    <string name="onboarding_goal_muscle_gain_subtitle">Tingkatkan massa dan definisi</string>
+    <string name="onboarding_goal_general_health_title">Sehat &amp; bugar</string>
+    <string name="onboarding_goal_general_health_subtitle">Stamina untuk kegiatan harian</string>
+    <string name="onboarding_goal_strength_title">Jadi lebih kuat</string>
+    <string name="onboarding_goal_strength_subtitle">Fokus pada kekuatan fungsional</string>
+
+    <string name="onboarding_frequency_two_to_three_title">2-3x per minggu</string>
+    <string name="onboarding_frequency_two_to_three_subtitle">Cocok untuk memulai secara realistis</string>
+    <string name="onboarding_frequency_four_to_five_title">4-5x per minggu</string>
+    <string name="onboarding_frequency_four_to_five_subtitle">Untuk yang sudah siap lebih intens</string>
+
+    <string name="onboarding_split_full_body_title">Full Body</string>
+    <string name="onboarding_split_full_body_subtitle">Seluruh tubuh dilatih tiap sesi</string>
+    <string name="onboarding_split_upper_lower_title">Upper/Lower</string>
+    <string name="onboarding_split_upper_lower_subtitle">Dipisah antara tubuh atas dan bawah</string>
+    <string name="onboarding_split_unknown_title">Tidak tahu</string>
+    <string name="onboarding_split_unknown_subtitle">Serahkan pilihan ke sistem</string>
+
+    <string name="onboarding_equipment_bodyweight_title">Bodyweight</string>
+    <string name="onboarding_equipment_bodyweight_subtitle">Tanpa Alat</string>
+    <string name="onboarding_equipment_dumbbell_title">Dumbbell</string>
+    <string name="onboarding_equipment_dumbbell_subtitle">Sepasang Alat</string>
+    <string name="onboarding_equipment_barbell_title">Barbell</string>
+    <string name="onboarding_equipment_barbell_subtitle">Angkat Beban</string>
+    <string name="onboarding_equipment_kettlebell_title">Kettlebell</string>
+    <string name="onboarding_equipment_kettlebell_subtitle">Beban Ayun</string>
+    <string name="onboarding_equipment_machine_title">Machine</string>
+    <string name="onboarding_equipment_machine_subtitle">Cable &amp; Station</string>
+    <string name="onboarding_equipment_pullup_bar_title">Pull-Up Bar</string>
+    <string name="onboarding_equipment_pullup_bar_subtitle">Tiang Angkat</string>
+    <string name="onboarding_equipment_cardio_title">Cardio</string>
+    <string name="onboarding_equipment_cardio_subtitle">Treadmill, Sepeda, dll</string>
+</resources>

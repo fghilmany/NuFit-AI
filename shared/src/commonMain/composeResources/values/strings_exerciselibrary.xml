@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="exerciselibrary_title">Explore Movements</string>
+    <string name="exerciselibrary_search_placeholder">Search movements...</string>
+    <string name="exerciselibrary_filter_muscle_group">Target Muscle</string>
+    <string name="exerciselibrary_filter_equipment">Equipment</string>
+    <string name="exerciselibrary_filter_level">Level</string>
+    <string name="exerciselibrary_empty_title">No movements found</string>
+    <string name="exerciselibrary_empty_body">Try removing filters or your search keyword.</string>
+    <string name="exerciselibrary_empty_clear_filters">Clear Filters</string>
+    <string name="exerciselibrary_ai_banner_title">Need a Suggestion?</string>
+    <string name="exerciselibrary_ai_banner_body">Ask NuFit AI which movement suits you today.</string>
+
+    <string name="exerciselibrary_muscle_group_kaki">Legs</string>
+    <string name="exerciselibrary_muscle_group_dada">Chest</string>
+    <string name="exerciselibrary_muscle_group_punggung">Back</string>
+    <string name="exerciselibrary_muscle_group_bahu">Shoulders</string>
+    <string name="exerciselibrary_muscle_group_lengan">Arms</string>
+    <string name="exerciselibrary_muscle_group_inti">Core</string>
+    <string name="exerciselibrary_muscle_group_glutes">Glutes</string>
+    <string name="exerciselibrary_muscle_group_kardio">Cardio</string>
+
+    <string name="exerciselibrary_level_regresi">Beginner</string>
+    <string name="exerciselibrary_level_standar">Intermediate</string>
+    <string name="exerciselibrary_level_progresi">Advanced</string>
+    <string name="exerciselibrary_level_korektif">Corrective</string>
+    <string name="exerciselibrary_level_aksesori">Accessory</string>
+
+    <string name="exerciselibrary_equipment_bodyweight">Bodyweight</string>
+    <string name="exerciselibrary_equipment_dumbbell">Dumbbell</string>
+    <string name="exerciselibrary_equipment_barbell">Barbell</string>
+    <string name="exerciselibrary_equipment_kettlebell">Kettlebell</string>
+    <string name="exerciselibrary_equipment_machine">Machine</string>
+    <string name="exerciselibrary_equipment_pullupbar">Pull-Up Bar</string>
+    <string name="exerciselibrary_equipment_cardio">Cardio</string>
+
+    <string name="exercisedetail_target_muscle_title">Target Muscles</string>
+    <string name="exercisedetail_instructions_title">Step-by-Step Instructions</string>
+    <string name="exercisedetail_mistakes_title">Avoid This</string>
+    <string name="exercisedetail_tips_title">NuFit AI Tips</string>
+    <string name="exercisedetail_alternatives_title">Alternative Movements</string>
+    <string name="exercisedetail_not_found">Movement not found</string>
+</resources>

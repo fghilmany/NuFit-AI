@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_action_continue">Continue</string>
+    <string name="common_action_back">Back</string>
+    <string name="common_action_cancel">Cancel</string>
+    <string name="common_action_save">Save</string>
+    <string name="common_action_skip">Skip</string>
+    <string name="common_action_done">Done</string>
+    <string name="common_action_understood">Got it</string>
+    <string name="common_action_yes">Yes</string>
+    <string name="common_action_no">No</string>
+    <string name="common_app_name">NuFit AI</string>
+</resources>
