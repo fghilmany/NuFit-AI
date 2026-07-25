@@ -37,4 +37,12 @@ sealed interface Route {
     /** P-09 -- Assessment Detail (issue #77). */
     @Serializable
     data object AssessmentDetail : Route
+
+    /** P-07 -- Exercise Library (issue #79). */
+    @Serializable
+    data object ExerciseLibrary : Route
+
+    /** P-08 -- Exercise Detail (issue #79). */
+    @Serializable
+    data class ExerciseDetail(val exerciseId: String) : Route
 }

@@ -1,11 +1,13 @@
 package com.fghilmany.nufitai.fake
 
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.CommonMistake
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 
 fun testExercise(
     id: String,
@@ -18,6 +20,12 @@ fun testExercise(
     areaTerbebani: Set<BodyArea>? = null,
     substitusiSetara: Map<EquipmentCategory, String>? = null,
     polaGerakTerkait: Set<MovementPattern>? = null,
+    primaryMuscleGroup: MuscleGroup = MuscleGroup.KAKI,
+    targetMusclesPrimary: List<String> = emptyList(),
+    targetMusclesSecondary: List<String> = emptyList(),
+    instructions: List<String> = listOf("Langkah 1"),
+    commonMistakes: List<CommonMistake> = listOf(CommonMistake("Kesalahan", "Deskripsi")),
+    safetyTips: List<String> = listOf("Tips"),
 ): Exercise = Exercise(
     id = id,
     name = id,
@@ -37,4 +45,10 @@ fun testExercise(
     highImpact = false,
     isometricHeavy = false,
     mediaSlug = null,
+    primaryMuscleGroup = primaryMuscleGroup,
+    targetMusclesPrimary = targetMusclesPrimary,
+    targetMusclesSecondary = targetMusclesSecondary,
+    instructions = instructions,
+    commonMistakes = commonMistakes,
+    safetyTips = safetyTips,
 )

@@ -24,4 +24,15 @@ data class Exercise(
     val highImpact: Boolean,
     val isometricHeavy: Boolean,
     val mediaSlug: String?,
+    /** issue #79 -- P-07 card badge + "Otot Target" filter (coarse, closed set). */
+    val primaryMuscleGroup: MuscleGroup,
+    /** issue #79 -- P-08 target-muscle chip row, Indonesian display labels. */
+    val targetMusclesPrimary: List<String>,
+    val targetMusclesSecondary: List<String>,
+    /** issue #79 -- P-08 "Instruksi Langkah-demi-Langkah", ordered. */
+    val instructions: List<String>,
+    /** issue #79 -- P-08 "Hindari Hal Ini". Never empty (AC-5, BLOCKING). */
+    val commonMistakes: List<CommonMistake>,
+    /** issue #79 -- P-08 "Saran NuFit AI". Never empty (AC-5, BLOCKING). */
+    val safetyTips: List<String>,
 )

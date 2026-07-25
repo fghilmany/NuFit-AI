@@ -12,6 +12,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.fghilmany.nufitai.presentation.assessmentdetail.screen.AssessmentDetailScreen
+import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseDetailScreen
+import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseLibraryScreen
 import com.fghilmany.nufitai.presentation.fullassessment.screen.FullAssessmentStubScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.HomeScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.SessionDetailScreen
@@ -87,6 +89,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onSessionClick = { planDayId -> navController.navigate(Route.SessionDetail(planDayId)) },
                 onStartSession = { navController.navigate(Route.PtModeStub) },
                 onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
+                onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
             )
         }
 
@@ -135,6 +138,23 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                     }
                 },
                 onOpenFullAssessment = { navController.navigate(Route.FullAssessmentStub) },
+            )
+        }
+
+        composable<Route.ExerciseLibrary> {
+            ExerciseLibraryScreen(
+                onBack = { navController.popBackStack() },
+                onExerciseClick = { exerciseId -> navController.navigate(Route.ExerciseDetail(exerciseId)) },
+            )
+        }
+
+        composable<Route.ExerciseDetail> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.ExerciseDetail>()
+            ExerciseDetailScreen(
+                exerciseId = route.exerciseId,
+                onBack = { navController.popBackStack() },
+                // Tapping an alternative pushes a new detail screen -- lets "back" walk the chain.
+                onAlternativeClick = { alternativeId -> navController.navigate(Route.ExerciseDetail(alternativeId)) },
             )
         }
     }

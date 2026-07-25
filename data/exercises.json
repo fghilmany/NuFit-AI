@@ -20,7 +20,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)",
+      "Punggung Bawah (Erector Spinae)"
+    ],
+    "instructions": [
+      "Posisikan barbel di trapezius atas (high-bar), pegangan sedikit lebih lebar dari bahu",
+      "Keluarkan barbel dari rak, langkah mundur 2-3 langkah, kaki selebar bahu",
+      "Dorong pinggul ke belakang dan turun, lutut mengikuti arah ujung kaki",
+      "Turun sampai paha di bawah sejajar lantai (jika mobilitas memungkinkan)",
+      "Dorong melalui tengah telapak kaki untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat di titik terendah",
+        "description": "ROM terlalu dalam untuk mobilitas saat ini, kurangi kedalaman atau screening ulang"
+      },
+      {
+        "title": "Lutut valgus (masuk ke dalam)",
+        "description": "tanda `flag_knee_valgus` aktif, turunkan beban dan kerjakan aktivasi glute medius"
+      },
+      {
+        "title": "Tumit terangkat",
+        "description": "cek mobilitas ankle, pertimbangkan sepatu heel-raise atau ganjal tumit sementara"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lantai menjauh, bukan cuma berdiri",
+      "Dada tetap terbuka, jangan biarkan punggung membulat",
+      "Lutut mengikuti ujung kaki, jangan masuk ke dalam"
+    ]
   },
   {
     "id": "BB-SQUAT-001",
@@ -42,7 +78,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Atas",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Posisikan barbel di rack position (bertumpu di bahu depan, siku tinggi menghadap depan)",
+      "Keluarkan dari rak, langkah mundur, kaki selebar bahu",
+      "Turun dengan pola squat standar, jaga siku tetap tinggi dan dada terbuka",
+      "Dorong melalui tengah telapak kaki untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku turun",
+        "description": "barbel bergeser ke depan dan jatuh, cue \"siku tinggi\" berulang, mungkin butuh kerja mobilitas bahu terpisah"
+      },
+      {
+        "title": "Pergelangan tangan sakit di rack position",
+        "description": "coba grip silang (cross-arm) sebagai alternatif"
+      }
+    ],
+    "safetyTips": [
+      "Siku tinggi sepanjang gerakan, jangan turun",
+      "Dada membusung, jadi tumpuan alami untuk barbel",
+      "Turun tegak lurus, bukan condong ke depan"
+    ]
   },
   {
     "id": "BB-HINGE-000",
@@ -64,7 +131,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Berdiri memegang barbel selebar bahu, overhand grip",
+      "Kaki selebar pinggul, lutut sedikit menekuk (fixed sepanjang gerakan)",
+      "Dorong pinggul ke belakang, turunkan barbel menyusuri depan kaki, punggung netral",
+      "Turun sampai terasa stretch di hamstring (biasanya sebatas pertengahan betis)",
+      "Dorong pinggul maju untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membungkuk",
+        "description": "ROM terlalu dalam untuk mobilitas hamstring saat ini, kurangi kedalaman"
+      },
+      {
+        "title": "Barbel menjauh dari kaki",
+        "description": "tekanan ke punggung bawah bertambah, tekankan \"dekat badan\""
+      },
+      {
+        "title": "Lutut ikut menekuk banyak (mirip squat)",
+        "description": "cue \"pinggul ke belakang\""
+      }
+    ],
+    "safetyTips": [
+      "Barbel menyusuri kaki, tetap dekat badan",
+      "Pinggul ke belakang, bukan lutut menekuk lebih dalam",
+      "Punggung tetap lurus dari kepala sampai tulang ekor"
+    ]
   },
   {
     "id": "BB-HINGE-001",
@@ -86,7 +189,45 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes",
+      "Punggung Bawah"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)",
+      "Trapezius (Leher-Bahu)"
+    ],
+    "instructions": [
+      "Barbel di lantai, kaki selebar pinggul, tulang kering menyentuh/hampir menyentuh barbel",
+      "Dorong pinggul ke belakang, tekuk lutut secukupnya untuk meraih barbel, punggung netral",
+      "Genggam barbel selebar bahu, dada terbuka, tulang belakang netral sebelum mulai angkat",
+      "Dorong melalui tumit dan pinggul untuk berdiri, barbel dekat badan sepanjang lintasan",
+      "Turunkan kembali dengan pola yang sama terbalik"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat saat setup atau di awal tarikan",
+        "description": "mobilitas/kontrol hinge belum siap beban ini, mundur ke Barbell RDL atau kurangi beban"
+      },
+      {
+        "title": "Pinggul naik duluan sebelum dada (\"stripper deadlift\")",
+        "description": "cue \"naik bersamaan\", biasanya tanda hamstring/glute belum cukup kuat mengangkat beban dari posisi rendah"
+      },
+      {
+        "title": "Barbel menjauh dari badan",
+        "description": "tambah beban signifikan ke punggung bawah, tekankan dekat badan sepanjang lintasan"
+      }
+    ],
+    "safetyTips": [
+      "Tarik barbel dekat ke tulang kering sepanjang lintasan",
+      "Dada dan pinggul naik bersamaan, bukan pinggul duluan",
+      "Dorong lantai menjauh dengan kaki, bukan menarik dengan punggung"
+    ]
   },
   {
     "id": "BB-HINGE-002",
@@ -108,7 +249,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Duduk di lantai, punggung atas bersandar di tepi bangku, barbel di atas pinggul (gunakan bantalan/pad pelindung)",
+      "Telapak kaki menapak, lutut ditekuk ~90° di titik puncak",
+      "Dorong pinggul ke atas sampai badan lurus dari lutut ke bahu, remas glute di puncak",
+      "Turunkan dengan kontrol sampai pinggul hampir menyentuh lantai"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah yang melengkung untuk bantu dorongan (bukan pinggul)",
+        "description": "kurangi beban, fokus gerakan murni dari pinggul"
+      },
+      {
+        "title": "Kaki terlalu jauh/dekat dari badan",
+        "description": "sudut lutut di puncak tidak 90°, sesuaikan posisi kaki"
+      },
+      {
+        "title": "Leher mendongak berlebihan",
+        "description": "jaga posisi netral, dagu sedikit menunduk"
+      }
+    ],
+    "safetyTips": [
+      "Remas pantat sekuat mungkin di puncak, tahan 1 detik",
+      "Dagu sedikit menunduk, jangan mendongak",
+      "Dorong lewat tumit, bukan ujung kaki"
+    ]
   },
   {
     "id": "BB-HINGE-003",
@@ -132,7 +306,44 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Dalam (Adductor)",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Inti (Core)",
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Berdiri dengan stance lebar, ujung kaki mengarah keluar ~30-45°, barbel di depan tulang kering",
+      "Tangan memegang barbel di antara kedua kaki (grip lebih sempit dari conventional)",
+      "Turun dengan lutut mengikuti arah ujung kaki, dada tetap terbuka, punggung netral",
+      "Dorong lantai menjauh dengan kedua kaki untuk berdiri, barbel dekat badan",
+      "Turunkan kembali dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut masuk ke dalam saat naik",
+        "description": "cek `flag_knee_valgus`, kurangi beban"
+      },
+      {
+        "title": "Pinggul naik duluan sebelum dada",
+        "description": "sama seperti conventional, indikasi belum siap beban ini"
+      },
+      {
+        "title": "Punggung membulat",
+        "description": "mundur ke Barbell RDL atau kurangi beban"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lantai menjauh dengan kedua kaki, seperti mendorong lantai ke samping",
+      "Lutut mengikuti arah ujung kaki sepanjang gerakan",
+      "Dada tetap terbuka, punggung netral"
+    ]
   },
   {
     "id": "BB-HINGE-004",
@@ -154,7 +365,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Bawah",
+      "Trapezius (Leher-Bahu)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Lengan Bawah (Forearm)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Atur pin rak/safety bar setinggi sedikit di bawah lutut",
+      "Berdiri di depan barbel dengan stance seperti conventional deadlift",
+      "Dorong pinggul ke belakang, genggam barbel, punggung netral, dada terbuka",
+      "Dorong melalui tumit dan pinggul untuk berdiri tegak, kunci pinggul di puncak",
+      "Turunkan kembali dengan kontrol sampai barbel menyentuh pin"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Beban terlalu berat sehingga punggung membulat",
+        "description": "ini gerakan overload, tapi form tetap prioritas, turunkan beban"
+      },
+      {
+        "title": "Hiperekstensi berlebihan di puncak (melengkung ke belakang)",
+        "description": "cue \"kunci pinggul\", bukan melengkungkan punggung"
+      }
+    ],
+    "safetyTips": [
+      "Kunci pinggul di puncak, remas glute",
+      "Punggung tetap netral, jangan membulat karena beban lebih berat dari biasa",
+      "Turunkan dengan kontrol, jangan dijatuhkan"
+    ]
   },
   {
     "id": "BB-PUSHH-000",
@@ -176,7 +420,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring di bangku, mata sejajar barbel, kaki menapak lantai",
+      "Genggam barbel sedikit lebih lebar dari bahu, keluarkan dari rak",
+      "Turunkan barbel dengan kontrol ke tengah dada, siku ~45° dari badan",
+      "Dorong kembali ke atas sampai lengan hampir lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu terangkat dari bangku saat menurunkan",
+        "description": "kontrol scapula kurang atau beban terlalu berat, kurangi beban"
+      },
+      {
+        "title": "Barbel dihentak dari dada (bouncing)",
+        "description": "perlambat, sentuhan ringan lalu dorong terkontrol"
+      },
+      {
+        "title": "Siku terlalu melebar 90° dari badan",
+        "description": "berisiko ke bahu, arahkan siku lebih dekat badan (~45°)"
+      }
+    ],
+    "safetyTips": [
+      "Tarik barbel turun ke dada, bukan dijatuhkan",
+      "Bahu tetap menempel bangku, remas tulang belikat",
+      "Kaki mendorong lantai untuk stabilitas, badan tetap rapat ke bangku"
+    ]
   },
   {
     "id": "BB-PUSHH-001",
@@ -196,7 +473,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Atur bangku incline 30-45°, berbaring dengan mata sejajar barbel",
+      "Genggam barbel sedikit lebih lebar dari bahu, keluarkan dari rak",
+      "Turunkan barbel dengan kontrol ke dada bagian atas",
+      "Dorong kembali ke atas sampai lengan hampir lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Sudut bangku terlalu tegak (>45°)",
+        "description": "jadi terlalu mirip overhead press, turunkan sudut"
+      },
+      {
+        "title": "Barbel diturunkan ke leher/dagu",
+        "description": "risiko bahu, arahkan ke dada bagian atas"
+      }
+    ],
+    "safetyTips": [
+      "Turunkan ke dada bagian atas, bukan leher",
+      "Bahu tetap turun dan stabil sepanjang gerakan"
+    ]
   },
   {
     "id": "BB-PUSHH-002",
@@ -216,7 +521,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "LENGAN",
+    "targetMusclesPrimary": [
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Dada (Pectoralis)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring di bangku, genggam barbel selebar bahu (lebih sempit dari bench press standar)",
+      "Turunkan barbel dengan kontrol ke dada bagian bawah, siku menyusuri dekat badan",
+      "Dorong kembali ke atas, fokus ekstensi siku penuh"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Grip terlalu sempit (kurang dari selebar bahu)",
+        "description": "tekanan berlebih di pergelangan tangan, lebarkan sedikit"
+      },
+      {
+        "title": "Siku melebar seperti bench press standar",
+        "description": "hilang penekanan triceps, cue \"siku dekat badan\""
+      }
+    ],
+    "safetyTips": [
+      "Siku menyusuri dekat badan, jangan melebar",
+      "Dorong lewat triceps, bayangkan meninju ke atas"
+    ]
   },
   {
     "id": "BB-PUSHV-000",
@@ -238,7 +570,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Dada Atas (Upper Chest)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri kaki selebar bahu, barbel di rack position depan bahu, telapak menghadap depan",
+      "Aktifkan core dan glute, jangan biarkan punggung melengkung",
+      "Dorong barbel lurus ke atas, kepala sedikit mundur agar barbel lewat wajah dengan aman",
+      "Kunci lengan penuh di atas kepala, barbel sejajar di atas telinga",
+      "Turunkan dengan kontrol kembali ke posisi bahu"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah melengkung berlebihan (excessive arch)",
+        "description": "core/glute belum cukup kuat menahan beban di atas kepala, turunkan beban"
+      },
+      {
+        "title": "Barbel bergerak ke depan bukan lurus ke atas",
+        "description": "risiko cedera bahu, cek jalur dorongan"
+      },
+      {
+        "title": "Lutut ikut menekuk untuk bantu dorongan (jadi push press tanpa sengaja)",
+        "description": "kalau tidak sengaja berarti beban terlalu berat"
+      }
+    ],
+    "safetyTips": [
+      "Kencangkan perut dan bokong sebelum dorong",
+      "Dorong lurus ke atas, kepala 'masuk' setelah barbel lewat",
+      "Badan tidak ikut condong ke belakang"
+    ]
   },
   {
     "id": "BB-PUSHV-001",
@@ -261,7 +628,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri dengan barbel di rack position depan bahu, seperti awalan Overhead Press",
+      "Tekuk lutut sedikit (dip) dengan cepat namun terkontrol, torso tetap tegak",
+      "Dorong eksplosif melalui kaki sambil mendorong barbel ke atas",
+      "Kunci lengan penuh di atas kepala di puncak",
+      "Turunkan dengan kontrol kembali ke posisi bahu"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Dip terlalu dalam/lambat",
+        "description": "kehilangan elastisitas untuk drive, perpendek dan percepat dip"
+      },
+      {
+        "title": "Torso condong ke depan saat dip",
+        "description": "mengubah pola jadi tidak efisien, jaga tegak"
+      },
+      {
+        "title": "Timing dip-drive-dorong tidak sinkron",
+        "description": "latih tanpa beban dulu untuk membangun koordinasi"
+      }
+    ],
+    "safetyTips": [
+      "Dip pendek dan cepat, seperti mini squat, bukan membungkuk",
+      "Dorong eksplosif dari kaki, barbel ikut terdorong ke atas",
+      "Torso tetap tegak sepanjang dip, jangan condong ke depan"
+    ]
   },
   {
     "id": "BB-PULLH-000",
@@ -286,7 +689,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)",
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Berdiri, dorong pinggul ke belakang (posisi hinge), torso condong ~45° atau lebih rendah",
+      "Genggam barbel selebar bahu, punggung tetap netral",
+      "Tarik barbel ke arah pusar/perut bagian bawah, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat",
+        "description": "posisi hinge belum stabil dengan beban ini, kurangi beban atau perbaiki pola hinge dulu"
+      },
+      {
+        "title": "Badan ikut berayun (menggunakan momentum) untuk bantu tarikan",
+        "description": "kurangi beban, kontrol penuh"
+      },
+      {
+        "title": "Bahu ikut naik saat menarik (shrug)",
+        "description": "cue \"remas tulang belikat, bukan angkat bahu\""
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke belakang, bukan mengangkat bahu",
+      "Remas tulang belikat di puncak gerakan",
+      "Punggung tetap netral seperti posisi hinge sepanjang set"
+    ]
   },
   {
     "id": "BB-PULLH-001",
@@ -308,7 +745,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri dengan torso condong hampir sejajar lantai (lebih rendah dari bent-over row biasa), barbel di lantai",
+      "Genggam barbel selebar bahu, punggung netral",
+      "Tarik barbel eksplosif dari lantai ke arah dada bagian bawah/perut, siku menyusuri dekat badan",
+      "Turunkan sepenuhnya kembali ke lantai, jeda sebentar (dead-stop) sebelum rep berikutnya"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso naik-turun mengikuti tarikan (pakai momentum badan)",
+        "description": "kurangi beban, jaga sudut torso tetap"
+      },
+      {
+        "title": "Tidak benar-benar berhenti di lantai (tetap ada tegangan)",
+        "description": "kehilangan manfaat dead-stop, tekankan jeda penuh"
+      }
+    ],
+    "safetyTips": [
+      "Barbel berhenti total di lantai tiap rep, reset posisi",
+      "Tarik eksplosif dari diam, seperti menarik tali putus",
+      "Torso tetap stabil di sudut yang sama, jangan naik-turun ikut tarikan"
+    ]
   },
   {
     "id": "BW-SQUAT-000",
@@ -333,7 +800,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri membelakangi kursi, kaki selebar bahu",
+      "Dorong pinggul ke belakang, turun perlahan sampai bokong menyentuh kursi",
+      "Sentuh kursi sebentar (jangan duduk penuh/bersandar), lalu dorong kembali berdiri",
+      "Ulangi dengan kontrol, jangan menjatuhkan diri ke kursi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menjatuhkan diri ke kursi",
+        "description": "perlambat tempo turun, kontrol penuh"
+      },
+      {
+        "title": "Lutut jauh melewati ujung kaki",
+        "description": "mundurkan posisi kaki sedikit dari kursi"
+      }
+    ],
+    "safetyTips": [
+      "Sentuh kursi dengan lembut, jangan jatuh duduk",
+      "Dada tetap terbuka sepanjang gerakan",
+      "Dorong lewat tumit saat berdiri kembali"
+    ]
   },
   {
     "id": "BW-SQUAT-001",
@@ -359,7 +856,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri kaki selebar bahu, ujung kaki sedikit mengarah keluar",
+      "Dorong pinggul ke belakang, turun seperti duduk di kursi",
+      "Turun sampai paha sejajar lantai atau senyaman mungkin",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Tumit terangkat",
+        "description": "turunkan kedalaman squat, kerjakan Ankle Circles (BW-CORR-006) sebagai pemanasan"
+      },
+      {
+        "title": "Lutut masuk ke dalam",
+        "description": "tambahkan Side-Lying Leg Raise (BW-CORR-005) sebagai aktivasi sebelum squat"
+      },
+      {
+        "title": "Punggung membungkuk di titik terendah",
+        "description": "kurangi kedalaman, fokus dada terbuka"
+      }
+    ],
+    "safetyTips": [
+      "Dorong pinggul ke belakang seperti mau duduk",
+      "Jaga dada tetap terbuka",
+      "Tumit tetap menapak lantai",
+      "Lutut mengarah sama dengan ujung kaki"
+    ]
   },
   {
     "id": "BW-SQUAT-002",
@@ -386,7 +918,37 @@
     "polaGerakTerkait": null,
     "highImpact": true,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Betis (Calves)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Mulai dari posisi squat berdiri, kaki selebar bahu",
+      "Turun ke posisi squat seperti biasa",
+      "Dorong eksplosif ke atas hingga kedua kaki melompat dari lantai",
+      "Mendarat lembut dengan lutut sedikit menekuk, langsung lanjut ke squat berikutnya"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mendarat dengan lutut kaku/lurus",
+        "description": "tekankan cue \"meredam\", perlambat dulu dengan latihan mendarat tanpa lompat tinggi"
+      },
+      {
+        "title": "Lutut masuk ke dalam saat mendarat",
+        "description": "kurangi tinggi lompatan, fokus kontrol landing dulu"
+      }
+    ],
+    "safetyTips": [
+      "Mendarat selembut mungkin, seperti meredam kejutan",
+      "Lutut sedikit menekuk saat mendarat, jangan kaku",
+      "Squat dulu dengan benar sebelum meledak ke atas"
+    ]
   },
   {
     "id": "BW-HINGE-000",
@@ -410,7 +972,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Pegang tongkat vertikal di belakang punggung, menyentuh 3 titik: belakang kepala, punggung atas, tulang ekor",
+      "Berdiri, lutut sedikit menekuk",
+      "Dorong pinggul ke belakang sambil badan condong ke depan, tongkat tetap menyentuh 3 titik sepanjang gerakan",
+      "Kembali berdiri tegak"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Tongkat lepas dari punggung bawah (tulang ekor) saat condong",
+        "description": "tanda gerakan datang dari punggung, bukan pinggul — perlambat dan kurangi kedalaman"
+      },
+      {
+        "title": "Lutut menekuk terlalu banyak (jadi mirip squat)",
+        "description": "tahan lutut lebih statis, fokus dorong pinggul ke belakang"
+      }
+    ],
+    "safetyTips": [
+      "Tongkat harus tetap nempel di 3 titik ini sepanjang gerakan",
+      "Dorong pinggul ke belakang, bukan membungkukkan punggung",
+      "Lutut sedikit menekuk, tidak kaku"
+    ]
   },
   {
     "id": "BW-HINGE-001",
@@ -435,7 +1026,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Berbaring telentang, lutut menekuk, telapak kaki menapak lantai selebar pinggul",
+      "Dorong pinggul ke atas dengan mengencangkan glute, badan lurus dari lutut sampai bahu",
+      "Tahan sebentar di titik teratas",
+      "Turunkan perlahan dan terkontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mendorong dari punggung bawah, bukan glute",
+        "description": "fokus rasakan kontraksi bokong dulu sebelum mengangkat"
+      },
+      {
+        "title": "Lutut jatuh ke luar/dalam",
+        "description": "jaga lutut sejajar dengan telapak kaki"
+      }
+    ],
+    "safetyTips": [
+      "Dorong pinggul ke atas lewat tumit, bukan mendorong dari punggung bawah",
+      "Kencangkan bokong di titik teratas",
+      "Turun perlahan, jangan menjatuhkan pinggul"
+    ]
   },
   {
     "id": "BW-HINGE-002",
@@ -462,7 +1083,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri kaki selebar pinggul, tangan disilang di dada atau lurus ke depan",
+      "Dorong pinggul ke belakang, badan condong ke depan, punggung tetap netral",
+      "Turun sampai badan hampir sejajar lantai atau senyaman mungkin",
+      "Dorong pinggul ke depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat",
+        "description": "kembali ke Hip Hinge with Dowel (BW-HINGE-000) untuk perbaiki pola dulu"
+      },
+      {
+        "title": "Lutut menekuk berlebihan (jadi mirip squat)",
+        "description": "tahan lutut lebih statis"
+      }
+    ],
+    "safetyTips": [
+      "Dorong pinggul ke belakang seperti menutup pintu dengan bokong",
+      "Punggung tetap lurus dari kepala sampai tulang ekor",
+      "Rasakan regangan di belakang paha, bukan nyeri di punggung bawah"
+    ]
   },
   {
     "id": "BW-HINGE-003",
@@ -487,7 +1138,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "otot stabilisasi pergelangan kaki"
+    ],
+    "instructions": [
+      "Berdiri satu kaki, lutut kaki tumpu sedikit menekuk",
+      "Dorong pinggul ke belakang sambil kaki bebas terangkat lurus ke belakang, badan condong ke depan",
+      "Jaga pinggul tetap sejajar, sampai badan hampir sejajar lantai",
+      "Dorong pinggul ke depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul memutar ke samping",
+        "description": "kurangi rentang gerak, fokus jaga pinggul sejajar dulu"
+      },
+      {
+        "title": "Kehilangan keseimbangan berulang",
+        "description": "pegangan ringan ke dinding/kursi sebagai bantuan sementara"
+      }
+    ],
+    "safetyTips": [
+      "Bayangkan badan dan kaki belakang membentuk garis lurus seperti huruf T",
+      "Jaga pinggul tetap menghadap ke depan, jangan memutar",
+      "Fokus pandangan ke satu titik di lantai untuk bantu keseimbangan"
+    ]
   },
   {
     "id": "BW-PUSHH-000",
@@ -509,7 +1190,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri menghadap dinding, jarak selengan",
+      "Tempatkan kedua tangan di dinding selebar bahu",
+      "Tekuk siku, dekatkan dada ke dinding",
+      "Dorong kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul menekuk (badan tidak lurus)",
+        "description": "mundurkan sedikit posisi kaki, jaga garis lurus tubuh"
+      },
+      {
+        "title": "Gerakan terlalu kecil/tidak penuh",
+        "description": "pastikan dada benar-benar mendekat ke dinding"
+      }
+    ],
+    "safetyTips": [
+      "Badan tetap lurus dari kepala sampai tumit",
+      "Siku mengarah agak ke bawah-belakang, tidak melebar penuh ke samping",
+      "Dorong sampai lengan lurus penuh"
+    ]
   },
   {
     "id": "BW-PUSHH-001",
@@ -531,7 +1242,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Tempatkan tangan di permukaan lebih tinggi dari lantai (bangku, meja rendah, tembok pembatas)",
+      "Posisi badan lurus dari kepala sampai tumit, kaki di lantai",
+      "Turunkan dada mendekati permukaan, siku membentuk sudut ~45°",
+      "Dorong kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun/melorot",
+        "description": "kencangkan core, atau naikkan lagi ketinggian permukaan"
+      },
+      {
+        "title": "Permukaan terlalu rendah terlalu cepat",
+        "description": "turunkan ketinggian bertahap"
+      }
+    ],
+    "safetyTips": [
+      "Semakin rendah permukaan yang dipakai, semakin berat gerakannya",
+      "Badan tetap satu garis lurus, jangan biarkan pinggul turun",
+      "Kontrol turun, jangan jatuh ke permukaan"
+    ]
   },
   {
     "id": "BW-PUSHH-002",
@@ -556,7 +1297,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Posisi plank dengan lutut menyentuh lantai (bukan ujung kaki)",
+      "Badan lurus dari kepala sampai lutut, tangan sedikit lebih lebar dari bahu",
+      "Turunkan dada mendekati lantai, siku membentuk sudut ~45°",
+      "Dorong kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul menekuk ke atas (bokong naik)",
+        "description": "kencangkan core, jaga garis lurus dari kepala ke lutut"
+      },
+      {
+        "title": "Rentang gerak terlalu pendek",
+        "description": "turunkan dada lebih dekat ke lantai untuk hasil maksimal"
+      }
+    ],
+    "safetyTips": [
+      "Badan tetap lurus dari kepala sampai lutut, jangan menekuk di pinggul",
+      "Turunkan dada sedekat mungkin ke lantai",
+      "Siku membentuk sudut, tidak mepet atau melebar penuh"
+    ]
   },
   {
     "id": "BW-PUSHH-003",
@@ -583,7 +1354,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Posisi plank tangan, tangan sedikit lebih lebar dari bahu",
+      "Tubuh lurus dari kepala sampai tumit",
+      "Turunkan dada mendekati lantai, siku membentuk sudut ~45° dari badan",
+      "Dorong kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun/melorot",
+        "description": "aktifkan core lebih dulu, kalau tetap sulit turun ke Knee Push-Up (BW-PUSHH-002)"
+      },
+      {
+        "title": "Pinggul naik tinggi (seperti bentuk V)",
+        "description": "sama, indikasi core belum cukup kuat menahan posisi"
+      },
+      {
+        "title": "Siku terlalu melebar ke samping (mepet 90°)",
+        "description": "berisiko ke bahu, arahkan siku lebih dekat badan"
+      }
+    ],
+    "safetyTips": [
+      "Badan tetap satu garis lurus dari kepala sampai tumit",
+      "Siku membentuk sudut, jangan mepet badan atau melebar penuh",
+      "Lihat sedikit ke depan, jangan menunduk"
+    ]
   },
   {
     "id": "BW-PUSHV-000",
@@ -609,7 +1414,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Dada Atas (Upper Chest)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Posisi plank, lalu angkat pinggul tinggi ke atas membentuk huruf \"V\" terbalik (mirip Downward Dog)",
+      "Tangan selebar bahu, pandangan ke arah kaki",
+      "Tekuk siku, turunkan kepala mendekati lantai di antara kedua tangan",
+      "Dorong kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul terlalu rendah (mirip push-up biasa)",
+        "description": "naikkan pinggul lebih tinggi untuk dapat sudut vertikal yang benar"
+      },
+      {
+        "title": "Kepala membentur lantai/gerakan tidak terkontrol",
+        "description": "perlambat tempo, kurangi kedalaman dulu"
+      }
+    ],
+    "safetyTips": [
+      "Bentuk badan seperti huruf V terbalik, pinggul tinggi",
+      "Turunkan kepala ke arah lantai, bukan ke depan",
+      "Siku mengarah agak ke belakang, tidak melebar penuh ke samping"
+    ]
   },
   {
     "id": "BW-PULLH-000",
@@ -637,7 +1472,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "LENGAN",
+    "targetMusclesPrimary": [
+      "Punggung (Back)",
+      "Lengan Depan (Biceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Bahu Belakang (Rear Delt)"
+    ],
+    "instructions": [
+      "Posisi di bawah bar rendah/meja kokoh, pegang dengan kedua tangan selebar bahu",
+      "Badan lurus, tumit di lantai, badan membentuk garis lurus dari kepala sampai tumit",
+      "Tarik dada ke arah bar/meja dengan menarik siku ke belakang",
+      "Turunkan perlahan dan terkontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun/melorot",
+        "description": "kencangkan core, atau naikkan sedikit posisi kaki untuk kurangi beban dulu"
+      },
+      {
+        "title": "Menarik dengan tangan/bahu, bukan siku",
+        "description": "fokus cue \"tarik siku ke belakang\""
+      }
+    ],
+    "safetyTips": [
+      "Tarik dengan siku, bukan tangan",
+      "Jaga badan tetap lurus sepanjang gerakan, jangan biarkan pinggul turun",
+      "Remas tulang belikat di titik tertinggi"
+    ]
   },
   {
     "id": "BW-PULLH-001",
@@ -662,7 +1527,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "LENGAN",
+    "targetMusclesPrimary": [
+      "Punggung (Back)",
+      "Lengan Depan (Biceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Bahu Belakang (Rear Delt)"
+    ],
+    "instructions": [
+      "Berdiri menghadap doorframe kokoh atau tiang/pegangan, kaki selebar bahu, sedikit condong ke belakang",
+      "Pegang gagang pintu/tiang dengan kedua tangan (atau handuk yang dililit di tiang), lengan lurus ke depan",
+      "Condongkan badan ke belakang sampai lengan menahan sebagian besar berat badan, badan tetap lurus dari kepala sampai tumit",
+      "Tarik dada ke arah tangan dengan menarik siku ke belakang, lalu turunkan perlahan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggang menekuk/melengkung",
+        "description": "kencangkan core dan glute sepanjang gerakan"
+      },
+      {
+        "title": "Sudut badan terlalu tegak sehingga tidak ada tahanan berarti",
+        "description": "condongkan badan lebih jauh ke belakang"
+      }
+    ],
+    "safetyTips": [
+      "Tarik dengan siku, bukan tangan",
+      "Badan tetap lurus seperti papan, jangan menekuk pinggang",
+      "Makin condong ke belakang, makin berat gerakannya"
+    ]
   },
   {
     "id": "BW-PULLH-002",
@@ -688,7 +1583,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Bahu Belakang (Rear Delt)",
+      "mid/lower trapezius",
+      "Punggung Atas (Rhomboid)"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah (Erector Spinae)"
+    ],
+    "instructions": [
+      "Berbaring tengkurap di lantai/matras, dahi menyentuh lantai, tangan di samping badan",
+      "Posisi Y: angkat kedua lengan lurus di atas kepala membentuk huruf Y, ibu jari mengarah ke atas, tahan 2 detik, turunkan",
+      "Posisi T: angkat kedua lengan lurus ke samping membentuk huruf T, tahan 2 detik, turunkan",
+      "Posisi W: tekuk siku, tarik lengan ke belakang membentuk huruf W (seperti merentangkan sayap), tahan 2 detik, turunkan",
+      "Ulangi urutan Y-T-W sebagai satu siklus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mengangkat kepala/leher berlebihan",
+        "description": "fokus dahi tetap dekat lantai"
+      },
+      {
+        "title": "Mengayun pakai momentum",
+        "description": "perlambat tempo, kurangi rentang gerak dulu"
+      }
+    ],
+    "safetyTips": [
+      "Angkat dari punggung, bukan dari leher",
+      "Remas tulang belikat di tiap posisi",
+      "Gerakan kecil dan terkontrol, bukan mengayun"
+    ]
   },
   {
     "id": "BW-PULLH-003",
@@ -713,7 +1639,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Bahu Belakang (Rear Delt)",
+      "Trapezius Tengah (Mid-Trap)",
+      "Punggung Atas (Rhomboid)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu Dalam (Rotator Cuff)"
+    ],
+    "instructions": [
+      "Berbaring tengkurap, dahi di lantai, kedua lengan lurus di samping badan menempel lantai (posisi awal \"snow angel\")",
+      "Sambil menjaga lengan menempel lantai, geser lengan ke atas kepala (mengikuti pola membuat malaikat salju) sampai membentuk huruf Y",
+      "Geser kembali lengan ke posisi awal di samping badan, tetap menempel lantai",
+      "Ulangi gerakan naik-turun secara terkontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lengan terangkat dari lantai",
+        "description": "turunkan rentang gerak dulu sampai bisa jaga kontak lantai"
+      },
+      {
+        "title": "Punggung bawah melengkung",
+        "description": "kencangkan core, tekan perut ke lantai"
+      }
+    ],
+    "safetyTips": [
+      "Lengan tetap menempel lantai sepanjang gerakan",
+      "Remas tulang belikat saat lengan di atas",
+      "Gerakan lambat, bukan mengayun cepat"
+    ]
   },
   {
     "id": "BW-LUNGE-000",
@@ -737,7 +1693,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri dengan satu kaki di depan, satu kaki di belakang (posisi kuda-kuda), jarak cukup lebar",
+      "Turunkan badan lurus ke bawah, lutut belakang mendekati lantai",
+      "Kedua lutut membentuk sudut ~90° di titik terendah",
+      "Dorong kembali ke posisi awal tanpa mengubah posisi kaki"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut depan melewati jauh ujung kaki",
+        "description": "perlebar jarak kaki depan-belakang"
+      },
+      {
+        "title": "Badan condong ke depan",
+        "description": "jaga dada tetap terbuka dan tegak"
+      }
+    ],
+    "safetyTips": [
+      "Turun lurus ke bawah, seperti ada tali menarik lutut belakang ke lantai",
+      "Lutut depan mengarah sama dengan ujung kaki, tidak masuk ke dalam",
+      "Badan tetap tegak, jangan condong ke depan"
+    ]
   },
   {
     "id": "BW-LUNGE-001",
@@ -759,7 +1745,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri tegak, kaki selebar pinggul",
+      "Melangkah satu kaki ke belakang, turunkan badan sampai lutut belakang mendekati lantai",
+      "Kedua lutut membentuk sudut ~90°",
+      "Dorong lewat kaki depan untuk kembali ke posisi berdiri awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Melangkah terlalu pendek",
+        "description": "beri jarak cukup supaya lutut depan tidak melewati ujung kaki"
+      },
+      {
+        "title": "Kehilangan keseimbangan saat melangkah mundur",
+        "description": "perlambat tempo langkah"
+      }
+    ],
+    "safetyTips": [
+      "Melangkah ke belakang dengan terkontrol, bukan menghentak",
+      "Berat badan tetap di kaki depan",
+      "Dorong lewat tumit kaki depan untuk kembali berdiri"
+    ]
   },
   {
     "id": "BW-LUNGE-002",
@@ -783,7 +1799,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri menghadap bangku/anak tangga yang stabil",
+      "Injak permukaan dengan satu kaki penuh",
+      "Dorong lewat kaki tersebut untuk naik, kaki lain menyusul ke atas",
+      "Turun kembali dengan terkontrol, ganti kaki"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mendorong dari kaki yang masih di lantai (bukan kaki yang naik)",
+        "description": "fokus beban di kaki atas"
+      },
+      {
+        "title": "Ketinggian bangku terlalu tinggi",
+        "description": "turunkan ketinggian sampai lutut tidak melebihi sudut 90° saat naik"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lewat tumit kaki yang naik duluan",
+      "Jangan menghentak/melompat naik, kontrol penuh",
+      "Turun perlahan, jangan menjatuhkan diri"
+    ]
   },
   {
     "id": "BW-LUNGE-003",
@@ -807,7 +1853,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri tegak, kaki selebar pinggul",
+      "Melangkah satu kaki ke depan, turunkan badan sampai lutut belakang mendekati lantai",
+      "Dorong lewat kaki depan untuk berdiri, lalu langsung melangkah maju dengan kaki satunya",
+      "Ulangi bergantian sambil terus bergerak maju"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Melangkah terlalu cepat kehilangan kontrol",
+        "description": "perlambat tempo, fokus tiap langkah"
+      },
+      {
+        "title": "Badan condong ke depan berlebihan",
+        "description": "jaga dada terbuka tegak"
+      }
+    ],
+    "safetyTips": [
+      "Setiap langkah kontrol penuh, jangan terburu-buru",
+      "Badan tetap tegak sepanjang gerakan",
+      "Lutut depan mengarah sama dengan ujung kaki"
+    ]
   },
   {
     "id": "BW-LUNGE-004",
@@ -832,7 +1908,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri membelakangi bangku, tempatkan punggung kaki belakang di atas bangku",
+      "Posisi kaki depan cukup jauh dari bangku agar lutut depan tidak melewati ujung kaki saat turun",
+      "Turunkan badan lurus ke bawah, lutut belakang mendekati lantai",
+      "Dorong lewat kaki depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Terlalu banyak beban bertumpu di kaki belakang",
+        "description": "cek ulang jarak dan posisi, seharusnya kaki depan yang bekerja utama"
+      },
+      {
+        "title": "Lutut depan bergoyang ke dalam",
+        "description": "kurangi kedalaman dulu, perkuat dengan Side-Lying Leg Raise (BW-CORR-005)"
+      }
+    ],
+    "safetyTips": [
+      "Sebagian besar berat badan di kaki depan, kaki belakang cuma penyeimbang",
+      "Turun lurus ke bawah, badan tegak",
+      "Cari jarak kaki depan-bangku yang pas dulu sebelum mulai set"
+    ]
   },
   {
     "id": "BW-CORE-000",
@@ -857,7 +1963,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Hip Flexor (Panggul Depan)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring telentang, angkat kedua lengan lurus ke atas dan kedua lutut membentuk sudut 90°",
+      "Tekan punggung bawah rata ke lantai, kencangkan core",
+      "Turunkan satu lengan ke belakang kepala dan kaki berlawanan lurus ke depan secara bersamaan, tanpa punggung bawah terangkat dari lantai",
+      "Kembali ke posisi awal, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah terangkat dari lantai",
+        "description": "kurangi rentang gerak lengan/kaki (tidak perlu sampai lurus penuh)"
+      },
+      {
+        "title": "Gerakan terlalu cepat",
+        "description": "perlambat, ini gerakan kontrol bukan kecepatan"
+      }
+    ],
+    "safetyTips": [
+      "Punggung bawah tetap menempel lantai sepanjang gerakan",
+      "Gerakan lengan dan kaki berlawanan secara pelan, jangan terburu-buru",
+      "Kalau punggung bawah mulai terangkat, itu tandanya sudah terlalu jauh"
+    ]
   },
   {
     "id": "BW-CORE-001",
@@ -881,7 +2016,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Posisi merangkak, tangan di bawah bahu, lutut di bawah pinggul",
+      "Angkat satu lengan lurus ke depan dan kaki berlawanan lurus ke belakang secara bersamaan",
+      "Jaga pinggul tetap sejajar, tidak berputar ke satu sisi",
+      "Tahan sebentar, kembali ke posisi awal, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul berputar saat mengangkat kaki",
+        "description": "kurangi ketinggian angkat kaki, fokus stabilitas pinggul dulu"
+      },
+      {
+        "title": "Punggung melengkung",
+        "description": "kencangkan core sebelum mulai mengangkat"
+      }
+    ],
+    "safetyTips": [
+      "Bayangkan segelas air di punggung, jangan sampai tumpah (pinggul tidak boleh berputar)",
+      "Lengan dan kaki terangkat setinggi badan, tidak perlu lebih tinggi",
+      "Gerakan pelan dan terkontrol"
+    ]
   },
   {
     "id": "BW-CORE-002",
@@ -908,7 +2072,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": true,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Glutes"
+    ],
+    "instructions": [
+      "Posisi bertumpu pada lengan bawah dan ujung kaki",
+      "Siku tepat di bawah bahu",
+      "Tubuh lurus dari kepala sampai tumit, pandangan ke lantai",
+      "Tahan posisi, jangan menahan napas"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun (punggung bawah melengkung)",
+        "description": "perpendek durasi tahan, fokus aktivasi core dulu"
+      },
+      {
+        "title": "Pinggul naik tinggi",
+        "description": "sama, indikasi kelelahan atau kurang aktivasi"
+      },
+      {
+        "title": "Menahan napas",
+        "description": "ingatkan bernapas normal, ini indikasi tegang berlebihan"
+      }
+    ],
+    "safetyTips": [
+      "Bayangkan menarik pusar ke arah tulang belakang",
+      "Jangan biarkan pinggul turun atau naik",
+      "Bahu jauh dari telinga, rileks"
+    ]
   },
   {
     "id": "BW-CORE-003",
@@ -935,7 +2132,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": true,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Perut Samping (Oblique)"
+    ],
+    "targetMusclesSecondary": [
+      "Glutes Medius (Otot Pinggul Samping)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring miring, bertumpu pada satu lengan bawah, siku tepat di bawah bahu",
+      "Angkat pinggul dari lantai, badan membentuk garis lurus dari kepala sampai kaki",
+      "Tahan posisi, jangan biarkan pinggul turun",
+      "Ganti sisi setelah selesai set"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun ke lantai",
+        "description": "perpendek durasi tahan, bangun kekuatan bertahap"
+      },
+      {
+        "title": "Badan condong ke depan/belakang",
+        "description": "jaga badan dalam satu bidang datar"
+      }
+    ],
+    "safetyTips": [
+      "Angkat pinggul setinggi mungkin sampai badan lurus",
+      "Jangan biarkan pinggul turun atau maju-mundur",
+      "Bahu tetap jauh dari telinga"
+    ]
   },
   {
     "id": "BW-CORE-004",
@@ -960,7 +2186,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": true,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "instructions": [
+      "Berbaring telentang, lengan lurus di atas kepala, kaki lurus",
+      "Angkat bahu dan kaki sedikit dari lantai, punggung bawah tetap menempel lantai",
+      "Badan membentuk kurva \"pisang\" yang ringan",
+      "Tahan posisi sambil bernapas normal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah terangkat dari lantai",
+        "description": "naikkan sedikit posisi kaki/lengan untuk kurangi beban"
+      },
+      {
+        "title": "Menahan napas",
+        "description": "tetap bernapas normal, hindari Valsalva"
+      }
+    ],
+    "safetyTips": [
+      "Punggung bawah harus tetap menempel lantai, ini kuncinya",
+      "Semakin rendah posisi kaki dan lengan, semakin sulit — sesuaikan dengan kemampuan",
+      "Kencangkan perut sepanjang tahanan"
+    ]
   },
   {
     "id": "BW-CORE-005",
@@ -987,7 +2241,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Kaki Depan (Quads)"
+    ],
+    "instructions": [
+      "Posisi plank tangan, badan lurus dari kepala sampai tumit",
+      "Tarik satu lutut ke arah dada dengan cepat",
+      "Kembalikan kaki ke posisi awal, ganti kaki secara bergantian dengan ritme cepat",
+      "Jaga pinggul tetap stabil, tidak naik-turun berlebihan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul naik tinggi (seperti posisi push-up ke atas)",
+        "description": "perlambat tempo, fokus jaga badan tetap lurus"
+      },
+      {
+        "title": "Gerakan hanya di bagian bawah, atas tubuh diam",
+        "description": "pastikan core aktif menstabilkan seluruh badan"
+      }
+    ],
+    "safetyTips": [
+      "Pinggul tetap stabil, jangan naik-turun seperti gerakan lari biasa",
+      "Tangan tetap kokoh menumpu, jangan goyang",
+      "Jaga ritme konsisten, bukan asal cepat"
+    ]
   },
   {
     "id": "BW-CORR-000",
@@ -1011,7 +2295,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Otot Leher Dalam (Deep Neck Flexors)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius Atas (Leher-Bahu)"
+    ],
+    "instructions": [
+      "Duduk atau berdiri tegak, pandangan lurus ke depan",
+      "Tarik dagu lurus ke belakang (seperti membuat \"dagu ganda\"), tanpa menunduk",
+      "Tahan 2-3 detik",
+      "Kembali ke posisi netral"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menunduk, bukan menarik lurus ke belakang",
+        "description": "fokus gerakan horizontal, bayangkan mendorong kepala ke dinding di belakang"
+      },
+      {
+        "title": "Bahu ikut naik",
+        "description": "rileks bahu dulu sebelum mulai gerakan"
+      }
+    ],
+    "safetyTips": [
+      "Tarik kepala lurus ke belakang, seperti membuat dagu ganda",
+      "Jangan menunduk, gerakan horizontal bukan vertikal",
+      "Bahu tetap rileks turun"
+    ]
   },
   {
     "id": "BW-CORR-001",
@@ -1036,7 +2348,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Punggung Bawah (Erector Spinae)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Posisi merangkak (tangan & lutut di lantai)",
+      "Lengkungkan punggung ke atas sambil buang napas, kepala menunduk (Cat)",
+      "Turunkan perut, angkat dada dan kepala sambil tarik napas (Cow)",
+      "Ulangi bergantian, gerakan mengikuti napas"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Gerakan terlalu cepat tanpa sinkron napas",
+        "description": "perlambat, satu napas satu gerakan"
+      },
+      {
+        "title": "Hanya gerak dari leher, bukan seluruh tulang belakang",
+        "description": "fokus gerak dari pinggul sampai leher"
+      }
+    ],
+    "safetyTips": [
+      "Lengkungkan punggung seperti kucing marah",
+      "Turunkan perut, angkat dada dan kepala",
+      "Gerakan mengikuti ritme napas, jangan terburu-buru"
+    ]
   },
   {
     "id": "BW-CORR-002",
@@ -1059,7 +2400,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Mobilitas Tulang Belakang Atas (Thoracic Spine)",
+      "Perut Samping (Oblique)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Posisi merangkak, satu tangan di belakang kepala",
+      "Putar dada dan siku ke atas membuka \"seperti buku\", ikuti pandangan ke arah tangan",
+      "Kembali ke posisi awal, ulangi",
+      "Ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul ikut berputar",
+        "description": "jaga pinggul tetap stabil, isolasi rotasi di dada"
+      },
+      {
+        "title": "Gerakan terlalu cepat",
+        "description": "perlambat, kontrol penuh di titik akhir rotasi"
+      }
+    ],
+    "safetyTips": [
+      "Putar dada mengikuti siku ke atas",
+      "Pinggul tetap diam, hanya dada yang berputar",
+      "Ikuti gerakan dengan mata"
+    ]
   },
   {
     "id": "BW-CORR-003",
@@ -1087,7 +2457,35 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Posisi half-kneeling: satu lutut di lantai, kaki lain di depan menekuk 90°",
+      "Dorong pinggul ke depan sambil menjaga badan tetap tegak",
+      "Kencangkan bokong kaki belakang untuk menambah regangan",
+      "Tahan, lalu ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Melengkungkan punggung bawah",
+        "description": "kencangkan core dan bokong dulu sebelum mendorong pinggul"
+      },
+      {
+        "title": "Condong badan ke depan",
+        "description": "jaga badan tegak, gerakan murni dari pinggul"
+      }
+    ],
+    "safetyTips": [
+      "Dorong pinggul ke depan, bukan condongkan badan",
+      "Jaga badan tetap tegak sepanjang gerakan",
+      "Kencangkan bokong kaki belakang untuk tambah regangan"
+    ]
   },
   {
     "id": "BW-CORR-004",
@@ -1112,7 +2510,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "instructions": [
+      "Posisi glute bridge: berbaring, lutut menekuk, pinggul terangkat",
+      "Sambil pinggul tetap terangkat, angkat satu lutut ke arah dada",
+      "Turunkan, ganti kaki, tetap jaga pinggul stabil sepanjang gerakan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul turun/miring saat mengangkat kaki",
+        "description": "perlambat, kurangi rentang angkat kaki dulu"
+      },
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "kencangkan core sebelum mulai"
+      }
+    ],
+    "safetyTips": [
+      "Jaga pinggul tetap tinggi dan stabil saat kaki bergantian",
+      "Jangan biarkan pinggul miring ke satu sisi",
+      "Kencangkan bokong sepanjang gerakan"
+    ]
   },
   {
     "id": "BW-CORR-005",
@@ -1134,7 +2560,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Glutes Medius (Otot Pinggul Samping)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berbaring miring, badan lurus dari kepala sampai kaki",
+      "Angkat kaki atas lurus ke atas tanpa memutar pinggul ke belakang",
+      "Turunkan perlahan dan terkontrol",
+      "Ganti sisi setelah selesai set"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Memutar pinggul ke belakang saat mengangkat",
+        "description": "kurangi ketinggian angkat, fokus kontrol posisi pinggul"
+      },
+      {
+        "title": "Menggunakan momentum/ayunan",
+        "description": "perlambat tempo, kontrol penuh di tiap rep"
+      }
+    ],
+    "safetyTips": [
+      "Angkat kaki lurus ke atas, jangan memutar pinggul ke belakang",
+      "Gerakan pelan dan terkontrol, bukan menghentak",
+      "Rasakan kerja di sisi luar pinggul"
+    ]
   },
   {
     "id": "BW-CORR-006",
@@ -1156,7 +2610,28 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Otot & sendi pergelangan kaki"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Duduk atau berdiri bertumpu satu kaki",
+      "Angkat kaki lainnya sedikit dari lantai",
+      "Putar pergelangan kaki searah jarum jam, lalu berlawanan arah",
+      "Ganti kaki"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Gerakan hanya dari lutut/kaki bagian bawah",
+        "description": "isolasi gerakan murni di pergelangan kaki"
+      }
+    ],
+    "safetyTips": [
+      "Putar dari pergelangan kaki, bukan dari lutut",
+      "Gerakan seluas mungkin senyaman mungkin"
+    ]
   },
   {
     "id": "BW-CORR-007",
@@ -1183,7 +2658,35 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu Depan (Anterior Shoulder)"
+    ],
+    "instructions": [
+      "Berdiri menyamping dekat dinding",
+      "Tempelkan lengan bawah ke dinding, siku setinggi bahu",
+      "Putar badan perlahan menjauh dari dinding sampai terasa regangan di dada",
+      "Tahan, lalu ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu naik ke telinga",
+        "description": "rileks bahu dulu sebelum mulai memutar badan"
+      },
+      {
+        "title": "Memutar terlalu jauh sampai terasa nyeri",
+        "description": "kurangi rentang putar"
+      }
+    ],
+    "safetyTips": [
+      "Putar badan menjauh dari dinding, bukan lengan yang ditarik",
+      "Jaga bahu tetap turun dan rileks",
+      "Berhenti di titik terasa regangan nyaman, jangan sampai nyeri"
+    ]
   },
   {
     "id": "BW-CORR-008",
@@ -1209,7 +2712,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Punggung Bawah (Erector Spinae)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring tengkurap, lengan lurus ke depan",
+      "Angkat lengan, dada, dan kaki bersamaan sedikit dari lantai",
+      "Tahan sebentar di titik teratas",
+      "Turunkan perlahan dan terkontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mengangkat terlalu tinggi hingga leher tegang",
+        "description": "kurangi ketinggian, fokus kontraksi otot bukan rentang gerak"
+      },
+      {
+        "title": "Hanya mengangkat kepala",
+        "description": "pastikan dada dan kaki juga ikut terangkat"
+      }
+    ],
+    "safetyTips": [
+      "Angkat lengan dan kaki bersamaan, tidak perlu terlalu tinggi",
+      "Kencangkan bokong saat mengangkat kaki",
+      "Jangan menahan napas"
+    ]
   },
   {
     "id": "BW-CARRY-000",
@@ -1235,7 +2767,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": true,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Genggaman (Grip)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)",
+      "Glutes Medius (Otot Pinggul Samping)"
+    ],
+    "instructions": [
+      "Pegang satu benda cukup berat di satu tangan (galon air, tas ransel berisi buku, ember) di samping badan",
+      "Berdiri tegak, bahu level (tidak miring ke arah beban), core dikencangkan",
+      "Tahan posisi berjalan pelan (10-20 langkah) atau diam di tempat (isometrik) selama durasi target",
+      "Ganti sisi setelah selesai"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan miring ke sisi beban",
+        "description": "kurangi beban benda, fokus core dulu"
+      },
+      {
+        "title": "Bahu terangkat/shrug berlebihan",
+        "description": "rileks bahu, hanya grip yang aktif menahan"
+      }
+    ],
+    "safetyTips": [
+      "Bahu tetap level, jangan miring ke arah beban",
+      "Jalan tegak seperti bawa koper",
+      "Kencangkan perut sepanjang gerakan"
+    ]
   },
   {
     "id": "BW-STRETCH-000",
@@ -1261,7 +2823,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berdiri dekat dinding/kursi untuk pegangan",
+      "Tekuk satu lutut, pegang punggung kaki, tarik tumit perlahan ke arah bokong",
+      "Lutut mengarah ke lantai, sejajar dengan lutut kaki tumpu — jangan melebar keluar",
+      "Tahan 20-30 detik, rasakan tarikan di paha depan, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menarik kaki terlalu kuat sampai nyeri lutut",
+        "description": "cukup sampai terasa tarikan nyaman"
+      },
+      {
+        "title": "Punggung melengkung ke belakang",
+        "description": "aktifkan perut sedikit, tegak netral"
+      }
+    ],
+    "safetyTips": [
+      "Lutut tetap rapat, jangan biarkan melebar ke samping",
+      "Berdiri tegak — jangan condong ke depan",
+      "Kalau susah menjaga keseimbangan, pegangan dinding — bukan tanda gagal"
+    ]
   },
   {
     "id": "BW-STRETCH-001",
@@ -1286,7 +2874,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Letakkan satu tumit di depan (di lantai atau bangku rendah), kaki lurus",
+      "Kaki tumpu sedikit ditekuk, dorong pinggul ke belakang",
+      "Condongkan badan ke depan DARI PINGGUL dengan punggung lurus — bukan membungkuk dari punggung",
+      "Tahan 20-30 detik, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Membungkuk dari punggung (persis kesalahan `flag_hinge_from_back`)",
+        "description": "ini justru latihan tambahan pola hinge yang benar"
+      },
+      {
+        "title": "Memaksa meraih ujung kaki",
+        "description": "kedalaman bukan tujuannya"
+      }
+    ],
+    "safetyTips": [
+      "Bayangkan gerakan hip hinge yang sudah dilatih — patahnya di pinggul",
+      "Punggung tetap panjang dan lurus",
+      "Tarikan di paha belakang, bukan di punggung bawah"
+    ]
   },
   {
     "id": "BW-STRETCH-002",
@@ -1310,7 +2924,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Piriformis (Otot Pinggul Dalam)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berbaring telentang, kedua lutut ditekuk",
+      "Letakkan pergelangan kaki kanan di atas lutut kiri (bentuk angka 4)",
+      "Pegang paha kiri, tarik perlahan ke arah dada",
+      "Tahan 20-30 detik, rasakan tarikan di bokong kanan, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Leher tegang/kepala terangkat",
+        "description": "biarkan kepala di lantai"
+      },
+      {
+        "title": "Menarik dengan sentakan",
+        "description": "gerakan pelan, napas teratur"
+      }
+    ],
+    "safetyTips": [
+      "Kepala dan bahu tetap rileks di lantai",
+      "Tarik pelan — makin rileks makin dalam tarikannya sendiri"
+    ]
   },
   {
     "id": "BW-STRETCH-003",
@@ -1336,7 +2976,34 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Lebar (Lats)",
+      "punggung bawah",
+      "bahu"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Posisi berlutut, duduk di atas tumit",
+      "Rentangkan kedua tangan jauh ke depan di lantai, dahi menyentuh/mendekati lantai",
+      "Biarkan dada \"tenggelam\" ke arah lantai, napas dalam dan pelan",
+      "Tahan 30-45 detik"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bokong terangkat dari tumit",
+        "description": "tidak masalah kalau mobilitas terbatas, tahan senyamannya"
+      },
+      {
+        "title": "Menahan napas",
+        "description": "justru kebalikan dari tujuan pendinginan"
+      }
+    ],
+    "safetyTips": [
+      "Jangkaukan jari tangan sejauh mungkin ke depan",
+      "Tiap buang napas, biarkan dada turun sedikit lebih rileks"
+    ]
   },
   {
     "id": "BW-STRETCH-004",
@@ -1363,7 +3030,32 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "LENGAN",
+    "targetMusclesPrimary": [
+      "Lengan Belakang (Triceps)",
+      "bahu"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Angkat satu lengan lurus ke atas, tekuk siku sampai telapak menyentuh punggung atas",
+      "Tangan satunya memegang siku, dorong perlahan ke belakang/bawah",
+      "Tahan 20-30 detik, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan ikut condong",
+        "description": "tarikan pindah ke pinggang, bukan triceps"
+      },
+      {
+        "title": "Leher tertekuk maju",
+        "description": "dagu tetap netral"
+      }
+    ],
+    "safetyTips": [
+      "Dorong siku pelan — bukan ditekan paksa",
+      "Badan tetap tegak, jangan miring ke samping"
+    ]
   },
   {
     "id": "BW-STRETCH-005",
@@ -1389,7 +3081,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Trapezius Atas (Leher-Bahu)",
+      "leher samping"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Duduk/berdiri tegak, miringkan kepala ke kanan (telinga ke arah bahu)",
+      "Tangan kanan boleh diletakkan ringan di sisi kepala — beratnya saja, TANPA menarik",
+      "Bahu kiri tetap turun rileks",
+      "Tahan 20-30 detik, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menarik kepala dengan tangan",
+        "description": "area leher tidak boleh dipaksa, cukup berat tangan"
+      },
+      {
+        "title": "Bahu ikut terangkat",
+        "description": "turunkan dulu bahu sebelum memiringkan kepala"
+      }
+    ],
+    "safetyTips": [
+      "Tangan cuma numpang — jangan menarik kepala",
+      "Rasakan bahu sisi satunya 'menjauh' ke bawah"
+    ]
   },
   {
     "id": "BW-STRETCH-006",
@@ -1414,7 +3132,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Betis (Gastrocnemius)",
+      "Betis Dalam (Soleus)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Hadap dinding, kedua tangan menempel dinding",
+      "Satu kaki mundur ke belakang, lurus, tumit tetap menapak lantai",
+      "Condongkan badan ke dinding sampai terasa tarikan di betis belakang",
+      "Tahan 20-30 detik, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Tumit belakang terangkat",
+        "description": "mundurkan kaki lebih dekat sampai tumit bisa menapak"
+      },
+      {
+        "title": "Kaki belakang menekuk",
+        "description": "lurus untuk gastroc; versi lutut ditekuk sedikit = varian soleus (boleh, beda target)"
+      }
+    ],
+    "safetyTips": [
+      "Tumit belakang jangan terangkat — di situ kuncinya",
+      "Kedua ujung kaki mengarah lurus ke dinding"
+    ]
   },
   {
     "id": "BW-STRETCH-007",
@@ -1440,7 +3184,33 @@
     ],
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Otot perut",
+      "hip flexor ringan"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berbaring tengkurap, tumpu pada kedua lengan bawah (siku di bawah bahu)",
+      "Angkat dada perlahan, pinggul tetap menempel lantai",
+      "Pandangan ke depan, bahu turun menjauh dari telinga",
+      "Tahan 20-30 detik"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mendorong terlalu tinggi (jadi full cobra)",
+        "description": "cukup sphinx, lengan bawah tetap di lantai"
+      },
+      {
+        "title": "Bahu naik ke telinga",
+        "description": "dorong bahu turun"
+      }
+    ],
+    "safetyTips": [
+      "Ekstensi yang lembut — ini bukan latihan, ini relaksasi",
+      "Kalau punggung bawah terasa menekan, turunkan dada sedikit"
+    ]
   },
   {
     "id": "CE-001",
@@ -1464,7 +3234,39 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Betis (Calves)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Atur kecepatan treadmill ke level jalan cepat (bukan jogging), biasanya 5-6.5 km/jam tergantung tinggi badan",
+      "Tegakkan badan, pandangan ke depan, ayunkan lengan natural",
+      "Boleh tambah kemiringan (incline) ringan (2-5%) untuk tingkatkan intensitas tanpa menambah dampak sendi",
+      "Pertahankan kecepatan/kemiringan konstan sepanjang durasi target, atau variasikan kemiringan sebagai interval ringan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Berpegangan terus di pegangan treadmill",
+        "description": "mengurangi manfaat kardio dan membebani postur, lepas pegangan begitu terbiasa"
+      },
+      {
+        "title": "Kecepatan terlalu tinggi sehingga jadi setengah jogging",
+        "description": "turunkan kecepatan, tambah kemiringan saja untuk intensitas"
+      },
+      {
+        "title": "Melangkah terlalu pendek/cepat (shuffling)",
+        "description": "sesuaikan kecepatan dengan panjang langkah natural"
+      }
+    ],
+    "safetyTips": [
+      "Kecepatan senyaman jalan cepat, bukan jogging",
+      "Badan tegak, jangan pegangan pegangan treadmill kecuali perlu keseimbangan",
+      "Kalau masih bisa ngobrol lancar, intensitasnya pas"
+    ]
   },
   {
     "id": "CE-002",
@@ -1486,7 +3288,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Paha Belakang (Hamstring)",
+      "Betis (Calves)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Atur ketinggian sadel: lutut sedikit menekuk (~25-35°) saat pedal di titik terendah",
+      "Duduk dengan punggung netral, pegangan santai (tidak menahan berat badan di tangan)",
+      "Kayuh dengan cadence 60-90 RPM untuk steady-state, atau variasikan resistensi/cadence untuk interval",
+      "Pertahankan intensitas target sepanjang durasi sesi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Sadel terlalu rendah (lutut menekuk berlebihan)",
+        "description": "tekanan berlebih di lutut, naikkan sadel"
+      },
+      {
+        "title": "Sadel terlalu tinggi (pinggul goyang saat mengayuh)",
+        "description": "turunkan sadel"
+      },
+      {
+        "title": "Menahan beban badan di tangan/setang",
+        "description": "fokus core untuk menopang badan, bukan tangan"
+      }
+    ],
+    "safetyTips": [
+      "Lutut sedikit menekuk di titik terendah pedal, bukan lurus penuh",
+      "Punggung netral, jangan membungkuk ke setang",
+      "Tekanan merata di seluruh telapak kaki, bukan cuma ujung kaki"
+    ]
   },
   {
     "id": "CE-003",
@@ -1508,7 +3343,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Paha Belakang (Hamstring)",
+      "Betis (Calves)",
+      "Bahu (Deltoid)",
+      "Dada (Pectoralis)",
+      "Punggung (Back)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berdiri di pedal, pegang pegangan bergerak (moving handle) atau statis tergantung preferensi",
+      "Dorong pedal dalam gerakan elips (mengayuh maju), lengan mengikuti gerakan berlawanan alami",
+      "Jaga badan tegak, jangan bersandar berat ke pegangan",
+      "Pertahankan ritme dan resistensi target sepanjang durasi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menumpu berat badan berlebihan di pegangan",
+        "description": "mengurangi kerja kaki dan kardio, kurangi tumpuan tangan"
+      },
+      {
+        "title": "Langkah terlalu pendek (tidak memakai ROM penuh mesin)",
+        "description": "perbesar langkah untuk manfaat maksimal"
+      },
+      {
+        "title": "Membungkuk ke depan berlebihan",
+        "description": "jaga badan tegak"
+      }
+    ],
+    "safetyTips": [
+      "Badan tegak, jangan menumpu berat badan di tangan",
+      "Gerakan mengalir, bukan menghentak",
+      "Kalau pakai pegangan bergerak, biarkan lengan bekerja natural, jangan cuma jadi pegangan"
+    ]
   },
   {
     "id": "CE-004",
@@ -1532,7 +3403,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Paha Belakang (Hamstring)",
+      "Punggung Atas",
+      "Lengan Depan (Biceps)",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Duduk dengan kaki terkunci di penahan, lutut menekuk, tangan pegang handle, punggung netral condong sedikit ke depan",
+      "Fase 1 (Drive): dorong kuat melalui kaki dulu (leg drive), lalu badan sedikit condong ke belakang, baru tarik tangan ke perut",
+      "Fase 2 (Recovery): balik urutan — luruskan tangan dulu, badan condong ke depan, baru lutut menekuk kembali",
+      "Ulangi dengan ritme konsisten: \"kaki-badan-tangan\" saat dorong, \"tangan-badan-kaki\" saat kembali"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menarik dengan tangan/punggung duluan sebelum leg drive (\"arms-first rowing\")",
+        "description": "tanda teknik salah, latih ulang urutan kaki-badan-tangan dengan beban ringan"
+      },
+      {
+        "title": "Punggung membulat saat drive",
+        "description": "jaga posisi netral, kurangi intensitas untuk fokus teknik dulu"
+      },
+      {
+        "title": "Recovery terlalu cepat (sama cepat dengan drive)",
+        "description": "perlambat fase recovery, ini bukan balapan tiap detik"
+      }
+    ],
+    "safetyTips": [
+      "Kaki dulu, badan, baru tangan — urutan ini penting",
+      "Jangan tarik dengan punggung/lengan duluan sebelum kaki mendorong penuh",
+      "Recovery lebih lambat dari drive, jangan terburu-buru kembali"
+    ]
   },
   {
     "id": "CE-005",
@@ -1556,7 +3462,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Paha Belakang (Hamstring)",
+      "Betis (Calves)",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Mulai dengan pemanasan jalan cepat 5 menit",
+      "Tingkatkan ke kecepatan jogging (biasanya 7-9 km/jam, sesuaikan kenyamanan)",
+      "Mendarat di tengah telapak kaki (midfoot), bukan tumit terlebih dahulu",
+      "Jaga ritme napas dan langkah konsisten sepanjang durasi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mendarat dengan tumit (heel strike keras)",
+        "description": "tingkatkan risiko cedera lutut/shin splint, latih midfoot landing"
+      },
+      {
+        "title": "Kecepatan terlalu tinggi di awal (tidak pace diri)",
+        "description": "mulai lebih lambat dari yang dirasa \"cukup mudah\""
+      },
+      {
+        "title": "Melangkah terlalu lebar (overstriding)",
+        "description": "perpendek langkah, tingkatkan cadence"
+      }
+    ],
+    "safetyTips": [
+      "Mendarat lembut di tengah telapak kaki, bukan menghentak tumit",
+      "Bahu rileks, jangan tegang naik ke telinga",
+      "Kalau napas mulai terlalu berat untuk ngobrol sama sekali, turunkan kecepatan"
+    ]
   },
   {
     "id": "CE-006",
@@ -1578,7 +3518,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Kaki Depan (Quads)",
+      "Paha Belakang (Hamstring)",
+      "Betis (Calves)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berdiri tegak di mesin, tangan ringan menyentuh pegangan untuk keseimbangan (bukan menumpu berat badan)",
+      "Injak tiap anak tangga dengan telapak kaki penuh, bukan ujung kaki saja",
+      "Jaga ritme konsisten mengikuti kecepatan mesin",
+      "Pertahankan postur tegak sepanjang sesi, jangan membungkuk ke pegangan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menumpu berat badan ke pegangan",
+        "description": "mengurangi manfaat latihan dan intensitas sebenarnya, kurangi kecepatan agar bisa lepas tangan"
+      },
+      {
+        "title": "Hanya berjinjit di anak tangga",
+        "description": "tekanan berlebih di betis dan tendon, injak dengan telapak penuh"
+      },
+      {
+        "title": "Membungkuk ke depan",
+        "description": "jaga badan tegak sepanjang sesi"
+      }
+    ],
+    "safetyTips": [
+      "Telapak kaki penuh menapak tiap anak tangga, bukan jinjit",
+      "Badan tegak, tangan cuma untuk keseimbangan bukan menopang berat badan",
+      "Kalau menumpu berat ke tangan, itu tanda kecepatan terlalu tinggi untuk kapasitas saat ini"
+    ]
   },
   {
     "id": "CE-007",
@@ -1603,7 +3576,41 @@
     "polaGerakTerkait": null,
     "highImpact": true,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Betis (Calves)",
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Pegang tali dengan pegangan ringan, siku dekat badan, putar dari pergelangan tangan (bukan bahu/siku)",
+      "Lompat rendah, hanya cukup untuk tali lewat di bawah kaki (2-5 cm dari lantai)",
+      "Mendarat lembut di ujung telapak kaki (ball of foot), lutut sedikit menekuk",
+      "Jaga ritme konsisten, napas mengikuti tempo lompatan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Melompat terlalu tinggi",
+        "description": "boros energi dan menambah dampak mendarat, tekankan lompatan minimal"
+      },
+      {
+        "title": "Mendarat dengan lutut lurus/kaku",
+        "description": "risiko tekanan sendi, jaga lutut sedikit menekuk sebagai peredam"
+      },
+      {
+        "title": "Memutar tali dari bahu/siku (gerakan besar)",
+        "description": "cepat lelah dan tidak efisien, fokus putaran dari pergelangan tangan"
+      }
+    ],
+    "safetyTips": [
+      "Putar tali dari pergelangan tangan, bukan bahu",
+      "Lompat rendah, cukup tali lewat, jangan melompat tinggi",
+      "Mendarat lembut seperti mendarat di atas telur, lutut sedikit menekuk"
+    ]
   },
   {
     "id": "CE-008",
@@ -1629,7 +3636,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KARDIO",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)",
+      "Punggung Atas",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)",
+      "Glutes/Quadriceps"
+    ],
+    "targetMusclesSecondary": [],
+    "instructions": [
+      "Berdiri di tengah tali, posisi setengah squat, kaki selebar bahu, core aktif",
+      "Pegang ujung tali di masing-masing tangan",
+      "Gerakkan tangan naik-turun bergantian secepat dan sekuat mungkin membentuk gelombang di tali (alternating waves), atau variasi (double waves, slams)",
+      "Pertahankan posisi setengah squat dan punggung netral sepanjang interval"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Berdiri tegak penuh (bukan setengah squat)",
+        "description": "kehilangan aktivasi core/kaki, tekankan posisi rendah"
+      },
+      {
+        "title": "Punggung membulat saat lelah menjelang akhir interval",
+        "description": "perpendek durasi interval, form lebih penting dari durasi"
+      },
+      {
+        "title": "Gerakan hanya dari pergelangan tangan",
+        "description": "kurang efektif, tekankan gerakan dari bahu dengan bantuan seluruh lengan"
+      }
+    ],
+    "safetyTips": [
+      "Posisi setengah squat sepanjang gerakan, jangan berdiri tegak penuh",
+      "Gerakan dari bahu, bukan cuma pergelangan tangan",
+      "Punggung tetap netral, jangan membungkuk saat lelah"
+    ]
   },
   {
     "id": "DB-SQUAT-000",
@@ -1657,7 +3698,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Atas"
+    ],
+    "instructions": [
+      "Pegang satu dumbbell vertikal dengan kedua tangan di depan dada, siku menunjuk ke bawah",
+      "Berdiri kaki selebar bahu, ujung kaki sedikit keluar",
+      "Dorong pinggul ke belakang dan turun, jaga dumbbell tetap dekat dada",
+      "Turun sampai siku menyentuh/hampir menyentuh bagian dalam lutut",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Dumbbell menjauh dari dada",
+        "description": "torso condong ke depan, tekankan \"peluk erat\""
+      },
+      {
+        "title": "Turun terlalu cepat tanpa kontrol",
+        "description": "perlambat tempo turun"
+      },
+      {
+        "title": "Tumit terangkat",
+        "description": "cek mobilitas ankle, mungkin perlu turun beban dulu"
+      }
+    ],
+    "safetyTips": [
+      "Peluk dumbbell dekat dada, jangan biarkan menjauh",
+      "Siku ke arah lutut bagian dalam",
+      "Dada tetap terbuka, mata lurus ke depan"
+    ]
   },
   {
     "id": "DB-SQUAT-001",
@@ -1683,7 +3759,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Pegang satu dumbbell di masing-masing tangan, menggantung di samping badan",
+      "Berdiri kaki selebar bahu",
+      "Dorong pinggul ke belakang, turun dengan kontrol",
+      "Turun sampai paha sejajar lantai atau senyaman mungkin",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Dumbbell berayun ke depan saat turun",
+        "description": "beban terlalu berat untuk kontrol saat ini, turunkan"
+      },
+      {
+        "title": "Punggung membungkuk",
+        "description": "kurangi kedalaman, perkuat core dulu"
+      },
+      {
+        "title": "Grip lepas sebelum kaki lelah",
+        "description": "indikasi grip strength jadi pembatas, boleh turunkan beban"
+      }
+    ],
+    "safetyTips": [
+      "Dumbbell menggantung lurus di samping, bukan berayun ke depan",
+      "Dorong pinggul ke belakang seperti mau duduk",
+      "Tumit menapak penuh sepanjang gerakan"
+    ]
   },
   {
     "id": "DB-SQUAT-002",
@@ -1709,7 +3821,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Atas",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Angkat dua dumbbell ke posisi bahu (ujung dumbbell bertumpu di bahu depan)",
+      "Siku terangkat ke depan, dada terbuka",
+      "Turun dengan pola squat standar, jaga dumbbell tetap stabil di bahu",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku turun",
+        "description": "beban geser ke depan, torso ikut condong → cue \"siku tinggi\" berulang"
+      },
+      {
+        "title": "Pergelangan tangan sakit",
+        "description": "coba variasi grip (dumbbell tegak vs mendatar di bahu)"
+      }
+    ],
+    "safetyTips": [
+      "Siku tinggi, seperti menopang nampan di bahu",
+      "Dada tetap membusung sepanjang gerakan",
+      "Jangan biarkan dumbbell jatuh ke depan"
+    ]
   },
   {
     "id": "DB-SQUAT-003",
@@ -1735,7 +3878,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)",
+      "Stabilisator Pergelangan Kaki"
+    ],
+    "instructions": [
+      "Pegang dumbbell di masing-masing tangan, menggantung di samping",
+      "Posisi kaki seperti split lunge statis (satu kaki depan, satu belakang)",
+      "Turun lurus ke bawah, lutut belakang mendekati lantai",
+      "Dorong melalui kaki depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut depan melewati jauh ujung kaki",
+        "description": "perlebar jarak kaki depan-belakang"
+      },
+      {
+        "title": "Goyah/kehilangan keseimbangan",
+        "description": "kurangi beban, pastikan Single-Leg RDL sudah dikuasai"
+      }
+    ],
+    "safetyTips": [
+      "Turun lurus ke bawah, bukan condong ke depan",
+      "Berat badan di tumit kaki depan",
+      "Batang tubuh tetap tegak"
+    ]
   },
   {
     "id": "DB-HINGE-000",
@@ -1762,7 +3936,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Pegang dumbbell di masing-masing tangan di depan paha",
+      "Berdiri kaki selebar pinggul, lutut sedikit menekuk (fixed sepanjang gerakan)",
+      "Dorong pinggul ke belakang, turunkan dumbbell menyusuri depan kaki, punggung netral",
+      "Turun sampai terasa stretch di hamstring (biasanya sebatas pertengahan betis)",
+      "Dorong pinggul maju untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membungkuk",
+        "description": "ROM terlalu dalam untuk mobilitas hamstring saat ini, kurangi kedalaman"
+      },
+      {
+        "title": "Lutut ikut menekuk banyak (mirip squat)",
+        "description": "cue \"pinggul ke belakang\""
+      },
+      {
+        "title": "Dumbbell menjauh dari kaki",
+        "description": "tekanan ke punggung bawah bertambah"
+      }
+    ],
+    "safetyTips": [
+      "Dumbbell menyusuri kaki, tetap dekat badan",
+      "Pinggul ke belakang, bukan lutut menekuk lebih dalam",
+      "Punggung tetap lurus dari kepala sampai tulang ekor"
+    ]
   },
   {
     "id": "DB-HINGE-001",
@@ -1789,7 +3998,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Ankle/hip stabilizers"
+    ],
+    "instructions": [
+      "Pegang satu/dua dumbbell, berdiri dengan berat badan di satu kaki",
+      "Dorong pinggul ke belakang sambil kaki satunya terangkat lurus ke belakang",
+      "Badan dan kaki belakang membentuk garis lurus mendekati horizontal",
+      "Dumbbell turun menyusuri kaki tumpu",
+      "Kembali berdiri dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul terbuka ke samping (rotasi)",
+        "description": "glute medius belum cukup kuat, kurangi ROM/beban"
+      },
+      {
+        "title": "Goyah berlebihan",
+        "description": "boleh sentuh ujung kaki belakang ke lantai untuk bantu keseimbangan sementara"
+      }
+    ],
+    "safetyTips": [
+      "Pinggul tetap menghadap lurus ke depan, jangan terbuka ke samping",
+      "Bayangkan menutup pintu dengan tumit kaki belakang",
+      "Gerakan seperti timbangan dari pinggul"
+    ]
   },
   {
     "id": "DB-HINGE-002",
@@ -1813,7 +4053,45 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes",
+      "Punggung Bawah"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)",
+      "Trapezius (Leher-Bahu)"
+    ],
+    "instructions": [
+      "Dumbbell di lantai di samping/depan kaki, kaki selebar pinggul",
+      "Dorong pinggul ke belakang, tekuk lutut secukupnya untuk meraih dumbbell, punggung netral",
+      "Genggam dumbbell, dada terbuka, tulang belakang netral sebelum mulai angkat",
+      "Dorong melalui tumit dan pinggul untuk berdiri, dumbbell dekat badan sepanjang lintasan",
+      "Turunkan kembali dengan pola yang sama terbalik"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat saat meraih dumbbell",
+        "description": "mobilitas/kontrol hinge belum siap ROM dari lantai, mundur ke RDL"
+      },
+      {
+        "title": "Pinggul naik duluan sebelum dada",
+        "description": "cue \"naik bersamaan\""
+      },
+      {
+        "title": "Dumbbell menjauh dari badan",
+        "description": "tambah beban ke punggung bawah"
+      }
+    ],
+    "safetyTips": [
+      "Tarik dumbbell dekat ke tulang kering sepanjang lintasan",
+      "Dada dan pinggul naik bersamaan, bukan pinggul duluan",
+      "Punggung tetap netral, bukan bulat"
+    ]
   },
   {
     "id": "DB-HINGE-003",
@@ -1840,7 +4118,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Dalam (Adductor)",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Inti (Core)",
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Berdiri kaki lebih lebar dari bahu, ujung kaki mengarah keluar ~30-45°",
+      "Satu dumbbell dipegang vertikal dengan dua tangan di antara kedua kaki (atau dua dumbbell di masing-masing tangan)",
+      "Turun dengan lutut mengikuti arah ujung kaki, dada tetap terbuka",
+      "Angkat dumbbell dengan mendorong lantai menjauh melalui kedua kaki",
+      "Kembali turun dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut masuk ke dalam saat naik",
+        "description": "cek `flag_knee_valgus`, kurangi beban"
+      },
+      {
+        "title": "Punggung membulat",
+        "description": "mundur ke variasi ROM lebih pendek"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lantai menjauh dengan kedua kaki",
+      "Lutut mengikuti arah ujung kaki",
+      "Dada tetap terbuka sepanjang gerakan"
+    ]
   },
   {
     "id": "DB-PUSHH-000",
@@ -1864,7 +4175,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring telentang di lantai, lutut ditekuk, telapak kaki menapak",
+      "Pegang dumbbell di masing-masing tangan, posisi lurus di atas dada",
+      "Turunkan dumbbell dengan kontrol sampai bagian belakang lengan atas menyentuh lantai",
+      "Dorong kembali ke atas sampai lengan hampir lurus (jangan mengunci penuh siku)"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku dihentak ke lantai",
+        "description": "perlambat tempo turun"
+      },
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "tekuk lutut lebih, tapak kaki stabil"
+      }
+    ],
+    "safetyTips": [
+      "Siku turun ke lantai dengan lembut, jangan dihentak",
+      "Dorong dumbbell ke atas sedikit ke arah dalam",
+      "Bahu tetap turun, jauh dari telinga"
+    ]
   },
   {
     "id": "DB-PUSHH-001",
@@ -1891,7 +4231,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring di bangku, kaki menapak lantai, dumbbell di masing-masing tangan di atas dada",
+      "Turunkan dumbbell dengan kontrol ke samping dada, siku ~45° dari badan",
+      "Dorong kembali ke atas sampai lengan hampir lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu terangkat dari bangku saat turun",
+        "description": "beban terlalu berat atau kontrol scapula kurang, kurangi beban"
+      },
+      {
+        "title": "Dumbbell dihentak balik dari titik terendah",
+        "description": "perlambat transisi turun-naik"
+      }
+    ],
+    "safetyTips": [
+      "Turunkan sampai terasa stretch ringan di dada, jangan memaksa lebih dalam",
+      "Bahu tetap menempel bangku, jangan ikut terangkat",
+      "Dorong lurus ke atas, sedikit ke dalam di puncak"
+    ]
   },
   {
     "id": "DB-PUSHH-002",
@@ -1913,7 +4281,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Atur bangku ke posisi incline 30-45°, duduk dengan dumbbell di masing-masing tangan",
+      "Posisi awal dumbbell di samping dada bagian atas",
+      "Dorong dumbbell ke atas sampai lengan hampir lurus",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Sudut bangku terlalu tegak (>45°)",
+        "description": "jadi terlalu mirip shoulder press, turunkan sudut"
+      },
+      {
+        "title": "Punggung bawah melengkung dari bangku",
+        "description": "cek posisi kaki dan panggul"
+      }
+    ],
+    "safetyTips": [
+      "Dorong ke atas sedikit ke arah belakang kepala, ikuti sudut bangku",
+      "Bahu tetap turun dan stabil"
+    ]
   },
   {
     "id": "DB-PUSHH-003",
@@ -1938,7 +4334,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berbaring di bangku, satu dumbbell di satu tangan, tangan lain di pinggul atau menahan bangku",
+      "Dorong dumbbell ke atas, jaga torso tetap menghadap lurus ke atas (jangan berputar)",
+      "Turunkan dengan kontrol",
+      "Selesaikan repetisi satu sisi sebelum ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso berputar mengikuti arah dorongan",
+        "description": "beban terlalu berat untuk kapasitas anti-rotasi, turunkan beban"
+      },
+      {
+        "title": "Kaki mendorong lantai berlebihan untuk bantu stabilitas",
+        "description": "oke sebagai strategi awal, kurangi progresif"
+      }
+    ],
+    "safetyTips": [
+      "Tahan pinggul dan bahu tetap sejajar, jangan berputar",
+      "Bayangkan ada gelas air di perut, jangan sampai tumpah"
+    ]
   },
   {
     "id": "DB-PUSHV-000",
@@ -1963,7 +4387,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Dada Atas (Upper Chest)"
+    ],
+    "instructions": [
+      "Duduk di bangku bersandaran, dumbbell di masing-masing tangan sejajar bahu, telapak menghadap depan",
+      "Dorong dumbbell ke atas sampai lengan hampir lurus di atas kepala",
+      "Turunkan dengan kontrol kembali ke posisi bahu"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung melengkung berlebihan untuk bantu dorongan",
+        "description": "mobilitas bahu terbatas, kurangi beban/ROM"
+      },
+      {
+        "title": "Dumbbell condong ke depan",
+        "description": "jaga siku tetap di bawah pergelangan tangan"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lurus ke atas, jangan ke depan",
+      "Jangan biarkan punggung bawah melengkung berlebihan dari sandaran",
+      "Di puncak, dumbbell sejajar di atas telinga"
+    ]
   },
   {
     "id": "DB-PUSHV-001",
@@ -1990,7 +4442,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri kaki selebar bahu, dumbbell di masing-masing tangan sejajar bahu",
+      "Aktifkan core, jangan biarkan punggung melengkung",
+      "Dorong dumbbell ke atas sampai lengan hampir lurus",
+      "Turunkan dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "core belum siap menahan beban di atas kepala, turunkan beban atau kembali ke seated"
+      },
+      {
+        "title": "Lutut ikut menekuk untuk bantu dorongan",
+        "description": "cue jaga lutut stabil"
+      }
+    ],
+    "safetyTips": [
+      "Kencangkan perut seperti bersiap dipukul ringan",
+      "Dorong lurus ke atas, badan tidak ikut condong ke belakang"
+    ]
   },
   {
     "id": "DB-PUSHV-002",
@@ -2017,7 +4497,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Berdiri atau posisi half-kneeling (satu lutut di lantai), satu dumbbell di satu tangan sejajar bahu",
+      "Dorong ke atas sambil menahan torso tetap tegak, tidak miring ke sisi beban",
+      "Turunkan dengan kontrol",
+      "Selesaikan repetisi satu sisi sebelum ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso miring signifikan ke samping",
+        "description": "turunkan beban, atau coba versi half-kneeling untuk stabilitas ekstra"
+      },
+      {
+        "title": "Kaki melebar berlebihan untuk kompensasi keseimbangan",
+        "description": "oke sebagai strategi awal, kurangi progresif"
+      }
+    ],
+    "safetyTips": [
+      "Jangan miring ke arah beban, tetap tegak",
+      "Kencangkan sisi yang berlawanan dengan beban untuk menahan"
+    ]
   },
   {
     "id": "DB-PULLH-000",
@@ -2048,7 +4556,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)",
+      "Punggung Bawah"
+    ],
+    "instructions": [
+      "Pegang dumbbell di masing-masing tangan, dorong pinggul ke belakang (posisi hinge), torso condong ~45°",
+      "Punggung tetap netral, dumbbell menggantung lurus di bawah bahu",
+      "Tarik dumbbell ke arah pinggang, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat",
+        "description": "posisi hinge belum stabil, cek Hip Hinge with Dowel lagi"
+      },
+      {
+        "title": "Bahu ikut naik saat menarik (shrug)",
+        "description": "cue \"remas tulang belikat, bukan angkat bahu\""
+      },
+      {
+        "title": "Badan ikut berayun untuk bantu tarikan",
+        "description": "kurangi beban, kontrol penuh"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke belakang, bukan mengangkat bahu",
+      "Remas tulang belikat di puncak gerakan",
+      "Punggung tetap netral seperti posisi hinge"
+    ]
   },
   {
     "id": "DB-PULLH-001",
@@ -2071,7 +4613,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Satu tangan dan satu lutut bertumpu di bangku, badan sejajar lantai",
+      "Dumbbell di tangan yang bebas, menggantung lurus di bawah bahu",
+      "Tarik dumbbell ke arah pinggang, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol, rasakan stretch ringan di puncak turun"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso berputar mengikuti tarikan",
+        "description": "beban terlalu berat, turunkan beban"
+      },
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "cek posisi tumpuan di bangku"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke belakang dan sedikit ke atas",
+      "Jangan biarkan torso ikut berputar saat menarik"
+    ]
   },
   {
     "id": "DB-PULLH-002",
@@ -2095,7 +4665,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)"
+    ],
+    "instructions": [
+      "Atur bangku incline sudut rendah (~30°), berbaring tengkurap dengan dada bertumpu",
+      "Dumbbell di masing-masing tangan menggantung lurus ke bawah",
+      "Tarik dumbbell ke arah pinggang, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Kepala mendongak berlebihan",
+        "description": "jaga posisi netral, pandangan ke bawah/depan bangku"
+      },
+      {
+        "title": "Tarikan setengah ROM (tidak sampai puncak)",
+        "description": "tekankan remas tulang belikat penuh"
+      }
+    ],
+    "safetyTips": [
+      "Dada tetap menempel bangku sepanjang gerakan",
+      "Remas tulang belikat di puncak tarikan"
+    ]
   },
   {
     "id": "DB-PULLH-003",
@@ -2121,7 +4719,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Posisi plank tinggi dengan tangan di atas dumbbell (bukan lantai langsung), kaki dilebarkan untuk stabilitas ekstra",
+      "Tarik satu dumbbell ke arah pinggang sambil sisi lain menahan badan tetap stabil (tidak berputar)",
+      "Turunkan dengan kontrol, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul berputar mengikuti tarikan",
+        "description": "beban terlalu berat atau core belum siap, kurangi beban/lebarkan kaki"
+      },
+      {
+        "title": "Punggung melorot (kehilangan posisi plank)",
+        "description": "kembali ke Plank/Renegade tanpa row dulu untuk bangun kapasitas"
+      }
+    ],
+    "safetyTips": [
+      "Pinggul tetap sejajar lantai, jangan berputar saat menarik",
+      "Bayangkan ada gelas air di punggung, jangan sampai tumpah"
+    ]
   },
   {
     "id": "DB-LUNGE-000",
@@ -2145,7 +4771,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri, dumbbell di masing-masing tangan menggantung di samping",
+      "Langkahkan satu kaki ke belakang, turun sampai lutut belakang mendekati lantai",
+      "Dorong melalui kaki depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut depan melewati jauh ujung kaki",
+        "description": "perlebar langkah"
+      },
+      {
+        "title": "Badan condong ke depan berlebihan",
+        "description": "jaga dada tetap terbuka"
+      }
+    ],
+    "safetyTips": [
+      "Turun lurus ke bawah, badan tetap tegak",
+      "Berat badan di tumit kaki depan"
+    ]
   },
   {
     "id": "DB-LUNGE-001",
@@ -2169,7 +4823,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)",
+      "Balance/koordinasi"
+    ],
+    "instructions": [
+      "Berdiri, dumbbell di masing-masing tangan",
+      "Langkah ke depan, turun sampai lutut belakang mendekati lantai",
+      "Dorong melalui kaki depan sambil melangkah maju dengan kaki belakang menjadi langkah depan berikutnya",
+      "Ulangi bergantian kaki sambil berjalan maju"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Langkah terlalu pendek",
+        "description": "lutut depan menekuk berlebihan, perlebar langkah"
+      },
+      {
+        "title": "Kehilangan keseimbangan di transisi",
+        "description": "perlambat, boleh sentuh lutut belakang ke lantai sebentar"
+      }
+    ],
+    "safetyTips": [
+      "Setiap langkah turun lurus ke bawah dulu, baru maju",
+      "Badan tetap tegak, jangan membungkuk ke depan"
+    ]
   },
   {
     "id": "DB-LUNGE-002",
@@ -2193,7 +4877,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Adductor/Abductor"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Paha Belakang (Hamstring)"
+    ],
+    "instructions": [
+      "Berdiri, dumbbell di masing-masing tangan atau satu dumbbell dipegang di depan dada",
+      "Langkahkan satu kaki lebar ke samping, tekuk lutut kaki tersebut, kaki lainnya tetap lurus",
+      "Dorong pinggul ke belakang seperti hinge di kaki yang menekuk",
+      "Dorong kembali ke posisi berdiri tengah"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut kaki menekuk masuk ke dalam (valgus)",
+        "description": "cek `flag_knee_valgus`, kurangi kedalaman"
+      },
+      {
+        "title": "Badan condong jauh ke depan",
+        "description": "jaga dada tetap terbuka"
+      }
+    ],
+    "safetyTips": [
+      "Duduk ke satu sisi, kaki lurus tetap lurus",
+      "Tumit kaki yang menekuk tetap menapak penuh"
+    ]
   },
   {
     "id": "DB-LUNGE-003",
@@ -2219,7 +4932,36 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri membelakangi bangku, letakkan punggung kaki belakang di atas bangku",
+      "Dumbbell di masing-masing tangan menggantung di samping",
+      "Turun dengan kaki depan sampai paha mendekati sejajar lantai",
+      "Dorong melalui kaki depan untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut depan melewati jauh ujung kaki",
+        "description": "majukan posisi kaki depan dari bangku"
+      },
+      {
+        "title": "Goyah berlebihan",
+        "description": "cek dulu apakah Dumbbell Split Squat (tanpa elevasi) sudah cukup stabil"
+      }
+    ],
+    "safetyTips": [
+      "Badan sedikit condong ke depan, bukan tegak lurus penuh",
+      "Berat badan di tumit dan telapak kaki depan"
+    ]
   },
   {
     "id": "DB-CORE-000",
@@ -2243,7 +4985,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berbaring telentang, pegang satu dumbbell ringan dengan kedua tangan lurus ke atas dada",
+      "Lutut ditekuk 90°, betis sejajar lantai",
+      "Turunkan satu tangan (dumbbell tetap dipegang bersama) dan kaki berlawanan secara bersamaan mendekati lantai",
+      "Kembali ke posisi awal, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah terangkat dari lantai",
+        "description": "ROM terlalu jauh, kurangi jangkauan turun tangan/kaki"
+      },
+      {
+        "title": "Napas tertahan",
+        "description": "ingatkan bernapas normal"
+      }
+    ],
+    "safetyTips": [
+      "Punggung bawah tetap menempel lantai sepanjang gerakan",
+      "Gerakan lambat, seperti gerak dalam air"
+    ]
   },
   {
     "id": "DB-CORE-001",
@@ -2270,7 +5039,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "instructions": [
+      "Duduk, lutut ditekuk, tumit menapak lantai (atau terangkat sedikit untuk versi lebih menantang)",
+      "Condongkan badan ke belakang ~45°, pegang dumbbell dengan dua tangan di depan dada",
+      "Putar badan ke satu sisi, sentuhkan dumbbell dekat lantai di samping pinggul",
+      "Putar ke sisi berlawanan dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Gerakan dihentak cepat tanpa kontrol",
+        "description": "perlambat tempo, bukan tentang kecepatan"
+      },
+      {
+        "title": "Punggung membulat",
+        "description": "kurangi sudut condong ke belakang"
+      }
+    ],
+    "safetyTips": [
+      "Putar dari torso, bukan cuma lengan",
+      "Punggung tetap lurus, jangan membulat"
+    ]
   },
   {
     "id": "DB-CORE-002",
@@ -2292,7 +5088,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Otot Pinggang Samping (Quadratus Lumborum)"
+    ],
+    "instructions": [
+      "Berdiri, satu dumbbell di satu tangan menggantung di samping badan",
+      "Tekuk badan ke samping (arah dumbbell) dengan kontrol, jaga bahu tidak ikut berputar ke depan/belakang",
+      "Kembali tegak, lanjut tekuk sedikit ke sisi berlawanan (tanpa beban di sisi itu) untuk melatih sisi yang menahan",
+      "Ulangi, lalu ganti sisi dumbbell"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan ikut berputar/condong ke depan",
+        "description": "gerakan tidak murni lateral, kurangi ROM"
+      },
+      {
+        "title": "Beban terlalu berat sehingga momentum mengambil alih",
+        "description": "turunkan beban, perlambat tempo"
+      }
+    ],
+    "safetyTips": [
+      "Gerakan murni ke samping, jangan ikut condong ke depan",
+      "Bayangkan tubuh bergerak di antara dua kaca di depan-belakang"
+    ]
   },
   {
     "id": "DB-CARRY-000",
@@ -2320,7 +5143,38 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Genggaman (Grip)",
+      "Inti (Core)",
+      "Trapezius (Leher-Bahu)"
+    ],
+    "targetMusclesSecondary": [
+      "Glutes",
+      "Kaki Depan (Quads)"
+    ],
+    "instructions": [
+      "Berdiri, dumbbell (berat) di masing-masing tangan, menggantung lurus di samping",
+      "Berjalan dengan langkah normal, jaga bahu tetap turun dan dada terbuka",
+      "Jaga postur tegak sepanjang jarak/waktu yang ditentukan",
+      "Letakkan dumbbell dengan kontrol, bukan dijatuhkan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu naik/tegang (shrug)",
+        "description": "beban terlalu berat untuk grip, turunkan beban"
+      },
+      {
+        "title": "Badan miring ke satu sisi",
+        "description": "cek keseimbangan beban kiri-kanan, juga alat deteksi asimetri"
+      }
+    ],
+    "safetyTips": [
+      "Bahu tetap turun, jangan naik ke telinga",
+      "Berjalan seperti biasa, jangan mengubah gaya jalan karena beban",
+      "Dada tetap terbuka sepanjang jalan"
+    ]
   },
   {
     "id": "DB-CARRY-001",
@@ -2348,7 +5202,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Genggaman (Grip)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)",
+      "Glutes"
+    ],
+    "instructions": [
+      "Berdiri, satu dumbbell (berat) di satu tangan, menggantung di samping",
+      "Berjalan dengan langkah normal, tahan badan tetap tegak lurus (tidak miring ke sisi beban)",
+      "Selesaikan jarak/waktu, lalu ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan miring signifikan ke sisi beban",
+        "description": "beban terlalu berat untuk kapasitas anti-lateral flexion saat ini, turunkan beban"
+      },
+      {
+        "title": "Langkah jadi tidak simetris",
+        "description": "perlambat, fokus postur dulu sebelum jarak/kecepatan"
+      }
+    ],
+    "safetyTips": [
+      "Badan tetap tegak lurus seperti tiang, jangan miring ke sisi beban",
+      "Bayangkan ada buku di atas kepala yang tidak boleh jatuh"
+    ]
   },
   {
     "id": "DB-CARRY-002",
@@ -2374,7 +5256,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Dorong satu dumbbell ke atas kepala sampai lengan lurus (gunakan Standing Shoulder Press sebagai persiapan)",
+      "Berjalan dengan dumbbell tetap terkunci lurus di atas kepala, bahu jauh dari telinga",
+      "Jaga torso tetap tegak, tidak miring ke sisi beban",
+      "Selesaikan jarak/waktu, turunkan dengan kontrol, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lengan mulai menekuk/condong ke depan karena kelelahan bahu",
+        "description": "waktu/jarak sudah melebihi kapasitas, turunkan beban di percobaan berikutnya"
+      },
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "kompensasi karena bahu/core belum siap, kurangi beban"
+      }
+    ],
+    "safetyTips": [
+      "Lengan tetap terkunci lurus, dekat dengan telinga",
+      "Bahu tetap turun dan stabil, jangan naik ke telinga",
+      "Badan tegak lurus, jangan miring"
+    ]
   },
   {
     "id": "KB-HINGE-000",
@@ -2396,7 +5308,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Berdiri dengan kettlebell di lantai sedikit di depan kaki, kaki selebar bahu",
+      "Dorong pinggul ke belakang, tekuk lutut secukupnya untuk meraih handle kettlebell, punggung netral",
+      "Genggam handle dengan dua tangan, dada terbuka",
+      "Dorong melalui tumit dan pinggul untuk berdiri, kettlebell dekat badan sepanjang lintasan",
+      "Turunkan kembali dengan pola yang sama terbalik"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat saat meraih kettlebell",
+        "description": "mundur ke Dumbbell RDL atau Hip Hinge with Dowel dulu"
+      },
+      {
+        "title": "Lutut menekuk berlebihan (jadi mirip squat)",
+        "description": "cue \"pinggul ke belakang dulu\""
+      },
+      {
+        "title": "Berdiri tidak sampai penuh tegak di puncak",
+        "description": "tanda terburu-buru, tekankan lockout penuh tiap rep"
+      }
+    ],
+    "safetyTips": [
+      "Pinggul ke belakang dulu, baru lutut menekuk mengikuti",
+      "Kettlebell dekat badan sepanjang lintasan naik-turun",
+      "Berdiri tegak penuh di puncak, remas glute"
+    ]
   },
   {
     "id": "KB-HINGE-001",
@@ -2419,7 +5367,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Bawah",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berdiri dengan kettlebell di depan, kaki sedikit lebih lebar dari bahu",
+      "Hinge ke depan untuk meraih handle, kettlebell diayun ke belakang di antara kaki (hut-hike)",
+      "Ledakkan pinggul ke depan dengan kuat (seperti melompat tanpa kaki lepas lantai), kettlebell terayun ke depan setinggi dada/bahu karena momentum pinggul",
+      "Biarkan kettlebell turun kembali dengan gravitasi, hinge lagi untuk siklus berikutnya"
+    ],
+    "commonMistakes": [
+      {
+        "title": "\"Squat and lift\" (menekuk lutut dalam lalu mengangkat dengan lengan/paha)",
+        "description": "paling umum dan berisiko punggung, kembali ke Kettlebell Deadlift untuk perbaiki pola hinge"
+      },
+      {
+        "title": "Mengangkat kettlebell dengan bahu/lengan sampai di atas kepala",
+        "description": "Swing hanya sampai setinggi dada/bahu, bukan overhead (itu gerakan berbeda)"
+      },
+      {
+        "title": "Punggung membulat di posisi hinge terendah",
+        "description": "kurangi kecepatan/beban, screening ulang pola hinge"
+      }
+    ],
+    "safetyTips": [
+      "Ledakkan pinggul ke depan, lengan cuma jadi tali penghubung",
+      "Bukan squat, ini hinge — pinggul ke belakang dulu sebelum meledak maju",
+      "Remas glute keras di puncak ayunan, itu yang menghentikan kettlebell naik, bukan lengan"
+    ]
   },
   {
     "id": "KB-HINGE-002",
@@ -2441,7 +5424,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Sama seperti Two-Hand Swing, tapi pegang handle dengan satu tangan",
+      "Tangan yang bebas boleh di samping badan atau di depan dada untuk bantu keseimbangan",
+      "Ledakkan pinggul, biarkan momentum membawa kettlebell naik setinggi dada/bahu",
+      "Ganti tangan di titik terendah ayunan (opsional, atau selesaikan set satu sisi dulu)"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso berputar mengikuti ayunan kettlebell",
+        "description": "beban terlalu berat untuk kapasitas anti-rotasi saat ini, turunkan beban atau kembali ke two-hand swing"
+      },
+      {
+        "title": "Bahu tangan yang memegang naik ke telinga (shrug)",
+        "description": "rileks bahu, biarkan lengan jadi penghubung pasif"
+      },
+      {
+        "title": "Grip terlalu kencang sehingga lengan tegang",
+        "description": "grip cukup kuat untuk pegang, tidak perlu meremas maksimal"
+      }
+    ],
+    "safetyTips": [
+      "Tahan pinggul dan bahu tetap sejajar, jangan ikut berputar ke arah kettlebell",
+      "Grip kuat tapi lengan tetap rileks, tenaga dari pinggul bukan tangan",
+      "Bayangkan ada gelas air di perut, jangan sampai tumpah karena rotasi"
+    ]
   },
   {
     "id": "KB-SQUAT-000",
@@ -2466,7 +5484,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Atas"
+    ],
+    "instructions": [
+      "Pegang kettlebell terbalik di depan dada (pegang di \"tanduk\"/horns handle), siku menunjuk ke bawah",
+      "Berdiri kaki selebar bahu, ujung kaki sedikit keluar",
+      "Dorong pinggul ke belakang dan turun, jaga kettlebell tetap dekat dada",
+      "Turun sampai siku menyentuh/hampir menyentuh bagian dalam lutut",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Kettlebell menjauh dari dada",
+        "description": "torso condong ke depan, tekankan \"peluk erat\""
+      },
+      {
+        "title": "Genggaman di \"tanduk\" kurang stabil sehingga kettlebell miring",
+        "description": "pastikan pegangan kokoh sebelum mulai turun"
+      },
+      {
+        "title": "Turun terlalu cepat tanpa kontrol",
+        "description": "perlambat tempo turun"
+      }
+    ],
+    "safetyTips": [
+      "Peluk kettlebell dekat dada, jangan biarkan menjauh",
+      "Siku ke arah lutut bagian dalam",
+      "Dada tetap terbuka, mata lurus ke depan"
+    ]
   },
   {
     "id": "KB-SQUAT-001",
@@ -2488,7 +5541,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Punggung Atas",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Bersihkan (clean) atau angkat dua kettlebell ke rack position di bahu, siku ke bawah, punggung tangan menghadap ke luar",
+      "Berdiri kaki selebar bahu",
+      "Turun dengan pola squat standar, jaga kettlebell tetap stabil di bahu",
+      "Dorong melalui tumit untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Kettlebell bergeser dari rack position (jadi beban di lengan, bukan bahu)",
+        "description": "cek posisi siku dan pergelangan tangan, mungkin perlu latihan rack position terpisah dulu"
+      },
+      {
+        "title": "Pergelangan tangan sakit",
+        "description": "coba variasi grip atau kurangi beban sementara"
+      },
+      {
+        "title": "Siku turun jauh dari badan",
+        "description": "beban condong ke depan, tekankan \"siku ke bawah dekat badan\""
+      }
+    ],
+    "safetyTips": [
+      "Siku ke bawah, kettlebell bertumpu di bahu bukan digantung tangan",
+      "Dada tetap terbuka sepanjang gerakan",
+      "Kepalkan tangan sedikit ke depan untuk buka ruang siku turun"
+    ]
   },
   {
     "id": "KB-PUSHV-000",
@@ -2512,7 +5600,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Inti (Core)",
+      "Punggung Atas"
+    ],
+    "instructions": [
+      "Bersihkan (clean) kettlebell ke rack position di satu bahu, siku di bawah dekat badan",
+      "Berdiri kaki selebar bahu, kencangkan core dan glute",
+      "Dorong kettlebell lurus ke atas sampai lengan lurus penuh, sedikit putar lengan sehingga telapak menghadap depan di puncak",
+      "Turunkan dengan kontrol kembali ke rack position"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Torso miring ke sisi berlawanan beban",
+        "description": "beban terlalu berat untuk kapasitas anti-lateral flexion, turunkan beban"
+      },
+      {
+        "title": "Punggung bawah melengkung berlebihan",
+        "description": "core belum siap, kurangi beban"
+      },
+      {
+        "title": "Siku bergerak jauh dari badan saat mulai dorong",
+        "description": "tanda rack position awal kurang stabil, latih rack position terpisah"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lurus ke atas, badan tetap tegak tidak miring ke sisi berlawanan",
+      "Kencangkan sisi yang berlawanan dari beban untuk menahan",
+      "Di puncak, kettlebell 'terkunci' di atas bahu-siku-pergelangan tangan segaris"
+    ]
   },
   {
     "id": "KB-PUSHV-001",
@@ -2535,7 +5657,43 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Kaki Depan (Quads)",
+      "Glutes",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Kettlebell di rack position seperti awalan Overhead Press",
+      "Tekuk lutut sedikit (dip) dengan cepat namun terkontrol, torso tetap tegak",
+      "Dorong eksplosif melalui kaki sambil mendorong kettlebell ke atas",
+      "Kunci lengan penuh di atas kepala di puncak",
+      "Turunkan dengan kontrol kembali ke rack position"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Dip terlalu dalam/lambat",
+        "description": "kehilangan elastisitas untuk drive, perpendek dan percepat dip"
+      },
+      {
+        "title": "Torso condong ke depan saat dip",
+        "description": "jaga tegak"
+      },
+      {
+        "title": "Timing dip-drive-dorong tidak sinkron",
+        "description": "latih tanpa beban dulu untuk membangun koordinasi"
+      }
+    ],
+    "safetyTips": [
+      "Dip pendek dan cepat, seperti mini squat, bukan membungkuk",
+      "Dorong eksplosif dari kaki, kettlebell ikut terdorong ke atas",
+      "Torso tetap tegak sepanjang dip, jangan condong ke depan"
+    ]
   },
   {
     "id": "KB-PULLH-000",
@@ -2560,7 +5718,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Dorong pinggul ke belakang (posisi hinge), torso condong ~45°, tangan bebas boleh bertumpu di lutut/bangku",
+      "Genggam kettlebell dengan satu tangan, menggantung lurus di bawah bahu",
+      "Tarik kettlebell ke arah pinggang, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat",
+        "description": "posisi hinge belum stabil, cek Hip Hinge with Dowel lagi"
+      },
+      {
+        "title": "Torso ikut berputar saat menarik",
+        "description": "kurangi beban, kontrol penuh"
+      },
+      {
+        "title": "Bahu ikut naik saat menarik (shrug)",
+        "description": "cue \"remas tulang belikat, bukan angkat bahu\""
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke belakang, bukan mengangkat bahu",
+      "Remas tulang belikat di puncak gerakan",
+      "Punggung tetap netral seperti posisi hinge"
+    ]
   },
   {
     "id": "KB-CARRY-000",
@@ -2585,7 +5777,37 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Genggaman (Grip)",
+      "Inti (Core)",
+      "Trapezius (Leher-Bahu)"
+    ],
+    "targetMusclesSecondary": [
+      "Glutes",
+      "Kaki Depan (Quads)"
+    ],
+    "instructions": [
+      "Berdiri, satu kettlebell (berat) di masing-masing tangan, menggantung lurus di samping",
+      "Berjalan dengan langkah normal, jaga bahu tetap turun dan dada terbuka",
+      "Jaga postur tegak sepanjang jarak/waktu yang ditentukan",
+      "Letakkan kettlebell dengan kontrol, bukan dijatuhkan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu naik/tegang (shrug)",
+        "description": "beban terlalu berat untuk grip, turunkan beban"
+      },
+      {
+        "title": "Badan miring ke satu sisi",
+        "description": "cek keseimbangan beban kiri-kanan, juga alat deteksi asimetri"
+      }
+    ],
+    "safetyTips": [
+      "Bahu tetap turun, jangan naik ke telinga",
+      "Berjalan seperti biasa, jangan mengubah gaya jalan karena beban"
+    ]
   },
   {
     "id": "KB-CARRY-001",
@@ -2607,7 +5829,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Genggaman (Grip)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)",
+      "Glutes"
+    ],
+    "instructions": [
+      "Berdiri, satu kettlebell (berat) di satu tangan, menggantung di samping",
+      "Berjalan dengan langkah normal, tahan badan tetap tegak lurus (tidak miring ke sisi beban)",
+      "Selesaikan jarak/waktu, lalu ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan miring signifikan ke sisi beban",
+        "description": "beban terlalu berat, turunkan beban"
+      },
+      {
+        "title": "Langkah jadi tidak simetris",
+        "description": "perlambat, fokus postur dulu"
+      }
+    ],
+    "safetyTips": [
+      "Badan tetap tegak lurus seperti tiang, jangan miring ke sisi beban",
+      "Bayangkan ada buku di atas kepala yang tidak boleh jatuh"
+    ]
   },
   {
     "id": "KB-CARRY-002",
@@ -2631,7 +5881,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)",
+      "Genggaman (Grip)",
+      "Glutes"
+    ],
+    "instructions": [
+      "Bersihkan (clean) kettlebell ke rack position di satu bahu, siku dekat badan",
+      "Berdiri tegak, kencangkan core",
+      "Berjalan dengan langkah normal, tahan badan tetap tegak dan tidak berputar ke sisi beban",
+      "Selesaikan jarak/waktu, ganti sisi"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Rack position tidak stabil (kettlebell goyang di bahu)",
+        "description": "kurangi beban, latih rack position statis dulu sebelum berjalan"
+      },
+      {
+        "title": "Torso berputar ke sisi beban",
+        "description": "beban terlalu berat untuk kapasitas anti-rotasi, turunkan beban"
+      },
+      {
+        "title": "Siku terangkat jauh dari badan",
+        "description": "cue \"siku dekat badan\""
+      }
+    ],
+    "safetyTips": [
+      "Siku tetap menempel dekat badan, kettlebell tidak goyang",
+      "Badan tegak, jangan berputar atau miring ke sisi beban",
+      "Langkah normal, jangan terburu-buru"
+    ]
   },
   {
     "id": "KB-FULLBODY-000",
@@ -2655,7 +5940,52 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)",
+      "Inti (Core)",
+      "Glutes",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Kaki Depan (Quads)",
+      "Mobilitas Panggul",
+      "Lengan Belakang (Triceps)",
+      "Punggung Atas"
+    ],
+    "instructions": [
+      "**Posisi Awal**: Berbaring telentang, kettlebell dipegang satu tangan lurus ke atas dada (misal tangan kanan). Lutut kanan ditekuk, telapak kaki kanan menapak dekat pinggul. Tangan kiri dan kaki kiri terbuka membentuk sudut ~45° dari badan",
+      "**Roll ke Siku (Roll to Elbow)**: Dorong melalui tumit kanan dan tangan kiri, angkat badan bertumpu ke siku kiri, mata tetap mengunci ke kettlebell sepanjang waktu",
+      "**Siku ke Tangan (Elbow to Hand)**: Dorong dari siku kiri sampai bertumpu di telapak tangan kiri (lengan lurus), badan lebih tegak",
+      "**Angkat Pinggul (Hip Bridge/Sweep)**: Dorong pinggul ke atas (bridge) melalui tumit kanan dan tangan kiri, sapukan kaki kiri ke belakang di bawah badan sampai lutut kiri menapak lantai (posisi lunge tinggi)",
+      "**Duduk Tegak ke Berdiri (Tall Sitting to Standing)**: Dari posisi lunge tinggi (kaki kanan depan, lutut kiri di lantai), putar badan menghadap ke depan (pivot), lalu dorong berdiri melalui kaki kanan seperti split squat/lunge berdiri",
+      "**Berdiri Penuh**: Kettlebell tetap lurus di atas kepala sepanjang seluruh urutan, berdiri tegak penuh adalah puncak gerakan",
+      "**Turun (Reverse)**: Ulangi seluruh tahapan secara terbalik dengan kontrol penuh untuk kembali ke posisi berbaring — ini bagian dari satu repetisi yang sama, bukan sekadar \"selesai lalu jatuhkan beban\""
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lengan yang memegang beban miring/tidak lurus vertikal sepanjang gerakan",
+        "description": "risiko kehilangan kontrol beban di atas kepala, kembali ke tahap sebelumnya dan perbaiki posisi lengan"
+      },
+      {
+        "title": "Mata lepas dari kettlebell",
+        "description": "kehilangan referensi visual untuk keseimbangan, sering jadi penyebab goyah"
+      },
+      {
+        "title": "Terburu-buru menyambung tahap tanpa stabil dulu di posisi antara",
+        "description": "latih tiap tahap terpisah (segmented practice) sebelum menyambung jadi satu gerakan utuh"
+      },
+      {
+        "title": "Memakai beban sebelum pola gerak (tanpa beban/dengan sepatu di tangan) benar-benar dikuasai",
+        "description": "risiko cedera bahu signifikan jika beban jatuh atau lengan goyah"
+      }
+    ],
+    "safetyTips": [
+      "Mata mengunci ke kettlebell dari awal sampai akhir, jangan pernah lepas pandangan",
+      "Lengan yang memegang beban selalu lurus dan segaris vertikal, bukan miring",
+      "Satu tahap dulu sampai stabil, baru lanjut ke tahap berikutnya — jangan terburu-buru menyambung semua tahap"
+    ]
   },
   {
     "id": "MC-SQUAT-000",
@@ -2677,7 +6007,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)"
+    ],
+    "instructions": [
+      "Duduk di mesin, punggung dan kepala menempel penuh ke sandaran",
+      "Posisikan kaki di platform selebar bahu, telapak kaki menapak penuh",
+      "Dorong platform menjauh sampai lutut hampir lurus (jangan mengunci penuh)",
+      "Turunkan dengan kontrol sampai lutut mendekati dada, sejauh mobilitas memungkinkan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul terangkat dari sandaran saat turun terlalu dalam",
+        "description": "kurangi ROM, ini tanda mobilitas hip/hamstring belum cukup"
+      },
+      {
+        "title": "Lutut masuk ke dalam (valgus) saat mendorong",
+        "description": "cek `flag_knee_valgus`, kurangi beban"
+      },
+      {
+        "title": "Mengunci lutut penuh dan menahan lama di titik teratas",
+        "description": "risiko tekanan sendi berlebih, jaga sedikit tekukan"
+      }
+    ],
+    "safetyTips": [
+      "Punggung tetap menempel sandaran sepanjang gerakan",
+      "Dorong lewat tumit dan tengah telapak kaki",
+      "Jangan mengunci lutut penuh di titik teratas"
+    ]
   },
   {
     "id": "MC-SQUAT-001",
@@ -2697,7 +6060,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Posisikan bahu dan punggung di bantalan mesin, kaki di platform selebar bahu",
+      "Lepaskan pengunci, turun dengan kontrol seperti pola squat",
+      "Turun sampai paha mendekati sejajar platform",
+      "Dorong melalui tumit dan tengah telapak kaki untuk kembali berdiri"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Tumit terangkat dari platform",
+        "description": "cek posisi kaki, mungkin terlalu maju/mundur"
+      },
+      {
+        "title": "Lutut valgus saat mendorong",
+        "description": "cek `flag_knee_valgus`, kurangi beban"
+      },
+      {
+        "title": "Turun terlalu cepat tanpa kontrol",
+        "description": "perlambat tempo turun"
+      }
+    ],
+    "safetyTips": [
+      "Dorong lewat tumit, bukan ujung kaki",
+      "Lutut mengikuti arah ujung kaki",
+      "Punggung tetap menempel bantalan sepanjang gerakan"
+    ]
   },
   {
     "id": "MC-SQUAT-002",
@@ -2719,7 +6116,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Kaki Depan (Quads)"
+    ],
+    "targetMusclesSecondary": [
+      "—"
+    ],
+    "instructions": [
+      "Duduk di mesin, punggung menempel sandaran, bantalan berada di depan pergelangan kaki",
+      "Pegang pegangan di samping untuk stabilitas",
+      "Luruskan lutut dengan kontrol sampai kaki hampir lurus penuh",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menghentak beban dengan momentum",
+        "description": "perlambat tempo, kontrol penuh"
+      },
+      {
+        "title": "Punggung terangkat dari sandaran",
+        "description": "kurangi beban"
+      }
+    ],
+    "safetyTips": [
+      "Luruskan lutut dengan kontrol, jangan menghentak",
+      "Remas quad di titik teratas"
+    ]
   },
   {
     "id": "MC-HINGE-000",
@@ -2739,7 +6163,34 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "KAKI",
+    "targetMusclesPrimary": [
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "—"
+    ],
+    "instructions": [
+      "Duduk di mesin, bantalan berada di atas tumit/betis bawah",
+      "Pegang pegangan di samping untuk stabilitas, punggung menempel sandaran",
+      "Tekuk lutut menarik bantalan ke bawah/belakang dengan kontrol",
+      "Luruskan kembali dengan kontrol ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Pinggul terangkat dari sandaran",
+        "description": "kurangi beban, jaga kontak penuh"
+      },
+      {
+        "title": "Menghentak beban dengan momentum",
+        "description": "perlambat tempo"
+      }
+    ],
+    "safetyTips": [
+      "Tarik dengan kontrol, jangan menghentak",
+      "Remas hamstring di titik puncak tekukan"
+    ]
   },
   {
     "id": "MC-HINGE-001",
@@ -2761,7 +6212,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Glutes",
+      "Paha Belakang (Hamstring)"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Bawah",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Berdiri membelakangi tiang cable, tali/rope di antara kedua kaki, kaki selebar bahu",
+      "Langkah maju sedikit sampai ada tahanan, badan menghadap menjauhi tiang",
+      "Dorong pinggul ke belakang, tangan mengikuti turun ke arah lantai/mata kaki",
+      "Dorong pinggul maju dengan kuat untuk berdiri tegak, remas glute di puncak"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menekuk lutut berlebihan (jadi mirip squat)",
+        "description": "tekankan \"pinggul ke belakang\", lutut fixed"
+      },
+      {
+        "title": "Punggung membulat",
+        "description": "kurangi jarak dari tiang (kurangi tahanan/ROM)"
+      },
+      {
+        "title": "Menarik dengan tangan/punggung, bukan mendorong dengan pinggul",
+        "description": "cue \"tangan cuma mengikuti\""
+      }
+    ],
+    "safetyTips": [
+      "Dorong pinggul ke belakang, tangan cuma mengikuti",
+      "Remas pantat di puncak, seperti mendorong pintu dengan pinggul",
+      "Lutut sedikit menekuk, tidak berubah sepanjang gerakan"
+    ]
   },
   {
     "id": "MC-HINGE-002",
@@ -2783,7 +6268,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "GLUTES",
+    "targetMusclesPrimary": [
+      "Punggung Bawah",
+      "Glutes"
+    ],
+    "targetMusclesSecondary": [
+      "Paha Belakang (Hamstring)"
+    ],
+    "instructions": [
+      "Posisikan pinggul di bantalan mesin, tumit terkunci di penahan kaki",
+      "Badan lurus dari kepala sampai tumit di posisi awal (sedikit di atas horizontal)",
+      "Turunkan badan dengan kontrol dari pinggul (bukan membungkukkan punggung atas), sampai hampir 90°",
+      "Dorong pinggul maju untuk kembali ke posisi lurus, remas glute di puncak"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Membungkukkan punggung atas (bukan hinge dari pinggul)",
+        "description": "tanda ROM terlalu dalam atau kontrol belum cukup, kurangi kedalaman"
+      },
+      {
+        "title": "Hiperekstensi berlebihan di puncak (melengkung jauh ke belakang)",
+        "description": "cue \"remas glute\", bukan melengkungkan punggung lebih jauh"
+      },
+      {
+        "title": "Gerakan terlalu cepat dengan momentum",
+        "description": "perlambat tempo"
+      }
+    ],
+    "safetyTips": [
+      "Gerakan dari pinggul, punggung atas tetap netral sepanjang gerakan",
+      "Remas glute di titik teratas, jangan hiperekstensi berlebihan",
+      "Turun sampai terasa stretch di hamstring, tidak perlu lebih dalam"
+    ]
   },
   {
     "id": "MC-PUSHH-000",
@@ -2805,7 +6323,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Duduk di mesin, punggung menempel penuh ke sandaran, pegangan sejajar dada",
+      "Atur ketinggian jok sehingga pegangan sejajar tengah dada",
+      "Dorong pegangan menjauh sampai lengan hampir lurus (jangan mengunci penuh siku)",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu terangkat mendekati telinga saat mendorong",
+        "description": "kurangi beban, fokus jaga bahu turun"
+      },
+      {
+        "title": "Mengunci siku penuh dan menahan lama",
+        "description": "tekanan berlebih di sendi siku, jaga sedikit tekukan"
+      },
+      {
+        "title": "Ketinggian jok salah (pegangan tidak sejajar dada)",
+        "description": "sesuaikan sebelum mulai set"
+      }
+    ],
+    "safetyTips": [
+      "Punggung tetap menempel sandaran sepanjang gerakan",
+      "Dorong lurus ke depan, jangan mengunci siku penuh di ujung",
+      "Bahu tetap turun, jauh dari telinga"
+    ]
   },
   {
     "id": "MC-PUSHH-001",
@@ -2827,7 +6378,39 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "DADA",
+    "targetMusclesPrimary": [
+      "Dada (Pectoralis)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berdiri di tengah cable machine, pegang handle di kedua sisi, siku sedikit menekuk (fixed)",
+      "Langkah maju sedikit, badan condong ringan ke depan",
+      "Rentangkan tangan ke samping mengikuti tahanan cable sampai terasa stretch di dada",
+      "Tarik kedua tangan bertemu di depan dada dengan gerakan melengkung (bukan mendorong lurus)"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku diluruskan penuh",
+        "description": "tekanan berlebih di sendi siku dan bahu, jaga sedikit tekukan"
+      },
+      {
+        "title": "Badan ikut berayun untuk bantu gerakan",
+        "description": "kurangi beban, kontrol penuh"
+      },
+      {
+        "title": "Gerakan jadi mirip press (mendorong lurus, bukan melengkung)",
+        "description": "cue \"bayangkan memeluk pohon\""
+      }
+    ],
+    "safetyTips": [
+      "Siku tetap sedikit menekuk sepanjang gerakan, jangan lurus penuh",
+      "Bayangkan memeluk pohon besar",
+      "Gerakan melengkung, bukan seperti mendorong (press)"
+    ]
   },
   {
     "id": "MC-PUSHV-000",
@@ -2849,7 +6432,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Belakang (Triceps)",
+      "Dada Atas (Upper Chest)"
+    ],
+    "instructions": [
+      "Duduk di mesin, punggung menempel sandaran, pegangan sejajar bahu",
+      "Genggam pegangan, telapak menghadap depan",
+      "Dorong pegangan ke atas sampai lengan hampir lurus (jangan mengunci penuh)",
+      "Turunkan dengan kontrol kembali ke posisi bahu"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung bawah terangkat dari sandaran",
+        "description": "tanda beban terlalu berat, kurangi beban"
+      },
+      {
+        "title": "Mengunci siku penuh dan menahan lama",
+        "description": "jaga sedikit tekukan di titik teratas"
+      },
+      {
+        "title": "Ketinggian jok salah (pegangan tidak sejajar bahu di posisi awal)",
+        "description": "sesuaikan sebelum mulai set"
+      }
+    ],
+    "safetyTips": [
+      "Punggung tetap menempel sandaran sepanjang gerakan",
+      "Dorong lurus ke atas, jangan mengunci siku penuh",
+      "Jangan biarkan punggung bawah melengkung dari sandaran"
+    ]
   },
   {
     "id": "MC-PUSHV-001",
@@ -2873,7 +6489,39 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "BAHU",
+    "targetMusclesPrimary": [
+      "Bahu (Deltoid)"
+    ],
+    "targetMusclesSecondary": [
+      "Trapezius (Leher-Bahu)"
+    ],
+    "instructions": [
+      "Berdiri menyamping ke tiang cable, pegang handle dengan tangan yang jauh dari tiang",
+      "Tangan mulai menyilang di depan pinggul, siku sedikit menekuk (fixed)",
+      "Angkat tangan ke samping sampai sejajar bahu, dengan kontrol",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Bahu ikut naik (shrug) untuk bantu angkat",
+        "description": "beban terlalu berat, turunkan beban"
+      },
+      {
+        "title": "Mengangkat melebihi sejajar bahu",
+        "description": "tekanan berlebih di sendi bahu, batasi ROM"
+      },
+      {
+        "title": "Badan ikut berayun untuk bantu momentum",
+        "description": "kurangi beban, kontrol penuh"
+      }
+    ],
+    "safetyTips": [
+      "Angkat dari bahu, bukan dari trapezius (jangan angkat bahu)",
+      "Siku memimpin gerakan, bukan tangan",
+      "Berhenti sejajar bahu, jangan lebih tinggi"
+    ]
   },
   {
     "id": "MC-PULLH-000",
@@ -2896,7 +6544,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)"
+    ],
+    "instructions": [
+      "Duduk dengan kaki menekuk di penahan kaki, pegang handle dengan kedua tangan",
+      "Duduk tegak, punggung netral, tarik badan sedikit ke belakang untuk luruskan lengan",
+      "Tarik handle ke arah perut bagian bawah, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol, rasakan stretch ringan di puncak"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Punggung membulat saat menarik",
+        "description": "beban terlalu berat, kurangi beban"
+      },
+      {
+        "title": "Badan berayun maju-mundur untuk bantu tarikan (momentum)",
+        "description": "kurangi beban, kontrol penuh"
+      },
+      {
+        "title": "Bahu ikut naik saat menarik (shrug)",
+        "description": "cue \"remas tulang belikat, bukan angkat bahu\""
+      }
+    ],
+    "safetyTips": [
+      "Duduk tegak, jangan membungkuk saat menarik",
+      "Remas tulang belikat di puncak tarikan",
+      "Siku menyusuri dekat badan, bukan melebar"
+    ]
   },
   {
     "id": "MC-PULLH-001",
@@ -2916,7 +6597,35 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)"
+    ],
+    "instructions": [
+      "Duduk/berlutut dengan dada bertumpu penuh di bantalan mesin",
+      "Genggam pegangan, lengan lurus di posisi awal",
+      "Tarik pegangan ke arah badan, siku menyusuri dekat badan",
+      "Turunkan dengan kontrol kembali ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Dada terangkat dari bantalan",
+        "description": "beban terlalu berat, kurangi beban"
+      },
+      {
+        "title": "Tarikan setengah ROM (tidak sampai puncak)",
+        "description": "tekankan remas tulang belikat penuh"
+      }
+    ],
+    "safetyTips": [
+      "Dada tetap menempel bantalan sepanjang gerakan",
+      "Remas tulang belikat di puncak tarikan"
+    ]
   },
   {
     "id": "MC-PULLH-002",
@@ -2940,7 +6649,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Bahu Belakang (Rear Delt)",
+      "Punggung Atas (Rhomboid)",
+      "Trapezius tengah"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu Dalam (Rotator Cuff)"
+    ],
+    "instructions": [
+      "Atur cable setinggi wajah/dada atas, pasang tali (rope attachment)",
+      "Genggam tali di kedua ujung, telapak menghadap ke dalam",
+      "Tarik tali ke arah wajah, siku terangkat tinggi ke samping, tangan berpisah di puncak",
+      "Kembalikan dengan kontrol ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku rendah (di bawah bahu)",
+        "description": "jadi lebih mirip row biasa, kehilangan penekanan rear delt, cue \"siku tinggi\""
+      },
+      {
+        "title": "Beban terlalu berat sehingga badan ikut berayun",
+        "description": "turunkan beban signifikan, ini gerakan ringan-sedang"
+      },
+      {
+        "title": "Tarikan terlalu cepat",
+        "description": "perlambat, fokus kontrol dan remas di puncak"
+      }
+    ],
+    "safetyTips": [
+      "Siku tinggi, setinggi bahu atau lebih",
+      "Tarik seperti mau menyisir rambut ke belakang dengan kedua tangan",
+      "Remas tulang belikat di puncak, tahan sebentar"
+    ]
   },
   {
     "id": "MC-PULLV-000",
@@ -2960,7 +6703,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Bahu Belakang (Rear Delt)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Duduk di mesin, paha terkunci di bantalan penahan",
+      "Genggam bar sedikit lebih lebar dari bahu, telapak menghadap depan",
+      "Tarik bar ke arah dada bagian atas, dada sedikit membusung, siku ke bawah-belakang",
+      "Kembalikan dengan kontrol ke posisi lengan lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan condong jauh ke belakang saat menarik (memakai momentum)",
+        "description": "kurangi beban, jaga torso relatif tegak"
+      },
+      {
+        "title": "Bar ditarik ke belakang leher (bukan ke depan dada)",
+        "description": "berisiko ke bahu, selalu tarik ke depan dada"
+      },
+      {
+        "title": "Tarikan setengah ROM",
+        "description": "tekankan remas lat penuh di titik bawah"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke bawah dan sedikit ke belakang, bukan tangan yang menarik",
+      "Dada sedikit membusung menyambut bar",
+      "Jangan mengayun badan ke belakang untuk bantu tarikan"
+    ]
   },
   {
     "id": "MC-PULLV-001",
@@ -2980,7 +6757,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Atur beban bantuan sesuai kemampuan (makin berat beban bantuan = makin ringan usaha)",
+      "Berlutut/berdiri di platform, genggam bar di atas selebar bahu",
+      "Tarik badan ke atas sampai dagu melewati bar, siku ke bawah-belakang",
+      "Turunkan dengan kontrol sampai lengan hampir lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan mengayun (kipping tidak disengaja) untuk bantu tarikan",
+        "description": "kurangi berat bantuan (tambah bantuan), kontrol penuh"
+      },
+      {
+        "title": "ROM tidak penuh (tidak turun sampai lengan lurus)",
+        "description": "tekankan turun penuh tiap rep untuk kualitas gerakan"
+      },
+      {
+        "title": "Dagu tidak sampai melewati bar",
+        "description": "tanda beban bantuan kurang, tambah bantuan"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke bawah, bayangkan menarik bar ke arah pinggang",
+      "Badan tetap stabil, jangan mengayun",
+      "Turunkan penuh sampai lengan hampir lurus tiap rep"
+    ]
   },
   {
     "id": "MC-PULLV-002",
@@ -3000,7 +6810,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)",
+      "Lengan Belakang (Triceps)"
+    ],
+    "instructions": [
+      "Berdiri menghadap tiang cable (high pulley), genggam bar/tali dengan kedua tangan",
+      "Siku tetap lurus (fixed) sepanjang gerakan, badan condong ringan ke depan",
+      "Tarik bar ke bawah membentuk lengkungan sampai sejajar paha, remas lat",
+      "Kembalikan dengan kontrol ke posisi awal"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku ikut menekuk (jadi mirip pulldown biasa)",
+        "description": "hilang isolasi lat, cue \"siku tetap lurus\""
+      },
+      {
+        "title": "Badan berayun untuk bantu tarikan",
+        "description": "kurangi beban, kontrol penuh"
+      },
+      {
+        "title": "Tarikan hanya dari bahu bawah, tidak sampai paha",
+        "description": "tekankan ROM penuh"
+      }
+    ],
+    "safetyTips": [
+      "Siku tetap lurus sepanjang gerakan, jangan ikut menekuk",
+      "Gerakan dari bahu, bayangkan mendorong ke bawah ke arah paha",
+      "Remas lat di titik terbawah, tahan sebentar"
+    ]
   },
   {
     "id": "MC-CORE-000",
@@ -3023,7 +6866,39 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Berdiri menyamping ke tiang cable, pegang handle dengan kedua tangan di depan dada",
+      "Langkah menjauh sampai ada tahanan, badan menyamping terhadap tiang",
+      "Dorong handle lurus ke depan menjauh dari dada, tahan tarikan cable yang mencoba memutar badan",
+      "Tarik kembali ke dada dengan kontrol, badan tetap lurus sepanjang gerakan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan ikut berputar mengikuti tahanan cable",
+        "description": "beban terlalu berat untuk kapasitas anti-rotasi saat ini, turunkan beban"
+      },
+      {
+        "title": "Punggung melengkung untuk kompensasi",
+        "description": "jaga posisi netral, kurangi beban jika perlu"
+      },
+      {
+        "title": "Kaki terlalu sempit sehingga tidak stabil",
+        "description": "lebarkan stance untuk basis lebih kuat"
+      }
+    ],
+    "safetyTips": [
+      "Jangan biarkan badan berputar ke arah tiang",
+      "Bayangkan ada papan kayu di depan perut, jangan sampai retak/berputar",
+      "Kencangkan perut sebelum mendorong"
+    ]
   },
   {
     "id": "MC-CORE-001",
@@ -3045,7 +6920,40 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Bahu (Deltoid)",
+      "Panggul (Hip)"
+    ],
+    "instructions": [
+      "Atur cable di posisi tinggi (high-to-low) atau rendah (low-to-high), berdiri menyamping ke tiang",
+      "Pegang handle dengan kedua tangan, kaki selebar bahu, lutut sedikit menekuk",
+      "Tarik handle melintasi badan secara diagonal dengan rotasi dari pinggul dan torso bersamaan",
+      "Kembalikan dengan kontrol ke posisi awal, ganti sisi setelah selesai set"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Gerakan hanya dari lengan, torso tidak ikut berputar",
+        "description": "hilang manfaat rotasi core, cue \"putar dari pinggul dan torso\""
+      },
+      {
+        "title": "Terlalu cepat/dihentak",
+        "description": "perlambat, ini bukan tentang kecepatan tapi kontrol rotasi"
+      },
+      {
+        "title": "Punggung bawah ikut memutar berlebihan (bukan dari thoracic/pinggul)",
+        "description": "kurangi beban, fokus rotasi dari area yang tepat"
+      }
+    ],
+    "safetyTips": [
+      "Putar dari pinggul dan torso bersamaan, bukan cuma lengan",
+      "Gerakan seperti menebang kayu secara diagonal",
+      "Kaki boleh sedikit berputar mengikuti, tapi tetap stabil"
+    ]
   },
   {
     "id": "MC-CORE-002",
@@ -3067,7 +6975,39 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)"
+    ],
+    "targetMusclesSecondary": [
+      "Perut Samping (Oblique)"
+    ],
+    "instructions": [
+      "Duduk di mesin, bantalan dada/bahu menempel sesuai desain mesin",
+      "Genggam pegangan (jika ada), posisikan siku/dada di bantalan",
+      "Tekuk badan ke depan dengan kontrak perut, bukan menarik dengan lengan/leher",
+      "Kembalikan dengan kontrol ke posisi awal, jangan sampai lumbar hiperekstensi berlebihan"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Menarik dengan tangan/leher, bukan kontraksi perut",
+        "description": "hilang manfaat latihan, tekankan \"dari perut\""
+      },
+      {
+        "title": "Menghentak beban dengan momentum",
+        "description": "perlambat tempo"
+      },
+      {
+        "title": "ROM kembali berlebihan (hiperekstensi lumbar)",
+        "description": "batasi ROM kembali sampai posisi netral saja"
+      }
+    ],
+    "safetyTips": [
+      "Tekuk dari perut, bukan menarik dengan tangan/leher",
+      "Bayangkan mendekatkan tulang rusuk ke arah pinggul",
+      "Gerakan terkontrol, jangan menghentak"
+    ]
   },
   {
     "id": "PUB-PULLV-000",
@@ -3089,7 +7029,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": true,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Lengan Bawah (Forearm)",
+      "Bahu (Deltoid)",
+      "Punggung Lebar (Lats)"
+    ],
+    "targetMusclesSecondary": [
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand (punggung tangan menghadap ke arah wajah), selebar bahu atau sedikit lebih lebar",
+      "Angkat kaki dari lantai (pakai bangku/lompat kecil jika bar tinggi), biarkan badan tergantung lurus penuh",
+      "Bahu boleh sedikit \"shrug\" pasif ke atas (bahu naik dekat telinga) di dead hang murni, atau ditekan turun sedikit untuk versi \"active hang\" (lebih menantang scapula)",
+      "Tahan posisi selama waktu target, turun dengan kontrol"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Mengayunkan badan untuk mengurangi rasa capek genggaman",
+        "description": "tahan badan tetap diam, ayunan mengalihkan bukan mengurangi kesulitan sebenarnya"
+      },
+      {
+        "title": "Melepas terlalu cepat karena tidak nyaman",
+        "description": "itu tandanya kapasitas grip/bahu memang perlu dibangun bertahap, target waktu pendek dulu"
+      },
+      {
+        "title": "Bahu \"kolaps\" total berulang dalam waktu lama",
+        "description": "boleh sesekali untuk dead hang murni, tapi variasikan dengan active hang untuk kesehatan bahu jangka panjang"
+      }
+    ],
+    "safetyTips": [
+      "Rileks di bahu, biarkan badan menggantung penuh",
+      "Genggaman kuat tapi bukan meremas maksimal terus-menerus",
+      "Kalau mau versi lebih menantang, tekan bahu turun sedikit (active hang)"
+    ]
   },
   {
     "id": "PUB-PULLV-001",
@@ -3109,7 +7083,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Trapezius bawah",
+      "Punggung Atas (Rhomboid)",
+      "Punggung Lebar (Lats)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Bawah (Forearm)",
+      "Inti (Core)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand seperti dead hang, badan tergantung lurus",
+      "Tanpa menekuk siku sama sekali, tarik tulang belikat ke bawah dan ke belakang (seperti mengantongi tulang belikat ke saku belakang)",
+      "Badan akan naik sedikit (beberapa cm saja), tahan sebentar di posisi ini",
+      "Turun dengan kontrol kembali ke dead hang"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Siku ikut menekuk (jadi setengah pull-up)",
+        "description": "tahan lengan tetap lurus, isolasi gerakan hanya di scapula"
+      },
+      {
+        "title": "ROM terlalu kecil sehingga tidak terasa aktivasi",
+        "description": "pastikan benar-benar menarik scapula turun, bukan cuma niat"
+      },
+      {
+        "title": "Terburu-buru tanpa jeda di posisi puncak",
+        "description": "tahan sebentar untuk memastikan aktivasi penuh"
+      }
+    ],
+    "safetyTips": [
+      "Bayangkan menaruh tulang belikat ke saku belakang celana",
+      "Siku tetap lurus, jangan menekuk sama sekali",
+      "Gerakan kecil tapi terasa jelas di punggung atas"
+    ]
   },
   {
     "id": "PUB-PULLV-002",
@@ -3129,7 +7138,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Lebar (Lats)",
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Naik ke posisi atas pull-up (dagu di atas bar) dengan bantuan bangku, lompatan, atau dibantu orang lain",
+      "Dari posisi atas, lepaskan bantuan, tahan sejenak",
+      "Turunkan badan seselambat mungkin dengan kontrol penuh, target minimal 3-5 detik untuk turun penuh",
+      "Setelah lengan lurus penuh di bawah, ulangi dari awal (naik dengan bantuan lagi)"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Turun terlalu cepat (bukan benar-benar dikontrol)",
+        "description": "hilang manfaat eksentrik, fokus perlambat khususnya di pertengahan ROM"
+      },
+      {
+        "title": "Melepas pegangan sebelum lengan lurus penuh",
+        "description": "selesaikan ROM penuh tiap repetisi"
+      },
+      {
+        "title": "Siku melebar ke samping saat turun",
+        "description": "jaga siku lebih dekat badan untuk melibatkan lat dengan benar"
+      }
+    ],
+    "safetyTips": [
+      "Turun selambat mungkin, lawan gravitasi sepanjang jalan",
+      "Siku tetap dekat badan saat turun, jangan melebar",
+      "Kalau turun jadi cepat/jatuh di tengah jalan, itu tandanya sudah mentok kapasitas — oke, itu bagian dari latihan"
+    ]
   },
   {
     "id": "PUB-PULLV-003",
@@ -3149,7 +7193,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Lebar (Lats)",
+      "Lengan Depan (Biceps)"
+    ],
+    "targetMusclesSecondary": [
+      "Punggung Atas",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan underhand (telapak menghadap wajah), selebar bahu",
+      "Mulai dari dead hang, badan lurus",
+      "Tarik badan ke atas sampai dagu melewati bar, siku ke bawah-belakang",
+      "Turunkan dengan kontrol sampai lengan lurus penuh"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Tidak turun penuh (ROM setengah)",
+        "description": "tekankan turun sampai lengan lurus tiap rep untuk kualitas gerak"
+      },
+      {
+        "title": "Badan mengayun (kipping tidak disengaja)",
+        "description": "kembali ke Negative Pull-Up untuk bangun kekuatan strict dulu"
+      },
+      {
+        "title": "Dagu tidak sampai melewati bar",
+        "description": "tanda repetisi belum \"penuh\", jangan dihitung sebagai rep sah"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke bawah dan belakang, bayangkan menarik bar ke arah pinggang",
+      "Dagu melewati bar, bukan cuma menyentuh",
+      "Turun penuh sampai lengan lurus tiap rep, jangan setengah-setengah"
+    ]
   },
   {
     "id": "PUB-PULLV-004",
@@ -3171,7 +7250,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "PUNGGUNG",
+    "targetMusclesPrimary": [
+      "Punggung Lebar (Lats)",
+      "Punggung Atas"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Depan (Biceps)",
+      "Inti (Core)",
+      "Lengan Bawah (Forearm)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand (punggung tangan menghadap wajah), selebar bahu atau sedikit lebih lebar",
+      "Mulai dari dead hang, badan lurus",
+      "Tarik badan ke atas sampai dagu melewati bar, siku ke bawah-belakang, dada sedikit membusung menyambut bar",
+      "Turunkan dengan kontrol sampai lengan lurus penuh"
+    ],
+    "commonMistakes": [
+      {
+        "title": "ROM tidak penuh (dagu tidak sampai melewati bar, atau tidak turun sampai lurus)",
+        "description": "jangan hitung sebagai rep sah, kualitas lebih penting dari kuantitas"
+      },
+      {
+        "title": "Badan mengayun/kipping tidak disengaja",
+        "description": "tanda kekuatan strict belum cukup, kembali ke Negative Pull-Up/Chin-Up untuk bangun fondasi"
+      },
+      {
+        "title": "Grip terlalu lebar",
+        "description": "mengurangi efisiensi tarikan dan menambah tekanan bahu, gunakan lebar bahu atau sedikit lebih lebar"
+      }
+    ],
+    "safetyTips": [
+      "Tarik siku ke bawah dan belakang",
+      "Dada menyambut bar, bukan cuma dagu yang naik",
+      "Turun penuh sampai lengan lurus tiap rep"
+    ]
   },
   {
     "id": "PUB-CORE-000",
@@ -3193,7 +7307,41 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Bawah (Forearm)",
+      "Punggung Lebar (Lats)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand, badan tergantung lurus (dead hang)",
+      "Kencangkan core, angkat lutut ke arah dada sampai paha mendekati sejajar lantai atau lebih tinggi",
+      "Tahan sebentar di puncak, hindari mengayun badan",
+      "Turunkan dengan kontrol kembali ke posisi tergantung lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Badan berayun (memakai momentum, bukan kontraksi core)",
+        "description": "tanda beban/ROM terlalu berat untuk kapasitas saat ini, perlambat tempo dan kurangi ayunan"
+      },
+      {
+        "title": "Hanya mengangkat kaki dari lutut ke bawah (ROM kecil)",
+        "description": "tekankan mengangkat dari pinggul, bukan cuma menekuk lutut lebih dalam"
+      },
+      {
+        "title": "Bahu shrug tinggi sepanjang gerakan",
+        "description": "boleh untuk stabilitas, tapi jangan sampai kehilangan kontrol scapula sepenuhnya"
+      }
+    ],
+    "safetyTips": [
+      "Angkat lutut pakai perut, bukan pakai ayunan badan",
+      "Bayangkan menarik pusar ke arah tulang belakang sebelum mengangkat",
+      "Turun terkontrol, jangan jatuh bebas"
+    ]
   },
   {
     "id": "PUB-CORE-001",
@@ -3213,7 +7361,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Bawah (Forearm)",
+      "Paha Belakang (Hamstring)",
+      "Punggung Lebar (Lats)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand, badan tergantung lurus",
+      "Jaga kaki lurus (lutut tidak menekuk), angkat kaki ke depan sampai setidaknya sejajar lantai (idealnya lebih tinggi)",
+      "Tahan sebentar di puncak",
+      "Turunkan dengan kontrol kembali ke posisi tergantung lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Lutut menekuk di tengah gerakan (jadi mirip knee raise)",
+        "description": "tekankan kaki lurus penuh sepanjang ROM"
+      },
+      {
+        "title": "Badan berayun untuk bantu momentum",
+        "description": "perlambat tempo, kurangi ROM jika perlu sampai kontrol kembali"
+      },
+      {
+        "title": "Tidak mencapai sejajar lantai",
+        "description": "tanda hip flexor/core belum cukup kuat, kembali ke Knee Raise dulu"
+      }
+    ],
+    "safetyTips": [
+      "Kaki tetap lurus sepanjang gerakan, jangan menekuk lutut untuk 'curang",
+      "Angkat dari pinggul, rasakan perut bagian bawah bekerja",
+      "Turun terkontrol, tahan gravitasi sepanjang jalan"
+    ]
   },
   {
     "id": "PUB-CORE-002",
@@ -3233,6 +7416,42 @@
     "polaGerakTerkait": null,
     "highImpact": false,
     "isometricHeavy": false,
-    "mediaSlug": null
+    "mediaSlug": null,
+    "primaryMuscleGroup": "INTI",
+    "targetMusclesPrimary": [
+      "Inti (Core)",
+      "Hip Flexor (Panggul Depan)"
+    ],
+    "targetMusclesSecondary": [
+      "Lengan Bawah (Forearm)",
+      "Punggung Lebar (Lats)",
+      "Paha Belakang (Hamstring)",
+      "Bahu (Deltoid)"
+    ],
+    "instructions": [
+      "Raih bar dengan pegangan overhand, badan tergantung lurus",
+      "Jaga kaki lurus, angkat kaki dengan kuat sampai ujung kaki (jari kaki) menyentuh bar",
+      "Tahan sepersekian detik di puncak (kontak dengan bar)",
+      "Turunkan dengan kontrol kembali ke posisi tergantung lurus"
+    ],
+    "commonMistakes": [
+      {
+        "title": "Memakai ayunan/momentum badan besar (kipping) untuk mencapai bar",
+        "description": "oke sebagai variasi conditioning tingkat lanjut, tapi untuk membangun kekuatan strict, kurangi ayunan dan fokus kontrol"
+      },
+      {
+        "title": "Lutut menekuk untuk \"curang\" mencapai bar lebih mudah",
+        "description": "tekankan kaki lurus untuk manfaat penuh"
+      },
+      {
+        "title": "Turun dijatuhkan begitu saja tanpa kontrol",
+        "description": "selalu turun dengan kontrol untuk melatih fase eksentrik juga"
+      }
+    ],
+    "safetyTips": [
+      "Kaki lurus, dorong ujung kaki sampai menyentuh bar",
+      "Gerakan dari perut bagian bawah, bukan cuma ayunan kaki",
+      "Kontrol turunnya sama pentingnya dengan naiknya"
+    ]
   }
 ]

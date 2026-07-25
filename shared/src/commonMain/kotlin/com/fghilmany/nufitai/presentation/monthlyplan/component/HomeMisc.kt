@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 
-/** Figma node 12:617 "Quick Access Bento Section" -- navigates to Exercise Library (P-07, separate not-yet-built feature). */
+/** Figma node 12:617 "Quick Access Bento Section" -- navigates to Exercise Library (P-07, issue #79). */
 @Composable
 fun QuickAccessBanner(onClick: () -> Unit, modifier: Modifier = Modifier) {
     AppCard(

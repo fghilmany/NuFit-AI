@@ -5,6 +5,7 @@ import com.fghilmany.nufitai.core.error.runCatchingDatabase
 import com.fghilmany.nufitai.data.exerciselibrary.datasource.ExerciseInsertRow
 import com.fghilmany.nufitai.data.exerciselibrary.datasource.ExerciseLibraryLocalDataSource
 import com.fghilmany.nufitai.data.exerciselibrary.datasource.ExerciseLibrarySeedDataSource
+import com.fghilmany.nufitai.data.exerciselibrary.model.CommonMistakeJson
 import com.fghilmany.nufitai.db.Exercise as ExerciseRow
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
@@ -12,6 +13,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.domain.exerciselibrary.repository.ExerciseLibraryRepository
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -60,6 +62,12 @@ class ExerciseLibraryRepositoryImpl(
         highImpact = highImpact,
         isometricHeavy = isometricHeavy,
         mediaSlug = mediaSlug,
+        primaryMuscleGroup = primaryMuscleGroup.name,
+        targetMusclesPrimaryJson = json.encodeToString(targetMusclesPrimary),
+        targetMusclesSecondaryJson = json.encodeToString(targetMusclesSecondary),
+        instructionsJson = json.encodeToString(instructions),
+        commonMistakesJson = json.encodeToString(commonMistakes.map { CommonMistakeJson.from(it) }),
+        safetyTipsJson = json.encodeToString(safetyTips),
     )
 
     private fun ExerciseRow.toEntity(): Exercise = Exercise(
@@ -81,5 +89,11 @@ class ExerciseLibraryRepositoryImpl(
         highImpact = high_impact == 1L,
         isometricHeavy = isometric_heavy == 1L,
         mediaSlug = media_slug,
+        primaryMuscleGroup = MuscleGroup.valueOf(primary_muscle_group),
+        targetMusclesPrimary = json.decodeFromString<List<String>>(target_muscles_primary),
+        targetMusclesSecondary = json.decodeFromString<List<String>>(target_muscles_secondary),
+        instructions = json.decodeFromString<List<String>>(instructions),
+        commonMistakes = json.decodeFromString<List<CommonMistakeJson>>(common_mistakes).map { it.toEntity() },
+        safetyTips = json.decodeFromString<List<String>>(safety_tips),
     )
 }

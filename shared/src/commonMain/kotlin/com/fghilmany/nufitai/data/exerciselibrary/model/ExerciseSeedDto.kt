@@ -5,6 +5,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.toExerciseFlagOrNull
 import kotlinx.serialization.Serializable
 
@@ -34,6 +35,12 @@ data class ExerciseSeedDto(
     val highImpact: Boolean = false,
     val isometricHeavy: Boolean = false,
     val mediaSlug: String? = null,
+    val primaryMuscleGroup: String,
+    val targetMusclesPrimary: List<String> = emptyList(),
+    val targetMusclesSecondary: List<String> = emptyList(),
+    val instructions: List<String> = emptyList(),
+    val commonMistakes: List<CommonMistakeJson> = emptyList(),
+    val safetyTips: List<String> = emptyList(),
 ) {
     fun toEntity(): Exercise = Exercise(
         id = id,
@@ -57,6 +64,12 @@ data class ExerciseSeedDto(
         highImpact = highImpact,
         isometricHeavy = isometricHeavy,
         mediaSlug = mediaSlug,
+        primaryMuscleGroup = MuscleGroup.valueOf(primaryMuscleGroup),
+        targetMusclesPrimary = targetMusclesPrimary,
+        targetMusclesSecondary = targetMusclesSecondary,
+        instructions = instructions,
+        commonMistakes = commonMistakes.map { it.toEntity() },
+        safetyTips = safetyTips,
     )
 }
 

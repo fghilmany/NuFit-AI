@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.fake.FakeExerciseLibraryRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -34,6 +35,12 @@ class GetExercisePoolTest {
         highImpact = false,
         isometricHeavy = false,
         mediaSlug = null,
+        primaryMuscleGroup = MuscleGroup.KAKI,
+        targetMusclesPrimary = emptyList(),
+        targetMusclesSecondary = emptyList(),
+        instructions = listOf("Langkah 1"),
+        commonMistakes = emptyList(),
+        safetyTips = listOf("Tips"),
     )
 
     @Test

@@ -33,6 +33,12 @@ class ExerciseLibraryLocalDataSource(private val database: NuFitDatabase) {
                     high_impact = if (row.highImpact) 1L else 0L,
                     isometric_heavy = if (row.isometricHeavy) 1L else 0L,
                     media_slug = row.mediaSlug,
+                    primary_muscle_group = row.primaryMuscleGroup,
+                    target_muscles_primary = row.targetMusclesPrimaryJson,
+                    target_muscles_secondary = row.targetMusclesSecondaryJson,
+                    instructions = row.instructionsJson,
+                    common_mistakes = row.commonMistakesJson,
+                    safety_tips = row.safetyTipsJson,
                 )
             }
         }
@@ -67,4 +73,10 @@ data class ExerciseInsertRow(
     val highImpact: Boolean,
     val isometricHeavy: Boolean,
     val mediaSlug: String?,
+    val primaryMuscleGroup: String,
+    val targetMusclesPrimaryJson: String,
+    val targetMusclesSecondaryJson: String,
+    val instructionsJson: String,
+    val commonMistakesJson: String,
+    val safetyTipsJson: String,
 )

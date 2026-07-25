@@ -51,6 +51,7 @@ fun HomeScreen(
     onSessionClick: (planDayId: String) -> Unit,
     onStartSession: (planDayId: String) -> Unit,
     onAssessmentDetailClick: () -> Unit,
+    onExerciseLibraryClick: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -62,7 +63,7 @@ fun HomeScreen(
                 Text("Belum ada plan aktif", style = MaterialTheme.typography.bodyLarge)
             }
             is HomeState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
-            is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick)
+            is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick, onExerciseLibraryClick)
         }
 
         TopAppBarSection(modifier = Modifier.align(Alignment.TopStart))
@@ -77,6 +78,7 @@ private fun HomeContent(
     onSessionClick: (String) -> Unit,
     onStartSession: (String) -> Unit,
     onAssessmentDetailClick: () -> Unit,
+    onExerciseLibraryClick: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
@@ -102,7 +104,7 @@ private fun HomeContent(
         }
 
         item {
-            QuickAccessBanner(onClick = {}) // Exercise Library (P-07) is a separate, not-yet-built feature
+            QuickAccessBanner(onClick = onExerciseLibraryClick)
         }
 
         item {

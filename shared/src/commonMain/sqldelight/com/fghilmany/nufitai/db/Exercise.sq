@@ -16,15 +16,23 @@ CREATE TABLE exercise (
     pola_gerak_terkait TEXT,
     high_impact INTEGER NOT NULL,
     isometric_heavy INTEGER NOT NULL,
-    media_slug TEXT
+    media_slug TEXT,
+    primary_muscle_group TEXT NOT NULL,
+    target_muscles_primary TEXT NOT NULL,
+    target_muscles_secondary TEXT NOT NULL,
+    instructions TEXT NOT NULL,
+    common_mistakes TEXT NOT NULL,
+    safety_tips TEXT NOT NULL
 );
 
 insertExercise:
 INSERT INTO exercise(
     id, name, equipment_category, movement_pattern, level, level_variant, level_note,
     flag_exclusion, flag_prioritas, area_terbebani, substitusi_setara, rantai_regresi,
-    rantai_progresi, syarat_naik, pola_gerak_terkait, high_impact, isometric_heavy, media_slug
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    rantai_progresi, syarat_naik, pola_gerak_terkait, high_impact, isometric_heavy, media_slug,
+    primary_muscle_group, target_muscles_primary, target_muscles_secondary, instructions,
+    common_mistakes, safety_tips
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getAllExercises:
 SELECT * FROM exercise;
