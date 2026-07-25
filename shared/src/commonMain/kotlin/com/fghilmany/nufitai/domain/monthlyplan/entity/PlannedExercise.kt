@@ -12,6 +12,8 @@ data class PlannedExercise(
     val rpeTargetMin: Int,
     val rpeTargetMax: Int,
     val reasonRuleIds: List<String>,
+    /** issue #80 -- PT Mode's rest-timer duration; null falls back to a 90s default. */
+    val restSeconds: Int? = null,
 )
 
 data class CardioBlock(

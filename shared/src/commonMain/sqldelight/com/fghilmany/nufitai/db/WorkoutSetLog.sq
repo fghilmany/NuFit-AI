@@ -1,0 +1,24 @@
+CREATE TABLE workout_set_log (
+    id TEXT NOT NULL PRIMARY KEY,
+    workout_exercise_log_id TEXT NOT NULL,
+    set_number INTEGER NOT NULL,
+    weight_kg REAL NOT NULL,
+    reps INTEGER NOT NULL,
+    completed_at INTEGER NOT NULL,
+    FOREIGN KEY (workout_exercise_log_id) REFERENCES workout_exercise_log(id)
+);
+
+insertWorkoutSetLog:
+INSERT INTO workout_set_log(
+    id, workout_exercise_log_id, set_number, weight_kg, reps, completed_at
+) VALUES (?, ?, ?, ?, ?, ?);
+
+getSetLogsForSession:
+SELECT workout_set_log.* FROM workout_set_log
+INNER JOIN workout_exercise_log ON workout_exercise_log.id = workout_set_log.workout_exercise_log_id
+WHERE workout_exercise_log.workout_session_id = ?;
+
+getSetLogsForExercise:
+SELECT workout_set_log.* FROM workout_set_log
+INNER JOIN workout_exercise_log ON workout_exercise_log.id = workout_set_log.workout_exercise_log_id
+WHERE workout_exercise_log.exercise_id = ?;

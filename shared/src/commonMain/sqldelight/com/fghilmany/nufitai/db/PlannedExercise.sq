@@ -8,14 +8,16 @@ CREATE TABLE planned_exercise (
     rpe_target_min INTEGER NOT NULL,
     rpe_target_max INTEGER NOT NULL,
     reason_rule_ids TEXT NOT NULL,
+    -- issue #80 -- PT Mode's rest-timer duration; null falls back to a 90s default.
+    rest_seconds INTEGER,
     FOREIGN KEY (plan_day_id) REFERENCES plan_day(id),
     FOREIGN KEY (exercise_id) REFERENCES exercise(id)
 );
 
 insertPlannedExercise:
 INSERT INTO planned_exercise(
-    id, plan_day_id, slot, exercise_id, sets, rep_range_or_duration, rpe_target_min, rpe_target_max, reason_rule_ids
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    id, plan_day_id, slot, exercise_id, sets, rep_range_or_duration, rpe_target_min, rpe_target_max, reason_rule_ids, rest_seconds
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getPlannedExercisesForDay:
 SELECT * FROM planned_exercise WHERE plan_day_id = ?;

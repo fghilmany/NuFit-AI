@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ptmode_error_session_not_found">Session no longer available</string>
+    <string name="ptmode_error_exercise_not_found">Exercise not found</string>
+
+    <string name="ptmode_top_bar_eyebrow">NuFit AI Coach</string>
+    <string name="ptmode_top_bar_progress">Exercise %1$d of %2$d</string>
+    <string name="ptmode_pause_content_description">Pause</string>
+    <string name="ptmode_active_set_label">Active Set - %1$s</string>
+    <string name="ptmode_target_line">%1$dx %2$s @ %3$s kg</string>
+    <string name="ptmode_set_counter">Set %1$d of %2$d</string>
+    <string name="ptmode_weight_label">WEIGHT (KG)</string>
+    <string name="ptmode_reps_label">REPS</string>
+    <string name="ptmode_decrease_content_description">Decrease</string>
+    <string name="ptmode_increase_content_description">Increase</string>
+    <string name="ptmode_confirm_set_button">Finish Set</string>
+    <string name="ptmode_swap_exercise_button">Swap exercise</string>
+    <string name="ptmode_skip_exercise_button">Skip</string>
+    <string name="ptmode_rest_timer_label">Rest</string>
+    <string name="ptmode_rest_timer_value">%1$d:%2$02d</string>
+    <string name="ptmode_skip_rest_button">Skip rest</string>
+
+    <string name="ptmode_swap_sheet_title">Choose a replacement</string>
+    <string name="ptmode_swap_sheet_empty">No alternatives available</string>
+
+    <string name="ptmode_end_session_dialog_title">End this session?</string>
+    <string name="ptmode_end_session_dialog_body">You can continue later from where you left off, or end now -- the remaining exercises will be marked as skipped and your progress so far will be saved.</string>
+    <string name="ptmode_end_session_continue_later">Continue later</string>
+    <string name="ptmode_end_session_end_now">End now</string>
+
+    <string name="ptmode_summary_title">Done!</string>
+    <string name="ptmode_summary_headline">Session Complete! You\'re Awesome!</string>
+    <string name="ptmode_summary_subtitle">Your body will thank you later. Take a moment to rest.</string>
+    <string name="ptmode_summary_close_content_description">Close</string>
+    <string name="ptmode_summary_total_volume_label">Total Volume</string>
+    <string name="ptmode_summary_volume_value">%1$s kg</string>
+    <string name="ptmode_summary_duration_label">Duration</string>
+    <string name="ptmode_summary_duration_value">%1$d min</string>
+    <string name="ptmode_summary_exercise_label">Exercises</string>
+    <string name="ptmode_summary_exercise_value">%1$d of %2$d Done</string>
+    <string name="ptmode_summary_pr_title">New Record!</string>
+    <string name="ptmode_summary_pr_body">%1$s: %2$s kg</string>
+    <string name="ptmode_summary_pr_delta">(+%1$s kg from before)</string>
+    <string name="ptmode_summary_rpe_section_title">How intense was the workout?</string>
+    <string name="ptmode_summary_rpe_level_label">Level %1$d: %2$s</string>
+    <string name="ptmode_summary_save_button">Save</string>
+    <string name="ptmode_summary_close_button">Close</string>
+
+    <string name="ptmode_rpe_1_label">Very Light</string>
+    <string name="ptmode_rpe_1_desc">Barely noticeable, could do dozens more reps</string>
+    <string name="ptmode_rpe_2_label">Light</string>
+    <string name="ptmode_rpe_2_desc">Very easy, plenty of energy left</string>
+    <string name="ptmode_rpe_3_label">Light</string>
+    <string name="ptmode_rpe_3_desc">Still very comfortable</string>
+    <string name="ptmode_rpe_4_label">Fairly Light</string>
+    <string name="ptmode_rpe_4_desc">Starting to feel it, but still relaxed</string>
+    <string name="ptmode_rpe_5_label">Moderate</string>
+    <string name="ptmode_rpe_5_desc">Starting to sweat but can still talk</string>
+    <string name="ptmode_rpe_6_label">Fairly Hard</string>
+    <string name="ptmode_rpe_6_desc">Feeling challenging, breathing harder</string>
+    <string name="ptmode_rpe_7_label">Hard</string>
+    <string name="ptmode_rpe_7_desc">Heavy but could still do 3 more reps</string>
+    <string name="ptmode_rpe_8_label">Very Hard</string>
+    <string name="ptmode_rpe_8_desc">Only 1-2 more reps left in the tank</string>
+    <string name="ptmode_rpe_9_label">Nearly Maximal</string>
+    <string name="ptmode_rpe_9_desc">Barely able to finish</string>
+    <string name="ptmode_rpe_10_label">Maximal</string>
+    <string name="ptmode_rpe_10_desc">Absolute limit, no more reps possible</string>
+</resources>

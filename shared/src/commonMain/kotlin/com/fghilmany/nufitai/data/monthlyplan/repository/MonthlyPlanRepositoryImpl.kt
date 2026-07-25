@@ -124,6 +124,7 @@ class MonthlyPlanRepositoryImpl(
         rpeTargetMin = rpeTargetMin,
         rpeTargetMax = rpeTargetMax,
         reasonRuleIdsJson = json.encodeToString(reasonRuleIds),
+        restSeconds = restSeconds,
     )
 
     private fun MonthlyPlanRow.toEntity(): MonthlyPlan = MonthlyPlan(
@@ -173,6 +174,7 @@ class MonthlyPlanRepositoryImpl(
         rpeTargetMin = rpe_target_min.toInt(),
         rpeTargetMax = rpe_target_max.toInt(),
         reasonRuleIds = json.decodeFromString<List<String>>(reason_rule_ids),
+        restSeconds = rest_seconds?.toInt(),
     )
 
     private fun PlanDaySessionLogRow.toEntity(): PlanDaySessionLog = PlanDaySessionLog(

@@ -30,9 +30,13 @@ sealed interface Route {
     @Serializable
     data object FullAssessmentStub : Route
 
-    /** Placeholder target for "Mulai Sesi Ini"/"Mulai Latihan" until PT Mode (`05-pt-mode.md`) ships. */
+    /** P-05 -- PT Mode Guided Workout (issue #80). */
     @Serializable
-    data object PtModeStub : Route
+    data class PtMode(val planDayId: String) : Route
+
+    /** P-06 -- Workout Summary (issue #80). */
+    @Serializable
+    data class WorkoutSummary(val planDayId: String) : Route
 
     /** P-09 -- Assessment Detail (issue #77). */
     @Serializable

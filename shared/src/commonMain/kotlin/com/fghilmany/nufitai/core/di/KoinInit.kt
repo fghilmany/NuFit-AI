@@ -14,6 +14,7 @@ fun initKoin(driverFactory: DatabaseDriverFactory, appDeclaration: KoinAppDeclar
             fullAssessmentModule,
             monthlyPlanModule,
             assessmentDetailModule,
+            ptModeModule,
         )
     }
 }

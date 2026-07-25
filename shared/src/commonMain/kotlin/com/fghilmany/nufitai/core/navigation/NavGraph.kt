@@ -1,11 +1,6 @@
 package com.fghilmany.nufitai.core.navigation
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,6 +17,8 @@ import com.fghilmany.nufitai.presentation.onboarding.screen.DoctorConsultScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.ParQScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.QuickAssessmentWizardScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.SplashScreen
+import com.fghilmany.nufitai.presentation.ptmode.screen.PtModeScreen
+import com.fghilmany.nufitai.presentation.ptmode.screen.WorkoutSummaryScreen
 
 @Composable
 fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
@@ -87,7 +84,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
         composable<Route.Home> {
             HomeScreen(
                 onSessionClick = { planDayId -> navController.navigate(Route.SessionDetail(planDayId)) },
-                onStartSession = { navController.navigate(Route.PtModeStub) },
+                onStartSession = { planDayId -> navController.navigate(Route.PtMode(planDayId)) },
                 onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
                 onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
             )
@@ -98,14 +95,33 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
             SessionDetailScreen(
                 planDayId = route.planDayId,
                 onBack = { navController.popBackStack() },
-                onStartSession = { navController.navigate(Route.PtModeStub) },
+                onStartSession = { navController.navigate(Route.PtMode(route.planDayId)) },
             )
         }
 
-        composable<Route.PtModeStub> {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("PT Mode -- belum dibangun (05-pt-mode.md)")
-            }
+        composable<Route.PtMode> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.PtMode>()
+            PtModeScreen(
+                planDayId = route.planDayId,
+                onSessionCompleted = { planDayId ->
+                    navController.navigate(Route.WorkoutSummary(planDayId)) {
+                        popUpTo<Route.PtMode> { inclusive = true }
+                    }
+                },
+                onExit = { navController.popBackStack() },
+            )
+        }
+
+        composable<Route.WorkoutSummary> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.WorkoutSummary>()
+            WorkoutSummaryScreen(
+                planDayId = route.planDayId,
+                onDone = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.WorkoutSummary> { inclusive = true }
+                    }
+                },
+            )
         }
 
         composable<Route.FullAssessmentStub> {

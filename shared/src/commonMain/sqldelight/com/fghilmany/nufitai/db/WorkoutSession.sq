@@ -1,0 +1,22 @@
+CREATE TABLE workout_session (
+    id TEXT NOT NULL PRIMARY KEY,
+    plan_day_id TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    completed_at INTEGER,
+    status TEXT NOT NULL,
+    current_exercise_index INTEGER NOT NULL,
+    current_set_number INTEGER NOT NULL,
+    rest_end_at INTEGER,
+    FOREIGN KEY (plan_day_id) REFERENCES plan_day(id)
+);
+
+insertWorkoutSession:
+INSERT OR REPLACE INTO workout_session(
+    id, plan_day_id, started_at, completed_at, status, current_exercise_index, current_set_number, rest_end_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+getInProgressSessionForDay:
+SELECT * FROM workout_session WHERE plan_day_id = ? AND status = 'IN_PROGRESS' LIMIT 1;
+
+getLatestSessionForDay:
+SELECT * FROM workout_session WHERE plan_day_id = ? ORDER BY started_at DESC LIMIT 1;

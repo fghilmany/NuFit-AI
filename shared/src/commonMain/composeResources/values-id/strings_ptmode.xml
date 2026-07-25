@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ptmode_error_session_not_found">Sesi tidak lagi tersedia</string>
+    <string name="ptmode_error_exercise_not_found">Gerakan tidak ditemukan</string>
+
+    <string name="ptmode_top_bar_eyebrow">NuFit AI Coach</string>
+    <string name="ptmode_top_bar_progress">Latihan %1$d dari %2$d</string>
+    <string name="ptmode_pause_content_description">Jeda</string>
+    <string name="ptmode_active_set_label">Set Aktif - %1$s</string>
+    <string name="ptmode_target_line">%1$dx %2$s @ %3$s kg</string>
+    <string name="ptmode_set_counter">Set %1$d dari %2$d</string>
+    <string name="ptmode_weight_label">BEBAN (KG)</string>
+    <string name="ptmode_reps_label">REPETISI</string>
+    <string name="ptmode_decrease_content_description">Kurangi</string>
+    <string name="ptmode_increase_content_description">Tambah</string>
+    <string name="ptmode_confirm_set_button">Selesai Set</string>
+    <string name="ptmode_swap_exercise_button">Ganti gerakan</string>
+    <string name="ptmode_skip_exercise_button">Lewati</string>
+    <string name="ptmode_rest_timer_label">Istirahat</string>
+    <string name="ptmode_rest_timer_value">%1$d:%2$02d</string>
+    <string name="ptmode_skip_rest_button">Lewati istirahat</string>
+
+    <string name="ptmode_swap_sheet_title">Pilih gerakan pengganti</string>
+    <string name="ptmode_swap_sheet_empty">Tidak ada alternatif tersedia</string>
+
+    <string name="ptmode_end_session_dialog_title">Akhiri sesi ini?</string>
+    <string name="ptmode_end_session_dialog_body">Kamu bisa melanjutkan nanti dari posisi terakhir, atau akhiri sekarang -- gerakan yang tersisa akan ditandai dilewati dan progres sejauh ini tetap tersimpan.</string>
+    <string name="ptmode_end_session_continue_later">Lanjutkan nanti</string>
+    <string name="ptmode_end_session_end_now">Akhiri sekarang</string>
+
+    <string name="ptmode_summary_title">Selesai!</string>
+    <string name="ptmode_summary_headline">Sesi Selesai! Kamu Hebat!</string>
+    <string name="ptmode_summary_subtitle">Tubuhmu akan berterima kasih padamu nanti. Istirahatlah sejenak.</string>
+    <string name="ptmode_summary_close_content_description">Tutup</string>
+    <string name="ptmode_summary_total_volume_label">Total Beban</string>
+    <string name="ptmode_summary_volume_value">%1$s kg</string>
+    <string name="ptmode_summary_duration_label">Durasi</string>
+    <string name="ptmode_summary_duration_value">%1$d Menit</string>
+    <string name="ptmode_summary_exercise_label">Gerakan</string>
+    <string name="ptmode_summary_exercise_value">%1$d dari %2$d Selesai</string>
+    <string name="ptmode_summary_pr_title">Rekor Baru!</string>
+    <string name="ptmode_summary_pr_body">%1$s: %2$s kg</string>
+    <string name="ptmode_summary_pr_delta">(+%1$s kg dari sebelumnya)</string>
+    <string name="ptmode_summary_rpe_section_title">Seberapa berat latihannya?</string>
+    <string name="ptmode_summary_rpe_level_label">Tingkat %1$d: %2$s</string>
+    <string name="ptmode_summary_save_button">Simpan</string>
+    <string name="ptmode_summary_close_button">Tutup</string>
+
+    <string name="ptmode_rpe_1_label">Sangat Ringan</string>
+    <string name="ptmode_rpe_1_desc">Hampir tidak terasa, bisa lakukan puluhan rep lagi</string>
+    <string name="ptmode_rpe_2_label">Ringan</string>
+    <string name="ptmode_rpe_2_desc">Sangat mudah, banyak tenaga tersisa</string>
+    <string name="ptmode_rpe_3_label">Ringan</string>
+    <string name="ptmode_rpe_3_desc">Masih sangat nyaman</string>
+    <string name="ptmode_rpe_4_label">Cukup Ringan</string>
+    <string name="ptmode_rpe_4_desc">Mulai terasa tapi masih santai</string>
+    <string name="ptmode_rpe_5_label">Sedang</string>
+    <string name="ptmode_rpe_5_desc">Mulai berkeringat tapi masih bisa ngobrol</string>
+    <string name="ptmode_rpe_6_label">Cukup Berat</string>
+    <string name="ptmode_rpe_6_desc">Terasa menantang, napas mulai berat</string>
+    <string name="ptmode_rpe_7_label">Berat</string>
+    <string name="ptmode_rpe_7_desc">Berat tapi masih sanggup 3 rep lagi</string>
+    <string name="ptmode_rpe_8_label">Sangat Berat</string>
+    <string name="ptmode_rpe_8_desc">Hanya sanggup 1-2 rep lagi</string>
+    <string name="ptmode_rpe_9_label">Nyaris Maksimal</string>
+    <string name="ptmode_rpe_9_desc">Nyaris tidak sanggup menyelesaikan</string>
+    <string name="ptmode_rpe_10_label">Maksimal</string>
+    <string name="ptmode_rpe_10_desc">Batas maksimal, tidak sanggup rep tambahan</string>
+</resources>

@@ -28,6 +28,7 @@ data class PlannedExerciseInsertRow(
     val rpeTargetMin: Int,
     val rpeTargetMax: Int,
     val reasonRuleIdsJson: String,
+    val restSeconds: Int?,
 )
 
 class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
@@ -84,6 +85,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                         rpe_target_min = exercise.rpeTargetMin.toLong(),
                         rpe_target_max = exercise.rpeTargetMax.toLong(),
                         reason_rule_ids = exercise.reasonRuleIdsJson,
+                        rest_seconds = exercise.restSeconds?.toLong(),
                     )
                 }
             }
@@ -120,6 +122,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                             rpe_target_min = exercise.rpeTargetMin.toLong(),
                             rpe_target_max = exercise.rpeTargetMax.toLong(),
                             reason_rule_ids = exercise.reasonRuleIdsJson,
+                            rest_seconds = exercise.restSeconds?.toLong(),
                         )
                     }
                 }

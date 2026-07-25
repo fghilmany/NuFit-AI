@@ -116,8 +116,9 @@ private fun StepContent(step: FullAssessmentState.Step, viewModel: FullAssessmen
 
 @Composable
 private fun ParQPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
+    val parQQuestions = fullAssessmentParQCopy()
     LazyColumn(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(fullAssessmentParQCopy()) { (questionId, text) ->
+        items(parQQuestions) { (questionId, text) ->
             QuestionCard(
                 questionNumber = questionId.ordinal + 1,
                 questionText = text,

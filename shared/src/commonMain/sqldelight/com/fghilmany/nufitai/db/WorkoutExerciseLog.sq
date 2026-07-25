@@ -1,0 +1,17 @@
+CREATE TABLE workout_exercise_log (
+    id TEXT NOT NULL PRIMARY KEY,
+    workout_session_id TEXT NOT NULL,
+    planned_exercise_index INTEGER NOT NULL,
+    exercise_id TEXT NOT NULL,
+    skipped_at INTEGER,
+    FOREIGN KEY (workout_session_id) REFERENCES workout_session(id),
+    FOREIGN KEY (exercise_id) REFERENCES exercise(id)
+);
+
+insertWorkoutExerciseLog:
+INSERT OR REPLACE INTO workout_exercise_log(
+    id, workout_session_id, planned_exercise_index, exercise_id, skipped_at
+) VALUES (?, ?, ?, ?, ?);
+
+getExerciseLogsForSession:
+SELECT * FROM workout_exercise_log WHERE workout_session_id = ?;
