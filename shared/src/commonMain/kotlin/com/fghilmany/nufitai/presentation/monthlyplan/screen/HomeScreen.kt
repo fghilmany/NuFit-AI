@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.presentation.monthlyplan.component.AssessmentDetailBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
 import com.fghilmany.nufitai.presentation.monthlyplan.component.QuickAccessBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.SessionCard
@@ -49,6 +50,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     onSessionClick: (planDayId: String) -> Unit,
     onStartSession: (planDayId: String) -> Unit,
+    onAssessmentDetailClick: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -60,7 +62,7 @@ fun HomeScreen(
                 Text("Belum ada plan aktif", style = MaterialTheme.typography.bodyLarge)
             }
             is HomeState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
-            is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession)
+            is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick)
         }
 
         TopAppBarSection(modifier = Modifier.align(Alignment.TopStart))
@@ -74,6 +76,7 @@ private fun HomeContent(
     viewModel: HomeViewModel,
     onSessionClick: (String) -> Unit,
     onStartSession: (String) -> Unit,
+    onAssessmentDetailClick: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
@@ -100,6 +103,10 @@ private fun HomeContent(
 
         item {
             QuickAccessBanner(onClick = {}) // Exercise Library (P-07) is a separate, not-yet-built feature
+        }
+
+        item {
+            AssessmentDetailBanner(onClick = onAssessmentDetailClick)
         }
 
         items(state.weeks.filter { it.weekNumber != state.currentWeekNumber }) { week ->

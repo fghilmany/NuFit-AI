@@ -10,6 +10,9 @@ interface MonthlyPlanRepository {
     suspend fun savePlan(plan: MonthlyPlan, days: List<PlanDay>): AppResult<Unit>
 
     suspend fun getActivePlan(): AppResult<MonthlyPlan?>
+
+    /** P-09 Riwayat tab: active + archived plans, newest first. */
+    suspend fun getAllPlans(): AppResult<List<MonthlyPlan>>
     suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>>
     suspend fun archivePlan(planId: String): AppResult<Unit>
 

@@ -54,4 +54,14 @@ object NuFitColors {
     val TertiaryFixedDim = Color(0xFF85D7AD)
     val SecondaryFixed = Color(0xFFCEE9D3)
     val OnSecondaryFixed = Color(0xFF092012)
+
+    // Warning/amber role -- NOT yet in DESIGN.md (no amber token exists there today, see issue #77
+    // §9 item 3). Hex sourced directly from the P-09 Figma pull (node 12:987, "PAR-Q Safety
+    // Section"): background #FFA726, container #FFF4E5, heading text #945700, body text #663C00.
+    // Flag to whoever owns DESIGN.md to fold these into the source doc; do not hand-tune further.
+    val Warning = Color(0xFFFFA726)
+    val OnWarning = Color(0xFFFFFFFF)
+    val WarningContainer = Color(0xFFFFF4E5)
+    val OnWarningContainer = Color(0xFF945700)
+    val OnWarningContainerBody = Color(0xFF663C00)
 }

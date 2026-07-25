@@ -9,6 +9,7 @@ import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQViewModel
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentViewModel
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
 import com.fghilmany.nufitai.usecase.onboarding.AcknowledgeDoctorConsult
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestBodyMeasurement
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLocalProfileStatus
@@ -35,6 +36,7 @@ val onboardingModule = module {
     factory { AcknowledgeDoctorConsult(repository = get()) }
     factory { GetLatestParQResult(repository = get()) }
     factory { GetLatestQuickAssessmentResult(repository = get()) }
+    factory { GetLatestBodyMeasurement(repository = get()) }
     factory { SubmitQuickAssessment(repository = get(), resolveQuickAssessment = get()) }
     factory { SaveBodyMeasurement(repository = get()) }
     factory { GetLocalProfileStatus(repository = get()) }

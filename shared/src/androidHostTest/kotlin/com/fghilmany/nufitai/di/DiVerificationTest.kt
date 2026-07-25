@@ -28,6 +28,7 @@ class DiVerificationTest {
                 exerciseLibraryModule,
                 fullAssessmentModule,
                 monthlyPlanModule,
+                assessmentDetailModule,
             )
             checkModules()
         }

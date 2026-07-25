@@ -13,6 +13,7 @@ fun initKoin(driverFactory: DatabaseDriverFactory, appDeclaration: KoinAppDeclar
             exerciseLibraryModule,
             fullAssessmentModule,
             monthlyPlanModule,
+            assessmentDetailModule,
         )
     }
 }

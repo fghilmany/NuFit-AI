@@ -130,6 +130,10 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.monthlyPlanQueries.getActiveMonthlyPlan().executeAsOneOrNull()
     }
 
+    suspend fun getAllPlans(): List<MonthlyPlanRow> = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.getAllMonthlyPlans().executeAsList()
+    }
+
     suspend fun archivePlan(planId: String) = withContext(Dispatchers.Default) {
         database.monthlyPlanQueries.archiveMonthlyPlan(planId)
     }

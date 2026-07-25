@@ -22,5 +22,8 @@ INSERT INTO monthly_plan(
 getActiveMonthlyPlan:
 SELECT * FROM monthly_plan WHERE status = 'ACTIVE' LIMIT 1;
 
+getAllMonthlyPlans:
+SELECT * FROM monthly_plan ORDER BY started_at DESC;
+
 archiveMonthlyPlan:
 UPDATE monthly_plan SET status = 'ARCHIVED' WHERE id = ?;

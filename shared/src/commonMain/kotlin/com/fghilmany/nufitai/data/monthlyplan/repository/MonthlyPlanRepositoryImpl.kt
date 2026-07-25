@@ -60,6 +60,10 @@ class MonthlyPlanRepositoryImpl(
         local.getActivePlan()?.toEntity()
     }
 
+    override suspend fun getAllPlans(): AppResult<List<MonthlyPlan>> = runCatchingDatabase {
+        local.getAllPlans().map { it.toEntity() }
+    }
+
     override suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>> = runCatchingDatabase {
         val dayRows = local.getPlanDays(planId)
         val exerciseRows = local.getPlannedExercisesForDays(dayRows.map { it.id })

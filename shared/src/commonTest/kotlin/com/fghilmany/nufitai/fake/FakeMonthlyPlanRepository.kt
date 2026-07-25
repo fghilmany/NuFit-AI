@@ -17,21 +17,30 @@ class FakeMonthlyPlanRepository : MonthlyPlanRepository {
     var sessionLogs: MutableMap<String, List<PlanDaySessionLog>> = mutableMapOf()
     var archivedPlanIds: MutableList<String> = mutableListOf()
 
+    /** Every plan ever saved/archived, newest-`startedAt`-first -- backs `getAllPlans()` (P-09 Riwayat, issue #77). */
+    var allPlans: MutableList<MonthlyPlan> = mutableListOf()
+
     override suspend fun savePlan(plan: MonthlyPlan, days: List<PlanDay>): AppResult<Unit> {
         savedPlan = plan
         savedDays = days
         activePlan = plan
         planDays[plan.id] = days
+        allPlans.add(plan)
         return AppResult.Success(Unit)
     }
 
     override suspend fun getActivePlan(): AppResult<MonthlyPlan?> = AppResult.Success(activePlan)
+
+    override suspend fun getAllPlans(): AppResult<List<MonthlyPlan>> =
+        AppResult.Success(allPlans.sortedByDescending { it.startedAt })
 
     override suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>> = AppResult.Success(planDays[planId].orEmpty())
 
     override suspend fun archivePlan(planId: String): AppResult<Unit> {
         archivedPlanIds.add(planId)
         if (activePlan?.id == planId) activePlan = activePlan?.copy(status = PlanStatus.ARCHIVED)
+        val index = allPlans.indexOfFirst { it.id == planId }
+        if (index >= 0) allPlans[index] = allPlans[index].copy(status = PlanStatus.ARCHIVED)
         return AppResult.Success(Unit)
     }
 

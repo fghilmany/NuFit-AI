@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.fghilmany.nufitai.presentation.assessmentdetail.screen.AssessmentDetailScreen
 import com.fghilmany.nufitai.presentation.fullassessment.screen.FullAssessmentStubScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.HomeScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.SessionDetailScreen
@@ -85,6 +86,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
             HomeScreen(
                 onSessionClick = { planDayId -> navController.navigate(Route.SessionDetail(planDayId)) },
                 onStartSession = { navController.navigate(Route.PtModeStub) },
+                onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
             )
         }
 
@@ -113,6 +115,26 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                         popUpTo<Route.FullAssessmentStub> { inclusive = true }
                     }
                 },
+            )
+        }
+
+        composable<Route.AssessmentDetail> {
+            AssessmentDetailScreen(
+                onBack = { navController.popBackStack() },
+                // UC-3 retake (issue #77): RetakeAssessment already archived the active plan --
+                // re-enter the same wizard/stub flows first-time onboarding uses, popping this
+                // screen off the stack so "back" from the wizard returns to Home, not here.
+                onRetakeLocal = {
+                    navController.navigate(Route.QuickAssessmentWizard(step = 1)) {
+                        popUpTo<Route.AssessmentDetail> { inclusive = true }
+                    }
+                },
+                onRetakeLoggedIn = {
+                    navController.navigate(Route.FullAssessmentStub) {
+                        popUpTo<Route.AssessmentDetail> { inclusive = true }
+                    }
+                },
+                onOpenFullAssessment = { navController.navigate(Route.FullAssessmentStub) },
             )
         }
     }

@@ -33,4 +33,8 @@ sealed interface Route {
     /** Placeholder target for "Mulai Sesi Ini"/"Mulai Latihan" until PT Mode (`05-pt-mode.md`) ships. */
     @Serializable
     data object PtModeStub : Route
+
+    /** P-09 -- Assessment Detail (issue #77). */
+    @Serializable
+    data object AssessmentDetail : Route
 }
