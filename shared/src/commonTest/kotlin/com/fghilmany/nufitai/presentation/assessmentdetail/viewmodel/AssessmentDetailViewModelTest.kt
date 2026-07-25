@@ -53,10 +53,10 @@ class AssessmentDetailViewModelTest {
         id = "qa1",
         answeredAt = Instant.fromEpochMilliseconds(0),
         input = QuickAssessmentAnswer(
-            experience = Experience.BELUM_PERNAH,
+            experience = Experience.NEVER,
             goal = GoalCategory.FAT_LOSS,
             equipment = emptySet(),
-            frequency = FrequencyBucket.TWO_TO_THREE,
+            frequency = FrequencyBucket.THREE,
             splitPreference = SplitPreference.FULL_BODY,
         ),
         level = Level.BEGINNER,
@@ -74,8 +74,8 @@ class AssessmentDetailViewModelTest {
         levelMeta = "BEGINNER",
         goalMeta = GoalCategory.FAT_LOSS,
         smartGoalMeta = null,
-        flagsAktif = emptySet(),
-        startingLevelPerPola = emptyMap(),
+        activeFlags = emptySet(),
+        startingLevelPerPattern = emptyMap(),
         mode = ProgressionMode.NORMAL,
         checkpointDays = emptyList(),
     )

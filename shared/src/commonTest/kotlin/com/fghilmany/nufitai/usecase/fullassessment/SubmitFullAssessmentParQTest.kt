@@ -25,19 +25,19 @@ class SubmitFullAssessmentParQTest {
     }
 
     @Test
-    fun `given a Kategori A answer yes when invoked then hard stop flagged`() {
-        val result = submitFullAssessmentParQ(allNo(FullAssessmentParQQuestionId.Q6_KEHAMILAN))
+    fun `given a Category A answer yes when invoked then hard stop flagged`() {
+        val result = submitFullAssessmentParQ(allNo(FullAssessmentParQQuestionId.Q6_PREGNANCY))
 
         assertTrue(result.hardStopFlagged)
-        assertEquals(listOf(FullAssessmentParQQuestionId.Q6_KEHAMILAN), result.flaggedHardStopQuestions)
-        assertTrue(result.exerciseFlags.isEmpty()) // Kategori A never becomes an exercise-filtering flag
+        assertEquals(listOf(FullAssessmentParQQuestionId.Q6_PREGNANCY), result.flaggedHardStopQuestions)
+        assertTrue(result.exerciseFlags.isEmpty()) // Category A never becomes an exercise-filtering flag
     }
 
     @Test
-    fun `given a Kategori B answer yes when invoked then conservative flag without hard stop`() {
-        val result = submitFullAssessmentParQ(allNo(FullAssessmentParQQuestionId.Q9_ASMA_TERKONTROL))
+    fun `given a Category B answer yes when invoked then conservative flag without hard stop`() {
+        val result = submitFullAssessmentParQ(allNo(FullAssessmentParQQuestionId.Q9_ASTHMA_CONTROLLED))
 
         assertFalse(result.hardStopFlagged)
-        assertEquals(setOf(ExerciseFlag.HEALTH_ASMA), result.exerciseFlags)
+        assertEquals(setOf(ExerciseFlag.HEALTH_ASTHMA), result.exerciseFlags)
     }
 }

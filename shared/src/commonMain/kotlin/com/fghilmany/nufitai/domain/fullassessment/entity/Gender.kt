@@ -5,4 +5,4 @@ package com.fghilmany.nufitai.domain.fullassessment.entity
  * screen exists yet (09-profile-settings.md, not built) -- Full Assessment collects it directly
  * for now; that screen will reuse this type when it ships, not duplicate it.
  */
-enum class Gender { PRIA, WANITA }
+enum class Gender { MALE, FEMALE }

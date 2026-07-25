@@ -30,25 +30,25 @@ class FullAssessmentRepositoryImpl(
 
     override suspend fun saveFullAssessmentResult(result: FullAssessmentResult): AppResult<Unit> = runCatchingDatabase {
         val flagDetails = buildList {
-            result.parQKategoriB.forEach { add(KIND_HEALTH to it.name) }
+            result.parQCategoryB.forEach { add(KIND_HEALTH to it.name) }
             result.flagsPostural.forEach { add(KIND_POSTURAL to it.name) }
-            result.flagsGerak.forEach { add(KIND_MOVEMENT to it.name) }
+            result.movementFlags.forEach { add(KIND_MOVEMENT to it.name) }
         }
         local.insertFullAssessmentResult(
             id = result.id,
             completedAt = result.completedAt.toEpochMilliseconds(),
-            usia = result.usia?.toLong(),
+            age = result.age?.toLong(),
             gender = result.gender?.name,
             parQAnswersJson = json.encodeToString(result.parQAnswers.map { ParQAnswerJson.from(it) }),
             hardStopFlagged = result.hardStopFlagged,
             hardStopAcknowledgedAt = result.hardStopAcknowledgedAt?.toEpochMilliseconds(),
-            preferensiAlatJson = json.encodeToString(result.preferensiAlat),
-            riwayatCederaJson = json.encodeToString(result.riwayatCedera),
+            equipmentPreferenceJson = json.encodeToString(result.equipmentPreference),
+            injuryHistoryJson = json.encodeToString(result.injuryHistory),
             capacityTestJson = result.capacityTest?.let { json.encodeToString(CapacityTestJson.from(it)) },
             goal = result.goal.name,
-            frekuensiPerMinggu = result.frekuensiPerMinggu.toLong(),
-            hariPilihanJson = json.encodeToString(result.hariPilihan),
-            durasiSesiMenit = result.durasiSesiMenit.toLong(),
+            sessionsPerWeek = result.sessionsPerWeek.toLong(),
+            hariPilihanJson = json.encodeToString(result.selectedWeekdays),
+            sessionDurationMinutes = result.sessionDurationMinutes.toLong(),
             flagDetails = flagDetails,
         )
     }
@@ -57,9 +57,9 @@ class FullAssessmentRepositoryImpl(
         val row = local.getLatestFullAssessmentResult() ?: return@runCatchingDatabase null
         val flagRows = local.getFlagsForResult(row.id)
         row.toEntity(
-            parQKategoriB = flagRows.filter { it.kind == KIND_HEALTH }.map { ExerciseFlag.valueOf(it.flag_name) }.toSet(),
+            parQCategoryB = flagRows.filter { it.kind == KIND_HEALTH }.map { ExerciseFlag.valueOf(it.flag_name) }.toSet(),
             flagsPostural = flagRows.filter { it.kind == KIND_POSTURAL }.map { ExerciseFlag.valueOf(it.flag_name) }.toSet(),
-            flagsGerak = flagRows.filter { it.kind == KIND_MOVEMENT }.map { ExerciseFlag.valueOf(it.flag_name) }.toSet(),
+            movementFlags = flagRows.filter { it.kind == KIND_MOVEMENT }.map { ExerciseFlag.valueOf(it.flag_name) }.toSet(),
         )
     }
 
@@ -68,26 +68,26 @@ class FullAssessmentRepositoryImpl(
     }
 
     private fun FullAssessmentResultRow.toEntity(
-        parQKategoriB: Set<ExerciseFlag>,
+        parQCategoryB: Set<ExerciseFlag>,
         flagsPostural: Set<ExerciseFlag>,
-        flagsGerak: Set<ExerciseFlag>,
+        movementFlags: Set<ExerciseFlag>,
     ): FullAssessmentResult = FullAssessmentResult(
         id = id,
         completedAt = Instant.fromEpochMilliseconds(completed_at),
-        usia = usia?.toInt(),
+        age = age?.toInt(),
         gender = gender?.let { Gender.valueOf(it) },
         parQAnswers = json.decodeFromString<List<ParQAnswerJson>>(par_q_answers).map { it.toEntity() },
-        parQKategoriB = parQKategoriB,
+        parQCategoryB = parQCategoryB,
         hardStopFlagged = hard_stop_flagged == 1L,
         hardStopAcknowledgedAt = hard_stop_acknowledged_at?.let { Instant.fromEpochMilliseconds(it) },
-        preferensiAlat = json.decodeFromString<Set<EquipmentCategory>>(preferensi_alat),
-        riwayatCedera = json.decodeFromString<Set<BodyArea>>(riwayat_cedera),
+        equipmentPreference = json.decodeFromString<Set<EquipmentCategory>>(equipment_preference),
+        injuryHistory = json.decodeFromString<Set<BodyArea>>(injury_history),
         flagsPostural = flagsPostural,
-        flagsGerak = flagsGerak,
+        movementFlags = movementFlags,
         capacityTest = capacity_test?.let { json.decodeFromString<CapacityTestJson>(it).toEntity() },
         goal = GoalCategory.valueOf(goal),
-        frekuensiPerMinggu = frekuensi_per_minggu.toInt(),
-        hariPilihan = json.decodeFromString<Set<Int>>(hari_pilihan),
-        durasiSesiMenit = durasi_sesi_menit.toInt(),
+        sessionsPerWeek = sessions_per_week.toInt(),
+        selectedWeekdays = json.decodeFromString<Set<Int>>(selected_weekdays),
+        sessionDurationMinutes = session_duration_minutes.toInt(),
     )
 }

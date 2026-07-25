@@ -192,7 +192,7 @@ private fun FullAssessmentDetailsSection(fullAssessment: FullAssessmentResult, m
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(stringResource(Res.string.assessmentdetail_full_data_title), style = MaterialTheme.typography.titleLarge)
 
-        val allFlags: Set<ExerciseFlag> = fullAssessment.parQKategoriB + fullAssessment.flagsPostural + fullAssessment.flagsGerak
+        val allFlags: Set<ExerciseFlag> = fullAssessment.parQCategoryB + fullAssessment.flagsPostural + fullAssessment.movementFlags
         allFlags.forEach { flag -> FlagExplanationCard(flag.exerciseFlagShortLabel(), flag.explanationImpact()) }
 
         val notFilled = stringResource(Res.string.assessmentdetail_capacity_not_filled)
@@ -207,7 +207,7 @@ private fun FullAssessmentDetailsSection(fullAssessment: FullAssessmentResult, m
         Text(
             stringResource(
                 Res.string.assessmentdetail_capacity_plank,
-                capacityTest?.plank?.detik?.let { stringResource(Res.string.assessmentdetail_capacity_seconds, it) } ?: notFilled,
+                capacityTest?.plank?.seconds?.let { stringResource(Res.string.assessmentdetail_capacity_seconds, it) } ?: notFilled,
             ),
             style = MaterialTheme.typography.bodyMedium,
         )

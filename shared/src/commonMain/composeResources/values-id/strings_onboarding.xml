@@ -72,10 +72,20 @@
     <string name="onboarding_goal_strength_title">Jadi lebih kuat</string>
     <string name="onboarding_goal_strength_subtitle">Fokus pada kekuatan fungsional</string>
 
-    <string name="onboarding_frequency_two_to_three_title">2-3x per minggu</string>
-    <string name="onboarding_frequency_two_to_three_subtitle">Cocok untuk memulai secara realistis</string>
-    <string name="onboarding_frequency_four_to_five_title">4-5x per minggu</string>
-    <string name="onboarding_frequency_four_to_five_subtitle">Untuk yang sudah siap lebih intens</string>
+    <string name="onboarding_frequency_one_title">1x per minggu</string>
+    <string name="onboarding_frequency_one_subtitle">Tetap bergerak dengan komitmen minimal</string>
+    <string name="onboarding_frequency_two_title">2x per minggu</string>
+    <string name="onboarding_frequency_two_subtitle">Cara ringan dan realistis untuk memulai</string>
+    <string name="onboarding_frequency_three_title">3x per minggu</string>
+    <string name="onboarding_frequency_three_subtitle">Rutinitas yang seimbang dan solid</string>
+    <string name="onboarding_frequency_four_title">4x per minggu</string>
+    <string name="onboarding_frequency_four_subtitle">Untuk yang sudah siap lebih intens</string>
+    <string name="onboarding_frequency_five_title">5x per minggu</string>
+    <string name="onboarding_frequency_five_subtitle">Rutinitas serius, nyaris tiap hari</string>
+    <string name="onboarding_frequency_six_title">6x per minggu</string>
+    <string name="onboarding_frequency_six_subtitle">Komitmen tinggi, hanya 1 hari istirahat</string>
+    <string name="onboarding_frequency_seven_title">7x per minggu</string>
+    <string name="onboarding_frequency_seven_subtitle">Latihan setiap hari tanpa jeda</string>
 
     <string name="onboarding_split_full_body_title">Full Body</string>
     <string name="onboarding_split_full_body_subtitle">Seluruh tubuh dilatih tiap sesi</string>

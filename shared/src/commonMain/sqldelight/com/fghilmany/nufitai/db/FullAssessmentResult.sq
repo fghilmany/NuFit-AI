@@ -1,24 +1,24 @@
 CREATE TABLE full_assessment_result (
     id TEXT NOT NULL PRIMARY KEY,
     completed_at INTEGER NOT NULL,
-    usia INTEGER,
+    age INTEGER,
     gender TEXT,
     par_q_answers TEXT NOT NULL,
     hard_stop_flagged INTEGER NOT NULL,
     hard_stop_acknowledged_at INTEGER,
-    preferensi_alat TEXT NOT NULL,
-    riwayat_cedera TEXT NOT NULL,
+    equipment_preference TEXT NOT NULL,
+    injury_history TEXT NOT NULL,
     capacity_test TEXT,
     goal TEXT NOT NULL,
-    frekuensi_per_minggu INTEGER NOT NULL,
-    hari_pilihan TEXT NOT NULL,
-    durasi_sesi_menit INTEGER NOT NULL
+    sessions_per_week INTEGER NOT NULL,
+    selected_weekdays TEXT NOT NULL,
+    session_duration_minutes INTEGER NOT NULL
 );
 
 insertFullAssessmentResult:
 INSERT INTO full_assessment_result(
-    id, completed_at, usia, gender, par_q_answers, hard_stop_flagged, hard_stop_acknowledged_at,
-    preferensi_alat, riwayat_cedera, capacity_test, goal, frekuensi_per_minggu, hari_pilihan, durasi_sesi_menit
+    id, completed_at, age, gender, par_q_answers, hard_stop_flagged, hard_stop_acknowledged_at,
+    equipment_preference, injury_history, capacity_test, goal, sessions_per_week, selected_weekdays, session_duration_minutes
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getLatestFullAssessmentResult:

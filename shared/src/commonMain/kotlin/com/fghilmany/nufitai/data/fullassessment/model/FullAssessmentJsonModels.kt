@@ -26,26 +26,26 @@ data class ParQAnswerJson(val questionId: String, val answer: Boolean) {
 @Serializable
 data class CapacityTestJson(
     val pushupReps: Int? = null,
-    val pushupVersi: String? = null,
-    val pushupProtokol: String? = null,
-    val plankDetik: Int? = null,
-    val plankProtokol: String? = null,
+    val pushupVersion: String? = null,
+    val pushupProtocol: String? = null,
+    val plankSeconds: Int? = null,
+    val plankProtocol: String? = null,
     val sitToStandReps: Int? = null,
-    val sitToStandProtokol: String? = null,
+    val sitToStandProtocol: String? = null,
 ) {
     fun toEntity(): CapacityTestResult = CapacityTestResult(
-        pushup = if (pushupReps != null && pushupVersi != null && pushupProtokol != null) {
-            PushupResult(pushupReps, PushupVersion.valueOf(pushupVersi), TestProtocol.valueOf(pushupProtokol))
+        pushup = if (pushupReps != null && pushupVersion != null && pushupProtocol != null) {
+            PushupResult(pushupReps, PushupVersion.valueOf(pushupVersion), TestProtocol.valueOf(pushupProtocol))
         } else {
             null
         },
-        plank = if (plankDetik != null && plankProtokol != null) {
-            PlankResult(plankDetik, TestProtocol.valueOf(plankProtokol))
+        plank = if (plankSeconds != null && plankProtocol != null) {
+            PlankResult(plankSeconds, TestProtocol.valueOf(plankProtocol))
         } else {
             null
         },
-        sitToStand = if (sitToStandReps != null && sitToStandProtokol != null) {
-            SitToStandResult(sitToStandReps, TestProtocol.valueOf(sitToStandProtokol))
+        sitToStand = if (sitToStandReps != null && sitToStandProtocol != null) {
+            SitToStandResult(sitToStandReps, TestProtocol.valueOf(sitToStandProtocol))
         } else {
             null
         },
@@ -54,12 +54,12 @@ data class CapacityTestJson(
     companion object {
         fun from(result: CapacityTestResult) = CapacityTestJson(
             pushupReps = result.pushup?.reps,
-            pushupVersi = result.pushup?.versi?.name,
-            pushupProtokol = result.pushup?.protokol?.name,
-            plankDetik = result.plank?.detik,
-            plankProtokol = result.plank?.protokol?.name,
+            pushupVersion = result.pushup?.version?.name,
+            pushupProtocol = result.pushup?.protocol?.name,
+            plankSeconds = result.plank?.seconds,
+            plankProtocol = result.plank?.protocol?.name,
             sitToStandReps = result.sitToStand?.reps,
-            sitToStandProtokol = result.sitToStand?.protokol?.name,
+            sitToStandProtocol = result.sitToStand?.protocol?.name,
         )
     }
 }

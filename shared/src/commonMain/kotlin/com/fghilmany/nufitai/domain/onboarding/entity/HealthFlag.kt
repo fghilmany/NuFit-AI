@@ -1,12 +1,12 @@
 package com.fghilmany.nufitai.domain.onboarding.entity
 
 enum class HealthFlag {
-    JANTUNG,
-    TEKANAN_DARAH,
-    SENDI,
-    SENDI_OPERASI_RECENT,
+    HEART,
+    BLOOD_PRESSURE,
+    JOINT,
+    JOINT_SURGERY_RECENT,
     DIABETES,
-    KANKER_AKTIF,
-    KEHAMILAN,
-    LAINNYA,
+    ACTIVE_CANCER,
+    PREGNANCY,
+    OTHER,
 }

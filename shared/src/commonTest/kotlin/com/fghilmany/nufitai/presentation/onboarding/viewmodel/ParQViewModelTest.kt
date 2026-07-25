@@ -51,7 +51,7 @@ class ParQViewModelTest {
     @Test
     fun `given submit before all answered then state does not transition to submitting`() = runTest {
         val vm = viewModel()
-        vm.onEvent(ParQEvent.Answer(ParQQuestionId.Q1_JANTUNG_DIAGNOSIS, false))
+        vm.onEvent(ParQEvent.Answer(ParQQuestionId.Q1_HEART_DIAGNOSIS, false))
         vm.onEvent(ParQEvent.Submit)
 
         assertTrue(vm.state.value is ParQState.Questions)
@@ -61,7 +61,7 @@ class ParQViewModelTest {
     fun `given all answered when submitted then transitions to submitted with correct flag`() = runTest {
         val vm = viewModel()
         ParQQuestionId.entries.forEach { questionId ->
-            vm.onEvent(ParQEvent.Answer(questionId, questionId == ParQQuestionId.Q1_JANTUNG_DIAGNOSIS))
+            vm.onEvent(ParQEvent.Answer(questionId, questionId == ParQQuestionId.Q1_HEART_DIAGNOSIS))
         }
 
         vm.onEvent(ParQEvent.Submit)

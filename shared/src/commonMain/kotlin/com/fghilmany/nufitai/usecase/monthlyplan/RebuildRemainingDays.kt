@@ -13,15 +13,15 @@ import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
 import com.fghilmany.nufitai.usecase.exerciselibrary.GetExercisePool
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.BangunKolamGerakan
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.FilterKeamanan
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.PenjadwalanBulan
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.Resep
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.ResepGoal
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.BuildMovementPool
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.SafetyFilter
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.MonthlyScheduler
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.Prescription
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.GoalPrescription
 
 /**
  * AC-10 / Tahap 7B section E: mid-cycle equipment change reruns only layer 2 (POOL) + downstream
- * for days from [fromDayNumber] forward. `startingLevelPerPola` and every prior day's history
+ * for days from [fromDayNumber] forward. `startingLevelPerPattern` and every prior day's history
  * are preserved untouched -- this only rewrites `plan_day`/`planned_exercise` rows >= [fromDayNumber].
  */
 class RebuildRemainingDays(
@@ -30,7 +30,7 @@ class RebuildRemainingDays(
 ) {
     suspend operator fun invoke(
         plan: MonthlyPlan,
-        newPreferensiAlat: Set<EquipmentCategory>,
+        newEquipmentPreference: Set<EquipmentCategory>,
         fromDayNumber: Int,
         overallLevel: Level,
     ): AppResult<Unit> {
@@ -40,9 +40,9 @@ class RebuildRemainingDays(
             is AppResult.Error -> return poolResult
         }
 
-        val rawPool = BangunKolamGerakan(allExercises, newPreferensiAlat, overallLevel)
-        val filterResult = FilterKeamanan(rawPool, plan.flagsAktif, areaNyeri = emptySet())
-        val resep = ResepGoal(plan.goalMeta)
+        val rawPool = BuildMovementPool(allExercises, newEquipmentPreference, overallLevel)
+        val filterResult = SafetyFilter(rawPool, plan.activeFlags, painAreas = emptySet())
+        val prescription = GoalPrescription(plan.goalMeta)
 
         val sessionDaysResult = repository.getPlanDays(plan.id)
         val existingDays = when (sessionDaysResult) {
@@ -56,11 +56,11 @@ class RebuildRemainingDays(
                 PlanDay(generateId(), plan.id, day, DayType.REST, null, null, null, null, null, null)
             } else {
                 val sessionIndex = existingDays.indexOfFirst { it.dayNumber == day }.coerceAtLeast(0)
-                val templateLetter = PenjadwalanBulan.templateFor(sessionIndex)
-                val patterns = PenjadwalanBulan.TEMPLATE_ROTATION[templateLetter].orEmpty()
-                val fase = PenjadwalanBulan.faseFor(day, plan.mode)
+                val templateLetter = MonthlyScheduler.templateFor(sessionIndex)
+                val patterns = MonthlyScheduler.TEMPLATE_ROTATION[templateLetter].orEmpty()
+                val phase = MonthlyScheduler.phaseFor(day, plan.mode)
                 val mainExercises = patterns.mapNotNull { pattern ->
-                    buildMainExercise(pattern, filterResult.filteredPool, plan.startingLevelPerPola[pattern] ?: ExerciseLevel.REGRESI, resep, fase.setCount, fase.rpeRange)
+                    buildMainExercise(pattern, filterResult.filteredPool, plan.startingLevelPerPattern[pattern] ?: ExerciseLevel.REGRESSION, prescription, phase.setCount, phase.rpeRange)
                 }
                 PlanDay(
                     id = generateId(),
@@ -68,10 +68,10 @@ class RebuildRemainingDays(
                     dayNumber = day,
                     type = DayType.SESSION,
                     templateLetter = templateLetter,
-                    warmup = PenjadwalanBulan.toWarmupBlock(patterns, filterResult.filteredPool, filterResult.korektifWajib),
+                    warmup = MonthlyScheduler.toWarmupBlock(patterns, filterResult.filteredPool, filterResult.mandatoryCorrective),
                     mainExercises = mainExercises,
                     cardio = null,
-                    cooldown = PenjadwalanBulan.toCooldownBlock(patterns, filterResult.filteredPool, filterResult.korektifWajib),
+                    cooldown = MonthlyScheduler.toCooldownBlock(patterns, filterResult.filteredPool, filterResult.mandatoryCorrective),
                     homework = null,
                 )
             }
@@ -84,7 +84,7 @@ class RebuildRemainingDays(
         pattern: MovementPattern,
         filteredPool: Map<MovementPattern, List<Exercise>>,
         startingLevel: ExerciseLevel,
-        resep: Resep,
+        prescription: Prescription,
         setCount: Int,
         rpeRange: IntRange,
     ): PlannedExercise? {
@@ -94,7 +94,7 @@ class RebuildRemainingDays(
         return PlannedExercise(
             exerciseId = chosen.id,
             sets = setCount,
-            repRangeOrDuration = "${resep.repRange.first}-${resep.repRange.last} rep",
+            repRangeOrDuration = "${prescription.repRange.first}-${prescription.repRange.last} rep",
             rpeTargetMin = rpeRange.first,
             rpeTargetMax = rpeRange.last,
             reasonRuleIds = listOf("REBUILD-REMAINING-DAYS"),

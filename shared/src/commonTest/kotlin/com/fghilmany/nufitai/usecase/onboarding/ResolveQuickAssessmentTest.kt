@@ -18,28 +18,28 @@ class ResolveQuickAssessmentTest {
     private val resolve = ResolveQuickAssessment()
 
     private fun answer(
-        experience: Experience = Experience.BELUM_PERNAH,
+        experience: Experience = Experience.NEVER,
         goal: GoalCategory = GoalCategory.FAT_LOSS,
         equipment: Set<EquipmentCategory> = setOf(EquipmentCategory.BODYWEIGHT),
-        frequency: FrequencyBucket = FrequencyBucket.TWO_TO_THREE,
+        frequency: FrequencyBucket = FrequencyBucket.THREE,
         splitPreference: SplitPreference = SplitPreference.FULL_BODY,
     ) = QuickAssessmentAnswer(experience, goal, equipment, frequency, splitPreference)
 
     @Test
     fun `given belum pernah when resolving level then beginner`() {
-        val result = resolve(answer(experience = Experience.BELUM_PERNAH))
+        val result = resolve(answer(experience = Experience.NEVER))
         assertEquals(Level.BEGINNER, result.level)
     }
 
     @Test
     fun `given kurang 1 tahun when resolving level then beginner`() {
-        val result = resolve(answer(experience = Experience.KURANG_1_TAHUN))
+        val result = resolve(answer(experience = Experience.UNDER_1_YEAR))
         assertEquals(Level.BEGINNER, result.level)
     }
 
     @Test
     fun `given rutin bertahun when resolving level then intermediate not advanced`() {
-        val result = resolve(answer(experience = Experience.RUTIN_BERTAHUN))
+        val result = resolve(answer(experience = Experience.YEARS_ROUTINE))
         assertEquals(Level.INTERMEDIATE, result.level)
     }
 
@@ -53,7 +53,7 @@ class ResolveQuickAssessmentTest {
     @Test
     fun `given upper lower with 2-3x frequency then respected but with educational note`() {
         val result = resolve(
-            answer(splitPreference = SplitPreference.UPPER_LOWER, frequency = FrequencyBucket.TWO_TO_THREE),
+            answer(splitPreference = SplitPreference.UPPER_LOWER, frequency = FrequencyBucket.THREE),
         )
         assertEquals(ResolvedSplit.UPPER_LOWER, result.resolvedSplit)
         assertNotNull(result.splitEducationalNote)
@@ -62,7 +62,7 @@ class ResolveQuickAssessmentTest {
     @Test
     fun `given upper lower with 4-5x frequency then respected without note`() {
         val result = resolve(
-            answer(splitPreference = SplitPreference.UPPER_LOWER, frequency = FrequencyBucket.FOUR_TO_FIVE),
+            answer(splitPreference = SplitPreference.UPPER_LOWER, frequency = FrequencyBucket.FOUR),
         )
         assertEquals(ResolvedSplit.UPPER_LOWER, result.resolvedSplit)
         assertNull(result.splitEducationalNote)
@@ -72,9 +72,9 @@ class ResolveQuickAssessmentTest {
     fun `given tidak tahu and beginner then system resolves to full body`() {
         val result = resolve(
             answer(
-                experience = Experience.BELUM_PERNAH,
-                splitPreference = SplitPreference.TIDAK_TAHU,
-                frequency = FrequencyBucket.FOUR_TO_FIVE,
+                experience = Experience.NEVER,
+                splitPreference = SplitPreference.UNKNOWN,
+                frequency = FrequencyBucket.FOUR,
             ),
         )
         assertEquals(ResolvedSplit.FULL_BODY, result.resolvedSplit)
@@ -85,9 +85,9 @@ class ResolveQuickAssessmentTest {
     fun `given tidak tahu and intermediate with 2-3x then system resolves to full body`() {
         val result = resolve(
             answer(
-                experience = Experience.RUTIN_BERTAHUN,
-                splitPreference = SplitPreference.TIDAK_TAHU,
-                frequency = FrequencyBucket.TWO_TO_THREE,
+                experience = Experience.YEARS_ROUTINE,
+                splitPreference = SplitPreference.UNKNOWN,
+                frequency = FrequencyBucket.THREE,
             ),
         )
         assertEquals(ResolvedSplit.FULL_BODY, result.resolvedSplit)
@@ -97,9 +97,9 @@ class ResolveQuickAssessmentTest {
     fun `given tidak tahu and intermediate with 4-5x then system resolves to upper lower`() {
         val result = resolve(
             answer(
-                experience = Experience.RUTIN_BERTAHUN,
-                splitPreference = SplitPreference.TIDAK_TAHU,
-                frequency = FrequencyBucket.FOUR_TO_FIVE,
+                experience = Experience.YEARS_ROUTINE,
+                splitPreference = SplitPreference.UNKNOWN,
+                frequency = FrequencyBucket.FOUR,
             ),
         )
         assertEquals(ResolvedSplit.UPPER_LOWER, result.resolvedSplit)
@@ -109,12 +109,12 @@ class ResolveQuickAssessmentTest {
     fun `templateId encodes level goal split and frequency`() {
         val result = resolve(
             answer(
-                experience = Experience.BELUM_PERNAH,
+                experience = Experience.NEVER,
                 goal = GoalCategory.MUSCLE_GAIN,
                 splitPreference = SplitPreference.FULL_BODY,
-                frequency = FrequencyBucket.TWO_TO_THREE,
+                frequency = FrequencyBucket.THREE,
             ),
         )
-        assertEquals("BEGINNER_MUSCLE_GAIN_FULL_BODY_TWO_TO_THREE", result.templateId)
+        assertEquals("BEGINNER_MUSCLE_GAIN_FULL_BODY_THREE", result.templateId)
     }
 }

@@ -7,8 +7,8 @@ CREATE TABLE monthly_plan (
     level_meta TEXT NOT NULL,
     goal_meta TEXT NOT NULL,
     smart_goal_meta TEXT,
-    flags_aktif TEXT NOT NULL,
-    starting_level_per_pola TEXT NOT NULL,
+    active_flags TEXT NOT NULL,
+    starting_level_per_pattern TEXT NOT NULL,
     mode TEXT NOT NULL,
     checkpoint_days TEXT NOT NULL
 );
@@ -16,7 +16,7 @@ CREATE TABLE monthly_plan (
 insertMonthlyPlan:
 INSERT INTO monthly_plan(
     id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
-    flags_aktif, starting_level_per_pola, mode, checkpoint_days
+    active_flags, starting_level_per_pattern, mode, checkpoint_days
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getActiveMonthlyPlan:

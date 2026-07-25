@@ -14,12 +14,12 @@ import kotlin.test.assertTrue
 class GetExerciseAlternativesTest {
 
     @Test
-    fun `given a substitusiSetara entry when invoked then includes the cross-equipment alternative`() = runTest {
+    fun `given a equivalentSubstitutes entry when invoked then includes the cross-equipment alternative`() = runTest {
         val target = testExercise(
             id = "DB-SQUAT-000",
             equipmentCategory = EquipmentCategory.DUMBBELL,
             movementPattern = MovementPattern.SQUAT,
-            substitusiSetara = mapOf(EquipmentCategory.BODYWEIGHT to "BW-SQUAT-000"),
+            equivalentSubstitutes = mapOf(EquipmentCategory.BODYWEIGHT to "BW-SQUAT-000"),
         )
         val crossEquipmentAlt = testExercise(id = "BW-SQUAT-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, movementPattern = MovementPattern.SQUAT)
         val repository = FakeExerciseLibraryRepository().apply { exercises = listOf(target, crossEquipmentAlt) }
@@ -45,13 +45,13 @@ class GetExerciseAlternativesTest {
     }
 
     @Test
-    fun `given a KOREKTIF-level sibling when invoked then it is excluded`() = runTest {
+    fun `given a CORRECTIVE-level sibling when invoked then it is excluded`() = runTest {
         val target = testExercise(id = "BW-SQUAT-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, movementPattern = MovementPattern.SQUAT)
         val correctiveSibling = testExercise(
             id = "BW-SQUAT-CORR",
             equipmentCategory = EquipmentCategory.BODYWEIGHT,
             movementPattern = MovementPattern.SQUAT,
-            level = ExerciseLevel.KOREKTIF,
+            level = ExerciseLevel.CORRECTIVE,
         )
         val repository = FakeExerciseLibraryRepository().apply { exercises = listOf(target, correctiveSibling) }
 

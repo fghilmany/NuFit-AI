@@ -17,9 +17,9 @@ data class MonthlyPlan(
     val goalMeta: GoalCategory,
     val smartGoalMeta: String?,
     /** Union of all active flags at generation time -- "kenapa saya dapat gerakan ini?". */
-    val flagsAktif: Set<ExerciseFlag>,
-    val startingLevelPerPola: Map<MovementPattern, ExerciseLevel>,
+    val activeFlags: Set<ExerciseFlag>,
+    val startingLevelPerPattern: Map<MovementPattern, ExerciseLevel>,
     val mode: ProgressionMode,
-    /** [14,21] normal, [21,28] konservatif (PROG-06). */
+    /** [14,21] normal, [21,28] conservative (PROG-06). */
     val checkpointDays: List<Int>,
 )

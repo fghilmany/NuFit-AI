@@ -16,14 +16,14 @@ import kotlin.time.Instant
  * available approximation (session RPE <= phase target, no session-wide pain report) until
  * PT Mode (`05-pt-mode.md`) ships per-set logging with a `plan_day_id` FK.
  */
-object GatingProgresi {
+object ProgressionGating {
 
     /** PROG-06: checkpoint days shift when conservative mode is active. */
     fun checkpointDays(mode: ProgressionMode): List<Int> =
-        if (mode == ProgressionMode.KONSERVATIF) listOf(21, 28) else listOf(14, 21)
+        if (mode == ProgressionMode.CONSERVATIVE) listOf(21, 28) else listOf(14, 21)
 
     /**
-     * PROG-06: on day 14 in konservatif mode, log only -- never gate.
+     * PROG-06: on day 14 in conservative mode, log only -- never gate.
      * PROG-01/02: needs the 2 most recent COMPLETED sessions that included this pattern.
      */
     fun canLevelUp(
@@ -33,7 +33,7 @@ object GatingProgresi {
         rpeTargetMax: Int,
         painAreasForPattern: Set<BodyArea>,
     ): Boolean {
-        if (mode == ProgressionMode.KONSERVATIF && checkpointDay == 14) return false // PROG-06
+        if (mode == ProgressionMode.CONSERVATIVE && checkpointDay == 14) return false // PROG-06
 
         val lastTwo = recentSessionLogsForPattern.take(2)
         if (lastTwo.size < 2) return false

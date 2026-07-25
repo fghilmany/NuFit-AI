@@ -14,36 +14,36 @@ class FilterExercisesTest {
         id = "BW-SQUAT-000",
         equipmentCategory = EquipmentCategory.BODYWEIGHT,
         movementPattern = MovementPattern.SQUAT,
-        level = ExerciseLevel.REGRESI,
-        primaryMuscleGroup = MuscleGroup.KAKI,
+        level = ExerciseLevel.REGRESSION,
+        primaryMuscleGroup = MuscleGroup.LEG,
     ).copy(name = "Bodyweight Squat")
 
     private val pushup = testExercise(
         id = "BW-PUSHH-000",
         equipmentCategory = EquipmentCategory.BODYWEIGHT,
         movementPattern = MovementPattern.PUSH_HORIZONTAL,
-        level = ExerciseLevel.STANDAR,
-        primaryMuscleGroup = MuscleGroup.DADA,
+        level = ExerciseLevel.STANDARD,
+        primaryMuscleGroup = MuscleGroup.CHEST,
     ).copy(name = "Push-up")
 
     private val barbellSquat = testExercise(
         id = "BB-SQUAT-000",
         equipmentCategory = EquipmentCategory.BARBELL,
         movementPattern = MovementPattern.SQUAT,
-        level = ExerciseLevel.STANDAR,
-        primaryMuscleGroup = MuscleGroup.KAKI,
+        level = ExerciseLevel.STANDARD,
+        primaryMuscleGroup = MuscleGroup.LEG,
     ).copy(name = "Barbell Back Squat")
 
-    private val korektif = testExercise(
+    private val corrective = testExercise(
         id = "BW-CORRECTIVE-000",
-        level = ExerciseLevel.KOREKTIF,
-        primaryMuscleGroup = MuscleGroup.PUNGGUNG,
+        level = ExerciseLevel.CORRECTIVE,
+        primaryMuscleGroup = MuscleGroup.BACK,
     ).copy(name = "Cat-Cow")
 
-    private val pool = listOf(squat, pushup, barbellSquat, korektif)
+    private val pool = listOf(squat, pushup, barbellSquat, corrective)
 
     @Test
-    fun `given no query or filters when invoked then korektif and aksesori are still excluded`() {
+    fun `given no query or filters when invoked then corrective and accessory are still excluded`() {
         val result = FilterExercises()(pool, query = "", filter = ExerciseFilter())
 
         assertEquals(setOf(squat.id, pushup.id, barbellSquat.id), result.map { it.id }.toSet())
@@ -58,7 +58,7 @@ class FilterExercisesTest {
 
     @Test
     fun `given muscle group and equipment filters together when invoked then AND across categories`() {
-        val filter = ExerciseFilter(muscleGroups = setOf(MuscleGroup.KAKI), equipment = setOf(EquipmentCategory.BODYWEIGHT))
+        val filter = ExerciseFilter(muscleGroups = setOf(MuscleGroup.LEG), equipment = setOf(EquipmentCategory.BODYWEIGHT))
 
         val result = FilterExercises()(pool, query = "", filter = filter)
 

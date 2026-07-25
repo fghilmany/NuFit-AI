@@ -11,36 +11,36 @@ class FullAssessmentLocalDataSource(private val database: NuFitDatabase) {
     suspend fun insertFullAssessmentResult(
         id: String,
         completedAt: Long,
-        usia: Long?,
+        age: Long?,
         gender: String?,
         parQAnswersJson: String,
         hardStopFlagged: Boolean,
         hardStopAcknowledgedAt: Long?,
-        preferensiAlatJson: String,
-        riwayatCederaJson: String,
+        equipmentPreferenceJson: String,
+        injuryHistoryJson: String,
         capacityTestJson: String?,
         goal: String,
-        frekuensiPerMinggu: Long,
+        sessionsPerWeek: Long,
         hariPilihanJson: String,
-        durasiSesiMenit: Long,
+        sessionDurationMinutes: Long,
         flagDetails: List<Pair<String, String>>, // (kind, flagName)
     ) = withContext(Dispatchers.Default) {
         database.transaction {
             database.fullAssessmentResultQueries.insertFullAssessmentResult(
                 id = id,
                 completed_at = completedAt,
-                usia = usia,
+                age = age,
                 gender = gender,
                 par_q_answers = parQAnswersJson,
                 hard_stop_flagged = if (hardStopFlagged) 1L else 0L,
                 hard_stop_acknowledged_at = hardStopAcknowledgedAt,
-                preferensi_alat = preferensiAlatJson,
-                riwayat_cedera = riwayatCederaJson,
+                equipment_preference = equipmentPreferenceJson,
+                injury_history = injuryHistoryJson,
                 capacity_test = capacityTestJson,
                 goal = goal,
-                frekuensi_per_minggu = frekuensiPerMinggu,
-                hari_pilihan = hariPilihanJson,
-                durasi_sesi_menit = durasiSesiMenit,
+                sessions_per_week = sessionsPerWeek,
+                selected_weekdays = hariPilihanJson,
+                session_duration_minutes = sessionDurationMinutes,
             )
             flagDetails.forEachIndexed { index, (kind, flagName) ->
                 database.fullAssessmentFlagDetailQueries.insertFullAssessmentFlagDetail(

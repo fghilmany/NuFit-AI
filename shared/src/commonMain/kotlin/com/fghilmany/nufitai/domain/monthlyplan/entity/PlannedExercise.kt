@@ -17,18 +17,18 @@ data class PlannedExercise(
 )
 
 data class CardioBlock(
-    val jenis: String,
-    val durasiMenit: Int,
-    val intensitas: String?,
+    val type: String,
+    val durationMinutes: Int,
+    val intensity: String?,
 )
 
 data class WarmupBlock(
-    val umum: CardioBlock,
-    val spesifik: List<PlannedExercise>,
-    val korektif: List<PlannedExercise>,
+    val general: CardioBlock,
+    val specific: List<PlannedExercise>,
+    val corrective: List<PlannedExercise>,
 )
 
 data class CooldownBlock(
-    val penurunanHr: CardioBlock,
+    val heartRateCooldown: CardioBlock,
     val stretch: List<PlannedExercise>,
 )

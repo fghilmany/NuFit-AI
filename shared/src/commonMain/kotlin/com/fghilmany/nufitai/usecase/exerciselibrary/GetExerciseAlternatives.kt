@@ -11,9 +11,9 @@ private const val MAX_ALTERNATIVES = 4
 /**
  * P-08 "Gerakan Alternatif" (issue #79 §5) -- computed heuristic, not hand-curated (the issue's
  * own DoD flags this relation as previously undefined):
- * 1. Cross-equipment: resolve `substitusiSetara` (already exists, EquipmentCategory -> exerciseId)
+ * 1. Cross-equipment: resolve `equivalentSubstitutes` (already exists, EquipmentCategory -> exerciseId)
  * 2. Same-equipment variant: siblings sharing movementPattern + equipmentCategory, excluding
- *    self and excluding CORRECTIVE/STRETCH patterns or KOREKTIF/AKSESORI levels (not
+ *    self and excluding CORRECTIVE/STRETCH patterns or CORRECTIVE/ACCESSORY levels (not
  *    user-facing techniques -- same exclusion as [com.fghilmany.nufitai.usecase.exerciselibrary.FilterExercises])
  * Capped at 4 (Figma shows 2; the cap is a safety ceiling, not a target).
  */
@@ -25,7 +25,7 @@ class GetExerciseAlternatives(private val repository: ExerciseLibraryRepository)
         }
         val byId = allExercises.associateBy { it.id }
 
-        val crossEquipment = exercise.substitusiSetara?.values.orEmpty().mapNotNull { byId[it] }
+        val crossEquipment = exercise.equivalentSubstitutes?.values.orEmpty().mapNotNull { byId[it] }
 
         val siblings = allExercises.filter { candidate ->
             candidate.id != exercise.id &&
@@ -33,8 +33,8 @@ class GetExerciseAlternatives(private val repository: ExerciseLibraryRepository)
                 candidate.equipmentCategory == exercise.equipmentCategory &&
                 candidate.movementPattern != MovementPattern.CORRECTIVE &&
                 candidate.movementPattern != MovementPattern.STRETCH &&
-                candidate.level != ExerciseLevel.KOREKTIF &&
-                candidate.level != ExerciseLevel.AKSESORI
+                candidate.level != ExerciseLevel.CORRECTIVE &&
+                candidate.level != ExerciseLevel.ACCESSORY
         }
 
         val alternatives = (crossEquipment + siblings)

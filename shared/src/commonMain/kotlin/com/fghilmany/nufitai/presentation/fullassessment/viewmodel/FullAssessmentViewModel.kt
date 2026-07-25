@@ -41,34 +41,34 @@ sealed interface FullAssessmentState {
             FullAssessmentParQQuestionId.entries.associateWith { null },
         val gateResult: FullAssessmentParQGateResult? = null,
         val gateAcknowledged: Boolean = false,
-        val usia: String = "",
+        val age: String = "",
         val gender: Gender? = null,
-        val preferensiAlat: Set<EquipmentCategory> = emptySet(),
-        val riwayatCedera: Set<BodyArea> = emptySet(),
+        val equipmentPreference: Set<EquipmentCategory> = emptySet(),
+        val injuryHistory: Set<BodyArea> = emptySet(),
         val goal: GoalCategory? = null,
-        val frekuensiPerMinggu: String = "",
-        val hariPilihan: Set<Int> = emptySet(),
-        val durasiSesiMenit: String = "",
+        val sessionsPerWeek: String = "",
+        val selectedWeekdays: Set<Int> = emptySet(),
+        val sessionDurationMinutes: String = "",
         val flagsPostural: Set<ExerciseFlag> = emptySet(),
-        val flagsGerak: Set<ExerciseFlag> = emptySet(),
+        val movementFlags: Set<ExerciseFlag> = emptySet(),
         val capacityTestSkipped: Boolean = false,
         val pushupReps: String = "",
-        val plankDetik: String = "",
+        val plankSeconds: String = "",
         val sitToStandReps: String = "",
     ) : FullAssessmentState {
         val canSubmitParQ: Boolean get() = parQAnswers.values.all { it != null }
         val canProceedFromGate: Boolean get() = gateAcknowledged
         val canProceedFromInterview: Boolean
-            get() = usia.toIntOrNull() != null &&
+            get() = age.toIntOrNull() != null &&
                 gender != null &&
-                preferensiAlat.isNotEmpty() &&
+                equipmentPreference.isNotEmpty() &&
                 goal != null &&
-                frekuensiPerMinggu.toIntOrNull() != null &&
-                hariPilihan.isNotEmpty() &&
-                durasiSesiMenit.toIntOrNull() != null
+                sessionsPerWeek.toIntOrNull() != null &&
+                selectedWeekdays.isNotEmpty() &&
+                sessionDurationMinutes.toIntOrNull() != null
         val canSubmit: Boolean
             get() = capacityTestSkipped ||
-                pushupReps.isNotBlank() || plankDetik.isNotBlank() || sitToStandReps.isNotBlank()
+                pushupReps.isNotBlank() || plankSeconds.isNotBlank() || sitToStandReps.isNotBlank()
     }
     data object Submitting : FullAssessmentState
     data class Completed(val result: FullAssessmentResult) : FullAssessmentState
@@ -82,19 +82,19 @@ sealed interface FullAssessmentEvent {
     data object ContinueFromGate : FullAssessmentEvent
     data class SetUsia(val value: String) : FullAssessmentEvent
     data class SetGender(val value: Gender) : FullAssessmentEvent
-    data class TogglePreferensiAlat(val value: EquipmentCategory) : FullAssessmentEvent
-    data class ToggleRiwayatCedera(val value: BodyArea) : FullAssessmentEvent
+    data class ToggleEquipmentPreference(val value: EquipmentCategory) : FullAssessmentEvent
+    data class ToggleInjuryHistory(val value: BodyArea) : FullAssessmentEvent
     data class SetGoal(val value: GoalCategory) : FullAssessmentEvent
-    data class SetFrekuensiPerMinggu(val value: String) : FullAssessmentEvent
-    data class ToggleHariPilihan(val value: Int) : FullAssessmentEvent
-    data class SetDurasiSesiMenit(val value: String) : FullAssessmentEvent
+    data class SetSessionsPerWeek(val value: String) : FullAssessmentEvent
+    data class ToggleSelectedWeekday(val value: Int) : FullAssessmentEvent
+    data class SetSessionDurationMinutes(val value: String) : FullAssessmentEvent
     data object NextFromInterview : FullAssessmentEvent
     data class TogglePosturalFlag(val value: ExerciseFlag) : FullAssessmentEvent
     data object NextFromPostural : FullAssessmentEvent
     data class ToggleMovementFlag(val value: ExerciseFlag) : FullAssessmentEvent
     data object NextFromMovement : FullAssessmentEvent
     data class SetPushupReps(val value: String) : FullAssessmentEvent
-    data class SetPlankDetik(val value: String) : FullAssessmentEvent
+    data class SetPlankSeconds(val value: String) : FullAssessmentEvent
     data class SetSitToStandReps(val value: String) : FullAssessmentEvent
     data object ToggleSkipCapacityTest : FullAssessmentEvent
     data object Submit : FullAssessmentEvent
@@ -114,18 +114,18 @@ class FullAssessmentViewModel(
             FullAssessmentEvent.SubmitParQ -> submitParQ()
             FullAssessmentEvent.ToggleGateAcknowledge -> updateStep { it.copy(gateAcknowledged = !it.gateAcknowledged) }
             FullAssessmentEvent.ContinueFromGate -> continueFromGate()
-            is FullAssessmentEvent.SetUsia -> updateStep { it.copy(usia = event.value) }
+            is FullAssessmentEvent.SetUsia -> updateStep { it.copy(age = event.value) }
             is FullAssessmentEvent.SetGender -> updateStep { it.copy(gender = event.value) }
-            is FullAssessmentEvent.TogglePreferensiAlat -> updateStep {
-                it.copy(preferensiAlat = it.preferensiAlat.toggle(event.value))
+            is FullAssessmentEvent.ToggleEquipmentPreference -> updateStep {
+                it.copy(equipmentPreference = it.equipmentPreference.toggle(event.value))
             }
-            is FullAssessmentEvent.ToggleRiwayatCedera -> updateStep {
-                it.copy(riwayatCedera = it.riwayatCedera.toggle(event.value))
+            is FullAssessmentEvent.ToggleInjuryHistory -> updateStep {
+                it.copy(injuryHistory = it.injuryHistory.toggle(event.value))
             }
             is FullAssessmentEvent.SetGoal -> updateStep { it.copy(goal = event.value) }
-            is FullAssessmentEvent.SetFrekuensiPerMinggu -> updateStep { it.copy(frekuensiPerMinggu = event.value) }
-            is FullAssessmentEvent.ToggleHariPilihan -> updateStep { it.copy(hariPilihan = it.hariPilihan.toggle(event.value)) }
-            is FullAssessmentEvent.SetDurasiSesiMenit -> updateStep { it.copy(durasiSesiMenit = event.value) }
+            is FullAssessmentEvent.SetSessionsPerWeek -> updateStep { it.copy(sessionsPerWeek = event.value) }
+            is FullAssessmentEvent.ToggleSelectedWeekday -> updateStep { it.copy(selectedWeekdays = it.selectedWeekdays.toggle(event.value)) }
+            is FullAssessmentEvent.SetSessionDurationMinutes -> updateStep { it.copy(sessionDurationMinutes = event.value) }
             FullAssessmentEvent.NextFromInterview -> updateStep {
                 if (it.canProceedFromInterview) it.copy(phase = FullAssessmentPhase.POSTURAL) else it
             }
@@ -134,11 +134,11 @@ class FullAssessmentViewModel(
             }
             FullAssessmentEvent.NextFromPostural -> updateStep { it.copy(phase = FullAssessmentPhase.MOVEMENT) }
             is FullAssessmentEvent.ToggleMovementFlag -> updateStep {
-                it.copy(flagsGerak = it.flagsGerak.toggle(event.value))
+                it.copy(movementFlags = it.movementFlags.toggle(event.value))
             }
             FullAssessmentEvent.NextFromMovement -> updateStep { it.copy(phase = FullAssessmentPhase.CAPACITY_TEST) }
             is FullAssessmentEvent.SetPushupReps -> updateStep { it.copy(pushupReps = event.value) }
-            is FullAssessmentEvent.SetPlankDetik -> updateStep { it.copy(plankDetik = event.value) }
+            is FullAssessmentEvent.SetPlankSeconds -> updateStep { it.copy(plankSeconds = event.value) }
             is FullAssessmentEvent.SetSitToStandReps -> updateStep { it.copy(sitToStandReps = event.value) }
             FullAssessmentEvent.ToggleSkipCapacityTest -> updateStep { it.copy(capacityTestSkipped = !it.capacityTestSkipped) }
             FullAssessmentEvent.Submit -> submit()
@@ -174,20 +174,20 @@ class FullAssessmentViewModel(
         viewModelScope.launch {
             _state.value = FullAssessmentState.Submitting
             val result = completeFullAssessment(
-                usia = current.usia.toIntOrNull(),
+                age = current.age.toIntOrNull(),
                 gender = current.gender,
                 parQAnswers = current.parQAnswers.map { (id, value) -> FullAssessmentParQAnswer(id, value ?: false) },
                 parQGateResult = gateResult,
                 hardStopAcknowledgedAt = if (gateResult.hardStopFlagged) currentInstant() else null,
-                preferensiAlat = current.preferensiAlat,
-                riwayatCedera = current.riwayatCedera,
+                equipmentPreference = current.equipmentPreference,
+                injuryHistory = current.injuryHistory,
                 flagsPostural = current.flagsPostural,
-                flagsGerak = current.flagsGerak,
+                movementFlags = current.movementFlags,
                 capacityTest = current.toCapacityTestResult(),
                 goal = current.goal ?: return@launch,
-                frekuensiPerMinggu = current.frekuensiPerMinggu.toIntOrNull() ?: return@launch,
-                hariPilihan = current.hariPilihan,
-                durasiSesiMenit = current.durasiSesiMenit.toIntOrNull() ?: return@launch,
+                sessionsPerWeek = current.sessionsPerWeek.toIntOrNull() ?: return@launch,
+                selectedWeekdays = current.selectedWeekdays,
+                sessionDurationMinutes = current.sessionDurationMinutes.toIntOrNull() ?: return@launch,
             )
             when (result) {
                 is AppResult.Success -> {
@@ -207,8 +207,8 @@ class FullAssessmentViewModel(
     private fun FullAssessmentState.Step.toCapacityTestResult(): CapacityTestResult? {
         if (capacityTestSkipped) return null
         return CapacityTestResult(
-            pushup = pushupReps.toIntOrNull()?.let { PushupResult(it, PushupVersion.STANDAR, TestProtocol.MAXIMAL) },
-            plank = plankDetik.toIntOrNull()?.let { PlankResult(it, TestProtocol.MAXIMAL) },
+            pushup = pushupReps.toIntOrNull()?.let { PushupResult(it, PushupVersion.STANDARD, TestProtocol.MAXIMAL) },
+            plank = plankSeconds.toIntOrNull()?.let { PlankResult(it, TestProtocol.MAXIMAL) },
             sitToStand = sitToStandReps.toIntOrNull()?.let { SitToStandResult(it, TestProtocol.MAXIMAL) },
         )
     }

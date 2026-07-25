@@ -13,9 +13,9 @@ data class PlanDayInsertRow(
     val dayNumber: Int,
     val type: String,
     val templateLetter: String?,
-    val warmupUmumJson: String?,
+    val warmupGeneralJson: String?,
     val cardioJson: String?,
-    val cooldownPenurunanHrJson: String?,
+    val cooldownHeartRateJson: String?,
     val plannedExercises: List<PlannedExerciseInsertRow>,
 )
 
@@ -42,8 +42,8 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         levelMeta: String,
         goalMeta: String,
         smartGoalMeta: String?,
-        flagsAktifJson: String,
-        startingLevelPerPolaJson: String,
+        activeFlagsJson: String,
+        startingLevelPerPatternJson: String,
         mode: String,
         checkpointDaysJson: String,
         days: List<PlanDayInsertRow>,
@@ -58,8 +58,8 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                 level_meta = levelMeta,
                 goal_meta = goalMeta,
                 smart_goal_meta = smartGoalMeta,
-                flags_aktif = flagsAktifJson,
-                starting_level_per_pola = startingLevelPerPolaJson,
+                active_flags = activeFlagsJson,
+                starting_level_per_pattern = startingLevelPerPatternJson,
                 mode = mode,
                 checkpoint_days = checkpointDaysJson,
             )
@@ -70,9 +70,9 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                     day_number = day.dayNumber.toLong(),
                     type = day.type,
                     template_letter = day.templateLetter,
-                    warmup_umum = day.warmupUmumJson,
+                    warmup_general = day.warmupGeneralJson,
                     cardio = day.cardioJson,
-                    cooldown_penurunan_hr = day.cooldownPenurunanHrJson,
+                    cooldown_heart_rate = day.cooldownHeartRateJson,
                 )
                 day.plannedExercises.forEach { exercise ->
                     database.plannedExerciseQueries.insertPlannedExercise(
@@ -107,9 +107,9 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                         day_number = day.dayNumber.toLong(),
                         type = day.type,
                         template_letter = day.templateLetter,
-                        warmup_umum = day.warmupUmumJson,
+                        warmup_general = day.warmupGeneralJson,
                         cardio = day.cardioJson,
-                        cooldown_penurunan_hr = day.cooldownPenurunanHrJson,
+                        cooldown_heart_rate = day.cooldownHeartRateJson,
                     )
                     day.plannedExercises.forEach { exercise ->
                         database.plannedExerciseQueries.insertPlannedExercise(

@@ -2,7 +2,7 @@ package com.fghilmany.nufitai.usecase.monthlyplan
 
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
-import com.fghilmany.nufitai.usecase.monthlyplan.rules.GatingProgresi
+import com.fghilmany.nufitai.usecase.monthlyplan.rules.ProgressionGating
 import kotlin.time.Instant
 
 /**
@@ -21,6 +21,6 @@ class FreezeCalendarOnAbsence(private val monthlyPlanRepository: MonthlyPlanRepo
             is AppResult.Error -> return result
         }
         val lastSessionAt = logs.mapNotNull { it.completedAt }.maxOrNull()
-        return AppResult.Success(GatingProgresi.isAbsent(lastSessionAt, now))
+        return AppResult.Success(ProgressionGating.isAbsent(lastSessionAt, now))
     }
 }

@@ -72,10 +72,20 @@
     <string name="onboarding_goal_strength_title">Get stronger</string>
     <string name="onboarding_goal_strength_subtitle">Focus on functional strength</string>
 
-    <string name="onboarding_frequency_two_to_three_title">2-3x per week</string>
-    <string name="onboarding_frequency_two_to_three_subtitle">A realistic way to get started</string>
-    <string name="onboarding_frequency_four_to_five_title">4-5x per week</string>
-    <string name="onboarding_frequency_four_to_five_subtitle">For those ready for more intensity</string>
+    <string name="onboarding_frequency_one_title">1x per week</string>
+    <string name="onboarding_frequency_one_subtitle">Keep moving with minimal commitment</string>
+    <string name="onboarding_frequency_two_title">2x per week</string>
+    <string name="onboarding_frequency_two_subtitle">A light, realistic way to get started</string>
+    <string name="onboarding_frequency_three_title">3x per week</string>
+    <string name="onboarding_frequency_three_subtitle">A solid, well-rounded routine</string>
+    <string name="onboarding_frequency_four_title">4x per week</string>
+    <string name="onboarding_frequency_four_subtitle">For those ready for more intensity</string>
+    <string name="onboarding_frequency_five_title">5x per week</string>
+    <string name="onboarding_frequency_five_subtitle">A dedicated, near-daily routine</string>
+    <string name="onboarding_frequency_six_title">6x per week</string>
+    <string name="onboarding_frequency_six_subtitle">High commitment, just one rest day</string>
+    <string name="onboarding_frequency_seven_title">7x per week</string>
+    <string name="onboarding_frequency_seven_subtitle">Training every single day</string>
 
     <string name="onboarding_split_full_body_title">Full Body</string>
     <string name="onboarding_split_full_body_subtitle">Whole body trained every session</string>

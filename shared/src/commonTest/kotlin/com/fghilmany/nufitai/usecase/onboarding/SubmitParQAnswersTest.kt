@@ -30,37 +30,37 @@ class SubmitParQAnswersTest {
     }
 
     @Test
-    fun `given jantung question answered ya then jantung flag set and consult required`() = runTest {
+    fun `given heart question answered yes then heart flag set and consult required`() = runTest {
         val repository = FakeOnboardingRepository()
         val submit = SubmitParQAnswers(repository)
 
-        val result = submit(allAnswers(setOf(ParQQuestionId.Q1_JANTUNG_DIAGNOSIS)))
+        val result = submit(allAnswers(setOf(ParQQuestionId.Q1_HEART_DIAGNOSIS)))
 
         val data = (result as AppResult.Success).data
-        assertEquals(setOf(HealthFlag.JANTUNG), data.flagsGenerated)
+        assertEquals(setOf(HealthFlag.HEART), data.flagsGenerated)
         assertTrue(data.requiresDoctorConsult)
     }
 
     @Test
-    fun `given obat rutin question answered ya then both jantung and tekanan darah flags set`() = runTest {
+    fun `given routine medication question answered yes then both heart and blood pressure flags set`() = runTest {
         val repository = FakeOnboardingRepository()
         val submit = SubmitParQAnswers(repository)
 
-        val result = submit(allAnswers(setOf(ParQQuestionId.Q8_OBAT_RUTIN)))
+        val result = submit(allAnswers(setOf(ParQQuestionId.Q8_ROUTINE_MEDICATION)))
 
         val data = (result as AppResult.Success).data
-        assertEquals(setOf(HealthFlag.JANTUNG, HealthFlag.TEKANAN_DARAH), data.flagsGenerated)
+        assertEquals(setOf(HealthFlag.HEART, HealthFlag.BLOOD_PRESSURE), data.flagsGenerated)
     }
 
     @Test
-    fun `given kehamilan answered ya then non-blocking -- still succeeds with kehamilan flag`() = runTest {
+    fun `given pregnancy answered yes then non-blocking -- still succeeds with pregnancy flag`() = runTest {
         val repository = FakeOnboardingRepository()
         val submit = SubmitParQAnswers(repository)
 
-        val result = submit(allAnswers(setOf(ParQQuestionId.Q11_KEHAMILAN)))
+        val result = submit(allAnswers(setOf(ParQQuestionId.Q11_PREGNANCY)))
 
         val data = (result as AppResult.Success).data
-        assertEquals(setOf(HealthFlag.KEHAMILAN), data.flagsGenerated)
+        assertEquals(setOf(HealthFlag.PREGNANCY), data.flagsGenerated)
         assertTrue(data.requiresDoctorConsult)
     }
 

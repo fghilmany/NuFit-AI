@@ -33,9 +33,9 @@ class ExerciseLibraryViewModelTest {
         Dispatchers.resetMain()
     }
 
-    private val squat = testExercise(id = "BW-SQUAT-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, primaryMuscleGroup = MuscleGroup.KAKI)
+    private val squat = testExercise(id = "BW-SQUAT-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, primaryMuscleGroup = MuscleGroup.LEG)
         .copy(name = "Bodyweight Squat")
-    private val pushup = testExercise(id = "BW-PUSHH-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, movementPattern = MovementPattern.PUSH_HORIZONTAL, primaryMuscleGroup = MuscleGroup.DADA)
+    private val pushup = testExercise(id = "BW-PUSHH-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, movementPattern = MovementPattern.PUSH_HORIZONTAL, primaryMuscleGroup = MuscleGroup.CHEST)
         .copy(name = "Push-up")
 
     private fun viewModel(): ExerciseLibraryViewModel {
@@ -67,7 +67,7 @@ class ExerciseLibraryViewModelTest {
     fun `given a muscle group filter when applied then only matching exercises remain`() = runTest {
         val vm = viewModel()
 
-        vm.onEvent(ExerciseLibraryEvent.ToggleMuscleGroup(MuscleGroup.DADA))
+        vm.onEvent(ExerciseLibraryEvent.ToggleMuscleGroup(MuscleGroup.CHEST))
 
         val state = vm.state.value
         assertIs<ExerciseLibraryState.Loaded>(state)
@@ -77,7 +77,7 @@ class ExerciseLibraryViewModelTest {
     @Test
     fun `given active filters when cleared then full pool is restored`() = runTest {
         val vm = viewModel()
-        vm.onEvent(ExerciseLibraryEvent.ToggleMuscleGroup(MuscleGroup.DADA))
+        vm.onEvent(ExerciseLibraryEvent.ToggleMuscleGroup(MuscleGroup.CHEST))
 
         vm.onEvent(ExerciseLibraryEvent.ClearFilters)
 

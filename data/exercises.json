@@ -11,13 +11,13 @@
       "flag_knee_valgus",
       "flag_ankle_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-SQUAT-002",
-    "rantaiProgresi": "BB-SQUAT-001",
-    "syaratNaik": "3x8 rep form bersih (tanpa punggung membulat/lutut valgus), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-SQUAT-002",
+    "progressionChain": "BB-SQUAT-001",
+    "levelUpRequirement": "3x8 rep form bersih (tanpa punggung membulat/lutut valgus), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -69,13 +69,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-SQUAT-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung tujuan dan preferensi tubuh",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-SQUAT-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — variasi/pilihan tergantung tujuan dan preferensi tubuh",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -122,13 +122,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-HINGE-000",
-    "rantaiProgresi": "BB-HINGE-001",
-    "syaratNaik": "3x10 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-HINGE-000",
+    "progressionChain": "BB-HINGE-001",
+    "levelUpRequirement": "3x10 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -180,13 +180,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-HINGE-000",
-    "rantaiProgresi": "BB-HINGE-003",
-    "syaratNaik": "3x6 rep form bersih (punggung netral penuh ROM dari lantai), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-HINGE-000",
+    "progressionChain": "BB-HINGE-003",
+    "levelUpRequirement": "3x6 rep form bersih (punggung netral penuh ROM dari lantai), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -238,15 +238,15 @@
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-HINGE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen dalam program tergantung tujuan (glute-focused)",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-HINGE-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — bisa jadi pilihan permanen dalam program tergantung tujuan (glute-focused)",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -295,15 +295,15 @@
     "flagExclusion": [
       "flag_sendi"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-HINGE-001",
-    "rantaiProgresi": "BB-HINGE-004",
-    "syaratNaik": "3x8 rep form bersih, siap overload lanjutan — atau tetap di sini jika preferensi tetap sumo",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-HINGE-001",
+    "progressionChain": "BB-HINGE-004",
+    "levelUpRequirement": "3x8 rep form bersih, siap overload lanjutan — atau tetap di sini jika preferensi tetap sumo",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -356,13 +356,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-HINGE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik, ini gerakan aksesori/overload, bukan gerakan utama harian",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-HINGE-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik, ini gerakan aksesori/overload, bukan gerakan utama harian",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -411,13 +411,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHH-001",
-    "rantaiProgresi": "BB-PUSHH-001",
-    "syaratNaik": "3x8 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHH-001",
+    "progressionChain": "BB-PUSHH-001",
+    "levelUpRequirement": "3x8 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -464,13 +464,13 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-PUSHH-000",
-    "rantaiProgresi": "BB-PUSHH-002",
-    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung tujuan",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-PUSHH-000",
+    "progressionChain": "BB-PUSHH-002",
+    "levelUpRequirement": "tidak wajib naik — variasi/pilihan tergantung tujuan",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -512,13 +512,13 @@
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-PUSHH-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — gerakan aksesori/variasi",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-PUSHH-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — gerakan aksesori/variasi",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -561,13 +561,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHV-001",
-    "rantaiProgresi": "BB-PUSHV-001",
-    "syaratNaik": "3x8 rep form bersih (tanpa lengkungan punggung berlebihan), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHV-001",
+    "progressionChain": "BB-PUSHV-001",
+    "levelUpRequirement": "3x8 rep form bersih (tanpa lengkungan punggung berlebihan), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -619,13 +619,13 @@
       "flag_shoulder_mobility",
       "flag_ankle_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-PUSHV-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik, ini variasi power/aksesori, bukan gerakan wajib harian",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-PUSHV-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik, ini variasi power/aksesori, bukan gerakan wajib harian",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -677,16 +677,16 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_kyphosis"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PULLH-000",
-    "rantaiProgresi": "BB-PULLH-001",
-    "syaratNaik": "3x8 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PULLH-000",
+    "progressionChain": "BB-PULLH-001",
+    "levelUpRequirement": "3x8 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -736,13 +736,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BB-PULLH-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik, ini variasi lanjutan/aksesori",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BB-PULLH-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik, ini variasi lanjutan/aksesori",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -786,18 +786,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_balance_asimetri"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-SQUAT-001",
-    "syaratNaik": "bisa selesaikan 3x12 rep dengan kontrol penuh (tanpa \"jatuh\" ke kursi), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-SQUAT-001",
+    "levelUpRequirement": "bisa selesaikan 3x12 rep dengan kontrol penuh (tanpa \"jatuh\" ke kursi), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -841,19 +841,19 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "dumbbell": "DB-SQUAT-000",
       "mesin": "MC-SQUAT-000"
     },
-    "rantaiRegresi": "BW-SQUAT-000",
-    "rantaiProgresi": "DB-SQUAT-000",
-    "syaratNaik": "3x15 rep form bersih, 2 sesi berturut-turut, tanpa flag_knee_valgus aktif",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-SQUAT-000",
+    "progressionChain": "DB-SQUAT-000",
+    "levelUpRequirement": "3x15 rep form bersih, 2 sesi berturut-turut, tanpa flag_knee_valgus aktif",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -906,16 +906,16 @@
       "flag_osteoporosis",
       "flag_knee_valgus"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-SQUAT-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "Syarat naik dari Bodyweight Squat ke gerakan ini: 3x15 rep Bodyweight Squat form bersih tanpa flag_knee_valgus aktif, DAN tidak ada flag_sendi/flag_osteoporosis aktif",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-SQUAT-001",
+    "progressionChain": null,
+    "levelUpRequirement": "Syarat naik dari Bodyweight Squat ke gerakan ini: 3x15 rep Bodyweight Squat form bersih tanpa flag_knee_valgus aktif, DAN tidak ada flag_sendi/flag_osteoporosis aktif",
+    "relatedMovementPatterns": null,
     "highImpact": true,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -959,17 +959,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-HINGE-002",
-    "syaratNaik": "bisa jaga 3 titik kontak tongkat sepanjang ROM penuh, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-HINGE-002",
+    "levelUpRequirement": "bisa jaga 3 titik kontak tongkat sepanjang ROM penuh, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1012,18 +1012,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back",
       "flag_apt"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-HINGE-002",
-    "syaratNaik": "3x15 rep dengan kontraksi glute jelas terasa tiap rep, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-HINGE-002",
+    "levelUpRequirement": "3x15 rep dengan kontraksi glute jelas terasa tiap rep, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1069,18 +1069,18 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "dumbbell": "DB-HINGE-000",
       "mesin": "MC-HINGE-001"
     },
-    "rantaiRegresi": "BW-HINGE-000",
-    "rantaiProgresi": "BW-HINGE-003",
-    "syaratNaik": "3x15 rep dengan punggung netral sepanjang ROM, 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-HINGE-000",
+    "progressionChain": "BW-HINGE-003",
+    "levelUpRequirement": "3x15 rep dengan punggung netral sepanjang ROM, 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1126,16 +1126,16 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah",
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-HINGE-002",
-    "rantaiProgresi": "DB-HINGE-001",
-    "syaratNaik": "3x10 rep per sisi dengan keseimbangan stabil tanpa pegangan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-HINGE-002",
+    "progressionChain": "DB-HINGE-001",
+    "levelUpRequirement": "3x10 rep per sisi dengan keseimbangan stabil tanpa pegangan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1179,15 +1179,15 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-PUSHH-001",
-    "syaratNaik": "3x15 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-PUSHH-001",
+    "levelUpRequirement": "3x15 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1231,15 +1231,15 @@
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-PUSHH-000",
-    "rantaiProgresi": "BW-PUSHH-002",
-    "syaratNaik": "3x15 rep form bersih di ketinggian setara bangku, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-PUSHH-000",
+    "progressionChain": "BW-PUSHH-002",
+    "levelUpRequirement": "3x15 rep form bersih di ketinggian setara bangku, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1283,18 +1283,18 @@
     "levelVariant": 3,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_core_instability"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-PUSHH-001",
-    "rantaiProgresi": "BW-PUSHH-003",
-    "syaratNaik": "3x12 rep form bersih (dada menyentuh dekat lantai, tanpa pinggul menekuk), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-PUSHH-001",
+    "progressionChain": "BW-PUSHH-003",
+    "levelUpRequirement": "3x12 rep form bersih (dada menyentuh dekat lantai, tanpa pinggul menekuk), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1340,18 +1340,18 @@
     "flagExclusion": [
       "flag_core_instability"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "dumbbell": "DB-PUSHH-001",
       "mesin": "MC-PUSHH-000"
     },
-    "rantaiRegresi": "BW-PUSHH-002",
-    "rantaiProgresi": "DB-PUSHH-001",
-    "syaratNaik": "3x15 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-PUSHH-002",
+    "progressionChain": "DB-PUSHH-001",
+    "levelUpRequirement": "3x15 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1402,16 +1402,16 @@
       "flag_shoulder_mobility",
       "flag_rounded_shoulder"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "DB-PUSHV-000",
-    "syaratNaik": "3x10 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "DB-PUSHV-000",
+    "levelUpRequirement": "3x10 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1455,21 +1455,21 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "dumbbell": "DB-PULLH-000",
       "mesin": "MC-PULLH-000"
     },
-    "rantaiRegresi": "BW-PULLH-001",
-    "rantaiProgresi": "DB-PULLH-000",
-    "syaratNaik": "3x12 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-PULLH-001",
+    "progressionChain": "DB-PULLH-000",
+    "levelUpRequirement": "3x12 rep form bersih tanpa pinggul turun, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1513,18 +1513,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-PULLH-000",
-    "syaratNaik": "3x15 rep form bersih (badan tetap lurus), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-PULLH-000",
+    "levelUpRequirement": "3x15 rep form bersih (badan tetap lurus), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1568,19 +1568,19 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_forward_head"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-PULLH-001",
-    "syaratNaik": "3x10 per posisi form bersih tanpa mengayun, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-PULLH-001",
+    "levelUpRequirement": "3x10 per posisi form bersih tanpa mengayun, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1625,18 +1625,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_forward_head"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-PULLH-002",
-    "rantaiProgresi": "BW-PULLH-001",
-    "syaratNaik": "3x12 rep form bersih (lengan tetap menempel lantai), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-PULLH-002",
+    "progressionChain": "BW-PULLH-001",
+    "levelUpRequirement": "3x12 rep form bersih (lengan tetap menempel lantai), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1680,17 +1680,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_balance_asimetri"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-LUNGE-001",
-    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-LUNGE-001",
+    "levelUpRequirement": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1734,15 +1734,15 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-LUNGE-000",
-    "rantaiProgresi": "BW-LUNGE-003",
-    "syaratNaik": "3x10 rep per sisi form bersih tanpa goyah, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-LUNGE-000",
+    "progressionChain": "BW-LUNGE-003",
+    "levelUpRequirement": "3x10 rep per sisi form bersih tanpa goyah, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1786,17 +1786,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_balance_asimetri"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-LUNGE-004",
-    "syaratNaik": "3x10 rep per sisi dengan kontrol penuh naik-turun, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-LUNGE-004",
+    "levelUpRequirement": "3x10 rep per sisi dengan kontrol penuh naik-turun, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1842,15 +1842,15 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-LUNGE-001",
-    "rantaiProgresi": "BW-LUNGE-004",
-    "syaratNaik": "3x10 langkah per sisi form bersih tanpa goyah signifikan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-LUNGE-001",
+    "progressionChain": "BW-LUNGE-004",
+    "levelUpRequirement": "3x10 langkah per sisi form bersih tanpa goyah signifikan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1897,15 +1897,15 @@
       "flag_balance_asimetri",
       "flag_knee_valgus"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-LUNGE-003",
-    "rantaiProgresi": "DB-LUNGE-003",
-    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut, level user sudah Intermediate",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-LUNGE-003",
+    "progressionChain": "DB-LUNGE-003",
+    "levelUpRequirement": "3x10 rep per sisi form bersih, 2 sesi berturut-turut, level user sudah Intermediate",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -1949,18 +1949,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_apt",
       "flag_core_instability"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-CORE-002",
-    "syaratNaik": "3x10 rep per sisi dengan punggung bawah tetap menempel lantai, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-CORE-002",
+    "levelUpRequirement": "3x10 rep per sisi dengan punggung bawah tetap menempel lantai, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2003,17 +2003,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-000",
-    "rantaiProgresi": "BW-CORR-008",
-    "syaratNaik": "3x10 rep per sisi tanpa pinggul berputar, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-000",
+    "progressionChain": "BW-CORR-008",
+    "levelUpRequirement": "3x10 rep per sisi tanpa pinggul berputar, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2058,18 +2058,18 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_apt"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-000",
-    "rantaiProgresi": "BW-CORE-003",
-    "syaratNaik": "tahan 60 detik dengan form bersih (tanpa pinggul turun/naik), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-000",
+    "progressionChain": "BW-CORE-003",
+    "levelUpRequirement": "tahan 60 detik dengan form bersih (tanpa pinggul turun/naik), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
@@ -2118,18 +2118,18 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-002",
-    "rantaiProgresi": null,
-    "syaratNaik": "tahan 40 detik per sisi dengan form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-002",
+    "progressionChain": null,
+    "levelUpRequirement": "tahan 40 detik per sisi dengan form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
@@ -2175,15 +2175,15 @@
       "flag_apt",
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-000",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-000",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
@@ -2229,16 +2229,16 @@
       "flag_jantung",
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-002",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-002",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2282,17 +2282,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_forward_head"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2334,18 +2334,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_kyphosis"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "BW-CORR-002",
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "BW-CORR-002",
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2388,16 +2388,16 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_shoulder_mobility"
     ],
-    "areaTerbebani": [],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORR-001",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": [],
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORR-001",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2440,18 +2440,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_apt"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "SQUAT",
       "LUNGE"
     ],
@@ -2496,18 +2496,18 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_apt",
       "flag_knee_valgus"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-HINGE-001",
-    "rantaiProgresi": "BW-HINGE-003",
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-HINGE-001",
+    "progressionChain": "BW-HINGE-003",
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2549,15 +2549,15 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_knee_valgus"
     ],
-    "areaTerbebani": [],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": [],
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2599,15 +2599,15 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_ankle_mobility"
     ],
-    "areaTerbebani": [],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": [],
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2642,17 +2642,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "PUSH_HORIZONTAL",
       "PUSH_VERTICAL"
     ],
@@ -2699,17 +2699,17 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_kyphosis"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-001",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -2755,16 +2755,16 @@
       "flag_asimetri_bahu",
       "flag_asimetri_pinggul"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "DB-CARRY-001",
-    "syaratNaik": "3x30 detik/sisi form bersih (bahu level) tanpa keluhan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "DB-CARRY-001",
+    "levelUpRequirement": "3x30 detik/sisi form bersih (bahu level) tanpa keluhan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
@@ -2808,15 +2808,15 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "SQUAT",
       "LUNGE",
       "CARDIO"
@@ -2860,15 +2860,15 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "HINGE",
       "CARDIO"
     ],
@@ -2911,13 +2911,13 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "flagPriority": [],
+    "loadedBodyAreas": [],
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "SQUAT",
       "HINGE",
       "LUNGE"
@@ -2961,15 +2961,15 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "PULL_HORIZONTAL",
       "PULL_VERTICAL",
       "CORE"
@@ -3016,15 +3016,15 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "PUSH_HORIZONTAL",
       "PUSH_VERTICAL"
     ],
@@ -3066,15 +3066,15 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "PULL_HORIZONTAL",
       "PULL_VERTICAL",
       "CARRY"
@@ -3118,15 +3118,15 @@
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_ankle_mobility"
     ],
-    "areaTerbebani": [],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "loadedBodyAreas": [],
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "CARDIO",
       "SQUAT"
     ],
@@ -3171,15 +3171,15 @@
     "flagExclusion": [
       "flag_apt"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": [
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": [
       "CORE"
     ],
     "highImpact": false,
@@ -3221,17 +3221,17 @@
     "levelVariant": null,
     "levelNote": "Entry",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_jantung",
       "flag_tekanan_darah",
       "flag_sendi"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "CE-002",
-    "syaratNaik": "bisa selesaikan 30 menit dengan RPE ≤4 secara konsisten, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "CE-002",
+    "levelUpRequirement": "bisa selesaikan 30 menit dengan RPE ≤4 secara konsisten, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3277,15 +3277,15 @@
     "levelVariant": null,
     "levelNote": "menuju Standar (raw: Regresi-Standar)",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_sendi"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-001",
-    "rantaiProgresi": "CE-003",
-    "syaratNaik": "bisa selesaikan 30 menit steady-state RPE 5 dengan nyaman, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-001",
+    "progressionChain": "CE-003",
+    "levelUpRequirement": "bisa selesaikan 30 menit steady-state RPE 5 dengan nyaman, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3332,15 +3332,15 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_sendi"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-002",
-    "rantaiProgresi": "CE-004",
-    "syaratNaik": "bisa selesaikan 30 menit RPE 5 dengan nyaman, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-002",
+    "progressionChain": "CE-004",
+    "levelUpRequirement": "bisa selesaikan 30 menit RPE 5 dengan nyaman, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3392,15 +3392,15 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_sendi"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-002",
-    "rantaiProgresi": "CE-006",
-    "syaratNaik": "teknik \"kaki-badan-tangan\" konsisten tanpa arms-first rowing, bisa selesaikan 20 menit RPE 5, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-002",
+    "progressionChain": "CE-006",
+    "levelUpRequirement": "teknik \"kaki-badan-tangan\" konsisten tanpa arms-first rowing, bisa selesaikan 20 menit RPE 5, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3453,13 +3453,13 @@
       "flag_jantung",
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-001",
-    "rantaiProgresi": "CE-006",
-    "syaratNaik": "bisa jogging kontinyu 25-30 menit RPE ≤6 tanpa nyeri sendi, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-001",
+    "progressionChain": "CE-006",
+    "levelUpRequirement": "bisa jogging kontinyu 25-30 menit RPE ≤6 tanpa nyeri sendi, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3509,13 +3509,13 @@
     "flagExclusion": [
       "flag_sendi"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-005",
-    "rantaiProgresi": "CE-007",
-    "syaratNaik": "bisa selesaikan 15 menit tanpa menumpu tangan ke pegangan, RPE ≤6, 2 minggu berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-005",
+    "progressionChain": "CE-007",
+    "levelUpRequirement": "bisa selesaikan 15 menit tanpa menumpu tangan ke pegangan, RPE ≤6, 2 minggu berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3567,13 +3567,13 @@
       "flag_jantung",
       "flag_osteoporosis"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-006",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — ini modalitas puncak, kombinasikan dengan Battle Ropes (CE-008) untuk variasi tanpa dampak lompat",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-006",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — ini modalitas puncak, kombinasikan dengan Battle Ropes (CE-008) untuk variasi tanpa dampak lompat",
+    "relatedMovementPatterns": null,
     "highImpact": true,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3625,15 +3625,15 @@
       "flag_jantung",
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_sendi"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "CE-004",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — modalitas finisher/variasi conditioning",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "CE-004",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — modalitas finisher/variasi conditioning",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3683,19 +3683,19 @@
     "flagExclusion": [
       "flag_knee_valgus"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_forward_head",
       "flag_rounded_shoulder"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-SQUAT-001",
-    "rantaiProgresi": "DB-SQUAT-001",
-    "syaratNaik": "3x10 rep form bersih dengan beban RPE ≤5, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-SQUAT-001",
+    "progressionChain": "DB-SQUAT-001",
+    "levelUpRequirement": "3x10 rep form bersih dengan beban RPE ≤5, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3744,19 +3744,19 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "bodyweight": "BW-SQUAT-001",
       "mesin": "MC-SQUAT-000"
     },
-    "rantaiRegresi": "DB-SQUAT-000",
-    "rantaiProgresi": "DB-SQUAT-002",
-    "syaratNaik": "3x12 rep form bersih di beban yang membuat grip jadi faktor pembatas (bukan kaki), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "DB-SQUAT-000",
+    "progressionChain": "DB-SQUAT-002",
+    "levelUpRequirement": "3x12 rep form bersih di beban yang membuat grip jadi faktor pembatas (bukan kaki), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3808,17 +3808,17 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut",
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-SQUAT-001",
-    "rantaiProgresi": "DB-SQUAT-003",
-    "syaratNaik": "3x10 rep form stabil tanpa siku turun, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-SQUAT-001",
+    "progressionChain": "DB-SQUAT-003",
+    "levelUpRequirement": "3x10 rep form stabil tanpa siku turun, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3865,17 +3865,17 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-SQUAT-002",
-    "rantaiProgresi": "DB-LUNGE-003",
-    "syaratNaik": "3x10 rep per kaki form stabil tanpa goyah, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-SQUAT-002",
+    "progressionChain": "DB-LUNGE-003",
+    "levelUpRequirement": "3x10 rep per kaki form stabil tanpa goyah, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3922,18 +3922,18 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "bodyweight": "BW-HINGE-002",
       "mesin": "MC-HINGE-001"
     },
-    "rantaiRegresi": "BW-HINGE-002",
-    "rantaiProgresi": "DB-HINGE-001",
-    "syaratNaik": "3x12 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-HINGE-002",
+    "progressionChain": "DB-HINGE-001",
+    "levelUpRequirement": "3x12 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -3984,18 +3984,18 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-HINGE-000",
-    "rantaiProgresi": "DB-HINGE-002",
-    "syaratNaik": "3x10 rep per kaki form stabil tanpa asimetri jelas, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-HINGE-000",
+    "progressionChain": "DB-HINGE-002",
+    "levelUpRequirement": "3x10 rep per kaki form stabil tanpa asimetri jelas, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4042,15 +4042,15 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-HINGE-001",
-    "rantaiProgresi": "DB-HINGE-003",
-    "syaratNaik": "3x8 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-HINGE-001",
+    "progressionChain": "DB-HINGE-003",
+    "levelUpRequirement": "3x8 rep form bersih (punggung netral penuh ROM), 2 sesi berturut-turut, tanpa flag_hinge_from_back aktif",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4104,18 +4104,18 @@
     "flagExclusion": [
       "flag_sendi"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-HINGE-002",
-    "rantaiProgresi": null,
-    "syaratNaik": "3x10 rep form bersih, siap lanjut ke barbell — atau tetap di sini jika preferensi tetap dumbbell",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-HINGE-002",
+    "progressionChain": null,
+    "levelUpRequirement": "3x10 rep form bersih, siap lanjut ke barbell — atau tetap di sini jika preferensi tetap dumbbell",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4162,17 +4162,17 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_shoulder_mobility"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-PUSHH-003",
-    "rantaiProgresi": "DB-PUSHH-001",
-    "syaratNaik": "3x12 rep form bersih, RPE ≤5, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-PUSHH-003",
+    "progressionChain": "DB-PUSHH-001",
+    "levelUpRequirement": "3x12 rep form bersih, RPE ≤5, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4217,18 +4217,18 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "bodyweight": "BW-PUSHH-003",
       "mesin": "MC-PUSHH-000"
     },
-    "rantaiRegresi": "DB-PUSHH-000",
-    "rantaiProgresi": "DB-PUSHH-002",
-    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "DB-PUSHH-000",
+    "progressionChain": "DB-PUSHH-002",
+    "levelUpRequirement": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4270,15 +4270,15 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHH-001",
-    "rantaiProgresi": "DB-PUSHH-003",
-    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHH-001",
+    "progressionChain": "DB-PUSHH-003",
+    "levelUpRequirement": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4322,16 +4322,16 @@
     "flagExclusion": [
       "flag_core_instability"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHH-002",
-    "rantaiProgresi": "BB-PUSHH-000",
-    "syaratNaik": "3x10 rep per sisi form stabil tanpa rotasi torso, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHH-002",
+    "progressionChain": "BB-PUSHH-000",
+    "levelUpRequirement": "3x10 rep per sisi form stabil tanpa rotasi torso, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4375,16 +4375,16 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-PUSHV-000",
-    "rantaiProgresi": "DB-PUSHV-001",
-    "syaratNaik": "3x12 rep form bersih tanpa punggung melengkung berlebihan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-PUSHV-000",
+    "progressionChain": "DB-PUSHV-001",
+    "levelUpRequirement": "3x12 rep form bersih tanpa punggung melengkung berlebihan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4429,17 +4429,17 @@
       "flag_core_instability",
       "flag_apt"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "leher",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHV-000",
-    "rantaiProgresi": "DB-PUSHV-002",
-    "syaratNaik": "3x10 rep form bersih tanpa lengkungan punggung berlebihan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHV-000",
+    "progressionChain": "DB-PUSHV-002",
+    "levelUpRequirement": "3x10 rep form bersih tanpa lengkungan punggung berlebihan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4483,18 +4483,18 @@
     "flagExclusion": [
       "flag_asimetri_bahu"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "leher"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHV-001",
-    "rantaiProgresi": "BB-PUSHV-000",
-    "syaratNaik": "3x10 rep per sisi form stabil, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHV-001",
+    "progressionChain": "BB-PUSHV-000",
+    "levelUpRequirement": "3x10 rep per sisi form stabil, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4538,22 +4538,22 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_kyphosis"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "bodyweight": "BW-PULLH-000",
       "mesin": "MC-PULLH-000"
     },
-    "rantaiRegresi": "BW-PULLH-000",
-    "rantaiProgresi": "DB-PULLH-002",
-    "syaratNaik": "3x12 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "BW-PULLH-000",
+    "progressionChain": "DB-PULLH-002",
+    "levelUpRequirement": "3x12 rep form bersih (punggung tetap netral penuh set), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4601,16 +4601,16 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PULLH-000",
-    "rantaiProgresi": "DB-PULLH-003",
-    "syaratNaik": "3x12 rep per sisi form bersih tanpa rotasi torso, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PULLH-000",
+    "progressionChain": "DB-PULLH-003",
+    "levelUpRequirement": "3x12 rep per sisi form bersih tanpa rotasi torso, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4652,17 +4652,17 @@
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "DB-PULLH-000",
-    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen jika preferensi/kondisi punggung tetap ada",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "DB-PULLH-000",
+    "levelUpRequirement": "tidak wajib naik — bisa jadi pilihan permanen jika preferensi/kondisi punggung tetap ada",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4707,16 +4707,16 @@
       "flag_core_instability",
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PULLH-001",
-    "rantaiProgresi": "BB-PULLH-000",
-    "syaratNaik": "3x8 rep per sisi form stabil tanpa rotasi pinggul, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PULLH-001",
+    "progressionChain": "BB-PULLH-000",
+    "levelUpRequirement": "3x8 rep per sisi form stabil tanpa rotasi pinggul, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4760,15 +4760,15 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-LUNGE-001",
-    "rantaiProgresi": "DB-LUNGE-001",
-    "syaratNaik": "3x10 rep per kaki form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-LUNGE-001",
+    "progressionChain": "DB-LUNGE-001",
+    "levelUpRequirement": "3x10 rep per kaki form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4812,15 +4812,15 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-LUNGE-000",
-    "rantaiProgresi": "DB-LUNGE-003",
-    "syaratNaik": "3x12 langkah per kaki form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-LUNGE-000",
+    "progressionChain": "DB-LUNGE-003",
+    "levelUpRequirement": "3x12 langkah per kaki form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4866,15 +4866,15 @@
     "flagExclusion": [
       "flag_knee_valgus"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-LUNGE-000",
-    "rantaiProgresi": "DB-LUNGE-003",
-    "syaratNaik": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-LUNGE-000",
+    "progressionChain": "DB-LUNGE-003",
+    "levelUpRequirement": "3x10 rep per sisi form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4919,17 +4919,17 @@
     "flagExclusion": [
       "flag_balance_asimetri"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "lutut"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-SQUAT-003",
-    "rantaiProgresi": null,
-    "syaratNaik": "3x10 rep per kaki form stabil tanpa goyah signifikan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-SQUAT-003",
+    "progressionChain": null,
+    "levelUpRequirement": "3x10 rep per kaki form stabil tanpa goyah signifikan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -4972,17 +4972,17 @@
     "levelVariant": null,
     "levelNote": "Entry",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_apt"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-000",
-    "rantaiProgresi": "DB-CORE-001",
-    "syaratNaik": "3x10 rep per sisi form bersih (punggung bawah tetap menempel lantai), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-000",
+    "progressionChain": "DB-CORE-001",
+    "levelUpRequirement": "3x10 rep per sisi form bersih (punggung bawah tetap menempel lantai), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5025,18 +5025,18 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": {
+    "equivalentSubstitutes": {
       "bodyweight": "BW-CORE-005",
       "mesin": "MC-CORE-001"
     },
-    "rantaiRegresi": "DB-CORE-000",
-    "rantaiProgresi": "DB-CORE-002",
-    "syaratNaik": "3x12 rep per sisi form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "regressionChain": "DB-CORE-000",
+    "progressionChain": "DB-CORE-002",
+    "levelUpRequirement": "3x12 rep per sisi form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5077,15 +5077,15 @@
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-CORE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-CORE-001",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5128,19 +5128,19 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu",
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "DB-CARRY-001",
-    "syaratNaik": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "DB-CARRY-001",
+    "levelUpRequirement": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5187,19 +5187,19 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_pinggul",
       "flag_asimetri_bahu"
     ],
-    "areaTerbebani": [
+    "loadedBodyAreas": [
       "punggung_bawah",
       "bahu"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-CARRY-000",
-    "rantaiProgresi": "DB-CARRY-002",
-    "syaratNaik": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-CARRY-000",
+    "progressionChain": "DB-CARRY-002",
+    "levelUpRequirement": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5243,17 +5243,17 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": [
+    "flagPriority": [],
+    "loadedBodyAreas": [
       "bahu",
       "leher",
       "punggung_bawah"
     ],
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-CARRY-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik, ini level puncak pola carry di kategori ini",
-    "polaGerakTerkait": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-CARRY-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik, ini level puncak pola carry di kategori ini",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5299,13 +5299,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-HINGE-002",
-    "rantaiProgresi": "KB-HINGE-001",
-    "syaratNaik": "3x12 rep form bersih (punggung netral, lockout penuh tiap rep), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-HINGE-002",
+    "progressionChain": "KB-HINGE-001",
+    "levelUpRequirement": "3x12 rep form bersih (punggung netral, lockout penuh tiap rep), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5358,13 +5358,13 @@
       "flag_hinge_from_back",
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-HINGE-000",
-    "rantaiProgresi": "KB-HINGE-002",
-    "syaratNaik": "3x15 rep form bersih (hip hinge eksplosif, tanpa \"squat and lift\"), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-HINGE-000",
+    "progressionChain": "KB-HINGE-002",
+    "levelUpRequirement": "3x15 rep form bersih (hip hinge eksplosif, tanpa \"squat and lift\"), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5415,13 +5415,13 @@
     "flagExclusion": [
       "flag_core_instability"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-HINGE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — variasi/pilihan sesuai kebutuhan core",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-HINGE-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — variasi/pilihan sesuai kebutuhan core",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5472,16 +5472,16 @@
     "flagExclusion": [
       "flag_knee_valgus"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_forward_head",
       "flag_rounded_shoulder"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-SQUAT-001",
-    "rantaiProgresi": "KB-SQUAT-001",
-    "syaratNaik": "3x10 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-SQUAT-001",
+    "progressionChain": "KB-SQUAT-001",
+    "levelUpRequirement": "3x10 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5532,13 +5532,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-SQUAT-000",
-    "rantaiProgresi": "BB-SQUAT-001",
-    "syaratNaik": "3x10 rep form stabil (rack position tetap terjaga), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-SQUAT-000",
+    "progressionChain": "BB-SQUAT-001",
+    "levelUpRequirement": "3x10 rep form stabil (rack position tetap terjaga), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5589,15 +5589,15 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHV-001",
-    "rantaiProgresi": "KB-PUSHV-001",
-    "syaratNaik": "3x8 rep per sisi form stabil (tanpa torso miring), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHV-001",
+    "progressionChain": "KB-PUSHV-001",
+    "levelUpRequirement": "3x8 rep per sisi form stabil (tanpa torso miring), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5648,13 +5648,13 @@
       "flag_shoulder_mobility",
       "flag_ankle_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-PUSHV-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik, ini variasi power/aksesori",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-PUSHV-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik, ini variasi power/aksesori",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5706,16 +5706,16 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_kyphosis"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PULLH-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — variasi/pilihan tergantung alat yang tersedia",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PULLH-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — variasi/pilihan tergantung alat yang tersedia",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5765,16 +5765,16 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu",
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "KB-CARRY-001",
-    "syaratNaik": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "KB-CARRY-001",
+    "levelUpRequirement": "selesaikan jarak/waktu target dengan postur bersih tanpa shrug berlebihan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5820,13 +5820,13 @@
     "flagExclusion": [
       "flag_tekanan_darah"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-CARRY-000",
-    "rantaiProgresi": "KB-CARRY-002",
-    "syaratNaik": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-CARRY-000",
+    "progressionChain": "KB-CARRY-002",
+    "levelUpRequirement": "jarak/waktu target dengan postur tegak lurus konsisten kedua sisi, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5870,15 +5870,15 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "KB-CARRY-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — variasi/pelengkap program",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "KB-CARRY-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — variasi/pelengkap program",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5931,13 +5931,13 @@
       "flag_hinge_from_back",
       "flag_core_instability"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": "bisa selesaikan seluruh 7 tahap (naik dan turun) dengan kontrol penuh tanpa goyah signifikan pada beban saat ini, 3 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": "bisa selesaikan seluruh 7 tahap (naik dan turun) dengan kontrol penuh tanpa goyah signifikan pada beban saat ini, 3 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -5996,15 +5996,15 @@
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-SQUAT-000",
-    "rantaiProgresi": "MC-SQUAT-001",
-    "syaratNaik": "3x12 rep form bersih (punggung tetap menempel, tanpa valgus), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-SQUAT-000",
+    "progressionChain": "MC-SQUAT-001",
+    "levelUpRequirement": "3x12 rep form bersih (punggung tetap menempel, tanpa valgus), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6051,13 +6051,13 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-SQUAT-000",
-    "rantaiProgresi": "DB-SQUAT-000",
-    "syaratNaik": "tidak wajib naik — bisa jadi pilihan tetap tergantung preferensi/akses alat",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-SQUAT-000",
+    "progressionChain": "DB-SQUAT-000",
+    "levelUpRequirement": "tidak wajib naik — bisa jadi pilihan tetap tergantung preferensi/akses alat",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6107,13 +6107,13 @@
     "flagExclusion": [
       "flag_sendi"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6154,13 +6154,13 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6201,15 +6201,15 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_hinge_from_back"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-HINGE-000",
-    "rantaiProgresi": "MC-HINGE-002",
-    "syaratNaik": "3x15 rep form bersih (punggung netral, lutut fixed), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-HINGE-000",
+    "progressionChain": "MC-HINGE-002",
+    "levelUpRequirement": "3x15 rep form bersih (punggung netral, lutut fixed), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6259,13 +6259,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-HINGE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "3x15 rep bodyweight form bersih sebelum tambah beban eksternal, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-HINGE-001",
+    "progressionChain": null,
+    "levelUpRequirement": "3x15 rep bodyweight form bersih sebelum tambah beban eksternal, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6312,15 +6312,15 @@
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_shoulder_mobility"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHH-000",
-    "rantaiProgresi": "MC-PUSHH-001",
-    "syaratNaik": "3x12 rep form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHH-000",
+    "progressionChain": "MC-PUSHH-001",
+    "levelUpRequirement": "3x12 rep form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6369,13 +6369,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6421,15 +6421,15 @@
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_shoulder_mobility"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PUSHV-000",
-    "rantaiProgresi": "MC-PUSHV-001",
-    "syaratNaik": "3x12 rep form bersih tanpa punggung terangkat, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PUSHV-000",
+    "progressionChain": "MC-PUSHV-001",
+    "levelUpRequirement": "3x12 rep form bersih tanpa punggung terangkat, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6478,15 +6478,15 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_asimetri_bahu"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6532,16 +6532,16 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_rounded_shoulder",
       "flag_kyphosis"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "DB-PULLH-002",
-    "rantaiProgresi": "MC-PULLH-001",
-    "syaratNaik": "3x12 rep form bersih (punggung netral sepanjang set), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "DB-PULLH-002",
+    "progressionChain": "MC-PULLH-001",
+    "levelUpRequirement": "3x12 rep form bersih (punggung netral sepanjang set), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6588,13 +6588,13 @@
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-PULLH-000",
-    "rantaiProgresi": "MC-PULLH-002",
-    "syaratNaik": "tidak wajib naik — bisa jadi pilihan permanen tergantung preferensi/kondisi punggung",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-PULLH-000",
+    "progressionChain": "MC-PULLH-002",
+    "levelUpRequirement": "tidak wajib naik — bisa jadi pilihan permanen tergantung preferensi/kondisi punggung",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6636,17 +6636,17 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_forward_head",
       "flag_rounded_shoulder",
       "flag_kyphosis"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-PULLH-000",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — cocok jadi bagian tetap program jangka panjang",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-PULLH-000",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — cocok jadi bagian tetap program jangka panjang",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6694,13 +6694,13 @@
     "levelVariant": null,
     "levelNote": "Standar (raw: Regresi/Standar)",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "MC-PULLV-001",
-    "syaratNaik": "3x12 rep form bersih dengan beban mendekati berat badan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "MC-PULLV-001",
+    "levelUpRequirement": "3x12 rep form bersih dengan beban mendekati berat badan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6748,13 +6748,13 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-PULLV-000",
-    "rantaiProgresi": "PUB-PULLV-003",
-    "syaratNaik": "3x10 rep dengan beban bantuan minimal (mendekati 0) form bersih, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-PULLV-000",
+    "progressionChain": "PUB-PULLV-003",
+    "levelUpRequirement": "3x10 rep dengan beban bantuan minimal (mendekati 0) form bersih, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6801,13 +6801,13 @@
     "levelVariant": 1,
     "levelNote": "Alt — isolasi lat",
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6854,16 +6854,16 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [
+    "flagPriority": [
       "flag_core_instability",
       "flag_asimetri_pinggul"
     ],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-002",
-    "rantaiProgresi": "MC-CORE-001",
-    "syaratNaik": "3x10 rep per sisi form bersih tanpa rotasi badan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-002",
+    "progressionChain": "MC-CORE-001",
+    "levelUpRequirement": "3x10 rep per sisi form bersih tanpa rotasi badan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6911,13 +6911,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "MC-CORE-000",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "MC-CORE-000",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -6966,13 +6966,13 @@
     "flagExclusion": [
       "flag_hinge_from_back"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-002",
-    "rantaiProgresi": null,
-    "syaratNaik": null,
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-002",
+    "progressionChain": null,
+    "levelUpRequirement": null,
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7020,13 +7020,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": null,
-    "rantaiProgresi": "PUB-PULLV-001",
-    "syaratNaik": "bisa tahan dead hang 20-30 detik dengan nyaman, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": null,
+    "progressionChain": "PUB-PULLV-001",
+    "levelUpRequirement": "bisa tahan dead hang 20-30 detik dengan nyaman, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
@@ -7074,13 +7074,13 @@
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-PULLV-000",
-    "rantaiProgresi": "PUB-PULLV-002",
-    "syaratNaik": "3x10 rep dengan aktivasi scapula jelas terasa tanpa menekuk siku, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-PULLV-000",
+    "progressionChain": "PUB-PULLV-002",
+    "levelUpRequirement": "3x10 rep dengan aktivasi scapula jelas terasa tanpa menekuk siku, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7129,13 +7129,13 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-PULLV-001",
-    "rantaiProgresi": "PUB-PULLV-003",
-    "syaratNaik": "bisa turun terkontrol 5 detik penuh, 4-5 repetisi, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-PULLV-001",
+    "progressionChain": "PUB-PULLV-003",
+    "levelUpRequirement": "bisa turun terkontrol 5 detik penuh, 4-5 repetisi, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7184,13 +7184,13 @@
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-PULLV-002",
-    "rantaiProgresi": "PUB-PULLV-004",
-    "syaratNaik": "3x6 rep form bersih (ROM penuh, tanpa ayunan), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-PULLV-002",
+    "progressionChain": "PUB-PULLV-004",
+    "levelUpRequirement": "3x6 rep form bersih (ROM penuh, tanpa ayunan), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7241,13 +7241,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-PULLV-003",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — ini titik puncak/tujuan akhir pola Pull Vertical, banyak user berhenti di sini sebagai maintenance",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-PULLV-003",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — ini titik puncak/tujuan akhir pola Pull Vertical, banyak user berhenti di sini sebagai maintenance",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7298,13 +7298,13 @@
     "flagExclusion": [
       "flag_shoulder_mobility"
     ],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "BW-CORE-004",
-    "rantaiProgresi": "PUB-CORE-001",
-    "syaratNaik": "3x12 rep form bersih tanpa ayunan badan, 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "BW-CORE-004",
+    "progressionChain": "PUB-CORE-001",
+    "levelUpRequirement": "3x12 rep form bersih tanpa ayunan badan, 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7352,13 +7352,13 @@
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-CORE-000",
-    "rantaiProgresi": "PUB-CORE-002",
-    "syaratNaik": "3x10 rep form bersih (kaki lurus, tanpa ayunan), 2 sesi berturut-turut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-CORE-000",
+    "progressionChain": "PUB-CORE-002",
+    "levelUpRequirement": "3x10 rep form bersih (kaki lurus, tanpa ayunan), 2 sesi berturut-turut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
@@ -7407,13 +7407,13 @@
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
-    "flagPrioritas": [],
-    "areaTerbebani": null,
-    "substitusiSetara": null,
-    "rantaiRegresi": "PUB-CORE-001",
-    "rantaiProgresi": null,
-    "syaratNaik": "tidak wajib naik — ini level puncak, variasi lanjut (weighted, strict tanpa kipping) bisa jadi pengembangan lebih lanjut",
-    "polaGerakTerkait": null,
+    "flagPriority": [],
+    "loadedBodyAreas": null,
+    "equivalentSubstitutes": null,
+    "regressionChain": "PUB-CORE-001",
+    "progressionChain": null,
+    "levelUpRequirement": "tidak wajib naik — ini level puncak, variasi lanjut (weighted, strict tanpa kipping) bisa jadi pengembangan lebih lanjut",
+    "relatedMovementPatterns": null,
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,

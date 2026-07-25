@@ -5,10 +5,10 @@ import kotlinx.serialization.Serializable
 
 /** JSON shape for `plan_day`'s inline cardio-block columns (ADR-003) -- see PlanDay.sq comment. */
 @Serializable
-data class CardioBlockJson(val jenis: String, val durasiMenit: Int, val intensitas: String? = null) {
-    fun toEntity() = CardioBlock(jenis, durasiMenit, intensitas)
+data class CardioBlockJson(val type: String, val durationMinutes: Int, val intensity: String? = null) {
+    fun toEntity() = CardioBlock(type, durationMinutes, intensity)
 
     companion object {
-        fun from(block: CardioBlock) = CardioBlockJson(block.jenis, block.durasiMenit, block.intensitas)
+        fun from(block: CardioBlock) = CardioBlockJson(block.type, block.durationMinutes, block.intensity)
     }
 }

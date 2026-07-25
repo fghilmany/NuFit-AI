@@ -25,10 +25,20 @@ import nufitai.shared.generated.resources.onboarding_experience_under_1y_subtitl
 import nufitai.shared.generated.resources.onboarding_experience_under_1y_title
 import nufitai.shared.generated.resources.onboarding_experience_years_routine_subtitle
 import nufitai.shared.generated.resources.onboarding_experience_years_routine_title
-import nufitai.shared.generated.resources.onboarding_frequency_four_to_five_subtitle
-import nufitai.shared.generated.resources.onboarding_frequency_four_to_five_title
-import nufitai.shared.generated.resources.onboarding_frequency_two_to_three_subtitle
-import nufitai.shared.generated.resources.onboarding_frequency_two_to_three_title
+import nufitai.shared.generated.resources.onboarding_frequency_five_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_five_title
+import nufitai.shared.generated.resources.onboarding_frequency_four_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_four_title
+import nufitai.shared.generated.resources.onboarding_frequency_one_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_one_title
+import nufitai.shared.generated.resources.onboarding_frequency_seven_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_seven_title
+import nufitai.shared.generated.resources.onboarding_frequency_six_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_six_title
+import nufitai.shared.generated.resources.onboarding_frequency_three_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_three_title
+import nufitai.shared.generated.resources.onboarding_frequency_two_subtitle
+import nufitai.shared.generated.resources.onboarding_frequency_two_title
 import nufitai.shared.generated.resources.onboarding_goal_fat_loss_subtitle
 import nufitai.shared.generated.resources.onboarding_goal_fat_loss_title
 import nufitai.shared.generated.resources.onboarding_goal_general_health_subtitle
@@ -49,17 +59,17 @@ data class OptionCopy(val icon: ImageVector, val title: String, val subtitle: St
 
 @Composable
 fun experienceOptions(): List<Pair<Experience, OptionCopy>> = listOf(
-    Experience.BELUM_PERNAH to OptionCopy(
+    Experience.NEVER to OptionCopy(
         Icons.Filled.EmojiPeople,
         stringResource(Res.string.onboarding_experience_never_title),
         stringResource(Res.string.onboarding_experience_never_subtitle),
     ),
-    Experience.KURANG_1_TAHUN to OptionCopy(
+    Experience.UNDER_1_YEAR to OptionCopy(
         Icons.Filled.TrendingUp,
         stringResource(Res.string.onboarding_experience_under_1y_title),
         stringResource(Res.string.onboarding_experience_under_1y_subtitle),
     ),
-    Experience.RUTIN_BERTAHUN to OptionCopy(
+    Experience.YEARS_ROUTINE to OptionCopy(
         Icons.Filled.WorkspacePremium,
         stringResource(Res.string.onboarding_experience_years_routine_title),
         stringResource(Res.string.onboarding_experience_years_routine_subtitle),
@@ -92,16 +102,13 @@ fun goalOptions(): List<Pair<GoalCategory, OptionCopy>> = listOf(
 
 @Composable
 fun frequencyOptions(): List<Pair<FrequencyBucket, OptionCopy>> = listOf(
-    FrequencyBucket.TWO_TO_THREE to OptionCopy(
-        Icons.Filled.CalendarToday,
-        stringResource(Res.string.onboarding_frequency_two_to_three_title),
-        stringResource(Res.string.onboarding_frequency_two_to_three_subtitle),
-    ),
-    FrequencyBucket.FOUR_TO_FIVE to OptionCopy(
-        Icons.Filled.CalendarMonth,
-        stringResource(Res.string.onboarding_frequency_four_to_five_title),
-        stringResource(Res.string.onboarding_frequency_four_to_five_subtitle),
-    ),
+    FrequencyBucket.ONE to OptionCopy(Icons.Filled.CalendarToday, stringResource(Res.string.onboarding_frequency_one_title), stringResource(Res.string.onboarding_frequency_one_subtitle)),
+    FrequencyBucket.TWO to OptionCopy(Icons.Filled.CalendarToday, stringResource(Res.string.onboarding_frequency_two_title), stringResource(Res.string.onboarding_frequency_two_subtitle)),
+    FrequencyBucket.THREE to OptionCopy(Icons.Filled.CalendarToday, stringResource(Res.string.onboarding_frequency_three_title), stringResource(Res.string.onboarding_frequency_three_subtitle)),
+    FrequencyBucket.FOUR to OptionCopy(Icons.Filled.CalendarMonth, stringResource(Res.string.onboarding_frequency_four_title), stringResource(Res.string.onboarding_frequency_four_subtitle)),
+    FrequencyBucket.FIVE to OptionCopy(Icons.Filled.CalendarMonth, stringResource(Res.string.onboarding_frequency_five_title), stringResource(Res.string.onboarding_frequency_five_subtitle)),
+    FrequencyBucket.SIX to OptionCopy(Icons.Filled.CalendarMonth, stringResource(Res.string.onboarding_frequency_six_title), stringResource(Res.string.onboarding_frequency_six_subtitle)),
+    FrequencyBucket.SEVEN to OptionCopy(Icons.Filled.CalendarMonth, stringResource(Res.string.onboarding_frequency_seven_title), stringResource(Res.string.onboarding_frequency_seven_subtitle)),
 )
 
 @Composable
@@ -116,7 +123,7 @@ fun splitOptions(): List<Pair<SplitPreference, OptionCopy>> = listOf(
         stringResource(Res.string.onboarding_split_upper_lower_title),
         stringResource(Res.string.onboarding_split_upper_lower_subtitle),
     ),
-    SplitPreference.TIDAK_TAHU to OptionCopy(
+    SplitPreference.UNKNOWN to OptionCopy(
         Icons.Filled.HelpOutline,
         stringResource(Res.string.onboarding_split_unknown_title),
         stringResource(Res.string.onboarding_split_unknown_subtitle),

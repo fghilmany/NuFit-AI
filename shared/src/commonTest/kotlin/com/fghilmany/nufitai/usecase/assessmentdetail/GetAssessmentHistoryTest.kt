@@ -24,8 +24,8 @@ class GetAssessmentHistoryTest {
         levelMeta = "BEGINNER",
         goalMeta = GoalCategory.FAT_LOSS,
         smartGoalMeta = null,
-        flagsAktif = emptySet(),
-        startingLevelPerPola = emptyMap(),
+        activeFlags = emptySet(),
+        startingLevelPerPattern = emptyMap(),
         mode = ProgressionMode.NORMAL,
         checkpointDays = emptyList(),
     )

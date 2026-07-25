@@ -8,6 +8,9 @@ import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
 import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
 
+/** Was previously the whole TWO_TO_THREE bucket; now a threshold since frequency is exact 1-7. */
+private const val LOW_FREQUENCY_THRESHOLD = 3
+
 data class ResolvedQuickAssessment(
     val level: Level,
     val resolvedSplit: ResolvedSplit,
@@ -39,8 +42,8 @@ class ResolveQuickAssessment() {
 
     private fun resolveLevel(input: QuickAssessmentAnswer): Level =
         when (input.experience) {
-            Experience.BELUM_PERNAH, Experience.KURANG_1_TAHUN -> Level.BEGINNER
-            Experience.RUTIN_BERTAHUN -> Level.INTERMEDIATE
+            Experience.NEVER, Experience.UNDER_1_YEAR -> Level.BEGINNER
+            Experience.YEARS_ROUTINE -> Level.INTERMEDIATE
         }
 
     private fun resolveSplit(input: QuickAssessmentAnswer, level: Level): Pair<ResolvedSplit, String?> =
@@ -48,16 +51,16 @@ class ResolveQuickAssessment() {
             SplitPreference.FULL_BODY -> ResolvedSplit.FULL_BODY to null
 
             SplitPreference.UPPER_LOWER -> {
-                val note = if (input.frequency == FrequencyBucket.TWO_TO_THREE) {
-                    "Upper/Lower biasanya kurang ideal untuk frekuensi 2-3x/minggu -- volume per bagian tubuh jadi terlalu sedikit. Full Body akan memberi hasil lebih konsisten di frekuensi ini, tapi pilihanmu tetap kami pakai."
+                val note = if (input.frequency.sessionsPerWeek <= LOW_FREQUENCY_THRESHOLD) {
+                    "Upper/Lower biasanya kurang ideal untuk frekuensi rendah -- volume per bagian tubuh jadi terlalu sedikit. Full Body akan memberi hasil lebih konsisten di frekuensi ini, tapi pilihanmu tetap kami pakai."
                 } else {
                     null
                 }
                 ResolvedSplit.UPPER_LOWER to note
             }
 
-            SplitPreference.TIDAK_TAHU -> {
-                val resolved = if (level == Level.BEGINNER || input.frequency == FrequencyBucket.TWO_TO_THREE) {
+            SplitPreference.UNKNOWN -> {
+                val resolved = if (level == Level.BEGINNER || input.frequency.sessionsPerWeek <= LOW_FREQUENCY_THRESHOLD) {
                     ResolvedSplit.FULL_BODY
                 } else {
                     ResolvedSplit.UPPER_LOWER

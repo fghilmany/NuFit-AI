@@ -7,15 +7,15 @@ CREATE TABLE plan_day (
     -- Cardio-only blocks (WARM-01, main-session cardio, COOL-01) aren't always tied to a
     -- catalog exerciseId (e.g. "jalan di tempat" with no equipment) -- stored inline as JSON
     -- (ADR-003) rather than forced into planned_exercise, which stays exerciseId-only.
-    warmup_umum TEXT,
+    warmup_general TEXT,
     cardio TEXT,
-    cooldown_penurunan_hr TEXT,
+    cooldown_heart_rate TEXT,
     FOREIGN KEY (monthly_plan_id) REFERENCES monthly_plan(id)
 );
 
 insertPlanDay:
 INSERT INTO plan_day(
-    id, monthly_plan_id, day_number, type, template_letter, warmup_umum, cardio, cooldown_penurunan_hr
+    id, monthly_plan_id, day_number, type, template_letter, warmup_general, cardio, cooldown_heart_rate
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 getPlanDaysForPlan:

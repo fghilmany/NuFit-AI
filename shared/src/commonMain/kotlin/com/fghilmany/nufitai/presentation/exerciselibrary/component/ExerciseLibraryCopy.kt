@@ -29,24 +29,24 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MuscleGroup.shortLabel(): String = when (this) {
-    MuscleGroup.KAKI -> stringResource(Res.string.exerciselibrary_muscle_group_kaki)
-    MuscleGroup.DADA -> stringResource(Res.string.exerciselibrary_muscle_group_dada)
-    MuscleGroup.PUNGGUNG -> stringResource(Res.string.exerciselibrary_muscle_group_punggung)
-    MuscleGroup.BAHU -> stringResource(Res.string.exerciselibrary_muscle_group_bahu)
-    MuscleGroup.LENGAN -> stringResource(Res.string.exerciselibrary_muscle_group_lengan)
-    MuscleGroup.INTI -> stringResource(Res.string.exerciselibrary_muscle_group_inti)
+    MuscleGroup.LEG -> stringResource(Res.string.exerciselibrary_muscle_group_kaki)
+    MuscleGroup.CHEST -> stringResource(Res.string.exerciselibrary_muscle_group_dada)
+    MuscleGroup.BACK -> stringResource(Res.string.exerciselibrary_muscle_group_punggung)
+    MuscleGroup.SHOULDER -> stringResource(Res.string.exerciselibrary_muscle_group_bahu)
+    MuscleGroup.ARM -> stringResource(Res.string.exerciselibrary_muscle_group_lengan)
+    MuscleGroup.CORE -> stringResource(Res.string.exerciselibrary_muscle_group_inti)
     MuscleGroup.GLUTES -> stringResource(Res.string.exerciselibrary_muscle_group_glutes)
-    MuscleGroup.KARDIO -> stringResource(Res.string.exerciselibrary_muscle_group_kardio)
+    MuscleGroup.CARDIO -> stringResource(Res.string.exerciselibrary_muscle_group_kardio)
 }
 
-/** issue #79 §5 level-display decision: REGRESI/STANDAR/PROGRESI shown; KOREKTIF/AKSESORI excluded from browse. */
+/** issue #79 §5 level-display decision: REGRESSION/STANDARD/PROGRESSION shown; CORRECTIVE/ACCESSORY excluded from browse. */
 @Composable
 fun ExerciseLevel.shortLabel(): String = when (this) {
-    ExerciseLevel.REGRESI -> stringResource(Res.string.exerciselibrary_level_regresi)
-    ExerciseLevel.STANDAR -> stringResource(Res.string.exerciselibrary_level_standar)
-    ExerciseLevel.PROGRESI -> stringResource(Res.string.exerciselibrary_level_progresi)
-    ExerciseLevel.KOREKTIF -> stringResource(Res.string.exerciselibrary_level_korektif)
-    ExerciseLevel.AKSESORI -> stringResource(Res.string.exerciselibrary_level_aksesori)
+    ExerciseLevel.REGRESSION -> stringResource(Res.string.exerciselibrary_level_regresi)
+    ExerciseLevel.STANDARD -> stringResource(Res.string.exerciselibrary_level_standar)
+    ExerciseLevel.PROGRESSION -> stringResource(Res.string.exerciselibrary_level_progresi)
+    ExerciseLevel.CORRECTIVE -> stringResource(Res.string.exerciselibrary_level_korektif)
+    ExerciseLevel.ACCESSORY -> stringResource(Res.string.exerciselibrary_level_aksesori)
 }
 
 @Composable
@@ -60,5 +60,5 @@ fun EquipmentCategory.shortLabel(): String = when (this) {
     EquipmentCategory.CARDIO_EQUIPMENT -> stringResource(Res.string.exerciselibrary_equipment_cardio)
 }
 
-/** Browsable levels only -- KOREKTIF/AKSESORI are excluded from P-07's Level filter (issue #79 §5). */
-val BrowsableExerciseLevels: List<ExerciseLevel> = listOf(ExerciseLevel.REGRESI, ExerciseLevel.STANDAR, ExerciseLevel.PROGRESI)
+/** Browsable levels only -- CORRECTIVE/ACCESSORY are excluded from P-07's Level filter (issue #79 §5). */
+val BrowsableExerciseLevels: List<ExerciseLevel> = listOf(ExerciseLevel.REGRESSION, ExerciseLevel.STANDARD, ExerciseLevel.PROGRESSION)

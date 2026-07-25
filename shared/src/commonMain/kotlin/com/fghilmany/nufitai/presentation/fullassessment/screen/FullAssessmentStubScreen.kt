@@ -183,7 +183,7 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
     ) {
         item {
             AppTextField(
-                value = step.usia,
+                value = step.age,
                 onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetUsia(it)) },
                 label = stringResource(Res.string.fullassessment_interview_age_label),
                 modifier = Modifier.fillMaxWidth(),
@@ -193,17 +193,17 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
                 ToggleButton(
                     stringResource(Res.string.fullassessment_interview_gender_male),
-                    step.gender == Gender.PRIA,
+                    step.gender == Gender.MALE,
                     Modifier.weight(1f),
                 ) {
-                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.PRIA))
+                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.MALE))
                 }
                 ToggleButton(
                     stringResource(Res.string.fullassessment_interview_gender_female),
-                    step.gender == Gender.WANITA,
+                    step.gender == Gender.FEMALE,
                     Modifier.weight(1f),
                 ) {
-                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.WANITA))
+                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.FEMALE))
                 }
             }
         }
@@ -215,8 +215,8 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         }
         item {
             AppTextField(
-                value = step.frekuensiPerMinggu,
-                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetFrekuensiPerMinggu(it)) },
+                value = step.sessionsPerWeek,
+                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionsPerWeek(it)) },
                 label = stringResource(Res.string.fullassessment_interview_frequency_label),
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -226,16 +226,16 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             val hariLabels = hariLabels()
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
                 hariLabels.forEach { (day, label) ->
-                    ToggleButton(label, day in step.hariPilihan, Modifier.weight(1f)) {
-                        viewModel.onEvent(FullAssessmentEvent.ToggleHariPilihan(day))
+                    ToggleButton(label, day in step.selectedWeekdays, Modifier.weight(1f)) {
+                        viewModel.onEvent(FullAssessmentEvent.ToggleSelectedWeekday(day))
                     }
                 }
             }
         }
         item {
             AppTextField(
-                value = step.durasiSesiMenit,
-                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetDurasiSesiMenit(it)) },
+                value = step.sessionDurationMinutes,
+                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(it)) },
                 label = stringResource(Res.string.fullassessment_interview_session_duration_label),
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -243,9 +243,9 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         item { Text(stringResource(Res.string.fullassessment_interview_equipment_title), style = MaterialTheme.typography.titleSmall) }
         items(EquipmentCategory.entries.toList()) { equipment ->
             CheckboxRow(
-                checked = equipment in step.preferensiAlat,
+                checked = equipment in step.equipmentPreference,
                 label = equipment.name,
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.TogglePreferensiAlat(equipment)) },
+                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
             )
         }
         item {
@@ -256,9 +256,9 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         }
         items(BodyArea.entries.toList()) { area ->
             CheckboxRow(
-                checked = area in step.riwayatCedera,
+                checked = area in step.injuryHistory,
                 label = area.shortLabel(),
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleRiwayatCedera(area)) },
+                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleInjuryHistory(area)) },
             )
         }
         item {
@@ -295,7 +295,7 @@ private fun MovementPhase(step: FullAssessmentState.Step, viewModel: FullAssessm
         Text(stringResource(Res.string.fullassessment_movement_title), style = MaterialTheme.typography.titleSmall)
         MOVEMENT_FLAG_OPTIONS.forEach { flag ->
             CheckboxRow(
-                checked = flag in step.flagsGerak,
+                checked = flag in step.movementFlags,
                 label = flag.shortLabel(),
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleMovementFlag(flag)) },
             )
@@ -319,8 +319,8 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             modifier = Modifier.fillMaxWidth(),
         )
         AppTextField(
-            value = step.plankDetik,
-            onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPlankDetik(it)) },
+            value = step.plankSeconds,
+            onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPlankSeconds(it)) },
             label = stringResource(Res.string.fullassessment_capacity_plank_label),
             enabled = !step.capacityTestSkipped,
             modifier = Modifier.fillMaxWidth(),

@@ -16,13 +16,13 @@ data class ExerciseFilter(
  * P-07 search + filter (AC-1) -- pure, in-memory over an already-fetched pool (135 exercises,
  * no DB-level query needed). AND across otot/alat/level facets, OR within a facet.
  *
- * KOREKTIF/AKSESORI exercises are excluded from browse entirely (§5 level-display decision) --
+ * CORRECTIVE/ACCESSORY exercises are excluded from browse entirely (§5 level-display decision) --
  * they're plan-generation-only building blocks, not user-facing techniques. This exclusion is
  * unconditional, not a `filter.levels` option, so it can never be filtered back in.
  */
 class FilterExercises {
     operator fun invoke(pool: List<Exercise>, query: String, filter: ExerciseFilter): List<Exercise> = pool
-        .filter { it.level != ExerciseLevel.KOREKTIF && it.level != ExerciseLevel.AKSESORI }
+        .filter { it.level != ExerciseLevel.CORRECTIVE && it.level != ExerciseLevel.ACCESSORY }
         .filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
         .filter { filter.muscleGroups.isEmpty() || it.primaryMuscleGroup in filter.muscleGroups }
         .filter { filter.equipment.isEmpty() || it.equipmentCategory in filter.equipment }

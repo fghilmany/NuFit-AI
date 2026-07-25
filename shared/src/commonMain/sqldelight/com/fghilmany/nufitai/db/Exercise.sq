@@ -7,13 +7,13 @@ CREATE TABLE exercise (
     level_variant INTEGER,
     level_note TEXT,
     flag_exclusion TEXT NOT NULL,
-    flag_prioritas TEXT NOT NULL,
-    area_terbebani TEXT,
-    substitusi_setara TEXT,
-    rantai_regresi TEXT,
-    rantai_progresi TEXT,
-    syarat_naik TEXT,
-    pola_gerak_terkait TEXT,
+    flag_priority TEXT NOT NULL,
+    loaded_body_areas TEXT,
+    equivalent_substitutes TEXT,
+    regression_chain TEXT,
+    progression_chain TEXT,
+    level_up_requirement TEXT,
+    related_movement_patterns TEXT,
     high_impact INTEGER NOT NULL,
     isometric_heavy INTEGER NOT NULL,
     media_slug TEXT,
@@ -28,8 +28,8 @@ CREATE TABLE exercise (
 insertExercise:
 INSERT INTO exercise(
     id, name, equipment_category, movement_pattern, level, level_variant, level_note,
-    flag_exclusion, flag_prioritas, area_terbebani, substitusi_setara, rantai_regresi,
-    rantai_progresi, syarat_naik, pola_gerak_terkait, high_impact, isometric_heavy, media_slug,
+    flag_exclusion, flag_priority, loaded_body_areas, equivalent_substitutes, regression_chain,
+    progression_chain, level_up_requirement, related_movement_patterns, high_impact, isometric_heavy, media_slug,
     primary_muscle_group, target_muscles_primary, target_muscles_secondary, instructions,
     common_mistakes, safety_tips
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

@@ -33,10 +33,10 @@ class GenerateLocalTemplatePlanTest {
         id = "qa1",
         answeredAt = Instant.fromEpochMilliseconds(0),
         input = QuickAssessmentAnswer(
-            experience = Experience.BELUM_PERNAH,
+            experience = Experience.NEVER,
             goal = GoalCategory.FAT_LOSS,
             equipment = setOf(EquipmentCategory.BODYWEIGHT),
-            frequency = FrequencyBucket.TWO_TO_THREE,
+            frequency = FrequencyBucket.THREE,
             splitPreference = SplitPreference.FULL_BODY,
         ),
         level = Level.BEGINNER,

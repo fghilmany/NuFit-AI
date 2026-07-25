@@ -18,49 +18,49 @@ class ExerciseSeedDtoTest {
             name = "Box Squat",
             equipmentCategory = "BODYWEIGHT",
             movementPattern = "SQUAT",
-            level = "REGRESI",
+            level = "REGRESSION",
             flagExclusion = listOf("flag_ankle_mobility"),
-            flagPrioritas = listOf("flag_knee_valgus"),
-            areaTerbebani = listOf("lutut", "punggung_bawah"),
+            flagPriority = listOf("flag_knee_valgus"),
+            loadedBodyAreas = listOf("lutut", "punggung_bawah"),
         )
 
         val entity = dto.toEntity()
 
         assertEquals(EquipmentCategory.BODYWEIGHT, entity.equipmentCategory)
         assertEquals(MovementPattern.SQUAT, entity.movementPattern)
-        assertEquals(ExerciseLevel.REGRESI, entity.level)
+        assertEquals(ExerciseLevel.REGRESSION, entity.level)
         assertEquals(setOf(ExerciseFlag.MOVEMENT_ANKLE_MOBILITY), entity.flagExclusion)
-        assertEquals(setOf(ExerciseFlag.MOVEMENT_KNEE_VALGUS), entity.flagPrioritas)
-        assertEquals(setOf(BodyArea.LUTUT, BodyArea.PUNGGUNG_BAWAH), entity.areaTerbebani)
+        assertEquals(setOf(ExerciseFlag.MOVEMENT_KNEE_VALGUS), entity.flagPriority)
+        assertEquals(setOf(BodyArea.KNEE, BodyArea.LOWER_BACK), entity.loadedBodyAreas)
     }
 
     @Test
-    fun `given substitusiSetara with an unresolvable band key when toEntity then drops it without crashing`() {
+    fun `given equivalentSubstitutes with an unresolvable band key when toEntity then drops it without crashing`() {
         val dto = ExerciseSeedDto(
             id = "DB-CARRY-000",
             name = "Farmer's Carry",
             equipmentCategory = "DUMBBELL",
             movementPattern = "CARRY",
-            level = "STANDAR",
-            substitusiSetara = mapOf("band" to "BAND-CARRY-000", "mesin" to "MC-CARRY-000"),
+            level = "STANDARD",
+            equivalentSubstitutes = mapOf("band" to "BAND-CARRY-000", "mesin" to "MC-CARRY-000"),
         )
 
         val entity = dto.toEntity()
 
-        assertEquals(mapOf(EquipmentCategory.MACHINE_CABLE to "MC-CARRY-000"), entity.substitusiSetara)
+        assertEquals(mapOf(EquipmentCategory.MACHINE_CABLE to "MC-CARRY-000"), entity.equivalentSubstitutes)
     }
 
     @Test
-    fun `given only unresolvable substitusiSetara keys when toEntity then result is null`() {
+    fun `given only unresolvable equivalentSubstitutes keys when toEntity then result is null`() {
         val dto = ExerciseSeedDto(
             id = "DB-CARRY-000",
             name = "Farmer's Carry",
             equipmentCategory = "DUMBBELL",
             movementPattern = "CARRY",
-            level = "STANDAR",
-            substitusiSetara = mapOf("band" to "BAND-CARRY-000"),
+            level = "STANDARD",
+            equivalentSubstitutes = mapOf("band" to "BAND-CARRY-000"),
         )
 
-        assertNull(dto.toEntity().substitusiSetara)
+        assertNull(dto.toEntity().equivalentSubstitutes)
     }
 }

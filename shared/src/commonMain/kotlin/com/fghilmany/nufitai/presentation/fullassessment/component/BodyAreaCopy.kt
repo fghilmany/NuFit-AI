@@ -11,8 +11,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BodyArea.shortLabel(): String = when (this) {
-    BodyArea.PUNGGUNG_BAWAH -> stringResource(Res.string.fullassessment_body_area_punggung_bawah)
-    BodyArea.LUTUT -> stringResource(Res.string.fullassessment_body_area_lutut)
-    BodyArea.BAHU -> stringResource(Res.string.fullassessment_body_area_bahu)
-    BodyArea.LEHER -> stringResource(Res.string.fullassessment_body_area_leher)
+    BodyArea.LOWER_BACK -> stringResource(Res.string.fullassessment_body_area_punggung_bawah)
+    BodyArea.KNEE -> stringResource(Res.string.fullassessment_body_area_lutut)
+    BodyArea.SHOULDER -> stringResource(Res.string.fullassessment_body_area_bahu)
+    BodyArea.NECK -> stringResource(Res.string.fullassessment_body_area_leher)
 }

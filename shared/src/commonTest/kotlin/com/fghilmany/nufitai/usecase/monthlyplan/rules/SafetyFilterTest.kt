@@ -8,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class FilterKeamananTest {
+class SafetyFilterTest {
 
     @Test
     fun `given an exercise excluded by an active flag when invoked then it is removed from the pool`() {
@@ -16,17 +16,17 @@ class FilterKeamananTest {
         val safe = testExercise("BW-HINGE-000", movementPattern = MovementPattern.HINGE)
         val pool = mapOf(MovementPattern.HINGE to listOf(excluded, safe))
 
-        val result = FilterKeamanan(pool, activeFlags = setOf(ExerciseFlag.MOVEMENT_HINGE_FROM_BACK), areaNyeri = emptySet())
+        val result = SafetyFilter(pool, activeFlags = setOf(ExerciseFlag.MOVEMENT_HINGE_FROM_BACK), painAreas = emptySet())
 
         assertEquals(listOf("BW-HINGE-000"), result.filteredPool[MovementPattern.HINGE]?.map { it.id })
     }
 
     @Test
     fun `given an exercise loading an area of reported pain when invoked then it is soft-blocked (SAFE-10)`() {
-        val painful = testExercise("BB-SQUAT-000", movementPattern = MovementPattern.SQUAT, areaTerbebani = setOf(BodyArea.LUTUT))
+        val painful = testExercise("BB-SQUAT-000", movementPattern = MovementPattern.SQUAT, loadedBodyAreas = setOf(BodyArea.KNEE))
         val pool = mapOf(MovementPattern.SQUAT to listOf(painful))
 
-        val result = FilterKeamanan(pool, activeFlags = emptySet(), areaNyeri = setOf(BodyArea.LUTUT))
+        val result = SafetyFilter(pool, activeFlags = emptySet(), painAreas = setOf(BodyArea.KNEE))
 
         assertTrue(result.filteredPool[MovementPattern.SQUAT].orEmpty().isEmpty())
     }
@@ -38,16 +38,16 @@ class FilterKeamananTest {
             testExercise(
                 "BW-CORR-00$index",
                 movementPattern = MovementPattern.CORRECTIVE,
-                flagPrioritas = setOf(ExerciseFlag.POSTURAL_FORWARD_HEAD),
+                flagPriority = setOf(ExerciseFlag.POSTURAL_FORWARD_HEAD),
             )
         }
         val pool = mapOf(MovementPattern.CORRECTIVE to correctives)
 
-        val result = FilterKeamanan(pool, activeFlags = setOf(ExerciseFlag.POSTURAL_FORWARD_HEAD), areaNyeri = emptySet())
+        val result = SafetyFilter(pool, activeFlags = setOf(ExerciseFlag.POSTURAL_FORWARD_HEAD), painAreas = emptySet())
 
-        assertEquals(SAFE_09_BUDGET_MAX, result.korektifWajib.size)
-        assertEquals(2, result.korektifOverflow.size)
+        assertEquals(SAFE_09_BUDGET_MAX, result.mandatoryCorrective.size)
+        assertEquals(2, result.correctiveOverflow.size)
         // Nothing is silently dropped -- every candidate is accounted for in one of the two lists.
-        assertEquals(correctives.size, result.korektifWajib.size + result.korektifOverflow.size)
+        assertEquals(correctives.size, result.mandatoryCorrective.size + result.correctiveOverflow.size)
     }
 }

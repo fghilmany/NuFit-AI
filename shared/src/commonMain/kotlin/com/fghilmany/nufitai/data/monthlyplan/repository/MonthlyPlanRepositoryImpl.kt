@@ -48,8 +48,8 @@ class MonthlyPlanRepositoryImpl(
             levelMeta = plan.levelMeta,
             goalMeta = plan.goalMeta.name,
             smartGoalMeta = plan.smartGoalMeta,
-            flagsAktifJson = json.encodeToString(plan.flagsAktif),
-            startingLevelPerPolaJson = json.encodeToString(plan.startingLevelPerPola),
+            activeFlagsJson = json.encodeToString(plan.activeFlags),
+            startingLevelPerPatternJson = json.encodeToString(plan.startingLevelPerPattern),
             mode = plan.mode.name,
             checkpointDaysJson = json.encodeToString(plan.checkpointDays),
             days = days.map { it.toInsertRow() },
@@ -97,8 +97,8 @@ class MonthlyPlanRepositoryImpl(
 
     private fun PlanDay.toInsertRow(): PlanDayInsertRow {
         val exercises = buildList {
-            warmup?.spesifik?.forEach { add(it.toInsertRow("warmup_spesifik")) }
-            warmup?.korektif?.forEach { add(it.toInsertRow("warmup_korektif")) }
+            warmup?.specific?.forEach { add(it.toInsertRow("warmup_specific")) }
+            warmup?.corrective?.forEach { add(it.toInsertRow("warmup_corrective")) }
             mainExercises?.forEach { add(it.toInsertRow("main")) }
             cooldown?.stretch?.forEach { add(it.toInsertRow("cooldown_stretch")) }
             homework?.forEach { add(it.toInsertRow("homework")) }
@@ -108,9 +108,9 @@ class MonthlyPlanRepositoryImpl(
             dayNumber = dayNumber,
             type = type.name,
             templateLetter = templateLetter,
-            warmupUmumJson = warmup?.umum?.let { json.encodeToString(CardioBlockJson.from(it)) },
+            warmupGeneralJson = warmup?.general?.let { json.encodeToString(CardioBlockJson.from(it)) },
             cardioJson = cardio?.let { json.encodeToString(CardioBlockJson.from(it)) },
-            cooldownPenurunanHrJson = cooldown?.penurunanHr?.let { json.encodeToString(CardioBlockJson.from(it)) },
+            cooldownHeartRateJson = cooldown?.heartRateCooldown?.let { json.encodeToString(CardioBlockJson.from(it)) },
             plannedExercises = exercises,
         )
     }
@@ -136,22 +136,22 @@ class MonthlyPlanRepositoryImpl(
         levelMeta = level_meta,
         goalMeta = GoalCategory.valueOf(goal_meta),
         smartGoalMeta = smart_goal_meta,
-        flagsAktif = json.decodeFromString<Set<ExerciseFlag>>(flags_aktif),
-        startingLevelPerPola = json.decodeFromString<Map<MovementPattern, ExerciseLevel>>(starting_level_per_pola),
+        activeFlags = json.decodeFromString<Set<ExerciseFlag>>(active_flags),
+        startingLevelPerPattern = json.decodeFromString<Map<MovementPattern, ExerciseLevel>>(starting_level_per_pattern),
         mode = ProgressionMode.valueOf(mode),
         checkpointDays = json.decodeFromString<List<Int>>(checkpoint_days),
     )
 
     private fun PlanDayRow.toEntity(exerciseRows: List<PlannedExerciseRow>): PlanDay {
         val bySlot = exerciseRows.groupBy { it.slot }
-        val warmupSpesifik = bySlot["warmup_spesifik"].orEmpty().map { it.toEntity() }
-        val warmupKorektif = bySlot["warmup_korektif"].orEmpty().map { it.toEntity() }
+        val specificWarmup = bySlot["warmup_specific"].orEmpty().map { it.toEntity() }
+        val warmupCorrective = bySlot["warmup_corrective"].orEmpty().map { it.toEntity() }
         val main = bySlot["main"].orEmpty().map { it.toEntity() }
         val cooldownStretch = bySlot["cooldown_stretch"].orEmpty().map { it.toEntity() }
         val homeworkExercises = bySlot["homework"].orEmpty().map { it.toEntity() }
 
-        val warmupUmumBlock = warmup_umum?.let { json.decodeFromString<CardioBlockJson>(it).toEntity() }
-        val cooldownHrBlock = cooldown_penurunan_hr?.let { json.decodeFromString<CardioBlockJson>(it).toEntity() }
+        val generalWarmupBlock = warmup_general?.let { json.decodeFromString<CardioBlockJson>(it).toEntity() }
+        val cooldownHrBlock = cooldown_heart_rate?.let { json.decodeFromString<CardioBlockJson>(it).toEntity() }
 
         return PlanDay(
             id = id,
@@ -159,7 +159,7 @@ class MonthlyPlanRepositoryImpl(
             dayNumber = day_number.toInt(),
             type = DayType.valueOf(type),
             templateLetter = template_letter,
-            warmup = warmupUmumBlock?.let { WarmupBlock(it, warmupSpesifik, warmupKorektif) },
+            warmup = generalWarmupBlock?.let { WarmupBlock(it, specificWarmup, warmupCorrective) },
             mainExercises = main.ifEmpty { null },
             cardio = cardio?.let { json.decodeFromString<CardioBlockJson>(it).toEntity() },
             cooldown = cooldownHrBlock?.let { CooldownBlock(it, cooldownStretch) },

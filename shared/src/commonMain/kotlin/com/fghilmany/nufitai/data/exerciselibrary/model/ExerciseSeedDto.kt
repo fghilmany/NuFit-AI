@@ -25,13 +25,13 @@ data class ExerciseSeedDto(
     val levelVariant: Int? = null,
     val levelNote: String? = null,
     val flagExclusion: List<String> = emptyList(),
-    val flagPrioritas: List<String> = emptyList(),
-    val areaTerbebani: List<String>? = null,
-    val substitusiSetara: Map<String, String>? = null,
-    val rantaiRegresi: String? = null,
-    val rantaiProgresi: String? = null,
-    val syaratNaik: String? = null,
-    val polaGerakTerkait: List<String>? = null,
+    val flagPriority: List<String> = emptyList(),
+    val loadedBodyAreas: List<String>? = null,
+    val equivalentSubstitutes: Map<String, String>? = null,
+    val regressionChain: String? = null,
+    val progressionChain: String? = null,
+    val levelUpRequirement: String? = null,
+    val relatedMovementPatterns: List<String>? = null,
     val highImpact: Boolean = false,
     val isometricHeavy: Boolean = false,
     val mediaSlug: String? = null,
@@ -51,16 +51,16 @@ data class ExerciseSeedDto(
         levelVariant = levelVariant,
         levelNote = levelNote,
         flagExclusion = flagExclusion.mapNotNull { it.toExerciseFlagOrNull() }.toSet(),
-        flagPrioritas = flagPrioritas.mapNotNull { it.toExerciseFlagOrNull() }.toSet(),
-        areaTerbebani = areaTerbebani?.map { BodyArea.valueOf(it.uppercase()) }?.toSet(),
-        substitusiSetara = substitusiSetara
+        flagPriority = flagPriority.mapNotNull { it.toExerciseFlagOrNull() }.toSet(),
+        loadedBodyAreas = loadedBodyAreas?.map { BodyArea.valueOf(it.uppercase()) }?.toSet(),
+        equivalentSubstitutes = equivalentSubstitutes
             ?.mapNotNull { (key, value) -> key.toEquipmentCategoryOrNull()?.let { it to value } }
             ?.toMap()
             ?.takeIf { it.isNotEmpty() },
-        rantaiRegresi = rantaiRegresi,
-        rantaiProgresi = rantaiProgresi,
-        syaratNaik = syaratNaik,
-        polaGerakTerkait = polaGerakTerkait?.map { MovementPattern.valueOf(it) }?.toSet(),
+        regressionChain = regressionChain,
+        progressionChain = progressionChain,
+        levelUpRequirement = levelUpRequirement,
+        relatedMovementPatterns = relatedMovementPatterns?.map { MovementPattern.valueOf(it) }?.toSet(),
         highImpact = highImpact,
         isometricHeavy = isometricHeavy,
         mediaSlug = mediaSlug,
@@ -74,7 +74,7 @@ data class ExerciseSeedDto(
 }
 
 /**
- * `substitusiSetara` keys in the source JSON are free-text Indonesian/English category
+ * `equivalentSubstitutes` keys in the source JSON are free-text Indonesian/English category
  * words ("mesin", "band", "dumbbell", "bodyweight"), not [EquipmentCategory] enum names.
  * "band" (Resistance Band) has no exercise database (ADR-002 decision 1) and never
  * resolves -- dropped rather than crashing, consistent with ADR-002's "never guess" rule.

@@ -17,7 +17,7 @@ class CompleteFullAssessmentTest {
         val completeFullAssessment = CompleteFullAssessment(repository)
 
         val result = completeFullAssessment(
-            usia = 29,
+            age = 29,
             gender = null,
             parQAnswers = emptyList(),
             parQGateResult = FullAssessmentParQGateResult(
@@ -26,19 +26,19 @@ class CompleteFullAssessmentTest {
                 exerciseFlags = emptySet(),
             ),
             hardStopAcknowledgedAt = null,
-            preferensiAlat = setOf(EquipmentCategory.BODYWEIGHT),
-            riwayatCedera = emptySet(),
+            equipmentPreference = setOf(EquipmentCategory.BODYWEIGHT),
+            injuryHistory = emptySet(),
             flagsPostural = emptySet(),
-            flagsGerak = emptySet(),
+            movementFlags = emptySet(),
             capacityTest = null,
             goal = GoalCategory.FAT_LOSS,
-            frekuensiPerMinggu = 3,
-            hariPilihan = setOf(1, 3, 5),
-            durasiSesiMenit = 45,
+            sessionsPerWeek = 3,
+            selectedWeekdays = setOf(1, 3, 5),
+            sessionDurationMinutes = 45,
         )
 
         assertIs<AppResult.Success<*>>(result)
-        assertEquals(29, repository.savedResult?.usia)
-        assertEquals(setOf(EquipmentCategory.BODYWEIGHT), repository.savedResult?.preferensiAlat)
+        assertEquals(29, repository.savedResult?.age)
+        assertEquals(setOf(EquipmentCategory.BODYWEIGHT), repository.savedResult?.equipmentPreference)
     }
 }

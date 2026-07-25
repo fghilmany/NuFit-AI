@@ -10,26 +10,26 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
  * [ExerciseFlag]'s HEALTH_* subset, feeding SAFE-06/07/08/11/12 downstream.
  */
 fun FullAssessmentParQQuestionId.isHardStop(): Boolean = when (this) {
-    FullAssessmentParQQuestionId.Q1_NYERI_DADA,
-    FullAssessmentParQQuestionId.Q2_PINGSAN_SAAT_AKTIVITAS,
-    FullAssessmentParQQuestionId.Q3_SESAK_NAPAS_AKTIVITAS_RINGAN,
-    FullAssessmentParQQuestionId.Q4_OPERASI_BESAR_BELUM_PULIH,
-    FullAssessmentParQQuestionId.Q5_PENGOBATAN_KANKER_AKTIF,
-    FullAssessmentParQQuestionId.Q6_KEHAMILAN,
+    FullAssessmentParQQuestionId.Q1_CHEST_PAIN,
+    FullAssessmentParQQuestionId.Q2_FAINTING_DURING_ACTIVITY,
+    FullAssessmentParQQuestionId.Q3_BREATHLESS_LIGHT_ACTIVITY,
+    FullAssessmentParQQuestionId.Q4_MAJOR_SURGERY_NOT_RECOVERED,
+    FullAssessmentParQQuestionId.Q5_ACTIVE_CANCER_TREATMENT,
+    FullAssessmentParQQuestionId.Q6_PREGNANCY,
     -> true
-    FullAssessmentParQQuestionId.Q7_DIABETES_TERKONTROL,
-    FullAssessmentParQQuestionId.Q8_HIPERTENSI_TERKONTROL,
-    FullAssessmentParQQuestionId.Q9_ASMA_TERKONTROL,
-    FullAssessmentParQQuestionId.Q10_CEDERA_LAMA_PULIH,
-    FullAssessmentParQQuestionId.Q11_OSTEOPOROSIS_RINGAN,
+    FullAssessmentParQQuestionId.Q7_DIABETES_CONTROLLED,
+    FullAssessmentParQQuestionId.Q8_HYPERTENSION_CONTROLLED,
+    FullAssessmentParQQuestionId.Q9_ASTHMA_CONTROLLED,
+    FullAssessmentParQQuestionId.Q10_OLD_INJURY_RECOVERED,
+    FullAssessmentParQQuestionId.Q11_MILD_OSTEOPOROSIS,
     -> false
 }
 
 fun FullAssessmentParQQuestionId.toExerciseFlagOrNull(): ExerciseFlag? = when (this) {
-    FullAssessmentParQQuestionId.Q7_DIABETES_TERKONTROL -> ExerciseFlag.HEALTH_DIABETES
-    FullAssessmentParQQuestionId.Q8_HIPERTENSI_TERKONTROL -> ExerciseFlag.HEALTH_TEKANAN_DARAH
-    FullAssessmentParQQuestionId.Q9_ASMA_TERKONTROL -> ExerciseFlag.HEALTH_ASMA
-    FullAssessmentParQQuestionId.Q10_CEDERA_LAMA_PULIH -> ExerciseFlag.HEALTH_SENDI
-    FullAssessmentParQQuestionId.Q11_OSTEOPOROSIS_RINGAN -> ExerciseFlag.HEALTH_OSTEOPOROSIS
-    else -> null // Kategori A (hard-stop) questions never become an exercise-filtering flag
+    FullAssessmentParQQuestionId.Q7_DIABETES_CONTROLLED -> ExerciseFlag.HEALTH_DIABETES
+    FullAssessmentParQQuestionId.Q8_HYPERTENSION_CONTROLLED -> ExerciseFlag.HEALTH_BLOOD_PRESSURE
+    FullAssessmentParQQuestionId.Q9_ASTHMA_CONTROLLED -> ExerciseFlag.HEALTH_ASTHMA
+    FullAssessmentParQQuestionId.Q10_OLD_INJURY_RECOVERED -> ExerciseFlag.HEALTH_JOINT
+    FullAssessmentParQQuestionId.Q11_MILD_OSTEOPOROSIS -> ExerciseFlag.HEALTH_OSTEOPOROSIS
+    else -> null // Category A (hard-stop) questions never become an exercise-filtering flag
 }

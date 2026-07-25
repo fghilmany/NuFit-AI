@@ -7,9 +7,9 @@ package com.fghilmany.nufitai.domain.exerciselibrary.entity
  * text verbatim rather than discarding it (ADR-002).
  */
 enum class ExerciseLevel {
-    REGRESI,
-    STANDAR,
-    PROGRESI,
-    KOREKTIF,
-    AKSESORI,
+    REGRESSION,
+    STANDARD,
+    PROGRESSION,
+    CORRECTIVE,
+    ACCESSORY,
 }

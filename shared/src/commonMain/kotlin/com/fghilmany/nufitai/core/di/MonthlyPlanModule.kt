@@ -17,8 +17,8 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 /**
- * Manual Koin DSL, per ADR-001. `usecase/monthlyplan/rules` (BangunKolamGerakan,
- * FilterKeamanan, ResepGoal, KalibrasiStartingLevel, PenjadwalanBulan, GatingProgresi) are
+ * Manual Koin DSL, per ADR-001. `usecase/monthlyplan/rules` (BuildMovementPool,
+ * SafetyFilter, GoalPrescription, CalibrateStartingLevel, MonthlyScheduler, ProgressionGating) are
  * stateless objects, not classes -- not Koin-registered, called directly like
  * `ResolveQuickAssessment`'s pure-function siblings.
  */
