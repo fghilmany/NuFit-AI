@@ -13,14 +13,17 @@ CREATE TABLE monthly_plan (
     checkpoint_days TEXT NOT NULL,
     -- issue #82 -- soft delete only; never a physical DELETE, so plan_day/plan_day_session_log
     -- and the whole PT Mode logging chain underneath are never orphaned.
-    deleted_at INTEGER
+    deleted_at INTEGER,
+    -- issue #83 (auth-sync.md) -- sync bookkeeping; NULL user_id means never-synced-yet (guest-created).
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
 );
 
 insertMonthlyPlan:
 INSERT INTO monthly_plan(
     id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
-    active_flags, starting_level_per_pattern, mode, checkpoint_days
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    active_flags, starting_level_per_pattern, mode, checkpoint_days, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getActiveMonthlyPlan:
 SELECT * FROM monthly_plan WHERE status = 'ACTIVE' AND deleted_at IS NULL LIMIT 1;
@@ -29,10 +32,28 @@ getAllMonthlyPlans:
 SELECT * FROM monthly_plan WHERE deleted_at IS NULL ORDER BY started_at DESC;
 
 archiveMonthlyPlan:
-UPDATE monthly_plan SET status = 'ARCHIVED' WHERE id = ?;
+UPDATE monthly_plan SET status = 'ARCHIVED', updated_at = ? WHERE id = ?;
 
 activateMonthlyPlan:
-UPDATE monthly_plan SET status = 'ACTIVE' WHERE id = ?;
+UPDATE monthly_plan SET status = 'ACTIVE', updated_at = ? WHERE id = ?;
 
 softDeleteMonthlyPlan:
-UPDATE monthly_plan SET deleted_at = ? WHERE id = ?;
+UPDATE monthly_plan SET deleted_at = ?, updated_at = ? WHERE id = ?;
+
+-- issue #83 -- sync engine cursor query (techspec §7). Scope note: this pass syncs the
+-- monthly_plan row itself; nested plan_day/planned_exercise sync is a follow-up
+-- (MonthlyPlanSyncParticipant doc comment).
+selectChangedSince:
+SELECT * FROM monthly_plan WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM monthly_plan WHERE id = ?;
+
+backfillUserId:
+UPDATE monthly_plan SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO monthly_plan(
+    id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
+    active_flags, starting_level_per_pattern, mode, checkpoint_days, deleted_at, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

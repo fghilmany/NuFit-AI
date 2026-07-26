@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aicustomplan_gate_guest_title">AI Custom Plan</string>
+    <string name="aicustomplan_gate_guest_body">Log in to get a plan personalized by AI, built from your profile and training history.</string>
+    <string name="aicustomplan_gate_cta_login">Continue with Google</string>
+
+    <string name="aicustomplan_gate_paywall_title">Plan Custom from AI</string>
+    <string name="aicustomplan_gate_paywall_body">Training gets more focused with a plan built specifically for your body profile.</string>
+    <string name="aicustomplan_gate_paywall_chat_ai_reminder">Chat AI 5x/day stays free for you</string>
+    <string name="aicustomplan_gate_cta_subscribe">Start Subscription</string>
+
+    <string name="aicustomplan_gate_needs_assessment_title">Complete Full Assessment First</string>
+    <string name="aicustomplan_gate_needs_assessment_body">The AI needs your full body/health data to build a plan that fits you.</string>
+    <string name="aicustomplan_gate_cta_start_assessment">Start Full Assessment</string>
+
+    <string name="aicustomplan_form_title">Request Custom AI Plan</string>
+    <string name="aicustomplan_form_subtitle">Let's design a fitness journey that fits you.</string>
+    <string name="aicustomplan_form_goal_title">Training Goal</string>
+    <string name="aicustomplan_form_sessions_per_week_label">Sessions per week</string>
+    <string name="aicustomplan_form_session_duration_title">Duration per Session</string>
+    <string name="aicustomplan_form_equipment_title">Available Equipment</string>
+    <string name="aicustomplan_form_muscle_focus_title">Muscle Focus (Optional)</string>
+    <string name="aicustomplan_form_plan_duration_title">Plan Duration</string>
+    <string name="aicustomplan_form_submit">Build My Plan</string>
+    <string name="aicustomplan_form_generating">NuFit AI is building your plan…</string>
+
+    <string name="aicustomplan_conflict_sessions_per_week_beginner">You requested a high weekly frequency, but as a Beginner we suggest fewer sessions — the plan was still built to match your request.</string>
+
+    <string name="aicustomplan_preview_ai_badge">MADE BY AI</string>
+    <string name="aicustomplan_preview_warning_dropped_exercise">One exercise could not be loaded and was removed — try Regenerate.</string>
+    <string name="aicustomplan_preview_injury_conflict_banner">Some exercises may aggravate a reported injury/condition. Remove or replace them before activating.</string>
+    <string name="aicustomplan_preview_remove_action">Remove</string>
+    <string name="aicustomplan_preview_regenerate">Regenerate</string>
+    <string name="aicustomplan_preview_save_draft">Save Draft</string>
+    <string name="aicustomplan_preview_activate">Activate Now</string>
+    <string name="aicustomplan_preview_quota_full_title">Custom Plan Limit Reached</string>
+    <string name="aicustomplan_preview_quota_full_body">You have 5 saved custom plans. Delete one to save this new plan.</string>
+    <string name="aicustomplan_preview_delete_action">Delete</string>
+    <string name="aicustomplan_preview_week_label">Week %1$d</string>
+    <string name="aicustomplan_preview_phase_adaptation">Adaptation &amp; Basic Technique Phase</string>
+    <string name="aicustomplan_preview_phase_volume">Training Volume Increase</string>
+    <string name="aicustomplan_preview_phase_intensity">Intensity Focus</string>
+    <string name="aicustomplan_preview_session_summary">%1$d min • %2$d exercises</string>
+    <string name="aicustomplan_preview_swap_action">Swap Exercise</string>
+    <string name="aicustomplan_preview_swap_dialog_title">Choose a Replacement</string>
+    <string name="aicustomplan_preview_swap_dialog_empty">No alternatives available for this exercise.</string>
+    <string name="aicustomplan_preview_adjust_set_title">Adjust Set</string>
+    <string name="aicustomplan_preview_adjust_set_sets_label">Sets</string>
+    <string name="aicustomplan_preview_adjust_set_reps_label">Reps / Duration</string>
+</resources>

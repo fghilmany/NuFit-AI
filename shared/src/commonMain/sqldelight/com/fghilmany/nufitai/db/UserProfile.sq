@@ -1,0 +1,12 @@
+CREATE TABLE user_profile (
+    user_id TEXT NOT NULL PRIMARY KEY,
+    age INTEGER NOT NULL,
+    gender TEXT NOT NULL,
+    updated_at INTEGER NOT NULL
+);
+
+getProfileBasics:
+SELECT * FROM user_profile LIMIT 1;
+
+upsertProfileBasics:
+INSERT OR REPLACE INTO user_profile(user_id, age, gender, updated_at) VALUES (?, ?, ?, ?);

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_login_title">Simpan Progres Kamu</string>
+    <string name="auth_login_subtitle">Jangan biarkan hasil latihanmu hilang begitu saja.</string>
+    <string name="auth_login_benefit_backup_title">Backup otomatis ke cloud</string>
+    <string name="auth_login_benefit_backup_body">Data aman tersimpan selamanya.</string>
+    <string name="auth_login_benefit_personalization_title">Program lebih personal</string>
+    <string name="auth_login_benefit_personalization_body">AI belajar dari kebiasaanmu.</string>
+    <string name="auth_login_benefit_restore_title">Pulihkan data di HP baru</string>
+    <string name="auth_login_benefit_restore_body">Pindah perangkat tanpa hambatan.</string>
+    <string name="auth_login_cta_google">Lanjutkan dengan Google</string>
+    <string name="auth_login_cta_apple">Masuk dengan Apple</string>
+    <string name="auth_login_legal">Dengan melanjutkan, Anda menyetujui Syarat Penggunaan &amp; Kebijakan Privasi NuFit AI.</string>
+
+    <string name="auth_complete_profile_title">Lengkapi Profil Kamu</string>
+    <string name="auth_complete_profile_subtitle">Data ini dipakai untuk mempersonalisasi norma tes kamu.</string>
+    <string name="auth_complete_profile_age_label">Usia</string>
+    <string name="auth_complete_profile_gender_label">Jenis Kelamin</string>
+</resources>

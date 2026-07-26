@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aicustomplan_gate_guest_title">Plan Custom AI</string>
+    <string name="aicustomplan_gate_guest_body">Login untuk mendapatkan plan yang dipersonalisasi AI, dibuat dari profil dan riwayat latihanmu.</string>
+    <string name="aicustomplan_gate_cta_login">Lanjutkan dengan Google</string>
+
+    <string name="aicustomplan_gate_paywall_title">Plan Custom dari AI</string>
+    <string name="aicustomplan_gate_paywall_body">Latihan jadi lebih terarah dengan rencana yang dibuat khusus untuk profil tubuhmu.</string>
+    <string name="aicustomplan_gate_paywall_chat_ai_reminder">Chat AI 5x/hari tetap gratis untukmu</string>
+    <string name="aicustomplan_gate_cta_subscribe">Mulai Berlangganan</string>
+
+    <string name="aicustomplan_gate_needs_assessment_title">Lengkapi Full Assessment Dulu</string>
+    <string name="aicustomplan_gate_needs_assessment_body">AI butuh data tubuh/kesehatan lengkapmu untuk membuat plan yang sesuai.</string>
+    <string name="aicustomplan_gate_cta_start_assessment">Mulai Full Assessment</string>
+
+    <string name="aicustomplan_form_title">Minta Plan Kustom AI</string>
+    <string name="aicustomplan_form_subtitle">Mari rancang perjalanan kebugaran yang pas untukmu.</string>
+    <string name="aicustomplan_form_goal_title">Target Latihan</string>
+    <string name="aicustomplan_form_sessions_per_week_label">Frekuensi per minggu</string>
+    <string name="aicustomplan_form_session_duration_title">Durasi per Sesi</string>
+    <string name="aicustomplan_form_equipment_title">Alat yang Tersedia</string>
+    <string name="aicustomplan_form_muscle_focus_title">Fokus Otot (Opsional)</string>
+    <string name="aicustomplan_form_plan_duration_title">Durasi Program</string>
+    <string name="aicustomplan_form_submit">Buatkan Plan Saya</string>
+    <string name="aicustomplan_form_generating">NuFit AI sedang membuat plan kamu…</string>
+
+    <string name="aicustomplan_conflict_sessions_per_week_beginner">Kamu minta frekuensi tinggi, tapi sebagai Beginner kami sarankan lebih sedikit sesi — plan tetap dibuat sesuai permintaanmu.</string>
+
+    <string name="aicustomplan_preview_ai_badge">DIBUAT OLEH AI</string>
+    <string name="aicustomplan_preview_warning_dropped_exercise">Satu gerakan tidak bisa dimuat dan telah dihapus — coba Regenerate.</string>
+    <string name="aicustomplan_preview_injury_conflict_banner">Beberapa gerakan berisiko memperparah cedera/kondisi yang kamu laporkan. Hapus atau ganti sebelum mengaktifkan.</string>
+    <string name="aicustomplan_preview_remove_action">Hapus</string>
+    <string name="aicustomplan_preview_regenerate">Regenerate</string>
+    <string name="aicustomplan_preview_save_draft">Simpan Draft</string>
+    <string name="aicustomplan_preview_activate">Aktifkan Sekarang</string>
+    <string name="aicustomplan_preview_quota_full_title">Batas Plan Custom Tercapai</string>
+    <string name="aicustomplan_preview_quota_full_body">Kamu punya 5 plan custom tersimpan. Hapus salah satu untuk menyimpan plan baru ini.</string>
+    <string name="aicustomplan_preview_delete_action">Hapus</string>
+    <string name="aicustomplan_preview_week_label">Minggu %1$d</string>
+    <string name="aicustomplan_preview_phase_adaptation">Fase Adaptasi &amp; Teknik Dasar</string>
+    <string name="aicustomplan_preview_phase_volume">Peningkatan Volume Latihan</string>
+    <string name="aicustomplan_preview_phase_intensity">Fokus pada Intensitas</string>
+    <string name="aicustomplan_preview_session_summary">%1$d menit • %2$d gerakan</string>
+    <string name="aicustomplan_preview_swap_action">Ganti Gerakan</string>
+    <string name="aicustomplan_preview_swap_dialog_title">Pilih Pengganti</string>
+    <string name="aicustomplan_preview_swap_dialog_empty">Tidak ada alternatif untuk gerakan ini.</string>
+    <string name="aicustomplan_preview_adjust_set_title">Sesuaikan Set</string>
+    <string name="aicustomplan_preview_adjust_set_sets_label">Set</string>
+    <string name="aicustomplan_preview_adjust_set_reps_label">Reps / Durasi</string>
+</resources>

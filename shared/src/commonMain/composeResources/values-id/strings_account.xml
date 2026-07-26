@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_top_bar_title">Akun</string>
+    <string name="account_guest_title">Kamu sedang menjelajah sebagai tamu</string>
+    <string name="account_guest_body">Login untuk backup data kamu dan buka fitur AI.</string>
+    <string name="account_cta_login">Login</string>
+    <string name="account_logged_in_label">Sudah login</string>
+    <string name="account_sync_status_idle">Belum pernah sync</string>
+    <string name="account_sync_status_syncing">Sedang sync…</string>
+    <string name="account_sync_status_success">Terakhir sync %1$s</string>
+    <string name="account_sync_status_failed">Sync gagal — akan dicoba lagi otomatis</string>
+    <string name="account_sync_now_action">Sync sekarang</string>
+    <string name="account_logout_action">Logout</string>
+</resources>

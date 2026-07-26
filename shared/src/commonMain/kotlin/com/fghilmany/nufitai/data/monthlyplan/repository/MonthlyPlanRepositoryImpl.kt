@@ -54,6 +54,7 @@ class MonthlyPlanRepositoryImpl(
             mode = plan.mode.name,
             checkpointDaysJson = json.encodeToString(plan.checkpointDays),
             days = days.map { it.toInsertRow() },
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 
@@ -73,11 +74,11 @@ class MonthlyPlanRepositoryImpl(
     }
 
     override suspend fun archivePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
-        local.archivePlan(planId)
+        local.archivePlan(planId, currentInstant().toEpochMilliseconds())
     }
 
     override suspend fun activatePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
-        local.activatePlan(planId)
+        local.activatePlan(planId, currentInstant().toEpochMilliseconds())
     }
 
     override suspend fun softDeletePlan(planId: String): AppResult<Unit> = runCatchingDatabase {

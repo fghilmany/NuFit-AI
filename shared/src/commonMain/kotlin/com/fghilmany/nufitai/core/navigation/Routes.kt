@@ -74,4 +74,20 @@ sealed interface Route {
     /** P-14 UC-4 -- manual template picker (Level -> Goal -> Split), issue #82. */
     @Serializable
     data object TemplatePicker : Route
+
+    /** P-10 -- Login (Google/Apple), issue #83. [returnTo] mirrors [FullAssessmentStub]'s boolean-flag precedent, generalized to 3 call sites. */
+    @Serializable
+    data class Login(val returnTo: LoginReturnTarget = LoginReturnTarget.HOME) : Route
+
+    /** "Lengkapi Profil" -- age/gender, once, post-first-login (issue #83). */
+    @Serializable
+    data class CompleteProfile(val returnTo: LoginReturnTarget = LoginReturnTarget.HOME) : Route
+
+    /** P-15 stub -- Account (issue #83); full scope stays in 09-profile-settings.md. */
+    @Serializable
+    data object Account : Route
 }
+
+/** issue #83 -- where [Route.Login]/[Route.CompleteProfile] return to once signed in. */
+@Serializable
+enum class LoginReturnTarget { HOME, AI_CUSTOM_PLAN, FULL_ASSESSMENT }

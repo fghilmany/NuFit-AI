@@ -6,10 +6,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.fghilmany.nufitai.presentation.account.screen.AccountScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanFormScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanGateScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanPreviewScreen
 import com.fghilmany.nufitai.presentation.assessmentdetail.screen.AssessmentDetailScreen
+import com.fghilmany.nufitai.presentation.auth.screen.CompleteProfileScreen
+import com.fghilmany.nufitai.presentation.auth.screen.LoginScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseDetailScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseLibraryScreen
 import com.fghilmany.nufitai.presentation.fullassessment.screen.FullAssessmentStubScreen
@@ -93,6 +96,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
                 onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
                 onPlansClick = { navController.navigate(Route.MyPlans) },
+                onAccountClick = { navController.navigate(Route.Account) },
             )
         }
 
@@ -170,9 +174,9 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
 
         composable<Route.AiCustomPlanGate> {
             AiCustomPlanGateScreen(
-                // Login/subscribe flows don't exist yet (08-auth-sync.md, billing) -- no-op until then.
-                onNavigateToLogin = {},
-                onNavigateToSubscribe = {},
+                // issue #83 -- real Login destination now that Auth & Sync exists.
+                onNavigateToLogin = { navController.navigate(Route.Login(returnTo = LoginReturnTarget.AI_CUSTOM_PLAN)) },
+                onNavigateToSubscribe = {}, // billing (RevenueCat) still doesn't exist -- no-op until then.
                 onNavigateToFullAssessment = { navController.navigate(Route.FullAssessmentStub(continueToAiCustomPlan = true)) },
                 onPassThrough = {
                     navController.navigate(Route.AiCustomPlanForm) {
@@ -180,6 +184,32 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                     }
                 },
             )
+        }
+
+        composable<Route.Login> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.Login>()
+            LoginScreen(
+                onSignedIn = { needsCompleteProfile ->
+                    val destination = if (needsCompleteProfile) Route.CompleteProfile(route.returnTo) else route.returnTo.toDestination()
+                    navController.navigate(destination) { popUpTo<Route.Login> { inclusive = true } }
+                },
+                onSkip = { navController.popBackStack() },
+            )
+        }
+
+        composable<Route.CompleteProfile> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.CompleteProfile>()
+            CompleteProfileScreen(
+                onCompleted = {
+                    navController.navigate(route.returnTo.toDestination()) {
+                        popUpTo<Route.CompleteProfile> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.Account> {
+            AccountScreen(onNavigateToLogin = { navController.navigate(Route.Login()) })
         }
 
         composable<Route.AiCustomPlanForm> {
@@ -240,4 +270,11 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
     }
+}
+
+/** issue #83 -- where Login/CompleteProfile hand off to once signed in. */
+private fun LoginReturnTarget.toDestination(): Route = when (this) {
+    LoginReturnTarget.HOME -> Route.Home
+    LoginReturnTarget.AI_CUSTOM_PLAN -> Route.AiCustomPlanForm
+    LoginReturnTarget.FULL_ASSESSMENT -> Route.FullAssessmentStub()
 }

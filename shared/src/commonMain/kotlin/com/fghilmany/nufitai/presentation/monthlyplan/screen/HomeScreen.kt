@@ -63,6 +63,7 @@ fun HomeScreen(
     onAssessmentDetailClick: () -> Unit,
     onExerciseLibraryClick: () -> Unit,
     onPlansClick: () -> Unit,
+    onAccountClick: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -80,7 +81,13 @@ fun HomeScreen(
         TopAppBarSection(modifier = Modifier.align(Alignment.TopStart))
         BottomNavBar(
             activeTab = NavTab.HOME,
-            onNavigate = { tab -> if (tab == NavTab.RENCANA) onPlansClick() },
+            onNavigate = { tab ->
+                when (tab) {
+                    NavTab.RENCANA -> onPlansClick()
+                    NavTab.AKUN -> onAccountClick()
+                    else -> Unit
+                }
+            },
             modifier = Modifier.align(Alignment.BottomStart),
         )
     }

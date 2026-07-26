@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="planmanagement_top_bar_title">My Plans</string>
+
+    <string name="planmanagement_entry_template_title">Create from Template</string>
+    <string name="planmanagement_entry_template_badge">FREE</string>
+    <string name="planmanagement_entry_ai_title">Create with AI</string>
+    <string name="planmanagement_entry_ai_badge">SUBSCRIBE</string>
+
+    <string name="planmanagement_quota_label">Custom plans: %1$d/%2$d</string>
+    <string name="planmanagement_section_title">Your Plans</string>
+    <string name="planmanagement_empty_state">No plans yet. Start from Template or AI above.</string>
+
+    <string name="planmanagement_badge_active">ACTIVE</string>
+    <string name="planmanagement_badge_draft">DRAFT</string>
+    <string name="planmanagement_badge_archived">ARCHIVED</string>
+
+    <string name="planmanagement_source_template">TEMPLATE</string>
+    <string name="planmanagement_source_ai">AI</string>
+    <string name="planmanagement_source_personalized">PERSONALIZED</string>
+
+    <string name="planmanagement_action_activate">Activate</string>
+    <string name="planmanagement_action_restore">Restore</string>
+    <string name="planmanagement_action_delete">Delete</string>
+
+    <string name="planmanagement_confirm_activate_title">Switch Active Plan?</string>
+    <string name="planmanagement_confirm_activate_body">Your current active plan will be archived.</string>
+    <string name="planmanagement_confirm_delete_title">Delete This Plan?</string>
+    <string name="planmanagement_confirm_delete_body">The plan will be removed from your list. Your log history stays safe.</string>
+    <string name="planmanagement_confirm_cancel">Cancel</string>
+    <string name="planmanagement_confirm_ok">Yes</string>
+
+    <string name="planmanagement_quota_full_dialog_body">Your 5 custom AI plan quota is full. Delete one first.</string>
+
+    <string name="planmanagement_picker_title">Create Plan from Template</string>
+    <string name="planmanagement_picker_level_title">Training Level</string>
+    <string name="planmanagement_picker_goal_title">Training Goal</string>
+    <string name="planmanagement_picker_split_title">Training Split</string>
+    <string name="planmanagement_picker_save_draft">Save Draft</string>
+    <string name="planmanagement_picker_activate_now">Activate Now</string>
+</resources>

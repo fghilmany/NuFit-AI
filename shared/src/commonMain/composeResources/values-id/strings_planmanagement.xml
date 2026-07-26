@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="planmanagement_top_bar_title">Rencana Latihan</string>
+
+    <string name="planmanagement_entry_template_title">Buat dari Template</string>
+    <string name="planmanagement_entry_template_badge">GRATIS</string>
+    <string name="planmanagement_entry_ai_title">Buat dengan AI</string>
+    <string name="planmanagement_entry_ai_badge">SUBSCRIBE</string>
+
+    <string name="planmanagement_quota_label">Custom plan: %1$d/%2$d</string>
+    <string name="planmanagement_section_title">Rencana Kamu</string>
+    <string name="planmanagement_empty_state">Belum ada plan. Mulai dari Template atau AI di atas.</string>
+
+    <string name="planmanagement_badge_active">AKTIF</string>
+    <string name="planmanagement_badge_draft">DRAFT</string>
+    <string name="planmanagement_badge_archived">ARSIP</string>
+
+    <string name="planmanagement_source_template">TEMPLATE</string>
+    <string name="planmanagement_source_ai">AI</string>
+    <string name="planmanagement_source_personalized">PERSONALIZED</string>
+
+    <string name="planmanagement_action_activate">Aktifkan</string>
+    <string name="planmanagement_action_restore">Pulihkan</string>
+    <string name="planmanagement_action_delete">Hapus</string>
+
+    <string name="planmanagement_confirm_activate_title">Ganti Plan Aktif?</string>
+    <string name="planmanagement_confirm_activate_body">Plan aktif saat ini akan diarsipkan.</string>
+    <string name="planmanagement_confirm_delete_title">Hapus Plan Ini?</string>
+    <string name="planmanagement_confirm_delete_body">Plan akan dihapus dari daftar. Riwayat log kamu tetap aman.</string>
+    <string name="planmanagement_confirm_cancel">Batal</string>
+    <string name="planmanagement_confirm_ok">Ya</string>
+
+    <string name="planmanagement_quota_full_dialog_body">Kuota 5 plan custom AI penuh. Hapus salah satu draft dulu.</string>
+
+    <string name="planmanagement_picker_title">Buat Plan dari Template</string>
+    <string name="planmanagement_picker_level_title">Level Latihan</string>
+    <string name="planmanagement_picker_goal_title">Target Latihan</string>
+    <string name="planmanagement_picker_split_title">Split Latihan</string>
+    <string name="planmanagement_picker_save_draft">Simpan Draft</string>
+    <string name="planmanagement_picker_activate_now">Aktifkan Sekarang</string>
+</resources>

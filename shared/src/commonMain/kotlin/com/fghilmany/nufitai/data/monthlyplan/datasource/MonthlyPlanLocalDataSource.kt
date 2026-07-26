@@ -47,6 +47,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         mode: String,
         checkpointDaysJson: String,
         days: List<PlanDayInsertRow>,
+        updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
         database.transaction {
             database.monthlyPlanQueries.insertMonthlyPlan(
@@ -62,6 +63,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                 starting_level_per_pattern = startingLevelPerPatternJson,
                 mode = mode,
                 checkpoint_days = checkpointDaysJson,
+                updated_at = updatedAt,
             )
             days.forEach { day ->
                 database.planDayQueries.insertPlanDay(
@@ -137,16 +139,49 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.monthlyPlanQueries.getAllMonthlyPlans().executeAsList()
     }
 
-    suspend fun archivePlan(planId: String) = withContext(Dispatchers.Default) {
-        database.monthlyPlanQueries.archiveMonthlyPlan(planId)
+    suspend fun archivePlan(planId: String, updatedAt: Long) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.archiveMonthlyPlan(updatedAt, planId)
     }
 
-    suspend fun activatePlan(planId: String) = withContext(Dispatchers.Default) {
-        database.monthlyPlanQueries.activateMonthlyPlan(planId)
+    suspend fun activatePlan(planId: String, updatedAt: Long) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.activateMonthlyPlan(updatedAt, planId)
     }
 
     suspend fun softDeletePlan(planId: String, deletedAt: Long) = withContext(Dispatchers.Default) {
-        database.monthlyPlanQueries.softDeleteMonthlyPlan(deletedAt, planId)
+        database.monthlyPlanQueries.softDeleteMonthlyPlan(deletedAt, deletedAt, planId)
+    }
+
+    /** issue #83 -- sync engine (techspec §7). */
+    suspend fun getChangedSince(updatedAfter: Long): List<MonthlyPlanRow> = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun getById(id: String): MonthlyPlanRow? = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.selectById(id).executeAsOneOrNull()
+    }
+
+    suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.backfillUserId(userId)
+    }
+
+    suspend fun upsertFromRemote(row: MonthlyPlanRow) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.upsertFromRemote(
+            id = row.id,
+            started_at = row.started_at,
+            cycle_number = row.cycle_number,
+            source = row.source,
+            status = row.status,
+            level_meta = row.level_meta,
+            goal_meta = row.goal_meta,
+            smart_goal_meta = row.smart_goal_meta,
+            active_flags = row.active_flags,
+            starting_level_per_pattern = row.starting_level_per_pattern,
+            mode = row.mode,
+            checkpoint_days = row.checkpoint_days,
+            deleted_at = row.deleted_at,
+            user_id = row.user_id,
+            updated_at = row.updated_at,
+        )
     }
 
     suspend fun getPlanDays(planId: String): List<PlanDayRow> = withContext(Dispatchers.Default) {

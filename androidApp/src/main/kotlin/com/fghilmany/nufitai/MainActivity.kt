@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.fghilmany.nufitai.core.db.DatabaseDriverFactory
 import com.fghilmany.nufitai.core.di.initKoin
+import com.fghilmany.nufitai.core.security.TokenStorage
 import com.fghilmany.nufitai.core.settings.SettingsFactory
 
 private var koinStarted = false
@@ -21,6 +22,7 @@ class MainActivity : ComponentActivity() {
             initKoin(
                 driverFactory = DatabaseDriverFactory(applicationContext),
                 settingsFactory = SettingsFactory(applicationContext),
+                tokenStorage = TokenStorage(applicationContext),
             )
             koinStarted = true
         }

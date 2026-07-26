@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_login_title">Save Your Progress</string>
+    <string name="auth_login_subtitle">Don\'t let your training results disappear.</string>
+    <string name="auth_login_benefit_backup_title">Automatic cloud backup</string>
+    <string name="auth_login_benefit_backup_body">Your data stays safe forever.</string>
+    <string name="auth_login_benefit_personalization_title">More personal programs</string>
+    <string name="auth_login_benefit_personalization_body">AI learns from your habits.</string>
+    <string name="auth_login_benefit_restore_title">Restore on a new phone</string>
+    <string name="auth_login_benefit_restore_body">Switch devices without hassle.</string>
+    <string name="auth_login_cta_google">Continue with Google</string>
+    <string name="auth_login_cta_apple">Sign in with Apple</string>
+    <string name="auth_login_legal">By continuing, you agree to NuFit AI\'s Terms of Use &amp; Privacy Policy.</string>
+
+    <string name="auth_complete_profile_title">Complete Your Profile</string>
+    <string name="auth_complete_profile_subtitle">We use this to personalize your test norms.</string>
+    <string name="auth_complete_profile_age_label">Age</string>
+    <string name="auth_complete_profile_gender_label">Gender</string>
+</resources>

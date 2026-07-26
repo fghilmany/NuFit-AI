@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="account_top_bar_title">Account</string>
+    <string name="account_guest_title">You\'re browsing as a guest</string>
+    <string name="account_guest_body">Log in to back up your data and unlock AI features.</string>
+    <string name="account_cta_login">Log in</string>
+    <string name="account_logged_in_label">Logged in</string>
+    <string name="account_sync_status_idle">Not synced yet</string>
+    <string name="account_sync_status_syncing">Syncing…</string>
+    <string name="account_sync_status_success">Last synced %1$s</string>
+    <string name="account_sync_status_failed">Sync failed — will retry automatically</string>
+    <string name="account_sync_now_action">Sync now</string>
+    <string name="account_logout_action">Log out</string>
+</resources>
