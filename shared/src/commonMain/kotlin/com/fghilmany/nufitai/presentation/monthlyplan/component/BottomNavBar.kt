@@ -32,7 +32,7 @@ import nufitai.shared.generated.resources.monthlyplan_nav_meal
 import nufitai.shared.generated.resources.monthlyplan_nav_plans
 import org.jetbrains.compose.resources.stringResource
 
-private enum class NavTab(val icon: ImageVector) {
+enum class NavTab(val icon: ImageVector) {
     HOME(Icons.Filled.Home),
     RENCANA(Icons.Filled.ListAlt),
     CHAT_AI(Icons.Filled.Forum),
@@ -50,12 +50,12 @@ private fun NavTab.label(): String = when (this) {
 }
 
 /**
- * Figma node 12:654 -- 5 tabs (Keputusan #12). Only Home is a real destination today; the other
- * 4 tabs' features (Plans, Chat AI, Meal Plan, Akun) aren't built yet, so they're inert for now
+ * Figma node 12:654 -- 5 tabs (Keputusan #12). Home and Plans (issue #82) are real destinations;
+ * the other 3 tabs' features (Chat AI, Meal Plan, Akun) aren't built yet, so they're inert for now
  * rather than navigating to a stub -- avoids fabricating a "coming soon" screen not in this pass's scope.
  */
 @Composable
-fun BottomNavBar(modifier: Modifier = Modifier) {
+fun BottomNavBar(activeTab: NavTab, onNavigate: (NavTab) -> Unit, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -63,15 +63,18 @@ fun BottomNavBar(modifier: Modifier = Modifier) {
             .padding(horizontal = 16.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        NavTab.entries.forEach { tab -> NavTabItem(tab, isActive = tab == NavTab.HOME) }
+        NavTab.entries.forEach { tab ->
+            val isNavigable = tab == NavTab.HOME || tab == NavTab.RENCANA
+            NavTabItem(tab, isActive = tab == activeTab, isNavigable = isNavigable, onClick = { onNavigate(tab) })
+        }
     }
 }
 
 @Composable
-private fun NavTabItem(tab: NavTab, isActive: Boolean) {
+private fun NavTabItem(tab: NavTab, isActive: Boolean, isNavigable: Boolean, onClick: () -> Unit) {
     Column(
         modifier = Modifier
-            .clickable(enabled = isActive) {}
+            .clickable(enabled = isNavigable && !isActive, onClick = onClick)
             .background(if (isActive) NuFitColors.SecondaryContainer else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(percent = 50))
             .padding(horizontal = 16.dp, vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,

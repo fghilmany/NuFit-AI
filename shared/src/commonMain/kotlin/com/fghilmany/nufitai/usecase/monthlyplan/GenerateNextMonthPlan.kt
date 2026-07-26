@@ -5,6 +5,7 @@ import com.fghilmany.nufitai.core.error.Failure
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
+import com.fghilmany.nufitai.domain.monthlyplan.entity.TemplatePlanInput
 import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
@@ -56,7 +57,14 @@ class GenerateNextMonthPlan(
                 is AppResult.Success -> result.data
                 is AppResult.Error -> return result
             } ?: return AppResult.Error(Failure.Database("No Quick Assessment result to regenerate from"))
-            generateLocalTemplatePlan(quickAssessment)
+            val templateInput = TemplatePlanInput(
+                level = quickAssessment.level,
+                goal = quickAssessment.input.goal,
+                equipment = quickAssessment.input.equipment,
+                sessionsPerWeek = quickAssessment.input.frequency.sessionsPerWeek,
+                resolvedSplit = quickAssessment.resolvedSplit,
+            )
+            generateLocalTemplatePlan(templateInput)
         }
     }
 }

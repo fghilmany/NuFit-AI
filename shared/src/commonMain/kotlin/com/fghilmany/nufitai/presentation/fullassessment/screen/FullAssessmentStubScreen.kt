@@ -64,6 +64,7 @@ import nufitai.shared.generated.resources.fullassessment_interview_frequency_lab
 import nufitai.shared.generated.resources.fullassessment_interview_gender_female
 import nufitai.shared.generated.resources.fullassessment_interview_gender_male
 import nufitai.shared.generated.resources.fullassessment_interview_goal_title
+import nufitai.shared.generated.resources.fullassessment_interview_injury_history_note_label
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_title
 import nufitai.shared.generated.resources.fullassessment_interview_session_duration_label
 import nufitai.shared.generated.resources.fullassessment_interview_training_days_title
@@ -260,6 +261,16 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
                 label = area.shortLabel(),
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleInjuryHistory(area)) },
             )
+        }
+        if (step.injuryHistory.isNotEmpty()) {
+            item {
+                AppTextField(
+                    value = step.injuryHistoryNote,
+                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetInjuryHistoryNote(it)) },
+                    label = stringResource(Res.string.fullassessment_interview_injury_history_note_label),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
         item {
             AppButton(

@@ -28,6 +28,7 @@ class CompleteFullAssessmentTest {
             hardStopAcknowledgedAt = null,
             equipmentPreference = setOf(EquipmentCategory.BODYWEIGHT),
             injuryHistory = emptySet(),
+            injuryHistoryNote = null,
             flagsPostural = emptySet(),
             movementFlags = emptySet(),
             capacityTest = null,

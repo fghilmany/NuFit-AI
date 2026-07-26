@@ -23,10 +23,12 @@ import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.assessmentdetail_history_empty
+import nufitai.shared.generated.resources.assessmentdetail_history_source_ai_custom
 import nufitai.shared.generated.resources.assessmentdetail_history_source_personalized
 import nufitai.shared.generated.resources.assessmentdetail_history_source_template
 import nufitai.shared.generated.resources.assessmentdetail_history_status_active
 import nufitai.shared.generated.resources.assessmentdetail_history_status_archived
+import nufitai.shared.generated.resources.assessmentdetail_history_status_draft
 import org.jetbrains.compose.resources.stringResource
 
 /** P-09 Riwayat tab -- not designed in Figma, reuses the "Ringkasan Jawaban" card visual language (issue #77 §9 item 4). */
@@ -73,10 +75,12 @@ private fun AssessmentHistoryRow(plan: MonthlyPlan, modifier: Modifier = Modifie
 private fun PlanSource.shortLabel(): String = when (this) {
     PlanSource.LOCAL_TEMPLATE -> stringResource(Res.string.assessmentdetail_history_source_template)
     PlanSource.LOGGED_IN_RULE_ENGINE -> stringResource(Res.string.assessmentdetail_history_source_personalized)
+    PlanSource.AI_GENERATED -> stringResource(Res.string.assessmentdetail_history_source_ai_custom)
 }
 
 @Composable
 private fun PlanStatus.shortLabel(): String = when (this) {
     PlanStatus.ACTIVE -> stringResource(Res.string.assessmentdetail_history_status_active)
     PlanStatus.ARCHIVED -> stringResource(Res.string.assessmentdetail_history_status_archived)
+    PlanStatus.DRAFT -> stringResource(Res.string.assessmentdetail_history_status_draft)
 }

@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.data.monthlyplan.repository
 
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.runCatchingDatabase
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.core.util.generateId
 import com.fghilmany.nufitai.data.monthlyplan.datasource.MonthlyPlanLocalDataSource
 import com.fghilmany.nufitai.data.monthlyplan.datasource.PlanDayInsertRow
@@ -75,6 +76,14 @@ class MonthlyPlanRepositoryImpl(
         local.archivePlan(planId)
     }
 
+    override suspend fun activatePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
+        local.activatePlan(planId)
+    }
+
+    override suspend fun softDeletePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
+        local.softDeletePlan(planId, currentInstant().toEpochMilliseconds())
+    }
+
     override suspend fun replacePlanDaysFrom(planId: String, fromDayNumber: Int, days: List<PlanDay>): AppResult<Unit> =
         runCatchingDatabase {
             local.replaceDaysFrom(planId, fromDayNumber.toLong(), days.map { it.toInsertRow() })
@@ -140,6 +149,7 @@ class MonthlyPlanRepositoryImpl(
         startingLevelPerPattern = json.decodeFromString<Map<MovementPattern, ExerciseLevel>>(starting_level_per_pattern),
         mode = ProgressionMode.valueOf(mode),
         checkpointDays = json.decodeFromString<List<Int>>(checkpoint_days),
+        deletedAt = deleted_at?.let { Instant.fromEpochMilliseconds(it) },
     )
 
     private fun PlanDayRow.toEntity(exerciseRows: List<PlannedExerciseRow>): PlanDay {

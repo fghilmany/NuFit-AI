@@ -13,6 +13,7 @@
     <string name="assessmentdetail_equipment_full_gym">Lengkap (Gym)</string>
     <string name="assessmentdetail_plan_badge_template">TEMPLATE</string>
     <string name="assessmentdetail_plan_badge_ai">REKOMENDASI AI</string>
+    <string name="assessmentdetail_plan_badge_ai_custom">AI CUSTOM PLAN</string>
     <string name="assessmentdetail_plan_description">Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.</string>
     <string name="assessmentdetail_selected_plan_title">Rencana Terpilih</string>
     <string name="assessmentdetail_full_assessment_cta_title">Assessment Belum Lengkap</string>
@@ -37,8 +38,10 @@
     <string name="assessmentdetail_history_empty">Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalisasi</string>
+    <string name="assessmentdetail_history_source_ai_custom">AI Custom</string>
     <string name="assessmentdetail_history_status_active">Aktif</string>
     <string name="assessmentdetail_history_status_archived">Arsip</string>
+    <string name="assessmentdetail_history_status_draft">Draft</string>
 
     <string name="assessmentdetail_level_beginner">Beginner</string>
     <string name="assessmentdetail_level_intermediate">Intermediate</string>

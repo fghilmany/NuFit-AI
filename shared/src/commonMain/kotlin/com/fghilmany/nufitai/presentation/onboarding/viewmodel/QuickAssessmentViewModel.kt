@@ -10,6 +10,7 @@ import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
+import com.fghilmany.nufitai.domain.monthlyplan.entity.TemplatePlanInput
 import com.fghilmany.nufitai.usecase.monthlyplan.GenerateLocalTemplatePlan
 import com.fghilmany.nufitai.usecase.onboarding.SubmitQuickAssessment
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -125,7 +126,14 @@ class QuickAssessmentViewModel(
                 is AppResult.Success -> {
                     // Local tier: template-matrix plan generation happens right after Quick
                     // Assessment, so P-03 has an active plan the moment onboarding finishes.
-                    when (val planResult = generateLocalTemplatePlan(result.data)) {
+                    val templateInput = TemplatePlanInput(
+                        level = result.data.level,
+                        goal = result.data.input.goal,
+                        equipment = result.data.input.equipment,
+                        sessionsPerWeek = result.data.input.frequency.sessionsPerWeek,
+                        resolvedSplit = result.data.resolvedSplit,
+                    )
+                    when (val planResult = generateLocalTemplatePlan(templateInput)) {
                         is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
                         is AppResult.Error -> _state.value = QuickAssessmentState.Error(planResult.failure.message)
                     }

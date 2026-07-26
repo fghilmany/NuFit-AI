@@ -90,6 +90,9 @@ fun AssessmentDetailScreen(
             when (current.source) {
                 PlanSource.LOCAL_TEMPLATE -> onRetakeLocal()
                 PlanSource.LOGGED_IN_RULE_ENGINE -> onRetakeLoggedIn()
+                // issue #81 -- retake here means "redo Quick/Full Assessment", not applicable to
+                // an AI Custom Plan (its equivalent is Regenerate on P-13, a separate flow).
+                PlanSource.AI_GENERATED -> Unit
             }
         }
     }

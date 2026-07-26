@@ -141,6 +141,14 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.monthlyPlanQueries.archiveMonthlyPlan(planId)
     }
 
+    suspend fun activatePlan(planId: String) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.activateMonthlyPlan(planId)
+    }
+
+    suspend fun softDeletePlan(planId: String, deletedAt: Long) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.softDeleteMonthlyPlan(deletedAt, planId)
+    }
+
     suspend fun getPlanDays(planId: String): List<PlanDayRow> = withContext(Dispatchers.Default) {
         database.planDayQueries.getPlanDaysForPlan(planId).executeAsList()
     }

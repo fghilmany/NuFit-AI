@@ -1,6 +1,7 @@
 package com.fghilmany.nufitai.fake
 
 import com.fghilmany.nufitai.core.error.AppResult
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDaySessionLog
@@ -29,10 +30,11 @@ class FakeMonthlyPlanRepository : MonthlyPlanRepository {
         return AppResult.Success(Unit)
     }
 
-    override suspend fun getActivePlan(): AppResult<MonthlyPlan?> = AppResult.Success(activePlan)
+    override suspend fun getActivePlan(): AppResult<MonthlyPlan?> =
+        AppResult.Success(activePlan?.takeIf { it.deletedAt == null })
 
     override suspend fun getAllPlans(): AppResult<List<MonthlyPlan>> =
-        AppResult.Success(allPlans.sortedByDescending { it.startedAt })
+        AppResult.Success(allPlans.filter { it.deletedAt == null }.sortedByDescending { it.startedAt })
 
     override suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>> = AppResult.Success(planDays[planId].orEmpty())
 
@@ -58,4 +60,21 @@ class FakeMonthlyPlanRepository : MonthlyPlanRepository {
 
     override suspend fun getSessionLogsForPlan(planId: String): AppResult<List<PlanDaySessionLog>> =
         AppResult.Success(sessionLogs[planId].orEmpty())
+
+    override suspend fun activatePlan(planId: String): AppResult<Unit> {
+        if (activePlan?.id == planId) return AppResult.Success(Unit)
+        activePlan = allPlans.find { it.id == planId }?.copy(status = PlanStatus.ACTIVE)
+        val index = allPlans.indexOfFirst { it.id == planId }
+        if (index >= 0) allPlans[index] = allPlans[index].copy(status = PlanStatus.ACTIVE)
+        return AppResult.Success(Unit)
+    }
+
+    override suspend fun softDeletePlan(planId: String): AppResult<Unit> {
+        val now = currentInstant()
+        val index = allPlans.indexOfFirst { it.id == planId }
+        if (index >= 0) allPlans[index] = allPlans[index].copy(deletedAt = now)
+        if (activePlan?.id == planId) activePlan = activePlan?.copy(deletedAt = now)
+        // plan_day/session logs are deliberately left untouched (issue #82 -- soft delete never orphans log history).
+        return AppResult.Success(Unit)
+    }
 }

@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.presentation.monthlyplan.component.AssessmentDetailBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
+import com.fghilmany.nufitai.presentation.monthlyplan.component.NavTab
 import com.fghilmany.nufitai.presentation.monthlyplan.component.QuickAccessBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.SessionCard
 import com.fghilmany.nufitai.presentation.monthlyplan.component.WeekAccordionHeader
@@ -61,6 +62,7 @@ fun HomeScreen(
     onStartSession: (planDayId: String) -> Unit,
     onAssessmentDetailClick: () -> Unit,
     onExerciseLibraryClick: () -> Unit,
+    onPlansClick: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -76,7 +78,11 @@ fun HomeScreen(
         }
 
         TopAppBarSection(modifier = Modifier.align(Alignment.TopStart))
-        BottomNavBar(modifier = Modifier.align(Alignment.BottomStart))
+        BottomNavBar(
+            activeTab = NavTab.HOME,
+            onNavigate = { tab -> if (tab == NavTab.RENCANA) onPlansClick() },
+            modifier = Modifier.align(Alignment.BottomStart),
+        )
     }
 }
 

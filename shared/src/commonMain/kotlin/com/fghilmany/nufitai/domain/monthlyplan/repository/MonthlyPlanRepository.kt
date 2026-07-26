@@ -16,6 +16,16 @@ interface MonthlyPlanRepository {
     suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>>
     suspend fun archivePlan(planId: String): AppResult<Unit>
 
+    /** issue #82 -- flips `status` to ACTIVE only; caller (`ActivatePlan`) handles archiving the prior active plan first. */
+    suspend fun activatePlan(planId: String): AppResult<Unit>
+
+    /**
+     * issue #82 -- soft delete only (sets `deleted_at`), never a physical DELETE. Caller
+     * (`usecase/planmanagement/DeletePlan`) enforces the "not ACTIVE" guard, not this repository.
+     * `getAllPlans`/`getActivePlan` already exclude soft-deleted rows at the query level.
+     */
+    suspend fun softDeletePlan(planId: String): AppResult<Unit>
+
     /** AC-10: replaces days with `dayNumber >= fromDayNumber` only -- prior days/history untouched. */
     suspend fun replacePlanDaysFrom(planId: String, fromDayNumber: Int, days: List<PlanDay>): AppResult<Unit>
 

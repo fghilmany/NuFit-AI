@@ -48,6 +48,7 @@ import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_t
 import nufitai.shared.generated.resources.assessmentdetail_level_explainer
 import nufitai.shared.generated.resources.assessmentdetail_parq_title
 import nufitai.shared.generated.resources.assessmentdetail_plan_badge_ai
+import nufitai.shared.generated.resources.assessmentdetail_plan_badge_ai_custom
 import nufitai.shared.generated.resources.assessmentdetail_plan_badge_template
 import nufitai.shared.generated.resources.assessmentdetail_plan_description
 import nufitai.shared.generated.resources.assessmentdetail_retake_footer_link
@@ -182,6 +183,7 @@ fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, 
             val badgeLabel = when (plan.source) {
                 PlanSource.LOCAL_TEMPLATE -> stringResource(Res.string.assessmentdetail_plan_badge_template)
                 PlanSource.LOGGED_IN_RULE_ENGINE -> stringResource(Res.string.assessmentdetail_plan_badge_ai)
+                PlanSource.AI_GENERATED -> stringResource(Res.string.assessmentdetail_plan_badge_ai_custom)
             }
             AppCard(
                 backgroundColor = NuFitColors.TertiaryFixed,

@@ -13,6 +13,7 @@
     <string name="assessmentdetail_equipment_full_gym">Full Gym</string>
     <string name="assessmentdetail_plan_badge_template">TEMPLATE</string>
     <string name="assessmentdetail_plan_badge_ai">AI RECOMMENDATION</string>
+    <string name="assessmentdetail_plan_badge_ai_custom">AI CUSTOM PLAN</string>
     <string name="assessmentdetail_plan_description">A 4-week program focused on learning basic movements and boosting metabolism.</string>
     <string name="assessmentdetail_selected_plan_title">Selected Plan</string>
     <string name="assessmentdetail_full_assessment_cta_title">Assessment Not Complete</string>
@@ -37,8 +38,10 @@
     <string name="assessmentdetail_history_empty">No other history yet -- history will appear once you retake or a new plan is created.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalized</string>
+    <string name="assessmentdetail_history_source_ai_custom">AI Custom</string>
     <string name="assessmentdetail_history_status_active">Active</string>
     <string name="assessmentdetail_history_status_archived">Archived</string>
+    <string name="assessmentdetail_history_status_draft">Draft</string>
 
     <string name="assessmentdetail_level_beginner">Beginner</string>
     <string name="assessmentdetail_level_intermediate">Intermediate</string>

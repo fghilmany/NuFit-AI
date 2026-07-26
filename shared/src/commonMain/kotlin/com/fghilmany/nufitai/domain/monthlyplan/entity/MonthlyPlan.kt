@@ -22,4 +22,6 @@ data class MonthlyPlan(
     val mode: ProgressionMode,
     /** [14,21] normal, [21,28] conservative (PROG-06). */
     val checkpointDays: List<Int>,
+    /** issue #82 -- soft delete only; never physically removed, so log history underneath (`plan_day_session_log`, PT Mode's per-set logs) is never orphaned. */
+    val deletedAt: Instant? = null,
 )

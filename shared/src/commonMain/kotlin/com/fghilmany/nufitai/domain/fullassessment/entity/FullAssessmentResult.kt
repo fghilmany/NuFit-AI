@@ -28,6 +28,8 @@ data class FullAssessmentResult(
     val hardStopAcknowledgedAt: Instant?,
     val equipmentPreference: Set<EquipmentCategory>,
     val injuryHistory: Set<BodyArea>,
+    /** issue #81 -- free-text detail under the "cedera/nyeri sendi" toggle, e.g. "Lutut kiri saat jongkok". */
+    val injuryHistoryNote: String?,
     val flagsPostural: Set<ExerciseFlag>,
     val movementFlags: Set<ExerciseFlag>,
     val capacityTest: CapacityTestResult?,

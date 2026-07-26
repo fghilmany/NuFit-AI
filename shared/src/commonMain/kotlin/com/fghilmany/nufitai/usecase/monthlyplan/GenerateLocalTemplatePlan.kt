@@ -13,9 +13,9 @@ import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.domain.monthlyplan.entity.ProgressionMode
+import com.fghilmany.nufitai.domain.monthlyplan.entity.TemplatePlanInput
 import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
-import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
 import com.fghilmany.nufitai.usecase.exerciselibrary.GetExercisePool
 import com.fghilmany.nufitai.usecase.monthlyplan.rules.BuildMovementPool
@@ -28,34 +28,38 @@ private val LOWER_PATTERNS = listOf(MovementPattern.SQUAT, MovementPattern.HINGE
 private const val LOW_FREQUENCY_REST_GAP_THRESHOLD = 3
 
 /**
- * Local tier: template matrix (00-overview.md Keputusan #3), reuses `QuickAssessmentResult`.
- * Skips GATE (already applied at Quick Assessment time)/SAFETY (no postural/movement flags
- * collected)/CALIBRATION (no capacity test)/PROGRESSION-GATING (fixed phase table only) --
- * per issue #76 §5. Correction vs the techspec's stated assumption: `QuickAssessmentAnswer`
- * DOES collect `equipment` (wizard step 3, `EquipmentCopy.kt`) -- used here rather than a
- * hardcoded Bodyweight-only default.
+ * Local tier: template matrix (00-overview.md Keputusan #3). Skips GATE (already applied at
+ * Quick Assessment time)/SAFETY (no postural/movement flags collected)/CALIBRATION (no capacity
+ * test)/PROGRESSION-GATING (fixed phase table only) -- per issue #76 §5.
+ *
+ * issue #82 -- takes [TemplatePlanInput] (not `QuickAssessmentResult` directly) so both Quick
+ * Assessment and the manual template picker (P-14 UC-4, no assessment involved) can call this;
+ * callers adapt their own richer result into this smaller shape. [status] defaults to ACTIVE
+ * (Quick Assessment's original behavior); the manual picker's "Simpan Draft" path passes DRAFT.
+ * This usecase never archives a prior active plan itself -- callers activating an existing
+ * plan-management context must do that first (mirrors `ActivatePlan`/`ActivatePlanFromFullAssessment`).
  */
 class GenerateLocalTemplatePlan(
     private val getExercisePool: GetExercisePool,
     private val repository: MonthlyPlanRepository,
 ) {
-    suspend operator fun invoke(quickAssessment: QuickAssessmentResult): AppResult<MonthlyPlan> {
+    suspend operator fun invoke(input: TemplatePlanInput, status: PlanStatus = PlanStatus.ACTIVE): AppResult<MonthlyPlan> {
         val poolResult = getExercisePool()
         val allExercises = when (poolResult) {
             is AppResult.Success -> poolResult.data
             is AppResult.Error -> return poolResult
         }
 
-        val pool = BuildMovementPool(allExercises, quickAssessment.input.equipment, quickAssessment.level)
-        val startingLevel = if (quickAssessment.level == Level.BEGINNER) ExerciseLevel.REGRESSION else ExerciseLevel.STANDARD
-        val prescription = GoalPrescription(quickAssessment.input.goal)
+        val pool = BuildMovementPool(allExercises, input.equipment, input.level)
+        val startingLevel = if (input.level == Level.BEGINNER) ExerciseLevel.REGRESSION else ExerciseLevel.STANDARD
+        val prescription = GoalPrescription(input.goal)
 
-        val sessionsPerWeek = quickAssessment.input.frequency.sessionsPerWeek
+        val sessionsPerWeek = input.sessionsPerWeek
         val selectedWeekdays = evenlySpreadWeekdays(sessionsPerWeek)
         // The mandatory rest-gap is a Beginner-only safety nudge and is mathematically
         // infeasible to honor once >=4 sessions/week are requested within a 7-day week
         // (guaranteed adjacency) -- restrict it to where it's both meaningful and achievable.
-        val minRestBetweenSessions = sessionsPerWeek <= LOW_FREQUENCY_REST_GAP_THRESHOLD && quickAssessment.level == Level.BEGINNER
+        val minRestBetweenSessions = sessionsPerWeek <= LOW_FREQUENCY_REST_GAP_THRESHOLD && input.level == Level.BEGINNER
         val sessionDays = MonthlyScheduler.buildCalendarFramework(sessionsPerWeek, selectedWeekdays, minRestBetweenSessions)
 
         val planId = generateId()
@@ -68,9 +72,9 @@ class GenerateLocalTemplatePlan(
             startedAt = currentInstant(),
             cycleNumber = 1,
             source = PlanSource.LOCAL_TEMPLATE,
-            status = PlanStatus.ACTIVE,
-            levelMeta = quickAssessment.level.name,
-            goalMeta = quickAssessment.input.goal,
+            status = status,
+            levelMeta = input.level.name,
+            goalMeta = input.goal,
             smartGoalMeta = null,
             activeFlags = emptySet(),
             startingLevelPerPattern = startingLevelPerPattern,
@@ -78,7 +82,7 @@ class GenerateLocalTemplatePlan(
             checkpointDays = emptyList(), // Local tier: no progression gating, fixed phase table only
         )
 
-        val patternsForSplit = if (quickAssessment.resolvedSplit == ResolvedSplit.FULL_BODY) {
+        val patternsForSplit = if (input.resolvedSplit == ResolvedSplit.FULL_BODY) {
             List(sessionDays.size) { MonthlyScheduler.templateFor(it) to (MonthlyScheduler.TEMPLATE_ROTATION[MonthlyScheduler.templateFor(it)] ?: emptyList()) }
         } else {
             List(sessionDays.size) { index ->

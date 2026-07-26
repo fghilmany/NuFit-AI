@@ -4,14 +4,11 @@ import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
 import com.fghilmany.nufitai.domain.monthlyplan.entity.DayType
-import com.fghilmany.nufitai.domain.onboarding.entity.Experience
-import com.fghilmany.nufitai.domain.onboarding.entity.FrequencyBucket
+import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
+import com.fghilmany.nufitai.domain.monthlyplan.entity.TemplatePlanInput
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
-import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
-import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
-import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
 import com.fghilmany.nufitai.fake.FakeExerciseLibraryRepository
 import com.fghilmany.nufitai.fake.FakeMonthlyPlanRepository
 import com.fghilmany.nufitai.fake.testExercise
@@ -20,7 +17,6 @@ import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
-import kotlin.time.Instant
 
 class GenerateLocalTemplatePlanTest {
 
@@ -29,31 +25,23 @@ class GenerateLocalTemplatePlanTest {
         MovementPattern.PUSH_VERTICAL, MovementPattern.PULL_HORIZONTAL, MovementPattern.PULL_VERTICAL, MovementPattern.CORE,
     )
 
-    private fun quickAssessment(resolvedSplit: ResolvedSplit) = QuickAssessmentResult(
-        id = "qa1",
-        answeredAt = Instant.fromEpochMilliseconds(0),
-        input = QuickAssessmentAnswer(
-            experience = Experience.NEVER,
-            goal = GoalCategory.FAT_LOSS,
-            equipment = setOf(EquipmentCategory.BODYWEIGHT),
-            frequency = FrequencyBucket.THREE,
-            splitPreference = SplitPreference.FULL_BODY,
-        ),
+    private fun templateInput(resolvedSplit: ResolvedSplit, sessionsPerWeek: Int = 3) = TemplatePlanInput(
         level = Level.BEGINNER,
+        goal = GoalCategory.FAT_LOSS,
+        equipment = setOf(EquipmentCategory.BODYWEIGHT),
+        sessionsPerWeek = sessionsPerWeek,
         resolvedSplit = resolvedSplit,
-        splitEducationalNote = null,
-        templateId = "T1",
     )
 
     @Test
-    fun `given a beginner full-body quick assessment when invoked then produces a 30-day plan with the expected session count`() = runTest {
+    fun `given a beginner full-body template input when invoked then produces a 30-day plan with the expected session count`() = runTest {
         val exerciseRepo = FakeExerciseLibraryRepository().apply {
             exercises = bodyweightPatterns.map { testExercise("BW-${it.name}-000", movementPattern = it) }
         }
         val planRepo = FakeMonthlyPlanRepository()
         val generate = GenerateLocalTemplatePlan(GetExercisePool(exerciseRepo), planRepo)
 
-        val result = generate(quickAssessment(ResolvedSplit.FULL_BODY))
+        val result = generate(templateInput(ResolvedSplit.FULL_BODY))
 
         assertIs<AppResult.Success<*>>(result)
         assertEquals(30, planRepo.savedDays.size)
@@ -62,5 +50,19 @@ class GenerateLocalTemplatePlanTest {
         sessionDays.forEach { day ->
             assert(!day.mainExercises.isNullOrEmpty()) { "day ${day.dayNumber} should have main exercises" }
         }
+    }
+
+    @Test
+    fun `given status DRAFT when invoked then the saved plan is not ACTIVE`() = runTest {
+        val exerciseRepo = FakeExerciseLibraryRepository().apply {
+            exercises = bodyweightPatterns.map { testExercise("BW-${it.name}-000", movementPattern = it) }
+        }
+        val planRepo = FakeMonthlyPlanRepository()
+        val generate = GenerateLocalTemplatePlan(GetExercisePool(exerciseRepo), planRepo)
+
+        val result = generate(templateInput(ResolvedSplit.FULL_BODY), status = PlanStatus.DRAFT)
+
+        assertIs<AppResult.Success<*>>(result)
+        assertEquals(PlanStatus.DRAFT, planRepo.savedPlan?.status)
     }
 }

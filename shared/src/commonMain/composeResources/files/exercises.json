@@ -4,7 +4,7 @@
     "name": "Barbell Back Squat",
     "equipmentCategory": "BARBELL",
     "movementPattern": "SQUAT",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -21,7 +21,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -63,7 +63,7 @@
     "name": "Barbell Front Squat",
     "equipmentCategory": "BARBELL",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -79,7 +79,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -116,7 +116,7 @@
     "name": "Barbell Romanian Deadlift",
     "equipmentCategory": "BARBELL",
     "movementPattern": "HINGE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Teaching",
     "flagExclusion": [
@@ -132,7 +132,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -174,7 +174,7 @@
     "name": "Barbell Conventional Deadlift",
     "equipmentCategory": "BARBELL",
     "movementPattern": "HINGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -190,7 +190,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes",
@@ -234,7 +234,7 @@
     "name": "Barbell Hip Thrust",
     "equipmentCategory": "BARBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -289,7 +289,7 @@
     "name": "Barbell Sumo Deadlift",
     "equipmentCategory": "BARBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -350,7 +350,7 @@
     "name": "Barbell Rack Pull",
     "equipmentCategory": "BARBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -366,7 +366,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Bawah",
       "Trapezius (Leher-Bahu)",
@@ -405,7 +405,7 @@
     "name": "Barbell Bench Press",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -421,7 +421,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -460,7 +460,7 @@
     "name": "Barbell Incline Bench Press",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -474,7 +474,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Bahu (Deltoid)"
@@ -508,7 +508,7 @@
     "name": "Close-Grip Bench Press",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -522,7 +522,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "LENGAN",
+    "primaryMuscleGroup": "ARM",
     "targetMusclesPrimary": [
       "Lengan Belakang (Triceps)"
     ],
@@ -555,7 +555,7 @@
     "name": "Barbell Overhead Press",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -571,7 +571,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -612,7 +612,7 @@
     "name": "Barbell Push Press",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -629,7 +629,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -671,7 +671,7 @@
     "name": "Barbell Bent-Over Row",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -690,7 +690,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -730,7 +730,7 @@
     "name": "Pendlay Row",
     "equipmentCategory": "BARBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -746,7 +746,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -782,7 +782,7 @@
     "name": "Box Squat / Sit-to-Stand",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "SQUAT",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -790,8 +790,8 @@
       "flag_balance_asimetri"
     ],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -801,7 +801,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -837,14 +837,14 @@
     "name": "Bodyweight Squat",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "SQUAT",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "dumbbell": "DB-SQUAT-000",
@@ -857,7 +857,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -898,7 +898,7 @@
     "name": "Jump Squat",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -908,8 +908,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-SQUAT-001",
@@ -919,7 +919,7 @@
     "highImpact": true,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -955,7 +955,7 @@
     "name": "Hip Hinge with Dowel",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "HINGE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -963,7 +963,7 @@
       "flag_hinge_from_back"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -973,7 +973,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -1008,7 +1008,7 @@
     "name": "Glute Bridge",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "HINGE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1017,7 +1017,7 @@
       "flag_apt"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1063,7 +1063,7 @@
     "name": "Bodyweight Good Morning",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "HINGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -1071,7 +1071,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "dumbbell": "DB-HINGE-000",
@@ -1084,7 +1084,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -1120,7 +1120,7 @@
     "name": "Single-Leg RDL",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -1128,8 +1128,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "lutut"
+      "lower_back",
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-HINGE-002",
@@ -1139,7 +1139,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -1175,13 +1175,13 @@
     "name": "Wall Push-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1191,7 +1191,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -1227,13 +1227,13 @@
     "name": "Incline Push-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-PUSHH-000",
@@ -1243,7 +1243,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -1279,7 +1279,7 @@
     "name": "Knee Push-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": 3,
     "levelNote": null,
     "flagExclusion": [],
@@ -1287,8 +1287,8 @@
       "flag_core_instability"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "lutut"
+      "shoulder",
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-PUSHH-001",
@@ -1298,7 +1298,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -1334,7 +1334,7 @@
     "name": "Push-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -1342,7 +1342,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": {
       "dumbbell": "DB-PUSHH-001",
@@ -1355,7 +1355,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -1395,7 +1395,7 @@
     "name": "Pike Push-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -1404,8 +1404,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "leher"
+      "shoulder",
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1415,7 +1415,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)",
       "Lengan Belakang (Triceps)"
@@ -1451,7 +1451,7 @@
     "name": "Inverted Row",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1459,8 +1459,8 @@
       "flag_rounded_shoulder"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "dumbbell": "DB-PULLH-000",
@@ -1473,7 +1473,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "LENGAN",
+    "primaryMuscleGroup": "ARM",
     "targetMusclesPrimary": [
       "Punggung (Back)",
       "Lengan Depan (Biceps)"
@@ -1509,7 +1509,7 @@
     "name": "Towel Doorway Row",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1517,8 +1517,8 @@
       "flag_rounded_shoulder"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1528,7 +1528,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "LENGAN",
+    "primaryMuscleGroup": "ARM",
     "targetMusclesPrimary": [
       "Punggung (Back)",
       "Lengan Depan (Biceps)"
@@ -1564,7 +1564,7 @@
     "name": "Prone Y-T-W Raise",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "KOREKTIF",
+    "level": "CORRECTIVE",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1573,8 +1573,8 @@
       "flag_forward_head"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "leher"
+      "shoulder",
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1584,7 +1584,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Bahu Belakang (Rear Delt)",
       "mid/lower trapezius",
@@ -1621,7 +1621,7 @@
     "name": "Reverse Snow Angel",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "KOREKTIF",
+    "level": "CORRECTIVE",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1630,7 +1630,7 @@
       "flag_forward_head"
     ],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-PULLH-002",
@@ -1640,7 +1640,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Bahu Belakang (Rear Delt)",
       "Trapezius Tengah (Mid-Trap)",
@@ -1676,7 +1676,7 @@
     "name": "Static Lunge",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "LUNGE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1684,7 +1684,7 @@
       "flag_balance_asimetri"
     ],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1694,7 +1694,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -1730,13 +1730,13 @@
     "name": "Reverse Lunge",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "LUNGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-LUNGE-000",
@@ -1746,7 +1746,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -1782,7 +1782,7 @@
     "name": "Step-Up",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "LUNGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1790,7 +1790,7 @@
       "flag_balance_asimetri"
     ],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1800,7 +1800,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -1836,7 +1836,7 @@
     "name": "Walking Lunge",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "LUNGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -1844,7 +1844,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-LUNGE-001",
@@ -1854,7 +1854,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -1890,7 +1890,7 @@
     "name": "Bulgarian Split Squat",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "LUNGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -1899,7 +1899,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-LUNGE-003",
@@ -1909,7 +1909,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -1945,7 +1945,7 @@
     "name": "Dead Bug",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -1954,7 +1954,7 @@
       "flag_core_instability"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -1964,7 +1964,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -1999,7 +1999,7 @@
     "name": "Bird Dog",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2007,7 +2007,7 @@
       "flag_hinge_from_back"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-000",
@@ -2017,7 +2017,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Glutes"
@@ -2052,7 +2052,7 @@
     "name": "Plank",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2062,8 +2062,8 @@
       "flag_apt"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "bahu"
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-000",
@@ -2073,7 +2073,7 @@
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -2112,7 +2112,7 @@
     "name": "Side Plank",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2122,8 +2122,8 @@
       "flag_asimetri_pinggul"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-002",
@@ -2133,7 +2133,7 @@
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Perut Samping (Oblique)"
     ],
@@ -2168,7 +2168,7 @@
     "name": "Hollow Hold",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2177,7 +2177,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-000",
@@ -2187,7 +2187,7 @@
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -2221,7 +2221,7 @@
     "name": "Mountain Climber",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2231,8 +2231,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "bahu"
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-002",
@@ -2242,7 +2242,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Hip Flexor (Panggul Depan)"
@@ -2278,7 +2278,7 @@
     "name": "Chin Tuck",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2286,7 +2286,7 @@
       "flag_forward_head"
     ],
     "loadedBodyAreas": [
-      "leher"
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2296,7 +2296,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Otot Leher Dalam (Deep Neck Flexors)"
     ],
@@ -2330,7 +2330,7 @@
     "name": "Cat-Cow",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2338,8 +2338,8 @@
       "flag_kyphosis"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "leher"
+      "lower_back",
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2349,7 +2349,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Punggung Bawah (Erector Spinae)"
     ],
@@ -2384,7 +2384,7 @@
     "name": "Thoracic Rotation",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2401,7 +2401,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Mobilitas Tulang Belakang Atas (Thoracic Spine)",
       "Perut Samping (Oblique)"
@@ -2436,7 +2436,7 @@
     "name": "Hip Flexor Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2444,8 +2444,8 @@
       "flag_apt"
     ],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2458,7 +2458,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Hip Flexor (Panggul Depan)"
     ],
@@ -2492,7 +2492,7 @@
     "name": "Glute Bridge March",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2501,7 +2501,7 @@
       "flag_knee_valgus"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-HINGE-001",
@@ -2545,7 +2545,7 @@
     "name": "Side-Lying Leg Raise",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2561,7 +2561,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Glutes Medius (Otot Pinggul Samping)"
     ],
@@ -2595,7 +2595,7 @@
     "name": "Ankle Circles",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2611,7 +2611,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Otot & sendi pergelangan kaki"
     ],
@@ -2638,7 +2638,7 @@
     "name": "Wall Chest Opener",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -2646,7 +2646,7 @@
       "flag_rounded_shoulder"
     ],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2659,7 +2659,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)"
     ],
@@ -2693,7 +2693,7 @@
     "name": "Superman",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CORRECTIVE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2703,7 +2703,7 @@
       "flag_kyphosis"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-001",
@@ -2748,7 +2748,7 @@
     "name": "Isometric Suitcase Hold",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "CARRY",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -2757,8 +2757,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "bahu"
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2768,7 +2768,7 @@
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Genggaman (Grip)"
@@ -2804,13 +2804,13 @@
     "name": "Standing Quad Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2824,7 +2824,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)"
     ],
@@ -2856,13 +2856,13 @@
     "name": "Hamstring Stretch (Berdiri)",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2875,7 +2875,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)"
     ],
@@ -2907,7 +2907,7 @@
     "name": "Figure-4 Glute Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
@@ -2957,13 +2957,13 @@
     "name": "Child's Pose",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -2977,7 +2977,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Lebar (Lats)",
       "punggung bawah",
@@ -3010,7 +3010,7 @@
     "name": "Overhead Triceps Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [
@@ -3018,7 +3018,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -3031,7 +3031,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "LENGAN",
+    "primaryMuscleGroup": "ARM",
     "targetMusclesPrimary": [
       "Lengan Belakang (Triceps)",
       "bahu"
@@ -3062,13 +3062,13 @@
     "name": "Upper Trap & Neck Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "leher"
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -3082,7 +3082,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Trapezius Atas (Leher-Bahu)",
       "leher samping"
@@ -3114,7 +3114,7 @@
     "name": "Wall Calf Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [],
@@ -3133,7 +3133,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Betis (Gastrocnemius)",
       "Betis Dalam (Soleus)"
@@ -3165,7 +3165,7 @@
     "name": "Sphinx Stretch",
     "equipmentCategory": "BODYWEIGHT",
     "movementPattern": "STRETCH",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "stretch (single-tier, no regresi/progresi chain)",
     "flagExclusion": [
@@ -3173,7 +3173,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -3185,7 +3185,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Otot perut",
       "hip flexor ringan"
@@ -3217,7 +3217,7 @@
     "name": "Jalan Cepat (Treadmill)",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Entry",
     "flagExclusion": [],
@@ -3235,7 +3235,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes",
@@ -3273,7 +3273,7 @@
     "name": "Sepeda Statis",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "menuju Standar (raw: Regresi-Standar)",
     "flagExclusion": [],
@@ -3289,7 +3289,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes",
@@ -3328,7 +3328,7 @@
     "name": "Elliptical",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -3344,7 +3344,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes",
@@ -3386,7 +3386,7 @@
     "name": "Rowing Machine",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -3404,7 +3404,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes",
@@ -3445,7 +3445,7 @@
     "name": "Jogging/Lari Ringan",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -3463,7 +3463,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes",
@@ -3503,7 +3503,7 @@
     "name": "Stair Climber/Stepper",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -3519,7 +3519,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Glutes",
       "Kaki Depan (Quads)",
@@ -3558,7 +3558,7 @@
     "name": "Jump Rope",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -3577,7 +3577,7 @@
     "highImpact": true,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Betis (Calves)",
       "Kaki Depan (Quads)",
@@ -3617,7 +3617,7 @@
     "name": "Battle Ropes",
     "equipmentCategory": "CARDIO_EQUIPMENT",
     "movementPattern": "CARDIO",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -3637,7 +3637,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KARDIO",
+    "primaryMuscleGroup": "CARDIO",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)",
       "Punggung Atas",
@@ -3677,7 +3677,7 @@
     "name": "Goblet Squat",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "SQUAT",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -3688,8 +3688,8 @@
       "flag_rounded_shoulder"
     ],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-SQUAT-001",
@@ -3699,7 +3699,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -3740,14 +3740,14 @@
     "name": "Dumbbell Squat",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "SQUAT",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah"
+      "knee",
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "bodyweight": "BW-SQUAT-001",
@@ -3760,7 +3760,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -3802,7 +3802,7 @@
     "name": "Dumbbell Front Squat",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -3810,9 +3810,9 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut",
-      "punggung_bawah",
-      "bahu"
+      "knee",
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-SQUAT-001",
@@ -3822,7 +3822,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -3859,7 +3859,7 @@
     "name": "Dumbbell Split Squat",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -3869,7 +3869,7 @@
       "flag_asimetri_pinggul"
     ],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-SQUAT-002",
@@ -3879,7 +3879,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -3916,7 +3916,7 @@
     "name": "Dumbbell Romanian Deadlift",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "HINGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -3924,7 +3924,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "bodyweight": "BW-HINGE-002",
@@ -3937,7 +3937,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -3978,7 +3978,7 @@
     "name": "Dumbbell Single-Leg RDL",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -3988,8 +3988,8 @@
       "flag_asimetri_pinggul"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "lutut"
+      "lower_back",
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-HINGE-000",
@@ -3999,7 +3999,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -4036,7 +4036,7 @@
     "name": "Dumbbell Deadlift (dari lantai)",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -4044,7 +4044,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-HINGE-001",
@@ -4054,7 +4054,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes",
@@ -4098,7 +4098,7 @@
     "name": "Dumbbell Sumo Deadlift",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 3,
     "levelNote": null,
     "flagExclusion": [
@@ -4108,8 +4108,8 @@
       "flag_hinge_from_back"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "lutut"
+      "lower_back",
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-HINGE-002",
@@ -4158,7 +4158,7 @@
     "name": "Dumbbell Floor Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -4166,7 +4166,7 @@
       "flag_shoulder_mobility"
     ],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-PUSHH-003",
@@ -4176,7 +4176,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -4211,7 +4211,7 @@
     "name": "Dumbbell Bench Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -4219,7 +4219,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": {
       "bodyweight": "BW-PUSHH-003",
@@ -4232,7 +4232,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -4266,13 +4266,13 @@
     "name": "Dumbbell Incline Bench Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PUSHH-001",
@@ -4282,7 +4282,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Bahu (Deltoid)"
@@ -4316,7 +4316,7 @@
     "name": "Single-Arm DB Bench Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -4324,8 +4324,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PUSHH-002",
@@ -4335,7 +4335,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -4369,7 +4369,7 @@
     "name": "Seated DB Shoulder Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -4377,8 +4377,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "leher"
+      "shoulder",
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-PUSHV-000",
@@ -4388,7 +4388,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -4422,7 +4422,7 @@
     "name": "Standing DB Shoulder Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -4431,9 +4431,9 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "leher",
-      "punggung_bawah"
+      "shoulder",
+      "neck",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PUSHV-000",
@@ -4443,7 +4443,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -4477,7 +4477,7 @@
     "name": "Single-Arm DB Overhead Press",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -4487,8 +4487,8 @@
       "flag_asimetri_bahu"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "leher"
+      "shoulder",
+      "neck"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PUSHV-001",
@@ -4498,7 +4498,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -4532,7 +4532,7 @@
     "name": "Dumbbell Bent-Over Row",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -4543,8 +4543,8 @@
       "flag_kyphosis"
     ],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "bodyweight": "BW-PULLH-000",
@@ -4557,7 +4557,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -4597,14 +4597,14 @@
     "name": "Single-Arm DB Row (pakai bangku)",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PULLH-000",
@@ -4614,7 +4614,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -4648,7 +4648,7 @@
     "name": "Chest-Supported DB Row",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -4656,7 +4656,7 @@
       "flag_hinge_from_back"
     ],
     "loadedBodyAreas": [
-      "bahu"
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -4666,7 +4666,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -4700,7 +4700,7 @@
     "name": "Renegade Row",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -4709,8 +4709,8 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "punggung_bawah"
+      "shoulder",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-PULLH-001",
@@ -4720,7 +4720,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas",
       "Inti (Core)"
@@ -4754,7 +4754,7 @@
     "name": "Dumbbell Reverse Lunge",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "LUNGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -4762,7 +4762,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-LUNGE-001",
@@ -4772,7 +4772,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -4806,7 +4806,7 @@
     "name": "Dumbbell Walking Lunge",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "LUNGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -4814,7 +4814,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-LUNGE-000",
@@ -4824,7 +4824,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -4860,7 +4860,7 @@
     "name": "Dumbbell Lateral Lunge",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "LUNGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt",
     "flagExclusion": [
@@ -4868,7 +4868,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-LUNGE-000",
@@ -4913,7 +4913,7 @@
     "name": "Dumbbell Bulgarian Split Squat",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "LUNGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -4923,7 +4923,7 @@
       "flag_asimetri_pinggul"
     ],
     "loadedBodyAreas": [
-      "lutut"
+      "knee"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-SQUAT-003",
@@ -4933,7 +4933,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -4968,7 +4968,7 @@
     "name": "Weighted Dead Bug",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CORE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Entry",
     "flagExclusion": [],
@@ -4976,7 +4976,7 @@
       "flag_apt"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "BW-CORE-000",
@@ -4986,7 +4986,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -5019,7 +5019,7 @@
     "name": "Dumbbell Russian Twist",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5027,7 +5027,7 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": {
       "bodyweight": "BW-CORE-005",
@@ -5040,7 +5040,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -5073,13 +5073,13 @@
     "name": "Dumbbell Side Bend",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "punggung_bawah"
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-CORE-001",
@@ -5089,7 +5089,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -5122,7 +5122,7 @@
     "name": "Farmer's Carry",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CARRY",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5133,8 +5133,8 @@
       "flag_asimetri_pinggul"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "bahu"
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": null,
@@ -5144,7 +5144,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Genggaman (Grip)",
       "Inti (Core)",
@@ -5181,7 +5181,7 @@
     "name": "Suitcase Carry",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CARRY",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5192,8 +5192,8 @@
       "flag_asimetri_bahu"
     ],
     "loadedBodyAreas": [
-      "punggung_bawah",
-      "bahu"
+      "lower_back",
+      "shoulder"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-CARRY-000",
@@ -5203,7 +5203,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Genggaman (Grip)"
@@ -5237,7 +5237,7 @@
     "name": "Overhead Carry",
     "equipmentCategory": "DUMBBELL",
     "movementPattern": "CARRY",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [
@@ -5245,9 +5245,9 @@
     ],
     "flagPriority": [],
     "loadedBodyAreas": [
-      "bahu",
-      "leher",
-      "punggung_bawah"
+      "shoulder",
+      "neck",
+      "lower_back"
     ],
     "equivalentSubstitutes": null,
     "regressionChain": "DB-CARRY-001",
@@ -5257,7 +5257,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)",
       "Inti (Core)"
@@ -5293,7 +5293,7 @@
     "name": "Kettlebell Deadlift",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "HINGE",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Teaching",
     "flagExclusion": [
@@ -5309,7 +5309,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)",
       "Glutes"
@@ -5351,7 +5351,7 @@
     "name": "Kettlebell Swing (Two-Hand)",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "HINGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5409,7 +5409,7 @@
     "name": "Kettlebell Single-Arm Swing",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5466,7 +5466,7 @@
     "name": "Kettlebell Goblet Squat",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "SQUAT",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5485,7 +5485,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -5526,7 +5526,7 @@
     "name": "Double Kettlebell Front Squat",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5542,7 +5542,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -5583,7 +5583,7 @@
     "name": "Kettlebell Single-Arm Overhead Press",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5601,7 +5601,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -5641,7 +5641,7 @@
     "name": "Kettlebell Push Press",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5658,7 +5658,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -5700,7 +5700,7 @@
     "name": "Kettlebell Single-Arm Row",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5719,7 +5719,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -5759,7 +5759,7 @@
     "name": "Farmer's Carry (KB)",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "CARRY",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -5778,7 +5778,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Genggaman (Grip)",
       "Inti (Core)",
@@ -5814,7 +5814,7 @@
     "name": "Suitcase Carry (KB)",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "CARRY",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -5830,7 +5830,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Genggaman (Grip)"
@@ -5864,7 +5864,7 @@
     "name": "Rack Carry (KB)",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "CARRY",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt — unik Kettlebell",
     "flagExclusion": [
@@ -5882,7 +5882,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Bahu (Deltoid)"
@@ -5923,7 +5923,7 @@
     "name": "Turkish Get-Up",
     "equipmentCategory": "KETTLEBELL",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": "lanjutan; pola gerak asli 'Full-Body' — dipetakan ke CORE sebagai pola dominan (lihat gaps report)",
     "flagExclusion": [
@@ -5941,7 +5941,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)",
       "Inti (Core)",
@@ -5992,7 +5992,7 @@
     "name": "Leg Press",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "SQUAT",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -6008,7 +6008,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -6047,7 +6047,7 @@
     "name": "Hack Squat Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "SQUAT",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -6061,7 +6061,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)",
       "Glutes"
@@ -6101,7 +6101,7 @@
     "name": "Leg Extension",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "SQUAT",
-    "level": "AKSESORI",
+    "level": "ACCESSORY",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -6117,7 +6117,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Kaki Depan (Quads)"
     ],
@@ -6150,7 +6150,7 @@
     "name": "Seated Leg Curl",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "HINGE",
-    "level": "AKSESORI",
+    "level": "ACCESSORY",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -6164,7 +6164,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "KAKI",
+    "primaryMuscleGroup": "LEG",
     "targetMusclesPrimary": [
       "Paha Belakang (Hamstring)"
     ],
@@ -6197,7 +6197,7 @@
     "name": "Cable Pull-Through",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "HINGE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -6253,7 +6253,7 @@
     "name": "Back Extension (Hyperextension)",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "HINGE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -6308,7 +6308,7 @@
     "name": "Chest Press Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -6324,7 +6324,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)",
       "Lengan Belakang (Triceps)"
@@ -6363,7 +6363,7 @@
     "name": "Cable Chest Fly",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PUSH_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Aksesori",
     "flagExclusion": [
@@ -6379,7 +6379,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "DADA",
+    "primaryMuscleGroup": "CHEST",
     "targetMusclesPrimary": [
       "Dada (Pectoralis)"
     ],
@@ -6417,7 +6417,7 @@
     "name": "Shoulder Press Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -6433,7 +6433,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -6472,7 +6472,7 @@
     "name": "Cable Lateral Raise",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PUSH_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Aksesori",
     "flagExclusion": [
@@ -6490,7 +6490,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "BAHU",
+    "primaryMuscleGroup": "SHOULDER",
     "targetMusclesPrimary": [
       "Bahu (Deltoid)"
     ],
@@ -6528,7 +6528,7 @@
     "name": "Seated Cable Row",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -6545,7 +6545,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -6584,7 +6584,7 @@
     "name": "Chest-Supported Row Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [],
@@ -6598,7 +6598,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -6632,7 +6632,7 @@
     "name": "Cable Face Pull",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_HORIZONTAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -6650,7 +6650,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Bahu Belakang (Rear Delt)",
       "Punggung Atas (Rhomboid)",
@@ -6690,7 +6690,7 @@
     "name": "Lat Pulldown",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_VERTICAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Standar (raw: Regresi/Standar)",
     "flagExclusion": [],
@@ -6704,7 +6704,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -6744,7 +6744,7 @@
     "name": "Assisted Pull-Up Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -6758,7 +6758,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -6797,7 +6797,7 @@
     "name": "Straight-Arm Pulldown",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "PULL_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": "Alt — isolasi lat",
     "flagExclusion": [],
@@ -6811,7 +6811,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Atas"
     ],
@@ -6850,7 +6850,7 @@
     "name": "Cable Pallof Press",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "CORE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -6867,7 +6867,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -6905,7 +6905,7 @@
     "name": "Cable Woodchop",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [
@@ -6921,7 +6921,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -6960,7 +6960,7 @@
     "name": "Ab Crunch Machine",
     "equipmentCategory": "MACHINE_CABLE",
     "movementPattern": "CORE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": "Alt",
     "flagExclusion": [
@@ -6976,7 +6976,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)"
     ],
@@ -7014,7 +7014,7 @@
     "name": "Dead Hang",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "PULL_VERTICAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": "Entry",
     "flagExclusion": [
@@ -7030,7 +7030,7 @@
     "highImpact": false,
     "isometricHeavy": true,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Lengan Bawah (Forearm)",
       "Bahu (Deltoid)",
@@ -7070,7 +7070,7 @@
     "name": "Scapular Pull-Up",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "PULL_VERTICAL",
-    "level": "REGRESI",
+    "level": "REGRESSION",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [],
@@ -7084,7 +7084,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Trapezius bawah",
       "Punggung Atas (Rhomboid)",
@@ -7125,7 +7125,7 @@
     "name": "Negative Pull-Up (Eccentric)",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "PULL_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -7139,7 +7139,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Lebar (Lats)",
       "Punggung Atas"
@@ -7180,7 +7180,7 @@
     "name": "Chin-Up",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "PULL_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
@@ -7194,7 +7194,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Lebar (Lats)",
       "Lengan Depan (Biceps)"
@@ -7235,7 +7235,7 @@
     "name": "Pull-Up",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "PULL_VERTICAL",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 3,
     "levelNote": null,
     "flagExclusion": [
@@ -7251,7 +7251,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "PUNGGUNG",
+    "primaryMuscleGroup": "BACK",
     "targetMusclesPrimary": [
       "Punggung Lebar (Lats)",
       "Punggung Atas"
@@ -7292,7 +7292,7 @@
     "name": "Hanging Knee Raise",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "CORE",
-    "level": "STANDAR",
+    "level": "STANDARD",
     "levelVariant": null,
     "levelNote": null,
     "flagExclusion": [
@@ -7308,7 +7308,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Hip Flexor (Panggul Depan)"
@@ -7348,7 +7348,7 @@
     "name": "Hanging Leg Raise (Straight Leg)",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 1,
     "levelNote": null,
     "flagExclusion": [],
@@ -7362,7 +7362,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Hip Flexor (Panggul Depan)"
@@ -7403,7 +7403,7 @@
     "name": "Toes-to-Bar",
     "equipmentCategory": "PULL_UP_BAR",
     "movementPattern": "CORE",
-    "level": "PROGRESI",
+    "level": "PROGRESSION",
     "levelVariant": 2,
     "levelNote": null,
     "flagExclusion": [],
@@ -7417,7 +7417,7 @@
     "highImpact": false,
     "isometricHeavy": false,
     "mediaSlug": null,
-    "primaryMuscleGroup": "INTI",
+    "primaryMuscleGroup": "CORE",
     "targetMusclesPrimary": [
       "Inti (Core)",
       "Hip Flexor (Panggul Depan)"

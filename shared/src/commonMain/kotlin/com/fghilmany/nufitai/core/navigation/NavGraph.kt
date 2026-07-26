@@ -6,6 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanFormScreen
+import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanGateScreen
+import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanPreviewScreen
 import com.fghilmany.nufitai.presentation.assessmentdetail.screen.AssessmentDetailScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseDetailScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseLibraryScreen
@@ -17,6 +20,8 @@ import com.fghilmany.nufitai.presentation.onboarding.screen.DoctorConsultScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.ParQScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.QuickAssessmentWizardScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.SplashScreen
+import com.fghilmany.nufitai.presentation.planmanagement.screen.MyPlansScreen
+import com.fghilmany.nufitai.presentation.planmanagement.screen.TemplatePickerScreen
 import com.fghilmany.nufitai.presentation.ptmode.screen.PtModeScreen
 import com.fghilmany.nufitai.presentation.ptmode.screen.WorkoutSummaryScreen
 
@@ -87,6 +92,30 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onStartSession = { planDayId -> navController.navigate(Route.PtMode(planDayId)) },
                 onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
                 onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
+                onPlansClick = { navController.navigate(Route.MyPlans) },
+            )
+        }
+
+        composable<Route.MyPlans> {
+            MyPlansScreen(
+                onCreateFromTemplate = { navController.navigate(Route.TemplatePicker) },
+                onCreateWithAi = { navController.navigate(Route.AiCustomPlanGate) },
+                onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.MyPlans> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.TemplatePicker> {
+            TemplatePickerScreen(
+                onCompleted = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.TemplatePicker> { inclusive = true }
+                    }
+                },
             )
         }
 
@@ -124,14 +153,51 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
 
-        composable<Route.FullAssessmentStub> {
+        composable<Route.FullAssessmentStub> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.FullAssessmentStub>()
             FullAssessmentStubScreen(
                 onCompleted = {
-                    // Tier transition (AC-6, ActivatePlanFromFullAssessment) triggers here once
-                    // wired to a real entry point (Home upsell / Profile & Settings, neither
-                    // built yet) -- for now just return to Home once the result is saved.
-                    navController.navigate(Route.Home) {
+                    // Tier transition (AC-6, ActivatePlanFromFullAssessment) triggers inside the
+                    // ViewModel itself. AC-11 (issue #81): arriving from the AI Custom Plan gate
+                    // continues on to the form instead of returning to Home.
+                    val destination = if (route.continueToAiCustomPlan) Route.AiCustomPlanForm else Route.Home
+                    navController.navigate(destination) {
                         popUpTo<Route.FullAssessmentStub> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.AiCustomPlanGate> {
+            AiCustomPlanGateScreen(
+                // Login/subscribe flows don't exist yet (08-auth-sync.md, billing) -- no-op until then.
+                onNavigateToLogin = {},
+                onNavigateToSubscribe = {},
+                onNavigateToFullAssessment = { navController.navigate(Route.FullAssessmentStub(continueToAiCustomPlan = true)) },
+                onPassThrough = {
+                    navController.navigate(Route.AiCustomPlanForm) {
+                        popUpTo<Route.AiCustomPlanGate> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.AiCustomPlanForm> {
+            AiCustomPlanFormScreen(
+                onGenerated = { navController.navigate(Route.AiCustomPlanPreview) },
+            )
+        }
+
+        composable<Route.AiCustomPlanPreview> {
+            AiCustomPlanPreviewScreen(
+                onSaved = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.AiCustomPlanPreview> { inclusive = true }
+                    }
+                },
+                onActivated = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.AiCustomPlanPreview> { inclusive = true }
                     }
                 },
             )
@@ -149,11 +215,11 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                     }
                 },
                 onRetakeLoggedIn = {
-                    navController.navigate(Route.FullAssessmentStub) {
+                    navController.navigate(Route.FullAssessmentStub()) {
                         popUpTo<Route.AssessmentDetail> { inclusive = true }
                     }
                 },
-                onOpenFullAssessment = { navController.navigate(Route.FullAssessmentStub) },
+                onOpenFullAssessment = { navController.navigate(Route.FullAssessmentStub()) },
             )
         }
 

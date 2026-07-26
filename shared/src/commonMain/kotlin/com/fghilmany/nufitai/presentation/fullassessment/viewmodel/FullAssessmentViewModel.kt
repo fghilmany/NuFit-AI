@@ -45,6 +45,8 @@ sealed interface FullAssessmentState {
         val gender: Gender? = null,
         val equipmentPreference: Set<EquipmentCategory> = emptySet(),
         val injuryHistory: Set<BodyArea> = emptySet(),
+        /** issue #81 -- free-text detail under the "cedera/nyeri sendi" toggle. */
+        val injuryHistoryNote: String = "",
         val goal: GoalCategory? = null,
         val sessionsPerWeek: String = "",
         val selectedWeekdays: Set<Int> = emptySet(),
@@ -84,6 +86,7 @@ sealed interface FullAssessmentEvent {
     data class SetGender(val value: Gender) : FullAssessmentEvent
     data class ToggleEquipmentPreference(val value: EquipmentCategory) : FullAssessmentEvent
     data class ToggleInjuryHistory(val value: BodyArea) : FullAssessmentEvent
+    data class SetInjuryHistoryNote(val value: String) : FullAssessmentEvent
     data class SetGoal(val value: GoalCategory) : FullAssessmentEvent
     data class SetSessionsPerWeek(val value: String) : FullAssessmentEvent
     data class ToggleSelectedWeekday(val value: Int) : FullAssessmentEvent
@@ -122,6 +125,7 @@ class FullAssessmentViewModel(
             is FullAssessmentEvent.ToggleInjuryHistory -> updateStep {
                 it.copy(injuryHistory = it.injuryHistory.toggle(event.value))
             }
+            is FullAssessmentEvent.SetInjuryHistoryNote -> updateStep { it.copy(injuryHistoryNote = event.value) }
             is FullAssessmentEvent.SetGoal -> updateStep { it.copy(goal = event.value) }
             is FullAssessmentEvent.SetSessionsPerWeek -> updateStep { it.copy(sessionsPerWeek = event.value) }
             is FullAssessmentEvent.ToggleSelectedWeekday -> updateStep { it.copy(selectedWeekdays = it.selectedWeekdays.toggle(event.value)) }
@@ -181,6 +185,7 @@ class FullAssessmentViewModel(
                 hardStopAcknowledgedAt = if (gateResult.hardStopFlagged) currentInstant() else null,
                 equipmentPreference = current.equipmentPreference,
                 injuryHistory = current.injuryHistory,
+                injuryHistoryNote = current.injuryHistoryNote.ifBlank { null },
                 flagsPostural = current.flagsPostural,
                 movementFlags = current.movementFlags,
                 capacityTest = current.toCapacityTestResult(),
