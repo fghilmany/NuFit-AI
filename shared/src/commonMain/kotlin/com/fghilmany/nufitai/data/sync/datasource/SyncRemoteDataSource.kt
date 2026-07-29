@@ -30,12 +30,18 @@ class SyncRemoteDataSource(private val httpClient: HttpClient) {
         if (!response.status.isSuccess()) throw SyncApiException(response.status.value)
     }
 
-    suspend fun pull(table: String, userId: String, sinceIso: String, accessToken: String): List<JsonObject> {
+    /**
+     * [sinceEpochMillis] must be epoch millis, NOT an ISO-8601 string -- every synced aggregate's
+     * `updated_at` column is `bigint` (epoch millis), matching the local SQLDelight schema
+     * (`updated_at INTEGER`). Comparing a bigint column against an ISO date string via `gt.`
+     * makes Postgres fail the implicit cast, which PostgREST surfaces as an opaque HTTP 400.
+     */
+    suspend fun pull(table: String, userId: String, sinceEpochMillis: Long, accessToken: String): List<JsonObject> {
         val response = httpClient.get("$SUPABASE_URL/rest/v1/$table") {
             header("apikey", com.fghilmany.nufitai.data.auth.datasource.AuthRemoteDataSource.SUPABASE_ANON_KEY)
             header("Authorization", "Bearer $accessToken")
             parameter("user_id", "eq.$userId")
-            parameter("updated_at", "gt.$sinceIso")
+            parameter("updated_at", "gt.$sinceEpochMillis")
         }
         if (!response.status.isSuccess()) throw SyncApiException(response.status.value)
         return response.body()

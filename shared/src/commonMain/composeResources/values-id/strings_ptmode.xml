@@ -17,7 +17,7 @@
     <string name="ptmode_swap_exercise_button">Ganti gerakan</string>
     <string name="ptmode_skip_exercise_button">Lewati</string>
     <string name="ptmode_rest_timer_label">Istirahat</string>
-    <string name="ptmode_rest_timer_value">%1$d:%2$02d</string>
+    <string name="ptmode_rest_timer_value">%1$s:%2$s</string>
     <string name="ptmode_skip_rest_button">Lewati istirahat</string>
 
     <string name="ptmode_swap_sheet_title">Pilih gerakan pengganti</string>

@@ -5,11 +5,13 @@ import com.fghilmany.nufitai.core.di.aiCustomPlanModule
 import com.fghilmany.nufitai.core.di.assessmentDetailModule
 import com.fghilmany.nufitai.core.di.exerciseLibraryModule
 import com.fghilmany.nufitai.core.di.fullAssessmentModule
+import com.fghilmany.nufitai.core.di.languageModule
 import com.fghilmany.nufitai.core.di.monthlyPlanModule
 import com.fghilmany.nufitai.core.di.networkModule
 import com.fghilmany.nufitai.core.di.onboardingModule
 import com.fghilmany.nufitai.core.di.planManagementModule
 import com.fghilmany.nufitai.core.di.profileModule
+import com.fghilmany.nufitai.core.di.profileSettingsModule
 import com.fghilmany.nufitai.core.di.ptModeModule
 import com.fghilmany.nufitai.core.di.syncModule
 import com.fghilmany.nufitai.core.security.SecureStorage
@@ -23,15 +25,17 @@ import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
 import com.fghilmany.nufitai.domain.entitlement.repository.EntitlementRepository
 import com.fghilmany.nufitai.core.auth.AppleSignInLauncher
 import com.fghilmany.nufitai.core.auth.GoogleSignInLauncher
-import com.fghilmany.nufitai.presentation.account.viewmodel.AccountViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.CompleteProfileViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.LoginViewModel
 import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
+import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
+import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
 import com.fghilmany.nufitai.usecase.auth.SignIn
 import com.fghilmany.nufitai.usecase.auth.SignOut
 import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
 import com.fghilmany.nufitai.usecase.entitlement.SetDebugEntitlement
 import com.russhwolf.settings.MapSettings
+import com.russhwolf.settings.Settings
 import org.koin.core.module.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -59,7 +63,10 @@ class DiVerificationTest {
                 // have; mirrors how databaseModule(driverFactory) is bypassed above with a direct
                 // NuFitDatabase binding instead.
                 module {
-                    single { EntitlementLocalDataSource(settings = MapSettings()) }
+                    // Shared across this block and profileSettingsModule's ProfileSettingsLocalDataSource
+                    // (mirrors how entitlementModule(settingsFactory) exposes Settings for real).
+                    single<Settings> { MapSettings() }
+                    single { EntitlementLocalDataSource(settings = get()) }
                     single<EntitlementRepository> { EntitlementRepositoryImpl(local = get()) }
                     factory { GetCurrentTier(repository = get()) }
                     factory { SetDebugEntitlement(repository = get()) }
@@ -85,6 +92,8 @@ class DiVerificationTest {
                     factory { SignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
                     factory { SignOut(authRepository = get(), entitlementRepository = get()) }
                     factory { DebugSimulateSignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
+                    factory { GetCurrentDisplayName(authRepository = get()) }
+                    factory { GetCurrentUserProfile(authRepository = get()) }
                     viewModel {
                         LoginViewModel(
                             googleSignInLauncher = get(),
@@ -95,14 +104,6 @@ class DiVerificationTest {
                         )
                     }
                     viewModel { CompleteProfileViewModel(saveProfileBasics = get()) }
-                    viewModel {
-                        AccountViewModel(
-                            getCurrentTier = get(),
-                            signOut = get(),
-                            syncNow = get(),
-                            observeSyncStatus = get(),
-                        )
-                    }
                 },
                 onboardingModule,
                 exerciseLibraryModule,
@@ -113,6 +114,8 @@ class DiVerificationTest {
                 aiCustomPlanModule,
                 planManagementModule,
                 profileModule,
+                profileSettingsModule,
+                languageModule,
                 syncModule,
             )
             checkModules()

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
+import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
 import com.fghilmany.nufitai.usecase.monthlyplan.GetActivePlanOverview
 import com.fghilmany.nufitai.usecase.monthlyplan.GetSessionStatus
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
@@ -29,6 +30,11 @@ sealed interface HomeState {
         /** Which OTHER (non-current) week's accordion is expanded, if any -- current week is always shown. */
         val expandedWeek: Int?,
         val weekCompleteMessage: String?,
+        /**
+         * First name only, e.g. "Budi Santoso" -> "Budi" -- the greeting shouldn't spell out the
+         * full name Google returned. Null for guests or when the login session never captured one.
+         */
+        val userDisplayName: String?,
     ) : HomeState
     data object Empty : HomeState
     data class Error(val message: String) : HomeState
@@ -42,6 +48,7 @@ sealed interface HomeEvent {
 class HomeViewModel(
     private val getActivePlanOverview: GetActivePlanOverview,
     private val getSessionStatus: GetSessionStatus,
+    private val getCurrentDisplayName: GetCurrentDisplayName,
 ) : ViewModel() {
     private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state: StateFlow<HomeState> = _state.asStateFlow()
@@ -96,6 +103,7 @@ class HomeViewModel(
                             todaySessionId = todayDay?.id,
                             expandedWeek = null,
                             weekCompleteMessage = if (currentWeekDone) getString(Res.string.monthlyplan_home_week_complete_message) else null,
+                            userDisplayName = getCurrentDisplayName()?.nicknameOnly(),
                         )
                     }
                 }
@@ -106,3 +114,6 @@ class HomeViewModel(
 }
 
 private fun weekNumberFor(dayNumber: Int): Int = ((dayNumber - 1) / 7) + 1
+
+/** "Budi Santoso" -> "Budi"; single-word names pass through unchanged. */
+private fun String.nicknameOnly(): String = trim().substringBefore(' ')

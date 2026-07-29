@@ -18,8 +18,13 @@ class SignIn(
     private val entitlementRepository: EntitlementRepository,
     private val syncRepository: SyncRepository,
 ) {
-    suspend operator fun invoke(provider: AuthProvider, idToken: String): AppResult<AuthSession> {
-        val result = authRepository.signIn(provider, idToken)
+    suspend operator fun invoke(
+        provider: AuthProvider,
+        idToken: String,
+        displayName: String? = null,
+        profilePictureUrl: String? = null,
+    ): AppResult<AuthSession> {
+        val result = authRepository.signIn(provider, idToken, displayName, profilePictureUrl)
         if (result is AppResult.Success) {
             entitlementRepository.setLoggedIn(true)
             syncRepository.syncNow()

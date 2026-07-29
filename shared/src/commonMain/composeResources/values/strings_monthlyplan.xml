@@ -2,7 +2,8 @@
 <resources>
     <string name="monthlyplan_home_empty_state">No active plan yet</string>
     <string name="monthlyplan_home_notification_content_description">Notifications</string>
-    <string name="monthlyplan_home_greeting">Hi, User! 👋</string>
+    <string name="monthlyplan_home_greeting">Hi! 👋</string>
+    <string name="monthlyplan_home_greeting_named">Hi, %1$s! 👋</string>
     <string name="monthlyplan_home_week_progress">Week %1$d of 4</string>
     <string name="monthlyplan_home_progress_percent">Progress: %1$d%%</string>
     <string name="monthlyplan_home_this_week_title">This Week\'s Sessions</string>

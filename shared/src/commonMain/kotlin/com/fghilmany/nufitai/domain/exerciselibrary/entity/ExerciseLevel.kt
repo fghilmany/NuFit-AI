@@ -12,4 +12,6 @@ enum class ExerciseLevel {
     PROGRESSION,
     CORRECTIVE,
     ACCESSORY,
+    /** ADR-007 -- new tier introduced by the free-exercise-db-primary data pivot; hardest rung, above PROGRESSION. */
+    ELITE,
 }

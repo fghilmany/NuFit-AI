@@ -14,6 +14,9 @@ dependencies {
     implementation(project(":shared"))
 
     implementation(libs.androidx.activity.compose)
+    // Per-app language switching (P-15) -- AppCompatDelegate.setApplicationLocales backport,
+    // needed for minSdk 31 (native OS-level per-app language is API 33+ only).
+    implementation(libs.androidx.appcompat)
 
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)

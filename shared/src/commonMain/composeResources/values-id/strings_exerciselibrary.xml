@@ -25,6 +25,7 @@
     <string name="exerciselibrary_level_progresi">Lanjutan</string>
     <string name="exerciselibrary_level_korektif">Korektif</string>
     <string name="exerciselibrary_level_aksesori">Aksesori</string>
+    <string name="exerciselibrary_level_elite">Elite</string>
 
     <string name="exerciselibrary_equipment_bodyweight">Bodyweight</string>
     <string name="exerciselibrary_equipment_dumbbell">Dumbbell</string>
@@ -33,6 +34,10 @@
     <string name="exerciselibrary_equipment_machine">Machine</string>
     <string name="exerciselibrary_equipment_pullupbar">Pull-Up Bar</string>
     <string name="exerciselibrary_equipment_cardio">Cardio</string>
+    <string name="exerciselibrary_equipment_medicine_ball">Bola Medicine</string>
+    <string name="exerciselibrary_equipment_stability_ball">Bola Stabilitas</string>
+    <string name="exerciselibrary_equipment_resistance_band">Resistance Band</string>
+    <string name="exerciselibrary_equipment_roller">Foam Roller</string>
 
     <string name="exercisedetail_target_muscle_title">Otot Target</string>
     <string name="exercisedetail_instructions_title">Instruksi Langkah-demi-Langkah</string>

@@ -48,6 +48,7 @@ import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.common_app_name
 import nufitai.shared.generated.resources.monthlyplan_home_empty_state
 import nufitai.shared.generated.resources.monthlyplan_home_greeting
+import nufitai.shared.generated.resources.monthlyplan_home_greeting_named
 import nufitai.shared.generated.resources.monthlyplan_home_notification_content_description
 import nufitai.shared.generated.resources.monthlyplan_home_progress_percent
 import nufitai.shared.generated.resources.monthlyplan_home_this_week_title
@@ -107,7 +108,7 @@ private fun HomeContent(
         contentPadding = PaddingValues(top = 104.dp, bottom = 96.dp), // 64dp bar + status-bar inset buffer
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
-        item { GreetingSection(state.currentWeekNumber, state.progressPercent) }
+        item { GreetingSection(state.currentWeekNumber, state.progressPercent, state.userDisplayName) }
 
         item {
             val currentWeek = state.weeks.find { it.weekNumber == state.currentWeekNumber }
@@ -166,10 +167,12 @@ private fun WeekSection(
 }
 
 @Composable
-private fun GreetingSection(currentWeekNumber: Int, progressPercent: Int) {
+private fun GreetingSection(currentWeekNumber: Int, progressPercent: Int, userDisplayName: String?) {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(stringResource(Res.string.monthlyplan_home_greeting), style = MaterialTheme.typography.headlineLarge)
+            val greeting = userDisplayName?.let { stringResource(Res.string.monthlyplan_home_greeting_named, it) }
+                ?: stringResource(Res.string.monthlyplan_home_greeting)
+            Text(greeting, style = MaterialTheme.typography.headlineLarge)
             Text(stringResource(Res.string.monthlyplan_home_week_progress, currentWeekNumber), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {

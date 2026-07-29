@@ -27,6 +27,7 @@ class DebugSimulateSignIn(
             accessToken = "debug-access-token",
             refreshToken = "debug-refresh-token",
             expiresAt = currentInstant() + 1.hours,
+            displayName = "Debug User",
         )
         authRepository.debugSetSession(session)
         entitlementRepository.setLoggedIn(true)

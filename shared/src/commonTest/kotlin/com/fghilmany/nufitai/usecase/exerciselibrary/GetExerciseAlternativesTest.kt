@@ -14,12 +14,12 @@ import kotlin.test.assertTrue
 class GetExerciseAlternativesTest {
 
     @Test
-    fun `given a equivalentSubstitutes entry when invoked then includes the cross-equipment alternative`() = runTest {
+    fun `given a bodyweight_alt entry when invoked then includes the cross-equipment alternative`() = runTest {
         val target = testExercise(
             id = "DB-SQUAT-000",
             equipmentCategory = EquipmentCategory.DUMBBELL,
             movementPattern = MovementPattern.SQUAT,
-            equivalentSubstitutes = mapOf(EquipmentCategory.BODYWEIGHT to "BW-SQUAT-000"),
+            equivalentSubstitutes = mapOf("bodyweight_alt" to "BW-SQUAT-000"),
         )
         val crossEquipmentAlt = testExercise(id = "BW-SQUAT-000", equipmentCategory = EquipmentCategory.BODYWEIGHT, movementPattern = MovementPattern.SQUAT)
         val repository = FakeExerciseLibraryRepository().apply { exercises = listOf(target, crossEquipmentAlt) }
@@ -28,6 +28,22 @@ class GetExerciseAlternativesTest {
 
         assertIs<AppResult.Success<List<*>>>(result)
         assertTrue(result.data.any { it.id == "BW-SQUAT-000" })
+    }
+
+    @Test
+    fun `given only a note entry when invoked then it is not treated as an alternative id`() = runTest {
+        val target = testExercise(
+            id = "DB-SQUAT-000",
+            equipmentCategory = EquipmentCategory.DUMBBELL,
+            movementPattern = MovementPattern.SQUAT,
+            equivalentSubstitutes = mapOf("note" to "free text, not an exercise id"),
+        )
+        val repository = FakeExerciseLibraryRepository().apply { exercises = listOf(target) }
+
+        val result = GetExerciseAlternatives(repository)(target)
+
+        assertIs<AppResult.Success<List<*>>>(result)
+        assertTrue(result.data.isEmpty())
     }
 
     @Test

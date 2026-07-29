@@ -39,6 +39,8 @@ class ExerciseLibraryLocalDataSource(private val database: NuFitDatabase) {
                     instructions = row.instructionsJson,
                     common_mistakes = row.commonMistakesJson,
                     safety_tips = row.safetyTipsJson,
+                    image_path = row.imagePath,
+                    gif_path = row.gifPath,
                 )
             }
         }
@@ -79,4 +81,6 @@ data class ExerciseInsertRow(
     val instructionsJson: String,
     val commonMistakesJson: String,
     val safetyTipsJson: String,
+    val imagePath: String?,
+    val gifPath: String?,
 )

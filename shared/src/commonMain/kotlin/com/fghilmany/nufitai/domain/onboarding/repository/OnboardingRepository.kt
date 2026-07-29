@@ -16,6 +16,8 @@ interface OnboardingRepository {
 
     suspend fun saveBodyMeasurement(measurement: BodyMeasurement): AppResult<Unit>
     suspend fun getLatestBodyMeasurement(): AppResult<BodyMeasurement?>
+    /** Chronological, newest first (mirrors `BodyMeasurement.sq`'s `getAllBodyMeasurements` ORDER BY). */
+    suspend fun getAllBodyMeasurements(): AppResult<List<BodyMeasurement>>
 
     suspend fun hasLocalProfile(): AppResult<Boolean>
 }

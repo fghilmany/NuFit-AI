@@ -82,6 +82,10 @@ class OnboardingRepositoryImpl(
         local.getLatestBodyMeasurement()?.toEntity()
     }
 
+    override suspend fun getAllBodyMeasurements(): AppResult<List<BodyMeasurement>> = runCatchingDatabase {
+        local.getAllBodyMeasurements().map { it.toEntity() }
+    }
+
     override suspend fun hasLocalProfile(): AppResult<Boolean> = runCatchingDatabase {
         local.getLatestQuickAssessmentResult() != null
     }

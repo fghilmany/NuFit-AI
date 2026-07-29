@@ -38,7 +38,7 @@ class AuthRemoteDataSource(private val httpClient: HttpClient) {
 
     companion object {
         // TODO(dev): no real Supabase project exists yet -- replace before first live use (techspec §7).
-        const val SUPABASE_URL = "https://your-project.supabase.co"
-        const val SUPABASE_ANON_KEY = "your-anon-key"
+        const val SUPABASE_URL = "https://wnruvcpeyxssxpqwptst.supabase.co"
+        const val SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InducnV2Y3BleXhzc3hwcXdwdHN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0NDA5NzMsImV4cCI6MjEwMDAxNjk3M30.njRAFHIo84AyVibZpVSt3WlgN02I9MnQzNkzNQHgwLE"
     }
 }

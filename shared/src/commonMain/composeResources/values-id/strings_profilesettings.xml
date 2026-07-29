@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profilesettings_top_bar_title">Akun</string>
+    <string name="profilesettings_notification_content_description">Notifikasi</string>
+
+    <string name="profilesettings_guest_hero_title">Simpan Progres Kamu</string>
+    <string name="profilesettings_guest_hero_benefit_backup">Cadangkan data latihan</string>
+    <string name="profilesettings_guest_hero_benefit_personalize">Personalisasi lebih cerdas</string>
+    <string name="profilesettings_guest_hero_cta_google">Masuk dengan Google</string>
+
+    <string name="profilesettings_unnamed_user">Pengguna NuFit AI</string>
+    <string name="profilesettings_tier_free">Gratis</string>
+    <string name="profilesettings_tier_subscribed_expiry">Subscribe · berlaku hingga %1$s</string>
+    <string name="profilesettings_sync_status_idle">Belum pernah sync</string>
+    <string name="profilesettings_sync_status_syncing">Sedang sync…</string>
+    <string name="profilesettings_sync_status_success">Terakhir sync %1$s</string>
+    <string name="profilesettings_sync_status_failed">Sync gagal — akan dicoba lagi otomatis</string>
+    <string name="profilesettings_sync_now_action">Sync sekarang</string>
+    <string name="profilesettings_logout_action">Logout</string>
+
+    <string name="profilesettings_body_data_section_title">Data Tubuh</string>
+    <string name="profilesettings_height_label">TINGGI BADAN</string>
+    <string name="profilesettings_weight_label">BERAT BADAN</string>
+    <string name="profilesettings_height_unit">cm</string>
+    <string name="profilesettings_weight_unit">kg</string>
+    <string name="profilesettings_empty_value">—</string>
+    <string name="profilesettings_weight_history_title">RIWAYAT BERAT BADAN</string>
+    <string name="profilesettings_weight_history_empty">Belum ada data</string>
+    <string name="profilesettings_weight_history_delta_format">%1$s kg (30 hari terakhir)</string>
+
+    <string name="profilesettings_edit_body_data_title">Ubah Data Tubuh</string>
+    <string name="profilesettings_edit_body_data_height_label">Tinggi (cm)</string>
+    <string name="profilesettings_edit_body_data_weight_label">Berat (kg)</string>
+
+    <string name="profilesettings_profile_assessment_section_title">Profil &amp; Assessment</string>
+    <string name="profilesettings_level_label">Level: %1$s</string>
+    <string name="profilesettings_level_unknown">Belum ada</string>
+    <string name="profilesettings_complete_profile_placeholder">Lengkapi profil untuk melihat data umur dan gender</string>
+    <string name="profilesettings_profile_age_gender_format">%1$d tahun • %2$s</string>
+    <string name="profilesettings_assessment_link_title">Lihat Hasil Assessment Terakhir</string>
+    <string name="profilesettings_assessment_link_subtitle">Update terakhir: %1$s</string>
+    <string name="profilesettings_assessment_link_subtitle_empty">Belum ada assessment</string>
+
+    <string name="profilesettings_sync_section_title">Sinkronisasi</string>
+    <string name="profilesettings_health_connect_title">Google Fit / Health Connect</string>
+    <string name="profilesettings_health_connect_coming_soon">Segera Hadir</string>
+
+    <string name="profilesettings_info_section_title">Informasi</string>
+    <string name="profilesettings_language_row_title">Bahasa</string>
+    <string name="profilesettings_language_title">Pilih Bahasa</string>
+    <string name="profilesettings_language_indonesian">Bahasa Indonesia</string>
+    <string name="profilesettings_language_english">English</string>
+    <string name="profilesettings_info_medical_disclaimer">Disclaimer Medis</string>
+    <string name="profilesettings_info_privacy_policy">Kebijakan Privasi</string>
+    <string name="profilesettings_info_about_app">Tentang Aplikasi</string>
+
+    <string name="profilesettings_delete_account_action">Hapus Akun</string>
+    <string name="profilesettings_version_footer">Versi %1$s</string>
+
+    <string name="profilesettings_delete_confirm_title">Hapus akun kamu?</string>
+    <string name="profilesettings_delete_confirm_body">Akun dan seluruh data cloud kamu akan dihapus permanen. Data latihan yang tersimpan di HP ini TIDAK ikut terhapus — HP kamu akan kembali ke mode tamu (lokal saja).</string>
+    <string name="profilesettings_delete_confirm_offline_notice">Kamu perlu koneksi internet untuk menghapus akun.</string>
+    <string name="profilesettings_delete_confirm_action">Ya, Hapus Akun</string>
+
+    <string name="profilesettings_disclaimer_top_bar_title">Disclaimer Medis</string>
+    <string name="profilesettings_disclaimer_title">Sebelum Mulai</string>
+    <string name="profilesettings_disclaimer_body">NuFit AI menyediakan panduan latihan umum berdasarkan informasi yang kamu berikan. Aplikasi ini BUKAN pengganti nasihat medis, diagnosis, atau perawatan dari dokter maupun personal trainer bersertifikat.\n\nJika kamu memiliki kondisi kesehatan tertentu, sedang hamil, mengonsumsi obat rutin, atau merasakan nyeri/pusing saat latihan, hentikan latihan dan konsultasikan ke tenaga medis profesional sebelum melanjutkan.\n\nDengan menggunakan aplikasi ini, kamu memahami bahwa risiko cedera saat berolahraga sepenuhnya menjadi tanggung jawab pribadi.</string>
+    <string name="profilesettings_disclaimer_ack_label">Saya memahami disclaimer ini</string>
+
+    <string name="profilesettings_privacy_top_bar_title">Kebijakan Privasi</string>
+    <string name="profilesettings_privacy_body">NuFit AI menyimpan data latihan dan profil kamu secara lokal di perangkat. Jika kamu login, data ini juga disimpan di server kami untuk keperluan backup dan sinkronisasi antar-perangkat.\n\nKami tidak membagikan data pribadimu ke pihak ketiga tanpa izin, kecuali diwajibkan oleh hukum.\n\nKamu dapat menghapus akun dan data cloud kamu kapan saja melalui menu Hapus Akun.</string>
+
+    <string name="profilesettings_about_top_bar_title">Tentang Aplikasi</string>
+    <string name="profilesettings_about_body">NuFit AI adalah aplikasi pendamping latihan gym yang membantu kamu mendapatkan program latihan sesuai level dan tujuanmu — mulai dari template lokal hingga rencana yang dipersonalisasi AI.</string>
+    <string name="profilesettings_about_version">Versi %1$s</string>
+</resources>

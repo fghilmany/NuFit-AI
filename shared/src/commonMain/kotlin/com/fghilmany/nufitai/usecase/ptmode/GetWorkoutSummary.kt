@@ -28,7 +28,11 @@ class GetWorkoutSummary(private val repository: PtModeRepository) {
         val setLogsByExerciseLogId = setLogs.groupBy { it.workoutExerciseLogId }
 
         val totalVolume = setLogs.sumOf { it.weightKg * it.reps }
-        val durationMinutes = ((session.completedAt ?: currentInstant()) - session.startedAt).inWholeMinutes.toInt()
+        val elapsed = (session.completedAt ?: currentInstant()) - session.startedAt
+        // Round to nearest minute rather than floor (inWholeMinutes) -- any session under 60s
+        // used to always display "0min" even though real time had elapsed. Floors to 0 only
+        // when literally no time passed (elapsed <= 0), never for a genuinely completed session.
+        val durationMinutes = if (elapsed.inWholeSeconds <= 0) 0 else maxOf(1, ((elapsed.inWholeSeconds + 30) / 60).toInt())
         val completedExerciseCount = exerciseLogs.count { it.skippedAt == null }
 
         val personalRecords = mutableListOf<PersonalRecord>()

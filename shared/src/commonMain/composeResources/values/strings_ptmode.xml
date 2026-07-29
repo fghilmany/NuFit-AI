@@ -17,7 +17,7 @@
     <string name="ptmode_swap_exercise_button">Swap exercise</string>
     <string name="ptmode_skip_exercise_button">Skip</string>
     <string name="ptmode_rest_timer_label">Rest</string>
-    <string name="ptmode_rest_timer_value">%1$d:%2$02d</string>
+    <string name="ptmode_rest_timer_value">%1$s:%2$s</string>
     <string name="ptmode_skip_rest_button">Skip rest</string>
 
     <string name="ptmode_swap_sheet_title">Choose a replacement</string>

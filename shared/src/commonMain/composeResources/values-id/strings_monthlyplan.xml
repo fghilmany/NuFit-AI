@@ -2,7 +2,8 @@
 <resources>
     <string name="monthlyplan_home_empty_state">Belum ada plan aktif</string>
     <string name="monthlyplan_home_notification_content_description">Notifikasi</string>
-    <string name="monthlyplan_home_greeting">Halo, User! 👋</string>
+    <string name="monthlyplan_home_greeting">Halo! 👋</string>
+    <string name="monthlyplan_home_greeting_named">Halo, %1$s! 👋</string>
     <string name="monthlyplan_home_week_progress">Minggu %1$d dari 4</string>
     <string name="monthlyplan_home_progress_percent">Progress: %1$d%%</string>
     <string name="monthlyplan_home_this_week_title">Sesi Minggu Ini</string>

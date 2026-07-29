@@ -83,9 +83,22 @@ sealed interface Route {
     @Serializable
     data class CompleteProfile(val returnTo: LoginReturnTarget = LoginReturnTarget.HOME) : Route
 
-    /** P-15 stub -- Account (issue #83); full scope stays in 09-profile-settings.md. */
+    /** P-15 -- Account (techspec profile-settings.md). */
     @Serializable
     data object Account : Route
+
+    /**
+     * techspec profile-settings.md §7 -- [isFirstRun] true when Splash routes here (blocking,
+     * no back button); false when opened from Account's Informasi list (re-readable, non-blocking).
+     */
+    @Serializable
+    data class MedicalDisclaimer(val isFirstRun: Boolean = false) : Route
+
+    @Serializable
+    data object PrivacyPolicy : Route
+
+    @Serializable
+    data object AboutApp : Route
 }
 
 /** issue #83 -- where [Route.Login]/[Route.CompleteProfile] return to once signed in. */

@@ -12,6 +12,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
 
 class GetWorkoutSummaryTest {
@@ -36,6 +37,26 @@ class GetWorkoutSummaryTest {
         assertEquals(360.0, result.data.totalVolumeKg) // 20*10 + 20*8
         assertEquals(10, result.data.durationMinutes)
         assertEquals(1, result.data.completedExerciseCount)
+    }
+
+    @Test
+    fun `given a session completed in under a minute when invoked then duration rounds up to 1, not 0`() = runTest {
+        val repository = FakePtModeRepository()
+
+        val result = GetWorkoutSummary(repository)(session(start + 45.seconds), exercisesById = emptyMap(), totalExerciseCount = 1)
+
+        assertIs<AppResult.Success<*>>(result)
+        assertEquals(1, result.data.durationMinutes)
+    }
+
+    @Test
+    fun `given a session at exactly 1_5 minutes when invoked then duration rounds up to 2`() = runTest {
+        val repository = FakePtModeRepository()
+
+        val result = GetWorkoutSummary(repository)(session(start + 90.seconds), exercisesById = emptyMap(), totalExerciseCount = 1)
+
+        assertIs<AppResult.Success<*>>(result)
+        assertEquals(2, result.data.durationMinutes)
     }
 
     @Test

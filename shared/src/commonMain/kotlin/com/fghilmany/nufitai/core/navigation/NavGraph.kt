@@ -6,7 +6,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.fghilmany.nufitai.presentation.account.screen.AccountScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanFormScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanGateScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanPreviewScreen
@@ -25,6 +24,10 @@ import com.fghilmany.nufitai.presentation.onboarding.screen.QuickAssessmentWizar
 import com.fghilmany.nufitai.presentation.onboarding.screen.SplashScreen
 import com.fghilmany.nufitai.presentation.planmanagement.screen.MyPlansScreen
 import com.fghilmany.nufitai.presentation.planmanagement.screen.TemplatePickerScreen
+import com.fghilmany.nufitai.presentation.profilesettings.screen.AboutAppScreen
+import com.fghilmany.nufitai.presentation.profilesettings.screen.AccountScreen
+import com.fghilmany.nufitai.presentation.profilesettings.screen.MedicalDisclaimerScreen
+import com.fghilmany.nufitai.presentation.profilesettings.screen.PrivacyPolicyScreen
 import com.fghilmany.nufitai.presentation.ptmode.screen.PtModeScreen
 import com.fghilmany.nufitai.presentation.ptmode.screen.WorkoutSummaryScreen
 
@@ -36,6 +39,11 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onRouted = { hasLocalProfile ->
                     val destination = if (hasLocalProfile) Route.Home else Route.ParQ
                     navController.navigate(destination) {
+                        popUpTo(Route.Splash) { inclusive = true }
+                    }
+                },
+                onNeedsMedicalDisclaimer = {
+                    navController.navigate(Route.MedicalDisclaimer(isFirstRun = true)) {
                         popUpTo(Route.Splash) { inclusive = true }
                     }
                 },
@@ -96,7 +104,11 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onAssessmentDetailClick = { navController.navigate(Route.AssessmentDetail) },
                 onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
                 onPlansClick = { navController.navigate(Route.MyPlans) },
-                onAccountClick = { navController.navigate(Route.Account) },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.Home> { inclusive = true }
+                    }
+                },
             )
         }
 
@@ -107,6 +119,11 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onExerciseLibraryClick = { navController.navigate(Route.ExerciseLibrary) },
                 onHomeClick = {
                     navController.navigate(Route.Home) {
+                        popUpTo<Route.MyPlans> { inclusive = true }
+                    }
+                },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
                         popUpTo<Route.MyPlans> { inclusive = true }
                     }
                 },
@@ -209,7 +226,50 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
         }
 
         composable<Route.Account> {
-            AccountScreen(onNavigateToLogin = { navController.navigate(Route.Login()) })
+            AccountScreen(
+                onNavigateToLogin = { navController.navigate(Route.Login()) },
+                onNavigateToMedicalDisclaimer = { navController.navigate(Route.MedicalDisclaimer(isFirstRun = false)) },
+                onNavigateToPrivacyPolicy = { navController.navigate(Route.PrivacyPolicy) },
+                onNavigateToAboutApp = { navController.navigate(Route.AboutApp) },
+                onNavigateToAssessmentDetail = { navController.navigate(Route.AssessmentDetail) },
+                onNavigateToCompleteProfile = { navController.navigate(Route.CompleteProfile(returnTo = LoginReturnTarget.HOME)) },
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.Account> { inclusive = true }
+                    }
+                },
+                onPlansClick = {
+                    navController.navigate(Route.MyPlans) {
+                        popUpTo<Route.Account> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.MedicalDisclaimer> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.MedicalDisclaimer>()
+            MedicalDisclaimerScreen(
+                isFirstRun = route.isFirstRun,
+                onDone = {
+                    if (route.isFirstRun) {
+                        // Re-enter Splash so its existing hasLocalProfile routing decides
+                        // Home vs ParQ -- avoids duplicating that logic here.
+                        navController.navigate(Route.Splash) {
+                            popUpTo<Route.MedicalDisclaimer> { inclusive = true }
+                        }
+                    } else {
+                        navController.popBackStack()
+                    }
+                },
+            )
+        }
+
+        composable<Route.PrivacyPolicy> {
+            PrivacyPolicyScreen(onBack = { navController.popBackStack() })
+        }
+
+        composable<Route.AboutApp> {
+            AboutAppScreen(onBack = { navController.popBackStack() })
         }
 
         composable<Route.AiCustomPlanForm> {
@@ -272,9 +332,15 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
     }
 }
 
-/** issue #83 -- where Login/CompleteProfile hand off to once signed in. */
+/**
+ * issue #83 -- where Login/CompleteProfile hand off to once signed in.
+ * AI_CUSTOM_PLAN returns to the Gate (not straight to the Form): login only makes the user
+ * LOGGED_IN, not necessarily SUBSCRIBED or Full-Assessment-complete, so the gate must
+ * re-resolve tier/assessment state and route to paywall / Full Assessment / pass-through
+ * accordingly -- jumping straight to the Form skipped that check entirely.
+ */
 private fun LoginReturnTarget.toDestination(): Route = when (this) {
     LoginReturnTarget.HOME -> Route.Home
-    LoginReturnTarget.AI_CUSTOM_PLAN -> Route.AiCustomPlanForm
+    LoginReturnTarget.AI_CUSTOM_PLAN -> Route.AiCustomPlanGate
     LoginReturnTarget.FULL_ASSESSMENT -> Route.FullAssessmentStub()
 }

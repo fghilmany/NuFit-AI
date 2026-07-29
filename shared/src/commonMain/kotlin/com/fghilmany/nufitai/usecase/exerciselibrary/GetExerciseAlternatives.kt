@@ -11,7 +11,7 @@ private const val MAX_ALTERNATIVES = 4
 /**
  * P-08 "Gerakan Alternatif" (issue #79 §5) -- computed heuristic, not hand-curated (the issue's
  * own DoD flags this relation as previously undefined):
- * 1. Cross-equipment: resolve `equivalentSubstitutes` (already exists, EquipmentCategory -> exerciseId)
+ * 1. Cross-equipment: resolve `equivalentSubstitutes` (ADR-007 -- keys `duplicate_variant`/`bodyweight_alt` -> exerciseId; `note` is free text, excluded)
  * 2. Same-equipment variant: siblings sharing movementPattern + equipmentCategory, excluding
  *    self and excluding CORRECTIVE/STRETCH patterns or CORRECTIVE/ACCESSORY levels (not
  *    user-facing techniques -- same exclusion as [com.fghilmany.nufitai.usecase.exerciselibrary.FilterExercises])
@@ -25,7 +25,10 @@ class GetExerciseAlternatives(private val repository: ExerciseLibraryRepository)
         }
         val byId = allExercises.associateBy { it.id }
 
-        val crossEquipment = exercise.equivalentSubstitutes?.values.orEmpty().mapNotNull { byId[it] }
+        val crossEquipment = exercise.equivalentSubstitutes.orEmpty()
+            .filterKeys { it != "note" }
+            .values
+            .mapNotNull { byId[it] }
 
         val siblings = allExercises.filter { candidate ->
             candidate.id != exercise.id &&

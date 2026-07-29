@@ -20,6 +20,7 @@ class FakeOnboardingRepository : OnboardingRepository {
     var latestParQResult: ParQResult? = null
     var latestQuickAssessmentResult: QuickAssessmentResult? = null
     var latestBodyMeasurement: BodyMeasurement? = null
+    var allBodyMeasurements: List<BodyMeasurement> = emptyList()
     var hasLocalProfileValue: Boolean = false
 
     override suspend fun saveParQResult(result: ParQResult): AppResult<Unit> {
@@ -52,6 +53,8 @@ class FakeOnboardingRepository : OnboardingRepository {
 
     override suspend fun getLatestBodyMeasurement(): AppResult<BodyMeasurement?> =
         AppResult.Success(latestBodyMeasurement)
+
+    override suspend fun getAllBodyMeasurements(): AppResult<List<BodyMeasurement>> = AppResult.Success(allBodyMeasurements)
 
     override suspend fun hasLocalProfile(): AppResult<Boolean> = AppResult.Success(hasLocalProfileValue)
 }

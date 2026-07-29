@@ -27,6 +27,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.clip
+import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.AlternativesRow
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.CommonMistakesCard
@@ -77,13 +79,17 @@ private fun DetailContent(state: ExerciseDetailState.Loaded, onAlternativeClick:
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
         item {
-            // No bundled photo assets yet -- placeholder tint (§9 item 11, same fallback as monthly-plan.md).
+            // ADR-007 -- static photo + animated GIF, both bundled via Coil (BundledMediaImage).
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Box(
-                    modifier = Modifier.weight(1f).height(160.dp).background(NuFitColors.SurfaceContainerHigh, RoundedCornerShape(16.dp)),
+                BundledMediaImage(
+                    resourcePath = exercise.imagePath,
+                    contentDescription = exercise.name,
+                    modifier = Modifier.weight(1f).height(160.dp).clip(RoundedCornerShape(16.dp)),
                 )
-                Box(
-                    modifier = Modifier.weight(1f).height(160.dp).background(NuFitColors.SurfaceContainerHigh, RoundedCornerShape(16.dp)),
+                BundledMediaImage(
+                    resourcePath = exercise.gifPath,
+                    contentDescription = exercise.name,
+                    modifier = Modifier.weight(1f).height(160.dp).clip(RoundedCornerShape(16.dp)),
                 )
             }
         }

@@ -18,7 +18,8 @@ fun testExercise(
     flagExclusion: Set<ExerciseFlag> = emptySet(),
     flagPriority: Set<ExerciseFlag> = emptySet(),
     loadedBodyAreas: Set<BodyArea>? = null,
-    equivalentSubstitutes: Map<EquipmentCategory, String>? = null,
+    // ADR-007 -- keys are "duplicate_variant"/"bodyweight_alt"/"note", not EquipmentCategory.
+    equivalentSubstitutes: Map<String, String>? = null,
     relatedMovementPatterns: Set<MovementPattern>? = null,
     primaryMuscleGroup: MuscleGroup = MuscleGroup.LEG,
     targetMusclesPrimary: List<String> = emptyList(),
@@ -26,6 +27,8 @@ fun testExercise(
     instructions: List<String> = listOf("Langkah 1"),
     commonMistakes: List<CommonMistake> = listOf(CommonMistake("Kesalahan", "Deskripsi")),
     safetyTips: List<String> = listOf("Tips"),
+    imagePath: String? = null,
+    gifPath: String? = null,
 ): Exercise = Exercise(
     id = id,
     name = id,
@@ -51,4 +54,6 @@ fun testExercise(
     instructions = instructions,
     commonMistakes = commonMistakes,
     safetyTips = safetyTips,
+    imagePath = imagePath,
+    gifPath = gifPath,
 )

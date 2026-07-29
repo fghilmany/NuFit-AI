@@ -50,6 +50,12 @@ kotlin {
             implementation(libs.compose.uiTooling)
             implementation(libs.sqldelight.android.driver)
             implementation(libs.ktor.client.okhttp)
+            // issue #83 follow-up -- real Google Sign-In via Credential Manager (ADR-006).
+            implementation(libs.androidx.credentials)
+            implementation(libs.androidx.credentials.play.services.auth)
+            implementation(libs.googleid)
+            // P-15 "Ganti Bahasa" -- LocaleController.android.kt uses AppCompatDelegate/LocaleListCompat.
+            implementation(libs.androidx.appcompat)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -76,6 +82,12 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.contentNegotiation)
             implementation(libs.ktor.serialization.kotlinxJson)
+            // Exercise Library data-source pivot (ADR-007) -- bundled photo/GIF rendering.
+            implementation(libs.coil.compose)
+            implementation(libs.coil.gif)
+            // P-15 Google profile photo -- URL-based image load (coil-compose/coil-gif alone
+            // never registered a network fetcher).
+            implementation(libs.coil.network.ktor3)
         }
         iosMain.dependencies {
             implementation(libs.sqldelight.native.driver)

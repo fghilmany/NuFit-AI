@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.auth.AppleSignInLauncher
 import com.fghilmany.nufitai.core.auth.GoogleSignInLauncher
+import com.fghilmany.nufitai.core.auth.NativeSignInResult
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.auth.entity.AuthProvider
 import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
@@ -48,13 +49,20 @@ class LoginViewModel(
         }
     }
 
-    private fun signInWith(provider: AuthProvider, launchNative: suspend () -> AppResult<String>) {
+    private fun signInWith(provider: AuthProvider, launchNative: suspend () -> AppResult<NativeSignInResult>) {
         if (_state.value == LoginState.SigningIn) return
         _state.value = LoginState.SigningIn
         viewModelScope.launch {
-            when (val tokenResult = launchNative()) {
-                is AppResult.Error -> _state.value = LoginState.Error(tokenResult.failure.message)
-                is AppResult.Success -> when (val signInResult = signIn(provider, tokenResult.data)) {
+            when (val nativeResult = launchNative()) {
+                is AppResult.Error -> _state.value = LoginState.Error(nativeResult.failure.message)
+                is AppResult.Success -> when (
+                    val signInResult = signIn(
+                        provider,
+                        nativeResult.data.idToken,
+                        nativeResult.data.displayName,
+                        nativeResult.data.profilePictureUrl,
+                    )
+                ) {
                     is AppResult.Error -> _state.value = LoginState.Error(signInResult.failure.message)
                     is AppResult.Success -> onSignedIn()
                 }

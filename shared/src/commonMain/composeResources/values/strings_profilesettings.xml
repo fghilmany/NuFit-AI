@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profilesettings_top_bar_title">Account</string>
+    <string name="profilesettings_notification_content_description">Notifications</string>
+
+    <string name="profilesettings_guest_hero_title">Save Your Progress</string>
+    <string name="profilesettings_guest_hero_benefit_backup">Back up your workout data</string>
+    <string name="profilesettings_guest_hero_benefit_personalize">Smarter personalization</string>
+    <string name="profilesettings_guest_hero_cta_google">Sign in with Google</string>
+
+    <string name="profilesettings_unnamed_user">NuFit AI User</string>
+    <string name="profilesettings_tier_free">Free</string>
+    <string name="profilesettings_tier_subscribed_expiry">Subscribed · valid until %1$s</string>
+    <string name="profilesettings_sync_status_idle">Not synced yet</string>
+    <string name="profilesettings_sync_status_syncing">Syncing…</string>
+    <string name="profilesettings_sync_status_success">Last synced %1$s</string>
+    <string name="profilesettings_sync_status_failed">Sync failed — will retry automatically</string>
+    <string name="profilesettings_sync_now_action">Sync now</string>
+    <string name="profilesettings_logout_action">Log out</string>
+
+    <string name="profilesettings_body_data_section_title">Body Data</string>
+    <string name="profilesettings_height_label">HEIGHT</string>
+    <string name="profilesettings_weight_label">WEIGHT</string>
+    <string name="profilesettings_height_unit">cm</string>
+    <string name="profilesettings_weight_unit">kg</string>
+    <string name="profilesettings_empty_value">—</string>
+    <string name="profilesettings_weight_history_title">WEIGHT HISTORY</string>
+    <string name="profilesettings_weight_history_empty">No data yet</string>
+    <string name="profilesettings_weight_history_delta_format">%1$s kg (last 30 days)</string>
+
+    <string name="profilesettings_edit_body_data_title">Edit Body Data</string>
+    <string name="profilesettings_edit_body_data_height_label">Height (cm)</string>
+    <string name="profilesettings_edit_body_data_weight_label">Weight (kg)</string>
+
+    <string name="profilesettings_profile_assessment_section_title">Profile &amp; Assessment</string>
+    <string name="profilesettings_level_label">Level: %1$s</string>
+    <string name="profilesettings_level_unknown">Not set</string>
+    <string name="profilesettings_complete_profile_placeholder">Complete your profile to see your age and gender</string>
+    <string name="profilesettings_profile_age_gender_format">%1$d years old • %2$s</string>
+    <string name="profilesettings_assessment_link_title">View Latest Assessment Result</string>
+    <string name="profilesettings_assessment_link_subtitle">Last updated: %1$s</string>
+    <string name="profilesettings_assessment_link_subtitle_empty">No assessment yet</string>
+
+    <string name="profilesettings_sync_section_title">Sync</string>
+    <string name="profilesettings_health_connect_title">Google Fit / Health Connect</string>
+    <string name="profilesettings_health_connect_coming_soon">Coming Soon</string>
+
+    <string name="profilesettings_info_section_title">Information</string>
+    <string name="profilesettings_language_row_title">Language</string>
+    <string name="profilesettings_language_title">Choose Language</string>
+    <string name="profilesettings_language_indonesian">Bahasa Indonesia</string>
+    <string name="profilesettings_language_english">English</string>
+    <string name="profilesettings_info_medical_disclaimer">Medical Disclaimer</string>
+    <string name="profilesettings_info_privacy_policy">Privacy Policy</string>
+    <string name="profilesettings_info_about_app">About the App</string>
+
+    <string name="profilesettings_delete_account_action">Delete Account</string>
+    <string name="profilesettings_version_footer">Version %1$s</string>
+
+    <string name="profilesettings_delete_confirm_title">Delete your account?</string>
+    <string name="profilesettings_delete_confirm_body">Your account and all cloud data will be permanently deleted. Workout data stored on this device will NOT be deleted — your device will return to guest (local-only) mode.</string>
+    <string name="profilesettings_delete_confirm_offline_notice">You need an internet connection to delete your account.</string>
+    <string name="profilesettings_delete_confirm_action">Yes, Delete Account</string>
+
+    <string name="profilesettings_disclaimer_top_bar_title">Medical Disclaimer</string>
+    <string name="profilesettings_disclaimer_title">Before You Start</string>
+    <string name="profilesettings_disclaimer_body">NuFit AI provides general workout guidance based on the information you provide. This app is NOT a substitute for medical advice, diagnosis, or treatment from a licensed doctor or certified personal trainer.\n\nIf you have any medical condition, are pregnant, take regular medication, or feel pain/dizziness during exercise, stop exercising and consult a medical professional before continuing.\n\nBy using this app, you understand that the risk of injury from exercising is entirely your own responsibility.</string>
+    <string name="profilesettings_disclaimer_ack_label">I understand this disclaimer</string>
+
+    <string name="profilesettings_privacy_top_bar_title">Privacy Policy</string>
+    <string name="profilesettings_privacy_body">NuFit AI stores your workout and profile data locally on your device. If you sign in, this data is also stored on our servers for backup and cross-device sync.\n\nWe do not share your personal data with third parties without consent, except where required by law.\n\nYou can delete your account and cloud data at any time via the Delete Account menu.</string>
+
+    <string name="profilesettings_about_top_bar_title">About the App</string>
+    <string name="profilesettings_about_body">NuFit AI is a gym companion app that helps you get a workout program suited to your level and goals — from local templates to an AI-personalized plan.</string>
+    <string name="profilesettings_about_version">Version %1$s</string>
+</resources>

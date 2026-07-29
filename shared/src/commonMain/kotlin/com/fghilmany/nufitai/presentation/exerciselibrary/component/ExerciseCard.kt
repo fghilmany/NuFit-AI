@@ -22,11 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.clip
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 
-/** P-07 2-column grid cell (Figma node 12:683, issue #79). No bundled photo yet -- placeholder tint (§9 item 11). */
+/** P-07 2-column grid cell (Figma node 12:683, issue #79). ADR-007 -- bundled photo via Coil. */
 @Composable
 fun ExerciseCard(exercise: Exercise, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Column(
@@ -38,8 +40,13 @@ fun ExerciseCard(exercise: Exercise, onClick: () -> Unit, modifier: Modifier = M
             modifier = Modifier
                 .fillMaxWidth()
                 .height(120.dp)
-                .background(NuFitColors.SurfaceContainerHigh, RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)),
+                .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)),
         ) {
+            BundledMediaImage(
+                resourcePath = exercise.imagePath,
+                contentDescription = exercise.name,
+                modifier = Modifier.fillMaxWidth().height(120.dp),
+            )
             AppCard(
                 modifier = Modifier.padding(12.dp).align(Alignment.TopStart),
                 backgroundColor = NuFitColors.SecondaryContainer,

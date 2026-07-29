@@ -187,7 +187,9 @@ private fun LazyListScope.equipmentStep(
     tipsTitle: String,
     tipsBody: String,
 ) {
-    val allSelected = EquipmentCategory.entries.filterNot { it == EquipmentCategory.CARDIO_EQUIPMENT }.all { it in step.equipment }
+    // ADR-007 -- derived from the options actually rendered below (+ Cardio), not
+    // EquipmentCategory.entries, which now includes equipment no card here offers.
+    val allSelected = (equipmentGridOptions.map { it.first } + EquipmentCategory.CARDIO_EQUIPMENT).all { it in step.equipment }
 
     item {
         EquipmentRowCard(

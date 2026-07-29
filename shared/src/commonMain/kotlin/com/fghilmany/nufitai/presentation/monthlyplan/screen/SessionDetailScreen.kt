@@ -29,9 +29,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.clip
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
+import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.presentation.monthlyplan.component.estimatedDurationMinutes
 import com.fghilmany.nufitai.presentation.monthlyplan.component.exerciseCount
@@ -110,7 +113,10 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
             val mainExercises = day.mainExercises.orEmpty()
             if (mainExercises.isNotEmpty()) {
                 item { Text(stringResource(Res.string.monthlyplan_session_detail_main_exercises_title), style = MaterialTheme.typography.titleLarge) }
-                items(mainExercises) { exercise -> ExerciseRow(exercise, state.exercisesById[exercise.exerciseId]?.name ?: exercise.exerciseId) }
+                items(mainExercises) { exercise ->
+                    val detail = state.exercisesById[exercise.exerciseId]
+                    ExerciseRow(exercise, detail?.name ?: exercise.exerciseId, detail)
+                }
             }
             item {
                 TipsBanner(
@@ -142,13 +148,17 @@ private fun SummaryChip(icon: ImageVector, label: String) {
 }
 
 @Composable
-private fun ExerciseRow(exercise: PlannedExercise, name: String) {
+private fun ExerciseRow(exercise: PlannedExercise, name: String, detail: Exercise?) {
     AppElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-            Box(modifier = Modifier.size(48.dp).background(MaterialTheme.colorScheme.surfaceContainerHighest, RoundedCornerShape(12.dp)))
+            BundledMediaImage(
+                resourcePath = detail?.imagePath,
+                contentDescription = name,
+                modifier = Modifier.size(48.dp).clip(RoundedCornerShape(12.dp)),
+            )
             Column(modifier = Modifier.weight(1f)) {
                 Text(name, style = MaterialTheme.typography.titleSmall)
                 Text(

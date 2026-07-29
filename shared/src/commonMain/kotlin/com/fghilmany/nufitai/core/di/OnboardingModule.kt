@@ -9,6 +9,7 @@ import com.fghilmany.nufitai.presentation.onboarding.viewmodel.ParQViewModel
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.QuickAssessmentViewModel
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
 import com.fghilmany.nufitai.usecase.onboarding.AcknowledgeDoctorConsult
+import com.fghilmany.nufitai.usecase.onboarding.GetAllBodyMeasurements
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestBodyMeasurement
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
@@ -17,6 +18,7 @@ import com.fghilmany.nufitai.usecase.onboarding.ResolveQuickAssessment
 import com.fghilmany.nufitai.usecase.onboarding.SaveBodyMeasurement
 import com.fghilmany.nufitai.usecase.onboarding.SubmitParQAnswers
 import com.fghilmany.nufitai.usecase.onboarding.SubmitQuickAssessment
+import com.fghilmany.nufitai.usecase.profilesettings.HasSeenMedicalDisclaimer
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -37,11 +39,14 @@ val onboardingModule = module {
     factory { GetLatestParQResult(repository = get()) }
     factory { GetLatestQuickAssessmentResult(repository = get()) }
     factory { GetLatestBodyMeasurement(repository = get()) }
+    factory { GetAllBodyMeasurements(repository = get()) }
     factory { SubmitQuickAssessment(repository = get(), resolveQuickAssessment = get()) }
     factory { SaveBodyMeasurement(repository = get()) }
     factory { GetLocalProfileStatus(repository = get()) }
 
-    viewModel { SplashViewModel(getLocalProfileStatus = get()) }
+    // hasSeenMedicalDisclaimer registered in profileSettingsModule -- both load together in
+    // KoinInit (mirrors QuickAssessmentViewModel's generateLocalTemplatePlan cross-module get()).
+    viewModel { SplashViewModel(getLocalProfileStatus = get(), hasSeenMedicalDisclaimer = get()) }
     viewModel { ParQViewModel(submitParQAnswers = get()) }
     viewModel { DoctorConsultViewModel(getLatestParQResult = get(), acknowledgeDoctorConsult = get()) }
     viewModel {

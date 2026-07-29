@@ -57,7 +57,7 @@ object BuildMovementPool {
     )
 }
 
-/** Enum declaration order isn't progression order (REGRESSION, STANDARD, PROGRESSION, CORRECTIVE, ACCESSORY) -- this is. */
+/** Enum declaration order isn't progression order (REGRESSION, STANDARD, PROGRESSION, CORRECTIVE, ACCESSORY, ELITE) -- this is. */
 private val ExerciseLevel.progressionRank: Int
     get() = when (this) {
         ExerciseLevel.REGRESSION -> 0
@@ -65,4 +65,9 @@ private val ExerciseLevel.progressionRank: Int
         ExerciseLevel.STANDARD -> 1
         ExerciseLevel.ACCESSORY -> 1
         ExerciseLevel.PROGRESSION -> 2
+        // ADR-007 -- ELITE is new (free-exercise-db data pivot); ranked hardest. No template-plan
+        // engine logic caps assignment by rank today (POOL-01..05 only sorts within a pattern's
+        // pool, it doesn't gate max rank by user Level) -- flag to product/safety review whether
+        // ELITE exercises should ever reach a Beginner/Intermediate plan before this ships.
+        ExerciseLevel.ELITE -> 3
     }

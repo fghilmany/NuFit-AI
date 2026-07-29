@@ -15,7 +15,12 @@ class FakeAuthRepository(
     var signOutCallCount = 0
         private set
 
-    override suspend fun signIn(provider: AuthProvider, idToken: String): AppResult<AuthSession> {
+    override suspend fun signIn(
+        provider: AuthProvider,
+        idToken: String,
+        displayName: String?,
+        profilePictureUrl: String?,
+    ): AppResult<AuthSession> {
         signInCallCount++
         return signInResult ?: AppResult.Error(Failure.Network("no fake result configured"))
     }

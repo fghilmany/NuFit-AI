@@ -66,6 +66,7 @@ fun MyPlansScreen(
     onCreateWithAi: () -> Unit,
     onExerciseLibraryClick: () -> Unit,
     onHomeClick: () -> Unit,
+    onAccountClick: () -> Unit,
     viewModel: MyPlansViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -79,7 +80,13 @@ fun MyPlansScreen(
 
         BottomNavBar(
             activeTab = NavTab.RENCANA,
-            onNavigate = { tab -> if (tab == NavTab.HOME) onHomeClick() },
+            onNavigate = { tab ->
+                when (tab) {
+                    NavTab.HOME -> onHomeClick()
+                    NavTab.AKUN -> onAccountClick()
+                    else -> Unit
+                }
+            },
             modifier = Modifier.align(Alignment.BottomStart),
         )
     }

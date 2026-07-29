@@ -28,6 +28,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
+import com.fghilmany.nufitai.presentation.exerciselibrary.component.shortLabel
 import com.fghilmany.nufitai.presentation.fullassessment.component.fullAssessmentParQCopy
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.FullAssessmentEvent
@@ -245,7 +246,7 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         items(EquipmentCategory.entries.toList()) { equipment ->
             CheckboxRow(
                 checked = equipment in step.equipmentPreference,
-                label = equipment.name,
+                label = equipment.shortLabel(),
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
             )
         }

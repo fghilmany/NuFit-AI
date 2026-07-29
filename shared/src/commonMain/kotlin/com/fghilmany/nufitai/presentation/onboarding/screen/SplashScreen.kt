@@ -38,13 +38,17 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun SplashScreen(
     onRouted: (hasLocalProfile: Boolean) -> Unit,
+    onNeedsMedicalDisclaimer: () -> Unit,
     viewModel: SplashViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(state) {
-        val routed = state as? SplashState.Routed ?: return@LaunchedEffect
-        onRouted(routed.hasLocalProfile)
+        when (val current = state) {
+            is SplashState.Routed -> onRouted(current.hasLocalProfile)
+            SplashState.NeedsMedicalDisclaimer -> onNeedsMedicalDisclaimer()
+            SplashState.Loading -> Unit
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {

@@ -5,6 +5,6 @@ import com.fghilmany.nufitai.core.error.Failure
 
 /** Apple sign-in is iOS-only; the Android actual exists only so this expect/actual compiles for both targets. */
 actual class AppleSignInLauncher actual constructor() {
-    actual suspend fun launch(): AppResult<String> =
+    actual suspend fun launch(): AppResult<NativeSignInResult> =
         AppResult.Error(Failure.Network("Sign in with Apple is not available on Android"))
 }

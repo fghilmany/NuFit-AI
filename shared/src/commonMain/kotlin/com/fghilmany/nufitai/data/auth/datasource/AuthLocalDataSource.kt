@@ -11,6 +11,8 @@ private data class StoredSession(
     val accessToken: String,
     val refreshToken: String,
     val expiresAtEpochMillis: Long,
+    val displayName: String? = null,
+    val profilePictureUrl: String? = null,
 )
 
 /** Wraps [SecureStorage] (Keystore/Keychain-encrypted in production) and (de)serializes [AuthSession]. */
@@ -25,6 +27,8 @@ class AuthLocalDataSource(private val storage: SecureStorage) {
             accessToken = stored.accessToken,
             refreshToken = stored.refreshToken,
             expiresAt = kotlin.time.Instant.fromEpochMilliseconds(stored.expiresAtEpochMillis),
+            displayName = stored.displayName,
+            profilePictureUrl = stored.profilePictureUrl,
         )
     }
 
@@ -34,6 +38,8 @@ class AuthLocalDataSource(private val storage: SecureStorage) {
             accessToken = session.accessToken,
             refreshToken = session.refreshToken,
             expiresAtEpochMillis = session.expiresAt.toEpochMilliseconds(),
+            displayName = session.displayName,
+            profilePictureUrl = session.profilePictureUrl,
         )
         storage.save(json.encodeToString(StoredSession.serializer(), stored))
     }

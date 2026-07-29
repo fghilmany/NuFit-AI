@@ -29,13 +29,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.height
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.core.keepawake.KeepScreenOn
 import com.fghilmany.nufitai.presentation.ptmode.component.EndSessionDialog
@@ -142,6 +145,9 @@ private fun PtModeContent(
             item {
                 ExerciseMediaCard(
                     exerciseName = state.currentExercise.name,
+                    // Prefer the animated GIF (matches the "Latihan Terpandu" reference design's
+                    // active-set video treatment); falls back to the static photo if no GIF exists.
+                    mediaPath = state.currentExercise.gifPath ?: state.currentExercise.imagePath,
                     restRemainingSeconds = state.restRemainingSeconds,
                     onSkipRest = onSkipRest,
                 )
@@ -232,14 +238,19 @@ private fun TopBar(exerciseIndex: Int, totalExercises: Int, onPauseClick: () -> 
 }
 
 @Composable
-private fun ExerciseMediaCard(exerciseName: String, restRemainingSeconds: Int?, onSkipRest: () -> Unit) {
-    AppCard(
-        modifier = Modifier.fillMaxWidth(),
-        backgroundColor = Color.White.copy(alpha = 0.08f),
-        shape = RoundedCornerShape(24.dp),
-        contentPadding = PaddingValues(16.dp),
-    ) {
-        Column {
+private fun ExerciseMediaCard(exerciseName: String, mediaPath: String?, restRemainingSeconds: Int?, onSkipRest: () -> Unit) {
+    Box(modifier = Modifier.fillMaxWidth().height(220.dp).clip(RoundedCornerShape(24.dp))) {
+        BundledMediaImage(
+            resourcePath = mediaPath,
+            contentDescription = exerciseName,
+            modifier = Modifier.fillMaxWidth().height(220.dp),
+        )
+        AppCard(
+            modifier = Modifier.fillMaxWidth(),
+            backgroundColor = Color.Black.copy(alpha = 0.35f),
+            shape = RoundedCornerShape(0.dp),
+            contentPadding = PaddingValues(16.dp),
+        ) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
                     stringResource(Res.string.ptmode_active_set_label, exerciseName),
@@ -259,7 +270,14 @@ private fun RestTimerBadge(remainingSeconds: Int, onSkipRest: () -> Unit) {
     Column(horizontalAlignment = Alignment.End) {
         Text(stringResource(Res.string.ptmode_rest_timer_label), style = MaterialTheme.typography.labelSmall, color = NuFitColors.InversePrimary)
         Text(
-            stringResource(Res.string.ptmode_rest_timer_value, remainingSeconds / 60, remainingSeconds % 60),
+            // Pre-padded here rather than via a "%2$02d"-style format specifier -- Compose
+            // Multiplatform's string-resource formatter doesn't reliably substitute a
+            // positional index combined with zero-padding (only %1$d applied, %2$02d stayed literal).
+            stringResource(
+                Res.string.ptmode_rest_timer_value,
+                (remainingSeconds / 60).toString(),
+                (remainingSeconds % 60).toString().padStart(2, '0'),
+            ),
             style = MaterialTheme.typography.titleMedium,
             color = Color.White,
         )

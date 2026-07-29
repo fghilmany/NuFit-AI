@@ -7,13 +7,20 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseLevel
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MovementPattern
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.toExerciseFlagOrNull
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+private const val LANG_ID = "id"
+private const val LANG_EN = "en"
+
 /**
- * Mirrors the schema of the bundled `files/exercises.json` asset (extracted from
- * `Gym Techniques/`, see `docs/data/exercises-seed-gaps.md` for extraction notes).
- * Unknown/unmapped raw flag tokens are silently dropped via `toExerciseFlagOrNull()` --
- * the extraction pass already validated every token against the issue #29 taxonomy.
+ * ADR-007 -- mirrors the bundled `files/exercises.json` asset's current shape: free-exercise-db
+ * fields (id, name, image, gif_url, plus raw category/body_part/equipment/muscle_group/target
+ * which are unused and dropped via `ignoreUnknownKeys`) merged with the KMP-specific enrichment
+ * fields still sourced from `Gym Techniques` (equipmentCategory, movementPattern, flags, etc.).
+ * `instruction_steps`/`commonMistakes`/`safetyTips`/`levelUpRequirement` are language-keyed
+ * maps; "id" preferred, falling back to "en" (instruction_steps' "id" key is LLM-translated
+ * from the source's English steps, not human-reviewed yet -- see ADR-007).
  */
 @Serializable
 data class ExerciseSeedDto(
@@ -30,7 +37,7 @@ data class ExerciseSeedDto(
     val equivalentSubstitutes: Map<String, String>? = null,
     val regressionChain: String? = null,
     val progressionChain: String? = null,
-    val levelUpRequirement: String? = null,
+    val levelUpRequirement: Map<String, String>? = null,
     val relatedMovementPatterns: List<String>? = null,
     val highImpact: Boolean = false,
     val isometricHeavy: Boolean = false,
@@ -38,9 +45,11 @@ data class ExerciseSeedDto(
     val primaryMuscleGroup: String,
     val targetMusclesPrimary: List<String> = emptyList(),
     val targetMusclesSecondary: List<String> = emptyList(),
-    val instructions: List<String> = emptyList(),
-    val commonMistakes: List<CommonMistakeJson> = emptyList(),
-    val safetyTips: List<String> = emptyList(),
+    @SerialName("instruction_steps") val instructionSteps: Map<String, List<String>> = emptyMap(),
+    val commonMistakes: Map<String, List<CommonMistakeJson>> = emptyMap(),
+    val safetyTips: Map<String, List<String>> = emptyMap(),
+    val image: String? = null,
+    @SerialName("gif_url") val gifUrl: String? = null,
 ) {
     fun toEntity(): Exercise = Exercise(
         id = id,
@@ -53,13 +62,10 @@ data class ExerciseSeedDto(
         flagExclusion = flagExclusion.mapNotNull { it.toExerciseFlagOrNull() }.toSet(),
         flagPriority = flagPriority.mapNotNull { it.toExerciseFlagOrNull() }.toSet(),
         loadedBodyAreas = loadedBodyAreas?.map { BodyArea.valueOf(it.uppercase()) }?.toSet(),
-        equivalentSubstitutes = equivalentSubstitutes
-            ?.mapNotNull { (key, value) -> key.toEquipmentCategoryOrNull()?.let { it to value } }
-            ?.toMap()
-            ?.takeIf { it.isNotEmpty() },
+        equivalentSubstitutes = equivalentSubstitutes,
         regressionChain = regressionChain,
         progressionChain = progressionChain,
-        levelUpRequirement = levelUpRequirement,
+        levelUpRequirement = levelUpRequirement?.preferIdThenEn(),
         relatedMovementPatterns = relatedMovementPatterns?.map { MovementPattern.valueOf(it) }?.toSet(),
         highImpact = highImpact,
         isometricHeavy = isometricHeavy,
@@ -67,25 +73,12 @@ data class ExerciseSeedDto(
         primaryMuscleGroup = MuscleGroup.valueOf(primaryMuscleGroup),
         targetMusclesPrimary = targetMusclesPrimary,
         targetMusclesSecondary = targetMusclesSecondary,
-        instructions = instructions,
-        commonMistakes = commonMistakes.map { it.toEntity() },
-        safetyTips = safetyTips,
+        instructions = instructionSteps[LANG_ID] ?: instructionSteps[LANG_EN] ?: emptyList(),
+        commonMistakes = (commonMistakes[LANG_ID] ?: commonMistakes[LANG_EN] ?: emptyList()).map { it.toEntity() },
+        safetyTips = safetyTips[LANG_ID] ?: safetyTips[LANG_EN] ?: emptyList(),
+        imagePath = image?.let { "files/$it" },
+        gifPath = gifUrl?.let { "files/$it" },
     )
-}
 
-/**
- * `equivalentSubstitutes` keys in the source JSON are free-text Indonesian/English category
- * words ("mesin", "band", "dumbbell", "bodyweight"), not [EquipmentCategory] enum names.
- * "band" (Resistance Band) has no exercise database (ADR-002 decision 1) and never
- * resolves -- dropped rather than crashing, consistent with ADR-002's "never guess" rule.
- */
-private fun String.toEquipmentCategoryOrNull(): EquipmentCategory? = when (lowercase()) {
-    "bodyweight" -> EquipmentCategory.BODYWEIGHT
-    "dumbbell" -> EquipmentCategory.DUMBBELL
-    "barbell" -> EquipmentCategory.BARBELL
-    "kettlebell" -> EquipmentCategory.KETTLEBELL
-    "mesin", "cable", "machine" -> EquipmentCategory.MACHINE_CABLE
-    "pull_up_bar", "pull-up bar", "pullup" -> EquipmentCategory.PULL_UP_BAR
-    "cardio" -> EquipmentCategory.CARDIO_EQUIPMENT
-    else -> null
+    private fun Map<String, String>.preferIdThenEn(): String? = get(LANG_ID) ?: get(LANG_EN)
 }

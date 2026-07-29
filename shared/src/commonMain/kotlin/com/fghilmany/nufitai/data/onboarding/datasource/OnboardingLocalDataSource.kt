@@ -96,4 +96,8 @@ class OnboardingLocalDataSource(private val database: NuFitDatabase) {
     suspend fun getLatestBodyMeasurement(): BodyMeasurementRow? = withContext(Dispatchers.Default) {
         database.bodyMeasurementQueries.getLatestBodyMeasurement().executeAsOneOrNull()
     }
+
+    suspend fun getAllBodyMeasurements(): List<BodyMeasurementRow> = withContext(Dispatchers.Default) {
+        database.bodyMeasurementQueries.getAllBodyMeasurements().executeAsList()
+    }
 }

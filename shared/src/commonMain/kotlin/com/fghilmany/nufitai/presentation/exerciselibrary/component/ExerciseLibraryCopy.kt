@@ -11,8 +11,13 @@ import nufitai.shared.generated.resources.exerciselibrary_equipment_cardio
 import nufitai.shared.generated.resources.exerciselibrary_equipment_dumbbell
 import nufitai.shared.generated.resources.exerciselibrary_equipment_kettlebell
 import nufitai.shared.generated.resources.exerciselibrary_equipment_machine
+import nufitai.shared.generated.resources.exerciselibrary_equipment_medicine_ball
 import nufitai.shared.generated.resources.exerciselibrary_equipment_pullupbar
+import nufitai.shared.generated.resources.exerciselibrary_equipment_resistance_band
+import nufitai.shared.generated.resources.exerciselibrary_equipment_roller
+import nufitai.shared.generated.resources.exerciselibrary_equipment_stability_ball
 import nufitai.shared.generated.resources.exerciselibrary_level_aksesori
+import nufitai.shared.generated.resources.exerciselibrary_level_elite
 import nufitai.shared.generated.resources.exerciselibrary_level_korektif
 import nufitai.shared.generated.resources.exerciselibrary_level_progresi
 import nufitai.shared.generated.resources.exerciselibrary_level_regresi
@@ -47,6 +52,7 @@ fun ExerciseLevel.shortLabel(): String = when (this) {
     ExerciseLevel.PROGRESSION -> stringResource(Res.string.exerciselibrary_level_progresi)
     ExerciseLevel.CORRECTIVE -> stringResource(Res.string.exerciselibrary_level_korektif)
     ExerciseLevel.ACCESSORY -> stringResource(Res.string.exerciselibrary_level_aksesori)
+    ExerciseLevel.ELITE -> stringResource(Res.string.exerciselibrary_level_elite)
 }
 
 @Composable
@@ -58,6 +64,10 @@ fun EquipmentCategory.shortLabel(): String = when (this) {
     EquipmentCategory.MACHINE_CABLE -> stringResource(Res.string.exerciselibrary_equipment_machine)
     EquipmentCategory.PULL_UP_BAR -> stringResource(Res.string.exerciselibrary_equipment_pullupbar)
     EquipmentCategory.CARDIO_EQUIPMENT -> stringResource(Res.string.exerciselibrary_equipment_cardio)
+    EquipmentCategory.MEDICINE_BALL -> stringResource(Res.string.exerciselibrary_equipment_medicine_ball)
+    EquipmentCategory.STABILITY_BALL -> stringResource(Res.string.exerciselibrary_equipment_stability_ball)
+    EquipmentCategory.RESISTANCE_BAND -> stringResource(Res.string.exerciselibrary_equipment_resistance_band)
+    EquipmentCategory.ROLLER -> stringResource(Res.string.exerciselibrary_equipment_roller)
 }
 
 /** Browsable levels only -- CORRECTIVE/ACCESSORY are excluded from P-07's Level filter (issue #79 §5). */

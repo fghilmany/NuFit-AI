@@ -6,7 +6,12 @@ import com.fghilmany.nufitai.domain.auth.entity.AuthSession
 
 /** techspec §5/§7 (auth-sync.md, issue #83) -- Supabase Auth REST, no supabase-kt SDK (ADR-005). */
 interface AuthRepository {
-    suspend fun signIn(provider: AuthProvider, idToken: String): AppResult<AuthSession>
+    suspend fun signIn(
+        provider: AuthProvider,
+        idToken: String,
+        displayName: String? = null,
+        profilePictureUrl: String? = null,
+    ): AppResult<AuthSession>
 
     suspend fun getCurrentSession(): AuthSession?
 

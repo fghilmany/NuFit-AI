@@ -68,6 +68,8 @@ class ExerciseLibraryRepositoryImpl(
         instructionsJson = json.encodeToString(instructions),
         commonMistakesJson = json.encodeToString(commonMistakes.map { CommonMistakeJson.from(it) }),
         safetyTipsJson = json.encodeToString(safetyTips),
+        imagePath = imagePath,
+        gifPath = gifPath,
     )
 
     private fun ExerciseRow.toEntity(): Exercise = Exercise(
@@ -81,7 +83,7 @@ class ExerciseLibraryRepositoryImpl(
         flagExclusion = json.decodeFromString<Set<ExerciseFlag>>(flag_exclusion),
         flagPriority = json.decodeFromString<Set<ExerciseFlag>>(flag_priority),
         loadedBodyAreas = loaded_body_areas?.let { json.decodeFromString<Set<BodyArea>>(it) },
-        equivalentSubstitutes = equivalent_substitutes?.let { json.decodeFromString<Map<EquipmentCategory, String>>(it) },
+        equivalentSubstitutes = equivalent_substitutes?.let { json.decodeFromString<Map<String, String>>(it) },
         regressionChain = regression_chain,
         progressionChain = progression_chain,
         levelUpRequirement = level_up_requirement,
@@ -95,5 +97,7 @@ class ExerciseLibraryRepositoryImpl(
         instructions = json.decodeFromString<List<String>>(instructions),
         commonMistakes = json.decodeFromString<List<CommonMistakeJson>>(common_mistakes).map { it.toEntity() },
         safetyTips = json.decodeFromString<List<String>>(safety_tips),
+        imagePath = image_path,
+        gifPath = gif_path,
     )
 }

@@ -22,7 +22,11 @@ CREATE TABLE exercise (
     target_muscles_secondary TEXT NOT NULL,
     instructions TEXT NOT NULL,
     common_mistakes TEXT NOT NULL,
-    safety_tips TEXT NOT NULL
+    safety_tips TEXT NOT NULL,
+    -- ADR-007 -- data-source pivot to free-exercise-db-primary; bundled photo/GIF paths
+    -- (relative to composeResources `files/`, e.g. "files/images/0001-xxx.jpg").
+    image_path TEXT,
+    gif_path TEXT
 );
 
 insertExercise:
@@ -31,8 +35,8 @@ INSERT INTO exercise(
     flag_exclusion, flag_priority, loaded_body_areas, equivalent_substitutes, regression_chain,
     progression_chain, level_up_requirement, related_movement_patterns, high_impact, isometric_heavy, media_slug,
     primary_muscle_group, target_muscles_primary, target_muscles_secondary, instructions,
-    common_mistakes, safety_tips
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    common_mistakes, safety_tips, image_path, gif_path
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getAllExercises:
 SELECT * FROM exercise;

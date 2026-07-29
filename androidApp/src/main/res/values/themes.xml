@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- P-15 "Ganti Bahasa": MainActivity migrated to AppCompatActivity for
+         AppCompatDelegate.setApplicationLocales' minSdk 31-32 backport; AppCompat requires the
+         Activity's theme to descend from Theme.AppCompat (the previous platform
+         Theme.Material.Light.NoActionBar crashed with "You need to use a Theme.AppCompat theme"). -->
+    <style name="Theme.NuFitAi" parent="Theme.AppCompat.DayNight.NoActionBar" />
+</resources>

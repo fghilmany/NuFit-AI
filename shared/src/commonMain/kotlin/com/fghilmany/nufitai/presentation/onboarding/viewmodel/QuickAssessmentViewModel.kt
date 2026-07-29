@@ -46,8 +46,21 @@ sealed interface QuickAssessmentState {
     data class Error(val message: String) : QuickAssessmentState
 }
 
-/** All equipment categories except CARDIO_EQUIPMENT, which is its own always-visible card in the design. */
-private val SELECT_ALL_EQUIPMENT = EquipmentCategory.entries.filterNot { it == EquipmentCategory.CARDIO_EQUIPMENT }.toSet()
+/**
+ * The equipment actually offered as toggleable cards in this wizard (`equipmentGridOptions()` +
+ * the always-visible Cardio card) -- NOT `EquipmentCategory.entries` (ADR-007 added 4 more
+ * values with no card here; using `.entries` would silently include equipment the user was
+ * never shown, breaking "Select All"'s all-selected detection).
+ */
+private val SELECT_ALL_EQUIPMENT = setOf(
+    EquipmentCategory.BODYWEIGHT,
+    EquipmentCategory.DUMBBELL,
+    EquipmentCategory.BARBELL,
+    EquipmentCategory.KETTLEBELL,
+    EquipmentCategory.MACHINE_CABLE,
+    EquipmentCategory.PULL_UP_BAR,
+    EquipmentCategory.CARDIO_EQUIPMENT,
+)
 
 sealed interface QuickAssessmentEvent {
     data class SelectExperience(val value: Experience) : QuickAssessmentEvent

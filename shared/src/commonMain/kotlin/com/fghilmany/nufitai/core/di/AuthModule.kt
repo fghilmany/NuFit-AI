@@ -8,10 +8,11 @@ import com.fghilmany.nufitai.data.auth.datasource.AuthLocalDataSource
 import com.fghilmany.nufitai.data.auth.datasource.AuthRemoteDataSource
 import com.fghilmany.nufitai.data.auth.repository.AuthRepositoryImpl
 import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
-import com.fghilmany.nufitai.presentation.account.viewmodel.AccountViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.CompleteProfileViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.LoginViewModel
 import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
+import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
+import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
 import com.fghilmany.nufitai.usecase.auth.SignIn
 import com.fghilmany.nufitai.usecase.auth.SignOut
 import org.koin.core.module.dsl.viewModel
@@ -33,6 +34,8 @@ fun authModule(tokenStorage: TokenStorage) = module {
     factory { SignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
     factory { SignOut(authRepository = get(), entitlementRepository = get()) }
     factory { DebugSimulateSignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
+    factory { GetCurrentDisplayName(authRepository = get()) }
+    factory { GetCurrentUserProfile(authRepository = get()) }
 
     viewModel {
         LoginViewModel(
@@ -44,12 +47,4 @@ fun authModule(tokenStorage: TokenStorage) = module {
         )
     }
     viewModel { CompleteProfileViewModel(saveProfileBasics = get()) }
-    viewModel {
-        AccountViewModel(
-            getCurrentTier = get(),
-            signOut = get(),
-            syncNow = get(),
-            observeSyncStatus = get(),
-        )
-    }
 }
