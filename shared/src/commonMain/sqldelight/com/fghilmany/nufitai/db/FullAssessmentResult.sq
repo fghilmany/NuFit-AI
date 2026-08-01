@@ -13,14 +13,35 @@ CREATE TABLE full_assessment_result (
     goal TEXT NOT NULL,
     sessions_per_week INTEGER NOT NULL,
     selected_weekdays TEXT NOT NULL,
-    session_duration_minutes INTEGER NOT NULL
+    session_duration_minutes INTEGER NOT NULL,
+    -- techspec meal-plan.md §5/§7 -- basis for on-device TDEE calculation (CalculateTdeeAndMacros).
+    activity_level TEXT,
+    -- techspec chat-ai.md §7 -- sync bookkeeping, mirrors monthly_plan's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
 );
 
 insertFullAssessmentResult:
 INSERT INTO full_assessment_result(
     id, completed_at, age, gender, par_q_answers, hard_stop_flagged, hard_stop_acknowledged_at,
-    equipment_preference, injury_history, injury_history_note, capacity_test, goal, sessions_per_week, selected_weekdays, session_duration_minutes
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    equipment_preference, injury_history, injury_history_note, capacity_test, goal, sessions_per_week, selected_weekdays, session_duration_minutes, activity_level, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getLatestFullAssessmentResult:
 SELECT * FROM full_assessment_result ORDER BY completed_at DESC LIMIT 1;
+
+selectChangedSince:
+SELECT * FROM full_assessment_result WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM full_assessment_result WHERE id = ?;
+
+backfillUserId:
+UPDATE full_assessment_result SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO full_assessment_result(
+    id, completed_at, age, gender, par_q_answers, hard_stop_flagged, hard_stop_acknowledged_at,
+    equipment_preference, injury_history, injury_history_note, capacity_test, goal, sessions_per_week,
+    selected_weekdays, session_duration_minutes, activity_level, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

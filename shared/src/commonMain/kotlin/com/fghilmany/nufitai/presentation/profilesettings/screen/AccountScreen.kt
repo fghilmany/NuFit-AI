@@ -125,6 +125,8 @@ fun AccountScreen(
     onNavigateToCompleteProfile: () -> Unit,
     onHomeClick: () -> Unit,
     onPlansClick: () -> Unit,
+    onChatAiClick: () -> Unit,
+    onMealPlanClick: () -> Unit,
     viewModel: AccountViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -157,6 +159,8 @@ fun AccountScreen(
                 when (tab) {
                     NavTab.HOME -> onHomeClick()
                     NavTab.RENCANA -> onPlansClick()
+                    NavTab.CHAT_AI -> onChatAiClick()
+                    NavTab.MAKAN -> onMealPlanClick()
                     else -> Unit
                 }
             },

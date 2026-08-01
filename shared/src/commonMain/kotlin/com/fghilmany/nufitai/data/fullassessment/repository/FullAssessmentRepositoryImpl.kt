@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.data.fullassessment.repository
 
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.runCatchingDatabase
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.fullassessment.datasource.FullAssessmentLocalDataSource
 import com.fghilmany.nufitai.data.fullassessment.model.CapacityTestJson
 import com.fghilmany.nufitai.data.fullassessment.model.ParQAnswerJson
@@ -9,6 +10,7 @@ import com.fghilmany.nufitai.db.Full_assessment_result as FullAssessmentResultRo
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
+import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.fullassessment.repository.FullAssessmentRepository
@@ -50,7 +52,9 @@ class FullAssessmentRepositoryImpl(
             sessionsPerWeek = result.sessionsPerWeek.toLong(),
             hariPilihanJson = json.encodeToString(result.selectedWeekdays),
             sessionDurationMinutes = result.sessionDurationMinutes.toLong(),
+            activityLevel = result.activityLevel?.name,
             flagDetails = flagDetails,
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 
@@ -91,5 +95,6 @@ class FullAssessmentRepositoryImpl(
         sessionsPerWeek = sessions_per_week.toInt(),
         selectedWeekdays = json.decodeFromString<Set<Int>>(selected_weekdays),
         sessionDurationMinutes = session_duration_minutes.toInt(),
+        activityLevel = activity_level?.let { ActivityLevel.valueOf(it) },
     )
 }

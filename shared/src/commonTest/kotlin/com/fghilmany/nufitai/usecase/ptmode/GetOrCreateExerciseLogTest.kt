@@ -4,6 +4,7 @@ import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.ptmode.entity.WorkoutExerciseLog
 import com.fghilmany.nufitai.domain.ptmode.entity.WorkoutSession
 import com.fghilmany.nufitai.domain.ptmode.entity.WorkoutSessionStatus
+import com.fghilmany.nufitai.fake.FakeChatExerciseOverrideRepository
 import com.fghilmany.nufitai.fake.FakePtModeRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -21,7 +22,7 @@ class GetOrCreateExerciseLogTest {
     fun `given no log exists for the slot when invoked then creates one defaulting to the plan's exercise`() = runTest {
         val repository = FakePtModeRepository()
 
-        val result = GetOrCreateExerciseLog(repository)(session, plannedExerciseIndex = 0, defaultExerciseId = "EX-1")
+        val result = GetOrCreateExerciseLog(repository, FakeChatExerciseOverrideRepository())(session, plannedExerciseIndex = 0, defaultExerciseId = "EX-1")
 
         assertIs<AppResult.Success<WorkoutExerciseLog>>(result)
         assertEquals("EX-1", result.data.exerciseId)
@@ -34,11 +35,25 @@ class GetOrCreateExerciseLogTest {
         val existing = WorkoutExerciseLog(id = "existing", workoutSessionId = "s1", plannedExerciseIndex = 0, exerciseId = "EX-2", skippedAt = null)
         repository.exerciseLogs[existing.id] = existing
 
-        val result = GetOrCreateExerciseLog(repository)(session, plannedExerciseIndex = 0, defaultExerciseId = "EX-1")
+        val result = GetOrCreateExerciseLog(repository, FakeChatExerciseOverrideRepository())(session, plannedExerciseIndex = 0, defaultExerciseId = "EX-1")
 
         assertIs<AppResult.Success<WorkoutExerciseLog>>(result)
         assertEquals("existing", result.data.id)
         assertEquals("EX-2", result.data.exerciseId)
         assertEquals(1, repository.exerciseLogs.size)
+    }
+
+    @Test
+    fun `given a pending chat exercise override for the slot when invoked then it is used instead of the default and consumed`() = runTest {
+        val repository = FakePtModeRepository()
+        val overrideRepository = FakeChatExerciseOverrideRepository().apply {
+            overrides["d1:0"] = "EX-SUGGESTED"
+        }
+
+        val result = GetOrCreateExerciseLog(repository, overrideRepository)(session, plannedExerciseIndex = 0, defaultExerciseId = "EX-1")
+
+        assertIs<AppResult.Success<WorkoutExerciseLog>>(result)
+        assertEquals("EX-SUGGESTED", result.data.exerciseId)
+        assertEquals(emptyMap(), overrideRepository.overrides)
     }
 }

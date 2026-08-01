@@ -1,0 +1,21 @@
+-- techspec chat-ai.md §7 -- "Terapkan ke Plan" pending substitution. Device-local only, never
+-- synced (single-use, consumed by GetOrCreateExerciseLog before it would ever need to travel
+-- cross-device).
+CREATE TABLE chat_exercise_override (
+    id TEXT NOT NULL PRIMARY KEY,
+    plan_day_id TEXT NOT NULL,
+    planned_exercise_index INTEGER NOT NULL,
+    substitute_exercise_id TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    FOREIGN KEY (plan_day_id) REFERENCES plan_day(id)
+);
+
+insertChatExerciseOverride:
+INSERT OR REPLACE INTO chat_exercise_override(id, plan_day_id, planned_exercise_index, substitute_exercise_id, created_at)
+VALUES (?, ?, ?, ?, ?);
+
+getOverrideForSlot:
+SELECT * FROM chat_exercise_override WHERE plan_day_id = ? AND planned_exercise_index = ?;
+
+deleteOverride:
+DELETE FROM chat_exercise_override WHERE id = ?;

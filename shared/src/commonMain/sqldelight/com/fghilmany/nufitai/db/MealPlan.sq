@@ -1,0 +1,32 @@
+CREATE TABLE meal_plan (
+    id TEXT NOT NULL PRIMARY KEY,
+    week_start_date INTEGER NOT NULL,   -- epoch millis, start of week (mirrors this codebase's Instant-everywhere date convention)
+    calories INTEGER NOT NULL,
+    protein_g INTEGER NOT NULL,
+    carb_g INTEGER NOT NULL,
+    fat_g INTEGER NOT NULL,
+    weight_kg_at_generation REAL NOT NULL,
+    goal TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX meal_plan_week_start_date_idx ON meal_plan(week_start_date);
+
+upsertMealPlan:
+INSERT OR REPLACE INTO meal_plan(
+    id, week_start_date, calories, protein_g, carb_g, fat_g, weight_kg_at_generation, goal, created_at, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+getMealPlanForWeek:
+SELECT * FROM meal_plan WHERE week_start_date = ?;
+
+selectChangedSince:
+SELECT * FROM meal_plan WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM meal_plan WHERE id = ?;
+
+backfillUserId:
+UPDATE meal_plan SET user_id = ? WHERE user_id IS NULL;

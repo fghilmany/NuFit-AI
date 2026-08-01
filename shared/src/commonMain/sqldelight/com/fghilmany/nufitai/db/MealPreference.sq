@@ -1,0 +1,15 @@
+CREATE TABLE meal_preference (
+    id TEXT NOT NULL PRIMARY KEY,   -- singleton row, fixed constant id (mirrors any single-row-settings-table convention this codebase later grows -- none exists yet, so this is the first)
+    cuisine_themes TEXT NOT NULL,   -- JSON array
+    mood TEXT,
+    allergies TEXT NOT NULL,        -- JSON array
+    schedule_mode TEXT NOT NULL DEFAULT 'AI_RANDOM'
+);
+
+-- Not synced this pass (device-local preference, quick to re-enter).
+
+upsertMealPreference:
+INSERT OR REPLACE INTO meal_preference(id, cuisine_themes, mood, allergies, schedule_mode) VALUES (?, ?, ?, ?, ?);
+
+getMealPreference:
+SELECT * FROM meal_preference WHERE id = ?;

@@ -6,6 +6,7 @@ import com.fghilmany.nufitai.core.util.generateId
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
+import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.CapacityTestResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQAnswer
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
@@ -36,6 +37,8 @@ class CompleteFullAssessment(private val repository: FullAssessmentRepository) {
         sessionsPerWeek: Int,
         selectedWeekdays: Set<Int>,
         sessionDurationMinutes: Int,
+        /** techspec meal-plan.md -- default null so existing callers (pre-dating the Meal Plan wizard step) keep compiling; wired for real once that step exists. */
+        activityLevel: ActivityLevel? = null,
     ): AppResult<FullAssessmentResult> {
         val result = FullAssessmentResult(
             id = generateId(),
@@ -56,6 +59,7 @@ class CompleteFullAssessment(private val repository: FullAssessmentRepository) {
             sessionsPerWeek = sessionsPerWeek,
             selectedWeekdays = selectedWeekdays,
             sessionDurationMinutes = sessionDurationMinutes,
+            activityLevel = activityLevel,
         )
         return when (val saved = repository.saveFullAssessmentResult(result)) {
             is AppResult.Success -> AppResult.Success(result)

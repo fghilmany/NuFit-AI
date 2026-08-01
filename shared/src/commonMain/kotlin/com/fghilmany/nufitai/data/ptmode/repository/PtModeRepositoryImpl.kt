@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.data.ptmode.repository
 
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.runCatchingDatabase
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.ptmode.datasource.PtModeLocalDataSource
 import com.fghilmany.nufitai.db.Workout_exercise_log as WorkoutExerciseLogRow
 import com.fghilmany.nufitai.db.Workout_session as WorkoutSessionRow
@@ -33,6 +34,7 @@ class PtModeRepositoryImpl(private val local: PtModeLocalDataSource) : PtModeRep
             currentExerciseIndex = session.currentExerciseIndex.toLong(),
             currentSetNumber = session.currentSetNumber.toLong(),
             restEndAt = session.restEndAt?.toEpochMilliseconds(),
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 
@@ -47,6 +49,7 @@ class PtModeRepositoryImpl(private val local: PtModeLocalDataSource) : PtModeRep
             plannedExerciseIndex = log.plannedExerciseIndex.toLong(),
             exerciseId = log.exerciseId,
             skippedAt = log.skippedAt?.toEpochMilliseconds(),
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 
@@ -62,6 +65,7 @@ class PtModeRepositoryImpl(private val local: PtModeLocalDataSource) : PtModeRep
             weightKg = log.weightKg,
             reps = log.reps.toLong(),
             completedAt = log.completedAt.toEpochMilliseconds(),
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 

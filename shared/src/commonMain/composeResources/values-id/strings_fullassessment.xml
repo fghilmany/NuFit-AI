@@ -37,6 +37,7 @@
     <string name="fullassessment_interview_frequency_label">Frekuensi latihan per minggu</string>
     <string name="fullassessment_interview_training_days_title">Hari latihan</string>
     <string name="fullassessment_interview_session_duration_label">Durasi sesi (menit)</string>
+    <string name="fullassessment_interview_activity_level_title">Tingkat aktivitas harian</string>
     <string name="fullassessment_interview_equipment_title">Preferensi alat</string>
     <string name="fullassessment_interview_injury_history_title">Riwayat cedera / nyeri (area)</string>
     <string name="fullassessment_interview_injury_history_note_label">Bagian mana yang nyeri? (mis. "Lutut kiri saat jongkok")</string>

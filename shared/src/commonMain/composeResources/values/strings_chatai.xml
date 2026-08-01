@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatai_gate_guest_title">Chat AI</string>
+    <string name="chatai_gate_guest_body">Log in to chat with an AI that knows your fitness profile and training history.</string>
+    <string name="chatai_gate_cta_login">Continue with Google</string>
+
+    <string name="chatai_top_bar_title">Chat AI</string>
+    <string name="chatai_overflow_content_description">More options</string>
+    <string name="chatai_overflow_clear_conversation">Clear conversation</string>
+
+    <string name="chatai_quota_label">%1$d/%2$d chats today</string>
+    <string name="chatai_quota_exhausted_body">You have used all your chats for today. Upgrade to Subscribe for a higher limit.</string>
+    <string name="chatai_quota_exhausted_cta">Upgrade</string>
+
+    <string name="chatai_empty_state_title">Ask anything about gym and food</string>
+    <string name="chatai_empty_starter_1">Push Up alternative?</string>
+    <string name="chatai_empty_starter_2">How much protein do I need?</string>
+    <string name="chatai_empty_starter_3">Explain my plan this week</string>
+
+    <string name="chatai_composer_placeholder">Ask NuFit AI…</string>
+    <string name="chatai_composer_send_content_description">Send</string>
+
+    <string name="chatai_suggestion_apply_cta">Apply to Plan</string>
+    <string name="chatai_suggestion_ask_more_cta">Ask More</string>
+    <string name="chatai_suggestion_apply_success">Applied to your next session.</string>
+    <string name="chatai_suggestion_apply_error_not_found">Not found in your active plan.</string>
+
+    <string name="chatai_message_failed_label">Not sent</string>
+    <string name="chatai_message_retry_cta">Retry</string>
+    <string name="chatai_message_sending_label">Sending…</string>
+</resources>

@@ -4,14 +4,26 @@ CREATE TABLE workout_exercise_log (
     planned_exercise_index INTEGER NOT NULL,
     exercise_id TEXT NOT NULL,
     skipped_at INTEGER,
+    -- techspec chat-ai.md §7 -- sync bookkeeping, mirrors monthly_plan's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (workout_session_id) REFERENCES workout_session(id),
     FOREIGN KEY (exercise_id) REFERENCES exercise(id)
 );
 
 insertWorkoutExerciseLog:
 INSERT OR REPLACE INTO workout_exercise_log(
-    id, workout_session_id, planned_exercise_index, exercise_id, skipped_at
-) VALUES (?, ?, ?, ?, ?);
+    id, workout_session_id, planned_exercise_index, exercise_id, skipped_at, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 getExerciseLogsForSession:
 SELECT * FROM workout_exercise_log WHERE workout_session_id = ?;
+
+selectChangedSince:
+SELECT * FROM workout_exercise_log WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM workout_exercise_log WHERE id = ?;
+
+backfillUserId:
+UPDATE workout_exercise_log SET user_id = ? WHERE user_id IS NULL;

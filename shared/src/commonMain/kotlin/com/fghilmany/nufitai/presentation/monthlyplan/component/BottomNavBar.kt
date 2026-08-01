@@ -50,11 +50,7 @@ private fun NavTab.label(): String = when (this) {
     NavTab.AKUN -> stringResource(Res.string.monthlyplan_nav_account)
 }
 
-/**
- * Figma node 12:654 -- 5 tabs (Keputusan #12). Home, Plans (issue #82), and Akun (issue #83) are
- * real destinations; Chat AI/Meal Plan aren't built yet, so they stay inert rather than
- * navigating to a stub -- avoids fabricating a "coming soon" screen not in this pass's scope.
- */
+/** Figma node 12:654 -- 5 tabs (Keputusan #12). All 5 are real destinations as of techspec meal-plan.md. */
 @Composable
 fun BottomNavBar(activeTab: NavTab, onNavigate: (NavTab) -> Unit, modifier: Modifier = Modifier) {
     Row(
@@ -66,8 +62,7 @@ fun BottomNavBar(activeTab: NavTab, onNavigate: (NavTab) -> Unit, modifier: Modi
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         NavTab.entries.forEach { tab ->
-            val isNavigable = tab == NavTab.HOME || tab == NavTab.RENCANA || tab == NavTab.AKUN
-            NavTabItem(tab, isActive = tab == activeTab, isNavigable = isNavigable, onClick = { onNavigate(tab) })
+            NavTabItem(tab, isActive = tab == activeTab, isNavigable = true, onClick = { onNavigate(tab) })
         }
     }
 }

@@ -38,6 +38,8 @@ fun initKoin(
             monthlyPlanModule,
             assessmentDetailModule,
             ptModeModule,
+            chatAiModule,
+            mealPlanModule,
             entitlementModule(settingsFactory),
             aiCustomPlanModule,
             planManagementModule,

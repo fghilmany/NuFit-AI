@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.CircularProgressIndicator
@@ -29,6 +30,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.presentation.monthlyplan.component.AssessmentDetailBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
@@ -42,11 +44,14 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.HomeState
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.HomeViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.WeekEntry
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.common_app_name
 import nufitai.shared.generated.resources.monthlyplan_home_empty_state
+import nufitai.shared.generated.resources.monthlyplan_home_empty_state_body
+import nufitai.shared.generated.resources.monthlyplan_home_empty_state_cta
 import nufitai.shared.generated.resources.monthlyplan_home_greeting
 import nufitai.shared.generated.resources.monthlyplan_home_greeting_named
 import nufitai.shared.generated.resources.monthlyplan_home_notification_content_description
@@ -65,6 +70,8 @@ fun HomeScreen(
     onExerciseLibraryClick: () -> Unit,
     onPlansClick: () -> Unit,
     onAccountClick: () -> Unit,
+    onChatAiClick: () -> Unit,
+    onMealPlanClick: () -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -72,9 +79,7 @@ fun HomeScreen(
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         when (val current = state) {
             HomeState.Loading -> LoadingBox()
-            HomeState.Empty -> Box(Modifier.fillMaxSize(), Alignment.Center) {
-                Text(stringResource(Res.string.monthlyplan_home_empty_state), style = MaterialTheme.typography.bodyLarge)
-            }
+            HomeState.Empty -> EmptyPlanState(onCreatePlanClick = onPlansClick)
             is HomeState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
             is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick, onExerciseLibraryClick)
         }
@@ -86,6 +91,8 @@ fun HomeScreen(
                 when (tab) {
                     NavTab.RENCANA -> onPlansClick()
                     NavTab.AKUN -> onAccountClick()
+                    NavTab.CHAT_AI -> onChatAiClick()
+                    NavTab.MAKAN -> onMealPlanClick()
                     else -> Unit
                 }
             },
@@ -204,6 +211,33 @@ private fun TopAppBarSection(modifier: Modifier = Modifier) {
         }
         IconButton(onClick = {}) {
             Icon(Icons.Filled.Notifications, contentDescription = stringResource(Res.string.monthlyplan_home_notification_content_description), tint = MaterialTheme.colorScheme.onSurface)
+        }
+    }
+}
+
+/** Was a plain centered "Belum ada plan aktif" text -- feedback: too passive, no way forward. */
+@Composable
+private fun EmptyPlanState(onCreatePlanClick: () -> Unit, modifier: Modifier = Modifier) {
+    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.padding(horizontal = 32.dp),
+        ) {
+            Box(
+                modifier = Modifier.size(72.dp).clip(CircleShape).background(NuFitColors.SecondaryContainer),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Filled.FitnessCenter, contentDescription = null, tint = NuFitColors.OnSecondaryContainer, modifier = Modifier.size(32.dp))
+            }
+            Text(stringResource(Res.string.monthlyplan_home_empty_state), style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center)
+            Text(
+                stringResource(Res.string.monthlyplan_home_empty_state_body),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+            )
+            AppButton(text = stringResource(Res.string.monthlyplan_home_empty_state_cta), onClick = onCreatePlanClick, modifier = Modifier.fillMaxWidth())
         }
     }
 }

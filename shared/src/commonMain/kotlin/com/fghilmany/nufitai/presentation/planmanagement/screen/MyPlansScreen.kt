@@ -67,6 +67,8 @@ fun MyPlansScreen(
     onExerciseLibraryClick: () -> Unit,
     onHomeClick: () -> Unit,
     onAccountClick: () -> Unit,
+    onChatAiClick: () -> Unit,
+    onMealPlanClick: () -> Unit,
     viewModel: MyPlansViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -84,6 +86,8 @@ fun MyPlansScreen(
                 when (tab) {
                     NavTab.HOME -> onHomeClick()
                     NavTab.AKUN -> onAccountClick()
+                    NavTab.CHAT_AI -> onChatAiClick()
+                    NavTab.MAKAN -> onMealPlanClick()
                     else -> Unit
                 }
             },

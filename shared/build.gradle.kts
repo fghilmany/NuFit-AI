@@ -55,6 +55,10 @@ kotlin {
             implementation(libs.androidx.credentials.play.services.auth)
             implementation(libs.googleid)
             // P-15 "Ganti Bahasa" -- LocaleController.android.kt uses AppCompatDelegate/LocaleListCompat.
+            // Also transitively supplies androidx.core (NotificationCompat/NotificationManagerCompat/
+            // ContextCompat, used by MealReminderScheduler.android.kt) -- the version catalog's own
+            // `androidx-core-ktx` entry (1.19.0) requires compileSdk 37/AGP 9.1.0, too new for this
+            // project's compileSdk 36/AGP 9.0.1, so it's deliberately NOT declared explicitly here.
             implementation(libs.androidx.appcompat)
         }
         commonMain.dependencies {

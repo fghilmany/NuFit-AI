@@ -25,6 +25,7 @@ import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
+import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
@@ -67,6 +68,7 @@ import nufitai.shared.generated.resources.fullassessment_interview_gender_male
 import nufitai.shared.generated.resources.fullassessment_interview_goal_title
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_note_label
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_title
+import nufitai.shared.generated.resources.fullassessment_interview_activity_level_title
 import nufitai.shared.generated.resources.fullassessment_interview_session_duration_label
 import nufitai.shared.generated.resources.fullassessment_interview_training_days_title
 import nufitai.shared.generated.resources.fullassessment_movement_title
@@ -241,6 +243,12 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
                 label = stringResource(Res.string.fullassessment_interview_session_duration_label),
                 modifier = Modifier.fillMaxWidth(),
             )
+        }
+        item { Text(stringResource(Res.string.fullassessment_interview_activity_level_title), style = MaterialTheme.typography.titleSmall) }
+        items(ActivityLevel.entries.toList()) { activityLevel ->
+            ToggleButton(activityLevel.name, step.activityLevel == activityLevel, Modifier.fillMaxWidth()) {
+                viewModel.onEvent(FullAssessmentEvent.SetActivityLevel(activityLevel))
+            }
         }
         item { Text(stringResource(Res.string.fullassessment_interview_equipment_title), style = MaterialTheme.typography.titleSmall) }
         items(EquipmentCategory.entries.toList()) { equipment ->

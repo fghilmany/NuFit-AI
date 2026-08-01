@@ -98,6 +98,7 @@ class MonthlyPlanRepositoryImpl(
             skippedAt = log.skippedAt?.toEpochMilliseconds(),
             rpeReported = log.rpeReported?.toLong(),
             painReportedJson = log.painReported?.let { json.encodeToString(it) },
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 

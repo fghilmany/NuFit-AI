@@ -30,7 +30,8 @@ val ptModeModule = module {
     single<PtModeRepository> { PtModeRepositoryImpl(local = get()) }
 
     factory { GetOrCreateWorkoutSession(repository = get()) }
-    factory { GetOrCreateExerciseLog(repository = get()) }
+    // overrideRepository registered in chatAiModule -- both load together in KoinInit.
+    factory { GetOrCreateExerciseLog(repository = get(), overrideRepository = get()) }
     factory { ConfirmSet(repository = get()) }
     factory { SkipRestTimer(repository = get()) }
     factory { SkipExercise(repository = get()) }

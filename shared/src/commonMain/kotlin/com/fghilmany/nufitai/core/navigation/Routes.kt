@@ -99,8 +99,32 @@ sealed interface Route {
 
     @Serializable
     data object AboutApp : Route
+
+    /** P-16 A -- Chat AI entitlement gate (techspec chat-ai.md, AC-1). */
+    @Serializable
+    data object ChatGate : Route
+
+    /** P-16 -- Chat AI (techspec chat-ai.md). */
+    @Serializable
+    data object Chat : Route
+
+    /** P-17 A gate -- Meal Plan entitlement + body-data gate (techspec meal-plan.md, AC-1/AC-2/AC-3). */
+    @Serializable
+    data object MealPlanGate : Route
+
+    /** P-17 A -- Meal Plan home (techspec meal-plan.md). */
+    @Serializable
+    data object MealPlan : Route
+
+    /** P-17 -- meal detail + eaten/skip logging (techspec meal-plan.md, AC-7). */
+    @Serializable
+    data class MealDetail(val plannedMealId: String) : Route
+
+    /** P-17 B -- Preferensi Makan (techspec meal-plan.md, AC-5). */
+    @Serializable
+    data object MealPreference : Route
 }
 
 /** issue #83 -- where [Route.Login]/[Route.CompleteProfile] return to once signed in. */
 @Serializable
-enum class LoginReturnTarget { HOME, AI_CUSTOM_PLAN, FULL_ASSESSMENT }
+enum class LoginReturnTarget { HOME, AI_CUSTOM_PLAN, FULL_ASSESSMENT, CHAT_AI, MEAL_PLAN }

@@ -40,4 +40,6 @@ data class FullAssessmentResult(
     /** ISO day-of-week, 1=Monday..7=Sunday. */
     val selectedWeekdays: Set<Int>,
     val sessionDurationMinutes: Int,
+    /** techspec meal-plan.md §5/§7 -- basis for on-device TDEE calculation; nullable since rows created before this field existed won't have it. */
+    val activityLevel: ActivityLevel? = null,
 )

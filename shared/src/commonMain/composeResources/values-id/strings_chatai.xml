@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chatai_gate_guest_title">Chat AI</string>
+    <string name="chatai_gate_guest_body">Login untuk mengobrol dengan AI yang memahami profil dan riwayat latihanmu.</string>
+    <string name="chatai_gate_cta_login">Lanjutkan dengan Google</string>
+
+    <string name="chatai_top_bar_title">Chat AI</string>
+    <string name="chatai_overflow_content_description">Menu lainnya</string>
+    <string name="chatai_overflow_clear_conversation">Hapus percakapan</string>
+
+    <string name="chatai_quota_label">%1$d/%2$d chat hari ini</string>
+    <string name="chatai_quota_exhausted_body">Kuota chat kamu hari ini sudah habis. Upgrade ke Subscribe untuk limit lebih tinggi.</string>
+    <string name="chatai_quota_exhausted_cta">Upgrade</string>
+
+    <string name="chatai_empty_state_title">Tanya apa saja soal gym dan makanan</string>
+    <string name="chatai_empty_starter_1">Alternatif Push Up?</string>
+    <string name="chatai_empty_starter_2">Berapa protein yang aku butuhkan?</string>
+    <string name="chatai_empty_starter_3">Jelaskan plan minggu ini</string>
+
+    <string name="chatai_composer_placeholder">Tanya NuFit AI…</string>
+    <string name="chatai_composer_send_content_description">Kirim</string>
+
+    <string name="chatai_suggestion_apply_cta">Terapkan ke Plan</string>
+    <string name="chatai_suggestion_ask_more_cta">Tanya Lagi</string>
+    <string name="chatai_suggestion_apply_success">Diterapkan ke sesi terdekatmu.</string>
+    <string name="chatai_suggestion_apply_error_not_found">Tidak ditemukan di plan aktif kamu.</string>
+
+    <string name="chatai_message_failed_label">Gagal terkirim</string>
+    <string name="chatai_message_retry_cta">Coba Lagi</string>
+    <string name="chatai_message_sending_label">Mengirim…</string>
+</resources>

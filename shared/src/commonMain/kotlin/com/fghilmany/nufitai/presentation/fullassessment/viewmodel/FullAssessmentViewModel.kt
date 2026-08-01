@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
+import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.CapacityTestResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQAnswer
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQQuestionId
@@ -51,6 +52,8 @@ sealed interface FullAssessmentState {
         val sessionsPerWeek: String = "",
         val selectedWeekdays: Set<Int> = emptySet(),
         val sessionDurationMinutes: String = "",
+        /** techspec meal-plan.md §3/§5 -- TDEE calculation basis, asked alongside the rest of the interview step. */
+        val activityLevel: ActivityLevel? = null,
         val flagsPostural: Set<ExerciseFlag> = emptySet(),
         val movementFlags: Set<ExerciseFlag> = emptySet(),
         val capacityTestSkipped: Boolean = false,
@@ -68,6 +71,10 @@ sealed interface FullAssessmentState {
                 sessionsPerWeek.toIntOrNull() != null &&
                 selectedWeekdays.isNotEmpty() &&
                 sessionDurationMinutes.toIntOrNull() != null
+        // activityLevel is intentionally NOT required to proceed -- mirrors BodyMeasurement's
+        // existing optional-everywhere convention. Meal Plan's own NeedsBodyData gate (meal-plan.md
+        // §8) enforces it specifically for that feature, without adding friction to the Full
+        // Assessment flow itself (used by the Logged-In tier's rule engine too, not just Meal Plan).
         val canSubmit: Boolean
             get() = capacityTestSkipped ||
                 pushupReps.isNotBlank() || plankSeconds.isNotBlank() || sitToStandReps.isNotBlank()
@@ -91,6 +98,7 @@ sealed interface FullAssessmentEvent {
     data class SetSessionsPerWeek(val value: String) : FullAssessmentEvent
     data class ToggleSelectedWeekday(val value: Int) : FullAssessmentEvent
     data class SetSessionDurationMinutes(val value: String) : FullAssessmentEvent
+    data class SetActivityLevel(val value: ActivityLevel) : FullAssessmentEvent
     data object NextFromInterview : FullAssessmentEvent
     data class TogglePosturalFlag(val value: ExerciseFlag) : FullAssessmentEvent
     data object NextFromPostural : FullAssessmentEvent
@@ -130,6 +138,7 @@ class FullAssessmentViewModel(
             is FullAssessmentEvent.SetSessionsPerWeek -> updateStep { it.copy(sessionsPerWeek = event.value) }
             is FullAssessmentEvent.ToggleSelectedWeekday -> updateStep { it.copy(selectedWeekdays = it.selectedWeekdays.toggle(event.value)) }
             is FullAssessmentEvent.SetSessionDurationMinutes -> updateStep { it.copy(sessionDurationMinutes = event.value) }
+            is FullAssessmentEvent.SetActivityLevel -> updateStep { it.copy(activityLevel = event.value) }
             FullAssessmentEvent.NextFromInterview -> updateStep {
                 if (it.canProceedFromInterview) it.copy(phase = FullAssessmentPhase.POSTURAL) else it
             }
@@ -193,6 +202,7 @@ class FullAssessmentViewModel(
                 sessionsPerWeek = current.sessionsPerWeek.toIntOrNull() ?: return@launch,
                 selectedWeekdays = current.selectedWeekdays,
                 sessionDurationMinutes = current.sessionDurationMinutes.toIntOrNull() ?: return@launch,
+                activityLevel = current.activityLevel,
             )
             when (result) {
                 is AppResult.Success -> {

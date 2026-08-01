@@ -12,9 +12,15 @@ import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanPrevie
 import com.fghilmany.nufitai.presentation.assessmentdetail.screen.AssessmentDetailScreen
 import com.fghilmany.nufitai.presentation.auth.screen.CompleteProfileScreen
 import com.fghilmany.nufitai.presentation.auth.screen.LoginScreen
+import com.fghilmany.nufitai.presentation.chatai.screen.ChatGateScreen
+import com.fghilmany.nufitai.presentation.chatai.screen.ChatScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseDetailScreen
 import com.fghilmany.nufitai.presentation.exerciselibrary.screen.ExerciseLibraryScreen
 import com.fghilmany.nufitai.presentation.fullassessment.screen.FullAssessmentStubScreen
+import com.fghilmany.nufitai.presentation.mealplan.screen.MealDetailScreen
+import com.fghilmany.nufitai.presentation.mealplan.screen.MealPlanGateScreen
+import com.fghilmany.nufitai.presentation.mealplan.screen.MealPlanScreen
+import com.fghilmany.nufitai.presentation.mealplan.screen.MealPreferenceScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.HomeScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.SessionDetailScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.BodyDataScreen
@@ -109,6 +115,16 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                         popUpTo<Route.Home> { inclusive = true }
                     }
                 },
+                onChatAiClick = {
+                    navController.navigate(Route.ChatGate) {
+                        popUpTo<Route.Home> { inclusive = true }
+                    }
+                },
+                onMealPlanClick = {
+                    navController.navigate(Route.MealPlanGate) {
+                        popUpTo<Route.Home> { inclusive = true }
+                    }
+                },
             )
         }
 
@@ -124,6 +140,16 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 },
                 onAccountClick = {
                     navController.navigate(Route.Account) {
+                        popUpTo<Route.MyPlans> { inclusive = true }
+                    }
+                },
+                onChatAiClick = {
+                    navController.navigate(Route.ChatGate) {
+                        popUpTo<Route.MyPlans> { inclusive = true }
+                    }
+                },
+                onMealPlanClick = {
+                    navController.navigate(Route.MealPlanGate) {
                         popUpTo<Route.MyPlans> { inclusive = true }
                     }
                 },
@@ -243,6 +269,16 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                         popUpTo<Route.Account> { inclusive = true }
                     }
                 },
+                onChatAiClick = {
+                    navController.navigate(Route.ChatGate) {
+                        popUpTo<Route.Account> { inclusive = true }
+                    }
+                },
+                onMealPlanClick = {
+                    navController.navigate(Route.MealPlanGate) {
+                        popUpTo<Route.Account> { inclusive = true }
+                    }
+                },
             )
         }
 
@@ -329,6 +365,138 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onAlternativeClick = { alternativeId -> navController.navigate(Route.ExerciseDetail(alternativeId)) },
             )
         }
+
+        composable<Route.ChatGate> {
+            ChatGateScreen(
+                onNavigateToLogin = { navController.navigate(Route.Login(returnTo = LoginReturnTarget.CHAT_AI)) },
+                onPassThrough = {
+                    navController.navigate(Route.Chat) {
+                        popUpTo<Route.ChatGate> { inclusive = true }
+                    }
+                },
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.ChatGate> { inclusive = true }
+                    }
+                },
+                onPlansClick = {
+                    navController.navigate(Route.MyPlans) {
+                        popUpTo<Route.ChatGate> { inclusive = true }
+                    }
+                },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.ChatGate> { inclusive = true }
+                    }
+                },
+                onMealPlanClick = {
+                    navController.navigate(Route.MealPlanGate) {
+                        popUpTo<Route.ChatGate> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.Chat> {
+            ChatScreen(
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.Chat> { inclusive = true }
+                    }
+                },
+                onPlansClick = {
+                    navController.navigate(Route.MyPlans) {
+                        popUpTo<Route.Chat> { inclusive = true }
+                    }
+                },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.Chat> { inclusive = true }
+                    }
+                },
+                onMealPlanClick = {
+                    navController.navigate(Route.MealPlanGate) {
+                        popUpTo<Route.Chat> { inclusive = true }
+                    }
+                },
+                onExerciseClick = { exerciseId -> navController.navigate(Route.ExerciseDetail(exerciseId)) },
+            )
+        }
+
+        composable<Route.MealPlanGate> {
+            MealPlanGateScreen(
+                onNavigateToLogin = { navController.navigate(Route.Login(returnTo = LoginReturnTarget.MEAL_PLAN)) },
+                // Body data (height/weight) lives in Account; activityLevel lives in the Full
+                // Assessment wizard -- Account is the one screen that surfaces both (weight CTA +
+                // "Ulangi assessment" entry point), so route there rather than picking just one.
+                onNavigateToCompleteBodyData = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                onPassThrough = {
+                    navController.navigate(Route.MealPlan) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                onPlansClick = {
+                    navController.navigate(Route.MyPlans) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                onChatAiClick = {
+                    navController.navigate(Route.ChatGate) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.MealPlan> {
+            MealPlanScreen(
+                onHomeClick = {
+                    navController.navigate(Route.Home) {
+                        popUpTo<Route.MealPlan> { inclusive = true }
+                    }
+                },
+                onPlansClick = {
+                    navController.navigate(Route.MyPlans) {
+                        popUpTo<Route.MealPlan> { inclusive = true }
+                    }
+                },
+                onChatAiClick = {
+                    navController.navigate(Route.ChatGate) {
+                        popUpTo<Route.MealPlan> { inclusive = true }
+                    }
+                },
+                onAccountClick = {
+                    navController.navigate(Route.Account) {
+                        popUpTo<Route.MealPlan> { inclusive = true }
+                    }
+                },
+                onMealClick = { plannedMealId -> navController.navigate(Route.MealDetail(plannedMealId)) },
+                onPreferenceClick = { navController.navigate(Route.MealPreference) },
+            )
+        }
+
+        composable<Route.MealDetail> { backStackEntry ->
+            val route = backStackEntry.toRoute<Route.MealDetail>()
+            MealDetailScreen(plannedMealId = route.plannedMealId, onBack = { navController.popBackStack() })
+        }
+
+        composable<Route.MealPreference> {
+            MealPreferenceScreen(onBack = { navController.popBackStack() })
+        }
     }
 }
 
@@ -343,4 +511,6 @@ private fun LoginReturnTarget.toDestination(): Route = when (this) {
     LoginReturnTarget.HOME -> Route.Home
     LoginReturnTarget.AI_CUSTOM_PLAN -> Route.AiCustomPlanGate
     LoginReturnTarget.FULL_ASSESSMENT -> Route.FullAssessmentStub()
+    LoginReturnTarget.CHAT_AI -> Route.ChatGate
+    LoginReturnTarget.MEAL_PLAN -> Route.MealPlanGate
 }

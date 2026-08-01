@@ -37,6 +37,7 @@
     <string name="fullassessment_interview_frequency_label">Training frequency per week</string>
     <string name="fullassessment_interview_training_days_title">Training days</string>
     <string name="fullassessment_interview_session_duration_label">Session duration (minutes)</string>
+    <string name="fullassessment_interview_activity_level_title">Daily activity level</string>
     <string name="fullassessment_interview_equipment_title">Equipment preference</string>
     <string name="fullassessment_interview_injury_history_title">Injury / pain history (area)</string>
     <string name="fullassessment_interview_injury_history_note_label">Which part hurts? (e.g. "Left knee when squatting")</string>

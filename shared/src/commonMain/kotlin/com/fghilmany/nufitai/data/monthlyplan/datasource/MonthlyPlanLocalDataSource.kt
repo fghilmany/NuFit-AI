@@ -200,6 +200,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         skippedAt: Long?,
         rpeReported: Long?,
         painReportedJson: String?,
+        updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
         database.planDaySessionLogQueries.insertPlanDaySessionLog(
             id = id,
@@ -208,6 +209,8 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
             skipped_at = skippedAt,
             rpe_reported = rpeReported,
             pain_reported = painReportedJson,
+            user_id = null,
+            updated_at = updatedAt,
         )
     }
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mealplan_gate_guest_title">Meal Plan</string>
+    <string name="mealplan_gate_guest_body">Log in to get a meal plan calculated from your body profile and goal.</string>
+    <string name="mealplan_gate_cta_login">Continue with Google</string>
+
+    <string name="mealplan_gate_paywall_title">Meal Plan</string>
+    <string name="mealplan_gate_paywall_body">Get a weekly meal plan matched to your calorie and macro targets.</string>
+    <string name="mealplan_gate_cta_subscribe">Start Subscription</string>
+
+    <string name="mealplan_gate_needs_body_data_title">Complete Your Body Data First</string>
+    <string name="mealplan_gate_needs_body_data_body">We need your height, weight, and daily activity level to calculate your calorie needs.</string>
+    <string name="mealplan_gate_cta_complete_data">Complete Data</string>
+
+    <string name="mealplan_top_bar_title">Meal Plan</string>
+    <string name="mealplan_this_week">This Week</string>
+    <string name="mealplan_generate_cta">Generate This Week (AI)</string>
+    <string name="mealplan_regenerate_cta">Regenerate This Week (AI)</string>
+
+    <string name="mealplan_regenerate_confirm_title">Regenerate This Week?</string>
+    <string name="mealplan_regenerate_confirm_body">Your eaten/skipped log for this week will be lost.</string>
+    <string name="mealplan_regenerate_confirm_action">Regenerate</string>
+    <string name="mealplan_regenerate_confirm_cancel">Cancel</string>
+
+    <string name="mealplan_regenerate_suggestion_body">Your weight has changed — your calorie needs may be different now.</string>
+    <string name="mealplan_regenerate_suggestion_cta">Recalculate</string>
+
+    <string name="mealplan_empty_state_title">No meal plan yet for this week</string>
+
+    <string name="mealplan_prep_minutes_label">%1$d min</string>
+    <string name="mealplan_slot_breakfast">BREAKFAST</string>
+    <string name="mealplan_slot_lunch">LUNCH</string>
+    <string name="mealplan_slot_dinner">DINNER</string>
+
+    <string name="mealplan_detail_ingredients_title">Ingredients</string>
+    <string name="mealplan_detail_mark_eaten">Mark as Eaten</string>
+    <string name="mealplan_detail_mark_skipped">Skip</string>
+    <string name="mealplan_detail_status_eaten">Eaten</string>
+    <string name="mealplan_detail_status_skipped">Skipped</string>
+    <string name="mealplan_detail_calories_label">%1$d kcal · Protein %2$dg · Carb %3$dg · Fat %4$dg</string>
+
+    <string name="mealplan_preference_top_bar_title">Meal Preferences</string>
+    <string name="mealplan_preference_cuisine_title">Favorite Cuisine Themes</string>
+    <string name="mealplan_preference_cuisine_subtitle">Choose one or more themes you like most.</string>
+    <string name="mealplan_preference_mood_title">Mood</string>
+    <string name="mealplan_preference_mood_cepat">Quick</string>
+    <string name="mealplan_preference_mood_comfort">Comfort</string>
+    <string name="mealplan_preference_mood_sehat">Healthy</string>
+    <string name="mealplan_preference_mood_pedas">Spicy</string>
+    <string name="mealplan_preference_allergy_title">Allergies &amp; Restrictions</string>
+    <string name="mealplan_preference_allergy_placeholder">Write your restriction here…</string>
+    <string name="mealplan_preference_allergy_add">Add</string>
+    <string name="mealplan_preference_schedule_title">Schedule Preference</string>
+    <string name="mealplan_preference_schedule_ai_random_title">AI Random</string>
+    <string name="mealplan_preference_schedule_ai_random_body">Let AI surprise you with daily menus based on your nutrition profile.</string>
+    <string name="mealplan_preference_schedule_manual_title">Manual per Day</string>
+    <string name="mealplan_preference_schedule_manual_body">I want to choose the menu theme myself each day.</string>
+    <string name="mealplan_preference_save_cta">Save Preferences</string>
+
+    <string name="mealplan_reminder_toggle_label">Meal reminders</string>
+    <string name="mealplan_reminder_permission_denied_note">Notification permission not granted — reminders won\'t appear until you enable it in system settings.</string>
+</resources>

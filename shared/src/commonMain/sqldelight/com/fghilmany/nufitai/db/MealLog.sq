@@ -1,0 +1,25 @@
+CREATE TABLE meal_log (
+    id TEXT NOT NULL PRIMARY KEY,
+    planned_meal_id TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'PENDING',
+    logged_at INTEGER,
+    FOREIGN KEY (planned_meal_id) REFERENCES planned_meal(id)
+);
+
+-- Not synced this pass, same reasoning as PlannedMeal.sq.
+
+upsertMealLog:
+INSERT OR REPLACE INTO meal_log(id, planned_meal_id, status, logged_at) VALUES (?, ?, ?, ?);
+
+getMealLogsForPlan:
+SELECT meal_log.* FROM meal_log
+INNER JOIN planned_meal ON planned_meal.id = meal_log.planned_meal_id
+WHERE planned_meal.meal_plan_id = ?;
+
+getMealLogForPlannedMeal:
+SELECT * FROM meal_log WHERE planned_meal_id = ?;
+
+-- AC-8: regenerate deletes a week's logs together with its planned_meal rows (deletePlannedMealsForPlan
+-- doesn't cascade -- application-level, mirrors this codebase's existing PlanDay convention).
+deleteMealLogsForPlan:
+DELETE FROM meal_log WHERE planned_meal_id IN (SELECT id FROM planned_meal WHERE meal_plan_id = ?);

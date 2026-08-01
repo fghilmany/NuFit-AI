@@ -26,6 +26,7 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
         currentExerciseIndex: Long,
         currentSetNumber: Long,
         restEndAt: Long?,
+        updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
         database.workoutSessionQueries.insertWorkoutSession(
             id = id,
@@ -36,6 +37,8 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
             current_exercise_index = currentExerciseIndex,
             current_set_number = currentSetNumber,
             rest_end_at = restEndAt,
+            user_id = null,
+            updated_at = updatedAt,
         )
     }
 
@@ -45,6 +48,7 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
         plannedExerciseIndex: Long,
         exerciseId: String,
         skippedAt: Long?,
+        updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
         database.workoutExerciseLogQueries.insertWorkoutExerciseLog(
             id = id,
@@ -52,6 +56,8 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
             planned_exercise_index = plannedExerciseIndex,
             exercise_id = exerciseId,
             skipped_at = skippedAt,
+            user_id = null,
+            updated_at = updatedAt,
         )
     }
 
@@ -66,6 +72,7 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
         weightKg: Double,
         reps: Long,
         completedAt: Long,
+        updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
         database.workoutSetLogQueries.insertWorkoutSetLog(
             id = id,
@@ -74,6 +81,8 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
             weight_kg = weightKg,
             reps = reps,
             completed_at = completedAt,
+            user_id = null,
+            updated_at = updatedAt,
         )
     }
 
@@ -83,5 +92,39 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
 
     suspend fun getSetLogsForExercise(exerciseId: String): List<WorkoutSetLogRow> = withContext(Dispatchers.Default) {
         database.workoutSetLogQueries.getSetLogsForExercise(exerciseId).executeAsList()
+    }
+
+    /**
+     * techspec chat-ai.md §7 -- sync engine cursor query for `workout_session` (the aggregate
+     * parent). Scope note: nested `workout_exercise_log`/`workout_set_log`/`plan_day_session_log`
+     * sync is a follow-up, same simplification `MonthlyPlanSyncParticipant` already carries for
+     * its own nested `plan_day`/`planned_exercise` children.
+     */
+    suspend fun getChangedSessionsSince(updatedAfter: Long): List<WorkoutSessionRow> = withContext(Dispatchers.Default) {
+        database.workoutSessionQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun getSessionById(id: String): WorkoutSessionRow? = withContext(Dispatchers.Default) {
+        database.workoutSessionQueries.selectById(id).executeAsOneOrNull()
+    }
+
+    suspend fun backfillSessionUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.workoutSessionQueries.backfillUserId(userId)
+    }
+
+    /** techspec chat-ai.md §7 -- remote-sync upsert; unlike [upsertSession] (local writes, always `user_id = null`), this preserves the remote row's `user_id`. */
+    suspend fun upsertSessionFromRemote(row: WorkoutSessionRow) = withContext(Dispatchers.Default) {
+        database.workoutSessionQueries.insertWorkoutSession(
+            id = row.id,
+            plan_day_id = row.plan_day_id,
+            started_at = row.started_at,
+            completed_at = row.completed_at,
+            status = row.status,
+            current_exercise_index = row.current_exercise_index,
+            current_set_number = row.current_set_number,
+            rest_end_at = row.rest_end_at,
+            user_id = row.user_id,
+            updated_at = row.updated_at,
+        )
     }
 }

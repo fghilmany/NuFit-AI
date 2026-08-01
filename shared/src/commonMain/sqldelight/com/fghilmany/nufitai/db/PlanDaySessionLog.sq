@@ -5,12 +5,15 @@ CREATE TABLE plan_day_session_log (
     skipped_at INTEGER,
     rpe_reported INTEGER,
     pain_reported TEXT,
+    -- techspec chat-ai.md §7 -- sync bookkeeping, mirrors monthly_plan's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (plan_day_id) REFERENCES plan_day(id)
 );
 
 insertPlanDaySessionLog:
-INSERT OR REPLACE INTO plan_day_session_log(id, plan_day_id, completed_at, skipped_at, rpe_reported, pain_reported)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO plan_day_session_log(id, plan_day_id, completed_at, skipped_at, rpe_reported, pain_reported, user_id, updated_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 getSessionLogsForPlan:
 SELECT plan_day_session_log.* FROM plan_day_session_log
@@ -19,3 +22,12 @@ WHERE plan_day.monthly_plan_id = ?;
 
 getSessionLogForDay:
 SELECT * FROM plan_day_session_log WHERE plan_day_id = ?;
+
+selectChangedSince:
+SELECT * FROM plan_day_session_log WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM plan_day_session_log WHERE id = ?;
+
+backfillUserId:
+UPDATE plan_day_session_log SET user_id = ? WHERE user_id IS NULL;
