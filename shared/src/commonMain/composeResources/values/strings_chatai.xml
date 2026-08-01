@@ -28,4 +28,5 @@
     <string name="chatai_message_failed_label">Not sent</string>
     <string name="chatai_message_retry_cta">Retry</string>
     <string name="chatai_message_sending_label">Sending…</string>
+    <string name="chatai_thinking_label">NuFit AI is thinking</string>
 </resources>

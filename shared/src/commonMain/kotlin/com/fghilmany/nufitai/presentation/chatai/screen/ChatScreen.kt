@@ -38,6 +38,7 @@ import com.fghilmany.nufitai.presentation.chatai.component.AssistantMessageBubbl
 import com.fghilmany.nufitai.presentation.chatai.component.ChatComposer
 import com.fghilmany.nufitai.presentation.chatai.component.QuotaBanner
 import com.fghilmany.nufitai.presentation.chatai.component.SuggestedReplyRow
+import com.fghilmany.nufitai.presentation.chatai.component.ThinkingBubble
 import com.fghilmany.nufitai.presentation.chatai.component.UserMessageBubble
 import com.fghilmany.nufitai.presentation.chatai.viewmodel.ApplySuggestionResult
 import com.fghilmany.nufitai.presentation.chatai.viewmodel.ChatViewModel
@@ -93,6 +94,7 @@ fun ChatScreen(
                     messages = state.messages,
                     resolvedExercises = state.resolvedExercises,
                     applyResult = state.applyResult,
+                    isSending = state.isSending,
                     onRetry = viewModel::onRetry,
                     onApplyToPlan = { messageId, replacesId, substituteId -> viewModel.onApplyToPlan(messageId, replacesId, substituteId) },
                     // "Tanya Lagi" -- no design/product spec for its behavior beyond "keep chatting"; the
@@ -181,6 +183,7 @@ private fun MessageList(
     messages: List<ChatMessage>,
     resolvedExercises: Map<String, Exercise>,
     applyResult: ApplySuggestionResult?,
+    isSending: Boolean,
     onRetry: (ChatMessage) -> Unit,
     onApplyToPlan: (messageId: String, replacesExerciseId: String, substituteExerciseId: String) -> Unit,
     onAskMore: () -> Unit,
@@ -217,6 +220,9 @@ private fun MessageList(
                     )
                 }
             }
+        }
+        if (isSending) {
+            item { ThinkingBubble() }
         }
     }
 }
