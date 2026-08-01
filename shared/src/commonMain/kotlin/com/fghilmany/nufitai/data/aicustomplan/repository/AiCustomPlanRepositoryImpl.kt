@@ -9,6 +9,7 @@ import com.fghilmany.nufitai.data.aicustomplan.model.AiPlanRequestDto
 import com.fghilmany.nufitai.domain.aicustomplan.entity.AiGeneratedPlanDraft
 import com.fghilmany.nufitai.domain.aicustomplan.entity.AiPlanGenerationRequest
 import com.fghilmany.nufitai.domain.aicustomplan.repository.AiCustomPlanRepository
+import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withTimeoutOrNull
 
@@ -16,17 +17,20 @@ private const val GENERATE_TIMEOUT_MS = 30_000L
 
 class AiCustomPlanRepositoryImpl(
     private val remote: AiCustomPlanRemoteDataSource,
+    private val authRepository: AuthRepository,
 ) : AiCustomPlanRepository {
     private val logger = AppLogger.tagged("AiCustomPlanRepository")
 
     override suspend fun generatePlan(request: AiPlanGenerationRequest): AppResult<AiGeneratedPlanDraft> {
+        val session = authRepository.getCurrentSession() ?: return AppResult.Error(Failure.Unauthorized())
         logger.i { "generatePlan starting" }
         return try {
-            val response = withTimeoutOrNull(GENERATE_TIMEOUT_MS) { remote.generatePlan(AiPlanRequestDto.from(request)) }
-                ?: run {
-                    logger.w { "generatePlan timed out after ${GENERATE_TIMEOUT_MS}ms" }
-                    return AppResult.Error(Failure.Network("AI plan generation timed out"))
-                }
+            val response = withTimeoutOrNull(GENERATE_TIMEOUT_MS) {
+                remote.generatePlan(AiPlanRequestDto.from(request), session.accessToken)
+            } ?: run {
+                logger.w { "generatePlan timed out after ${GENERATE_TIMEOUT_MS}ms" }
+                return AppResult.Error(Failure.Network("AI plan generation timed out"))
+            }
             logger.i { "generatePlan succeeded" }
             AppResult.Success(response.toEntity())
         } catch (e: CancellationException) {
@@ -35,6 +39,7 @@ class AiCustomPlanRepositoryImpl(
             logger.e(e) { "generatePlan failed -- HTTP ${e.statusCode}" }
             when (e.statusCode) {
                 401 -> AppResult.Error(Failure.Unauthorized())
+                403 -> AppResult.Error(Failure.Validation("Not subscribed or quota exceeded"))
                 422 -> AppResult.Error(Failure.Validation("AI request validation failed"))
                 else -> AppResult.Error(Failure.Network("AI backend error (${e.statusCode})"))
             }

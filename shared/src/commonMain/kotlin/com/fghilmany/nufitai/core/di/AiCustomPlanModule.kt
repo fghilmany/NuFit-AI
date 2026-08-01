@@ -24,7 +24,7 @@ import org.koin.dsl.module
 /** Manual Koin DSL, per ADR-001. HttpClient now comes from `networkModule` (issue #83). */
 val aiCustomPlanModule = module {
     single { AiCustomPlanRemoteDataSource(httpClient = get()) }
-    single<AiCustomPlanRepository> { AiCustomPlanRepositoryImpl(remote = get()) }
+    single<AiCustomPlanRepository> { AiCustomPlanRepositoryImpl(remote = get(), authRepository = get()) }
     single { AiCustomPlanDraftHolder() }
 
     factory { BuildWorkoutHistorySummary(repository = get()) }

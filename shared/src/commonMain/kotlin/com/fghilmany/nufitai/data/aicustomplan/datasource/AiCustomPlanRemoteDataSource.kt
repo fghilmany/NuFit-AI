@@ -4,6 +4,7 @@ import com.fghilmany.nufitai.data.aicustomplan.model.AiPlanRequestDto
 import com.fghilmany.nufitai.data.aicustomplan.model.AiPlanResponseDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
@@ -14,15 +15,16 @@ import io.ktor.http.isSuccess
 class AiCustomPlanApiException(val statusCode: Int) : Exception("AI generate request failed with status $statusCode")
 
 /**
- * issue #81 -- this project's first network feature. No live backend exists yet (techspec §7);
- * built against the documented contract only. Plain Ktor `HttpClient` chosen over Ktorfit for
+ * issue #81 -- this project's first network feature. Backend now real (`supabase/functions/
+ * ai-custom-plan-generate`, ADR-008). Plain Ktor `HttpClient` chosen over Ktorfit for
  * this pass (ADR-004) -- swapping to Ktorfit later only touches this class, per
  * [com.fghilmany.nufitai.domain.aicustomplan.repository.AiCustomPlanRepository]'s interface boundary.
  */
 class AiCustomPlanRemoteDataSource(private val httpClient: HttpClient) {
-    suspend fun generatePlan(request: AiPlanRequestDto): AiPlanResponseDto {
+    suspend fun generatePlan(request: AiPlanRequestDto, accessToken: String): AiPlanResponseDto {
         val response = httpClient.post("$BASE_URL/v1/ai-custom-plan/generate") {
             contentType(ContentType.Application.Json)
+            header("Authorization", "Bearer $accessToken")
             setBody(request)
         }
         if (!response.status.isSuccess()) {
@@ -32,7 +34,7 @@ class AiCustomPlanRemoteDataSource(private val httpClient: HttpClient) {
     }
 
     companion object {
-        // TODO(dev): no real backend exists yet -- replace before first live use (techspec §9 item 2).
-        const val BASE_URL = "https://api.nufit.example.com"
+        // Real Supabase Functions invoke URL (not the dashboard page) -- functions must be deployed first (ADR-008).
+        const val BASE_URL = "https://wnruvcpeyxssxpqwptst.supabase.co/functions/v1"
     }
 }
