@@ -44,7 +44,7 @@ fun AssistantMessageBubble(
         }
         Column(modifier = Modifier.widthIn(max = 280.dp)) {
             Box(modifier = Modifier.background(NuFitColors.SurfaceContainerLowest, RoundedCornerShape(20.dp)).padding(horizontal = 16.dp, vertical = 10.dp)) {
-                Text(message.text, style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnBackground)
+                Text(parseSimpleMarkdown(message.text), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnBackground)
             }
             Text(formatMessageTime(message.createdAt), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
 
