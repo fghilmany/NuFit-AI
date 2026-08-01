@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="monthlyplan_home_empty_state">No active plan yet</string>
+    <string name="monthlyplan_home_empty_state_body">Create your first training plan so you always know what to do at the gym.</string>
+    <string name="monthlyplan_home_empty_state_cta">Create Plan</string>
     <string name="monthlyplan_home_notification_content_description">Notifications</string>
     <string name="monthlyplan_home_greeting">Hi! 👋</string>
     <string name="monthlyplan_home_greeting_named">Hi, %1$s! 👋</string>

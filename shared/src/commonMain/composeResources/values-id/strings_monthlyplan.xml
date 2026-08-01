@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="monthlyplan_home_empty_state">Belum ada plan aktif</string>
+    <string name="monthlyplan_home_empty_state_body">Buat plan latihan pertamamu supaya kamu selalu tahu apa yang harus dilakukan tiap ke gym.</string>
+    <string name="monthlyplan_home_empty_state_cta">Buat Plan</string>
     <string name="monthlyplan_home_notification_content_description">Notifikasi</string>
     <string name="monthlyplan_home_greeting">Halo! 👋</string>
     <string name="monthlyplan_home_greeting_named">Halo, %1$s! 👋</string>
