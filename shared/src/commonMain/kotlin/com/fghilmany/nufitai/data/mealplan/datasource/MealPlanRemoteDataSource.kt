@@ -7,11 +7,13 @@ import io.ktor.client.call.body
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 
-class MealPlanApiException(val statusCode: Int) : Exception("Meal plan generate request failed with status $statusCode")
+class MealPlanApiException(val statusCode: Int, val responseBody: String = "") :
+    Exception("Meal plan generate request failed with status $statusCode: $responseBody")
 
 /**
  * techspec meal-plan.md §7 -- backend now real (`supabase/functions/meal-plan-generate`, ADR-008);
@@ -20,13 +22,13 @@ class MealPlanApiException(val statusCode: Int) : Exception("Meal plan generate 
  */
 class MealPlanRemoteDataSource(private val httpClient: HttpClient) {
     suspend fun generate(request: MealPlanRequestDto, accessToken: String): MealPlanResponseDto {
-        val response = httpClient.post("$BASE_URL/v1/meal-plan/generate") {
+        val response = httpClient.post("$BASE_URL/meal-plan-generate") {
             contentType(ContentType.Application.Json)
             header("Authorization", "Bearer $accessToken")
             setBody(request)
         }
         if (!response.status.isSuccess()) {
-            throw MealPlanApiException(response.status.value)
+            throw MealPlanApiException(response.status.value, response.bodyAsText())
         }
         return response.body()
     }

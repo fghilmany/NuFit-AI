@@ -86,6 +86,7 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.contentNegotiation)
             implementation(libs.ktor.serialization.kotlinxJson)
+            implementation(libs.ktor.client.logging)
             // Exercise Library data-source pivot (ADR-007) -- bundled photo/GIF rendering.
             implementation(libs.coil.compose)
             implementation(libs.coil.gif)

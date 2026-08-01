@@ -7,12 +7,14 @@ import io.ktor.client.call.body
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 
 /** Thrown on a non-2xx response; [AiCustomPlanRepositoryImpl] maps [statusCode] to a typed [com.fghilmany.nufitai.core.error.Failure]. */
-class AiCustomPlanApiException(val statusCode: Int) : Exception("AI generate request failed with status $statusCode")
+class AiCustomPlanApiException(val statusCode: Int, val responseBody: String = "") :
+    Exception("AI generate request failed with status $statusCode: $responseBody")
 
 /**
  * issue #81 -- this project's first network feature. Backend now real (`supabase/functions/
@@ -22,13 +24,13 @@ class AiCustomPlanApiException(val statusCode: Int) : Exception("AI generate req
  */
 class AiCustomPlanRemoteDataSource(private val httpClient: HttpClient) {
     suspend fun generatePlan(request: AiPlanRequestDto, accessToken: String): AiPlanResponseDto {
-        val response = httpClient.post("$BASE_URL/v1/ai-custom-plan/generate") {
+        val response = httpClient.post("$BASE_URL/ai-custom-plan-generate") {
             contentType(ContentType.Application.Json)
             header("Authorization", "Bearer $accessToken")
             setBody(request)
         }
         if (!response.status.isSuccess()) {
-            throw AiCustomPlanApiException(response.status.value)
+            throw AiCustomPlanApiException(response.status.value, response.bodyAsText())
         }
         return response.body()
     }
