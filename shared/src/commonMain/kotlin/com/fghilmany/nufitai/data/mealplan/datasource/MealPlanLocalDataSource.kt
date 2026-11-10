@@ -7,7 +7,7 @@ import com.fghilmany.nufitai.db.Planned_meal as PlannedMealRow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-/** One meal to insert as part of [MealPlanLocalDataSource.replaceWeek] -- primitive fields only, mirrors this codebase's datasource convention of taking already-serialized values (JSON encoding happens in the repository). */
+/** One meal to insert as part of [MealPlanLocalDataSource.upsertDayMeals] -- primitive fields only, mirrors this codebase's datasource convention of taking already-serialized values (JSON encoding happens in the repository). */
 data class PlannedMealInsert(
     val id: String,
     val dayNumber: Long,
@@ -50,13 +50,16 @@ class MealPlanLocalDataSource(private val database: NuFitDatabase) {
     }
 
     /**
-     * AC-8 -- atomic replace of one week's meals. [id] must be the existing week's row id when
-     * one exists (caller looks it up first via [getMealPlanForWeek]) so the delete+re-insert below
-     * targets the right rows and `meal_plan`'s upsert-by-primary-key doesn't collide with its own
-     * `week_start_date` UNIQUE index. Deletes `meal_log` before `planned_meal` (its delete query
-     * joins through `planned_meal`, mirrors `PlanDay.sq`'s existing delete-then-reinsert convention).
+     * Per-day generate (2026-11-10, replaces the old whole-week `replaceWeek`) -- [id] must be the
+     * existing week's row id when one exists (caller looks it up first via [getMealPlanForWeek])
+     * so the delete+re-insert below targets the right rows and `meal_plan`'s upsert-by-primary-key
+     * doesn't collide with its own `week_start_date` UNIQUE index. The week header row is
+     * upserted every call regardless of which day -- target macros don't vary per day, so
+     * re-writing them is harmless, and this is what creates the header row on whichever day gets
+     * generated first. Only [dayNumber]'s `planned_meal`/`meal_log` rows are deleted+re-inserted;
+     * every other day's rows are untouched.
      */
-    suspend fun replaceWeek(
+    suspend fun upsertDayMeals(
         id: String,
         weekStartDateMillis: Long,
         calories: Long,
@@ -67,11 +70,10 @@ class MealPlanLocalDataSource(private val database: NuFitDatabase) {
         goal: String,
         createdAt: Long,
         updatedAt: Long,
+        dayNumber: Long,
         meals: List<PlannedMealInsert>,
     ) = withContext(Dispatchers.Default) {
         database.transaction {
-            database.mealLogQueries.deleteMealLogsForPlan(id)
-            database.plannedMealQueries.deletePlannedMealsForPlan(id)
             database.mealPlanQueries.upsertMealPlan(
                 id = id,
                 week_start_date = weekStartDateMillis,
@@ -85,6 +87,8 @@ class MealPlanLocalDataSource(private val database: NuFitDatabase) {
                 user_id = null,
                 updated_at = updatedAt,
             )
+            database.mealLogQueries.deleteMealLogsForPlanAndDay(id, dayNumber)
+            database.plannedMealQueries.deletePlannedMealsForPlanAndDay(id, dayNumber)
             meals.forEach { meal ->
                 database.plannedMealQueries.insertPlannedMeal(
                     id = meal.id,
@@ -119,7 +123,7 @@ class MealPlanLocalDataSource(private val database: NuFitDatabase) {
         database.mealPlanQueries.backfillUserId(userId)
     }
 
-    /** Remote-sync upsert; unlike [replaceWeek] (local generate, always `user_id = null`), this preserves the remote row's `user_id`. */
+    /** Remote-sync upsert; unlike [upsertDayMeals] (local generate, always `user_id = null`), this preserves the remote row's `user_id`. */
     suspend fun upsertMealPlanFromRemote(row: MealPlanRow) = withContext(Dispatchers.Default) {
         database.mealPlanQueries.upsertMealPlan(
             id = row.id,

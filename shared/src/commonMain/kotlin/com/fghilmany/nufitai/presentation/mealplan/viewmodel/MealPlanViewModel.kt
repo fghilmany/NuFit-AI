@@ -34,18 +34,28 @@ data class MealPlanState(
     val currentWeekStart: Instant,
     val mealPlan: MealPlan? = null,
     val plannedMeals: List<PlannedMeal> = emptyList(),
-    val isGenerating: Boolean = false,
+    /** Null = no day currently generating. Disables every day's button while non-null (one day at a time). */
+    val generatingDayNumber: Int? = null,
+    /** Null = no regenerate confirmation pending. Set when the tapped day already has non-PENDING logs. */
+    val pendingRegenerateDay: Int? = null,
     val error: String? = null,
     val showRegenerateSuggestion: Boolean = false,
-    val pendingRegenerateConfirm: Boolean = false,
     val reminderEnabled: Boolean = false,
     val reminderHasPermission: Boolean = true,
 ) {
     val mealsByDay: Map<Int, List<PlannedMeal>> get() = plannedMeals.groupBy { it.dayNumber }
     val canGoNext: Boolean get() = weekStartDate < currentWeekStart
+
+    /** Null unless viewing the current week -- drives the weight-change suggestion banner's CTA. */
+    val todayDayNumber: Int?
+        get() {
+            if (weekStartDate != currentWeekStart) return null
+            val diffDays = (currentInstant() - weekStartDate).inWholeDays.toInt()
+            return (diffDays + 1).coerceIn(1, 7)
+        }
 }
 
-/** P-17 A (AC-6/AC-7/AC-8/AC-9/AC-10). */
+/** P-17 A (AC-6/AC-7/AC-8/AC-9/AC-10). Per-day generate (2026-11-10) -- see docs/techspec/meal-plan.md. */
 class MealPlanViewModel(
     private val getMealPlanForWeek: GetMealPlanForWeek,
     private val getPlannedMealsForPlan: GetPlannedMealsForPlan,
@@ -82,29 +92,35 @@ class MealPlanViewModel(
         navigateWeek(_state.value.weekStartDate.plus(7.days))
     }
 
-    /** AC-8: confirms first if the viewed week already has any non-PENDING log; skips the dialog otherwise (nothing to lose). */
-    fun onGenerateClick() {
+    /** AC-8, per-day: confirms first if [day] already has a non-PENDING log; generates directly otherwise (nothing to lose). */
+    fun onGenerateDayClick(day: Int) {
         val plan = _state.value.mealPlan
         if (plan == null) {
-            performGenerate()
+            performGenerateDay(day)
             return
         }
         viewModelScope.launch {
-            val hasLogs = when (val result = getMealLogsForPlan(plan.id)) {
-                is AppResult.Error -> false
-                is AppResult.Success -> result.data.any { it.status != MealLogStatus.PENDING }
+            val dayMealIds = _state.value.mealsByDay[day]?.map { it.id }?.toSet() ?: emptySet()
+            val hasLogs = if (dayMealIds.isEmpty()) {
+                false
+            } else {
+                when (val result = getMealLogsForPlan(plan.id)) {
+                    is AppResult.Error -> false
+                    is AppResult.Success -> result.data.any { it.plannedMealId in dayMealIds && it.status != MealLogStatus.PENDING }
+                }
             }
-            if (hasLogs) _state.update { it.copy(pendingRegenerateConfirm = true) } else performGenerate()
+            if (hasLogs) _state.update { it.copy(pendingRegenerateDay = day) } else performGenerateDay(day)
         }
     }
 
-    fun onConfirmRegenerate() {
-        _state.update { it.copy(pendingRegenerateConfirm = false) }
-        performGenerate()
+    fun onConfirmRegenerateDay() {
+        val day = _state.value.pendingRegenerateDay ?: return
+        _state.update { it.copy(pendingRegenerateDay = null) }
+        performGenerateDay(day)
     }
 
     fun onDismissRegenerateConfirm() {
-        _state.update { it.copy(pendingRegenerateConfirm = false) }
+        _state.update { it.copy(pendingRegenerateDay = null) }
     }
 
     private fun navigateWeek(target: Instant) {
@@ -115,7 +131,7 @@ class MealPlanViewModel(
                 is AppResult.Success -> {
                     val plan = result.data
                     // AC-6: a week that was never generated is only viewable if it's the current
-                    // calendar week (which can always be viewed, empty, with a Generate CTA) --
+                    // calendar week (which can always be viewed, empty, with per-day Generate CTAs) --
                     // otherwise this is a boundary, no-op the navigation.
                     if (plan == null && target != _state.value.currentWeekStart) return@launch
                     loadWeek(target, plan)
@@ -151,9 +167,9 @@ class MealPlanViewModel(
         }
     }
 
-    private fun performGenerate() {
+    private fun performGenerateDay(day: Int) {
         viewModelScope.launch {
-            _state.update { it.copy(isGenerating = true, error = null) }
+            _state.update { it.copy(generatingDayNumber = day, error = null) }
 
             val bodyMeasurement = when (val result = getLatestBodyMeasurement()) {
                 is AppResult.Error -> return@launch fail(result.failure.message)
@@ -181,10 +197,19 @@ class MealPlanViewModel(
                 )
             }
 
-            when (val result = generateMealPlan(_state.value.weekStartDate, target, fullAssessment.goal, weightKg, preference)) {
+            when (
+                val result = generateMealPlan(
+                    weekStartDate = _state.value.weekStartDate,
+                    dayNumber = day,
+                    target = target,
+                    goal = fullAssessment.goal,
+                    weightKgAtGeneration = weightKg,
+                    preference = preference,
+                )
+            ) {
                 is AppResult.Error -> fail(result.failure.message)
                 is AppResult.Success -> {
-                    _state.update { it.copy(isGenerating = false) }
+                    _state.update { it.copy(generatingDayNumber = null) }
                     loadWeek(_state.value.weekStartDate, result.data)
                 }
             }
@@ -192,6 +217,6 @@ class MealPlanViewModel(
     }
 
     private fun fail(message: String) {
-        _state.update { it.copy(isGenerating = false, error = message) }
+        _state.update { it.copy(generatingDayNumber = null, error = message) }
     }
 }

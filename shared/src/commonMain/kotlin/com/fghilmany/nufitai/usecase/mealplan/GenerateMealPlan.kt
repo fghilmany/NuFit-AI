@@ -16,12 +16,14 @@ import kotlin.time.Instant
 class GenerateMealPlan(private val repository: MealPlanRepository) {
     suspend operator fun invoke(
         weekStartDate: Instant,
+        dayNumber: Int,
         target: MacroTarget,
         goal: GoalCategory,
         weightKgAtGeneration: Double,
         preference: MealPreference,
     ): AppResult<MealPlan> = repository.generateRemote(
         weekStartDate = weekStartDate,
+        dayNumber = dayNumber,
         target = target,
         goal = goal,
         weightKgAtGeneration = weightKgAtGeneration,

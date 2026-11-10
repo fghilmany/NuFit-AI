@@ -10,12 +10,17 @@ data class MealPlanRequestDto(
     val target: MacroTargetDto,
     val goal: String,
     val preference: MealPreferenceDto,
+    // Client orchestrates 7 sequential per-day calls instead of one 7-day request (2026-11-10) --
+    // each invocation needs far less of Supabase Edge Functions' own wall-clock cap. See
+    // MealPlanRepositoryImpl.generateRemote.
+    val dayNumber: Int,
 ) {
     companion object {
-        fun from(target: MacroTarget, goal: GoalCategory, preference: MealPreference): MealPlanRequestDto = MealPlanRequestDto(
+        fun from(target: MacroTarget, goal: GoalCategory, preference: MealPreference, dayNumber: Int): MealPlanRequestDto = MealPlanRequestDto(
             target = MacroTargetDto.from(target),
             goal = goal.name,
             preference = MealPreferenceDto.from(preference),
+            dayNumber = dayNumber,
         )
     }
 }

@@ -31,7 +31,12 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.time.Instant
 
-private const val GENERATE_TIMEOUT_MS = 30_000L
+// 150s (2026-11-10): matches Supabase Edge Functions' own platform wall-clock cap -- no point
+// giving up client-side before the server's own hard limit would. tech-debt-88-pricing-sync.md's
+// 2026-11-09 addendum documents Surplus Intelligence's marketplace queueing overhead alone
+// (before generation even starts) observed up to ~60s+, on top of ~20-22s generation time.
+// NetworkModule.kt's Ktor HttpTimeout (155_000) must always stay ABOVE this.
+private const val GENERATE_TIMEOUT_MS = 150_000L
 
 class MealPlanRepositoryImpl(
     private val local: MealPlanLocalDataSource,
@@ -73,29 +78,34 @@ class MealPlanRepositoryImpl(
 
     override suspend fun generateRemote(
         weekStartDate: Instant,
+        dayNumber: Int,
         target: MacroTarget,
         goal: GoalCategory,
         weightKgAtGeneration: Double,
         preference: MealPreference,
     ): AppResult<MealPlan> {
         val session = authRepository.getCurrentSession() ?: return AppResult.Error(Failure.Unauthorized())
-        logger.i { "generateRemote starting for week=${weekStartDate.toEpochMilliseconds()}" }
+        logger.i { "generateRemote starting for week=${weekStartDate.toEpochMilliseconds()} day=$dayNumber" }
         return try {
-            val response = withTimeoutOrNull(GENERATE_TIMEOUT_MS) {
-                remote.generate(MealPlanRequestDto.from(target, goal, preference), session.accessToken)
-            } ?: run {
-                logger.w { "generateRemote timed out after ${GENERATE_TIMEOUT_MS}ms" }
-                return AppResult.Error(Failure.Network("Meal plan generation timed out"))
-            }
-
-            // AC-8: reuse the existing week's row id (if any) so replaceWeek's delete+re-insert
+            // AC-8: reuse the existing week's row id (if any) so upsertDayMeals's delete+re-insert
             // targets the right FK-referencing rows instead of orphaning them.
             val existing = local.getMealPlanForWeek(weekStartDate.toEpochMilliseconds())
             val id = existing?.id ?: generateId()
-            val now = currentInstant()
-            val plannedMeals = response.days.flatMap { day -> day.meals.map { it.toEntity(day.dayNumber, id) } }
 
-            local.replaceWeek(
+            // Per-day generate (2026-11-10): exactly ONE HTTP call, not a 7-day loop -- shrinks
+            // the unit of work so a Doze/background network interruption only costs this one day,
+            // not the whole week (see tech-debt-88-pricing-sync.md's 2026-11-10 addendum).
+            val response = withTimeoutOrNull(GENERATE_TIMEOUT_MS) {
+                remote.generate(MealPlanRequestDto.from(target, goal, preference, dayNumber), session.accessToken)
+            } ?: run {
+                logger.w { "generateRemote day=$dayNumber timed out after ${GENERATE_TIMEOUT_MS}ms" }
+                return AppResult.Error(Failure.Network("Meal plan generation timed out (hari $dayNumber)"))
+            }
+            val plannedMeals = response.days.flatMap { d -> d.meals.map { it.toEntity(d.dayNumber, id) } }
+
+            val now = currentInstant()
+
+            local.upsertDayMeals(
                 id = id,
                 weekStartDateMillis = weekStartDate.toEpochMilliseconds(),
                 calories = target.calories.toLong(),
@@ -106,10 +116,11 @@ class MealPlanRepositoryImpl(
                 goal = goal.name,
                 createdAt = now.toEpochMilliseconds(),
                 updatedAt = now.toEpochMilliseconds(),
+                dayNumber = dayNumber.toLong(),
                 meals = plannedMeals.map { it.toInsert() },
             )
 
-            logger.i { "generateRemote succeeded, ${plannedMeals.size} meals" }
+            logger.i { "generateRemote succeeded, day=$dayNumber, ${plannedMeals.size} meals" }
             AppResult.Success(
                 MealPlan(
                     id = id,
@@ -124,10 +135,11 @@ class MealPlanRepositoryImpl(
             throw e
         } catch (e: MealPlanApiException) {
             logger.e(e) { "generateRemote failed -- HTTP ${e.statusCode}" }
-            when (e.statusCode) {
-                401 -> AppResult.Error(Failure.Unauthorized())
-                403 -> AppResult.Error(Failure.Validation("Not subscribed"))
-                422 -> AppResult.Error(Failure.Validation("Meal plan request validation failed"))
+            when {
+                e.statusCode == 401 -> AppResult.Error(Failure.Unauthorized())
+                e.statusCode == 403 && e.quotaExceeded -> AppResult.Error(Failure.QuotaExceeded())
+                e.statusCode == 403 -> AppResult.Error(Failure.Validation("Not subscribed"))
+                e.statusCode == 422 -> AppResult.Error(Failure.Validation("Meal plan request validation failed"))
                 else -> AppResult.Error(Failure.Network("Meal plan backend error (${e.statusCode})"))
             }
         } catch (e: Exception) {

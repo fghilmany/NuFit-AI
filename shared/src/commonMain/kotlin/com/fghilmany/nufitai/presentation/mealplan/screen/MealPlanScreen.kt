@@ -27,19 +27,20 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import com.fghilmany.nufitai.domain.mealplan.entity.PlannedMeal
 import com.fghilmany.nufitai.presentation.mealplan.component.MealCard
 import com.fghilmany.nufitai.presentation.mealplan.component.RegenerateSuggestionBanner
 import com.fghilmany.nufitai.presentation.mealplan.component.WeekNavigator
 import com.fghilmany.nufitai.presentation.mealplan.viewmodel.MealPlanViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
 import com.fghilmany.nufitai.presentation.monthlyplan.component.NavTab
+import io.ktor.client.request.invoke
 import nufitai.shared.generated.resources.Res
-import nufitai.shared.generated.resources.mealplan_empty_state_title
 import nufitai.shared.generated.resources.mealplan_generate_cta
+import nufitai.shared.generated.resources.mealplan_generating_simple
 import nufitai.shared.generated.resources.mealplan_regenerate_confirm_action
 import nufitai.shared.generated.resources.mealplan_regenerate_confirm_body
 import nufitai.shared.generated.resources.mealplan_regenerate_confirm_cancel
@@ -51,7 +52,9 @@ import nufitai.shared.generated.resources.mealplan_top_bar_title
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
-/** P-17 A (techspec meal-plan.md). Tab-switch destination like Chat AI/Home/MyPlans/Account. */
+/** P-17 A (techspec meal-plan.md). Tab-switch destination like Chat AI/Home/MyPlans/Account.
+ * Per-day generate (2026-11-10): each of the week's 7 days has its own independent Generate/
+ * Regenerate action, one HTTP call each -- not a single week-wide button. */
 @Composable
 fun MealPlanScreen(
     onHomeClick: () -> Unit,
@@ -80,27 +83,28 @@ fun MealPlanScreen(
 
             if (state.showRegenerateSuggestion) {
                 RegenerateSuggestionBanner(
-                    onRegenerateClick = viewModel::onGenerateClick,
+                    onRegenerateClick = { state.todayDayNumber?.let(viewModel::onGenerateDayClick) },
                     onDismiss = {},
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                 )
             }
 
-            if (state.mealPlan == null) {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    Text(stringResource(Res.string.mealplan_empty_state_title), style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
-                }
-            } else {
-                LazyColumn(
-                    modifier = Modifier.weight(1f).fillMaxWidth(),
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    state.mealsByDay.toSortedMap().forEach { (dayNumber, meals) ->
-                        item { Text("Hari $dayNumber", style = MaterialTheme.typography.titleSmall) }
-                        items(meals, key = { it.id }) { meal ->
-                            MealCard(meal = meal, onClick = { onMealClick(meal.id) })
-                        }
+            LazyColumn(
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                contentPadding = PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 96.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                (1..7).forEach { day ->
+                    val meals = state.mealsByDay[day].orEmpty()
+                    item(key = "day-$day") {
+                        DaySection(
+                            day = day,
+                            meals = meals,
+                            isGenerating = state.generatingDayNumber == day,
+                            buttonsEnabled = state.generatingDayNumber == null,
+                            onGenerateClick = { viewModel.onGenerateDayClick(day) },
+                            onMealClick = onMealClick,
+                        )
                     }
                 }
             }
@@ -111,18 +115,6 @@ fun MealPlanScreen(
                 onToggle = viewModel::onToggleReminder,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
             )
-
-            if (state.isGenerating) {
-                Box(modifier = Modifier.fillMaxWidth().padding(16.dp), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
-                }
-            } else {
-                AppButton(
-                    text = stringResource(if (state.mealPlan == null) Res.string.mealplan_generate_cta else Res.string.mealplan_regenerate_cta),
-                    onClick = viewModel::onGenerateClick,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 96.dp),
-                )
-            }
         }
 
         BottomNavBar(
@@ -139,17 +131,54 @@ fun MealPlanScreen(
             modifier = Modifier.align(Alignment.BottomStart),
         )
 
-        if (state.pendingRegenerateConfirm) {
+        if (state.pendingRegenerateDay != null) {
             AlertDialog(
                 onDismissRequest = viewModel::onDismissRegenerateConfirm,
                 title = { Text(stringResource(Res.string.mealplan_regenerate_confirm_title)) },
                 text = { Text(stringResource(Res.string.mealplan_regenerate_confirm_body)) },
                 confirmButton = {
-                    TextButton(onClick = viewModel::onConfirmRegenerate) { Text(stringResource(Res.string.mealplan_regenerate_confirm_action)) }
+                    TextButton(onClick = viewModel::onConfirmRegenerateDay) { Text(stringResource(Res.string.mealplan_regenerate_confirm_action)) }
                 },
                 dismissButton = {
                     TextButton(onClick = viewModel::onDismissRegenerateConfirm) { Text(stringResource(Res.string.mealplan_regenerate_confirm_cancel)) }
                 },
+            )
+        }
+    }
+}
+
+@Composable
+private fun DaySection(
+    day: Int,
+    meals: List<PlannedMeal>,
+    isGenerating: Boolean,
+    buttonsEnabled: Boolean,
+    onGenerateClick: () -> Unit,
+    onMealClick: (plannedMealId: String) -> Unit,
+) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+            Text("Hari $day", style = MaterialTheme.typography.titleSmall)
+            if (meals.isNotEmpty() && !isGenerating) {
+                TextButton(onClick = onGenerateClick, enabled = buttonsEnabled) {
+                    Text(stringResource(Res.string.mealplan_regenerate_cta, day), style = MaterialTheme.typography.labelSmall)
+                }
+            }
+        }
+
+        when {
+            isGenerating -> Box(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp), contentAlignment = Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    CircularProgressIndicator()
+                    Text(stringResource(Res.string.mealplan_generating_simple), style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            meals.isNotEmpty() -> meals.forEach { meal -> MealCard(meal = meal, onClick = { onMealClick(meal.id) }) }
+            else -> AppButton(
+                text = stringResource(Res.string.mealplan_generate_cta, day),
+                onClick = onGenerateClick,
+                enabled = buttonsEnabled,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
     }

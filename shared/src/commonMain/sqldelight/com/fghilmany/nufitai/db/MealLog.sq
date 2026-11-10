@@ -23,3 +23,7 @@ SELECT * FROM meal_log WHERE planned_meal_id = ?;
 -- doesn't cascade -- application-level, mirrors this codebase's existing PlanDay convention).
 deleteMealLogsForPlan:
 DELETE FROM meal_log WHERE planned_meal_id IN (SELECT id FROM planned_meal WHERE meal_plan_id = ?);
+
+-- Per-day generate (2026-11-10): regenerate scoped to one day only, not the whole week.
+deleteMealLogsForPlanAndDay:
+DELETE FROM meal_log WHERE planned_meal_id IN (SELECT id FROM planned_meal WHERE meal_plan_id = ? AND day_number = ?);

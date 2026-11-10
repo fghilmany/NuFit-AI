@@ -18,9 +18,11 @@ interface MealPlanRepository {
     suspend fun getPlannedMealById(id: String): AppResult<PlannedMeal?>
     suspend fun getMealLogForPlannedMeal(plannedMealId: String): AppResult<MealLog?>
 
-    /** AC-8: caller (`GenerateMealPlan`) is responsible for the confirmation gate before calling this -- deletes+re-inserts the week's PlannedMeal/MealLog rows. */
+    /** AC-8: caller (`GenerateMealPlan`) is responsible for the confirmation gate before calling this -- deletes+re-inserts just [dayNumber]'s PlannedMeal/MealLog rows.
+     * Per-day generate (2026-11-10): one HTTP call for [dayNumber] only, not a whole-week loop. */
     suspend fun generateRemote(
         weekStartDate: Instant,
+        dayNumber: Int,
         target: MacroTarget,
         goal: GoalCategory,
         weightKgAtGeneration: Double,

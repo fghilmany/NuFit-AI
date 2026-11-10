@@ -14,8 +14,9 @@
 
     <string name="mealplan_top_bar_title">Meal Plan</string>
     <string name="mealplan_this_week">Minggu Ini</string>
-    <string name="mealplan_generate_cta">Generate Minggu Ini (AI)</string>
-    <string name="mealplan_regenerate_cta">Generate Ulang Minggu Ini (AI)</string>
+    <string name="mealplan_generate_cta">Generate Hari %1$d (AI)</string>
+    <string name="mealplan_regenerate_cta">Generate Ulang Hari %1$d (AI)</string>
+    <string name="mealplan_generating_simple">Sedang membuat menu…</string>
 
     <string name="mealplan_regenerate_confirm_title">Generate Ulang Minggu Ini?</string>
     <string name="mealplan_regenerate_confirm_body">Log makan (sudah dimakan/dilewati) minggu ini akan hilang.</string>
@@ -37,6 +38,7 @@
     <string name="mealplan_detail_mark_skipped">Lewati</string>
     <string name="mealplan_detail_status_eaten">Sudah dimakan</string>
     <string name="mealplan_detail_status_skipped">Dilewati</string>
+    <string name="mealplan_detail_undo_status">Batalkan</string>
     <string name="mealplan_detail_calories_label">%1$d kkal · Protein %2$dg · Karbo %3$dg · Lemak %4$dg</string>
 
     <string name="mealplan_preference_top_bar_title">Preferensi Makan</string>

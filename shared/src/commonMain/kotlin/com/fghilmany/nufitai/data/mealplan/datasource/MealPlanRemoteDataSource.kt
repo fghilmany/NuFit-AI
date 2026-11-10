@@ -12,7 +12,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
 
-class MealPlanApiException(val statusCode: Int, val responseBody: String = "") :
+class MealPlanApiException(val statusCode: Int, val responseBody: String = "", val quotaExceeded: Boolean = false) :
     Exception("Meal plan generate request failed with status $statusCode: $responseBody")
 
 /**
@@ -28,7 +28,9 @@ class MealPlanRemoteDataSource(private val httpClient: HttpClient) {
             setBody(request)
         }
         if (!response.status.isSuccess()) {
-            throw MealPlanApiException(response.status.value, response.bodyAsText())
+            val body = response.bodyAsText()
+            val quotaExceeded = response.status.value == 403 && body.contains("\"reason\":\"quota_exceeded\"")
+            throw MealPlanApiException(response.status.value, body, quotaExceeded)
         }
         return response.body()
     }

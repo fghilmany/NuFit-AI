@@ -30,5 +30,9 @@ SELECT * FROM planned_meal WHERE meal_plan_id = ? ORDER BY day_number ASC, slot 
 deletePlannedMealsForPlan:
 DELETE FROM planned_meal WHERE meal_plan_id = ?;
 
+-- Per-day generate (2026-11-10): regenerate scoped to one day only, not the whole week.
+deletePlannedMealsForPlanAndDay:
+DELETE FROM planned_meal WHERE meal_plan_id = ? AND day_number = ?;
+
 getPlannedMealById:
 SELECT * FROM planned_meal WHERE id = ?;
