@@ -19,3 +19,7 @@ captures
 node_modules/
 .claude
 supabase/
+.projectmem/events.jsonl
+.projectmem/watch.pid
+.projectmem/watch.log
+.projectmem/structure.json
