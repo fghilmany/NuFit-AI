@@ -21,6 +21,7 @@ import com.fghilmany.nufitai.data.auth.datasource.AuthLocalDataSource
 import com.fghilmany.nufitai.data.auth.datasource.AuthRemoteDataSource
 import com.fghilmany.nufitai.data.auth.repository.AuthRepositoryImpl
 import com.fghilmany.nufitai.data.entitlement.datasource.EntitlementLocalDataSource
+import com.fghilmany.nufitai.data.entitlement.datasource.EntitlementRemoteDataSource
 import com.fghilmany.nufitai.data.entitlement.repository.EntitlementRepositoryImpl
 import com.fghilmany.nufitai.db.NuFitDatabase
 import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
@@ -35,7 +36,6 @@ import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
 import com.fghilmany.nufitai.usecase.auth.SignIn
 import com.fghilmany.nufitai.usecase.auth.SignOut
 import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
-import com.fghilmany.nufitai.usecase.entitlement.SetDebugEntitlement
 import com.russhwolf.settings.MapSettings
 import com.russhwolf.settings.Settings
 import org.koin.core.module.dsl.viewModel
@@ -69,9 +69,9 @@ class DiVerificationTest {
                     // (mirrors how entitlementModule(settingsFactory) exposes Settings for real).
                     single<Settings> { MapSettings() }
                     single { EntitlementLocalDataSource(settings = get()) }
-                    single<EntitlementRepository> { EntitlementRepositoryImpl(local = get()) }
+                    single { EntitlementRemoteDataSource(httpClient = get()) }
+                    single<EntitlementRepository> { EntitlementRepositoryImpl(local = get(), remote = get()) }
                     factory { GetCurrentTier(repository = get()) }
-                    factory { SetDebugEntitlement(repository = get()) }
                 },
                 networkModule,
                 // issue #83 -- TokenStorage needs a real Android Context (Keystore) this pure-JVM

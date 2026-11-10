@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.entitlement.entity.Tier
 import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
-import com.fghilmany.nufitai.usecase.entitlement.SetDebugEntitlement
 import com.fghilmany.nufitai.usecase.fullassessment.GetLatestFullAssessmentResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestBodyMeasurement
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +16,7 @@ import kotlinx.coroutines.launch
 sealed interface MealPlanGateState {
     data object Loading : MealPlanGateState
     data object Guest : MealPlanGateState
+    /** ADR-009: unreachable during the free MVP showcase phase (LOGGED_IN passes through) -- revive when billing ships. */
     data object NonSubscriberPaywall : MealPlanGateState
     /** AC-3 -- height/weight or activityLevel missing; TDEE can't be computed. */
     data object NeedsBodyData : MealPlanGateState
@@ -28,7 +28,6 @@ class MealPlanGateViewModel(
     private val getCurrentTier: GetCurrentTier,
     private val getLatestBodyMeasurement: GetLatestBodyMeasurement,
     private val getLatestFullAssessmentResult: GetLatestFullAssessmentResult,
-    private val setDebugEntitlement: SetDebugEntitlement,
 ) : ViewModel() {
     private val _state = MutableStateFlow<MealPlanGateState>(MealPlanGateState.Loading)
     val state: StateFlow<MealPlanGateState> = _state.asStateFlow()
@@ -37,22 +36,13 @@ class MealPlanGateViewModel(
         resolve()
     }
 
-    /** DEBUG ONLY -- remove once real billing exists (mirrors AiCustomPlanGateViewModel's precedent). Simulates a subscriber. */
-    fun debugSimulateSubscriber() {
-        viewModelScope.launch {
-            setDebugEntitlement(isLoggedIn = true, isSubscribed = true)
-            resolve()
-        }
-    }
-
     private fun resolve() {
         viewModelScope.launch {
             when (val tierResult = getCurrentTier()) {
                 is AppResult.Error -> _state.value = MealPlanGateState.Error(tierResult.failure.message)
                 is AppResult.Success -> when (tierResult.data) {
                     Tier.GUEST -> _state.value = MealPlanGateState.Guest
-                    Tier.LOGGED_IN -> _state.value = MealPlanGateState.NonSubscriberPaywall
-                    Tier.SUBSCRIBED -> resolveBodyDataGate()
+                    Tier.LOGGED_IN, Tier.SUBSCRIBED -> resolveBodyDataGate()
                 }
             }
         }

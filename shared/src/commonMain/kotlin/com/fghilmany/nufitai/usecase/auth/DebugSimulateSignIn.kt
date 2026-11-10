@@ -13,8 +13,7 @@ import kotlin.time.Duration.Companion.hours
  * DEBUG ONLY -- remove once real Google/Apple SDKs are wired (techspec §3, auth-sync.md).
  * Bypasses the stubbed native sign-in launcher entirely with a local fake session, so the rest
  * of the flow (entitlement gating, navigation, Account screen, sync engine) is testable before
- * a real Supabase project exists. Mirrors the existing `SetDebugEntitlement`/
- * `debugSimulateSubscriber()` pattern in AiCustomPlanGateViewModel.
+ * a real Supabase project exists.
  */
 class DebugSimulateSignIn(
     private val authRepository: AuthRepository,

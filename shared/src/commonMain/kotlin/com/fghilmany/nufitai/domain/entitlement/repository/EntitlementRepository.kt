@@ -4,8 +4,7 @@ import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.entitlement.entity.Tier
 
 /**
- * issue #81 -- thin read over local settings (`isLoggedIn`/`isSubscribed`). Until real
- * auth/billing ship, nothing in this app sets those flags; see techspec §9 item 8.
+ * issue #81 -- thin read over local settings (`isLoggedIn`/`isSubscribed`).
  */
 interface EntitlementRepository {
     suspend fun getCurrentTier(): AppResult<Tier>
@@ -13,6 +12,9 @@ interface EntitlementRepository {
     /** issue #83 -- the real producer of the `isLoggedIn` flag now that Auth & Sync exists (SignIn/SignOut). */
     suspend fun setLoggedIn(isLoggedIn: Boolean): AppResult<Unit>
 
-    /** DEBUG ONLY -- remove once real billing sets `isSubscribed` for real (RevenueCat, see class doc). */
-    suspend fun setDebugEntitlement(isLoggedIn: Boolean, isSubscribed: Boolean): AppResult<Unit>
+    /** ADR-008 follow-up -- fetches this user's real tier from the `user_entitlement` Supabase
+     * table and persists it locally. Called right after sign-in. Not RevenueCat -- the
+     * `user_entitlement` row itself is still set manually (SQL) until real billing exists -- but
+     * the app now reflects whatever that row says instead of a client-side debug toggle. */
+    suspend fun refreshFromRemote(userId: String, accessToken: String): AppResult<Unit>
 }

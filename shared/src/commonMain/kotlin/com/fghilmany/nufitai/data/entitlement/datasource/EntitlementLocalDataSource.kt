@@ -6,8 +6,10 @@ private const val KEY_IS_LOGGED_IN = "entitlement_is_logged_in"
 private const val KEY_IS_SUBSCRIBED = "entitlement_is_subscribed"
 
 /**
- * issue #81 -- until real auth/billing ship, nothing in the app sets these keys yet
- * (techspec §9 item 8); a manual debug toggle for dev testing is expected to write here too.
+ * issue #81 -- local cache of entitlement flags. `isLoggedIn` is set for real by SignIn/SignOut
+ * (issue #83); `isSubscribed` is set for real by [setSubscribed], sourced from the
+ * `user_entitlement` Supabase table (ADR-008 follow-up) -- still not RevenueCat, but no longer a
+ * client-side-only debug toggle either.
  */
 class EntitlementLocalDataSource(private val settings: Settings) {
     fun isLoggedIn(): Boolean = settings.getBoolean(KEY_IS_LOGGED_IN, false)
@@ -18,9 +20,7 @@ class EntitlementLocalDataSource(private val settings: Settings) {
         settings.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn)
     }
 
-    /** DEBUG ONLY -- remove once real billing (RevenueCat) sets `isSubscribed` for real. */
-    fun setDebugEntitlement(isLoggedIn: Boolean, isSubscribed: Boolean) {
-        settings.putBoolean(KEY_IS_LOGGED_IN, isLoggedIn)
+    fun setSubscribed(isSubscribed: Boolean) {
         settings.putBoolean(KEY_IS_SUBSCRIBED, isSubscribed)
     }
 }

@@ -61,7 +61,6 @@ val mealPlanModule = module {
             getCurrentTier = get(),
             getLatestBodyMeasurement = get(),
             getLatestFullAssessmentResult = get(),
-            setDebugEntitlement = get(),
         )
     }
     viewModel {

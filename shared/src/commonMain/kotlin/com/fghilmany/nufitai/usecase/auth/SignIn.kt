@@ -8,10 +8,11 @@ import com.fghilmany.nufitai.domain.entitlement.repository.EntitlementRepository
 import com.fghilmany.nufitai.domain.sync.repository.SyncRepository
 
 /**
- * techspec §6 (auth-sync.md) -- signs in, flips the real `isLoggedIn` flag, then triggers the
- * first sync pass (push local guest data, pull any remote data -- LWW per record). A sync
- * failure here (e.g. placeholder SUPABASE_URL, no project configured yet) does not undo the
- * sign-in -- the session is real even if the network call isn't reachable yet.
+ * techspec §6 (auth-sync.md) -- signs in, flips the real `isLoggedIn` flag, refreshes the real
+ * Subscribe status from Supabase (ADR-008 follow-up -- replaces the old client-side debug
+ * toggle), then triggers the first sync pass (push local guest data, pull any remote data -- LWW
+ * per record). A sync/entitlement-fetch failure here (e.g. no network) does not undo the sign-in
+ * -- the session is real even if a network call isn't reachable yet.
  */
 class SignIn(
     private val authRepository: AuthRepository,
@@ -27,6 +28,7 @@ class SignIn(
         val result = authRepository.signIn(provider, idToken, displayName, profilePictureUrl)
         if (result is AppResult.Success) {
             entitlementRepository.setLoggedIn(true)
+            entitlementRepository.refreshFromRemote(result.data.userId, result.data.accessToken)
             syncRepository.syncNow()
         }
         return result

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -62,14 +61,12 @@ fun MealPlanGateScreen(
                     body = stringResource(Res.string.mealplan_gate_guest_body),
                     ctaLabel = stringResource(Res.string.mealplan_gate_cta_login),
                     onCta = onNavigateToLogin,
-                    onDebugSimulateSubscriber = viewModel::debugSimulateSubscriber,
                 )
                 MealPlanGateState.NonSubscriberPaywall -> GateCard(
                     title = stringResource(Res.string.mealplan_gate_paywall_title),
                     body = stringResource(Res.string.mealplan_gate_paywall_body),
                     ctaLabel = stringResource(Res.string.mealplan_gate_cta_subscribe),
                     onCta = {}, // billing (RevenueCat) doesn't exist yet -- no-op until then, mirrors AiCustomPlanGateScreen's precedent.
-                    onDebugSimulateSubscriber = viewModel::debugSimulateSubscriber,
                 )
                 MealPlanGateState.NeedsBodyData -> GateCard(
                     title = stringResource(Res.string.mealplan_gate_needs_body_data_title),
@@ -103,17 +100,10 @@ private fun GateCard(
     body: String,
     ctaLabel: String,
     onCta: () -> Unit,
-    onDebugSimulateSubscriber: (() -> Unit)? = null,
 ) {
     Column(modifier = Modifier.fillMaxWidth().padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(title, style = MaterialTheme.typography.headlineSmall)
         Text(body, style = MaterialTheme.typography.bodyMedium)
         AppButton(text = ctaLabel, onClick = onCta, modifier = Modifier.fillMaxWidth())
-        // DEBUG ONLY -- remove once real auth/billing land (mirrors AiCustomPlanGateScreen's precedent).
-        if (onDebugSimulateSubscriber != null) {
-            TextButton(onClick = onDebugSimulateSubscriber, modifier = Modifier.fillMaxWidth()) {
-                Text("[DEBUG] Simulate subscriber")
-            }
-        }
     }
 }

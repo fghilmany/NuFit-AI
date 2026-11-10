@@ -2,10 +2,10 @@ package com.fghilmany.nufitai.core.di
 
 import com.fghilmany.nufitai.core.settings.SettingsFactory
 import com.fghilmany.nufitai.data.entitlement.datasource.EntitlementLocalDataSource
+import com.fghilmany.nufitai.data.entitlement.datasource.EntitlementRemoteDataSource
 import com.fghilmany.nufitai.data.entitlement.repository.EntitlementRepositoryImpl
 import com.fghilmany.nufitai.domain.entitlement.repository.EntitlementRepository
 import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
-import com.fghilmany.nufitai.usecase.entitlement.SetDebugEntitlement
 import org.koin.dsl.module
 
 /**
@@ -18,8 +18,8 @@ fun entitlementModule(settingsFactory: SettingsFactory) = module {
     // reuse the same Settings instance via get(), instead of each feature creating its own.
     single { settingsFactory.createSettings() }
     single { EntitlementLocalDataSource(settings = get()) }
-    single<EntitlementRepository> { EntitlementRepositoryImpl(local = get()) }
+    single { EntitlementRemoteDataSource(httpClient = get()) }
+    single<EntitlementRepository> { EntitlementRepositoryImpl(local = get(), remote = get()) }
 
     factory { GetCurrentTier(repository = get()) }
-    factory { SetDebugEntitlement(repository = get()) }
 }

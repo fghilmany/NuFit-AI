@@ -36,7 +36,7 @@ val aiCustomPlanModule = module {
     factory { SaveAiCustomPlanDraft(repository = get()) }
     factory { ActivateAiCustomPlan(monthlyPlanRepository = get()) }
 
-    viewModel { AiCustomPlanGateViewModel(getCurrentTier = get(), hasCompletedFullAssessment = get(), setDebugEntitlement = get()) }
+    viewModel { AiCustomPlanGateViewModel(getCurrentTier = get(), hasCompletedFullAssessment = get()) }
     viewModel {
         AiCustomPlanFormViewModel(
             getLatestQuickAssessmentResult = get(),

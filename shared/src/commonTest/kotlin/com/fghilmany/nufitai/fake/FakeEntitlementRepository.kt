@@ -16,12 +16,12 @@ class FakeEntitlementRepository(var tier: Tier = Tier.GUEST) : EntitlementReposi
         return AppResult.Success(Unit)
     }
 
-    override suspend fun setDebugEntitlement(isLoggedIn: Boolean, isSubscribed: Boolean): AppResult<Unit> {
-        tier = when {
-            !isLoggedIn -> Tier.GUEST
-            !isSubscribed -> Tier.LOGGED_IN
-            else -> Tier.SUBSCRIBED
-        }
+    var refreshFromRemoteCallCount: Int = 0
+        private set
+
+    /** No-op besides tracking the call -- tests set [tier] directly rather than faking a network response. */
+    override suspend fun refreshFromRemote(userId: String, accessToken: String): AppResult<Unit> {
+        refreshFromRemoteCallCount++
         return AppResult.Success(Unit)
     }
 }
