@@ -19,6 +19,7 @@ fun initKoin(
     driverFactory: DatabaseDriverFactory,
     settingsFactory: SettingsFactory,
     tokenStorage: TokenStorage,
+    isDebugBuild: Boolean = false,
     appDeclaration: KoinAppDeclaration = {},
 ) {
     // `libs.kermit` was already a dependency but nothing ever called Logger.setLogWriters --
@@ -31,7 +32,7 @@ fun initKoin(
         appDeclaration()
         modules(
             databaseModule(driverFactory),
-            networkModule,
+            networkModule(isDebugBuild),
             onboardingModule,
             exerciseLibraryModule,
             fullAssessmentModule,

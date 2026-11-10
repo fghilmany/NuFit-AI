@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+ (API 31+) backup/transfer rules. Excludes the SQLDelight DB: it's this app's
+     local-first source of truth and churns schema without .sqm migrations during early dev
+     (architecture.md §4b); silently restoring a stale copy from device backup causes exactly the
+     "no such column" crash a fresh install should never have. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="database" path="nufit.db" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="database" path="nufit.db" />
+    </device-transfer>
+</data-extraction-rules>

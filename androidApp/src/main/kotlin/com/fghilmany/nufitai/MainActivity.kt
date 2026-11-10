@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 driverFactory = DatabaseDriverFactory(applicationContext),
                 settingsFactory = SettingsFactory(applicationContext),
                 tokenStorage = TokenStorage(applicationContext),
+                isDebugBuild = BuildConfig.DEBUG,
             )
             koinStarted = true
         }
