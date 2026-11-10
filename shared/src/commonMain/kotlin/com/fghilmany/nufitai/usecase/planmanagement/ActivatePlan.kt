@@ -12,16 +12,12 @@ import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
  */
 class ActivatePlan(private val repository: MonthlyPlanRepository) {
     suspend operator fun invoke(planId: String): AppResult<Unit> {
-        val activePlan = when (val result = repository.getActivePlan()) {
-            is AppResult.Success -> result.data
-            is AppResult.Error -> return result
+        when (val activated = repository.activatePlan(planId)) {
+            is AppResult.Error -> return activated
+            is AppResult.Success -> Unit
         }
-        if (activePlan != null && activePlan.id != planId) {
-            when (val archived = repository.archivePlan(activePlan.id)) {
-                is AppResult.Error -> return archived
-                is AppResult.Success -> Unit
-            }
-        }
-        return repository.activatePlan(planId)
+        // Bulk archive (not a single getActivePlan()+archive) -- self-heals if more than one plan
+        // was ever left ACTIVE (plan-management.md's "exactly 1 active plan" invariant).
+        return repository.archiveAllActivePlansExcept(planId)
     }
 }

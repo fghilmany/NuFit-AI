@@ -18,22 +18,21 @@ class ActivatePlanFromFullAssessment(
     private val generateLoggedInPlan: GenerateLoggedInPlan,
 ) {
     suspend operator fun invoke(fullAssessment: FullAssessmentResult): AppResult<MonthlyPlan> {
-        val activePlan = when (val result = monthlyPlanRepository.getActivePlan()) {
-            is AppResult.Success -> result.data
-            is AppResult.Error -> return result
-        }
-        if (activePlan != null) {
-            when (val archived = monthlyPlanRepository.archivePlan(activePlan.id)) {
-                is AppResult.Error -> return archived
-                is AppResult.Success -> Unit
-            }
-        }
-
         val level = when (val result = getLatestQuickAssessmentResult()) {
             is AppResult.Success -> result.data?.level ?: Level.BEGINNER
             is AppResult.Error -> return result
         }
 
-        return generateLoggedInPlan(fullAssessment, level)
+        val generated = when (val result = generateLoggedInPlan(fullAssessment, level)) {
+            is AppResult.Success -> result.data
+            is AppResult.Error -> return result
+        }
+
+        // Bulk archive (not a single getActivePlan()+archive) -- self-heals if more than one plan
+        // was ever left ACTIVE (plan-management.md's "exactly 1 active plan" invariant).
+        return when (val archived = monthlyPlanRepository.archiveAllActivePlansExcept(generated.id)) {
+            is AppResult.Error -> archived
+            is AppResult.Success -> AppResult.Success(generated)
+        }
     }
 }

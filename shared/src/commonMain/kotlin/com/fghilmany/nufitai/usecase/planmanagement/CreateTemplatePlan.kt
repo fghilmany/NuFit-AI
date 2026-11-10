@@ -27,19 +27,6 @@ class CreateTemplatePlan(
     private val generateLocalTemplatePlan: GenerateLocalTemplatePlan,
 ) {
     suspend operator fun invoke(level: Level, goal: GoalCategory, resolvedSplit: ResolvedSplit, activateNow: Boolean): AppResult<MonthlyPlan> {
-        if (activateNow) {
-            val activePlan = when (val result = monthlyPlanRepository.getActivePlan()) {
-                is AppResult.Success -> result.data
-                is AppResult.Error -> return result
-            }
-            if (activePlan != null) {
-                when (val archived = monthlyPlanRepository.archivePlan(activePlan.id)) {
-                    is AppResult.Error -> return archived
-                    is AppResult.Success -> Unit
-                }
-            }
-        }
-
         val sessionsPerWeek = if (resolvedSplit == ResolvedSplit.FULL_BODY) FULL_BODY_SESSIONS_PER_WEEK else UPPER_LOWER_SESSIONS_PER_WEEK
         val input = TemplatePlanInput(
             level = level,
@@ -48,6 +35,17 @@ class CreateTemplatePlan(
             sessionsPerWeek = sessionsPerWeek,
             resolvedSplit = resolvedSplit,
         )
-        return generateLocalTemplatePlan(input, status = if (activateNow) PlanStatus.ACTIVE else PlanStatus.DRAFT)
+        val generated = when (val result = generateLocalTemplatePlan(input, status = if (activateNow) PlanStatus.ACTIVE else PlanStatus.DRAFT)) {
+            is AppResult.Success -> result.data
+            is AppResult.Error -> return result
+        }
+        if (!activateNow) return AppResult.Success(generated)
+
+        // Bulk archive (not a single getActivePlan()+archive) -- self-heals if more than one plan
+        // was ever left ACTIVE (plan-management.md's "exactly 1 active plan" invariant).
+        return when (val archived = monthlyPlanRepository.archiveAllActivePlansExcept(generated.id)) {
+            is AppResult.Error -> archived
+            is AppResult.Success -> AppResult.Success(generated)
+        }
     }
 }

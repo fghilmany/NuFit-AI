@@ -46,6 +46,17 @@ class FakeMonthlyPlanRepository : MonthlyPlanRepository {
         return AppResult.Success(Unit)
     }
 
+    override suspend fun archiveAllActivePlansExcept(planId: String): AppResult<Unit> {
+        for ((index, p) in allPlans.withIndex()) {
+            if (p.status == PlanStatus.ACTIVE && p.id != planId) {
+                archivedPlanIds.add(p.id)
+                allPlans[index] = p.copy(status = PlanStatus.ARCHIVED)
+                if (activePlan?.id == p.id) activePlan = activePlan?.copy(status = PlanStatus.ARCHIVED)
+            }
+        }
+        return AppResult.Success(Unit)
+    }
+
     override suspend fun replacePlanDaysFrom(planId: String, fromDayNumber: Int, days: List<PlanDay>): AppResult<Unit> {
         val existing = planDays[planId].orEmpty().filter { it.dayNumber < fromDayNumber }
         planDays[planId] = existing + days

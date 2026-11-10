@@ -16,6 +16,11 @@ interface MonthlyPlanRepository {
     suspend fun getPlanDays(planId: String): AppResult<List<PlanDay>>
     suspend fun archivePlan(planId: String): AppResult<Unit>
 
+    /** Archives every OTHER row with status=ACTIVE (bulk, not just the one `getActivePlan()`
+     * happens to return) -- enforces "exactly 1 active plan" at the data level regardless of how
+     * many were left ACTIVE by a prior bug/race. Callers pass the plan they're keeping active. */
+    suspend fun archiveAllActivePlansExcept(planId: String): AppResult<Unit>
+
     /** issue #82 -- flips `status` to ACTIVE only; caller (`ActivatePlan`) handles archiving the prior active plan first. */
     suspend fun activatePlan(planId: String): AppResult<Unit>
 
