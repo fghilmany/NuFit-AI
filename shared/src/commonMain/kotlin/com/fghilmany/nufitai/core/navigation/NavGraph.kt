@@ -226,6 +226,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                         popUpTo<Route.AiCustomPlanGate> { inclusive = true }
                     }
                 },
+                onBack = { navController.popBackStack() },
             )
         }
 
@@ -311,6 +312,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
         composable<Route.AiCustomPlanForm> {
             AiCustomPlanFormScreen(
                 onGenerated = { navController.navigate(Route.AiCustomPlanPreview) },
+                onBack = { navController.popBackStack() },
             )
         }
 
@@ -326,6 +328,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                         popUpTo<Route.AiCustomPlanPreview> { inclusive = true }
                     }
                 },
+                onBack = { navController.popBackStack() },
             )
         }
 

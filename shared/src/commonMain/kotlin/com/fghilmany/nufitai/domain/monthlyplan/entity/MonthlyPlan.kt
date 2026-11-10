@@ -13,6 +13,9 @@ data class MonthlyPlan(
     val cycleNumber: Int,
     val source: PlanSource,
     val status: PlanStatus,
+    /** User-entered name (AI Custom Plan only, for now) -- null falls back to [levelMeta] as the
+     * display title (`PlanCard`), matching every other plan source's existing behavior. */
+    val planName: String? = null,
     val levelMeta: String,
     val goalMeta: GoalCategory,
     val smartGoalMeta: String?,

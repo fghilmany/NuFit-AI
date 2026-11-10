@@ -26,6 +26,7 @@ import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanFor
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanFormState
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanFormViewModel
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.shortLabel
+import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.equipmentGridOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.goalOptions
 import nufitai.shared.generated.resources.Res
@@ -49,6 +50,7 @@ private val PLAN_DURATION_OPTIONS = 1..4
 @Composable
 fun AiCustomPlanFormScreen(
     onGenerated: () -> Unit,
+    onBack: () -> Unit,
     viewModel: AiCustomPlanFormViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -58,6 +60,7 @@ fun AiCustomPlanFormScreen(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
+        OnboardingTopBar(title = stringResource(Res.string.aicustomplan_form_title), onBack = onBack)
         when (val current = state) {
             is AiCustomPlanFormState.Editing -> FormContent(current, viewModel)
             AiCustomPlanFormState.Generating -> LoadingBox()
@@ -76,7 +79,6 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
     val equipmentOptions = equipmentGridOptions()
 
     LazyColumn(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        item { Text(stringResource(Res.string.aicustomplan_form_title), style = MaterialTheme.typography.headlineSmall) }
         item { Text(stringResource(Res.string.aicustomplan_form_subtitle), style = MaterialTheme.typography.bodyMedium) }
 
         item { Text(stringResource(Res.string.aicustomplan_form_goal_title), style = MaterialTheme.typography.titleSmall) }

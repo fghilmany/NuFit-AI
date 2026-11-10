@@ -4,6 +4,9 @@ CREATE TABLE monthly_plan (
     cycle_number INTEGER NOT NULL,
     source TEXT NOT NULL,
     status TEXT NOT NULL,
+    -- User-entered name (AI Custom Plan only, for now); NULL falls back to level_meta as the
+    -- display title (PlanCard), matching every other plan source's existing behavior.
+    plan_name TEXT,
     level_meta TEXT NOT NULL,
     goal_meta TEXT NOT NULL,
     smart_goal_meta TEXT,
@@ -21,9 +24,9 @@ CREATE TABLE monthly_plan (
 
 insertMonthlyPlan:
 INSERT INTO monthly_plan(
-    id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
+    id, started_at, cycle_number, source, status, plan_name, level_meta, goal_meta, smart_goal_meta,
     active_flags, starting_level_per_pattern, mode, checkpoint_days, updated_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getActiveMonthlyPlan:
 SELECT * FROM monthly_plan WHERE status = 'ACTIVE' AND deleted_at IS NULL LIMIT 1;
@@ -33,6 +36,14 @@ SELECT * FROM monthly_plan WHERE deleted_at IS NULL ORDER BY started_at DESC;
 
 archiveMonthlyPlan:
 UPDATE monthly_plan SET status = 'ARCHIVED', updated_at = ? WHERE id = ?;
+
+-- Bug fix: activation flows used to look up "the" active plan via getActiveMonthlyPlan (LIMIT 1,
+-- no ORDER BY) and archive only that one -- if more than one row was ever ACTIVE at once (data
+-- corruption from an earlier bug, or a race), the others were silently left ACTIVE forever,
+-- breaking the "exactly 1 active plan" invariant (plan-management.md DoD). This archives ALL
+-- active rows except the one being kept, self-healing any pre-existing corruption too.
+archiveAllActiveExcept:
+UPDATE monthly_plan SET status = 'ARCHIVED', updated_at = ? WHERE status = 'ACTIVE' AND id != ? AND deleted_at IS NULL;
 
 activateMonthlyPlan:
 UPDATE monthly_plan SET status = 'ACTIVE', updated_at = ? WHERE id = ?;
@@ -54,6 +65,6 @@ UPDATE monthly_plan SET user_id = ? WHERE user_id IS NULL;
 
 upsertFromRemote:
 INSERT OR REPLACE INTO monthly_plan(
-    id, started_at, cycle_number, source, status, level_meta, goal_meta, smart_goal_meta,
+    id, started_at, cycle_number, source, status, plan_name, level_meta, goal_meta, smart_goal_meta,
     active_flags, starting_level_per_pattern, mode, checkpoint_days, deleted_at, user_id, updated_at
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

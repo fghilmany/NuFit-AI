@@ -26,7 +26,10 @@
 
     <string name="aicustomplan_conflict_sessions_per_week_beginner">Kamu minta frekuensi tinggi, tapi sebagai Beginner kami sarankan lebih sedikit sesi — plan tetap dibuat sesuai permintaanmu.</string>
 
+    <string name="aicustomplan_preview_top_bar_title">Preview Plan</string>
     <string name="aicustomplan_preview_ai_badge">DIBUAT OLEH AI</string>
+    <string name="aicustomplan_preview_plan_name_label">Nama plan</string>
+    <string name="aicustomplan_preview_plan_name_placeholder">misal: Program Nambah Massa Otot</string>
     <string name="aicustomplan_preview_warning_dropped_exercise">Satu gerakan tidak bisa dimuat dan telah dihapus — coba Regenerate.</string>
     <string name="aicustomplan_preview_injury_conflict_banner">Beberapa gerakan berisiko memperparah cedera/kondisi yang kamu laporkan. Hapus atau ganti sebelum mengaktifkan.</string>
     <string name="aicustomplan_preview_remove_action">Hapus</string>

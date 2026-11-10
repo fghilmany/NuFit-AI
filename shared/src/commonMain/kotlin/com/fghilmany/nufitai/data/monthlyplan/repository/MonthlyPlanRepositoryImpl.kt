@@ -46,6 +46,7 @@ class MonthlyPlanRepositoryImpl(
             cycleNumber = plan.cycleNumber.toLong(),
             source = plan.source.name,
             status = plan.status.name,
+            planName = plan.planName,
             levelMeta = plan.levelMeta,
             goalMeta = plan.goalMeta.name,
             smartGoalMeta = plan.smartGoalMeta,
@@ -75,6 +76,10 @@ class MonthlyPlanRepositoryImpl(
 
     override suspend fun archivePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
         local.archivePlan(planId, currentInstant().toEpochMilliseconds())
+    }
+
+    override suspend fun archiveAllActivePlansExcept(planId: String): AppResult<Unit> = runCatchingDatabase {
+        local.archiveAllActiveExcept(planId, currentInstant().toEpochMilliseconds())
     }
 
     override suspend fun activatePlan(planId: String): AppResult<Unit> = runCatchingDatabase {
@@ -144,6 +149,7 @@ class MonthlyPlanRepositoryImpl(
         cycleNumber = cycle_number.toInt(),
         source = PlanSource.valueOf(source),
         status = PlanStatus.valueOf(status),
+        planName = plan_name,
         levelMeta = level_meta,
         goalMeta = GoalCategory.valueOf(goal_meta),
         smartGoalMeta = smart_goal_meta,

@@ -41,6 +41,7 @@ import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.domain.monthlyplan.entity.DayType
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
 import com.fghilmany.nufitai.presentation.aicustomplan.component.copyText
+import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanPreviewEvent
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanPreviewState
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanPreviewViewModel
@@ -52,6 +53,8 @@ import nufitai.shared.generated.resources.aicustomplan_preview_adjust_set_sets_l
 import nufitai.shared.generated.resources.aicustomplan_preview_adjust_set_title
 import nufitai.shared.generated.resources.aicustomplan_preview_delete_action
 import nufitai.shared.generated.resources.aicustomplan_preview_injury_conflict_banner
+import nufitai.shared.generated.resources.aicustomplan_preview_plan_name_label
+import nufitai.shared.generated.resources.aicustomplan_preview_plan_name_placeholder
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_adaptation
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_intensity
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_volume
@@ -64,6 +67,7 @@ import nufitai.shared.generated.resources.aicustomplan_preview_session_summary
 import nufitai.shared.generated.resources.aicustomplan_preview_swap_action
 import nufitai.shared.generated.resources.aicustomplan_preview_swap_dialog_empty
 import nufitai.shared.generated.resources.aicustomplan_preview_swap_dialog_title
+import nufitai.shared.generated.resources.aicustomplan_preview_top_bar_title
 import nufitai.shared.generated.resources.aicustomplan_preview_warning_dropped_exercise
 import nufitai.shared.generated.resources.aicustomplan_preview_week_label
 import nufitai.shared.generated.resources.common_action_cancel
@@ -78,6 +82,7 @@ private fun weekNumberFor(dayNumber: Int): Int = ((dayNumber - 1) / 7) + 1
 fun AiCustomPlanPreviewScreen(
     onSaved: () -> Unit,
     onActivated: () -> Unit,
+    onBack: () -> Unit,
     viewModel: AiCustomPlanPreviewViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -90,13 +95,16 @@ fun AiCustomPlanPreviewScreen(
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        when (val current = state) {
-            AiCustomPlanPreviewState.Loading, AiCustomPlanPreviewState.Regenerating -> LoadingBox()
-            AiCustomPlanPreviewState.Saved, AiCustomPlanPreviewState.Activated -> LoadingBox() // brief -- LaunchedEffect navigates away
-            is AiCustomPlanPreviewState.Loaded -> PreviewContent(current, viewModel)
-            is AiCustomPlanPreviewState.QuotaFull -> QuotaFullContent(current, viewModel)
-            is AiCustomPlanPreviewState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+    Column(modifier = Modifier.fillMaxSize()) {
+        OnboardingTopBar(title = stringResource(Res.string.aicustomplan_preview_top_bar_title), onBack = onBack)
+        Box(modifier = Modifier.weight(1f)) {
+            when (val current = state) {
+                AiCustomPlanPreviewState.Loading, AiCustomPlanPreviewState.Regenerating -> LoadingBox()
+                AiCustomPlanPreviewState.Saved, AiCustomPlanPreviewState.Activated -> LoadingBox() // brief -- LaunchedEffect navigates away
+                is AiCustomPlanPreviewState.Loaded -> PreviewContent(current, viewModel)
+                is AiCustomPlanPreviewState.QuotaFull -> QuotaFullContent(current, viewModel)
+                is AiCustomPlanPreviewState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            }
         }
     }
 }
@@ -112,6 +120,16 @@ private fun PreviewContent(loaded: AiCustomPlanPreviewState.Loaded, viewModel: A
                 stringResource(Res.string.aicustomplan_preview_ai_badge),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.primary,
+            )
+        }
+        item {
+            OutlinedTextField(
+                value = loaded.planName,
+                onValueChange = { viewModel.onEvent(AiCustomPlanPreviewEvent.ChangePlanName(it)) },
+                label = { Text(stringResource(Res.string.aicustomplan_preview_plan_name_label)) },
+                placeholder = { Text(stringResource(Res.string.aicustomplan_preview_plan_name_placeholder)) },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
             )
         }
         item { Text(loaded.smartGoalSummary, style = MaterialTheme.typography.titleMedium) }

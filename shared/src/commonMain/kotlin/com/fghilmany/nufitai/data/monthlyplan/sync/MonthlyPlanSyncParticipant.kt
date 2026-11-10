@@ -48,6 +48,7 @@ class MonthlyPlanSyncParticipant(
         put("cycle_number", JsonPrimitive(cycle_number))
         put("source", JsonPrimitive(source))
         put("status", JsonPrimitive(status))
+        put("plan_name", JsonPrimitive(plan_name))
         put("level_meta", JsonPrimitive(level_meta))
         put("goal_meta", JsonPrimitive(goal_meta))
         put("smart_goal_meta", JsonPrimitive(smart_goal_meta))
@@ -66,6 +67,7 @@ class MonthlyPlanSyncParticipant(
         cycle_number = getValue("cycle_number").jsonPrimitive.long,
         source = getValue("source").jsonPrimitive.content,
         status = getValue("status").jsonPrimitive.content,
+        plan_name = get("plan_name")?.jsonPrimitive?.contentOrNull,
         level_meta = getValue("level_meta").jsonPrimitive.content,
         goal_meta = getValue("goal_meta").jsonPrimitive.content,
         smart_goal_meta = get("smart_goal_meta")?.jsonPrimitive?.contentOrNull,

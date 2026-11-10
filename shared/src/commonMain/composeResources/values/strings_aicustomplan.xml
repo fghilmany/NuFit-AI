@@ -26,7 +26,10 @@
 
     <string name="aicustomplan_conflict_sessions_per_week_beginner">You requested a high weekly frequency, but as a Beginner we suggest fewer sessions — the plan was still built to match your request.</string>
 
+    <string name="aicustomplan_preview_top_bar_title">Preview Plan</string>
     <string name="aicustomplan_preview_ai_badge">MADE BY AI</string>
+    <string name="aicustomplan_preview_plan_name_label">Plan name</string>
+    <string name="aicustomplan_preview_plan_name_placeholder">e.g. My Muscle Gain Program</string>
     <string name="aicustomplan_preview_warning_dropped_exercise">One exercise could not be loaded and was removed — try Regenerate.</string>
     <string name="aicustomplan_preview_injury_conflict_banner">Some exercises may aggravate a reported injury/condition. Remove or replace them before activating.</string>
     <string name="aicustomplan_preview_remove_action">Remove</string>

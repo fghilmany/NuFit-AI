@@ -64,7 +64,7 @@ fun PlanCard(
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    plan.levelMeta,
+                    plan.planName?.takeIf { it.isNotBlank() } ?: plan.levelMeta,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = contentAlpha),
                 )

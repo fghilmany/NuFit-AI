@@ -19,6 +19,9 @@ class AiCustomPlanDraftHolder {
 
 data class PendingAiPlanDraft(
     val formInput: AiPlanFormInput,
+    /** User-entered plan name (P-13 preview) -- kept here, not just transient ViewModel state, so
+     * it survives a "Regenerate" round-trip (`toLoadedState()`/`draft.copy()` both preserve it). */
+    val planName: String = "",
     val smartGoalSummary: String,
     val days: List<PlanDay>,
     val conflicts: List<ProfileConflict>,

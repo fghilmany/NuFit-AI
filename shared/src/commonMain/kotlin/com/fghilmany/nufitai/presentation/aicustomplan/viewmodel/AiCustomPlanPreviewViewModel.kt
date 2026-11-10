@@ -39,6 +39,7 @@ private const val AI_CUSTOM_LEVEL_META = "AI_CUSTOM"
 sealed interface AiCustomPlanPreviewState {
     data object Loading : AiCustomPlanPreviewState
     data class Loaded(
+        val planName: String,
         val smartGoalSummary: String,
         val sessionDurationMinutes: Int,
         val days: List<PlanDay>,
@@ -64,6 +65,7 @@ data class SwapDialogState(val dayNumber: Int, val exerciseId: String, val candi
 data class AdjustSetDialogState(val dayNumber: Int, val exerciseId: String, val sets: Int, val repRangeOrDuration: String)
 
 sealed interface AiCustomPlanPreviewEvent {
+    data class ChangePlanName(val value: String) : AiCustomPlanPreviewEvent
     data object Regenerate : AiCustomPlanPreviewEvent
     data object SaveDraft : AiCustomPlanPreviewEvent
     data object Activate : AiCustomPlanPreviewEvent
@@ -119,6 +121,10 @@ class AiCustomPlanPreviewViewModel(
 
     fun onEvent(event: AiCustomPlanPreviewEvent) {
         when (event) {
+            is AiCustomPlanPreviewEvent.ChangePlanName -> {
+                draftHolder.current = draftHolder.current?.copy(planName = event.value)
+                updateLoaded { it.copy(planName = event.value) }
+            }
             AiCustomPlanPreviewEvent.Regenerate -> regenerate()
             AiCustomPlanPreviewEvent.SaveDraft -> persist(activate = false)
             AiCustomPlanPreviewEvent.Activate -> persist(activate = true)
@@ -286,6 +292,7 @@ class AiCustomPlanPreviewViewModel(
                 cycleNumber = 1,
                 source = PlanSource.AI_GENERATED,
                 status = if (activate) PlanStatus.ACTIVE else PlanStatus.DRAFT,
+                planName = draft.planName.trim().ifEmpty { null },
                 levelMeta = AI_CUSTOM_LEVEL_META,
                 goalMeta = draft.formInput.goal,
                 smartGoalMeta = draft.smartGoalSummary,
@@ -319,6 +326,7 @@ class AiCustomPlanPreviewViewModel(
         fullAssessment.parQCategoryB + fullAssessment.flagsPostural + fullAssessment.movementFlags
 
     private fun PendingAiPlanDraft.toLoadedState(exercisesById: Map<String, Exercise>) = AiCustomPlanPreviewState.Loaded(
+        planName = planName,
         smartGoalSummary = smartGoalSummary,
         sessionDurationMinutes = formInput.sessionDurationMinutes,
         days = days,
