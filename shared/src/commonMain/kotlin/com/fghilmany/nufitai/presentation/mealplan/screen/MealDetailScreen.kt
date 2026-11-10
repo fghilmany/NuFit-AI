@@ -16,6 +16,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,6 +38,7 @@ import nufitai.shared.generated.resources.mealplan_detail_mark_eaten
 import nufitai.shared.generated.resources.mealplan_detail_mark_skipped
 import nufitai.shared.generated.resources.mealplan_detail_status_eaten
 import nufitai.shared.generated.resources.mealplan_detail_status_skipped
+import nufitai.shared.generated.resources.mealplan_detail_undo_status
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -83,10 +85,30 @@ fun MealDetailScreen(plannedMealId: String, onBack: () -> Unit, viewModel: MealD
                         AppButton(text = stringResource(Res.string.mealplan_detail_mark_eaten), onClick = { viewModel.onSetStatus(MealLogStatus.EATEN) }, modifier = Modifier.fillMaxWidth())
                         AppButton(text = stringResource(Res.string.mealplan_detail_mark_skipped), onClick = { viewModel.onSetStatus(MealLogStatus.SKIPPED) }, modifier = Modifier.fillMaxWidth())
                     }
-                    MealLogStatus.EATEN -> Text(stringResource(Res.string.mealplan_detail_status_eaten), style = MaterialTheme.typography.titleSmall, color = NuFitColors.Secondary)
-                    MealLogStatus.SKIPPED -> Text(stringResource(Res.string.mealplan_detail_status_skipped), style = MaterialTheme.typography.titleSmall, color = NuFitColors.Error)
+                    MealLogStatus.EATEN -> StatusWithUndo(
+                        label = stringResource(Res.string.mealplan_detail_status_eaten),
+                        color = NuFitColors.Secondary,
+                        onUndo = { viewModel.onSetStatus(MealLogStatus.PENDING) },
+                    )
+                    MealLogStatus.SKIPPED -> StatusWithUndo(
+                        label = stringResource(Res.string.mealplan_detail_status_skipped),
+                        color = NuFitColors.Error,
+                        onUndo = { viewModel.onSetStatus(MealLogStatus.PENDING) },
+                    )
                 }
             }
+        }
+    }
+}
+
+/** AC-7 follow-up: EATEN/SKIPPED wasn't reversible -- a mis-tap had no way back. "Batalkan" resets
+ * the log to PENDING (same `LogMealStatus` usecase, already generic over any status). */
+@Composable
+private fun StatusWithUndo(label: String, color: androidx.compose.ui.graphics.Color, onUndo: () -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(label, style = MaterialTheme.typography.titleSmall, color = color)
+        OutlinedButton(onClick = onUndo, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(Res.string.mealplan_detail_undo_status))
         }
     }
 }
