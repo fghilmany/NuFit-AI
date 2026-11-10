@@ -39,6 +39,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         cycleNumber: Long,
         source: String,
         status: String,
+        planName: String?,
         levelMeta: String,
         goalMeta: String,
         smartGoalMeta: String?,
@@ -56,6 +57,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                 cycle_number = cycleNumber,
                 source = source,
                 status = status,
+                plan_name = planName,
                 level_meta = levelMeta,
                 goal_meta = goalMeta,
                 smart_goal_meta = smartGoalMeta,
@@ -143,6 +145,10 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.monthlyPlanQueries.archiveMonthlyPlan(updatedAt, planId)
     }
 
+    suspend fun archiveAllActiveExcept(exceptPlanId: String, updatedAt: Long) = withContext(Dispatchers.Default) {
+        database.monthlyPlanQueries.archiveAllActiveExcept(updatedAt, exceptPlanId)
+    }
+
     suspend fun activatePlan(planId: String, updatedAt: Long) = withContext(Dispatchers.Default) {
         database.monthlyPlanQueries.activateMonthlyPlan(updatedAt, planId)
     }
@@ -171,6 +177,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
             cycle_number = row.cycle_number,
             source = row.source,
             status = row.status,
+            plan_name = row.plan_name,
             level_meta = row.level_meta,
             goal_meta = row.goal_meta,
             smart_goal_meta = row.smart_goal_meta,
