@@ -44,7 +44,7 @@
 
     <string name="onboarding_wizard_top_bar_title">Quick Assessment</string>
     <string name="onboarding_wizard_step_label">Step %1$d of %2$d</string>
-    <string name="onboarding_wizard_percent_complete">%1$d%% Complete</string>
+    <string name="onboarding_wizard_percent_complete">%1$d% Complete</string>
     <string name="onboarding_wizard_select_all_title">Select All</string>
     <string name="onboarding_wizard_select_all_subtitle">I have access to a full gym</string>
     <string name="onboarding_wizard_tips_title">NuFit AI Tips</string>

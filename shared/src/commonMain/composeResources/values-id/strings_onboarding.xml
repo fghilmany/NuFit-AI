@@ -44,7 +44,7 @@
 
     <string name="onboarding_wizard_top_bar_title">Quick Assessment</string>
     <string name="onboarding_wizard_step_label">Langkah %1$d dari %2$d</string>
-    <string name="onboarding_wizard_percent_complete">%1$d%% Selesai</string>
+    <string name="onboarding_wizard_percent_complete">%1$d% Selesai</string>
     <string name="onboarding_wizard_select_all_title">Pilih Semua</string>
     <string name="onboarding_wizard_select_all_subtitle">Saya punya akses gym lengkap</string>
     <string name="onboarding_wizard_tips_title">Tips NuFit AI</string>
