@@ -19,3 +19,6 @@ SELECT * FROM chat_exercise_override WHERE plan_day_id = ? AND planned_exercise_
 
 deleteOverride:
 DELETE FROM chat_exercise_override WHERE id = ?;
+
+deleteAll:
+DELETE FROM chat_exercise_override;

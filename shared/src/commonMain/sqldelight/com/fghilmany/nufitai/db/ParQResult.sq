@@ -17,3 +17,9 @@ SELECT * FROM par_q_result WHERE id = ?;
 
 acknowledgeConsult:
 UPDATE par_q_result SET consult_acknowledged_at = ? WHERE id = ?;
+
+deleteAll:
+DELETE FROM par_q_result;
+
+countAll:
+SELECT COUNT(*) FROM par_q_result;

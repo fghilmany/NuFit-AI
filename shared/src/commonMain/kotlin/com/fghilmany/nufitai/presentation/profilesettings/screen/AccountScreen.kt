@@ -52,6 +52,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
 import com.fghilmany.nufitai.presentation.monthlyplan.component.NavTab
 import com.fghilmany.nufitai.presentation.profilesettings.component.BodyDataEditDialog
 import com.fghilmany.nufitai.presentation.profilesettings.component.DeleteAccountConfirmDialog
+import com.fghilmany.nufitai.presentation.profilesettings.component.SignOutSyncFailedDialog
 import com.fghilmany.nufitai.presentation.profilesettings.component.LanguageSelectDialog
 import com.fghilmany.nufitai.presentation.profilesettings.component.WeightHistoryChart
 import com.fghilmany.nufitai.presentation.profilesettings.viewmodel.AccountEvent
@@ -260,6 +261,13 @@ private fun ContentColumn(
         state = state.deleteAccountDialog,
         onConfirm = { onEvent(AccountEvent.ConfirmDeleteAccount) },
         onCancel = { onEvent(AccountEvent.CancelDeleteAccount) },
+    )
+
+    SignOutSyncFailedDialog(
+        state = state.signOutDialog,
+        onRetry = { onEvent(AccountEvent.SignOut) },
+        onSignOutAnyway = { onEvent(AccountEvent.ConfirmSignOutAnyway) },
+        onCancel = { onEvent(AccountEvent.CancelSignOut) },
     )
 
     if (state.languageDialogOpen) {

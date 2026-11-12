@@ -58,7 +58,11 @@
     <string name="profilesettings_version_footer">Versi %1$s</string>
 
     <string name="profilesettings_delete_confirm_title">Hapus akun kamu?</string>
-    <string name="profilesettings_delete_confirm_body">Akun dan seluruh data cloud kamu akan dihapus permanen. Data latihan yang tersimpan di HP ini TIDAK ikut terhapus — HP kamu akan kembali ke mode tamu (lokal saja).</string>
+    <string name="profilesettings_delete_confirm_body">Akun, seluruh data cloud, dan data latihan yang tersimpan di HP ini akan dihapus permanen. HP kamu akan kembali ke mode tamu (lokal saja) dengan data bersih.</string>
+    <string name="profilesettings_signout_sync_failed_title">Data belum berhasil di-backup</string>
+    <string name="profilesettings_signout_sync_failed_body">Kami gak berhasil sync data terbaru kamu sebelum logout. Kalau tetap logout, data yang belum ke-backup bakal hilang.</string>
+    <string name="profilesettings_signout_sync_failed_retry">Coba lagi</string>
+    <string name="profilesettings_signout_sync_failed_anyway">Tetap logout</string>
     <string name="profilesettings_delete_confirm_offline_notice">Kamu perlu koneksi internet untuk menghapus akun.</string>
     <string name="profilesettings_delete_confirm_action">Ya, Hapus Akun</string>
 

@@ -20,3 +20,9 @@ INSERT INTO quick_assessment_result(
 
 getLatestQuickAssessmentResult:
 SELECT * FROM quick_assessment_result ORDER BY answered_at DESC LIMIT 1;
+
+deleteAll:
+DELETE FROM quick_assessment_result;
+
+countAll:
+SELECT COUNT(*) FROM quick_assessment_result;

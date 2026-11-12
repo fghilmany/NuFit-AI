@@ -10,4 +10,11 @@ class SyncCursorLocalDataSource(private val settings: Settings) {
     fun setLastSyncedAtEpochMillis(epochMillis: Long) {
         settings.putLong(KEY_LAST_SYNCED_AT, epochMillis)
     }
+
+    /** Called when local data is wiped (sign-out, or discarding local data on a sign-in
+     * conflict) -- without this, the next sync would ask the server for changes "since" a
+     * stale timestamp and could miss rows that haven't changed since then. */
+    fun reset() {
+        settings.remove(KEY_LAST_SYNCED_AT)
+    }
 }

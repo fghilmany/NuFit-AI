@@ -27,3 +27,6 @@ SELECT * FROM planned_exercise WHERE plan_day_id IN ?;
 
 deletePlannedExercisesForDays:
 DELETE FROM planned_exercise WHERE plan_day_id IN ?;
+
+deleteAll:
+DELETE FROM planned_exercise;

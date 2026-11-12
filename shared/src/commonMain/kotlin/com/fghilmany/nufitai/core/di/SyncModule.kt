@@ -9,6 +9,7 @@ import com.fghilmany.nufitai.data.onboarding.sync.ParQSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.QuickAssessmentSyncParticipant
 import com.fghilmany.nufitai.data.ptmode.sync.WorkoutHistorySyncParticipant
 import com.fghilmany.nufitai.data.sync.contract.SyncParticipant
+import com.fghilmany.nufitai.data.sync.datasource.LocalDataWipeDataSource
 import com.fghilmany.nufitai.data.sync.datasource.SyncCursorLocalDataSource
 import com.fghilmany.nufitai.data.sync.datasource.SyncRemoteDataSource
 import com.fghilmany.nufitai.data.sync.repository.SyncRepositoryImpl
@@ -45,7 +46,10 @@ val syncModule = module {
 
     single { SyncRemoteDataSource(httpClient = get()) }
     single { SyncCursorLocalDataSource(settings = get()) }
-    single<SyncRepository> { SyncRepositoryImpl(participants = get(), remote = get(), cursor = get(), authRepository = get()) }
+    single { LocalDataWipeDataSource(database = get()) }
+    single<SyncRepository> {
+        SyncRepositoryImpl(participants = get(), remote = get(), cursor = get(), authRepository = get(), localDataWipe = get())
+    }
 
     factory { SyncNow(repository = get()) }
     factory { ObserveSyncStatus(repository = get()) }

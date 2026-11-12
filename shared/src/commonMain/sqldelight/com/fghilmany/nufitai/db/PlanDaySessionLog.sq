@@ -31,3 +31,6 @@ SELECT * FROM plan_day_session_log WHERE id = ?;
 
 backfillUserId:
 UPDATE plan_day_session_log SET user_id = ? WHERE user_id IS NULL;
+
+deleteAll:
+DELETE FROM plan_day_session_log;

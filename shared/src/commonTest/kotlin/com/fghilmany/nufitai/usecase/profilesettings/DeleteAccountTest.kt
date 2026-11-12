@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.domain.auth.entity.AuthSession
 import com.fghilmany.nufitai.fake.FakeAuthRepository
 import com.fghilmany.nufitai.fake.FakeEntitlementRepository
 import com.fghilmany.nufitai.fake.FakeProfileSettingsRepository
+import com.fghilmany.nufitai.fake.FakeSyncRepository
 import com.fghilmany.nufitai.usecase.auth.SignOut
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -23,7 +24,7 @@ class DeleteAccountTest {
     fun `given the backend deletes successfully when invoked then it signs out locally too`() = runTest {
         val profileSettingsRepository = FakeProfileSettingsRepository().apply { deleteAccountResult = AppResult.Success(Unit) }
         val authRepository = FakeAuthRepository(session = session())
-        val signOut = SignOut(authRepository = authRepository, entitlementRepository = FakeEntitlementRepository())
+        val signOut = SignOut(authRepository = authRepository, entitlementRepository = FakeEntitlementRepository(), syncRepository = FakeSyncRepository())
         val deleteAccount = DeleteAccount(repository = profileSettingsRepository, signOut = signOut)
 
         val result = deleteAccount()
@@ -38,7 +39,7 @@ class DeleteAccountTest {
             deleteAccountResult = AppResult.Error(Failure.Network("unreachable"))
         }
         val authRepository = FakeAuthRepository(session = session())
-        val signOut = SignOut(authRepository = authRepository, entitlementRepository = FakeEntitlementRepository())
+        val signOut = SignOut(authRepository = authRepository, entitlementRepository = FakeEntitlementRepository(), syncRepository = FakeSyncRepository())
         val deleteAccount = DeleteAccount(repository = profileSettingsRepository, signOut = signOut)
 
         val result = deleteAccount()

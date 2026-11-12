@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.CloudUpload
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.Psychology
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -51,6 +52,10 @@ import nufitai.shared.generated.resources.auth_login_benefit_personalization_bod
 import nufitai.shared.generated.resources.auth_login_benefit_personalization_title
 import nufitai.shared.generated.resources.auth_login_benefit_restore_body
 import nufitai.shared.generated.resources.auth_login_benefit_restore_title
+import nufitai.shared.generated.resources.auth_login_conflict_body
+import nufitai.shared.generated.resources.auth_login_conflict_cancel
+import nufitai.shared.generated.resources.auth_login_conflict_discard
+import nufitai.shared.generated.resources.auth_login_conflict_title
 import nufitai.shared.generated.resources.auth_login_cta_apple
 import nufitai.shared.generated.resources.auth_login_cta_google
 import nufitai.shared.generated.resources.auth_login_legal
@@ -170,7 +175,7 @@ fun LoginScreen(
         item {
             val current = state
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                if (current == LoginState.SigningIn) {
+                if (current == LoginState.SigningIn || current == LoginState.ResolvingConflict) {
                     Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
                 } else {
                     OutlinedButton(
@@ -230,6 +235,24 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
+    }
+
+    if (state == LoginState.LocalDataConflict) {
+        AlertDialog(
+            onDismissRequest = viewModel::cancelSignInConflict,
+            title = { Text(stringResource(Res.string.auth_login_conflict_title)) },
+            text = { Text(stringResource(Res.string.auth_login_conflict_body)) },
+            confirmButton = {
+                TextButton(onClick = viewModel::confirmDiscardLocalData) {
+                    Text(stringResource(Res.string.auth_login_conflict_discard), color = MaterialTheme.colorScheme.error)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = viewModel::cancelSignInConflict) {
+                    Text(stringResource(Res.string.auth_login_conflict_cancel))
+                }
+            },
+        )
     }
 }
 

@@ -68,3 +68,9 @@ INSERT OR REPLACE INTO monthly_plan(
     id, started_at, cycle_number, source, status, plan_name, level_meta, goal_meta, smart_goal_meta,
     active_flags, starting_level_per_pattern, mode, checkpoint_days, deleted_at, user_id, updated_at
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM monthly_plan;
+
+countAll:
+SELECT COUNT(*) FROM monthly_plan;

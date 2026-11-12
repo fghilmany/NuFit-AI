@@ -12,3 +12,6 @@ VALUES (?, ?, ?, ?);
 
 getFlagsForResult:
 SELECT * FROM full_assessment_flag_detail WHERE full_assessment_result_id = ?;
+
+deleteAll:
+DELETE FROM full_assessment_flag_detail;

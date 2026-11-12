@@ -45,3 +45,9 @@ INSERT OR REPLACE INTO full_assessment_result(
     equipment_preference, injury_history, injury_history_note, capacity_test, goal, sessions_per_week,
     selected_weekdays, session_duration_minutes, activity_level, user_id, updated_at
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM full_assessment_result;
+
+countAll:
+SELECT COUNT(*) FROM full_assessment_result;

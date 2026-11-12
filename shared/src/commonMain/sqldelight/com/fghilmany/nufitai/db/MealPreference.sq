@@ -13,3 +13,6 @@ INSERT OR REPLACE INTO meal_preference(id, cuisine_themes, mood, allergies, sche
 
 getMealPreference:
 SELECT * FROM meal_preference WHERE id = ?;
+
+deleteAll:
+DELETE FROM meal_preference;

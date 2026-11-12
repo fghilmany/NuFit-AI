@@ -33,3 +33,9 @@ SELECT * FROM chat_message WHERE id = ?;
 
 backfillUserId:
 UPDATE chat_message SET user_id = ? WHERE user_id IS NULL;
+
+deleteAll:
+DELETE FROM chat_message;
+
+countAll:
+SELECT COUNT(*) FROM chat_message;

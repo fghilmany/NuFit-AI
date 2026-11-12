@@ -12,9 +12,21 @@ class FakeSyncRepository : SyncRepository {
 
     var syncNowCallCount = 0
         private set
+    var clearAllLocalDataCallCount = 0
+        private set
+    var syncNowResult: AppResult<Unit> = AppResult.Success(Unit)
+    var hasLocalUserDataResult: AppResult<Boolean> = AppResult.Success(false)
+    var clearAllLocalDataResult: AppResult<Unit> = AppResult.Success(Unit)
 
     override suspend fun syncNow(): AppResult<Unit> {
         syncNowCallCount++
-        return AppResult.Success(Unit)
+        return syncNowResult
     }
+
+    override suspend fun clearAllLocalData(): AppResult<Unit> {
+        clearAllLocalDataCallCount++
+        return clearAllLocalDataResult
+    }
+
+    override suspend fun hasLocalUserData(): AppResult<Boolean> = hasLocalUserDataResult
 }

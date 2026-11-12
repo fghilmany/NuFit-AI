@@ -27,3 +27,6 @@ SELECT * FROM workout_exercise_log WHERE id = ?;
 
 backfillUserId:
 UPDATE workout_exercise_log SET user_id = ? WHERE user_id IS NULL;
+
+deleteAll:
+DELETE FROM workout_exercise_log;

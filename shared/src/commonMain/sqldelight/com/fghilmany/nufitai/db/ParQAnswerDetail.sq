@@ -12,3 +12,6 @@ VALUES (?, ?, ?, ?);
 
 getAnswersForResult:
 SELECT * FROM par_q_answer_detail WHERE par_q_result_id = ?;
+
+deleteAll:
+DELETE FROM par_q_answer_detail;

@@ -26,3 +26,6 @@ SELECT id FROM plan_day WHERE monthly_plan_id = ? AND day_number >= ?;
 
 deletePlanDaysFromDay:
 DELETE FROM plan_day WHERE monthly_plan_id = ? AND day_number >= ?;
+
+deleteAll:
+DELETE FROM plan_day;

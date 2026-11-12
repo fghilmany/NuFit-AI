@@ -32,3 +32,9 @@ SELECT * FROM workout_session WHERE id = ?;
 
 backfillUserId:
 UPDATE workout_session SET user_id = ? WHERE user_id IS NULL;
+
+deleteAll:
+DELETE FROM workout_session;
+
+countAll:
+SELECT COUNT(*) FROM workout_session;

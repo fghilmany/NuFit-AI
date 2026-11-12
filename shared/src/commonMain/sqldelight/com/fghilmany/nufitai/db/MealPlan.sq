@@ -30,3 +30,9 @@ SELECT * FROM meal_plan WHERE id = ?;
 
 backfillUserId:
 UPDATE meal_plan SET user_id = ? WHERE user_id IS NULL;
+
+deleteAll:
+DELETE FROM meal_plan;
+
+countAll:
+SELECT COUNT(*) FROM meal_plan;

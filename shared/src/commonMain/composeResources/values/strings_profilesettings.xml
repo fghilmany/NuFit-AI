@@ -58,7 +58,11 @@
     <string name="profilesettings_version_footer">Version %1$s</string>
 
     <string name="profilesettings_delete_confirm_title">Delete your account?</string>
-    <string name="profilesettings_delete_confirm_body">Your account and all cloud data will be permanently deleted. Workout data stored on this device will NOT be deleted — your device will return to guest (local-only) mode.</string>
+    <string name="profilesettings_delete_confirm_body">Your account, all cloud data, and all workout data stored on this device will be permanently deleted. This device will return to guest (local-only) mode with a clean slate.</string>
+    <string name="profilesettings_signout_sync_failed_title">Couldn't back up your data</string>
+    <string name="profilesettings_signout_sync_failed_body">We couldn't sync your latest data before signing out. If you sign out anyway, anything not yet backed up will be lost.</string>
+    <string name="profilesettings_signout_sync_failed_retry">Try again</string>
+    <string name="profilesettings_signout_sync_failed_anyway">Sign out anyway</string>
     <string name="profilesettings_delete_confirm_offline_notice">You need an internet connection to delete your account.</string>
     <string name="profilesettings_delete_confirm_action">Yes, Delete Account</string>
 

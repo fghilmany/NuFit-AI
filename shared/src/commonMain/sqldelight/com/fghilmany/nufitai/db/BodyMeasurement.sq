@@ -14,3 +14,9 @@ SELECT * FROM body_measurement ORDER BY recorded_at DESC;
 
 getLatestBodyMeasurement:
 SELECT * FROM body_measurement ORDER BY recorded_at DESC LIMIT 1;
+
+deleteAll:
+DELETE FROM body_measurement;
+
+countAll:
+SELECT COUNT(*) FROM body_measurement;

@@ -10,4 +10,7 @@ data class AuthSession(
     /** Best-effort, captured from the native sign-in provider at login time (never re-fetched). */
     val displayName: String? = null,
     val profilePictureUrl: String? = null,
+    /** Only meaningful right after [com.fghilmany.nufitai.usecase.auth.SignIn] -- never persisted
+     * (defaults to false on every reload), since it only matters at the moment of signing in. */
+    val isNewUser: Boolean = false,
 )

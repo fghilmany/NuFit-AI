@@ -46,6 +46,14 @@ sealed interface DeleteAccountDialogState {
     data class Failed(val message: String) : DeleteAccountDialogState
 }
 
+/** Shown when [SignOut]'s pre-wipe sync fails -- lets the user choose between retrying (needs
+ * network) and signing out anyway, which skips the sync and wipes local data unconditionally. */
+sealed interface SignOutDialogState {
+    data object Hidden : SignOutDialogState
+    data object SigningOut : SignOutDialogState
+    data class SyncFailedConfirm(val message: String) : SignOutDialogState
+}
+
 sealed interface AccountState {
     data object Loading : AccountState
 
@@ -70,6 +78,7 @@ sealed interface AccountState {
         val bodyDataEditDialogOpen: Boolean = false,
         val languageDialogOpen: Boolean = false,
         val deleteAccountDialog: DeleteAccountDialogState = DeleteAccountDialogState.Hidden,
+        val signOutDialog: SignOutDialogState = SignOutDialogState.Hidden,
     ) : AccountState
 
     data class Error(val message: String) : AccountState
@@ -78,6 +87,8 @@ sealed interface AccountState {
 sealed interface AccountEvent {
     data object SyncNow : AccountEvent
     data object SignOut : AccountEvent
+    data object ConfirmSignOutAnyway : AccountEvent
+    data object CancelSignOut : AccountEvent
     data object RequestEditBodyData : AccountEvent
     data object CancelEditBodyData : AccountEvent
     data class SaveBodyData(val heightCm: Double?, val weightKg: Double?) : AccountEvent
@@ -116,6 +127,8 @@ class AccountViewModel(
         when (event) {
             AccountEvent.SyncNow -> syncNowManually()
             AccountEvent.SignOut -> signOutNow()
+            AccountEvent.ConfirmSignOutAnyway -> signOutNow(force = true)
+            AccountEvent.CancelSignOut -> updateContent { it.copy(signOutDialog = SignOutDialogState.Hidden) }
             AccountEvent.RequestEditBodyData -> updateContent { it.copy(bodyDataEditDialogOpen = true) }
             AccountEvent.CancelEditBodyData -> updateContent { it.copy(bodyDataEditDialogOpen = false) }
             is AccountEvent.SaveBodyData -> saveBodyData(event.heightCm, event.weightKg)
@@ -136,10 +149,15 @@ class AccountViewModel(
         viewModelScope.launch { syncNow() }
     }
 
-    private fun signOutNow() {
+    private fun signOutNow(force: Boolean = false) {
         viewModelScope.launch {
-            signOut()
-            resolve()
+            updateContent { it.copy(signOutDialog = SignOutDialogState.SigningOut) }
+            when (val result = signOut(force)) {
+                is AppResult.Success -> resolve()
+                is AppResult.Error -> updateContent {
+                    it.copy(signOutDialog = SignOutDialogState.SyncFailedConfirm(result.failure.message))
+                }
+            }
         }
     }
 

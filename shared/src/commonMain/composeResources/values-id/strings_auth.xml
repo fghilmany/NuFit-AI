@@ -16,4 +16,9 @@
     <string name="auth_complete_profile_subtitle">Data ini dipakai untuk mempersonalisasi norma tes kamu.</string>
     <string name="auth_complete_profile_age_label">Usia</string>
     <string name="auth_complete_profile_gender_label">Jenis Kelamin</string>
+
+    <string name="auth_login_conflict_title">Akun ini udah punya data</string>
+    <string name="auth_login_conflict_body">HP ini punya data lokal yang belum terhubung ke akun ini. Kalau lanjut, data itu bakal diganti data akun ini dari cloud -- data lokal di HP ini bakal hilang.</string>
+    <string name="auth_login_conflict_discard">Lanjut, ganti data lokal</string>
+    <string name="auth_login_conflict_cancel">Batal, kembali</string>
 </resources>

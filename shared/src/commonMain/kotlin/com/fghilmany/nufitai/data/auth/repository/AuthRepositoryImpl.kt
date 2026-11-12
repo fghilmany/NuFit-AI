@@ -57,7 +57,9 @@ class AuthRepositoryImpl(
             // toEntity() never carries displayName/profilePictureUrl (Supabase's refresh
             // response doesn't echo them back) -- without this, every token refresh would
             // silently wipe the fields set at signIn.
-            val refreshed = response.toEntity().copy(displayName = session.displayName, profilePictureUrl = session.profilePictureUrl)
+            // isNewUser only means anything at the moment of SignIn -- force false here so a
+            // background token refresh can never re-trigger sign-in-only conflict logic.
+            val refreshed = response.toEntity().copy(displayName = session.displayName, profilePictureUrl = session.profilePictureUrl, isNewUser = false)
             local.saveSession(refreshed)
             logger.i { "Session refresh succeeded" }
             AppResult.Success(refreshed)

@@ -36,3 +36,6 @@ DELETE FROM planned_meal WHERE meal_plan_id = ? AND day_number = ?;
 
 getPlannedMealById:
 SELECT * FROM planned_meal WHERE id = ?;
+
+deleteAll:
+DELETE FROM planned_meal;

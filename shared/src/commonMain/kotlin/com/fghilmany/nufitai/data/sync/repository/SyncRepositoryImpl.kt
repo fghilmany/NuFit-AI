@@ -5,6 +5,7 @@ import com.fghilmany.nufitai.core.error.Failure
 import com.fghilmany.nufitai.core.logging.AppLogger
 import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.sync.contract.SyncParticipant
+import com.fghilmany.nufitai.data.sync.datasource.LocalDataWipeDataSource
 import com.fghilmany.nufitai.data.sync.datasource.SyncApiException
 import com.fghilmany.nufitai.data.sync.datasource.SyncCursorLocalDataSource
 import com.fghilmany.nufitai.data.sync.datasource.SyncRemoteDataSource
@@ -28,6 +29,7 @@ class SyncRepositoryImpl(
     private val remote: SyncRemoteDataSource,
     private val cursor: SyncCursorLocalDataSource,
     private val authRepository: AuthRepository,
+    private val localDataWipe: LocalDataWipeDataSource,
 ) : SyncRepository {
     private val logger = AppLogger.tagged("SyncRepository")
     private val _status = MutableStateFlow<SyncStatus>(SyncStatus.Idle)
@@ -85,5 +87,28 @@ class SyncRepositoryImpl(
             _status.value = SyncStatus.Failed(currentInstant(), failure)
             AppResult.Error(failure)
         }
+    }
+
+    override suspend fun clearAllLocalData(): AppResult<Unit> {
+        logger.i { "Clearing all local account data" }
+        return try {
+            localDataWipe.clearAll()
+            cursor.reset()
+            AppResult.Success(Unit)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            logger.e(e) { "clearAllLocalData failed -- ${e.message}" }
+            AppResult.Error(Failure.Database(e.message ?: "Failed to clear local data"))
+        }
+    }
+
+    override suspend fun hasLocalUserData(): AppResult<Boolean> = try {
+        AppResult.Success(localDataWipe.hasAnyData())
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        logger.e(e) { "hasLocalUserData failed -- ${e.message}" }
+        AppResult.Error(Failure.Database(e.message ?: "Failed to check local data"))
     }
 }

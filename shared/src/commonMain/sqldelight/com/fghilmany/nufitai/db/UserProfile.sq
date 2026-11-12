@@ -10,3 +10,6 @@ SELECT * FROM user_profile LIMIT 1;
 
 upsertProfileBasics:
 INSERT OR REPLACE INTO user_profile(user_id, age, gender, updated_at) VALUES (?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM user_profile;
