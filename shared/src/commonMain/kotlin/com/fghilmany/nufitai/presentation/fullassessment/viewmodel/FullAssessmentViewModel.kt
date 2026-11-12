@@ -19,10 +19,12 @@ import com.fghilmany.nufitai.domain.fullassessment.entity.PushupVersion
 import com.fghilmany.nufitai.domain.fullassessment.entity.SitToStandResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.TestProtocol
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
+import com.fghilmany.nufitai.domain.onboarding.entity.ParQQuestionId
 import com.fghilmany.nufitai.usecase.fullassessment.CompleteFullAssessment
 import com.fghilmany.nufitai.usecase.monthlyplan.ActivatePlanFromFullAssessment
 import com.fghilmany.nufitai.usecase.fullassessment.FullAssessmentParQGateResult
 import com.fghilmany.nufitai.usecase.fullassessment.SubmitFullAssessmentParQ
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 import com.fghilmany.nufitai.usecase.profile.GetProfileBasics
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +32,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.hours
 
 /** Sequential wizard order -- GATE_BLOCKED is a branch, not a numbered step. */
 enum class FullAssessmentPhase { PAR_Q, GATE_BLOCKED, INTERVIEW, POSTURAL, MOVEMENT, CAPACITY_TEST }
@@ -42,6 +45,9 @@ sealed interface FullAssessmentState {
         val phase: FullAssessmentPhase = FullAssessmentPhase.PAR_Q,
         val parQAnswers: Map<FullAssessmentParQQuestionId, Boolean?> =
             FullAssessmentParQQuestionId.entries.associateWith { null },
+        /** True once any PAR-Q answer was auto-filled from a recent Quick Assessment result --
+         * drives the "cek ulang ya" notice on the PAR-Q screen. */
+        val parQPrefilled: Boolean = false,
         val gateResult: FullAssessmentParQGateResult? = null,
         val gateAcknowledged: Boolean = false,
         val age: String = "",
@@ -119,6 +125,7 @@ class FullAssessmentViewModel(
     private val activatePlanFromFullAssessment: ActivatePlanFromFullAssessment,
     private val getProfileBasics: GetProfileBasics,
     private val getLatestQuickAssessmentResult: GetLatestQuickAssessmentResult,
+    private val getLatestParQResult: GetLatestParQResult,
 ) : ViewModel() {
     private val _state = MutableStateFlow<FullAssessmentState>(FullAssessmentState.Step())
     val state: StateFlow<FullAssessmentState> = _state.asStateFlow()
@@ -155,6 +162,26 @@ class FullAssessmentViewModel(
                         equipmentPreference = it.equipmentPreference.ifEmpty { quickResult.input.equipment },
                         sessionsPerWeek = it.sessionsPerWeek.ifBlank { quickResult.input.frequency.sessionsPerWeek.toString() },
                     )
+                }
+            }
+            // Prefill the ~7 PAR-Q questions Full Assessment re-asks verbatim from Quick
+            // Assessment, but ONLY if answered within the last 24h -- health state can genuinely
+            // change, so a stale answer must NOT be silently reused (the user would just be
+            // clicking through a safety gate without re-checking). Past that window the question
+            // is left blank like normal.
+            (getLatestParQResult().let { it as? AppResult.Success }?.data)?.let { parQResult ->
+                if (currentInstant() - parQResult.answeredAt <= 24.hours) {
+                    val prefillable = parQResult.answers.mapNotNull { quickAnswer ->
+                        quickAnswer.questionId.toFullAssessmentEquivalentOrNull()?.let { it to quickAnswer.answer }
+                    }
+                    updateStep { step ->
+                        val toApply = prefillable.filter { (id, _) -> step.parQAnswers[id] == null }
+                        if (toApply.isEmpty()) {
+                            step
+                        } else {
+                            step.copy(parQAnswers = step.parQAnswers + toApply, parQPrefilled = true)
+                        }
+                    }
                 }
             }
         }
@@ -271,3 +298,19 @@ class FullAssessmentViewModel(
 }
 
 private fun <T> Set<T>.toggle(value: T): Set<T> = if (value in this) this - value else this + value
+
+/** Quick Assessment's PAR-Q ringkas (onboarding.entity.ParQQuestionId) and Full Assessment's PAR-Q
+ * (FullAssessmentParQQuestionId) share 7 near-identical questions -- mapped here for the recency-
+ * gated prefill above. Quick-only (heart diagnosis, chest pain at rest, joint problem, routine
+ * medication, other condition) and Full-only (breathless light activity, asthma, old injury,
+ * osteoporosis) questions have no equivalent and are intentionally left unmapped. */
+private fun ParQQuestionId.toFullAssessmentEquivalentOrNull(): FullAssessmentParQQuestionId? = when (this) {
+    ParQQuestionId.Q2_CHEST_PAIN_ACTIVITY -> FullAssessmentParQQuestionId.Q1_CHEST_PAIN
+    ParQQuestionId.Q4_DIZZINESS_FAINTING -> FullAssessmentParQQuestionId.Q2_FAINTING_DURING_ACTIVITY
+    ParQQuestionId.Q7_RECENT_SURGERY -> FullAssessmentParQQuestionId.Q4_MAJOR_SURGERY_NOT_RECOVERED
+    ParQQuestionId.Q10_ACTIVE_CANCER -> FullAssessmentParQQuestionId.Q5_ACTIVE_CANCER_TREATMENT
+    ParQQuestionId.Q11_PREGNANCY -> FullAssessmentParQQuestionId.Q6_PREGNANCY
+    ParQQuestionId.Q9_DIABETES -> FullAssessmentParQQuestionId.Q7_DIABETES_CONTROLLED
+    ParQQuestionId.Q5_BLOOD_PRESSURE -> FullAssessmentParQQuestionId.Q8_HYPERTENSION_CONTROLLED
+    else -> null
+}

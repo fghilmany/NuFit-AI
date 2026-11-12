@@ -26,6 +26,8 @@
     <string name="fullassessment_parq_short_cedera_lama_pulih">Old injury, already recovered</string>
     <string name="fullassessment_parq_short_osteoporosis_ringan">Mild osteoporosis</string>
 
+    <string name="fullassessment_parq_prefilled_notice">Some answers were filled in automatically from your recent Quick Assessment -- please double-check them.</string>
+
     <string name="fullassessment_gate_blocked_title">You should consult a doctor first</string>
     <string name="fullassessment_gate_blocked_body">Based on your answers, there are conditions you should discuss with a doctor before continuing this assessment.</string>
     <string name="fullassessment_gate_blocked_ack_label">I understand and will/have consulted a doctor about this condition.</string>

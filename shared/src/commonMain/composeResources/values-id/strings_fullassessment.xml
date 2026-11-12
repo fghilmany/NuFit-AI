@@ -26,6 +26,8 @@
     <string name="fullassessment_parq_short_cedera_lama_pulih">Cedera lama, sudah pulih</string>
     <string name="fullassessment_parq_short_osteoporosis_ringan">Osteoporosis ringan</string>
 
+    <string name="fullassessment_parq_prefilled_notice">Beberapa jawaban terisi otomatis dari Quick Assessment kamu baru-baru ini -- cek ulang ya.</string>
+
     <string name="fullassessment_gate_blocked_title">Sebaiknya konsultasi ke dokter dulu</string>
     <string name="fullassessment_gate_blocked_body">Berdasarkan jawaban Anda, ada kondisi yang sebaiknya didiskusikan dengan dokter sebelum melanjutkan asesmen ini.</string>
     <string name="fullassessment_gate_blocked_ack_label">Saya memahami dan akan/sudah berkonsultasi dengan dokter mengenai kondisi ini.</string>

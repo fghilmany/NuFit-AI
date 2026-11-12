@@ -8,6 +8,7 @@ import com.fghilmany.nufitai.usecase.fullassessment.CompleteFullAssessment
 import com.fghilmany.nufitai.usecase.fullassessment.GetLatestFullAssessmentResult
 import com.fghilmany.nufitai.usecase.fullassessment.HasCompletedFullAssessment
 import com.fghilmany.nufitai.usecase.fullassessment.SubmitFullAssessmentParQ
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 import com.fghilmany.nufitai.usecase.profile.GetProfileBasics
 import org.koin.core.module.dsl.viewModel
@@ -30,6 +31,7 @@ val fullAssessmentModule = module {
             activatePlanFromFullAssessment = get(), // registered in monthlyPlanModule -- both load together in KoinInit
             getProfileBasics = get(), // registered in profileModule
             getLatestQuickAssessmentResult = get(), // registered in onboardingModule
+            getLatestParQResult = get(), // registered in onboardingModule
         )
     }
 }

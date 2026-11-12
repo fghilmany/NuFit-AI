@@ -25,8 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.AppTextField
+import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
@@ -79,6 +81,7 @@ import nufitai.shared.generated.resources.fullassessment_interview_data_diri_tit
 import nufitai.shared.generated.resources.fullassessment_interview_session_duration_label
 import nufitai.shared.generated.resources.fullassessment_interview_training_days_title
 import nufitai.shared.generated.resources.fullassessment_movement_title
+import nufitai.shared.generated.resources.fullassessment_parq_prefilled_notice
 import nufitai.shared.generated.resources.fullassessment_postural_title
 import nufitai.shared.generated.resources.fullassessment_top_bar_title
 import org.jetbrains.compose.resources.stringResource
@@ -132,6 +135,20 @@ private fun ParQPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentV
     val parQQuestions = fullAssessmentParQCopy()
         .filterNot { (questionId, _) -> questionId == FullAssessmentParQQuestionId.Q6_PREGNANCY && step.gender == Gender.MALE }
     LazyColumn(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        if (step.parQPrefilled) {
+            item {
+                AppCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    backgroundColor = NuFitColors.TertiaryFixed,
+                ) {
+                    Text(
+                        stringResource(Res.string.fullassessment_parq_prefilled_notice),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = NuFitColors.OnTertiaryFixed,
+                    )
+                }
+            }
+        }
         itemsIndexed(parQQuestions) { index, (questionId, text) ->
             QuestionCard(
                 questionNumber = index + 1,
