@@ -29,7 +29,7 @@
     <string name="ptmode_end_session_end_now">End now</string>
 
     <string name="ptmode_summary_title">Done!</string>
-    <string name="ptmode_summary_headline">Session Complete! You\'re Awesome!</string>
+    <string name="ptmode_summary_headline">Session Complete! You're Awesome!</string>
     <string name="ptmode_summary_subtitle">Your body will thank you later. Take a moment to rest.</string>
     <string name="ptmode_summary_close_content_description">Close</string>
     <string name="ptmode_summary_total_volume_label">Total Volume</string>

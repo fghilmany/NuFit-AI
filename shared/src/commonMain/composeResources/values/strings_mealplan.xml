@@ -60,5 +60,5 @@
     <string name="mealplan_preference_save_cta">Save Preferences</string>
 
     <string name="mealplan_reminder_toggle_label">Meal reminders</string>
-    <string name="mealplan_reminder_permission_denied_note">Notification permission not granted — reminders won\'t appear until you enable it in system settings.</string>
+    <string name="mealplan_reminder_permission_denied_note">Notification permission not granted — reminders won't appear until you enable it in system settings.</string>
 </resources>

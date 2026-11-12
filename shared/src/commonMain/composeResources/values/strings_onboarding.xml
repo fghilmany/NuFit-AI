@@ -6,8 +6,8 @@
     <string name="onboarding_parq_top_bar_title">Health Check First</string>
     <string name="onboarding_parq_step_label">STEP 1 OF 1</string>
     <string name="onboarding_parq_answered_count">%1$d / %2$d Answered</string>
-    <string name="onboarding_parq_intro_body">Before you start, let\'s make sure your training is safe. Answer the following questions honestly so we can tailor the right program for you.</string>
-    <string name="onboarding_parq_safety_note">Your data is kept confidential and only used to optimize NuFit AI\'s training algorithm.</string>
+    <string name="onboarding_parq_intro_body">Before you start, let's make sure your training is safe. Answer the following questions honestly so we can tailor the right program for you.</string>
+    <string name="onboarding_parq_safety_note">Your data is kept confidential and only used to optimize NuFit AI's training algorithm.</string>
 
     <string name="onboarding_parq_question_jantung_diagnosis">Has a doctor ever said you have a heart condition and recommended you only do physical activity as advised by a doctor?</string>
     <string name="onboarding_parq_question_nyeri_aktivitas">Do you ever feel chest pain during physical activity (brisk walking, climbing stairs, etc.)?</string>
@@ -37,7 +37,7 @@
 
     <string name="onboarding_doctorconsult_top_bar_title">Health Notice</string>
     <string name="onboarding_doctorconsult_title">You should consult a doctor first</string>
-    <string name="onboarding_doctorconsult_body">Based on your answers, there\'s a condition you should discuss with a doctor before starting the program. We\'ll still adjust your training to keep it safe, but we recommend a medical consultation.</string>
+    <string name="onboarding_doctorconsult_body">Based on your answers, there's a condition you should discuss with a doctor before starting the program. We'll still adjust your training to keep it safe, but we recommend a medical consultation.</string>
     <string name="onboarding_doctorconsult_flagged_title">Conditions you flagged:</string>
     <string name="onboarding_doctorconsult_ack_label">I understand and will/have consulted a doctor about this condition.</string>
     <string name="onboarding_doctorconsult_disclaimer">This is not a medical diagnosis. This app is not a substitute for consultation with a licensed medical professional.</string>
@@ -48,7 +48,7 @@
     <string name="onboarding_wizard_select_all_title">Select All</string>
     <string name="onboarding_wizard_select_all_subtitle">I have access to a full gym</string>
     <string name="onboarding_wizard_tips_title">NuFit AI Tips</string>
-    <string name="onboarding_wizard_tips_body">If you\'re training at home with no equipment, just pick Bodyweight. We\'ll find effective movements using just your body weight!</string>
+    <string name="onboarding_wizard_tips_body">If you're training at home with no equipment, just pick Bodyweight. We'll find effective movements using just your body weight!</string>
 
     <string name="onboarding_bodydata_top_bar_title">Body Data</string>
     <string name="onboarding_bodydata_heading">Body data (optional)</string>
