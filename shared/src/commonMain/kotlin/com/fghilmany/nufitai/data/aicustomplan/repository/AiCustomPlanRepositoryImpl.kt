@@ -13,7 +13,11 @@ import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withTimeoutOrNull
 
-private const val GENERATE_TIMEOUT_MS = 30_000L
+// Was 30_000L -- too short for glm-5.3-flash's observed latency on larger structured-output
+// requests (see llmClient.ts's DEFAULT_MODEL comment); matches mealPlanModule's own
+// GENERATE_TIMEOUT_MS, which hit the identical client-timeout-too-aggressive bug first and was
+// raised to track Supabase Edge Functions' ~150s wall-clock cap instead of guessing a lower number.
+private const val GENERATE_TIMEOUT_MS = 150_000L
 
 class AiCustomPlanRepositoryImpl(
     private val remote: AiCustomPlanRemoteDataSource,

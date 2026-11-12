@@ -167,3 +167,28 @@ day's call can still, in principle, hit a bad queueing spike -- but makes any in
 invocation's failure mode "that one day's HTTP call failed, retry just that" rather than "the
 whole week's generation died partway through." The background-job real fix above is still the
 architecturally correct answer and remains undone.
+
+## Addendum 2026-11-12 — AiCustomPlanRepositoryImpl's client timeout was 30s, not 150s; fixed to match mealPlan
+
+**Symptom:** `ai-custom-plan-generate` (single LLM call, `generateStructured`, same `glm-5.3-flash`
+marketplace provider/latency profile as `meal-plan-generate` above) was hitting the client's own
+`withTimeoutOrNull` cap at a flat 30s (`AiCustomPlanRepositoryImpl.kt`'s `GENERATE_TIMEOUT_MS`),
+well before the request had a chance to finish -- log evidence: `generatePlan timed out after
+30000ms` while the request was still in flight. `MealPlanRepositoryImpl` already carries the
+correct value (`GENERATE_TIMEOUT_MS = 150_000L`, tracking Supabase Edge Functions' ~150s
+wall-clock cap) from when it hit this exact class of bug first; `AiCustomPlanRepositoryImpl` was
+never updated to match when the provider/model changed under it.
+
+**Fixed:** `GENERATE_TIMEOUT_MS` raised 30_000L -> 150_000L in `AiCustomPlanRepositoryImpl.kt`,
+mirroring `mealPlan`'s value and rationale.
+
+**Not fixed, flagged here:** `docs/techspec/US/06-ai-custom-plan.md`'s acceptance criterion
+("Given form disubmit, when AI selesai, then preview tampil ≤ 30 detik dengan loading state
+informatif") is now provably unrealistic against the live backend -- a 150s client timeout
+implicitly admits the happy path can take much longer than 30s. Needs a product decision (not
+made here): either accept a longer real-world ceiling and rewrite the AC + loading-state copy
+accordingly, or treat this as another vote for the background-job architecture fix already listed
+above for `meal-plan-generate` (same fix would also solve this for AI Custom Plan, one piece of
+work instead of two). Until decided, AI Custom Plan's generate screen shows a bare spinner for
+however long the request actually takes, which can be well past what a user expects from a
+30-second promise.
