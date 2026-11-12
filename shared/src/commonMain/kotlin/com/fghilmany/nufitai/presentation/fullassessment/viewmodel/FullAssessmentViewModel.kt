@@ -137,6 +137,14 @@ class FullAssessmentViewModel(
                     it.copy(
                         age = it.age.ifBlank { basics.age.toString() },
                         gender = it.gender ?: basics.gender,
+                        // Q6_PREGNANCY is irrelevant for a male user -- answer it "tidak" up front
+                        // (the correct answer, not a placeholder) so the PAR-Q screen can hide the
+                        // question without leaving canSubmitParQ permanently blocked on it.
+                        parQAnswers = if (basics.gender == Gender.MALE && it.parQAnswers[FullAssessmentParQQuestionId.Q6_PREGNANCY] == null) {
+                            it.parQAnswers + (FullAssessmentParQQuestionId.Q6_PREGNANCY to false)
+                        } else {
+                            it.parQAnswers
+                        },
                     )
                 }
             }

@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
@@ -30,6 +30,7 @@ import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
+import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQQuestionId
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
@@ -126,11 +127,14 @@ private fun StepContent(step: FullAssessmentState.Step, viewModel: FullAssessmen
 
 @Composable
 private fun ParQPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
+    // Q6_PREGNANCY doesn't apply to a male user -- FullAssessmentViewModel's prefill already
+    // answers it "tidak" on their behalf, so hiding it here never blocks canSubmitParQ.
     val parQQuestions = fullAssessmentParQCopy()
+        .filterNot { (questionId, _) -> questionId == FullAssessmentParQQuestionId.Q6_PREGNANCY && step.gender == Gender.MALE }
     LazyColumn(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(parQQuestions) { (questionId, text) ->
+        itemsIndexed(parQQuestions) { index, (questionId, text) ->
             QuestionCard(
-                questionNumber = questionId.ordinal + 1,
+                questionNumber = index + 1,
                 questionText = text,
                 selected = step.parQAnswers[questionId],
                 onAnswer = { viewModel.onEvent(FullAssessmentEvent.AnswerParQ(questionId, it)) },
