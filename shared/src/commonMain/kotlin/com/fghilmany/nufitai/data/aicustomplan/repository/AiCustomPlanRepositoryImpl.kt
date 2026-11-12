@@ -26,7 +26,13 @@ class AiCustomPlanRepositoryImpl(
     private val logger = AppLogger.tagged("AiCustomPlanRepository")
 
     override suspend fun generatePlan(request: AiPlanGenerationRequest): AppResult<AiGeneratedPlanDraft> {
-        val session = authRepository.getCurrentSession() ?: return AppResult.Error(Failure.Unauthorized())
+        // refreshSessionIfNeeded (not getCurrentSession) -- the access token is only valid 1h;
+        // this transparently renews it via the refresh token when expired, mirroring
+        // SyncRepositoryImpl.syncNow()'s same fix for the same bug.
+        val session = when (val result = authRepository.refreshSessionIfNeeded()) {
+            is AppResult.Success -> result.data ?: return AppResult.Error(Failure.Unauthorized())
+            is AppResult.Error -> return result
+        }
         logger.i { "generatePlan starting" }
         return try {
             val response = withTimeoutOrNull(GENERATE_TIMEOUT_MS) {

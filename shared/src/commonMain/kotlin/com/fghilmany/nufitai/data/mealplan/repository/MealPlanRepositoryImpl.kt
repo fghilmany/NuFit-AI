@@ -84,7 +84,13 @@ class MealPlanRepositoryImpl(
         weightKgAtGeneration: Double,
         preference: MealPreference,
     ): AppResult<MealPlan> {
-        val session = authRepository.getCurrentSession() ?: return AppResult.Error(Failure.Unauthorized())
+        // refreshSessionIfNeeded (not getCurrentSession) -- the access token is only valid 1h;
+        // this transparently renews it via the refresh token when expired, mirroring
+        // SyncRepositoryImpl.syncNow()'s same fix for the same bug.
+        val session = when (val result = authRepository.refreshSessionIfNeeded()) {
+            is AppResult.Success -> result.data ?: return AppResult.Error(Failure.Unauthorized())
+            is AppResult.Error -> return result
+        }
         logger.i { "generateRemote starting for week=${weekStartDate.toEpochMilliseconds()} day=$dayNumber" }
         return try {
             // AC-8: reuse the existing week's row id (if any) so upsertDayMeals's delete+re-insert
