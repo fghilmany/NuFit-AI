@@ -21,7 +21,12 @@ import nufitai.shared.generated.resources.Res
  * these are local bundled bytes, not network requests.
  */
 @Composable
-fun BundledMediaImage(resourcePath: String?, contentDescription: String?, modifier: Modifier = Modifier) {
+fun BundledMediaImage(
+    resourcePath: String?,
+    contentDescription: String?,
+    modifier: Modifier = Modifier,
+    contentScale: ContentScale = ContentScale.Crop,
+) {
     if (resourcePath == null) {
         Box(modifier = modifier.fillMaxSize().background(NuFitColors.SurfaceContainerHigh))
         return
@@ -39,7 +44,7 @@ fun BundledMediaImage(resourcePath: String?, contentDescription: String?, modifi
             model = loaded,
             contentDescription = contentDescription,
             modifier = modifier,
-            contentScale = ContentScale.Crop,
+            contentScale = contentScale,
         )
     }
 }

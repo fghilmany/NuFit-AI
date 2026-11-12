@@ -7,7 +7,7 @@
     <string name="monthlyplan_home_greeting">Hi! 👋</string>
     <string name="monthlyplan_home_greeting_named">Hi, %1$s! 👋</string>
     <string name="monthlyplan_home_week_progress">Week %1$d of 4</string>
-    <string name="monthlyplan_home_progress_percent">Progress: %1$d%%</string>
+    <string name="monthlyplan_home_progress_percent">Progress: %1$d%</string>
     <string name="monthlyplan_home_this_week_title">This Week\'s Sessions</string>
 
     <string name="monthlyplan_session_detail_top_bar_title">Session Detail</string>
@@ -16,6 +16,8 @@
     <string name="monthlyplan_session_detail_main_exercises_title">Main Exercises</string>
     <string name="monthlyplan_session_detail_tip_title">NuFit AI Suggestion</string>
     <string name="monthlyplan_session_detail_tip_body">Focus on proper technique before adding weight. Movement quality matters more than rep count.</string>
+    <string name="monthlyplan_session_detail_rest_body">Muscles rebuild and grow stronger during rest, not during training -- skipping it slows progress and raises injury risk. Use today to relax, stretch lightly, or just get a good night\'s sleep.</string>
+    <string name="monthlyplan_session_detail_light_activity_body">A light activity day keeps you moving without the strain of a full workout -- it helps blood flow and speeds up recovery. Try a walk, light stretching, or easy cycling.</string>
     <string name="monthlyplan_session_detail_start_button">Start This Session</string>
     <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
 

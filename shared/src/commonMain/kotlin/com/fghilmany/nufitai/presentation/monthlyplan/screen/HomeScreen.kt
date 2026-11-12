@@ -46,6 +46,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.WeekEntry
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.common_app_name
@@ -118,13 +119,29 @@ private fun HomeContent(
         item { GreetingSection(state.currentWeekNumber, state.progressPercent, state.userDisplayName) }
 
         item {
+            QuickAccessBanner(onClick = onExerciseLibraryClick)
+        }
+
+        item {
+            AssessmentDetailBanner(onClick = onAssessmentDetailClick)
+        }
+
+        item {
             val currentWeek = state.weeks.find { it.weekNumber == state.currentWeekNumber }
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 Text(stringResource(Res.string.monthlyplan_home_this_week_title), style = MaterialTheme.typography.titleLarge)
                 Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     currentWeek?.days.orEmpty().forEach { day ->
                         val status = currentWeek?.statuses?.get(day.id) ?: SessionStatus.UPCOMING
-                        SessionCard(day, status, onClick = { onSessionClick(day.id) }, onStartClick = { onStartSession(day.id) })
+                        SessionCard(
+                            day,
+                            status,
+                            planStartedAt = state.planStartedAt,
+                            now = state.now,
+                            exercise = day.mainExercises?.firstOrNull()?.let { state.exercisesById[it.exerciseId] },
+                            onClick = { onSessionClick(day.id) },
+                            onStartClick = { onStartSession(day.id) },
+                        )
                     }
                     if (state.weekCompleteMessage != null) {
                         WeekCompleteCard(state.weekCompleteMessage)
@@ -133,16 +150,8 @@ private fun HomeContent(
             }
         }
 
-        item {
-            QuickAccessBanner(onClick = onExerciseLibraryClick)
-        }
-
-        item {
-            AssessmentDetailBanner(onClick = onAssessmentDetailClick)
-        }
-
         items(state.weeks.filter { it.weekNumber != state.currentWeekNumber }) { week ->
-            WeekSection(week, state.expandedWeek, viewModel, onSessionClick, onStartSession)
+            WeekSection(week, state.expandedWeek, state.planStartedAt, state.now, state.exercisesById, viewModel, onSessionClick, onStartSession)
         }
     }
 }
@@ -151,6 +160,9 @@ private fun HomeContent(
 private fun WeekSection(
     week: WeekEntry,
     expandedWeek: Int?,
+    planStartedAt: kotlin.time.Instant,
+    now: kotlin.time.Instant,
+    exercisesById: Map<String, Exercise>,
     viewModel: HomeViewModel,
     onSessionClick: (String) -> Unit,
     onStartSession: (String) -> Unit,
@@ -166,7 +178,15 @@ private fun WeekSection(
             Column(verticalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.padding(top = 8.dp)) {
                 week.days.forEach { day ->
                     val status = week.statuses[day.id] ?: SessionStatus.UPCOMING
-                    SessionCard(day, status, onClick = { onSessionClick(day.id) }, onStartClick = { onStartSession(day.id) })
+                    SessionCard(
+                        day,
+                        status,
+                        planStartedAt = planStartedAt,
+                        now = now,
+                        exercise = day.mainExercises?.firstOrNull()?.let { exercisesById[it.exerciseId] },
+                        onClick = { onSessionClick(day.id) },
+                        onStartClick = { onStartSession(day.id) },
+                    )
                 }
             }
         }

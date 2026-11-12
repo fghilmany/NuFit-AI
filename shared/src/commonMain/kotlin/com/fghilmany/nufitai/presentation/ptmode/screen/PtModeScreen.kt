@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
@@ -185,6 +186,9 @@ private fun PtModeContent(
             item {
                 AppButton(
                     onClick = onConfirmSet,
+                    // Can't confirm the next set while still resting from the previous one --
+                    // user must wait it out or tap "Lewati istirahat" first.
+                    enabled = state.restRemainingSeconds == null,
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = NuFitColors.Primary),
                     shape = RoundedCornerShape(16.dp),
                     modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
@@ -237,52 +241,69 @@ private fun TopBar(exerciseIndex: Int, totalExercises: Int, onPauseClick: () -> 
     }
 }
 
+private val ExerciseMediaHeight = 340.dp
+
 @Composable
 private fun ExerciseMediaCard(exerciseName: String, mediaPath: String?, restRemainingSeconds: Int?, onSkipRest: () -> Unit) {
-    Box(modifier = Modifier.fillMaxWidth().height(220.dp).clip(RoundedCornerShape(24.dp))) {
+    Box(modifier = Modifier.fillMaxWidth().height(ExerciseMediaHeight).clip(RoundedCornerShape(24.dp))) {
         BundledMediaImage(
             resourcePath = mediaPath,
             contentDescription = exerciseName,
-            modifier = Modifier.fillMaxWidth().height(220.dp),
+            // Fit (not the atom's default Crop) -- these full-body illustrations were getting
+            // cropped at a fixed-height Crop box; Fit shows the whole figure, using the image's
+            // own white background to fill the rest (also freed-up vertical space elsewhere).
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.fillMaxWidth().height(ExerciseMediaHeight),
         )
         AppCard(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().align(Alignment.TopStart),
             backgroundColor = Color.Black.copy(alpha = 0.35f),
             shape = RoundedCornerShape(0.dp),
             contentPadding = PaddingValues(16.dp),
         ) {
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(
-                    stringResource(Res.string.ptmode_active_set_label, exerciseName),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = Color.White,
-                )
-                if (restRemainingSeconds != null) {
-                    RestTimerBadge(restRemainingSeconds, onSkipRest)
-                }
-            }
+            Text(
+                stringResource(Res.string.ptmode_active_set_label, exerciseName),
+                style = MaterialTheme.typography.labelMedium,
+                color = Color.White,
+            )
+        }
+        // Separate overlay from the label bar above -- squeezing both into one SpaceBetween Row
+        // mismatched heights (this badge is 3 lines tall) and made them overlap/hard to read.
+        if (restRemainingSeconds != null) {
+            RestOverlay(
+                remainingSeconds = restRemainingSeconds,
+                onSkipRest = onSkipRest,
+                modifier = Modifier.align(Alignment.BottomCenter).padding(16.dp),
+            )
         }
     }
 }
 
 @Composable
-private fun RestTimerBadge(remainingSeconds: Int, onSkipRest: () -> Unit) {
-    Column(horizontalAlignment = Alignment.End) {
-        Text(stringResource(Res.string.ptmode_rest_timer_label), style = MaterialTheme.typography.labelSmall, color = NuFitColors.InversePrimary)
-        Text(
-            // Pre-padded here rather than via a "%2$02d"-style format specifier -- Compose
-            // Multiplatform's string-resource formatter doesn't reliably substitute a
-            // positional index combined with zero-padding (only %1$d applied, %2$02d stayed literal).
-            stringResource(
-                Res.string.ptmode_rest_timer_value,
-                (remainingSeconds / 60).toString(),
-                (remainingSeconds % 60).toString().padStart(2, '0'),
-            ),
-            style = MaterialTheme.typography.titleMedium,
-            color = Color.White,
-        )
-        TextButton(onClick = onSkipRest) {
-            Text(stringResource(Res.string.ptmode_skip_rest_button), style = MaterialTheme.typography.labelSmall, color = NuFitColors.InversePrimary)
+private fun RestOverlay(remainingSeconds: Int, onSkipRest: () -> Unit, modifier: Modifier = Modifier) {
+    AppCard(
+        modifier = modifier,
+        backgroundColor = Color.Black.copy(alpha = 0.75f),
+        shape = RoundedCornerShape(16.dp),
+        contentPadding = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(stringResource(Res.string.ptmode_rest_timer_label), style = MaterialTheme.typography.labelMedium, color = NuFitColors.InversePrimary)
+            Text(
+                // Pre-padded here rather than via a "%2$02d"-style format specifier -- Compose
+                // Multiplatform's string-resource formatter doesn't reliably substitute a
+                // positional index combined with zero-padding (only %1$d applied, %2$02d stayed literal).
+                stringResource(
+                    Res.string.ptmode_rest_timer_value,
+                    (remainingSeconds / 60).toString(),
+                    (remainingSeconds % 60).toString().padStart(2, '0'),
+                ),
+                style = MaterialTheme.typography.headlineMedium,
+                color = Color.White,
+            )
+            TextButton(onClick = onSkipRest) {
+                Text(stringResource(Res.string.ptmode_skip_rest_button), style = MaterialTheme.typography.labelMedium, color = NuFitColors.InversePrimary)
+            }
         }
     }
 }

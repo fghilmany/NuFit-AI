@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.util.currentInstant
+import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
 import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
+import com.fghilmany.nufitai.usecase.exerciselibrary.GetExercisePool
 import com.fghilmany.nufitai.usecase.monthlyplan.GetActivePlanOverview
 import com.fghilmany.nufitai.usecase.monthlyplan.GetSessionStatus
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
@@ -14,6 +16,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.time.Instant
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.monthlyplan_home_week_complete_message
 import org.jetbrains.compose.resources.getString
@@ -35,6 +38,15 @@ sealed interface HomeState {
          * full name Google returned. Null for guests or when the login session never captured one.
          */
         val userDisplayName: String?,
+        /** [PlanDay.dayNumber] -> real calendar date is `planStartedAt + (dayNumber - 1) days` --
+         * passed raw so the Composable layer does the date math/formatting (mirrors WeekNavigator's
+         * existing split: ViewModel supplies the Instant, UI computes LocalDate). */
+        val planStartedAt: Instant,
+        /** Snapshot of "now" at load time -- SessionCard uses it with [planStartedAt] to tell
+         * apart "hari ini"/"besok"/"akan datang" for REST/LIGHT_ACTIVITY and UPCOMING pills. */
+        val now: Instant,
+        /** First exercise per session, resolved for the card thumbnail (mirrors SessionDetailViewModel's exercisesById). */
+        val exercisesById: Map<String, Exercise>,
     ) : HomeState
     data object Empty : HomeState
     data class Error(val message: String) : HomeState
@@ -49,6 +61,7 @@ class HomeViewModel(
     private val getActivePlanOverview: GetActivePlanOverview,
     private val getSessionStatus: GetSessionStatus,
     private val getCurrentDisplayName: GetCurrentDisplayName,
+    private val getExercisePool: GetExercisePool,
 ) : ViewModel() {
     private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state: StateFlow<HomeState> = _state.asStateFlow()
@@ -95,6 +108,12 @@ class HomeViewModel(
                             ?.days.orEmpty()
                             .filter { it.mainExercises != null }
                             .all { statuses[it.id] == SessionStatus.DONE || statuses[it.id] == SessionStatus.SKIPPED }
+                        // Thumbnail-only usage -- a pool fetch failure shouldn't block the whole
+                        // plan from rendering, so degrade to no thumbnails rather than erroring out.
+                        val exercisesById = when (val poolResult = getExercisePool()) {
+                            is AppResult.Success -> poolResult.data.associateBy { it.id }
+                            is AppResult.Error -> emptyMap()
+                        }
 
                         HomeState.Loaded(
                             currentWeekNumber = currentWeek,
@@ -104,6 +123,9 @@ class HomeViewModel(
                             expandedWeek = null,
                             weekCompleteMessage = if (currentWeekDone) getString(Res.string.monthlyplan_home_week_complete_message) else null,
                             userDisplayName = getCurrentDisplayName()?.nicknameOnly(),
+                            planStartedAt = overview.plan.startedAt,
+                            now = now,
+                            exercisesById = exercisesById,
                         )
                     }
                 }

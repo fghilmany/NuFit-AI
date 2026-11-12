@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bedtime
+import androidx.compose.material.icons.filled.DirectionsRun
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.ButtonDefaults
@@ -35,6 +37,8 @@ import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
+import com.fghilmany.nufitai.domain.monthlyplan.entity.DayType
+import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.presentation.monthlyplan.component.estimatedDurationMinutes
 import com.fghilmany.nufitai.presentation.monthlyplan.component.exerciseCount
@@ -48,7 +52,11 @@ import nufitai.shared.generated.resources.monthlyplan_exercise_count_label
 import nufitai.shared.generated.resources.monthlyplan_session_detail_description_fallback
 import nufitai.shared.generated.resources.monthlyplan_session_detail_description_templated
 import nufitai.shared.generated.resources.monthlyplan_session_detail_exercise_meta
+import nufitai.shared.generated.resources.monthlyplan_session_card_light_activity_title
+import nufitai.shared.generated.resources.monthlyplan_session_card_rest_day_title
+import nufitai.shared.generated.resources.monthlyplan_session_detail_light_activity_body
 import nufitai.shared.generated.resources.monthlyplan_session_detail_main_exercises_title
+import nufitai.shared.generated.resources.monthlyplan_session_detail_rest_body
 import nufitai.shared.generated.resources.monthlyplan_session_detail_start_button
 import nufitai.shared.generated.resources.monthlyplan_session_detail_tip_body
 import nufitai.shared.generated.resources.monthlyplan_session_detail_tip_title
@@ -90,6 +98,10 @@ fun SessionDetailScreen(
 @Composable
 private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSession: () -> Unit) {
     val day = state.planDay
+    if (day.type == DayType.REST || day.type == DayType.LIGHT_ACTIVITY) {
+        RestDayContent(day)
+        return
+    }
     Column(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             modifier = Modifier.weight(1f).padding(horizontal = 24.dp),
@@ -131,6 +143,24 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
             colors = ButtonDefaults.buttonColors(containerColor = NuFitColors.PrimaryContainer),
             modifier = Modifier.fillMaxWidth().padding(24.dp),
         ) { Text(stringResource(Res.string.monthlyplan_session_detail_start_button)) }
+    }
+}
+
+/** Rest Day / Light Activity never had a "sesi" to summarize or start -- no exercise-count/duration
+ * chip, no "Mulai Sesi Ini" CTA (there's nothing to start); instead explains what the day is for. */
+@Composable
+private fun RestDayContent(day: PlanDay) {
+    val isLightActivity = day.type == DayType.LIGHT_ACTIVITY
+    Column(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Text(
+            if (isLightActivity) stringResource(Res.string.monthlyplan_session_card_light_activity_title) else stringResource(Res.string.monthlyplan_session_card_rest_day_title),
+            style = MaterialTheme.typography.headlineMedium,
+        )
+        TipsBanner(
+            title = stringResource(Res.string.monthlyplan_session_detail_tip_title),
+            body = if (isLightActivity) stringResource(Res.string.monthlyplan_session_detail_light_activity_body) else stringResource(Res.string.monthlyplan_session_detail_rest_body),
+            icon = if (isLightActivity) Icons.Filled.DirectionsRun else Icons.Filled.Bedtime,
+        )
     }
 }
 

@@ -35,7 +35,7 @@ val monthlyPlanModule = module {
     factory { FreezeCalendarOnAbsence(monthlyPlanRepository = get()) }
     factory { GetActivePlanOverview(repository = get()) }
 
-    // getCurrentDisplayName registered in authModule -- both load together in KoinInit.
-    viewModel { HomeViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getCurrentDisplayName = get()) }
+    // getCurrentDisplayName registered in authModule; getExercisePool in exerciseLibraryModule -- both load together in KoinInit.
+    viewModel { HomeViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getCurrentDisplayName = get(), getExercisePool = get()) }
     viewModel { SessionDetailViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getExercisePool = get()) }
 }
