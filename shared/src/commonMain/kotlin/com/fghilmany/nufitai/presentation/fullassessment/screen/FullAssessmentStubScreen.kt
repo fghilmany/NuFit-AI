@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -19,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
@@ -31,6 +35,7 @@ import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.shortLabel
 import com.fghilmany.nufitai.presentation.fullassessment.component.fullAssessmentParQCopy
+import com.fghilmany.nufitai.presentation.fullassessment.component.label
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.FullAssessmentEvent
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.FullAssessmentPhase
@@ -69,6 +74,7 @@ import nufitai.shared.generated.resources.fullassessment_interview_goal_title
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_note_label
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_title
 import nufitai.shared.generated.resources.fullassessment_interview_activity_level_title
+import nufitai.shared.generated.resources.fullassessment_interview_data_diri_title
 import nufitai.shared.generated.resources.fullassessment_interview_session_duration_label
 import nufitai.shared.generated.resources.fullassessment_interview_training_days_title
 import nufitai.shared.generated.resources.fullassessment_movement_title
@@ -179,106 +185,123 @@ private fun hariLabels(): List<Pair<Int, String>> = listOf(
     7 to stringResource(Res.string.fullassessment_day_sun),
 )
 
+private val NumberKeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+
+@Composable
+private fun InterviewSectionCard(title: String, content: @Composable () -> Unit) {
+    AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(title, style = MaterialTheme.typography.titleSmall)
+            content()
+        }
+    }
+}
+
 @Composable
 private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(24.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
         item {
-            AppTextField(
-                value = step.age,
-                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetUsia(it)) },
-                label = stringResource(Res.string.fullassessment_interview_age_label),
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-        item {
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
-                ToggleButton(
-                    stringResource(Res.string.fullassessment_interview_gender_male),
-                    step.gender == Gender.MALE,
-                    Modifier.weight(1f),
-                ) {
-                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.MALE))
-                }
-                ToggleButton(
-                    stringResource(Res.string.fullassessment_interview_gender_female),
-                    step.gender == Gender.FEMALE,
-                    Modifier.weight(1f),
-                ) {
-                    viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.FEMALE))
-                }
-            }
-        }
-        item { Text(stringResource(Res.string.fullassessment_interview_goal_title), style = MaterialTheme.typography.titleSmall) }
-        items(GoalCategory.entries.toList()) { goal ->
-            ToggleButton(goal.name, step.goal == goal, Modifier.fillMaxWidth()) {
-                viewModel.onEvent(FullAssessmentEvent.SetGoal(goal))
-            }
-        }
-        item {
-            AppTextField(
-                value = step.sessionsPerWeek,
-                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionsPerWeek(it)) },
-                label = stringResource(Res.string.fullassessment_interview_frequency_label),
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-        item { Text(stringResource(Res.string.fullassessment_interview_training_days_title), style = MaterialTheme.typography.titleSmall) }
-        item {
-            val hariLabels = hariLabels()
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
-                hariLabels.forEach { (day, label) ->
-                    ToggleButton(label, day in step.selectedWeekdays, Modifier.weight(1f)) {
-                        viewModel.onEvent(FullAssessmentEvent.ToggleSelectedWeekday(day))
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_data_diri_title)) {
+                AppTextField(
+                    value = step.age,
+                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetUsia(it)) },
+                    label = stringResource(Res.string.fullassessment_interview_age_label),
+                    keyboardOptions = NumberKeyboardOptions,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                    ToggleButton(
+                        stringResource(Res.string.fullassessment_interview_gender_male),
+                        step.gender == Gender.MALE,
+                        Modifier.weight(1f),
+                    ) {
+                        viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.MALE))
+                    }
+                    ToggleButton(
+                        stringResource(Res.string.fullassessment_interview_gender_female),
+                        step.gender == Gender.FEMALE,
+                        Modifier.weight(1f),
+                    ) {
+                        viewModel.onEvent(FullAssessmentEvent.SetGender(Gender.FEMALE))
                     }
                 }
             }
         }
         item {
-            AppTextField(
-                value = step.sessionDurationMinutes,
-                onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(it)) },
-                label = stringResource(Res.string.fullassessment_interview_session_duration_label),
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-        item { Text(stringResource(Res.string.fullassessment_interview_activity_level_title), style = MaterialTheme.typography.titleSmall) }
-        items(ActivityLevel.entries.toList()) { activityLevel ->
-            ToggleButton(activityLevel.name, step.activityLevel == activityLevel, Modifier.fillMaxWidth()) {
-                viewModel.onEvent(FullAssessmentEvent.SetActivityLevel(activityLevel))
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_goal_title)) {
+                GoalCategory.entries.forEach { goal ->
+                    ToggleButton(goal.label(), step.goal == goal, Modifier.fillMaxWidth()) {
+                        viewModel.onEvent(FullAssessmentEvent.SetGoal(goal))
+                    }
+                }
             }
         }
-        item { Text(stringResource(Res.string.fullassessment_interview_equipment_title), style = MaterialTheme.typography.titleSmall) }
-        items(EquipmentCategory.entries.toList()) { equipment ->
-            CheckboxRow(
-                checked = equipment in step.equipmentPreference,
-                label = equipment.shortLabel(),
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
-            )
-        }
         item {
-            Text(
-                stringResource(Res.string.fullassessment_interview_injury_history_title),
-                style = MaterialTheme.typography.titleSmall,
-            )
-        }
-        items(BodyArea.entries.toList()) { area ->
-            CheckboxRow(
-                checked = area in step.injuryHistory,
-                label = area.shortLabel(),
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleInjuryHistory(area)) },
-            )
-        }
-        if (step.injuryHistory.isNotEmpty()) {
-            item {
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_training_days_title)) {
                 AppTextField(
-                    value = step.injuryHistoryNote,
-                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetInjuryHistoryNote(it)) },
-                    label = stringResource(Res.string.fullassessment_interview_injury_history_note_label),
+                    value = step.sessionsPerWeek,
+                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionsPerWeek(it)) },
+                    label = stringResource(Res.string.fullassessment_interview_frequency_label),
+                    keyboardOptions = NumberKeyboardOptions,
                     modifier = Modifier.fillMaxWidth(),
                 )
+                val hariLabels = hariLabels()
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.fillMaxWidth()) {
+                    hariLabels.forEach { (day, label) ->
+                        DayChip(label, day in step.selectedWeekdays, Modifier.weight(1f)) {
+                            viewModel.onEvent(FullAssessmentEvent.ToggleSelectedWeekday(day))
+                        }
+                    }
+                }
+                AppTextField(
+                    value = step.sessionDurationMinutes,
+                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(it)) },
+                    label = stringResource(Res.string.fullassessment_interview_session_duration_label),
+                    keyboardOptions = NumberKeyboardOptions,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+        item {
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_activity_level_title)) {
+                ActivityLevel.entries.forEach { activityLevel ->
+                    ToggleButton(activityLevel.shortLabel(), step.activityLevel == activityLevel, Modifier.fillMaxWidth()) {
+                        viewModel.onEvent(FullAssessmentEvent.SetActivityLevel(activityLevel))
+                    }
+                }
+            }
+        }
+        item {
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_equipment_title)) {
+                EquipmentCategory.entries.forEach { equipment ->
+                    CheckboxRow(
+                        checked = equipment in step.equipmentPreference,
+                        label = equipment.shortLabel(),
+                        onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
+                    )
+                }
+            }
+        }
+        item {
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_injury_history_title)) {
+                BodyArea.entries.forEach { area ->
+                    CheckboxRow(
+                        checked = area in step.injuryHistory,
+                        label = area.shortLabel(),
+                        onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleInjuryHistory(area)) },
+                    )
+                }
+                if (step.injuryHistory.isNotEmpty()) {
+                    AppTextField(
+                        value = step.injuryHistoryNote,
+                        onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetInjuryHistoryNote(it)) },
+                        label = stringResource(Res.string.fullassessment_interview_injury_history_note_label),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
         }
         item {
@@ -336,6 +359,7 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPushupReps(it)) },
             label = stringResource(Res.string.fullassessment_capacity_pushup_label),
             enabled = !step.capacityTestSkipped,
+            keyboardOptions = NumberKeyboardOptions,
             modifier = Modifier.fillMaxWidth(),
         )
         AppTextField(
@@ -343,6 +367,7 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetPlankSeconds(it)) },
             label = stringResource(Res.string.fullassessment_capacity_plank_label),
             enabled = !step.capacityTestSkipped,
+            keyboardOptions = NumberKeyboardOptions,
             modifier = Modifier.fillMaxWidth(),
         )
         AppTextField(
@@ -350,6 +375,7 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSitToStandReps(it)) },
             label = stringResource(Res.string.fullassessment_capacity_sit_to_stand_label),
             enabled = !step.capacityTestSkipped,
+            keyboardOptions = NumberKeyboardOptions,
             modifier = Modifier.fillMaxWidth(),
         )
         OutlinedButton(
@@ -379,6 +405,19 @@ private fun ToggleButton(label: String, isSelected: Boolean, modifier: Modifier 
     } else {
         OutlinedButton(onClick = onClick, modifier = modifier) { Text(label) }
     }
+}
+
+/** Compact selectable pill for the 7 weekday toggles -- a regular [ToggleButton] (Material3
+ * [androidx.compose.material3.Button]'s default horizontal padding) is too wide for 7 across one
+ * row and forces the label to wrap per letter; [FilterChip] is sized for exactly this. */
+@Composable
+private fun DayChip(label: String, isSelected: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    FilterChip(
+        selected = isSelected,
+        onClick = onClick,
+        label = { Text(label, maxLines = 1) },
+        modifier = modifier.widthIn(min = 0.dp),
+    )
 }
 
 @Composable

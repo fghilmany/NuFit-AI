@@ -23,6 +23,8 @@ import com.fghilmany.nufitai.usecase.fullassessment.CompleteFullAssessment
 import com.fghilmany.nufitai.usecase.monthlyplan.ActivatePlanFromFullAssessment
 import com.fghilmany.nufitai.usecase.fullassessment.FullAssessmentParQGateResult
 import com.fghilmany.nufitai.usecase.fullassessment.SubmitFullAssessmentParQ
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
+import com.fghilmany.nufitai.usecase.profile.GetProfileBasics
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -115,9 +117,40 @@ class FullAssessmentViewModel(
     private val submitFullAssessmentParQ: SubmitFullAssessmentParQ,
     private val completeFullAssessment: CompleteFullAssessment,
     private val activatePlanFromFullAssessment: ActivatePlanFromFullAssessment,
+    private val getProfileBasics: GetProfileBasics,
+    private val getLatestQuickAssessmentResult: GetLatestQuickAssessmentResult,
 ) : ViewModel() {
     private val _state = MutableStateFlow<FullAssessmentState>(FullAssessmentState.Step())
     val state: StateFlow<FullAssessmentState> = _state.asStateFlow()
+
+    init {
+        prefillFromExistingData()
+    }
+
+    /** Reuse age/gender from "Lengkapi Profil" and goal/equipment/frequency from Quick Assessment
+     * instead of asking the user to type them again -- both are already stored locally by the time
+     * Full Assessment (login tier) runs. */
+    private fun prefillFromExistingData() {
+        viewModelScope.launch {
+            (getProfileBasics().let { it as? AppResult.Success }?.data)?.let { basics ->
+                updateStep {
+                    it.copy(
+                        age = it.age.ifBlank { basics.age.toString() },
+                        gender = it.gender ?: basics.gender,
+                    )
+                }
+            }
+            (getLatestQuickAssessmentResult().let { it as? AppResult.Success }?.data)?.let { quickResult ->
+                updateStep {
+                    it.copy(
+                        goal = it.goal ?: quickResult.input.goal,
+                        equipmentPreference = it.equipmentPreference.ifEmpty { quickResult.input.equipment },
+                        sessionsPerWeek = it.sessionsPerWeek.ifBlank { quickResult.input.frequency.sessionsPerWeek.toString() },
+                    )
+                }
+            }
+        }
+    }
 
     fun onEvent(event: FullAssessmentEvent) {
         when (event) {

@@ -30,6 +30,7 @@
     <string name="fullassessment_gate_blocked_body">Berdasarkan jawaban Anda, ada kondisi yang sebaiknya didiskusikan dengan dokter sebelum melanjutkan asesmen ini.</string>
     <string name="fullassessment_gate_blocked_ack_label">Saya memahami dan akan/sudah berkonsultasi dengan dokter mengenai kondisi ini.</string>
 
+    <string name="fullassessment_interview_data_diri_title">Data diri</string>
     <string name="fullassessment_interview_age_label">Usia</string>
     <string name="fullassessment_interview_gender_male">Pria</string>
     <string name="fullassessment_interview_gender_female">Wanita</string>
@@ -38,6 +39,12 @@
     <string name="fullassessment_interview_training_days_title">Hari latihan</string>
     <string name="fullassessment_interview_session_duration_label">Durasi sesi (menit)</string>
     <string name="fullassessment_interview_activity_level_title">Tingkat aktivitas harian</string>
+    <string name="fullassessment_goal_endurance_title">Tingkatkan daya tahan</string>
+    <string name="fullassessment_activity_sedentary">Banyak duduk, jarang gerak</string>
+    <string name="fullassessment_activity_light">Aktivitas ringan (sesekali jalan/berdiri)</string>
+    <string name="fullassessment_activity_moderate">Aktivitas sedang (sering bergerak)</string>
+    <string name="fullassessment_activity_active">Aktif (kerja fisik/sering gerak)</string>
+    <string name="fullassessment_activity_very_active">Sangat aktif (kerja fisik berat)</string>
     <string name="fullassessment_interview_equipment_title">Preferensi alat</string>
     <string name="fullassessment_interview_injury_history_title">Riwayat cedera / nyeri (area)</string>
     <string name="fullassessment_interview_injury_history_note_label">Bagian mana yang nyeri? (mis. "Lutut kiri saat jongkok")</string>

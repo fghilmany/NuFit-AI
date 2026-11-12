@@ -30,6 +30,7 @@
     <string name="fullassessment_gate_blocked_body">Based on your answers, there are conditions you should discuss with a doctor before continuing this assessment.</string>
     <string name="fullassessment_gate_blocked_ack_label">I understand and will/have consulted a doctor about this condition.</string>
 
+    <string name="fullassessment_interview_data_diri_title">Personal data</string>
     <string name="fullassessment_interview_age_label">Age</string>
     <string name="fullassessment_interview_gender_male">Male</string>
     <string name="fullassessment_interview_gender_female">Female</string>
@@ -38,6 +39,12 @@
     <string name="fullassessment_interview_training_days_title">Training days</string>
     <string name="fullassessment_interview_session_duration_label">Session duration (minutes)</string>
     <string name="fullassessment_interview_activity_level_title">Daily activity level</string>
+    <string name="fullassessment_goal_endurance_title">Build endurance</string>
+    <string name="fullassessment_activity_sedentary">Mostly sitting, rarely move</string>
+    <string name="fullassessment_activity_light">Lightly active (a little walking/standing)</string>
+    <string name="fullassessment_activity_moderate">Moderately active (on your feet a lot)</string>
+    <string name="fullassessment_activity_active">Active (physical job/often on the move)</string>
+    <string name="fullassessment_activity_very_active">Very active (heavy physical work)</string>
     <string name="fullassessment_interview_equipment_title">Equipment preference</string>
     <string name="fullassessment_interview_injury_history_title">Injury / pain history (area)</string>
     <string name="fullassessment_interview_injury_history_note_label">Which part hurts? (e.g. "Left knee when squatting")</string>
