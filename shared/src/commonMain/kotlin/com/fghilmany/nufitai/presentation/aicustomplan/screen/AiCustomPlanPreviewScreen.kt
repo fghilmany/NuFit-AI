@@ -1,6 +1,7 @@
 package com.fghilmany.nufitai.presentation.aicustomplan.screen
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,7 +12,10 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Remove
@@ -52,9 +56,11 @@ import nufitai.shared.generated.resources.aicustomplan_preview_adjust_set_reps_l
 import nufitai.shared.generated.resources.aicustomplan_preview_adjust_set_sets_label
 import nufitai.shared.generated.resources.aicustomplan_preview_adjust_set_title
 import nufitai.shared.generated.resources.aicustomplan_preview_delete_action
+import nufitai.shared.generated.resources.aicustomplan_preview_description_title
 import nufitai.shared.generated.resources.aicustomplan_preview_injury_conflict_banner
 import nufitai.shared.generated.resources.aicustomplan_preview_plan_name_label
 import nufitai.shared.generated.resources.aicustomplan_preview_plan_name_placeholder
+import nufitai.shared.generated.resources.aicustomplan_preview_plan_name_required
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_adaptation
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_intensity
 import nufitai.shared.generated.resources.aicustomplan_preview_phase_volume
@@ -76,6 +82,9 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 private fun weekNumberFor(dayNumber: Int): Int = ((dayNumber - 1) / 7) + 1
+
+/** LazyColumn item index of the plan name field in [PreviewContent] -- scroll target on [AiCustomPlanPreviewState.Loaded.planNameError]. */
+private const val PLAN_NAME_ITEM_INDEX = 1
 
 /** P-13 (UC-4). No live Figma re-check this pass (MCP rate-limited) -- rebuilt from the reviewed reference: week accordions, per-session sub-cards, swap/adjust-set actions. */
 @Composable
@@ -113,8 +122,17 @@ fun AiCustomPlanPreviewScreen(
 private fun PreviewContent(loaded: AiCustomPlanPreviewState.Loaded, viewModel: AiCustomPlanPreviewViewModel) {
     val weeks = loaded.days.groupBy { weekNumberFor(it.dayNumber) }.toSortedMap()
     var expandedWeek by rememberSaveable { mutableStateOf(weeks.keys.firstOrNull() ?: 1) }
+    val listState = rememberLazyListState()
 
-    LazyColumn(modifier = Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    LaunchedEffect(loaded.planNameError) {
+        if (loaded.planNameError) listState.animateScrollToItem(PLAN_NAME_ITEM_INDEX)
+    }
+
+    LazyColumn(
+        state = listState,
+        modifier = Modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
         item {
             Text(
                 stringResource(Res.string.aicustomplan_preview_ai_badge),
@@ -128,11 +146,32 @@ private fun PreviewContent(loaded: AiCustomPlanPreviewState.Loaded, viewModel: A
                 onValueChange = { viewModel.onEvent(AiCustomPlanPreviewEvent.ChangePlanName(it)) },
                 label = { Text(stringResource(Res.string.aicustomplan_preview_plan_name_label)) },
                 placeholder = { Text(stringResource(Res.string.aicustomplan_preview_plan_name_placeholder)) },
+                isError = loaded.planNameError,
+                supportingText = if (loaded.planNameError) {
+                    { Text(stringResource(Res.string.aicustomplan_preview_plan_name_required)) }
+                } else {
+                    null
+                },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
             )
         }
-        item { Text(loaded.smartGoalSummary, style = MaterialTheme.typography.titleMedium) }
+        item {
+            AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        stringResource(Res.string.aicustomplan_preview_description_title),
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                    Text(
+                        loaded.smartGoalSummary,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
 
         if (loaded.injuryConflicts.isNotEmpty()) {
             item { Banner(stringResource(Res.string.aicustomplan_preview_injury_conflict_banner), MaterialTheme.colorScheme.errorContainer) }
@@ -141,7 +180,9 @@ private fun PreviewContent(loaded: AiCustomPlanPreviewState.Loaded, viewModel: A
             item { Banner(stringResource(Res.string.aicustomplan_preview_warning_dropped_exercise), MaterialTheme.colorScheme.surfaceContainerHigh) }
         }
         items(loaded.conflicts) { conflict -> Banner(conflict.copyText(), MaterialTheme.colorScheme.surfaceContainerHigh) }
-        items(loaded.serverNotes) { note -> Banner(note, MaterialTheme.colorScheme.surfaceContainerHigh) }
+        // loaded.serverNotes (raw backend strings like "2 exerciseId tidak ditemukan di library...")
+        // deliberately NOT rendered -- redundant with the friendly exerciseWarnings banner above
+        // and exposes internal jargon the user has no use for.
 
         weeks.forEach { (weekNumber, daysInWeek) ->
             item {
@@ -294,15 +335,22 @@ private fun SessionGroupCard(day: PlanDay, loaded: AiCustomPlanPreviewState.Load
                         color = if (isConflicted) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface,
                         style = MaterialTheme.typography.bodyMedium,
                     )
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.horizontalScroll(rememberScrollState()),
+                    ) {
                         OutlinedButton(onClick = { viewModel.onEvent(AiCustomPlanPreviewEvent.RequestSwap(day.dayNumber, exercise.exerciseId)) }) {
                             Text(stringResource(Res.string.aicustomplan_preview_swap_action), style = MaterialTheme.typography.labelSmall)
                         }
                         OutlinedButton(onClick = { viewModel.onEvent(AiCustomPlanPreviewEvent.RequestAdjustSet(day.dayNumber, exercise.exerciseId)) }) {
                             Text(stringResource(Res.string.aicustomplan_preview_adjust_set_title), style = MaterialTheme.typography.labelSmall)
                         }
-                        TextButton(onClick = { viewModel.onEvent(AiCustomPlanPreviewEvent.RemoveExercise(day.dayNumber, exercise.exerciseId)) }) {
-                            Text(stringResource(Res.string.aicustomplan_preview_remove_action), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.error)
+                        IconButton(onClick = { viewModel.onEvent(AiCustomPlanPreviewEvent.RemoveExercise(day.dayNumber, exercise.exerciseId)) }) {
+                            Icon(
+                                Icons.Filled.Delete,
+                                contentDescription = stringResource(Res.string.aicustomplan_preview_remove_action),
+                                tint = MaterialTheme.colorScheme.error,
+                            )
                         }
                     }
                 }

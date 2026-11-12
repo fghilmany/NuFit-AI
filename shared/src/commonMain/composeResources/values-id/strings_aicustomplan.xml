@@ -30,6 +30,8 @@
     <string name="aicustomplan_preview_ai_badge">DIBUAT OLEH AI</string>
     <string name="aicustomplan_preview_plan_name_label">Nama plan</string>
     <string name="aicustomplan_preview_plan_name_placeholder">misal: Program Nambah Massa Otot</string>
+    <string name="aicustomplan_preview_plan_name_required">Nama plan wajib diisi</string>
+    <string name="aicustomplan_preview_description_title">Deskripsi</string>
     <string name="aicustomplan_preview_warning_dropped_exercise">Satu gerakan tidak bisa dimuat dan telah dihapus — coba Regenerate.</string>
     <string name="aicustomplan_preview_injury_conflict_banner">Beberapa gerakan berisiko memperparah cedera/kondisi yang kamu laporkan. Hapus atau ganti sebelum mengaktifkan.</string>
     <string name="aicustomplan_preview_remove_action">Hapus</string>

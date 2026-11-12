@@ -11,5 +11,16 @@ SELECT * FROM user_profile LIMIT 1;
 upsertProfileBasics:
 INSERT OR REPLACE INTO user_profile(user_id, age, gender, updated_at) VALUES (?, ?, ?, ?);
 
+selectChangedSince:
+SELECT * FROM user_profile WHERE updated_at > ?;
+
+-- user_id defaults to the literal "local" for guests (ProfileRepositoryImpl), not NULL --
+-- backfill replaces that sentinel once a real session exists.
+backfillUserId:
+UPDATE user_profile SET user_id = ? WHERE user_id = 'local';
+
+upsertFromRemote:
+INSERT OR REPLACE INTO user_profile(user_id, age, gender, updated_at) VALUES (?, ?, ?, ?);
+
 deleteAll:
 DELETE FROM user_profile;

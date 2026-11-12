@@ -102,8 +102,8 @@
     <string name="onboarding_equipment_barbell_subtitle">Angkat Beban</string>
     <string name="onboarding_equipment_kettlebell_title">Kettlebell</string>
     <string name="onboarding_equipment_kettlebell_subtitle">Beban Ayun</string>
-    <string name="onboarding_equipment_machine_title">Machine</string>
-    <string name="onboarding_equipment_machine_subtitle">Cable &amp; Station</string>
+    <string name="onboarding_equipment_machine_title">Mesin &amp; Kabel</string>
+    <string name="onboarding_equipment_machine_subtitle">Mesin gym, stasiun kabel</string>
     <string name="onboarding_equipment_pullup_bar_title">Pull-Up Bar</string>
     <string name="onboarding_equipment_pullup_bar_subtitle">Tiang Angkat</string>
     <string name="onboarding_equipment_cardio_title">Cardio</string>

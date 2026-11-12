@@ -104,10 +104,13 @@ class HomeViewModel(
                         val totalSessions = overview.days.count { it.mainExercises != null }
                         val doneSessions = statuses.values.count { it == SessionStatus.DONE }
                         val progressPercent = if (totalSessions == 0) 0 else (doneSessions * 100) / totalSessions
-                        val currentWeekDone = weeks.find { it.weekNumber == currentWeek }
+                        val currentWeekSessionDays = weeks.find { it.weekNumber == currentWeek }
                             ?.days.orEmpty()
                             .filter { it.mainExercises != null }
-                            .all { statuses[it.id] == SessionStatus.DONE || statuses[it.id] == SessionStatus.SKIPPED }
+                        // `.all {}` on an empty list is vacuously true -- a week with zero session
+                        // days (empty/broken plan) must NOT be reported as "complete".
+                        val currentWeekDone = currentWeekSessionDays.isNotEmpty() &&
+                            currentWeekSessionDays.all { statuses[it.id] == SessionStatus.DONE || statuses[it.id] == SessionStatus.SKIPPED }
                         // Thumbnail-only usage -- a pool fetch failure shouldn't block the whole
                         // plan from rendering, so degrade to no thumbnails rather than erroring out.
                         val exercisesById = when (val poolResult = getExercisePool()) {

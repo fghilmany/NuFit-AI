@@ -50,6 +50,7 @@ sealed interface AiCustomPlanPreviewState {
         val injuryConflicts: List<InjuryConflict>,
         val swapDialog: SwapDialogState? = null,
         val adjustSetDialog: AdjustSetDialogState? = null,
+        val planNameError: Boolean = false,
     ) : AiCustomPlanPreviewState {
         /** AC-5/AC-14 (BLOCKING) -- activation is disabled while an injury conflict is unresolved. */
         val canActivate: Boolean get() = injuryConflicts.isEmpty()
@@ -123,7 +124,7 @@ class AiCustomPlanPreviewViewModel(
         when (event) {
             is AiCustomPlanPreviewEvent.ChangePlanName -> {
                 draftHolder.current = draftHolder.current?.copy(planName = event.value)
-                updateLoaded { it.copy(planName = event.value) }
+                updateLoaded { it.copy(planName = event.value, planNameError = false) }
             }
             AiCustomPlanPreviewEvent.Regenerate -> regenerate()
             AiCustomPlanPreviewEvent.SaveDraft -> persist(activate = false)
@@ -272,6 +273,14 @@ class AiCustomPlanPreviewViewModel(
 
     private fun persist(activate: Boolean) {
         val draft = draftHolder.current ?: return
+        if (draft.planName.isBlank()) {
+            updateLoaded { it.copy(planNameError = true) }
+            return
+        }
+        if (draft.days.none { it.mainExercises?.isNotEmpty() == true }) {
+            fail("Plan has no exercises left -- add at least one before saving")
+            return
+        }
         viewModelScope.launch {
             when (val quota = checkDraftQuota()) {
                 is AppResult.Error -> return@launch fail(quota.failure.message)

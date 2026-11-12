@@ -102,8 +102,8 @@
     <string name="onboarding_equipment_barbell_subtitle">Weightlifting</string>
     <string name="onboarding_equipment_kettlebell_title">Kettlebell</string>
     <string name="onboarding_equipment_kettlebell_subtitle">Swing Weight</string>
-    <string name="onboarding_equipment_machine_title">Machine</string>
-    <string name="onboarding_equipment_machine_subtitle">Cable &amp; Station</string>
+    <string name="onboarding_equipment_machine_title">Machine &amp; Cable</string>
+    <string name="onboarding_equipment_machine_subtitle">Machines, cable stations</string>
     <string name="onboarding_equipment_pullup_bar_title">Pull-Up Bar</string>
     <string name="onboarding_equipment_pullup_bar_subtitle">Pull-Up Bar</string>
     <string name="onboarding_equipment_cardio_title">Cardio</string>

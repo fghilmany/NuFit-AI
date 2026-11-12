@@ -30,6 +30,8 @@
     <string name="aicustomplan_preview_ai_badge">MADE BY AI</string>
     <string name="aicustomplan_preview_plan_name_label">Plan name</string>
     <string name="aicustomplan_preview_plan_name_placeholder">e.g. My Muscle Gain Program</string>
+    <string name="aicustomplan_preview_plan_name_required">Plan name is required</string>
+    <string name="aicustomplan_preview_description_title">Description</string>
     <string name="aicustomplan_preview_warning_dropped_exercise">One exercise could not be loaded and was removed — try Regenerate.</string>
     <string name="aicustomplan_preview_injury_conflict_banner">Some exercises may aggravate a reported injury/condition. Remove or replace them before activating.</string>
     <string name="aicustomplan_preview_remove_action">Remove</string>

@@ -14,4 +14,16 @@ class ProfileLocalDataSource(private val database: NuFitDatabase) {
         withContext(Dispatchers.Default) {
             database.userProfileQueries.upsertProfileBasics(userId, age, gender, updatedAt)
         }
+
+    suspend fun getChangedSince(updatedAfter: Long): List<UserProfileRow> = withContext(Dispatchers.Default) {
+        database.userProfileQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.userProfileQueries.backfillUserId(userId)
+    }
+
+    suspend fun upsertFromRemote(row: UserProfileRow) = withContext(Dispatchers.Default) {
+        database.userProfileQueries.upsertFromRemote(row.user_id, row.age, row.gender, row.updated_at)
+    }
 }

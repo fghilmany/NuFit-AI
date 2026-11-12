@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.data.monthlyplan.sync.MonthlyPlanSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.BodyMeasurementSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.ParQSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.QuickAssessmentSyncParticipant
+import com.fghilmany.nufitai.data.profile.sync.ProfileBasicsSyncParticipant
 import com.fghilmany.nufitai.data.ptmode.sync.WorkoutHistorySyncParticipant
 import com.fghilmany.nufitai.data.sync.contract.SyncParticipant
 import com.fghilmany.nufitai.data.sync.datasource.LocalDataWipeDataSource
@@ -31,6 +32,7 @@ val syncModule = module {
     single { WorkoutHistorySyncParticipant(local = get()) }
     single { ChatMessageSyncParticipant(local = get()) }
     single { MealPlanSyncParticipant(local = get()) }
+    single { ProfileBasicsSyncParticipant(local = get()) }
     single<List<SyncParticipant>> {
         listOf(
             get<MonthlyPlanSyncParticipant>(),
@@ -41,6 +43,7 @@ val syncModule = module {
             get<WorkoutHistorySyncParticipant>(),
             get<ChatMessageSyncParticipant>(),
             get<MealPlanSyncParticipant>(),
+            get<ProfileBasicsSyncParticipant>(),
         )
     }
 
