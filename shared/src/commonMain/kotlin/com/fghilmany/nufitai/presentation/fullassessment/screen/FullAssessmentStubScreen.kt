@@ -1,5 +1,6 @@
 package com.fghilmany.nufitai.presentation.fullassessment.screen
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
@@ -209,7 +211,7 @@ private fun hariLabels(): List<Pair<Int, String>> = listOf(
 )
 
 private val NumberKeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120)
+private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120, 135, 150, 165)
 
 @Composable
 private fun InterviewSectionCard(title: String, content: @Composable () -> Unit) {
@@ -282,7 +284,10 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
                     }
                 }
                 Text(stringResource(Res.string.fullassessment_interview_session_duration_label), style = MaterialTheme.typography.bodyMedium)
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    modifier = Modifier.horizontalScroll(rememberScrollState()),
+                ) {
                     SESSION_DURATION_OPTIONS.forEach { minutes ->
                         ToggleButton("$minutes", step.sessionDurationMinutes == minutes) {
                             viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(minutes))

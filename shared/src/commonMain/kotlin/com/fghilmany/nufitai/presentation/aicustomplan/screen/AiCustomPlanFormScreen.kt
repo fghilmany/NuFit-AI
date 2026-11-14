@@ -1,15 +1,16 @@
 package com.fghilmany.nufitai.presentation.aicustomplan.screen
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -46,7 +47,8 @@ import org.koin.compose.viewmodel.koinViewModel
 
 // Same option set as Full Assessment's session-duration picker -- kept identical so a value
 // prefilled from there always lands on a real chip here too.
-private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120)
+private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120, 135, 150, 165)
+private val SESSIONS_PER_WEEK_OPTIONS = 1..7
 private val PLAN_DURATION_OPTIONS = 1..4
 
 /** P-12 B (UC-3). */
@@ -91,24 +93,26 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
             }
         }
 
+        item { Text(stringResource(Res.string.aicustomplan_form_sessions_per_week_label), style = MaterialTheme.typography.titleSmall) }
         item {
-            Column {
-                Text(stringResource(Res.string.aicustomplan_form_sessions_per_week_label), style = MaterialTheme.typography.titleSmall)
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    OutlinedButton(onClick = {
-                        viewModel.onEvent(AiCustomPlanFormEvent.SetSessionsPerWeek((editing.sessionsPerWeek - 1).coerceIn(1, 7)))
-                    }) { Text("-") }
-                    Text("${editing.sessionsPerWeek}", style = MaterialTheme.typography.titleMedium)
-                    OutlinedButton(onClick = {
-                        viewModel.onEvent(AiCustomPlanFormEvent.SetSessionsPerWeek((editing.sessionsPerWeek + 1).coerceIn(1, 7)))
-                    }) { Text("+") }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.horizontalScroll(rememberScrollState()),
+            ) {
+                SESSIONS_PER_WEEK_OPTIONS.forEach { count ->
+                    ToggleButton("$count", editing.sessionsPerWeek == count) {
+                        viewModel.onEvent(AiCustomPlanFormEvent.SetSessionsPerWeek(count))
+                    }
                 }
             }
         }
 
         item { Text(stringResource(Res.string.aicustomplan_form_session_duration_title), style = MaterialTheme.typography.titleSmall) }
         item {
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.horizontalScroll(rememberScrollState()),
+            ) {
                 SESSION_DURATION_OPTIONS.forEach { minutes ->
                     ToggleButton("$minutes", editing.sessionDurationMinutes == minutes) {
                         viewModel.onEvent(AiCustomPlanFormEvent.SetSessionDurationMinutes(minutes))
