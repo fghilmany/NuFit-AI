@@ -4,6 +4,9 @@ import com.fghilmany.nufitai.data.chatai.sync.ChatMessageSyncParticipant
 import com.fghilmany.nufitai.data.fullassessment.sync.FullAssessmentSyncParticipant
 import com.fghilmany.nufitai.data.mealplan.sync.MealPlanSyncParticipant
 import com.fghilmany.nufitai.data.monthlyplan.sync.MonthlyPlanSyncParticipant
+import com.fghilmany.nufitai.data.monthlyplan.sync.PlanDaySessionLogSyncParticipant
+import com.fghilmany.nufitai.data.monthlyplan.sync.PlanDaySyncParticipant
+import com.fghilmany.nufitai.data.monthlyplan.sync.PlannedExerciseSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.BodyMeasurementSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.ParQSyncParticipant
 import com.fghilmany.nufitai.data.onboarding.sync.QuickAssessmentSyncParticipant
@@ -25,6 +28,9 @@ import org.koin.dsl.module
  */
 val syncModule = module {
     single { MonthlyPlanSyncParticipant(local = get()) }
+    single { PlanDaySyncParticipant(local = get()) }
+    single { PlannedExerciseSyncParticipant(local = get()) }
+    single { PlanDaySessionLogSyncParticipant(local = get()) }
     single { FullAssessmentSyncParticipant(local = get()) }
     single { QuickAssessmentSyncParticipant() }
     single { ParQSyncParticipant() }
@@ -36,6 +42,9 @@ val syncModule = module {
     single<List<SyncParticipant>> {
         listOf(
             get<MonthlyPlanSyncParticipant>(),
+            get<PlanDaySyncParticipant>(),
+            get<PlannedExerciseSyncParticipant>(),
+            get<PlanDaySessionLogSyncParticipant>(),
             get<FullAssessmentSyncParticipant>(),
             get<QuickAssessmentSyncParticipant>(),
             get<ParQSyncParticipant>(),

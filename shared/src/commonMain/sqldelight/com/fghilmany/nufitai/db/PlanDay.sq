@@ -10,13 +10,18 @@ CREATE TABLE plan_day (
     warmup_general TEXT,
     cardio TEXT,
     cooldown_heart_rate TEXT,
+    -- Sync bookkeeping, mirrors monthly_plan's user_id/updated_at (ADR-008 §3 follow-up: plan_day
+    -- was header-only-sync's known gap -- uninstall/new-device restore brought back the plan row
+    -- but not its sessions, leaving Home empty. Now synced like every other aggregate).
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (monthly_plan_id) REFERENCES monthly_plan(id)
 );
 
 insertPlanDay:
 INSERT INTO plan_day(
-    id, monthly_plan_id, day_number, type, template_letter, warmup_general, cardio, cooldown_heart_rate
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    id, monthly_plan_id, day_number, type, template_letter, warmup_general, cardio, cooldown_heart_rate, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getPlanDaysForPlan:
 SELECT * FROM plan_day WHERE monthly_plan_id = ? ORDER BY day_number ASC;
@@ -26,6 +31,20 @@ SELECT id FROM plan_day WHERE monthly_plan_id = ? AND day_number >= ?;
 
 deletePlanDaysFromDay:
 DELETE FROM plan_day WHERE monthly_plan_id = ? AND day_number >= ?;
+
+selectChangedSince:
+SELECT * FROM plan_day WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM plan_day WHERE id = ?;
+
+backfillUserId:
+UPDATE plan_day SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO plan_day(
+    id, monthly_plan_id, day_number, type, template_letter, warmup_general, cardio, cooldown_heart_rate, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 deleteAll:
 DELETE FROM plan_day;

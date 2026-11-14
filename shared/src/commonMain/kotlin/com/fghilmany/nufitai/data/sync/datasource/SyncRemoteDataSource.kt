@@ -17,14 +17,14 @@ class SyncApiException(val statusCode: Int) : Exception("Sync request failed wit
 
 /** techspec §7 -- generic PostgREST push/pull, one call per aggregate table, no supabase-kt SDK (ADR-005). */
 class SyncRemoteDataSource(private val httpClient: HttpClient) {
-    suspend fun push(table: String, rows: List<JsonObject>, accessToken: String) {
+    suspend fun push(table: String, rows: List<JsonObject>, accessToken: String, conflictColumn: String = "id") {
         if (rows.isEmpty()) return
         val response = httpClient.post("$SUPABASE_URL/rest/v1/$table") {
             contentType(ContentType.Application.Json)
             header("apikey", com.fghilmany.nufitai.data.auth.datasource.AuthRemoteDataSource.SUPABASE_ANON_KEY)
             header("Authorization", "Bearer $accessToken")
             header("Prefer", "resolution=merge-duplicates")
-            parameter("on_conflict", "id")
+            parameter("on_conflict", conflictColumn)
             setBody(rows)
         }
         if (!response.status.isSuccess()) throw SyncApiException(response.status.value)

@@ -10,14 +10,17 @@ CREATE TABLE planned_exercise (
     reason_rule_ids TEXT NOT NULL,
     -- issue #80 -- PT Mode's rest-timer duration; null falls back to a 90s default.
     rest_seconds INTEGER,
+    -- Sync bookkeeping, mirrors plan_day's user_id/updated_at (same ADR-008 §3 follow-up).
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (plan_day_id) REFERENCES plan_day(id),
     FOREIGN KEY (exercise_id) REFERENCES exercise(id)
 );
 
 insertPlannedExercise:
 INSERT INTO planned_exercise(
-    id, plan_day_id, slot, exercise_id, sets, rep_range_or_duration, rpe_target_min, rpe_target_max, reason_rule_ids, rest_seconds
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    id, plan_day_id, slot, exercise_id, sets, rep_range_or_duration, rpe_target_min, rpe_target_max, reason_rule_ids, rest_seconds, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getPlannedExercisesForDay:
 SELECT * FROM planned_exercise WHERE plan_day_id = ?;
@@ -27,6 +30,20 @@ SELECT * FROM planned_exercise WHERE plan_day_id IN ?;
 
 deletePlannedExercisesForDays:
 DELETE FROM planned_exercise WHERE plan_day_id IN ?;
+
+selectChangedSince:
+SELECT * FROM planned_exercise WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM planned_exercise WHERE id = ?;
+
+backfillUserId:
+UPDATE planned_exercise SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO planned_exercise(
+    id, plan_day_id, slot, exercise_id, sets, rep_range_or_duration, rpe_target_min, rpe_target_max, reason_rule_ids, rest_seconds, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 deleteAll:
 DELETE FROM planned_exercise;

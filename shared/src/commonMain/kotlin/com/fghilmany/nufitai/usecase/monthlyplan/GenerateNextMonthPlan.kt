@@ -41,17 +41,15 @@ class GenerateNextMonthPlan(
             is AppResult.Error -> return result
         }
 
-        when (val archived = monthlyPlanRepository.archivePlan(activePlan.id)) {
-            is AppResult.Error -> return archived
-            is AppResult.Success -> Unit
-        }
-
-        return if (activePlan.source == PlanSource.LOGGED_IN_RULE_ENGINE && fullAssessment != null) {
+        val generated = if (activePlan.source == PlanSource.LOGGED_IN_RULE_ENGINE && fullAssessment != null) {
             val level = when (val result = getLatestQuickAssessmentResult()) {
                 is AppResult.Success -> result.data?.level ?: Level.BEGINNER
                 is AppResult.Error -> return result
             }
-            generateLoggedInPlan(fullAssessment, level)
+            when (val result = generateLoggedInPlan(fullAssessment, level)) {
+                is AppResult.Success -> result.data
+                is AppResult.Error -> return result
+            }
         } else {
             val quickAssessment = when (val result = getLatestQuickAssessmentResult()) {
                 is AppResult.Success -> result.data
@@ -64,7 +62,18 @@ class GenerateNextMonthPlan(
                 sessionsPerWeek = quickAssessment.input.frequency.sessionsPerWeek,
                 resolvedSplit = quickAssessment.resolvedSplit,
             )
-            generateLocalTemplatePlan(templateInput)
+            when (val result = generateLocalTemplatePlan(templateInput)) {
+                is AppResult.Success -> result.data
+                is AppResult.Error -> return result
+            }
+        }
+
+        // Archive the old active plan + any OTHER stray ACTIVE rows (mirrors
+        // CreateTemplatePlan/ActivateAiCustomPlan's pattern) -- generate-then-archive-except,
+        // not archive-then-generate, so a stray never survives this rollover either.
+        return when (val archived = monthlyPlanRepository.archiveAllActivePlansExcept(generated.id)) {
+            is AppResult.Error -> archived
+            is AppResult.Success -> AppResult.Success(generated)
         }
     }
 }

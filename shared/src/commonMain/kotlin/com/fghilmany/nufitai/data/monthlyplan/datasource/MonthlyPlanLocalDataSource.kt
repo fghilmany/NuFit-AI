@@ -77,6 +77,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                     warmup_general = day.warmupGeneralJson,
                     cardio = day.cardioJson,
                     cooldown_heart_rate = day.cooldownHeartRateJson,
+                    updated_at = updatedAt,
                 )
                 day.plannedExercises.forEach { exercise ->
                     database.plannedExerciseQueries.insertPlannedExercise(
@@ -90,13 +91,14 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                         rpe_target_max = exercise.rpeTargetMax.toLong(),
                         reason_rule_ids = exercise.reasonRuleIdsJson,
                         rest_seconds = exercise.restSeconds?.toLong(),
+                        updated_at = updatedAt,
                     )
                 }
             }
         }
     }
 
-    suspend fun replaceDaysFrom(planId: String, fromDayNumber: Long, days: List<PlanDayInsertRow>) =
+    suspend fun replaceDaysFrom(planId: String, fromDayNumber: Long, days: List<PlanDayInsertRow>, updatedAt: Long) =
         withContext(Dispatchers.Default) {
             database.transaction {
                 val staleDayIds = database.planDayQueries.getPlanDayIdsFromDay(planId, fromDayNumber).executeAsList()
@@ -114,6 +116,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                         warmup_general = day.warmupGeneralJson,
                         cardio = day.cardioJson,
                         cooldown_heart_rate = day.cooldownHeartRateJson,
+                        updated_at = updatedAt,
                     )
                     day.plannedExercises.forEach { exercise ->
                         database.plannedExerciseQueries.insertPlannedExercise(
@@ -127,6 +130,7 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
                             rpe_target_max = exercise.rpeTargetMax.toLong(),
                             reason_rule_ids = exercise.reasonRuleIdsJson,
                             rest_seconds = exercise.restSeconds?.toLong(),
+                            updated_at = updatedAt,
                         )
                     }
                 }
@@ -223,5 +227,90 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
 
     suspend fun getSessionLogsForPlan(planId: String): List<PlanDaySessionLogRow> = withContext(Dispatchers.Default) {
         database.planDaySessionLogQueries.getSessionLogsForPlan(planId).executeAsList()
+    }
+
+    /** issue #83 follow-up (ADR-008 §3) -- plan_day sync, mirrors monthly_plan's. */
+    suspend fun getPlanDayChangedSince(updatedAfter: Long): List<PlanDayRow> = withContext(Dispatchers.Default) {
+        database.planDayQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun getPlanDayById(id: String): PlanDayRow? = withContext(Dispatchers.Default) {
+        database.planDayQueries.selectById(id).executeAsOneOrNull()
+    }
+
+    suspend fun backfillPlanDayUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.planDayQueries.backfillUserId(userId)
+    }
+
+    suspend fun upsertPlanDayFromRemote(row: PlanDayRow) = withContext(Dispatchers.Default) {
+        database.planDayQueries.upsertFromRemote(
+            id = row.id,
+            monthly_plan_id = row.monthly_plan_id,
+            day_number = row.day_number,
+            type = row.type,
+            template_letter = row.template_letter,
+            warmup_general = row.warmup_general,
+            cardio = row.cardio,
+            cooldown_heart_rate = row.cooldown_heart_rate,
+            user_id = row.user_id,
+            updated_at = row.updated_at,
+        )
+    }
+
+    /** issue #83 follow-up (ADR-008 §3) -- planned_exercise sync, mirrors plan_day's. */
+    suspend fun getPlannedExerciseChangedSince(updatedAfter: Long): List<PlannedExerciseRow> = withContext(Dispatchers.Default) {
+        database.plannedExerciseQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun getPlannedExerciseById(id: String): PlannedExerciseRow? = withContext(Dispatchers.Default) {
+        database.plannedExerciseQueries.selectById(id).executeAsOneOrNull()
+    }
+
+    suspend fun backfillPlannedExerciseUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.plannedExerciseQueries.backfillUserId(userId)
+    }
+
+    suspend fun upsertPlannedExerciseFromRemote(row: PlannedExerciseRow) = withContext(Dispatchers.Default) {
+        database.plannedExerciseQueries.upsertFromRemote(
+            id = row.id,
+            plan_day_id = row.plan_day_id,
+            slot = row.slot,
+            exercise_id = row.exercise_id,
+            sets = row.sets,
+            rep_range_or_duration = row.rep_range_or_duration,
+            rpe_target_min = row.rpe_target_min,
+            rpe_target_max = row.rpe_target_max,
+            reason_rule_ids = row.reason_rule_ids,
+            rest_seconds = row.rest_seconds,
+            user_id = row.user_id,
+            updated_at = row.updated_at,
+        )
+    }
+
+    /** issue #83 follow-up (ADR-008 §3) -- plan_day_session_log sync; columns were already
+     * sync-ready (chat-ai.md §7), only the remote-pull side was missing. */
+    suspend fun getSessionLogChangedSince(updatedAfter: Long): List<PlanDaySessionLogRow> = withContext(Dispatchers.Default) {
+        database.planDaySessionLogQueries.selectChangedSince(updatedAfter).executeAsList()
+    }
+
+    suspend fun getSessionLogById(id: String): PlanDaySessionLogRow? = withContext(Dispatchers.Default) {
+        database.planDaySessionLogQueries.selectById(id).executeAsOneOrNull()
+    }
+
+    suspend fun backfillSessionLogUserId(userId: String) = withContext(Dispatchers.Default) {
+        database.planDaySessionLogQueries.backfillUserId(userId)
+    }
+
+    suspend fun upsertSessionLogFromRemote(row: PlanDaySessionLogRow) = withContext(Dispatchers.Default) {
+        database.planDaySessionLogQueries.upsertFromRemote(
+            id = row.id,
+            plan_day_id = row.plan_day_id,
+            completed_at = row.completed_at,
+            skipped_at = row.skipped_at,
+            rpe_reported = row.rpe_reported,
+            pain_reported = row.pain_reported,
+            user_id = row.user_id,
+            updated_at = row.updated_at,
+        )
     }
 }

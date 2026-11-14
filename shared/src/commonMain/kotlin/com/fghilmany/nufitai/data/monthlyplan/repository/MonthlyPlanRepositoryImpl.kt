@@ -92,7 +92,7 @@ class MonthlyPlanRepositoryImpl(
 
     override suspend fun replacePlanDaysFrom(planId: String, fromDayNumber: Int, days: List<PlanDay>): AppResult<Unit> =
         runCatchingDatabase {
-            local.replaceDaysFrom(planId, fromDayNumber.toLong(), days.map { it.toInsertRow() })
+            local.replaceDaysFrom(planId, fromDayNumber.toLong(), days.map { it.toInsertRow() }, currentInstant().toEpochMilliseconds())
         }
 
     override suspend fun saveSessionLog(log: PlanDaySessionLog): AppResult<Unit> = runCatchingDatabase {

@@ -32,5 +32,9 @@ SELECT * FROM plan_day_session_log WHERE id = ?;
 backfillUserId:
 UPDATE plan_day_session_log SET user_id = ? WHERE user_id IS NULL;
 
+upsertFromRemote:
+INSERT OR REPLACE INTO plan_day_session_log(id, plan_day_id, completed_at, skipped_at, rpe_reported, pain_reported, user_id, updated_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
 deleteAll:
 DELETE FROM plan_day_session_log;

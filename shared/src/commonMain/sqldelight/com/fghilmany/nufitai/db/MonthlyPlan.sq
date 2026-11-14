@@ -28,8 +28,11 @@ INSERT INTO monthly_plan(
     active_flags, starting_level_per_pattern, mode, checkpoint_days, updated_at
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
+-- ORDER BY updated_at DESC: defense-in-depth against the "2+ ACTIVE rows" corruption this same
+-- file's archiveAllActiveExcept heals -- if it ever recurs, this at least picks the most recently
+-- activated plan deterministically instead of an arbitrary row.
 getActiveMonthlyPlan:
-SELECT * FROM monthly_plan WHERE status = 'ACTIVE' AND deleted_at IS NULL LIMIT 1;
+SELECT * FROM monthly_plan WHERE status = 'ACTIVE' AND deleted_at IS NULL ORDER BY updated_at DESC LIMIT 1;
 
 getAllMonthlyPlans:
 SELECT * FROM monthly_plan WHERE deleted_at IS NULL ORDER BY started_at DESC;

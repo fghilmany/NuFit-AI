@@ -58,7 +58,7 @@ class SyncRepositoryImpl(
             participants.forEach { participant ->
                 val changed = participant.getChangedSince(since)
                 logger.d { "Push ${participant.tableName}: ${changed.size} row(s)" }
-                remote.push(participant.tableName, changed, session.accessToken)
+                remote.push(participant.tableName, changed, session.accessToken, participant.conflictColumn)
             }
 
             val sinceEpochMillis = since.toEpochMilliseconds()

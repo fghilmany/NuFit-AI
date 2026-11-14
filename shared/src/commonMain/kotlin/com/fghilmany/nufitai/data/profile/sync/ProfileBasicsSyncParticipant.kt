@@ -21,6 +21,7 @@ class ProfileBasicsSyncParticipant(
     private val local: ProfileLocalDataSource,
 ) : SyncParticipant {
     override val tableName: String = "user_profile"
+    override val conflictColumn: String = "user_id"
 
     override suspend fun getChangedSince(since: Instant): List<JsonObject> =
         local.getChangedSince(since.toEpochMilliseconds()).map { it.toJson() }

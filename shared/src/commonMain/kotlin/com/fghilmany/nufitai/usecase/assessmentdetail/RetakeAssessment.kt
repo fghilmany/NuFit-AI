@@ -23,6 +23,13 @@ class RetakeAssessment(private val monthlyPlanRepository: MonthlyPlanRepository)
             is AppResult.Error -> return result
         }
 
+        // Archive every OTHER stray ACTIVE row too (not just the one getActivePlan() happened to
+        // return) -- self-heals any pre-existing "2+ active plans" corruption on every retake.
+        when (val archivedStrays = monthlyPlanRepository.archiveAllActivePlansExcept(activePlan.id)) {
+            is AppResult.Error -> return archivedStrays
+            is AppResult.Success -> Unit
+        }
+
         return when (val archived = monthlyPlanRepository.archivePlan(activePlan.id)) {
             is AppResult.Error -> archived
             is AppResult.Success -> AppResult.Success(activePlan.source)

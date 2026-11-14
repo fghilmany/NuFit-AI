@@ -12,6 +12,10 @@ import kotlin.time.Instant
 interface SyncParticipant {
     val tableName: String
 
+    /** PostgREST upsert conflict target (`?on_conflict=`) -- every synced table's primary key is
+     * `id` except `user_profile`, whose PK is `user_id` (no synthetic id column). */
+    val conflictColumn: String get() = "id"
+
     suspend fun getChangedSince(since: Instant): List<JsonObject>
     suspend fun upsertRemoteRows(rows: List<JsonObject>)
 
