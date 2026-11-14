@@ -11,6 +11,7 @@ import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
 import com.fghilmany.nufitai.domain.monthlyplan.entity.TemplatePlanInput
+import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
 import com.fghilmany.nufitai.usecase.monthlyplan.GenerateLocalTemplatePlan
 import com.fghilmany.nufitai.usecase.onboarding.SubmitQuickAssessment
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,6 +77,7 @@ sealed interface QuickAssessmentEvent {
 class QuickAssessmentViewModel(
     private val submitQuickAssessment: SubmitQuickAssessment,
     private val generateLocalTemplatePlan: GenerateLocalTemplatePlan,
+    private val monthlyPlanRepository: MonthlyPlanRepository,
 ) : ViewModel() {
     private val _state = MutableStateFlow<QuickAssessmentState>(QuickAssessmentState.Step())
     val state: StateFlow<QuickAssessmentState> = _state.asStateFlow()
@@ -147,7 +149,16 @@ class QuickAssessmentViewModel(
                         resolvedSplit = result.data.resolvedSplit,
                     )
                     when (val planResult = generateLocalTemplatePlan(templateInput)) {
-                        is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
+                        is AppResult.Success -> {
+                            // Bulk archive (not just "no other plan should exist yet") -- self-heals
+                            // if this screen is ever reached again while a plan is already active,
+                            // mirroring CreateTemplatePlan/ActivateAiCustomPlan's "exactly 1 active
+                            // plan" invariant instead of relying on this being first-run-only.
+                            when (val archived = monthlyPlanRepository.archiveAllActivePlansExcept(planResult.data.id)) {
+                                is AppResult.Error -> _state.value = QuickAssessmentState.Error(archived.failure.message)
+                                is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
+                            }
+                        }
                         is AppResult.Error -> _state.value = QuickAssessmentState.Error(planResult.failure.message)
                     }
                 }

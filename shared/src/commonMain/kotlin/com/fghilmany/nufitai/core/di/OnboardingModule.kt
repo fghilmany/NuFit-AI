@@ -53,6 +53,7 @@ val onboardingModule = module {
         QuickAssessmentViewModel(
             submitQuickAssessment = get(),
             generateLocalTemplatePlan = get(), // registered in monthlyPlanModule -- both load together in KoinInit
+            monthlyPlanRepository = get(), // registered in monthlyPlanModule
         )
     }
     viewModel { BodyDataViewModel(saveBodyMeasurement = get()) }
