@@ -10,6 +10,7 @@ import com.fghilmany.nufitai.domain.auth.entity.AuthProvider
 import com.fghilmany.nufitai.usecase.auth.CancelConflictingSignIn
 import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
 import com.fghilmany.nufitai.usecase.auth.DiscardLocalDataAndSync
+import com.fghilmany.nufitai.usecase.auth.SaveLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.SignIn
 import com.fghilmany.nufitai.usecase.auth.SignInOutcome
 import com.fghilmany.nufitai.usecase.profile.GetProfileBasics
@@ -28,6 +29,10 @@ sealed interface LoginState {
     /** This is an existing account and this device already has local guest data -- [SignIn]
      * deliberately skipped syncing pending the user's choice (see [SignInOutcome.LocalDataConflict]). */
     data object LocalDataConflict : LoginState
+
+    /** This device has a local plan but the signed-into account has nothing to protect (see
+     * [SignInOutcome.NoRemoteData]) -- ask whether to keep it instead of forcing discard/cancel. */
+    data object SaveLocalPlanPrompt : LoginState
     data object ResolvingConflict : LoginState
 }
 
@@ -39,6 +44,7 @@ class LoginViewModel(
     private val getProfileBasics: GetProfileBasics,
     private val discardLocalDataAndSync: DiscardLocalDataAndSync,
     private val cancelConflictingSignIn: CancelConflictingSignIn,
+    private val saveLocalDataAndSync: SaveLocalDataAndSync,
 ) : ViewModel() {
     private val _state = MutableStateFlow<LoginState>(LoginState.Idle)
     val state: StateFlow<LoginState> = _state.asStateFlow()
@@ -83,6 +89,31 @@ class LoginViewModel(
         }
     }
 
+    /** User chose to keep their current plan on a [LoginState.SaveLocalPlanPrompt]. */
+    fun confirmSaveLocalPlan() {
+        if (_state.value != LoginState.SaveLocalPlanPrompt) return
+        _state.value = LoginState.ResolvingConflict
+        viewModelScope.launch {
+            when (val result = saveLocalDataAndSync()) {
+                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
+                is AppResult.Success -> onSignedIn()
+            }
+        }
+    }
+
+    /** User chose to start empty on a [LoginState.SaveLocalPlanPrompt] -- they're still signed
+     * in, just without carrying the current local plan over (can build a custom one any time). */
+    fun declineSaveLocalPlan() {
+        if (_state.value != LoginState.SaveLocalPlanPrompt) return
+        _state.value = LoginState.ResolvingConflict
+        viewModelScope.launch {
+            when (val result = discardLocalDataAndSync()) {
+                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
+                is AppResult.Success -> onSignedIn()
+            }
+        }
+    }
+
     private fun signInWith(provider: AuthProvider, launchNative: suspend () -> AppResult<NativeSignInResult>) {
         if (_state.value == LoginState.SigningIn) return
         _state.value = LoginState.SigningIn
@@ -101,6 +132,7 @@ class LoginViewModel(
                     is AppResult.Success -> when (signInResult.data) {
                         is SignInOutcome.SignedIn -> onSignedIn()
                         is SignInOutcome.LocalDataConflict -> _state.value = LoginState.LocalDataConflict
+                        is SignInOutcome.NoRemoteData -> _state.value = LoginState.SaveLocalPlanPrompt
                     }
                 }
             }

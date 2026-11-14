@@ -111,4 +111,17 @@ class SyncRepositoryImpl(
         logger.e(e) { "hasLocalUserData failed -- ${e.message}" }
         AppResult.Error(Failure.Database(e.message ?: "Failed to check local data"))
     }
+
+    override suspend fun hasRemoteUserData(userId: String, accessToken: String): AppResult<Boolean> = try {
+        AppResult.Success(remote.hasAnyRows("monthly_plan", userId, accessToken))
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: SyncApiException) {
+        val failure = if (e.statusCode == 401) Failure.Unauthorized() else Failure.Network("Sync backend error (${e.statusCode})")
+        logger.e(e) { "hasRemoteUserData failed -- HTTP ${e.statusCode}" }
+        AppResult.Error(failure)
+    } catch (e: Exception) {
+        logger.e(e) { "hasRemoteUserData failed -- ${e.message}" }
+        AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+    }
 }

@@ -10,13 +10,21 @@ import com.fghilmany.nufitai.domain.sync.repository.SyncRepository
 sealed interface SignInOutcome {
     data class SignedIn(val session: AuthSession) : SignInOutcome
 
-    /** This is an EXISTING account (not a first-ever sign-in) and this device already has local
+    /** This is an EXISTING account with real cloud history, and this device already has local
      * guest activity -- that guest data doesn't belong to the account just signed into, so it
      * must not be silently pushed/merged into it. The caller must ask the user to pick
      * [DiscardLocalDataAndSync] (adopt the cloud account, local guest data is lost) or
      * [CancelConflictingSignIn] (abort, go back to guest with local data untouched) before any
      * sync happens. */
     data class LocalDataConflict(val session: AuthSession) : SignInOutcome
+
+    /** This device has a local guest plan, but the signed-into account has nothing to protect
+     * (brand-new account, or an existing one that was never actually used) -- there's no real
+     * conflict, so instead of forcing the discard/cancel choice above, let the user decide
+     * whether to keep this device's current plan: [SaveLocalDataAndSync] (push it up, becomes
+     * the account's plan) or [DiscardLocalDataAndSync] (start empty; a custom plan can be built
+     * any time from the Rencana tab). */
+    data class NoRemoteData(val session: AuthSession) : SignInOutcome
 }
 
 /**
@@ -46,19 +54,32 @@ class SignIn(
         entitlementRepository.setLoggedIn(true)
         entitlementRepository.refreshFromRemote(session.userId, session.accessToken)
 
-        if (!session.isNewUser) {
-            val hasLocalData = when (val check = syncRepository.hasLocalUserData()) {
+        val hasLocalData = when (val check = syncRepository.hasLocalUserData()) {
+            is AppResult.Success -> check.data
+            // Can't tell -- fail open to a normal sync rather than blocking a real sign-in on
+            // an unrelated local-read error.
+            is AppResult.Error -> false
+        }
+        if (!hasLocalData) {
+            syncRepository.syncNow()
+            return AppResult.Success(SignInOutcome.SignedIn(session))
+        }
+
+        // A brand-new account can't possibly have cloud history yet -- skip the network round
+        // trip entirely for that case.
+        val hasRemoteData = if (session.isNewUser) {
+            false
+        } else {
+            when (val check = syncRepository.hasRemoteUserData(session.userId, session.accessToken)) {
                 is AppResult.Success -> check.data
-                // Can't tell -- fail open to a normal sync rather than blocking a real sign-in on
-                // an unrelated local-read error.
-                is AppResult.Error -> false
-            }
-            if (hasLocalData) {
-                return AppResult.Success(SignInOutcome.LocalDataConflict(session))
+                // Can't tell -- fail CLOSED here (unlike the local check above): treat as "has
+                // data" so we never risk silently discarding a real cloud account's history.
+                is AppResult.Error -> true
             }
         }
 
-        syncRepository.syncNow()
-        return AppResult.Success(SignInOutcome.SignedIn(session))
+        return AppResult.Success(
+            if (hasRemoteData) SignInOutcome.LocalDataConflict(session) else SignInOutcome.NoRemoteData(session),
+        )
     }
 }

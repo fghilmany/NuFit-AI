@@ -21,4 +21,9 @@
     <string name="auth_login_conflict_body">HP ini punya data lokal yang belum terhubung ke akun ini. Kalau lanjut, data itu bakal diganti data akun ini dari cloud -- data lokal di HP ini bakal hilang.</string>
     <string name="auth_login_conflict_discard">Lanjut, ganti data lokal</string>
     <string name="auth_login_conflict_cancel">Batal, kembali</string>
+
+    <string name="auth_login_save_plan_title">Simpan plan kamu sekarang?</string>
+    <string name="auth_login_save_plan_body">Akun ini belum punya plan tersimpan. Simpan plan yang sedang kamu jalani di HP ini, atau mulai kosong -- kamu tetap bisa bikin plan custom sendiri kapan pun lewat tab Rencana.</string>
+    <string name="auth_login_save_plan_confirm">Simpan plan ini</string>
+    <string name="auth_login_save_plan_decline">Mulai kosong</string>
 </resources>

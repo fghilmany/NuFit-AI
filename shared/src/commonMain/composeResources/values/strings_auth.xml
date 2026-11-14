@@ -21,4 +21,9 @@
     <string name="auth_login_conflict_body">This device has local data that isn't linked to this account yet. Continuing will replace it with this account's data from the cloud -- the local data on this device will be lost.</string>
     <string name="auth_login_conflict_discard">Continue, replace local data</string>
     <string name="auth_login_conflict_cancel">Cancel, go back</string>
+
+    <string name="auth_login_save_plan_title">Keep your current plan?</string>
+    <string name="auth_login_save_plan_body">Your account doesn\'t have a saved plan yet. Keep the plan you\'re running on this device, or start empty -- you can always build a custom plan later from the Plans tab.</string>
+    <string name="auth_login_save_plan_confirm">Keep this plan</string>
+    <string name="auth_login_save_plan_decline">Start empty</string>
 </resources>

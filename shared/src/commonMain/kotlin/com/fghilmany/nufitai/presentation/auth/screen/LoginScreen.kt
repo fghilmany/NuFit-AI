@@ -59,6 +59,10 @@ import nufitai.shared.generated.resources.auth_login_conflict_title
 import nufitai.shared.generated.resources.auth_login_cta_apple
 import nufitai.shared.generated.resources.auth_login_cta_google
 import nufitai.shared.generated.resources.auth_login_legal
+import nufitai.shared.generated.resources.auth_login_save_plan_body
+import nufitai.shared.generated.resources.auth_login_save_plan_confirm
+import nufitai.shared.generated.resources.auth_login_save_plan_decline
+import nufitai.shared.generated.resources.auth_login_save_plan_title
 import nufitai.shared.generated.resources.auth_login_subtitle
 import nufitai.shared.generated.resources.auth_login_title
 import nufitai.shared.generated.resources.common_action_skip
@@ -250,6 +254,24 @@ fun LoginScreen(
             dismissButton = {
                 TextButton(onClick = viewModel::cancelSignInConflict) {
                     Text(stringResource(Res.string.auth_login_conflict_cancel))
+                }
+            },
+        )
+    }
+
+    if (state == LoginState.SaveLocalPlanPrompt) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = { Text(stringResource(Res.string.auth_login_save_plan_title)) },
+            text = { Text(stringResource(Res.string.auth_login_save_plan_body)) },
+            confirmButton = {
+                TextButton(onClick = viewModel::confirmSaveLocalPlan) {
+                    Text(stringResource(Res.string.auth_login_save_plan_confirm))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = viewModel::declineSaveLocalPlan) {
+                    Text(stringResource(Res.string.auth_login_save_plan_decline))
                 }
             },
         )

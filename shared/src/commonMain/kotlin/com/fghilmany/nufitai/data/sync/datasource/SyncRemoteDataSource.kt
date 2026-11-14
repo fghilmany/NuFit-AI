@@ -46,4 +46,19 @@ class SyncRemoteDataSource(private val httpClient: HttpClient) {
         if (!response.status.isSuccess()) throw SyncApiException(response.status.value)
         return response.body()
     }
+
+    /** Cheap existence check (`limit=1`, narrow `select`) -- used by [com.fghilmany.nufitai.usecase.auth.SignIn]
+     * to tell an account with real cloud history apart from one that's never actually been used,
+     * without pulling the full row. */
+    suspend fun hasAnyRows(table: String, userId: String, accessToken: String): Boolean {
+        val response = httpClient.get("$SUPABASE_URL/rest/v1/$table") {
+            header("apikey", com.fghilmany.nufitai.data.auth.datasource.AuthRemoteDataSource.SUPABASE_ANON_KEY)
+            header("Authorization", "Bearer $accessToken")
+            parameter("user_id", "eq.$userId")
+            parameter("select", "id")
+            parameter("limit", "1")
+        }
+        if (!response.status.isSuccess()) throw SyncApiException(response.status.value)
+        return response.body<List<JsonObject>>().isNotEmpty()
+    }
 }

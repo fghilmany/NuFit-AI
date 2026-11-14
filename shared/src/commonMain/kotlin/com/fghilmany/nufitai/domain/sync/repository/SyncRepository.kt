@@ -18,4 +18,10 @@ interface SyncRepository {
      * to detect a conflict when signing into an EXISTING account -- that guest data doesn't belong
      * to the account being signed into and must not be silently pushed/merged into it). */
     suspend fun hasLocalUserData(): AppResult<Boolean>
+
+    /** True if the signed-into account has ANY existing cloud history. Used by
+     * [com.fghilmany.nufitai.usecase.auth.SignIn] to tell an account with real data to protect
+     * apart from one that's never actually been used (brand-new, or existing-but-empty) -- only
+     * the former should force the discard/cancel choice. */
+    suspend fun hasRemoteUserData(userId: String, accessToken: String): AppResult<Boolean>
 }

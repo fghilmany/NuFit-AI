@@ -15,6 +15,7 @@ import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
 import com.fghilmany.nufitai.usecase.auth.DiscardLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
 import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
+import com.fghilmany.nufitai.usecase.auth.SaveLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.SignIn
 import com.fghilmany.nufitai.usecase.auth.SignOut
 import org.koin.core.module.dsl.viewModel
@@ -40,6 +41,7 @@ fun authModule(tokenStorage: TokenStorage) = module {
     factory { GetCurrentUserProfile(authRepository = get()) }
     factory { DiscardLocalDataAndSync(syncRepository = get()) }
     factory { CancelConflictingSignIn(authRepository = get(), entitlementRepository = get()) }
+    factory { SaveLocalDataAndSync(syncRepository = get()) }
 
     viewModel {
         LoginViewModel(
@@ -50,6 +52,7 @@ fun authModule(tokenStorage: TokenStorage) = module {
             getProfileBasics = get(),
             discardLocalDataAndSync = get(),
             cancelConflictingSignIn = get(),
+            saveLocalDataAndSync = get(),
         )
     }
     viewModel { CompleteProfileViewModel(saveProfileBasics = get()) }
