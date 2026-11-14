@@ -37,7 +37,7 @@
     <string name="fullassessment_interview_gender_male">Male</string>
     <string name="fullassessment_interview_gender_female">Female</string>
     <string name="fullassessment_interview_goal_title">Training goal</string>
-    <string name="fullassessment_interview_frequency_label">Training frequency per week</string>
+    <string name="fullassessment_interview_frequency_label">Training frequency per week: %1$d days</string>
     <string name="fullassessment_interview_training_days_title">Training days</string>
     <string name="fullassessment_interview_session_duration_label">Session duration (minutes)</string>
     <string name="fullassessment_interview_activity_level_title">Daily activity level</string>
@@ -49,6 +49,7 @@
     <string name="fullassessment_activity_very_active">Very active (heavy physical work)</string>
     <string name="fullassessment_interview_equipment_title">Equipment preference</string>
     <string name="fullassessment_interview_injury_history_title">Injury / pain history (area)</string>
+    <string name="fullassessment_interview_no_injury_label">No injury / pain</string>
     <string name="fullassessment_interview_injury_history_note_label">Which part hurts? (e.g. "Left knee when squatting")</string>
 
     <string name="fullassessment_day_mon">Mon</string>
@@ -61,13 +62,13 @@
 
     <string name="fullassessment_postural_title">Postural assessment findings</string>
     <string name="fullassessment_movement_title">Movement screening findings</string>
+    <string name="fullassessment_no_findings_label">No findings</string>
 
     <string name="fullassessment_capacity_title">Physical capacity test (optional)</string>
     <string name="fullassessment_capacity_pushup_label">Push-up (reps)</string>
     <string name="fullassessment_capacity_plank_label">Plank (seconds)</string>
     <string name="fullassessment_capacity_sit_to_stand_label">30-Second Sit-to-Stand (reps)</string>
     <string name="fullassessment_capacity_skip_test">Skip this test</string>
-    <string name="fullassessment_capacity_cancel_skip">Cancel skip</string>
     <string name="fullassessment_capacity_submit">Done</string>
 
     <string name="fullassessment_body_area_punggung_bawah">Lower back</string>

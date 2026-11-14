@@ -3,6 +3,7 @@ package com.fghilmany.nufitai.presentation.aicustomplan.screen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,7 +44,9 @@ import nufitai.shared.generated.resources.aicustomplan_form_title
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
-private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 90)
+// Same option set as Full Assessment's session-duration picker -- kept identical so a value
+// prefilled from there always lands on a real chip here too.
+private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120)
 private val PLAN_DURATION_OPTIONS = 1..4
 
 /** P-12 B (UC-3). */
@@ -105,9 +108,9 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
 
         item { Text(stringResource(Res.string.aicustomplan_form_session_duration_title), style = MaterialTheme.typography.titleSmall) }
         item {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 SESSION_DURATION_OPTIONS.forEach { minutes ->
-                    ToggleButton("$minutes", editing.sessionDurationMinutes == minutes, Modifier.weight(1f)) {
+                    ToggleButton("$minutes", editing.sessionDurationMinutes == minutes) {
                         viewModel.onEvent(AiCustomPlanFormEvent.SetSessionDurationMinutes(minutes))
                     }
                 }
@@ -132,7 +135,7 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 PLAN_DURATION_OPTIONS.forEach { weeks ->
-                    ToggleButton("$weeks", editing.planDurationWeeks == weeks, Modifier.weight(1f)) {
+                    ToggleButton("$weeks mgu", editing.planDurationWeeks == weeks, Modifier.weight(1f)) {
                         viewModel.onEvent(AiCustomPlanFormEvent.SetPlanDurationWeeks(weeks))
                     }
                 }

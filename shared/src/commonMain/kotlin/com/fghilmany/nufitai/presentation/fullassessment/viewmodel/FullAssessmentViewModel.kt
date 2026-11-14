@@ -57,13 +57,21 @@ sealed interface FullAssessmentState {
         /** issue #81 -- free-text detail under the "cedera/nyeri sendi" toggle. */
         val injuryHistoryNote: String = "",
         val goal: GoalCategory? = null,
-        val sessionsPerWeek: String = "",
+        /** Frequency is derived from [selectedWeekdays].size -- no separate number to type that
+         * could disagree with the days actually picked (max 7, same as a calendar week). */
         val selectedWeekdays: Set<Int> = emptySet(),
-        val sessionDurationMinutes: String = "",
+        val sessionDurationMinutes: Int? = null,
         /** techspec meal-plan.md §3/§5 -- TDEE calculation basis, asked alongside the rest of the interview step. */
         val activityLevel: ActivityLevel? = null,
+        /** "Tidak ada cedera/nyeri" -- mutually exclusive with [injuryHistory]; picking a real
+         * area clears this, and checking this clears [injuryHistory]/[injuryHistoryNote]. */
+        val noInjuryHistory: Boolean = false,
         val flagsPostural: Set<ExerciseFlag> = emptySet(),
+        /** "Tidak ada temuan" -- mutually exclusive with [flagsPostural], same pattern as [noInjuryHistory]. */
+        val noPosturalFindings: Boolean = false,
         val movementFlags: Set<ExerciseFlag> = emptySet(),
+        /** "Tidak ada temuan" -- mutually exclusive with [movementFlags], same pattern as [noInjuryHistory]. */
+        val noMovementFindings: Boolean = false,
         val capacityTestSkipped: Boolean = false,
         val pushupReps: String = "",
         val plankSeconds: String = "",
@@ -76,9 +84,8 @@ sealed interface FullAssessmentState {
                 gender != null &&
                 equipmentPreference.isNotEmpty() &&
                 goal != null &&
-                sessionsPerWeek.toIntOrNull() != null &&
                 selectedWeekdays.isNotEmpty() &&
-                sessionDurationMinutes.toIntOrNull() != null
+                sessionDurationMinutes != null
         // activityLevel is intentionally NOT required to proceed -- mirrors BodyMeasurement's
         // existing optional-everywhere convention. Meal Plan's own NeedsBodyData gate (meal-plan.md
         // §8) enforces it specifically for that feature, without adding friction to the Full
@@ -101,21 +108,24 @@ sealed interface FullAssessmentEvent {
     data class SetGender(val value: Gender) : FullAssessmentEvent
     data class ToggleEquipmentPreference(val value: EquipmentCategory) : FullAssessmentEvent
     data class ToggleInjuryHistory(val value: BodyArea) : FullAssessmentEvent
+    data object ToggleNoInjuryHistory : FullAssessmentEvent
     data class SetInjuryHistoryNote(val value: String) : FullAssessmentEvent
     data class SetGoal(val value: GoalCategory) : FullAssessmentEvent
-    data class SetSessionsPerWeek(val value: String) : FullAssessmentEvent
     data class ToggleSelectedWeekday(val value: Int) : FullAssessmentEvent
-    data class SetSessionDurationMinutes(val value: String) : FullAssessmentEvent
+    data class SetSessionDurationMinutes(val value: Int) : FullAssessmentEvent
     data class SetActivityLevel(val value: ActivityLevel) : FullAssessmentEvent
     data object NextFromInterview : FullAssessmentEvent
     data class TogglePosturalFlag(val value: ExerciseFlag) : FullAssessmentEvent
+    data object ToggleNoPosturalFindings : FullAssessmentEvent
     data object NextFromPostural : FullAssessmentEvent
     data class ToggleMovementFlag(val value: ExerciseFlag) : FullAssessmentEvent
+    data object ToggleNoMovementFindings : FullAssessmentEvent
     data object NextFromMovement : FullAssessmentEvent
     data class SetPushupReps(val value: String) : FullAssessmentEvent
     data class SetPlankSeconds(val value: String) : FullAssessmentEvent
     data class SetSitToStandReps(val value: String) : FullAssessmentEvent
-    data object ToggleSkipCapacityTest : FullAssessmentEvent
+    /** Skip + submit in one step -- there's nothing left to fill in on this screen once skipped. */
+    data object SkipCapacityTestAndSubmit : FullAssessmentEvent
     data object Submit : FullAssessmentEvent
 }
 
@@ -160,7 +170,6 @@ class FullAssessmentViewModel(
                     it.copy(
                         goal = it.goal ?: quickResult.input.goal,
                         equipmentPreference = it.equipmentPreference.ifEmpty { quickResult.input.equipment },
-                        sessionsPerWeek = it.sessionsPerWeek.ifBlank { quickResult.input.frequency.sessionsPerWeek.toString() },
                     )
                 }
             }
@@ -199,11 +208,18 @@ class FullAssessmentViewModel(
                 it.copy(equipmentPreference = it.equipmentPreference.toggle(event.value))
             }
             is FullAssessmentEvent.ToggleInjuryHistory -> updateStep {
-                it.copy(injuryHistory = it.injuryHistory.toggle(event.value))
+                it.copy(injuryHistory = it.injuryHistory.toggle(event.value), noInjuryHistory = false)
+            }
+            FullAssessmentEvent.ToggleNoInjuryHistory -> updateStep {
+                val turningOn = !it.noInjuryHistory
+                it.copy(
+                    noInjuryHistory = turningOn,
+                    injuryHistory = if (turningOn) emptySet() else it.injuryHistory,
+                    injuryHistoryNote = if (turningOn) "" else it.injuryHistoryNote,
+                )
             }
             is FullAssessmentEvent.SetInjuryHistoryNote -> updateStep { it.copy(injuryHistoryNote = event.value) }
             is FullAssessmentEvent.SetGoal -> updateStep { it.copy(goal = event.value) }
-            is FullAssessmentEvent.SetSessionsPerWeek -> updateStep { it.copy(sessionsPerWeek = event.value) }
             is FullAssessmentEvent.ToggleSelectedWeekday -> updateStep { it.copy(selectedWeekdays = it.selectedWeekdays.toggle(event.value)) }
             is FullAssessmentEvent.SetSessionDurationMinutes -> updateStep { it.copy(sessionDurationMinutes = event.value) }
             is FullAssessmentEvent.SetActivityLevel -> updateStep { it.copy(activityLevel = event.value) }
@@ -211,17 +227,28 @@ class FullAssessmentViewModel(
                 if (it.canProceedFromInterview) it.copy(phase = FullAssessmentPhase.POSTURAL) else it
             }
             is FullAssessmentEvent.TogglePosturalFlag -> updateStep {
-                it.copy(flagsPostural = it.flagsPostural.toggle(event.value))
+                it.copy(flagsPostural = it.flagsPostural.toggle(event.value), noPosturalFindings = false)
+            }
+            FullAssessmentEvent.ToggleNoPosturalFindings -> updateStep {
+                val turningOn = !it.noPosturalFindings
+                it.copy(noPosturalFindings = turningOn, flagsPostural = if (turningOn) emptySet() else it.flagsPostural)
             }
             FullAssessmentEvent.NextFromPostural -> updateStep { it.copy(phase = FullAssessmentPhase.MOVEMENT) }
             is FullAssessmentEvent.ToggleMovementFlag -> updateStep {
-                it.copy(movementFlags = it.movementFlags.toggle(event.value))
+                it.copy(movementFlags = it.movementFlags.toggle(event.value), noMovementFindings = false)
+            }
+            FullAssessmentEvent.ToggleNoMovementFindings -> updateStep {
+                val turningOn = !it.noMovementFindings
+                it.copy(noMovementFindings = turningOn, movementFlags = if (turningOn) emptySet() else it.movementFlags)
             }
             FullAssessmentEvent.NextFromMovement -> updateStep { it.copy(phase = FullAssessmentPhase.CAPACITY_TEST) }
             is FullAssessmentEvent.SetPushupReps -> updateStep { it.copy(pushupReps = event.value) }
             is FullAssessmentEvent.SetPlankSeconds -> updateStep { it.copy(plankSeconds = event.value) }
             is FullAssessmentEvent.SetSitToStandReps -> updateStep { it.copy(sitToStandReps = event.value) }
-            FullAssessmentEvent.ToggleSkipCapacityTest -> updateStep { it.copy(capacityTestSkipped = !it.capacityTestSkipped) }
+            FullAssessmentEvent.SkipCapacityTestAndSubmit -> {
+                updateStep { it.copy(capacityTestSkipped = true) }
+                submit()
+            }
             FullAssessmentEvent.Submit -> submit()
         }
     }
@@ -267,9 +294,9 @@ class FullAssessmentViewModel(
                 movementFlags = current.movementFlags,
                 capacityTest = current.toCapacityTestResult(),
                 goal = current.goal ?: return@launch,
-                sessionsPerWeek = current.sessionsPerWeek.toIntOrNull() ?: return@launch,
+                sessionsPerWeek = current.selectedWeekdays.size,
                 selectedWeekdays = current.selectedWeekdays,
-                sessionDurationMinutes = current.sessionDurationMinutes.toIntOrNull() ?: return@launch,
+                sessionDurationMinutes = current.sessionDurationMinutes ?: return@launch,
                 activityLevel = current.activityLevel,
             )
             when (result) {

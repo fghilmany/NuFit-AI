@@ -68,6 +68,24 @@ class AiCustomPlanFormViewModel(
     private val _state = MutableStateFlow<AiCustomPlanFormState>(AiCustomPlanFormState.Editing())
     val state: StateFlow<AiCustomPlanFormState> = _state.asStateFlow()
 
+    init {
+        // Full Assessment already asked goal/frequency/duration/equipment -- prefill instead of
+        // asking the exact same questions blank. User can still change any of it; this form
+        // captures what they want for THIS plan specifically, which may differ.
+        viewModelScope.launch {
+            (getLatestFullAssessmentResult().let { it as? AppResult.Success }?.data)?.let { fullAssessment ->
+                updateEditing {
+                    it.copy(
+                        goal = it.goal ?: fullAssessment.goal,
+                        sessionsPerWeek = fullAssessment.selectedWeekdays.size.takeIf { count -> count > 0 } ?: it.sessionsPerWeek,
+                        sessionDurationMinutes = fullAssessment.sessionDurationMinutes,
+                        equipmentPreference = it.equipmentPreference.ifEmpty { fullAssessment.equipmentPreference },
+                    )
+                }
+            }
+        }
+    }
+
     fun onEvent(event: AiCustomPlanFormEvent) {
         when (event) {
             is AiCustomPlanFormEvent.SetGoal -> updateEditing { it.copy(goal = event.value) }

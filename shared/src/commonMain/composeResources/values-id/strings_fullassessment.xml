@@ -37,7 +37,7 @@
     <string name="fullassessment_interview_gender_male">Pria</string>
     <string name="fullassessment_interview_gender_female">Wanita</string>
     <string name="fullassessment_interview_goal_title">Tujuan latihan</string>
-    <string name="fullassessment_interview_frequency_label">Frekuensi latihan per minggu</string>
+    <string name="fullassessment_interview_frequency_label">Frekuensi latihan per minggu: %1$d hari</string>
     <string name="fullassessment_interview_training_days_title">Hari latihan</string>
     <string name="fullassessment_interview_session_duration_label">Durasi sesi (menit)</string>
     <string name="fullassessment_interview_activity_level_title">Tingkat aktivitas harian</string>
@@ -49,6 +49,7 @@
     <string name="fullassessment_activity_very_active">Sangat aktif (kerja fisik berat)</string>
     <string name="fullassessment_interview_equipment_title">Preferensi alat</string>
     <string name="fullassessment_interview_injury_history_title">Riwayat cedera / nyeri (area)</string>
+    <string name="fullassessment_interview_no_injury_label">Tidak ada cedera / nyeri</string>
     <string name="fullassessment_interview_injury_history_note_label">Bagian mana yang nyeri? (mis. "Lutut kiri saat jongkok")</string>
 
     <string name="fullassessment_day_mon">Sen</string>
@@ -61,13 +62,13 @@
 
     <string name="fullassessment_postural_title">Temuan asesmen postur</string>
     <string name="fullassessment_movement_title">Temuan movement screening</string>
+    <string name="fullassessment_no_findings_label">Tidak ada temuan</string>
 
     <string name="fullassessment_capacity_title">Tes kapasitas fisik (opsional)</string>
     <string name="fullassessment_capacity_pushup_label">Push-up (reps)</string>
     <string name="fullassessment_capacity_plank_label">Plank (detik)</string>
     <string name="fullassessment_capacity_sit_to_stand_label">Sit-to-Stand 30 detik (reps)</string>
     <string name="fullassessment_capacity_skip_test">Lewati tes ini</string>
-    <string name="fullassessment_capacity_cancel_skip">Batal lewati</string>
     <string name="fullassessment_capacity_submit">Selesai</string>
 
     <string name="fullassessment_body_area_punggung_bawah">Punggung bawah</string>

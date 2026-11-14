@@ -3,6 +3,7 @@ package com.fghilmany.nufitai.presentation.fullassessment.screen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Row
@@ -51,7 +52,6 @@ import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.QuestionCard
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.common_action_continue
-import nufitai.shared.generated.resources.fullassessment_capacity_cancel_skip
 import nufitai.shared.generated.resources.fullassessment_capacity_plank_label
 import nufitai.shared.generated.resources.fullassessment_capacity_pushup_label
 import nufitai.shared.generated.resources.fullassessment_capacity_sit_to_stand_label
@@ -78,9 +78,11 @@ import nufitai.shared.generated.resources.fullassessment_interview_injury_histor
 import nufitai.shared.generated.resources.fullassessment_interview_injury_history_title
 import nufitai.shared.generated.resources.fullassessment_interview_activity_level_title
 import nufitai.shared.generated.resources.fullassessment_interview_data_diri_title
+import nufitai.shared.generated.resources.fullassessment_interview_no_injury_label
 import nufitai.shared.generated.resources.fullassessment_interview_session_duration_label
 import nufitai.shared.generated.resources.fullassessment_interview_training_days_title
 import nufitai.shared.generated.resources.fullassessment_movement_title
+import nufitai.shared.generated.resources.fullassessment_no_findings_label
 import nufitai.shared.generated.resources.fullassessment_parq_prefilled_notice
 import nufitai.shared.generated.resources.fullassessment_postural_title
 import nufitai.shared.generated.resources.fullassessment_top_bar_title
@@ -207,6 +209,7 @@ private fun hariLabels(): List<Pair<Int, String>> = listOf(
 )
 
 private val NumberKeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+private val SESSION_DURATION_OPTIONS = listOf(30, 45, 60, 75, 90, 105, 120)
 
 @Composable
 private fun InterviewSectionCard(title: String, content: @Composable () -> Unit) {
@@ -262,28 +265,30 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         }
         item {
             InterviewSectionCard(stringResource(Res.string.fullassessment_interview_training_days_title)) {
-                AppTextField(
-                    value = step.sessionsPerWeek,
-                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionsPerWeek(it)) },
-                    label = stringResource(Res.string.fullassessment_interview_frequency_label),
-                    keyboardOptions = NumberKeyboardOptions,
-                    modifier = Modifier.fillMaxWidth(),
+                Text(
+                    stringResource(Res.string.fullassessment_interview_frequency_label, step.selectedWeekdays.size),
+                    style = MaterialTheme.typography.bodyMedium,
                 )
                 val hariLabels = hariLabels()
-                Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.fillMaxWidth()) {
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
                     hariLabels.forEach { (day, label) ->
-                        DayChip(label, day in step.selectedWeekdays, Modifier.weight(1f)) {
+                        DayChip(label, day in step.selectedWeekdays) {
                             viewModel.onEvent(FullAssessmentEvent.ToggleSelectedWeekday(day))
                         }
                     }
                 }
-                AppTextField(
-                    value = step.sessionDurationMinutes,
-                    onValueChange = { viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(it)) },
-                    label = stringResource(Res.string.fullassessment_interview_session_duration_label),
-                    keyboardOptions = NumberKeyboardOptions,
-                    modifier = Modifier.fillMaxWidth(),
-                )
+                Text(stringResource(Res.string.fullassessment_interview_session_duration_label), style = MaterialTheme.typography.bodyMedium)
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    SESSION_DURATION_OPTIONS.forEach { minutes ->
+                        ToggleButton("$minutes", step.sessionDurationMinutes == minutes) {
+                            viewModel.onEvent(FullAssessmentEvent.SetSessionDurationMinutes(minutes))
+                        }
+                    }
+                }
             }
         }
         item {
@@ -308,10 +313,16 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         }
         item {
             InterviewSectionCard(stringResource(Res.string.fullassessment_interview_injury_history_title)) {
+                CheckboxRow(
+                    checked = step.noInjuryHistory,
+                    label = stringResource(Res.string.fullassessment_interview_no_injury_label),
+                    onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoInjuryHistory) },
+                )
                 BodyArea.entries.forEach { area ->
                     CheckboxRow(
                         checked = area in step.injuryHistory,
                         label = area.shortLabel(),
+                        enabled = !step.noInjuryHistory,
                         onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleInjuryHistory(area)) },
                     )
                 }
@@ -339,10 +350,16 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
 private fun PosturalPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
         Text(stringResource(Res.string.fullassessment_postural_title), style = MaterialTheme.typography.titleSmall)
+        CheckboxRow(
+            checked = step.noPosturalFindings,
+            label = stringResource(Res.string.fullassessment_no_findings_label),
+            onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoPosturalFindings) },
+        )
         POSTURAL_FLAG_OPTIONS.forEach { flag ->
             CheckboxRow(
                 checked = flag in step.flagsPostural,
                 label = flag.shortLabel(),
+                enabled = !step.noPosturalFindings,
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.TogglePosturalFlag(flag)) },
             )
         }
@@ -357,10 +374,16 @@ private fun PosturalPhase(step: FullAssessmentState.Step, viewModel: FullAssessm
 private fun MovementPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
     Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
         Text(stringResource(Res.string.fullassessment_movement_title), style = MaterialTheme.typography.titleSmall)
+        CheckboxRow(
+            checked = step.noMovementFindings,
+            label = stringResource(Res.string.fullassessment_no_findings_label),
+            onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoMovementFindings) },
+        )
         MOVEMENT_FLAG_OPTIONS.forEach { flag ->
             CheckboxRow(
                 checked = flag in step.movementFlags,
                 label = flag.shortLabel(),
+                enabled = !step.noMovementFindings,
                 onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleMovementFlag(flag)) },
             )
         }
@@ -400,16 +423,10 @@ private fun CapacityTestPhase(step: FullAssessmentState.Step, viewModel: FullAss
             modifier = Modifier.fillMaxWidth(),
         )
         OutlinedButton(
-            onClick = { viewModel.onEvent(FullAssessmentEvent.ToggleSkipCapacityTest) },
+            onClick = { viewModel.onEvent(FullAssessmentEvent.SkipCapacityTestAndSubmit) },
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text(
-                if (step.capacityTestSkipped) {
-                    stringResource(Res.string.fullassessment_capacity_cancel_skip)
-                } else {
-                    stringResource(Res.string.fullassessment_capacity_skip_test)
-                },
-            )
+            Text(stringResource(Res.string.fullassessment_capacity_skip_test))
         }
         AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.Submit) },

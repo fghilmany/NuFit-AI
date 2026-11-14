@@ -27,5 +27,5 @@ val planManagementModule = module {
             getPlanProgress = get(),
         )
     }
-    viewModel { TemplatePickerViewModel(createTemplatePlan = get()) }
+    viewModel { TemplatePickerViewModel(createTemplatePlan = get(), getLatestQuickAssessmentResult = get()) }
 }

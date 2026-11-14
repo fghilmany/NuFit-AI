@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
+import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 import com.fghilmany.nufitai.usecase.planmanagement.CreateTemplatePlan
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -38,9 +39,26 @@ sealed interface TemplatePickerEvent {
 
 class TemplatePickerViewModel(
     private val createTemplatePlan: CreateTemplatePlan,
+    private val getLatestQuickAssessmentResult: GetLatestQuickAssessmentResult,
 ) : ViewModel() {
     private val _state = MutableStateFlow<TemplatePickerState>(TemplatePickerState.Step())
     val state: StateFlow<TemplatePickerState> = _state.asStateFlow()
+
+    init {
+        // Prefill from the user's own Quick Assessment instead of three blank steps -- they can
+        // still change any of it before submitting.
+        viewModelScope.launch {
+            (getLatestQuickAssessmentResult().let { it as? AppResult.Success }?.data)?.let { quickResult ->
+                updateStep {
+                    it.copy(
+                        level = it.level ?: quickResult.level,
+                        goal = it.goal ?: quickResult.input.goal,
+                        resolvedSplit = it.resolvedSplit ?: quickResult.resolvedSplit,
+                    )
+                }
+            }
+        }
+    }
 
     fun onEvent(event: TemplatePickerEvent) {
         when (event) {
