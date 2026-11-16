@@ -3,6 +3,11 @@
     <string name="onboarding_splash_tagline">Latihan cerdas, hasil nyata</string>
     <string name="onboarding_splash_loading_message">Menyiapkan pengalaman Anda...</string>
 
+    <string name="onboarding_entry_title">Mulai dari mana?</string>
+    <string name="onboarding_entry_body">Masuk dengan akun biar progres kamu tersimpan di cloud, atau langsung mulai Quick Assessment -- tanpa akun juga bisa.</string>
+    <string name="onboarding_entry_cta_login">Masuk dengan akun</string>
+    <string name="onboarding_entry_cta_quick_assessment">Mulai Quick Assessment</string>
+
     <string name="onboarding_parq_top_bar_title">Cek Kesehatan Dulu</string>
     <string name="onboarding_parq_step_label">LANGKAH 1 DARI 1</string>
     <string name="onboarding_parq_answered_count">%1$d / %2$d Dijawab</string>

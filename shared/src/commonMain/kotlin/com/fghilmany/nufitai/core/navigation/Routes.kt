@@ -6,6 +6,11 @@ sealed interface Route {
     @Serializable
     data object Splash : Route
 
+    /** Shown right after Splash for a brand-new user (no local profile yet) -- Login opsional
+     * (keputusan #2): let them pick an account-first path or jump straight into Quick Assessment. */
+    @Serializable
+    data object EntryChoice : Route
+
     @Serializable
     data object ParQ : Route
 

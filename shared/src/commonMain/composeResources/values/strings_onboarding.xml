@@ -3,6 +3,11 @@
     <string name="onboarding_splash_tagline">Smart training, real results</string>
     <string name="onboarding_splash_loading_message">Preparing your experience...</string>
 
+    <string name="onboarding_entry_title">Let's get started</string>
+    <string name="onboarding_entry_body">Sign in to sync your progress across devices, or jump straight into a quick assessment -- no account needed.</string>
+    <string name="onboarding_entry_cta_login">Sign in with account</string>
+    <string name="onboarding_entry_cta_quick_assessment">Start Quick Assessment</string>
+
     <string name="onboarding_parq_top_bar_title">Health Check First</string>
     <string name="onboarding_parq_step_label">STEP 1 OF 1</string>
     <string name="onboarding_parq_answered_count">%1$d / %2$d Answered</string>

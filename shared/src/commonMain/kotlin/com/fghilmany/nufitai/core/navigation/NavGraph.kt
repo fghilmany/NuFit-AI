@@ -25,6 +25,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.screen.HomeScreen
 import com.fghilmany.nufitai.presentation.monthlyplan.screen.SessionDetailScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.BodyDataScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.DoctorConsultScreen
+import com.fghilmany.nufitai.presentation.onboarding.screen.EntryChoiceScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.ParQScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.QuickAssessmentWizardScreen
 import com.fghilmany.nufitai.presentation.onboarding.screen.SplashScreen
@@ -43,7 +44,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
         composable<Route.Splash> {
             SplashScreen(
                 onRouted = { hasLocalProfile ->
-                    val destination = if (hasLocalProfile) Route.Home else Route.ParQ
+                    val destination = if (hasLocalProfile) Route.Home else Route.EntryChoice
                     navController.navigate(destination) {
                         popUpTo(Route.Splash) { inclusive = true }
                     }
@@ -51,6 +52,19 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 onNeedsMedicalDisclaimer = {
                     navController.navigate(Route.MedicalDisclaimer(isFirstRun = true)) {
                         popUpTo(Route.Splash) { inclusive = true }
+                    }
+                },
+            )
+        }
+
+        composable<Route.EntryChoice> {
+            EntryChoiceScreen(
+                // EntryChoice stays on the back stack so Login's "Lewati" returns here instead
+                // of exiting the app -- unlike the Quick Assessment branch below, which commits.
+                onLoginClick = { navController.navigate(Route.Login(returnTo = LoginReturnTarget.HOME)) },
+                onQuickAssessmentClick = {
+                    navController.navigate(Route.ParQ) {
+                        popUpTo<Route.EntryChoice> { inclusive = true }
                     }
                 },
             )
@@ -430,11 +444,16 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
         composable<Route.MealPlanGate> {
             MealPlanGateScreen(
                 onNavigateToLogin = { navController.navigate(Route.Login(returnTo = LoginReturnTarget.MEAL_PLAN)) },
-                // Body data (height/weight) lives in Account; activityLevel lives in the Full
-                // Assessment wizard -- Account is the one screen that surfaces both (weight CTA +
-                // "Ulangi assessment" entry point), so route there rather than picking just one.
+                // Height/weight have an edit form right on Account.
                 onNavigateToCompleteBodyData = {
                     navController.navigate(Route.Account) {
+                        popUpTo<Route.MealPlanGate> { inclusive = true }
+                    }
+                },
+                // activityLevel has no standalone edit control anywhere -- only the Full
+                // Assessment wizard sets it.
+                onNavigateToFullAssessment = {
+                    navController.navigate(Route.FullAssessmentStub()) {
                         popUpTo<Route.MealPlanGate> { inclusive = true }
                     }
                 },
