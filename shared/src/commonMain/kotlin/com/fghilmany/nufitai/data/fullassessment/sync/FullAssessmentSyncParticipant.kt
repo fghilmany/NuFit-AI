@@ -60,6 +60,7 @@ class FullAssessmentSyncParticipant(
         put("selected_weekdays", JsonPrimitive(selected_weekdays))
         put("session_duration_minutes", JsonPrimitive(session_duration_minutes))
         put("activity_level", JsonPrimitive(activity_level))
+        put("training_location", JsonPrimitive(training_location))
         put("user_id", JsonPrimitive(user_id))
         put("updated_at", JsonPrimitive(updated_at))
     }
@@ -81,6 +82,7 @@ class FullAssessmentSyncParticipant(
         selected_weekdays = getValue("selected_weekdays").jsonPrimitive.content,
         session_duration_minutes = getValue("session_duration_minutes").jsonPrimitive.long,
         activity_level = get("activity_level")?.jsonPrimitive?.contentOrNull,
+        training_location = get("training_location")?.jsonPrimitive?.contentOrNull,
         user_id = get("user_id")?.jsonPrimitive?.contentOrNull,
         updated_at = getValue("updated_at").jsonPrimitive.long,
     )

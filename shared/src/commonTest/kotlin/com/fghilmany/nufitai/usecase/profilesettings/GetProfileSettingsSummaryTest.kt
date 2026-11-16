@@ -57,7 +57,7 @@ class GetProfileSettingsSummaryTest {
         flagsPostural = emptySet(),
         movementFlags = emptySet(),
         capacityTest = null,
-        goal = GoalCategory.FAT_LOSS,
+        goals = setOf(GoalCategory.FAT_LOSS),
         sessionsPerWeek = 3,
         selectedWeekdays = setOf(1, 3, 5),
         sessionDurationMinutes = 45,

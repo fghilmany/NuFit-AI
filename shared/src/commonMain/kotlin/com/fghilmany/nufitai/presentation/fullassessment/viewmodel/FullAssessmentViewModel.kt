@@ -18,6 +18,7 @@ import com.fghilmany.nufitai.domain.fullassessment.entity.PushupResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.PushupVersion
 import com.fghilmany.nufitai.domain.fullassessment.entity.SitToStandResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.TestProtocol
+import com.fghilmany.nufitai.domain.fullassessment.entity.TrainingLocation
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.domain.onboarding.entity.ParQQuestionId
 import com.fghilmany.nufitai.usecase.fullassessment.CompleteFullAssessment
@@ -40,6 +41,24 @@ enum class FullAssessmentPhase { PAR_Q, GATE_BLOCKED, INTERVIEW, POSTURAL, MOVEM
 val POSTURAL_FLAG_OPTIONS: List<ExerciseFlag> = ExerciseFlag.entries.filter { it.name.startsWith("POSTURAL_") }
 val MOVEMENT_FLAG_OPTIONS: List<ExerciseFlag> = ExerciseFlag.entries.filter { it.name.startsWith("MOVEMENT_") }
 
+/** Equipment realistically available at home -- excludes gym-only machines so a beginner training
+ * at home isn't shown options they can't act on. Gym covers everything, home is the narrower set. */
+val HOME_EQUIPMENT_OPTIONS: Set<EquipmentCategory> = setOf(
+    EquipmentCategory.BODYWEIGHT,
+    EquipmentCategory.DUMBBELL,
+    EquipmentCategory.KETTLEBELL,
+    EquipmentCategory.RESISTANCE_BAND,
+    EquipmentCategory.STABILITY_BALL,
+    EquipmentCategory.MEDICINE_BALL,
+    EquipmentCategory.ROLLER,
+)
+val GYM_EQUIPMENT_OPTIONS: Set<EquipmentCategory> = EquipmentCategory.entries.toSet()
+
+fun TrainingLocation.equipmentOptions(): Set<EquipmentCategory> = when (this) {
+    TrainingLocation.HOME -> HOME_EQUIPMENT_OPTIONS
+    TrainingLocation.GYM -> GYM_EQUIPMENT_OPTIONS
+}
+
 sealed interface FullAssessmentState {
     data class Step(
         val phase: FullAssessmentPhase = FullAssessmentPhase.PAR_Q,
@@ -52,11 +71,12 @@ sealed interface FullAssessmentState {
         val gateAcknowledged: Boolean = false,
         val age: String = "",
         val gender: Gender? = null,
+        val trainingLocation: TrainingLocation? = null,
         val equipmentPreference: Set<EquipmentCategory> = emptySet(),
         val injuryHistory: Set<BodyArea> = emptySet(),
         /** issue #81 -- free-text detail under the "cedera/nyeri sendi" toggle. */
         val injuryHistoryNote: String = "",
-        val goal: GoalCategory? = null,
+        val goals: Set<GoalCategory> = emptySet(),
         /** Frequency is derived from [selectedWeekdays].size -- no separate number to type that
          * could disagree with the days actually picked (max 7, same as a calendar week). */
         val selectedWeekdays: Set<Int> = emptySet(),
@@ -82,10 +102,14 @@ sealed interface FullAssessmentState {
         val canProceedFromInterview: Boolean
             get() = age.toIntOrNull() != null &&
                 gender != null &&
+                trainingLocation != null &&
                 equipmentPreference.isNotEmpty() &&
-                goal != null &&
+                goals.isNotEmpty() &&
                 selectedWeekdays.isNotEmpty() &&
-                sessionDurationMinutes != null
+                sessionDurationMinutes != null &&
+                (noInjuryHistory || injuryHistory.isNotEmpty())
+        val canProceedFromPostural: Boolean get() = noPosturalFindings || flagsPostural.isNotEmpty()
+        val canProceedFromMovement: Boolean get() = noMovementFindings || movementFlags.isNotEmpty()
         // activityLevel is intentionally NOT required to proceed -- mirrors BodyMeasurement's
         // existing optional-everywhere convention. Meal Plan's own NeedsBodyData gate (meal-plan.md
         // §8) enforces it specifically for that feature, without adding friction to the Full
@@ -106,11 +130,13 @@ sealed interface FullAssessmentEvent {
     data object ContinueFromGate : FullAssessmentEvent
     data class SetUsia(val value: String) : FullAssessmentEvent
     data class SetGender(val value: Gender) : FullAssessmentEvent
+    data class SetTrainingLocation(val value: TrainingLocation) : FullAssessmentEvent
     data class ToggleEquipmentPreference(val value: EquipmentCategory) : FullAssessmentEvent
+    data class SelectAllEquipment(val options: Set<EquipmentCategory>) : FullAssessmentEvent
     data class ToggleInjuryHistory(val value: BodyArea) : FullAssessmentEvent
     data object ToggleNoInjuryHistory : FullAssessmentEvent
     data class SetInjuryHistoryNote(val value: String) : FullAssessmentEvent
-    data class SetGoal(val value: GoalCategory) : FullAssessmentEvent
+    data class ToggleGoal(val value: GoalCategory) : FullAssessmentEvent
     data class ToggleSelectedWeekday(val value: Int) : FullAssessmentEvent
     data class SetSessionDurationMinutes(val value: Int) : FullAssessmentEvent
     data class SetActivityLevel(val value: ActivityLevel) : FullAssessmentEvent
@@ -168,7 +194,7 @@ class FullAssessmentViewModel(
             (getLatestQuickAssessmentResult().let { it as? AppResult.Success }?.data)?.let { quickResult ->
                 updateStep {
                     it.copy(
-                        goal = it.goal ?: quickResult.input.goal,
+                        goals = it.goals.ifEmpty { setOf(quickResult.input.goal) },
                         equipmentPreference = it.equipmentPreference.ifEmpty { quickResult.input.equipment },
                     )
                 }
@@ -204,8 +230,19 @@ class FullAssessmentViewModel(
             FullAssessmentEvent.ContinueFromGate -> continueFromGate()
             is FullAssessmentEvent.SetUsia -> updateStep { it.copy(age = event.value) }
             is FullAssessmentEvent.SetGender -> updateStep { it.copy(gender = event.value) }
+            is FullAssessmentEvent.SetTrainingLocation -> updateStep {
+                // Equipment choices only make sense for the location they were picked under --
+                // switching location clears them rather than leaving a stale gym/home mix.
+                if (it.trainingLocation == event.value) it else it.copy(trainingLocation = event.value, equipmentPreference = emptySet())
+            }
             is FullAssessmentEvent.ToggleEquipmentPreference -> updateStep {
                 it.copy(equipmentPreference = it.equipmentPreference.toggle(event.value))
+            }
+            is FullAssessmentEvent.SelectAllEquipment -> updateStep {
+                val allSelected = event.options.isNotEmpty() && it.equipmentPreference.containsAll(event.options)
+                it.copy(
+                    equipmentPreference = if (allSelected) it.equipmentPreference - event.options else it.equipmentPreference + event.options,
+                )
             }
             is FullAssessmentEvent.ToggleInjuryHistory -> updateStep {
                 it.copy(injuryHistory = it.injuryHistory.toggle(event.value), noInjuryHistory = false)
@@ -219,7 +256,7 @@ class FullAssessmentViewModel(
                 )
             }
             is FullAssessmentEvent.SetInjuryHistoryNote -> updateStep { it.copy(injuryHistoryNote = event.value) }
-            is FullAssessmentEvent.SetGoal -> updateStep { it.copy(goal = event.value) }
+            is FullAssessmentEvent.ToggleGoal -> updateStep { it.copy(goals = it.goals.toggle(event.value)) }
             is FullAssessmentEvent.ToggleSelectedWeekday -> updateStep { it.copy(selectedWeekdays = it.selectedWeekdays.toggle(event.value)) }
             is FullAssessmentEvent.SetSessionDurationMinutes -> updateStep { it.copy(sessionDurationMinutes = event.value) }
             is FullAssessmentEvent.SetActivityLevel -> updateStep { it.copy(activityLevel = event.value) }
@@ -233,7 +270,9 @@ class FullAssessmentViewModel(
                 val turningOn = !it.noPosturalFindings
                 it.copy(noPosturalFindings = turningOn, flagsPostural = if (turningOn) emptySet() else it.flagsPostural)
             }
-            FullAssessmentEvent.NextFromPostural -> updateStep { it.copy(phase = FullAssessmentPhase.MOVEMENT) }
+            FullAssessmentEvent.NextFromPostural -> updateStep {
+                if (it.canProceedFromPostural) it.copy(phase = FullAssessmentPhase.MOVEMENT) else it
+            }
             is FullAssessmentEvent.ToggleMovementFlag -> updateStep {
                 it.copy(movementFlags = it.movementFlags.toggle(event.value), noMovementFindings = false)
             }
@@ -241,7 +280,9 @@ class FullAssessmentViewModel(
                 val turningOn = !it.noMovementFindings
                 it.copy(noMovementFindings = turningOn, movementFlags = if (turningOn) emptySet() else it.movementFlags)
             }
-            FullAssessmentEvent.NextFromMovement -> updateStep { it.copy(phase = FullAssessmentPhase.CAPACITY_TEST) }
+            FullAssessmentEvent.NextFromMovement -> updateStep {
+                if (it.canProceedFromMovement) it.copy(phase = FullAssessmentPhase.CAPACITY_TEST) else it
+            }
             is FullAssessmentEvent.SetPushupReps -> updateStep { it.copy(pushupReps = event.value) }
             is FullAssessmentEvent.SetPlankSeconds -> updateStep { it.copy(plankSeconds = event.value) }
             is FullAssessmentEvent.SetSitToStandReps -> updateStep { it.copy(sitToStandReps = event.value) }
@@ -293,11 +334,12 @@ class FullAssessmentViewModel(
                 flagsPostural = current.flagsPostural,
                 movementFlags = current.movementFlags,
                 capacityTest = current.toCapacityTestResult(),
-                goal = current.goal ?: return@launch,
+                goals = current.goals.ifEmpty { return@launch },
                 sessionsPerWeek = current.selectedWeekdays.size,
                 selectedWeekdays = current.selectedWeekdays,
                 sessionDurationMinutes = current.sessionDurationMinutes ?: return@launch,
                 activityLevel = current.activityLevel,
+                trainingLocation = current.trainingLocation,
             )
             when (result) {
                 is AppResult.Success -> {

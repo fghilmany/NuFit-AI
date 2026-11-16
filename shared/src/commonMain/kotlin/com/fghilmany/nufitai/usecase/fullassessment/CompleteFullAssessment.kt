@@ -11,6 +11,7 @@ import com.fghilmany.nufitai.domain.fullassessment.entity.CapacityTestResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQAnswer
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
+import com.fghilmany.nufitai.domain.fullassessment.entity.TrainingLocation
 import com.fghilmany.nufitai.domain.fullassessment.repository.FullAssessmentRepository
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import kotlin.time.Instant
@@ -33,12 +34,13 @@ class CompleteFullAssessment(private val repository: FullAssessmentRepository) {
         flagsPostural: Set<ExerciseFlag>,
         movementFlags: Set<ExerciseFlag>,
         capacityTest: CapacityTestResult?,
-        goal: GoalCategory,
+        goals: Set<GoalCategory>,
         sessionsPerWeek: Int,
         selectedWeekdays: Set<Int>,
         sessionDurationMinutes: Int,
         /** techspec meal-plan.md -- default null so existing callers (pre-dating the Meal Plan wizard step) keep compiling; wired for real once that step exists. */
         activityLevel: ActivityLevel? = null,
+        trainingLocation: TrainingLocation? = null,
     ): AppResult<FullAssessmentResult> {
         val result = FullAssessmentResult(
             id = generateId(),
@@ -55,11 +57,12 @@ class CompleteFullAssessment(private val repository: FullAssessmentRepository) {
             flagsPostural = flagsPostural,
             movementFlags = movementFlags,
             capacityTest = capacityTest,
-            goal = goal,
+            goals = goals,
             sessionsPerWeek = sessionsPerWeek,
             selectedWeekdays = selectedWeekdays,
             sessionDurationMinutes = sessionDurationMinutes,
             activityLevel = activityLevel,
+            trainingLocation = trainingLocation,
         )
         return when (val saved = repository.saveFullAssessmentResult(result)) {
             is AppResult.Success -> AppResult.Success(result)

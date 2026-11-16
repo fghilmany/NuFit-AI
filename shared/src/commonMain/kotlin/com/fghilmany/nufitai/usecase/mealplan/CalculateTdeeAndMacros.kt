@@ -39,10 +39,10 @@ class CalculateTdeeAndMacros {
         }
         val tdee = bmr * activityLevel.tdeeMultiplier
 
-        val goalMultiplier = when (fullAssessmentResult.goal) {
+        val goalMultiplier = when (fullAssessmentResult.goals.firstOrNull()) {
             GoalCategory.FAT_LOSS -> FAT_LOSS_MULTIPLIER
             GoalCategory.MUSCLE_GAIN -> MUSCLE_GAIN_MULTIPLIER
-            GoalCategory.GENERAL_HEALTH, GoalCategory.STRENGTH, GoalCategory.ENDURANCE -> 1.0
+            GoalCategory.GENERAL_HEALTH, GoalCategory.STRENGTH, GoalCategory.ENDURANCE, null -> 1.0
         }
         val calories = tdee * goalMultiplier
 

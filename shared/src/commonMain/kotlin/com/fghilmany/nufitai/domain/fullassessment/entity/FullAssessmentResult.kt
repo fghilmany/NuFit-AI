@@ -33,8 +33,10 @@ data class FullAssessmentResult(
     val flagsPostural: Set<ExerciseFlag>,
     val movementFlags: Set<ExerciseFlag>,
     val capacityTest: CapacityTestResult?,
-    /** issue #29 layer_4 (RESEP) input -- Quick Assessment's `GoalCategory` reused, `ENDURANCE` only reachable here. */
-    val goal: GoalCategory,
+    /** issue #29 layer_4 (RESEP) input -- Quick Assessment's `GoalCategory` reused, `ENDURANCE`
+     * only reachable here. Multi-select -- `GoalPrescription.forGoals` blends 2+ into one
+     * Prescription; `MonthlyPlan.goalMeta` (display-only) uses the first one as primary. */
+    val goals: Set<GoalCategory>,
     /** issue #29 layer_6 (JADWAL) input, Tahap 1 data. */
     val sessionsPerWeek: Int,
     /** ISO day-of-week, 1=Monday..7=Sunday. */
@@ -42,4 +44,7 @@ data class FullAssessmentResult(
     val sessionDurationMinutes: Int,
     /** techspec meal-plan.md §5/§7 -- basis for on-device TDEE calculation; nullable since rows created before this field existed won't have it. */
     val activityLevel: ActivityLevel? = null,
+    /** Asked before [equipmentPreference] to narrow the checklist to what's realistic for that
+     * location; nullable since rows created before this field existed won't have it. */
+    val trainingLocation: TrainingLocation? = null,
 )

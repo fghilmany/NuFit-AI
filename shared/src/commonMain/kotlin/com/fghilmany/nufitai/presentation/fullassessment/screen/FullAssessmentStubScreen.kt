@@ -33,11 +33,11 @@ import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.BodyArea
-import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentParQQuestionId
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
+import com.fghilmany.nufitai.domain.fullassessment.entity.TrainingLocation
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.shortLabel
 import com.fghilmany.nufitai.presentation.fullassessment.component.fullAssessmentParQCopy
@@ -49,6 +49,7 @@ import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.FullAssessmen
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.FullAssessmentViewModel
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.MOVEMENT_FLAG_OPTIONS
 import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.POSTURAL_FLAG_OPTIONS
+import com.fghilmany.nufitai.presentation.fullassessment.viewmodel.equipmentOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.CheckboxRow
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.onboarding.component.QuestionCard
@@ -71,7 +72,11 @@ import nufitai.shared.generated.resources.fullassessment_gate_blocked_ack_label
 import nufitai.shared.generated.resources.fullassessment_gate_blocked_body
 import nufitai.shared.generated.resources.fullassessment_gate_blocked_title
 import nufitai.shared.generated.resources.fullassessment_interview_age_label
+import nufitai.shared.generated.resources.fullassessment_equipment_select_all
 import nufitai.shared.generated.resources.fullassessment_interview_equipment_title
+import nufitai.shared.generated.resources.fullassessment_interview_training_location_title
+import nufitai.shared.generated.resources.fullassessment_training_location_gym
+import nufitai.shared.generated.resources.fullassessment_training_location_home
 import nufitai.shared.generated.resources.fullassessment_interview_frequency_label
 import nufitai.shared.generated.resources.fullassessment_interview_gender_female
 import nufitai.shared.generated.resources.fullassessment_interview_gender_male
@@ -259,9 +264,11 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
         item {
             InterviewSectionCard(stringResource(Res.string.fullassessment_interview_goal_title)) {
                 GoalCategory.entries.forEach { goal ->
-                    ToggleButton(goal.label(), step.goal == goal, Modifier.fillMaxWidth()) {
-                        viewModel.onEvent(FullAssessmentEvent.SetGoal(goal))
-                    }
+                    CheckboxRow(
+                        checked = goal in step.goals,
+                        label = goal.label(),
+                        onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleGoal(goal)) },
+                    )
                 }
             }
         }
@@ -306,13 +313,41 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
             }
         }
         item {
-            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_equipment_title)) {
-                EquipmentCategory.entries.forEach { equipment ->
+            InterviewSectionCard(stringResource(Res.string.fullassessment_interview_training_location_title)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                    ToggleButton(
+                        stringResource(Res.string.fullassessment_training_location_gym),
+                        step.trainingLocation == TrainingLocation.GYM,
+                        Modifier.weight(1f),
+                    ) {
+                        viewModel.onEvent(FullAssessmentEvent.SetTrainingLocation(TrainingLocation.GYM))
+                    }
+                    ToggleButton(
+                        stringResource(Res.string.fullassessment_training_location_home),
+                        step.trainingLocation == TrainingLocation.HOME,
+                        Modifier.weight(1f),
+                    ) {
+                        viewModel.onEvent(FullAssessmentEvent.SetTrainingLocation(TrainingLocation.HOME))
+                    }
+                }
+            }
+        }
+        if (step.trainingLocation != null) {
+            item {
+                val availableEquipment = step.trainingLocation.equipmentOptions()
+                InterviewSectionCard(stringResource(Res.string.fullassessment_interview_equipment_title)) {
                     CheckboxRow(
-                        checked = equipment in step.equipmentPreference,
-                        label = equipment.shortLabel(),
-                        onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
+                        checked = availableEquipment.isNotEmpty() && step.equipmentPreference.containsAll(availableEquipment),
+                        label = stringResource(Res.string.fullassessment_equipment_select_all),
+                        onToggle = { viewModel.onEvent(FullAssessmentEvent.SelectAllEquipment(availableEquipment)) },
                     )
+                    availableEquipment.forEach { equipment ->
+                        CheckboxRow(
+                            checked = equipment in step.equipmentPreference,
+                            label = equipment.shortLabel(),
+                            onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleEquipmentPreference(equipment)) },
+                        )
+                    }
                 }
             }
         }
@@ -353,48 +388,58 @@ private fun InterviewPhase(step: FullAssessmentState.Step, viewModel: FullAssess
 
 @Composable
 private fun PosturalPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
-    Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Text(stringResource(Res.string.fullassessment_postural_title), style = MaterialTheme.typography.titleSmall)
-        CheckboxRow(
-            checked = step.noPosturalFindings,
-            label = stringResource(Res.string.fullassessment_no_findings_label),
-            onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoPosturalFindings) },
-        )
-        POSTURAL_FLAG_OPTIONS.forEach { flag ->
+    Column(
+        modifier = Modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+    ) {
+        InterviewSectionCard(stringResource(Res.string.fullassessment_postural_title)) {
             CheckboxRow(
-                checked = flag in step.flagsPostural,
-                label = flag.shortLabel(),
-                enabled = !step.noPosturalFindings,
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.TogglePosturalFlag(flag)) },
+                checked = step.noPosturalFindings,
+                label = stringResource(Res.string.fullassessment_no_findings_label),
+                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoPosturalFindings) },
             )
+            POSTURAL_FLAG_OPTIONS.forEach { flag ->
+                CheckboxRow(
+                    checked = flag in step.flagsPostural,
+                    label = flag.shortLabel(),
+                    enabled = !step.noPosturalFindings,
+                    onToggle = { viewModel.onEvent(FullAssessmentEvent.TogglePosturalFlag(flag)) },
+                )
+            }
         }
         AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.NextFromPostural) },
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+            enabled = step.canProceedFromPostural,
+            modifier = Modifier.fillMaxWidth(),
         ) { Text(stringResource(Res.string.common_action_continue)) }
     }
 }
 
 @Composable
 private fun MovementPhase(step: FullAssessmentState.Step, viewModel: FullAssessmentViewModel) {
-    Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Text(stringResource(Res.string.fullassessment_movement_title), style = MaterialTheme.typography.titleSmall)
-        CheckboxRow(
-            checked = step.noMovementFindings,
-            label = stringResource(Res.string.fullassessment_no_findings_label),
-            onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoMovementFindings) },
-        )
-        MOVEMENT_FLAG_OPTIONS.forEach { flag ->
+    Column(
+        modifier = Modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+    ) {
+        InterviewSectionCard(stringResource(Res.string.fullassessment_movement_title)) {
             CheckboxRow(
-                checked = flag in step.movementFlags,
-                label = flag.shortLabel(),
-                enabled = !step.noMovementFindings,
-                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleMovementFlag(flag)) },
+                checked = step.noMovementFindings,
+                label = stringResource(Res.string.fullassessment_no_findings_label),
+                onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleNoMovementFindings) },
             )
+            MOVEMENT_FLAG_OPTIONS.forEach { flag ->
+                CheckboxRow(
+                    checked = flag in step.movementFlags,
+                    label = flag.shortLabel(),
+                    enabled = !step.noMovementFindings,
+                    onToggle = { viewModel.onEvent(FullAssessmentEvent.ToggleMovementFlag(flag)) },
+                )
+            }
         }
         AppButton(
             onClick = { viewModel.onEvent(FullAssessmentEvent.NextFromMovement) },
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+            enabled = step.canProceedFromMovement,
+            modifier = Modifier.fillMaxWidth(),
         ) { Text(stringResource(Res.string.common_action_continue)) }
     }
 }

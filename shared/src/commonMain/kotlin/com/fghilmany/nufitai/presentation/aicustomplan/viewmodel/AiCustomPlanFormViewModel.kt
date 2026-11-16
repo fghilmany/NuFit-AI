@@ -76,7 +76,7 @@ class AiCustomPlanFormViewModel(
             (getLatestFullAssessmentResult().let { it as? AppResult.Success }?.data)?.let { fullAssessment ->
                 updateEditing {
                     it.copy(
-                        goal = it.goal ?: fullAssessment.goal,
+                        goal = it.goal ?: fullAssessment.goals.firstOrNull(),
                         sessionsPerWeek = fullAssessment.selectedWeekdays.size.takeIf { count -> count > 0 } ?: it.sessionsPerWeek,
                         sessionDurationMinutes = fullAssessment.sessionDurationMinutes,
                         equipmentPreference = it.equipmentPreference.ifEmpty { fullAssessment.equipmentPreference },

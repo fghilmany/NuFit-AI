@@ -202,7 +202,7 @@ class MealPlanViewModel(
                     weekStartDate = _state.value.weekStartDate,
                     dayNumber = day,
                     target = target,
-                    goal = fullAssessment.goal,
+                    goal = fullAssessment.goals.first(),
                     weightKgAtGeneration = weightKg,
                     preference = preference,
                 )

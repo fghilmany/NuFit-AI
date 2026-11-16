@@ -25,6 +25,7 @@ class FullAssessmentLocalDataSource(private val database: NuFitDatabase) {
         hariPilihanJson: String,
         sessionDurationMinutes: Long,
         activityLevel: String?,
+        trainingLocation: String?,
         flagDetails: List<Pair<String, String>>, // (kind, flagName)
         updatedAt: Long,
     ) = withContext(Dispatchers.Default) {
@@ -46,6 +47,7 @@ class FullAssessmentLocalDataSource(private val database: NuFitDatabase) {
                 selected_weekdays = hariPilihanJson,
                 session_duration_minutes = sessionDurationMinutes,
                 activity_level = activityLevel,
+                training_location = trainingLocation,
                 updated_at = updatedAt,
             )
             flagDetails.forEachIndexed { index, (kind, flagName) ->
@@ -98,6 +100,7 @@ class FullAssessmentLocalDataSource(private val database: NuFitDatabase) {
             selected_weekdays = row.selected_weekdays,
             session_duration_minutes = row.session_duration_minutes,
             activity_level = row.activity_level,
+            training_location = row.training_location,
             user_id = row.user_id,
             updated_at = row.updated_at,
         )

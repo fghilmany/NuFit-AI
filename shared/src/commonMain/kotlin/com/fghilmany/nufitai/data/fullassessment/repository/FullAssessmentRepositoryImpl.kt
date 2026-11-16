@@ -13,6 +13,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.ExerciseFlag
 import com.fghilmany.nufitai.domain.fullassessment.entity.ActivityLevel
 import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
+import com.fghilmany.nufitai.domain.fullassessment.entity.TrainingLocation
 import com.fghilmany.nufitai.domain.fullassessment.repository.FullAssessmentRepository
 import com.fghilmany.nufitai.domain.onboarding.entity.GoalCategory
 import kotlinx.serialization.decodeFromString
@@ -48,11 +49,12 @@ class FullAssessmentRepositoryImpl(
             injuryHistoryJson = json.encodeToString(result.injuryHistory),
             injuryHistoryNote = result.injuryHistoryNote,
             capacityTestJson = result.capacityTest?.let { json.encodeToString(CapacityTestJson.from(it)) },
-            goal = result.goal.name,
+            goal = json.encodeToString(result.goals),
             sessionsPerWeek = result.sessionsPerWeek.toLong(),
             hariPilihanJson = json.encodeToString(result.selectedWeekdays),
             sessionDurationMinutes = result.sessionDurationMinutes.toLong(),
             activityLevel = result.activityLevel?.name,
+            trainingLocation = result.trainingLocation?.name,
             flagDetails = flagDetails,
             updatedAt = currentInstant().toEpochMilliseconds(),
         )
@@ -91,10 +93,11 @@ class FullAssessmentRepositoryImpl(
         flagsPostural = flagsPostural,
         movementFlags = movementFlags,
         capacityTest = capacity_test?.let { json.decodeFromString<CapacityTestJson>(it).toEntity() },
-        goal = GoalCategory.valueOf(goal),
+        goals = json.decodeFromString<Set<GoalCategory>>(goal),
         sessionsPerWeek = sessions_per_week.toInt(),
         selectedWeekdays = json.decodeFromString<Set<Int>>(selected_weekdays),
         sessionDurationMinutes = session_duration_minutes.toInt(),
         activityLevel = activity_level?.let { ActivityLevel.valueOf(it) },
+        trainingLocation = training_location?.let { TrainingLocation.valueOf(it) },
     )
 }

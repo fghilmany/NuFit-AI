@@ -56,7 +56,7 @@ class GenerateLoggedInPlan(
         val rawPool = BuildMovementPool(allExercises, fullAssessment.equipmentPreference, overallLevel)
         val activeFlags = fullAssessment.parQCategoryB + fullAssessment.flagsPostural + fullAssessment.movementFlags
         val filterResult = SafetyFilter(rawPool, activeFlags, fullAssessment.injuryHistory)
-        val prescription = GoalPrescription(fullAssessment.goal)
+        val prescription = GoalPrescription.forGoals(fullAssessment.goals)
 
         // PROG-06: conservative mode when GATE-02 fired (any parQCategoryB flag) OR activeFlags >= 3.
         val mode = if (fullAssessment.parQCategoryB.isNotEmpty() || activeFlags.size >= 3) ProgressionMode.CONSERVATIVE else ProgressionMode.NORMAL
@@ -89,7 +89,7 @@ class GenerateLoggedInPlan(
             source = PlanSource.LOGGED_IN_RULE_ENGINE,
             status = PlanStatus.ACTIVE,
             levelMeta = overallLevel.name,
-            goalMeta = fullAssessment.goal,
+            goalMeta = fullAssessment.goals.first(),
             smartGoalMeta = null,
             activeFlags = activeFlags,
             startingLevelPerPattern = startingLevelPerPattern,

@@ -38,7 +38,7 @@ private fun fullAssessmentResult(
     flagsPostural = emptySet(),
     movementFlags = emptySet(),
     capacityTest = null,
-    goal = goal,
+    goals = setOf(goal),
     sessionsPerWeek = 3,
     selectedWeekdays = emptySet(),
     sessionDurationMinutes = 45,

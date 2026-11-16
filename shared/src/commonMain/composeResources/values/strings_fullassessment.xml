@@ -47,7 +47,11 @@
     <string name="fullassessment_activity_moderate">Moderately active (on your feet a lot)</string>
     <string name="fullassessment_activity_active">Active (physical job/often on the move)</string>
     <string name="fullassessment_activity_very_active">Very active (heavy physical work)</string>
+    <string name="fullassessment_interview_training_location_title">Where do you train?</string>
+    <string name="fullassessment_training_location_gym">Gym</string>
+    <string name="fullassessment_training_location_home">Home</string>
     <string name="fullassessment_interview_equipment_title">Equipment preference</string>
+    <string name="fullassessment_equipment_select_all">Select all</string>
     <string name="fullassessment_interview_injury_history_title">Injury / pain history (area)</string>
     <string name="fullassessment_interview_no_injury_label">No injury / pain</string>
     <string name="fullassessment_interview_injury_history_note_label">Which part hurts? (e.g. "Left knee when squatting")</string>

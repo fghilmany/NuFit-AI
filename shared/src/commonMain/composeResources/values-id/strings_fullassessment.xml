@@ -47,7 +47,11 @@
     <string name="fullassessment_activity_moderate">Aktivitas sedang (sering bergerak)</string>
     <string name="fullassessment_activity_active">Aktif (kerja fisik/sering gerak)</string>
     <string name="fullassessment_activity_very_active">Sangat aktif (kerja fisik berat)</string>
+    <string name="fullassessment_interview_training_location_title">Latihan dimana?</string>
+    <string name="fullassessment_training_location_gym">Gym</string>
+    <string name="fullassessment_training_location_home">Rumah</string>
     <string name="fullassessment_interview_equipment_title">Preferensi alat</string>
+    <string name="fullassessment_equipment_select_all">Pilih semua</string>
     <string name="fullassessment_interview_injury_history_title">Riwayat cedera / nyeri (area)</string>
     <string name="fullassessment_interview_no_injury_label">Tidak ada cedera / nyeri</string>
     <string name="fullassessment_interview_injury_history_note_label">Bagian mana yang nyeri? (mis. "Lutut kiri saat jongkok")</string>
