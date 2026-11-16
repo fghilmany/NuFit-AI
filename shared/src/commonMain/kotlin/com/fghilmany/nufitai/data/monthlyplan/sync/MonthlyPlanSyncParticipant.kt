@@ -1,5 +1,6 @@
 package com.fghilmany.nufitai.data.monthlyplan.sync
 
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.monthlyplan.datasource.MonthlyPlanLocalDataSource
 import com.fghilmany.nufitai.data.sync.contract.SyncParticipant
 import com.fghilmany.nufitai.db.Monthly_plan as MonthlyPlanRow
@@ -36,6 +37,18 @@ class MonthlyPlanSyncParticipant(
                 local.upsertFromRemote(row.toRow())
             }
         }
+        healMultipleActivePlans()
+    }
+
+    /** LWW is per-record, so a pull can resurrect 2+ ACTIVE rows (e.g. two devices each archived
+     * a DIFFERENT plan while offline, so neither row's archive ever looked newer than the other's
+     * stale ACTIVE copy) -- the same "exactly 1 active plan" self-heal every local write path
+     * already applies, just run again after a pull. Keeps whichever row was touched most recently. */
+    private suspend fun healMultipleActivePlans() {
+        val activePlans = local.getAllPlans().filter { it.status == "ACTIVE" }
+        if (activePlans.size <= 1) return
+        val keepId = activePlans.maxBy { it.updated_at }.id
+        local.archiveAllActiveExcept(keepId, currentInstant().toEpochMilliseconds())
     }
 
     override suspend fun backfillUserId(userId: String) {
