@@ -24,10 +24,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.CommonMistake
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
@@ -133,11 +136,15 @@ fun AlternativesRow(alternatives: List<Exercise>, onAlternativeClick: (String) -
                         .clickable { onAlternativeClick(alternative.id) },
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    Box(
+                    BundledMediaImage(
+                        resourcePath = alternative.imagePath,
+                        contentDescription = alternative.name,
+                        contentScale = ContentScale.Fit,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(90.dp)
-                            .background(NuFitColors.SurfaceContainerHigh, RoundedCornerShape(16.dp)),
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color.White),
                     )
                     Text(alternative.name, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = NuFitColors.Primary)
                 }
