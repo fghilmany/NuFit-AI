@@ -32,9 +32,9 @@ val syncModule = module {
     single { PlannedExerciseSyncParticipant(local = get()) }
     single { PlanDaySessionLogSyncParticipant(local = get()) }
     single { FullAssessmentSyncParticipant(local = get()) }
-    single { QuickAssessmentSyncParticipant() }
-    single { ParQSyncParticipant() }
-    single { BodyMeasurementSyncParticipant() }
+    single { QuickAssessmentSyncParticipant(local = get()) }
+    single { ParQSyncParticipant(local = get()) }
+    single { BodyMeasurementSyncParticipant(local = get()) }
     single { WorkoutHistorySyncParticipant(local = get()) }
     single { ChatMessageSyncParticipant(local = get()) }
     single { MealPlanSyncParticipant(local = get()) }

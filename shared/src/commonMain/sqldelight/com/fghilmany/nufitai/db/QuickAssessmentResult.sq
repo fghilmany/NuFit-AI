@@ -9,17 +9,35 @@ CREATE TABLE quick_assessment_result (
     resolved_split TEXT NOT NULL,
     level TEXT NOT NULL,
     template_id TEXT NOT NULL,
-    split_educational_note TEXT
+    split_educational_note TEXT,
+    -- Sync bookkeeping, mirrors user_profile's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
 );
 
 insertQuickAssessmentResult:
 INSERT INTO quick_assessment_result(
     id, answered_at, experience, goal, equipment, frequency, split_preference,
-    resolved_split, level, template_id, split_educational_note
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    resolved_split, level, template_id, split_educational_note, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 getLatestQuickAssessmentResult:
 SELECT * FROM quick_assessment_result ORDER BY answered_at DESC LIMIT 1;
+
+selectChangedSince:
+SELECT * FROM quick_assessment_result WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM quick_assessment_result WHERE id = ?;
+
+backfillUserId:
+UPDATE quick_assessment_result SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO quick_assessment_result(
+    id, answered_at, experience, goal, equipment, frequency, split_preference,
+    resolved_split, level, template_id, split_educational_note, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 
 deleteAll:
 DELETE FROM quick_assessment_result;

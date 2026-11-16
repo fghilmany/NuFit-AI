@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.data.onboarding.repository
 
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.runCatchingDatabase
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.onboarding.datasource.OnboardingLocalDataSource
 import com.fghilmany.nufitai.db.Body_measurement as BodyMeasurementRow
 import com.fghilmany.nufitai.db.Par_q_result as ParQResultRow
@@ -21,19 +22,26 @@ import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
 import com.fghilmany.nufitai.domain.onboarding.entity.Experience
 import com.fghilmany.nufitai.domain.onboarding.entity.toHealthFlags
 import com.fghilmany.nufitai.domain.onboarding.repository.OnboardingRepository
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import kotlin.time.Instant
 
 class OnboardingRepositoryImpl(
     private val local: OnboardingLocalDataSource,
 ) : OnboardingRepository {
 
+    private val json = Json
+
     override suspend fun saveParQResult(result: ParQResult): AppResult<Unit> = runCatchingDatabase {
+        val answers = result.answers.map { it.questionId.name to it.answer }
         local.insertParQResult(
             id = result.id,
             answeredAt = result.answeredAt.toEpochMilliseconds(),
             requiresDoctorConsult = result.requiresDoctorConsult,
             consultAcknowledgedAt = result.consultAcknowledgedAt?.toEpochMilliseconds(),
-            answers = result.answers.map { it.questionId.name to it.answer },
+            answers = answers,
+            answersJson = json.encodeToString(answers.associate { it.first to it.second }),
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 
@@ -62,6 +70,7 @@ class OnboardingRepositoryImpl(
                 level = result.level.name,
                 templateId = result.templateId,
                 splitEducationalNote = result.splitEducationalNote,
+                updatedAt = currentInstant().toEpochMilliseconds(),
             )
         }
 
@@ -75,6 +84,7 @@ class OnboardingRepositoryImpl(
             recordedAt = measurement.recordedAt.toEpochMilliseconds(),
             heightCm = measurement.heightCm,
             weightKg = measurement.weightKg,
+            updatedAt = currentInstant().toEpochMilliseconds(),
         )
     }
 

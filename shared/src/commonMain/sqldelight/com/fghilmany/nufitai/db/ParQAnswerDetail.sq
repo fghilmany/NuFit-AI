@@ -13,5 +13,10 @@ VALUES (?, ?, ?, ?);
 getAnswersForResult:
 SELECT * FROM par_q_answer_detail WHERE par_q_result_id = ?;
 
+-- Re-run before rebuilding from a synced row's answers_json, so a repeated pull never stacks
+-- duplicate answer rows for the same result.
+deleteAnswersForResult:
+DELETE FROM par_q_answer_detail WHERE par_q_result_id = ?;
+
 deleteAll:
 DELETE FROM par_q_answer_detail;

@@ -2,12 +2,19 @@ CREATE TABLE par_q_result (
     id TEXT NOT NULL PRIMARY KEY,
     answered_at INTEGER NOT NULL,
     requires_doctor_consult INTEGER NOT NULL,
-    consult_acknowledged_at INTEGER
+    consult_acknowledged_at INTEGER,
+    -- Mirrors the per-question answers also stored in par_q_answer_detail -- that child table
+    -- has no sync participant of its own, so this JSON copy is what actually survives a
+    -- reinstall/re-login; rebuilt back into par_q_answer_detail rows on pull.
+    answers_json TEXT NOT NULL DEFAULT '{}',
+    -- Sync bookkeeping, mirrors user_profile's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
 );
 
 insertParQResult:
-INSERT INTO par_q_result(id, answered_at, requires_doctor_consult, consult_acknowledged_at)
-VALUES (?, ?, ?, ?);
+INSERT INTO par_q_result(id, answered_at, requires_doctor_consult, consult_acknowledged_at, answers_json, updated_at)
+VALUES (?, ?, ?, ?, ?, ?);
 
 getLatestParQResult:
 SELECT * FROM par_q_result ORDER BY answered_at DESC LIMIT 1;
@@ -17,6 +24,17 @@ SELECT * FROM par_q_result WHERE id = ?;
 
 acknowledgeConsult:
 UPDATE par_q_result SET consult_acknowledged_at = ? WHERE id = ?;
+
+selectChangedSince:
+SELECT * FROM par_q_result WHERE updated_at > ?;
+
+backfillUserId:
+UPDATE par_q_result SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO par_q_result(
+    id, answered_at, requires_doctor_consult, consult_acknowledged_at, answers_json, user_id, updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 deleteAll:
 DELETE FROM par_q_result;

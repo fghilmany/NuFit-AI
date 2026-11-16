@@ -2,18 +2,34 @@ CREATE TABLE body_measurement (
     id TEXT NOT NULL PRIMARY KEY,
     recorded_at INTEGER NOT NULL,
     height_cm REAL,
-    weight_kg REAL
+    weight_kg REAL,
+    -- Sync bookkeeping, mirrors user_profile's user_id/updated_at.
+    user_id TEXT,
+    updated_at INTEGER NOT NULL DEFAULT 0
 );
 
 insertBodyMeasurement:
-INSERT INTO body_measurement(id, recorded_at, height_cm, weight_kg)
-VALUES (?, ?, ?, ?);
+INSERT INTO body_measurement(id, recorded_at, height_cm, weight_kg, updated_at)
+VALUES (?, ?, ?, ?, ?);
 
 getAllBodyMeasurements:
 SELECT * FROM body_measurement ORDER BY recorded_at DESC;
 
 getLatestBodyMeasurement:
 SELECT * FROM body_measurement ORDER BY recorded_at DESC LIMIT 1;
+
+selectChangedSince:
+SELECT * FROM body_measurement WHERE updated_at > ?;
+
+selectById:
+SELECT * FROM body_measurement WHERE id = ?;
+
+backfillUserId:
+UPDATE body_measurement SET user_id = ? WHERE user_id IS NULL;
+
+upsertFromRemote:
+INSERT OR REPLACE INTO body_measurement(id, recorded_at, height_cm, weight_kg, user_id, updated_at)
+VALUES (?, ?, ?, ?, ?, ?);
 
 deleteAll:
 DELETE FROM body_measurement;
