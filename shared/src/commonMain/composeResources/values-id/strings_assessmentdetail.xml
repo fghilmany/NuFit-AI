@@ -2,6 +2,7 @@
 <resources>
     <string name="assessmentdetail_status_label">STATUS KAMU</string>
     <string name="assessmentdetail_level_explainer">Karena kamu %1$s dengan goal %2$s dan %3$s, plan kamu %4$s.</string>
+    <string name="assessmentdetail_level_explainer_full">Berdasarkan Full Assessment kamu, kamu diklasifikasikan sebagai %1$s dengan goal %2$s.</string>
     <string name="assessmentdetail_parq_title">Perhatian Keamanan</string>
     <string name="assessmentdetail_answer_summary_title">Ringkasan Jawaban</string>
     <string name="assessmentdetail_summary_goal">Goal Utama</string>
@@ -36,7 +37,9 @@
     <string name="assessmentdetail_retake_blocked_body">Selesaikan atau akhiri sesi latihan yang sedang berjalan terlebih dahulu sebelum mengulang assessment.</string>
     <string name="assessmentdetail_top_bar_title">Hasil Assessment</string>
     <string name="assessmentdetail_no_quick_assessment_body">Plan kamu dibuat dari template tanpa assessment. Isi Quick Assessment buat lihat hasil dan alasan klasifikasi di sini.</string>
+    <string name="assessmentdetail_no_assessment_body_logged_in">Plan kamu dibuat dari template tanpa assessment. Isi Full Assessment buat lihat hasil dan alasan klasifikasi di sini.</string>
     <string name="assessmentdetail_start_quick_assessment">Isi Quick Assessment</string>
+    <string name="assessmentdetail_start_full_assessment">Isi Full Assessment</string>
     <string name="assessmentdetail_history_empty">Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalisasi</string>

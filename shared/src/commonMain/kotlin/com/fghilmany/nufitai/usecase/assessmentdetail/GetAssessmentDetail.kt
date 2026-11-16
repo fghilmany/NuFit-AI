@@ -13,9 +13,12 @@ import com.fghilmany.nufitai.usecase.onboarding.GetLatestBodyMeasurement
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestQuickAssessmentResult
 
-/** Presentation-facing aggregate for P-09, mirrors GetActivePlanOverview's PlanOverview -- composed, not persisted. */
+/** Presentation-facing aggregate for P-09, mirrors GetActivePlanOverview's PlanOverview -- composed, not persisted.
+ * [quickAssessment] is nullable -- Full Assessment is a superset (age/gender/goal(s)/equipment/
+ * frequency/PAR-Q and more), so a Logged-In user who already completed it should never be forced
+ * to redo the lighter Quick Assessment just to unlock this screen. */
 data class AssessmentDetailSummary(
-    val quickAssessment: QuickAssessmentResult,
+    val quickAssessment: QuickAssessmentResult?,
     val parQResult: ParQResult?,
     val activePlan: MonthlyPlan,
     val fullAssessment: FullAssessmentResult?,
@@ -43,11 +46,20 @@ class GetAssessmentDetail(
     suspend operator fun invoke(): AppResult<AssessmentDetailSummary> {
         val quickAssessment = when (val result = getLatestQuickAssessmentResult()) {
             is AppResult.Success -> result.data
-                // Validation, not Database -- decision #13 lets a plan be created from a template
-                // with no assessment at all, so a missing Quick Assessment here is an expected,
-                // recoverable gap (user just hasn't done one yet), not a data-integrity issue.
-                ?: return AppResult.Error(Failure.Validation("No Quick Assessment result found"))
             is AppResult.Error -> return result
+        }
+
+        val fullAssessment = when (val result = getLatestFullAssessmentResult()) {
+            is AppResult.Success -> result.data
+            is AppResult.Error -> return result
+        }
+
+        // Validation, not Database -- decision #13 lets a plan be created from a template with
+        // no assessment at all, so having neither is an expected, recoverable gap (user just
+        // hasn't done one yet), not a data-integrity issue. Full Assessment alone is enough --
+        // it's a superset of Quick Assessment, never require both.
+        if (quickAssessment == null && fullAssessment == null) {
+            return AppResult.Error(Failure.Validation("No assessment result found"))
         }
 
         val parQResult = when (val result = getLatestParQResult()) {
@@ -58,11 +70,6 @@ class GetAssessmentDetail(
         val activePlan = when (val result = monthlyPlanRepository.getActivePlan()) {
             is AppResult.Success -> result.data
                 ?: return AppResult.Error(Failure.Database("No active plan found"))
-            is AppResult.Error -> return result
-        }
-
-        val fullAssessment = when (val result = getLatestFullAssessmentResult()) {
-            is AppResult.Success -> result.data
             is AppResult.Error -> return result
         }
 

@@ -36,6 +36,7 @@ import com.fghilmany.nufitai.presentation.assessmentdetail.component.AnswerSumma
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.AssessmentHistoryList
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.FlagExplanationCard
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.FullAssessmentCtaCard
+import com.fghilmany.nufitai.presentation.assessmentdetail.component.FullAssessmentLevelBadgeCard
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.LevelBadgeCard
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.RetakeFooterLink
 import com.fghilmany.nufitai.presentation.assessmentdetail.component.SelectedPlanCard
@@ -59,7 +60,9 @@ import nufitai.shared.generated.resources.assessmentdetail_capacity_reps
 import nufitai.shared.generated.resources.assessmentdetail_capacity_seconds
 import nufitai.shared.generated.resources.assessmentdetail_capacity_sit_to_stand
 import nufitai.shared.generated.resources.assessmentdetail_full_data_title
+import nufitai.shared.generated.resources.assessmentdetail_no_assessment_body_logged_in
 import nufitai.shared.generated.resources.assessmentdetail_no_quick_assessment_body
+import nufitai.shared.generated.resources.assessmentdetail_start_full_assessment
 import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_body
 import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_title
 import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_body
@@ -103,12 +106,19 @@ fun AssessmentDetailScreen(
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         when (val current = state) {
             AssessmentDetailState.Loading, is AssessmentDetailState.RetakeReady -> LoadingBox()
-            AssessmentDetailState.NoQuickAssessment -> Box(Modifier.fillMaxSize(), Alignment.Center) {
+            is AssessmentDetailState.NoAssessment -> Box(Modifier.fillMaxSize(), Alignment.Center) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Text(stringResource(Res.string.assessmentdetail_no_quick_assessment_body))
-                    // Same nav target as a normal LOCAL_TEMPLATE retake (Route.QuickAssessmentWizard) --
-                    // this plan just never had one in the first place (decision #13).
-                    AppButton(onClick = onRetakeLocal) { Text(stringResource(Res.string.assessmentdetail_start_quick_assessment)) }
+                    if (current.isLoggedIn) {
+                        // Full Assessment is a superset of Quick Assessment -- never ask a
+                        // Logged-In user to fill the lighter one when this is the one that counts.
+                        Text(stringResource(Res.string.assessmentdetail_no_assessment_body_logged_in))
+                        AppButton(onClick = onOpenFullAssessment) { Text(stringResource(Res.string.assessmentdetail_start_full_assessment)) }
+                    } else {
+                        Text(stringResource(Res.string.assessmentdetail_no_quick_assessment_body))
+                        // Same nav target as a normal LOCAL_TEMPLATE retake (Route.QuickAssessmentWizard) --
+                        // this plan just never had one in the first place (decision #13).
+                        AppButton(onClick = onRetakeLocal) { Text(stringResource(Res.string.assessmentdetail_start_quick_assessment)) }
+                    }
                 }
             }
             is AssessmentDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) {
@@ -164,12 +174,15 @@ private fun AssessmentDetailContent(
 
 @Composable
 private fun HasilTabContent(summary: AssessmentDetailSummary, onRetakeClick: () -> Unit, onOpenFullAssessment: () -> Unit) {
+    val quickAssessment = summary.quickAssessment
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 32.dp),
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
-        item { LevelBadgeCard(summary.quickAssessment) }
+        item {
+            if (quickAssessment != null) LevelBadgeCard(quickAssessment) else FullAssessmentLevelBadgeCard(summary.activePlan)
+        }
 
         val healthFlags = summary.parQResult?.flagsGenerated.orEmpty()
         if (healthFlags.isNotEmpty()) {
@@ -180,17 +193,26 @@ private fun HasilTabContent(summary: AssessmentDetailSummary, onRetakeClick: () 
             }
         }
 
-        item {
-            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text(stringResource(Res.string.assessmentdetail_answer_summary_title), style = MaterialTheme.typography.titleLarge)
-                AnswerSummaryGrid(summary.quickAssessment)
+        // The 4-answer grid is Quick Assessment-shaped (experience/goal/frequency/equipment from
+        // its own form) -- there's nothing equivalent to show when this plan only has a Full
+        // Assessment behind it (FullAssessmentDetailsSection below covers that data instead).
+        if (quickAssessment != null) {
+            item {
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Text(stringResource(Res.string.assessmentdetail_answer_summary_title), style = MaterialTheme.typography.titleLarge)
+                    AnswerSummaryGrid(quickAssessment)
+                }
             }
         }
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 Text(stringResource(Res.string.assessmentdetail_selected_plan_title), style = MaterialTheme.typography.titleLarge)
-                SelectedPlanCard(summary.quickAssessment, summary.activePlan)
+                if (quickAssessment != null) {
+                    SelectedPlanCard(quickAssessment, summary.activePlan)
+                } else {
+                    SelectedPlanCard(summary.activePlan.levelMeta, summary.activePlan)
+                }
             }
         }
 

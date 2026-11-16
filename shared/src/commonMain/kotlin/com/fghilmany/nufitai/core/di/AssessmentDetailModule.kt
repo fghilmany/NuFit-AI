@@ -26,6 +26,7 @@ val assessmentDetailModule = module {
             getAssessmentDetail = get(),
             getAssessmentHistory = get(),
             retakeAssessment = get(),
+            getCurrentTier = get(),
         )
     }
 }

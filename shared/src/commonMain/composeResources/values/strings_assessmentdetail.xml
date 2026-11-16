@@ -2,6 +2,7 @@
 <resources>
     <string name="assessmentdetail_status_label">YOUR STATUS</string>
     <string name="assessmentdetail_level_explainer">Because you're %1$s with a %2$s goal and %3$s, your plan is %4$s.</string>
+    <string name="assessmentdetail_level_explainer_full">Based on your Full Assessment, you're classified as %1$s with a %2$s goal.</string>
     <string name="assessmentdetail_parq_title">Safety Notice</string>
     <string name="assessmentdetail_answer_summary_title">Answer Summary</string>
     <string name="assessmentdetail_summary_goal">Main Goal</string>
@@ -36,7 +37,9 @@
     <string name="assessmentdetail_retake_blocked_body">Finish or end your current workout session before retaking the assessment.</string>
     <string name="assessmentdetail_top_bar_title">Assessment Result</string>
     <string name="assessmentdetail_no_quick_assessment_body">Your plan was created from a template with no assessment. Fill in a Quick Assessment to see a result and classification reason here.</string>
+    <string name="assessmentdetail_no_assessment_body_logged_in">Your plan was created from a template with no assessment. Fill in a Full Assessment to see a result and classification reason here.</string>
     <string name="assessmentdetail_start_quick_assessment">Fill in Quick Assessment</string>
+    <string name="assessmentdetail_start_full_assessment">Fill in Full Assessment</string>
     <string name="assessmentdetail_history_empty">No other history yet -- history will appear once you retake or a new plan is created.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalized</string>

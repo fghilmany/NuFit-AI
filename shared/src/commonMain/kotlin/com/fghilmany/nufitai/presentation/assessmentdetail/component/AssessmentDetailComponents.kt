@@ -33,6 +33,7 @@ import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
+import com.fghilmany.nufitai.presentation.fullassessment.component.label
 import com.fghilmany.nufitai.presentation.onboarding.component.equipmentGridOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.experienceOptions
 import com.fghilmany.nufitai.presentation.onboarding.component.frequencyOptions
@@ -95,6 +96,44 @@ fun LevelBadgeCard(quickAssessment: QuickAssessmentResult, modifier: Modifier = 
                         frequencyTitle,
                         quickAssessment.resolvedSplit.shortLabel(),
                     ),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+    }
+}
+
+/** Full Assessment path's equivalent of [LevelBadgeCard] -- no Quick Assessment answers exist
+ * here, so the explainer is level + goal only, sourced from the plan's own metadata rather than
+ * a quick-assessment decision table. */
+@Composable
+fun FullAssessmentLevelBadgeCard(plan: MonthlyPlan, modifier: Modifier = Modifier) {
+    AppCard(
+        modifier = modifier.fillMaxWidth(),
+        backgroundColor = NuFitColors.SecondaryContainer,
+        contentPadding = PaddingValues(24.dp),
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(stringResource(Res.string.assessmentdetail_status_label), style = MaterialTheme.typography.labelMedium, color = NuFitColors.Primary)
+            Text(
+                plan.levelMeta,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.ExtraBold,
+                color = NuFitColors.Primary,
+            )
+            AppCard(
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                backgroundColor = Color.White.copy(alpha = 0.8f),
+                shape = RoundedCornerShape(12.dp),
+                contentPadding = PaddingValues(17.dp),
+            ) {
+                Text(
+                    stringResource(Res.string.assessmentdetail_level_explainer_full, plan.levelMeta, plan.goalMeta.label()),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -173,7 +212,13 @@ private fun Set<EquipmentCategory>.summaryLabel(): String {
 
 /** Figma node 12:1040 "Rencana Terpilih" -- no bundled hero image yet, uses a solid tone instead (issue #77). */
 @Composable
-fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, modifier: Modifier = Modifier) {
+fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, modifier: Modifier = Modifier) =
+    SelectedPlanCard("${quickAssessment.resolvedSplit.shortLabel()} ${quickAssessment.level.shortLabel()}", plan, modifier)
+
+/** Full Assessment path has no `ResolvedSplit` (that's a Quick Assessment-only concept) -- just
+ * the level on its own. */
+@Composable
+fun SelectedPlanCard(titleLine: String, plan: MonthlyPlan, modifier: Modifier = Modifier) {
     AppCard(
         modifier = modifier.fillMaxWidth(),
         backgroundColor = NuFitColors.PrimaryContainer,
@@ -193,7 +238,7 @@ fun SelectedPlanCard(quickAssessment: QuickAssessmentResult, plan: MonthlyPlan, 
                 Text(badgeLabel, style = MaterialTheme.typography.labelSmall, color = NuFitColors.OnTertiaryFixed)
             }
             Text(
-                "${quickAssessment.resolvedSplit.shortLabel()} ${quickAssessment.level.shortLabel()}",
+                titleLine,
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,

@@ -12,12 +12,14 @@ import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentAnswer
 import com.fghilmany.nufitai.domain.onboarding.entity.QuickAssessmentResult
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
 import com.fghilmany.nufitai.domain.onboarding.entity.SplitPreference
+import com.fghilmany.nufitai.fake.FakeEntitlementRepository
 import com.fghilmany.nufitai.fake.FakeFullAssessmentRepository
 import com.fghilmany.nufitai.fake.FakeMonthlyPlanRepository
 import com.fghilmany.nufitai.fake.FakeOnboardingRepository
 import com.fghilmany.nufitai.usecase.assessmentdetail.GetAssessmentDetail
 import com.fghilmany.nufitai.usecase.assessmentdetail.GetAssessmentHistory
 import com.fghilmany.nufitai.usecase.assessmentdetail.RetakeAssessment
+import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
 import com.fghilmany.nufitai.usecase.fullassessment.GetLatestFullAssessmentResult
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestBodyMeasurement
 import com.fghilmany.nufitai.usecase.onboarding.GetLatestParQResult
@@ -94,6 +96,7 @@ class AssessmentDetailViewModelTest {
         ),
         getAssessmentHistory = GetAssessmentHistory(monthlyPlanRepository),
         retakeAssessment = RetakeAssessment(monthlyPlanRepository),
+        getCurrentTier = GetCurrentTier(FakeEntitlementRepository()),
     ) to monthlyPlanRepository
 
     @Test

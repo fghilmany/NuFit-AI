@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.Failure
+import com.fghilmany.nufitai.domain.entitlement.entity.Tier
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
 import com.fghilmany.nufitai.usecase.assessmentdetail.GetAssessmentDetail
 import com.fghilmany.nufitai.usecase.assessmentdetail.GetAssessmentHistory
 import com.fghilmany.nufitai.usecase.assessmentdetail.RetakeAssessment
+import com.fghilmany.nufitai.usecase.entitlement.GetCurrentTier
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -38,9 +40,11 @@ sealed interface AssessmentDetailState {
     /** Terminal state -- screen observes this via LaunchedEffect and navigates, mirrors DoctorConsultState.Continued. */
     data class RetakeReady(val source: PlanSource) : AssessmentDetailState
 
-    /** Decision #13 -- the active plan was created from a template with no assessment at all.
-     * Expected, recoverable: offer the Quick Assessment wizard instead of a dead-end error. */
-    data object NoQuickAssessment : AssessmentDetailState
+    /** Decision #13 -- the active plan was created from a template with no assessment at all
+     * (neither Quick nor Full). Expected, recoverable: offer whichever is cheapest for this
+     * user's tier -- Quick Assessment for a guest, Full Assessment for Logged-In (Quick would
+     * just be redundant busywork since Full is a superset). */
+    data class NoAssessment(val isLoggedIn: Boolean) : AssessmentDetailState
     data class Error(val message: String) : AssessmentDetailState
 }
 
@@ -56,6 +60,7 @@ class AssessmentDetailViewModel(
     private val getAssessmentDetail: GetAssessmentDetail,
     private val getAssessmentHistory: GetAssessmentHistory,
     private val retakeAssessment: RetakeAssessment,
+    private val getCurrentTier: GetCurrentTier,
 ) : ViewModel() {
     private val _state = MutableStateFlow<AssessmentDetailState>(AssessmentDetailState.Loading)
     val state: StateFlow<AssessmentDetailState> = _state.asStateFlow()
@@ -86,7 +91,10 @@ class AssessmentDetailViewModel(
                     }
                 }
                 is AppResult.Error -> _state.value = when (detailResult.failure) {
-                    is Failure.Validation -> AssessmentDetailState.NoQuickAssessment
+                    is Failure.Validation -> {
+                        val isLoggedIn = (getCurrentTier() as? AppResult.Success)?.data != Tier.GUEST
+                        AssessmentDetailState.NoAssessment(isLoggedIn)
+                    }
                     else -> AssessmentDetailState.Error(detailResult.failure.message)
                 }
             }

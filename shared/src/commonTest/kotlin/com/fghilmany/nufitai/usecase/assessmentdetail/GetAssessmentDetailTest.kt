@@ -1,6 +1,7 @@
 package com.fghilmany.nufitai.usecase.assessmentdetail
 
 import com.fghilmany.nufitai.core.error.AppResult
+import com.fghilmany.nufitai.domain.fullassessment.entity.FullAssessmentResult
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDaySessionLog
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
@@ -95,6 +96,41 @@ class GetAssessmentDetailTest {
         val result = getAssessmentDetail()
 
         assertIs<AppResult.Error>(result)
+    }
+
+    @Test
+    fun `given only full assessment completed when invoked then quick assessment is null not an error`() = runTest {
+        val fullAssessment = FullAssessmentResult(
+            id = "fa1",
+            completedAt = Instant.fromEpochMilliseconds(0),
+            age = 30,
+            gender = null,
+            parQAnswers = emptyList(),
+            parQCategoryB = emptySet(),
+            hardStopFlagged = false,
+            hardStopAcknowledgedAt = null,
+            equipmentPreference = emptySet(),
+            injuryHistory = emptySet(),
+            injuryHistoryNote = null,
+            flagsPostural = emptySet(),
+            movementFlags = emptySet(),
+            capacityTest = null,
+            goals = setOf(GoalCategory.FAT_LOSS),
+            sessionsPerWeek = 3,
+            selectedWeekdays = setOf(1, 3, 5),
+            sessionDurationMinutes = 45,
+        )
+        val fullAssessmentRepository = FakeFullAssessmentRepository().apply { saveFullAssessmentResult(fullAssessment) }
+        val monthlyPlanRepository = FakeMonthlyPlanRepository().apply {
+            activePlan = this@GetAssessmentDetailTest.activePlan.copy(source = PlanSource.LOGGED_IN_RULE_ENGINE)
+        }
+        val getAssessmentDetail = buildUseCase(fullAssessmentRepository = fullAssessmentRepository, monthlyPlanRepository = monthlyPlanRepository)
+
+        val result = getAssessmentDetail()
+
+        assertIs<AppResult.Success<AssessmentDetailSummary>>(result)
+        assertNull(result.data.quickAssessment)
+        assertEquals(fullAssessment, result.data.fullAssessment)
     }
 
     @Test
