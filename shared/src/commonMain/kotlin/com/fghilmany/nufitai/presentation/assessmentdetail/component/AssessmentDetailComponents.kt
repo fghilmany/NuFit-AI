@@ -47,6 +47,7 @@ import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_b
 import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_button
 import nufitai.shared.generated.resources.assessmentdetail_full_assessment_cta_title
 import nufitai.shared.generated.resources.assessmentdetail_level_explainer
+import nufitai.shared.generated.resources.assessmentdetail_level_explainer_full
 import nufitai.shared.generated.resources.assessmentdetail_parq_title
 import nufitai.shared.generated.resources.assessmentdetail_plan_badge_ai
 import nufitai.shared.generated.resources.assessmentdetail_plan_badge_ai_custom
