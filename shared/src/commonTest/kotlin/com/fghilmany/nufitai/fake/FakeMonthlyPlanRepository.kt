@@ -6,6 +6,7 @@ import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDaySessionLog
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
+import com.fghilmany.nufitai.domain.monthlyplan.entity.PlannedExercise
 import com.fghilmany.nufitai.domain.monthlyplan.repository.MonthlyPlanRepository
 
 class FakeMonthlyPlanRepository : MonthlyPlanRepository {
@@ -88,4 +89,15 @@ class FakeMonthlyPlanRepository : MonthlyPlanRepository {
         // plan_day/session logs are deliberately left untouched (issue #82 -- soft delete never orphans log history).
         return AppResult.Success(Unit)
     }
+
+    override suspend fun swapMainExercise(planDayId: String, oldExerciseId: String, newExerciseId: String): AppResult<Unit> {
+        val planId = planDays.entries.find { entry -> entry.value.any { it.id == planDayId } }?.key ?: return AppResult.Success(Unit)
+        planDays[planId] = planDays[planId].orEmpty().map { day ->
+            if (day.id != planDayId) day else day.copy(mainExercises = day.mainExercises?.map { swapIfMatch(it, oldExerciseId, newExerciseId) })
+        }
+        return AppResult.Success(Unit)
+    }
+
+    private fun swapIfMatch(exercise: PlannedExercise, oldExerciseId: String, newExerciseId: String): PlannedExercise =
+        if (exercise.exerciseId == oldExerciseId) exercise.copy(exerciseId = newExerciseId) else exercise
 }

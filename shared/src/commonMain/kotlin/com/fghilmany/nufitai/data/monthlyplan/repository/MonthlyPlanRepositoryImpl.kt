@@ -111,6 +111,11 @@ class MonthlyPlanRepositoryImpl(
         local.getSessionLogsForPlan(planId).map { it.toEntity() }
     }
 
+    override suspend fun swapMainExercise(planDayId: String, oldExerciseId: String, newExerciseId: String): AppResult<Unit> =
+        runCatchingDatabase {
+            local.updateExerciseIdForDay(planDayId, oldExerciseId, newExerciseId, currentInstant().toEpochMilliseconds())
+        }
+
     private fun PlanDay.toInsertRow(): PlanDayInsertRow {
         val exercises = buildList {
             warmup?.specific?.forEach { add(it.toInsertRow("warmup_specific")) }

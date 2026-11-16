@@ -204,6 +204,16 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.plannedExerciseQueries.getPlannedExercisesForDays(dayIds).executeAsList()
     }
 
+    suspend fun updateExerciseIdForDay(planDayId: String, oldExerciseId: String, newExerciseId: String, updatedAt: Long) =
+        withContext(Dispatchers.Default) {
+            database.plannedExerciseQueries.updateExerciseIdForDay(
+                exercise_id = newExerciseId,
+                updated_at = updatedAt,
+                plan_day_id = planDayId,
+                exercise_id_ = oldExerciseId,
+            )
+        }
+
     suspend fun insertSessionLog(
         id: String,
         planDayId: String,

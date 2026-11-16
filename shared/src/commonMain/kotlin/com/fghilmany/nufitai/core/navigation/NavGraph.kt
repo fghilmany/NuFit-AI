@@ -172,6 +172,7 @@ fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
                 planDayId = route.planDayId,
                 onBack = { navController.popBackStack() },
                 onStartSession = { navController.navigate(Route.PtMode(route.planDayId)) },
+                onExerciseClick = { exerciseId -> navController.navigate(Route.ExerciseDetail(exerciseId)) },
             )
         }
 

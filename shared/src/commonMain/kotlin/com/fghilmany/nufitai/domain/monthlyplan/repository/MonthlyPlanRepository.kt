@@ -36,4 +36,7 @@ interface MonthlyPlanRepository {
 
     suspend fun saveSessionLog(log: PlanDaySessionLog): AppResult<Unit>
     suspend fun getSessionLogsForPlan(planId: String): AppResult<List<PlanDaySessionLog>>
+
+    /** Session Detail's "Ganti" (pre-session) -- this day's row only, future sessions untouched. */
+    suspend fun swapMainExercise(planDayId: String, oldExerciseId: String, newExerciseId: String): AppResult<Unit>
 }

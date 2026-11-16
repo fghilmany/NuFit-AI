@@ -20,6 +20,7 @@
     <string name="monthlyplan_session_detail_light_activity_body">A light activity day keeps you moving without the strain of a full workout -- it helps blood flow and speeds up recovery. Try a walk, light stretching, or easy cycling.</string>
     <string name="monthlyplan_session_detail_start_button">Start This Session</string>
     <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
+    <string name="monthlyplan_session_detail_ganti_button">Change</string>
 
     <string name="monthlyplan_exercise_count_label">%1$d exercises</string>
     <string name="monthlyplan_duration_minutes_label">%1$d minutes</string>

@@ -25,6 +25,11 @@ INSERT INTO planned_exercise(
 getPlannedExercisesForDay:
 SELECT * FROM planned_exercise WHERE plan_day_id = ?;
 
+-- Session Detail's "Ganti" (swap, pre-session) -- scoped to this one day's row, matched by
+-- (plan_day_id, exercise_id) since the domain PlannedExercise carries no row id.
+updateExerciseIdForDay:
+UPDATE planned_exercise SET exercise_id = ?, updated_at = ? WHERE plan_day_id = ? AND exercise_id = ?;
+
 getPlannedExercisesForDays:
 SELECT * FROM planned_exercise WHERE plan_day_id IN ?;
 

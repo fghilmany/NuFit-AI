@@ -1,6 +1,7 @@
 package com.fghilmany.nufitai.presentation.monthlyplan.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -45,6 +47,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.component.exerciseCount
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailState
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.SessionDetailViewModel
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
+import com.fghilmany.nufitai.presentation.ptmode.component.ExerciseSwapDialog
 import com.fghilmany.nufitai.presentation.onboarding.component.TipsBanner
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.monthlyplan_duration_minutes_label
@@ -52,6 +55,7 @@ import nufitai.shared.generated.resources.monthlyplan_exercise_count_label
 import nufitai.shared.generated.resources.monthlyplan_session_detail_description_fallback
 import nufitai.shared.generated.resources.monthlyplan_session_detail_description_templated
 import nufitai.shared.generated.resources.monthlyplan_session_detail_exercise_meta
+import nufitai.shared.generated.resources.monthlyplan_session_detail_ganti_button
 import nufitai.shared.generated.resources.monthlyplan_session_card_light_activity_title
 import nufitai.shared.generated.resources.monthlyplan_session_card_rest_day_title
 import nufitai.shared.generated.resources.monthlyplan_session_detail_light_activity_body
@@ -77,6 +81,7 @@ fun SessionDetailScreen(
     planDayId: String,
     onBack: () -> Unit,
     onStartSession: (String) -> Unit,
+    onExerciseClick: (String) -> Unit,
     viewModel: SessionDetailViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
@@ -89,14 +94,32 @@ fun SessionDetailScreen(
             when (val current = state) {
                 SessionDetailState.Loading -> LoadingBox()
                 is SessionDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
-                is SessionDetailState.Loaded -> SessionDetailContent(current, onStartSession = { onStartSession(planDayId) })
+                is SessionDetailState.Loaded -> SessionDetailContent(
+                    state = current,
+                    onStartSession = { onStartSession(planDayId) },
+                    onExerciseClick = onExerciseClick,
+                    onGantiClick = viewModel::openSwapSheet,
+                )
             }
         }
+    }
+    val current = state
+    if (current is SessionDetailState.Loaded && current.swapTargetExerciseId != null) {
+        ExerciseSwapDialog(
+            candidates = current.swapCandidates,
+            onSelect = { viewModel.selectSwapCandidate(it) },
+            onDismiss = { viewModel.closeSwapSheet() },
+        )
     }
 }
 
 @Composable
-private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSession: () -> Unit) {
+private fun SessionDetailContent(
+    state: SessionDetailState.Loaded,
+    onStartSession: () -> Unit,
+    onExerciseClick: (String) -> Unit,
+    onGantiClick: (String) -> Unit,
+) {
     val day = state.planDay
     if (day.type == DayType.REST || day.type == DayType.LIGHT_ACTIVITY) {
         RestDayContent(day)
@@ -127,7 +150,13 @@ private fun SessionDetailContent(state: SessionDetailState.Loaded, onStartSessio
                 item { Text(stringResource(Res.string.monthlyplan_session_detail_main_exercises_title), style = MaterialTheme.typography.titleLarge) }
                 items(mainExercises) { exercise ->
                     val detail = state.exercisesById[exercise.exerciseId]
-                    ExerciseRow(exercise, detail?.name ?: exercise.exerciseId, detail)
+                    ExerciseRow(
+                        exercise = exercise,
+                        name = detail?.name ?: exercise.exerciseId,
+                        detail = detail,
+                        onClick = { onExerciseClick(exercise.exerciseId) },
+                        onGantiClick = { onGantiClick(exercise.exerciseId) },
+                    )
                 }
             }
             item {
@@ -178,9 +207,15 @@ private fun SummaryChip(icon: ImageVector, label: String) {
 }
 
 @Composable
-private fun ExerciseRow(exercise: PlannedExercise, name: String, detail: Exercise?) {
+private fun ExerciseRow(
+    exercise: PlannedExercise,
+    name: String,
+    detail: Exercise?,
+    onClick: () -> Unit,
+    onGantiClick: () -> Unit,
+) {
     AppElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
         backgroundColor = MaterialTheme.colorScheme.surfaceContainerLowest,
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -203,6 +238,7 @@ private fun ExerciseRow(exercise: PlannedExercise, name: String, detail: Exercis
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
+            TextButton(onClick = onGantiClick) { Text(stringResource(Res.string.monthlyplan_session_detail_ganti_button)) }
         }
     }
 }

@@ -20,6 +20,7 @@
     <string name="monthlyplan_session_detail_light_activity_body">Hari aktivitas ringan bikin tubuh tetap bergerak tanpa beban sesi latihan penuh -- bantu aliran darah dan mempercepat pemulihan. Coba jalan santai, peregangan ringan, atau sepedaan santai.</string>
     <string name="monthlyplan_session_detail_start_button">Mulai Sesi Ini</string>
     <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
+    <string name="monthlyplan_session_detail_ganti_button">Ganti</string>
 
     <string name="monthlyplan_exercise_count_label">%1$d gerakan</string>
     <string name="monthlyplan_duration_minutes_label">%1$d menit</string>

@@ -13,6 +13,7 @@ import com.fghilmany.nufitai.usecase.monthlyplan.GenerateNextMonthPlan
 import com.fghilmany.nufitai.usecase.monthlyplan.GetActivePlanOverview
 import com.fghilmany.nufitai.usecase.monthlyplan.GetSessionStatus
 import com.fghilmany.nufitai.usecase.monthlyplan.RebuildRemainingDays
+import com.fghilmany.nufitai.usecase.monthlyplan.SwapPlannedExercise
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -34,8 +35,17 @@ val monthlyPlanModule = module {
     factory { RebuildRemainingDays(getExercisePool = get(), repository = get()) }
     factory { FreezeCalendarOnAbsence(monthlyPlanRepository = get()) }
     factory { GetActivePlanOverview(repository = get()) }
+    factory { SwapPlannedExercise(repository = get()) }
 
-    // getCurrentDisplayName registered in authModule; getExercisePool in exerciseLibraryModule -- both load together in KoinInit.
+    // getCurrentDisplayName registered in authModule; getExercisePool/getExerciseAlternatives in exerciseLibraryModule -- both load together in KoinInit.
     viewModel { HomeViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getCurrentDisplayName = get(), getExercisePool = get()) }
-    viewModel { SessionDetailViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getExercisePool = get()) }
+    viewModel {
+        SessionDetailViewModel(
+            getActivePlanOverview = get(),
+            getSessionStatus = get(),
+            getExercisePool = get(),
+            getExerciseAlternatives = get(),
+            swapPlannedExercise = get(),
+        )
+    }
 }
