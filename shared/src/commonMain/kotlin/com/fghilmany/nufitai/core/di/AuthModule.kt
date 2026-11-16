@@ -11,7 +11,6 @@ import com.fghilmany.nufitai.domain.auth.repository.AuthRepository
 import com.fghilmany.nufitai.presentation.auth.viewmodel.CompleteProfileViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.LoginViewModel
 import com.fghilmany.nufitai.usecase.auth.CancelConflictingSignIn
-import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
 import com.fghilmany.nufitai.usecase.auth.DiscardLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
 import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
@@ -36,7 +35,6 @@ fun authModule(tokenStorage: TokenStorage) = module {
 
     factory { SignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
     factory { SignOut(authRepository = get(), entitlementRepository = get(), syncRepository = get()) } // syncRepository registered in syncModule
-    factory { DebugSimulateSignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
     factory { GetCurrentDisplayName(authRepository = get()) }
     factory { GetCurrentUserProfile(authRepository = get()) }
     factory { DiscardLocalDataAndSync(syncRepository = get()) }
@@ -48,7 +46,6 @@ fun authModule(tokenStorage: TokenStorage) = module {
             googleSignInLauncher = get(),
             appleSignInLauncher = get(),
             signIn = get(),
-            debugSimulateSignIn = get(),
             getProfileBasics = get(),
             discardLocalDataAndSync = get(),
             cancelConflictingSignIn = get(),

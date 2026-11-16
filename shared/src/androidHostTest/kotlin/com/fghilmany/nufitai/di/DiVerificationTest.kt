@@ -31,7 +31,6 @@ import com.fghilmany.nufitai.core.auth.GoogleSignInLauncher
 import com.fghilmany.nufitai.presentation.auth.viewmodel.CompleteProfileViewModel
 import com.fghilmany.nufitai.presentation.auth.viewmodel.LoginViewModel
 import com.fghilmany.nufitai.usecase.auth.CancelConflictingSignIn
-import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
 import com.fghilmany.nufitai.usecase.auth.DiscardLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
 import com.fghilmany.nufitai.usecase.auth.GetCurrentUserProfile
@@ -95,7 +94,6 @@ class DiVerificationTest {
                     single { AppleSignInLauncher() }
                     factory { SignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
                     factory { SignOut(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
-                    factory { DebugSimulateSignIn(authRepository = get(), entitlementRepository = get(), syncRepository = get()) }
                     factory { GetCurrentDisplayName(authRepository = get()) }
                     factory { GetCurrentUserProfile(authRepository = get()) }
                     factory { DiscardLocalDataAndSync(syncRepository = get()) }
@@ -105,7 +103,6 @@ class DiVerificationTest {
                             googleSignInLauncher = get(),
                             appleSignInLauncher = get(),
                             signIn = get(),
-                            debugSimulateSignIn = get(),
                             getProfileBasics = get(),
                             discardLocalDataAndSync = get(),
                             cancelConflictingSignIn = get(),

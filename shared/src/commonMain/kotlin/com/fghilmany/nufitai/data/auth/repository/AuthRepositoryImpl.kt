@@ -84,8 +84,4 @@ class AuthRepositoryImpl(
         local.clearSession()
         return AppResult.Success(Unit)
     }
-
-    override suspend fun debugSetSession(session: AuthSession) {
-        local.saveSession(session)
-    }
 }

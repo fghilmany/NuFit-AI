@@ -223,10 +223,6 @@ fun LoginScreen(
                 TextButton(onClick = onSkip, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(Res.string.common_action_skip), textDecoration = TextDecoration.Underline)
                 }
-                // DEBUG ONLY -- remove once real Google/Apple SDKs are wired (techspec §3).
-                TextButton(onClick = viewModel::debugSignIn, modifier = Modifier.fillMaxWidth()) {
-                    Text("[DEBUG] Simulate sign-in")
-                }
             }
         }
 

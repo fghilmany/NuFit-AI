@@ -8,7 +8,6 @@ import com.fghilmany.nufitai.core.auth.NativeSignInResult
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.auth.entity.AuthProvider
 import com.fghilmany.nufitai.usecase.auth.CancelConflictingSignIn
-import com.fghilmany.nufitai.usecase.auth.DebugSimulateSignIn
 import com.fghilmany.nufitai.usecase.auth.DiscardLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.SaveLocalDataAndSync
 import com.fghilmany.nufitai.usecase.auth.SignIn
@@ -40,7 +39,6 @@ class LoginViewModel(
     private val googleSignInLauncher: GoogleSignInLauncher,
     private val appleSignInLauncher: AppleSignInLauncher,
     private val signIn: SignIn,
-    private val debugSimulateSignIn: DebugSimulateSignIn,
     private val getProfileBasics: GetProfileBasics,
     private val discardLocalDataAndSync: DiscardLocalDataAndSync,
     private val cancelConflictingSignIn: CancelConflictingSignIn,
@@ -52,18 +50,6 @@ class LoginViewModel(
     fun signInWithGoogle() = signInWith(AuthProvider.GOOGLE) { googleSignInLauncher.launch() }
 
     fun signInWithApple() = signInWith(AuthProvider.APPLE) { appleSignInLauncher.launch() }
-
-    /** DEBUG ONLY -- remove once real Google/Apple SDKs are wired (techspec §3). */
-    fun debugSignIn() {
-        if (_state.value == LoginState.SigningIn) return
-        _state.value = LoginState.SigningIn
-        viewModelScope.launch {
-            when (val result = debugSimulateSignIn()) {
-                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
-                is AppResult.Success -> onSignedIn()
-            }
-        }
-    }
 
     /** User chose to adopt the cloud account on a [LoginState.LocalDataConflict] -- wipes this
      * device's local guest data (it isn't the account's) and pulls the account's real data down. */

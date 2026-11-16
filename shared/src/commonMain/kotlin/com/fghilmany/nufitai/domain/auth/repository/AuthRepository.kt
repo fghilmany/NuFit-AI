@@ -20,7 +20,4 @@ interface AuthRepository {
 
     /** Clears the local session only -- techspec §5: local data stays cached, never wiped. */
     suspend fun signOut(): AppResult<Unit>
-
-    /** DEBUG ONLY -- remove once real Google/Apple SDKs are wired (see DebugSimulateSignIn). */
-    suspend fun debugSetSession(session: AuthSession)
 }

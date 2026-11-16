@@ -35,10 +35,6 @@ class FakeAuthRepository(
         return AppResult.Success(Unit)
     }
 
-    override suspend fun debugSetSession(session: AuthSession) {
-        this.session = session
-    }
-
     fun setSignInResult(result: AppResult<AuthSession>) {
         signInResult = result
         if (result is AppResult.Success) session = result.data
