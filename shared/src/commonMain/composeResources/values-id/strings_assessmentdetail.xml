@@ -35,6 +35,8 @@
     <string name="assessmentdetail_retake_blocked_title">Belum bisa mengulang assessment</string>
     <string name="assessmentdetail_retake_blocked_body">Selesaikan atau akhiri sesi latihan yang sedang berjalan terlebih dahulu sebelum mengulang assessment.</string>
     <string name="assessmentdetail_top_bar_title">Hasil Assessment</string>
+    <string name="assessmentdetail_no_quick_assessment_body">Plan kamu dibuat dari template tanpa assessment. Isi Quick Assessment buat lihat hasil dan alasan klasifikasi di sini.</string>
+    <string name="assessmentdetail_start_quick_assessment">Isi Quick Assessment</string>
     <string name="assessmentdetail_history_empty">Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalisasi</string>

@@ -43,7 +43,10 @@ class GetAssessmentDetail(
     suspend operator fun invoke(): AppResult<AssessmentDetailSummary> {
         val quickAssessment = when (val result = getLatestQuickAssessmentResult()) {
             is AppResult.Success -> result.data
-                ?: return AppResult.Error(Failure.Database("No Quick Assessment result found"))
+                // Validation, not Database -- decision #13 lets a plan be created from a template
+                // with no assessment at all, so a missing Quick Assessment here is an expected,
+                // recoverable gap (user just hasn't done one yet), not a data-integrity issue.
+                ?: return AppResult.Error(Failure.Validation("No Quick Assessment result found"))
             is AppResult.Error -> return result
         }
 

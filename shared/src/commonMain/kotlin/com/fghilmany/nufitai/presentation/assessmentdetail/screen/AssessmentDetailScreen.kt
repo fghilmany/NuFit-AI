@@ -47,6 +47,7 @@ import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.AssessmentD
 import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.AssessmentDetailViewModel
 import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.RetakeDialogState
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel as exerciseFlagShortLabel
+import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
 import nufitai.shared.generated.resources.Res
@@ -58,12 +59,14 @@ import nufitai.shared.generated.resources.assessmentdetail_capacity_reps
 import nufitai.shared.generated.resources.assessmentdetail_capacity_seconds
 import nufitai.shared.generated.resources.assessmentdetail_capacity_sit_to_stand
 import nufitai.shared.generated.resources.assessmentdetail_full_data_title
+import nufitai.shared.generated.resources.assessmentdetail_no_quick_assessment_body
 import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_body
 import nufitai.shared.generated.resources.assessmentdetail_retake_blocked_title
 import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_body
 import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_confirm
 import nufitai.shared.generated.resources.assessmentdetail_retake_dialog_title
 import nufitai.shared.generated.resources.assessmentdetail_selected_plan_title
+import nufitai.shared.generated.resources.assessmentdetail_start_quick_assessment
 import nufitai.shared.generated.resources.assessmentdetail_tab_hasil
 import nufitai.shared.generated.resources.assessmentdetail_tab_riwayat
 import nufitai.shared.generated.resources.assessmentdetail_top_bar_title
@@ -100,7 +103,20 @@ fun AssessmentDetailScreen(
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         when (val current = state) {
             AssessmentDetailState.Loading, is AssessmentDetailState.RetakeReady -> LoadingBox()
-            is AssessmentDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            AssessmentDetailState.NoQuickAssessment -> Box(Modifier.fillMaxSize(), Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Text(stringResource(Res.string.assessmentdetail_no_quick_assessment_body))
+                    // Same nav target as a normal LOCAL_TEMPLATE retake (Route.QuickAssessmentWizard) --
+                    // this plan just never had one in the first place (decision #13).
+                    AppButton(onClick = onRetakeLocal) { Text(stringResource(Res.string.assessmentdetail_start_quick_assessment)) }
+                }
+            }
+            is AssessmentDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Text(current.message)
+                    AppButton(onClick = onBack) { Text(stringResource(Res.string.common_action_back)) }
+                }
+            }
             is AssessmentDetailState.Loaded -> AssessmentDetailContent(current, viewModel, onOpenFullAssessment)
         }
 

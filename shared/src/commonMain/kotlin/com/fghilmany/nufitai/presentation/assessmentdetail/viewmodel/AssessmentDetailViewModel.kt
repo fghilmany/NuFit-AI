@@ -3,6 +3,7 @@ package com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
+import com.fghilmany.nufitai.core.error.Failure
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanSource
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
@@ -36,6 +37,10 @@ sealed interface AssessmentDetailState {
 
     /** Terminal state -- screen observes this via LaunchedEffect and navigates, mirrors DoctorConsultState.Continued. */
     data class RetakeReady(val source: PlanSource) : AssessmentDetailState
+
+    /** Decision #13 -- the active plan was created from a template with no assessment at all.
+     * Expected, recoverable: offer the Quick Assessment wizard instead of a dead-end error. */
+    data object NoQuickAssessment : AssessmentDetailState
     data class Error(val message: String) : AssessmentDetailState
 }
 
@@ -80,7 +85,10 @@ class AssessmentDetailViewModel(
                         is AppResult.Error -> _state.value = AssessmentDetailState.Error(historyResult.failure.message)
                     }
                 }
-                is AppResult.Error -> _state.value = AssessmentDetailState.Error(detailResult.failure.message)
+                is AppResult.Error -> _state.value = when (detailResult.failure) {
+                    is Failure.Validation -> AssessmentDetailState.NoQuickAssessment
+                    else -> AssessmentDetailState.Error(detailResult.failure.message)
+                }
             }
         }
     }
