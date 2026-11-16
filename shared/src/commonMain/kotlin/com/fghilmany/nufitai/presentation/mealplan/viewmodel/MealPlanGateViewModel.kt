@@ -18,8 +18,13 @@ sealed interface MealPlanGateState {
     data object Guest : MealPlanGateState
     /** ADR-009: unreachable during the free MVP showcase phase (LOGGED_IN passes through) -- revive when billing ships. */
     data object NonSubscriberPaywall : MealPlanGateState
-    /** AC-3 -- height/weight or activityLevel missing; TDEE can't be computed. */
-    data object NeedsBodyData : MealPlanGateState
+    /** AC-3 -- height/weight or activityLevel missing; TDEE can't be computed. Flags name exactly
+     * which field(s) are missing so the gate screen doesn't have to guess. */
+    data class NeedsBodyData(
+        val missingHeight: Boolean,
+        val missingWeight: Boolean,
+        val missingActivityLevel: Boolean,
+    ) : MealPlanGateState
     data object PassThrough : MealPlanGateState
     data class Error(val message: String) : MealPlanGateState
 }
@@ -57,7 +62,13 @@ class MealPlanGateViewModel(
             is AppResult.Error -> { _state.value = MealPlanGateState.Error(result.failure.message); return }
             is AppResult.Success -> result.data
         }
-        val complete = bodyMeasurement?.heightCm != null && bodyMeasurement.weightKg != null && fullAssessment?.activityLevel != null
-        _state.value = if (complete) MealPlanGateState.PassThrough else MealPlanGateState.NeedsBodyData
+        val missingHeight = bodyMeasurement?.heightCm == null
+        val missingWeight = bodyMeasurement?.weightKg == null
+        val missingActivityLevel = fullAssessment?.activityLevel == null
+        _state.value = if (!missingHeight && !missingWeight && !missingActivityLevel) {
+            MealPlanGateState.PassThrough
+        } else {
+            MealPlanGateState.NeedsBodyData(missingHeight, missingWeight, missingActivityLevel)
+        }
     }
 }

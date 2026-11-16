@@ -24,9 +24,13 @@ import com.fghilmany.nufitai.presentation.monthlyplan.component.NavTab
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.mealplan_gate_cta_complete_data
 import nufitai.shared.generated.resources.mealplan_gate_cta_login
+import nufitai.shared.generated.resources.mealplan_gate_field_activity_level
+import nufitai.shared.generated.resources.mealplan_gate_field_height
+import nufitai.shared.generated.resources.mealplan_gate_field_weight
 import nufitai.shared.generated.resources.mealplan_gate_guest_body
 import nufitai.shared.generated.resources.mealplan_gate_guest_title
 import nufitai.shared.generated.resources.mealplan_gate_needs_body_data_body
+import nufitai.shared.generated.resources.mealplan_gate_needs_body_data_missing
 import nufitai.shared.generated.resources.mealplan_gate_needs_body_data_title
 import nufitai.shared.generated.resources.mealplan_gate_cta_subscribe
 import nufitai.shared.generated.resources.mealplan_gate_paywall_body
@@ -39,6 +43,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MealPlanGateScreen(
     onNavigateToLogin: () -> Unit,
     onNavigateToCompleteBodyData: () -> Unit,
+    onNavigateToFullAssessment: () -> Unit,
     onPassThrough: () -> Unit,
     onHomeClick: () -> Unit,
     onPlansClick: () -> Unit,
@@ -68,12 +73,22 @@ fun MealPlanGateScreen(
                     ctaLabel = stringResource(Res.string.mealplan_gate_cta_subscribe),
                     onCta = {}, // billing (RevenueCat) doesn't exist yet -- no-op until then, mirrors AiCustomPlanGateScreen's precedent.
                 )
-                MealPlanGateState.NeedsBodyData -> GateCard(
-                    title = stringResource(Res.string.mealplan_gate_needs_body_data_title),
-                    body = stringResource(Res.string.mealplan_gate_needs_body_data_body),
-                    ctaLabel = stringResource(Res.string.mealplan_gate_cta_complete_data),
-                    onCta = onNavigateToCompleteBodyData,
-                )
+                is MealPlanGateState.NeedsBodyData -> {
+                    val missingFields = buildList {
+                        if (current.missingHeight) add(stringResource(Res.string.mealplan_gate_field_height))
+                        if (current.missingWeight) add(stringResource(Res.string.mealplan_gate_field_weight))
+                        if (current.missingActivityLevel) add(stringResource(Res.string.mealplan_gate_field_activity_level))
+                    }
+                    GateCard(
+                        title = stringResource(Res.string.mealplan_gate_needs_body_data_title),
+                        body = stringResource(Res.string.mealplan_gate_needs_body_data_body) + "\n" +
+                            stringResource(Res.string.mealplan_gate_needs_body_data_missing, missingFields.joinToString(", ")),
+                        ctaLabel = stringResource(Res.string.mealplan_gate_cta_complete_data),
+                        // activityLevel has no edit control in Account -- only the Full Assessment
+                        // wizard sets it, so that's the only place that actually fixes it.
+                        onCta = if (current.missingActivityLevel) onNavigateToFullAssessment else onNavigateToCompleteBodyData,
+                    )
+                }
                 is MealPlanGateState.Error -> Text(current.message)
             }
         }

@@ -10,6 +10,10 @@
 
     <string name="mealplan_gate_needs_body_data_title">Lengkapi Data Tubuh Dulu</string>
     <string name="mealplan_gate_needs_body_data_body">Kami butuh tinggi, berat, dan tingkat aktivitas harianmu untuk menghitung kebutuhan kalori.</string>
+    <string name="mealplan_gate_needs_body_data_missing">Yang masih kosong: %1$s.</string>
+    <string name="mealplan_gate_field_height">tinggi badan</string>
+    <string name="mealplan_gate_field_weight">berat badan</string>
+    <string name="mealplan_gate_field_activity_level">tingkat aktivitas harian</string>
     <string name="mealplan_gate_cta_complete_data">Lengkapi Data</string>
 
     <string name="mealplan_top_bar_title">Meal Plan</string>
