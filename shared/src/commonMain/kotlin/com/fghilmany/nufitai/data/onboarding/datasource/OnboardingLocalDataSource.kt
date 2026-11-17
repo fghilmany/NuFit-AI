@@ -55,38 +55,41 @@ class OnboardingLocalDataSource(private val database: NuFitDatabase) {
         database.parQResultQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getParQResultById(id: String): ParQResultRow? = withContext(Dispatchers.Default) {
-        database.parQResultQueries.getParQResultById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillParQUserId(userId: String) = withContext(Dispatchers.Default) {
         database.parQResultQueries.backfillUserId(userId)
     }
 
-    /** Also rebuilds par_q_answer_detail from the pulled row's answers_json -- that child table
-     * has no sync participant of its own (see ParQResult.sq). */
-    suspend fun upsertParQFromRemote(row: ParQResultRow, answers: List<Pair<String, Boolean>>) = withContext(Dispatchers.Default) {
-        database.transaction {
-            database.parQResultQueries.upsertFromRemote(
-                id = row.id,
-                answered_at = row.answered_at,
-                requires_doctor_consult = row.requires_doctor_consult,
-                consult_acknowledged_at = row.consult_acknowledged_at,
-                answers_json = row.answers_json,
-                user_id = row.user_id,
-                updated_at = row.updated_at,
-            )
-            database.parQAnswerDetailQueries.deleteAnswersForResult(row.id)
-            answers.forEachIndexed { index, (questionId, answer) ->
-                database.parQAnswerDetailQueries.insertParQAnswerDetail(
-                    id = "${row.id}-answer-$index",
-                    par_q_result_id = row.id,
-                    question_id = questionId,
-                    answer = if (answer) 1L else 0L,
-                )
+    /** Sync pull -- batched in one transaction (not one commit per row). Also rebuilds
+     * par_q_answer_detail from each pulled row's answers_json -- that child table has no sync
+     * participant of its own (see ParQResult.sq). */
+    suspend fun upsertParQResultsFromRemote(rows: List<Pair<ParQResultRow, List<Pair<String, Boolean>>>>) =
+        withContext(Dispatchers.Default) {
+            database.transaction {
+                rows.forEach { (row, answers) ->
+                    val existing = database.parQResultQueries.getParQResultById(row.id).executeAsOneOrNull()
+                    if (existing == null || existing.updated_at < row.updated_at) {
+                        database.parQResultQueries.upsertFromRemote(
+                            id = row.id,
+                            answered_at = row.answered_at,
+                            requires_doctor_consult = row.requires_doctor_consult,
+                            consult_acknowledged_at = row.consult_acknowledged_at,
+                            answers_json = row.answers_json,
+                            user_id = row.user_id,
+                            updated_at = row.updated_at,
+                        )
+                        database.parQAnswerDetailQueries.deleteAnswersForResult(row.id)
+                        answers.forEachIndexed { index, (questionId, answer) ->
+                            database.parQAnswerDetailQueries.insertParQAnswerDetail(
+                                id = "${row.id}-answer-$index",
+                                par_q_result_id = row.id,
+                                question_id = questionId,
+                                answer = if (answer) 1L else 0L,
+                            )
+                        }
+                    }
+                }
             }
         }
-    }
 
     suspend fun insertQuickAssessmentResult(
         id: String,
@@ -126,30 +129,34 @@ class OnboardingLocalDataSource(private val database: NuFitDatabase) {
         database.quickAssessmentResultQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getQuickAssessmentResultById(id: String): QuickAssessmentResultRow? = withContext(Dispatchers.Default) {
-        database.quickAssessmentResultQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillQuickAssessmentUserId(userId: String) = withContext(Dispatchers.Default) {
         database.quickAssessmentResultQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertQuickAssessmentFromRemote(row: QuickAssessmentResultRow) = withContext(Dispatchers.Default) {
-        database.quickAssessmentResultQueries.upsertFromRemote(
-            id = row.id,
-            answered_at = row.answered_at,
-            experience = row.experience,
-            goal = row.goal,
-            equipment = row.equipment,
-            frequency = row.frequency,
-            split_preference = row.split_preference,
-            resolved_split = row.resolved_split,
-            level = row.level,
-            template_id = row.template_id,
-            split_educational_note = row.split_educational_note,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction (not one commit per row). */
+    suspend fun upsertQuickAssessmentsFromRemote(rows: List<QuickAssessmentResultRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.quickAssessmentResultQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.quickAssessmentResultQueries.upsertFromRemote(
+                        id = row.id,
+                        answered_at = row.answered_at,
+                        experience = row.experience,
+                        goal = row.goal,
+                        equipment = row.equipment,
+                        frequency = row.frequency,
+                        split_preference = row.split_preference,
+                        resolved_split = row.resolved_split,
+                        level = row.level,
+                        template_id = row.template_id,
+                        split_educational_note = row.split_educational_note,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 
     suspend fun insertBodyMeasurement(
@@ -180,22 +187,26 @@ class OnboardingLocalDataSource(private val database: NuFitDatabase) {
         database.bodyMeasurementQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getBodyMeasurementById(id: String): BodyMeasurementRow? = withContext(Dispatchers.Default) {
-        database.bodyMeasurementQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillBodyMeasurementUserId(userId: String) = withContext(Dispatchers.Default) {
         database.bodyMeasurementQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertBodyMeasurementFromRemote(row: BodyMeasurementRow) = withContext(Dispatchers.Default) {
-        database.bodyMeasurementQueries.upsertFromRemote(
-            id = row.id,
-            recorded_at = row.recorded_at,
-            height_cm = row.height_cm,
-            weight_kg = row.weight_kg,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction (not one commit per row). */
+    suspend fun upsertBodyMeasurementsFromRemote(rows: List<BodyMeasurementRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.bodyMeasurementQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.bodyMeasurementQueries.upsertFromRemote(
+                        id = row.id,
+                        recorded_at = row.recorded_at,
+                        height_cm = row.height_cm,
+                        weight_kg = row.weight_kg,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }

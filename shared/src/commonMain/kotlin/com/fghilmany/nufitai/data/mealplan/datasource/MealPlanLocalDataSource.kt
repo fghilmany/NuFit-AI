@@ -115,28 +115,32 @@ class MealPlanLocalDataSource(private val database: NuFitDatabase) {
         database.mealPlanQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getById(id: String): MealPlanRow? = withContext(Dispatchers.Default) {
-        database.mealPlanQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
         database.mealPlanQueries.backfillUserId(userId)
     }
 
-    /** Remote-sync upsert; unlike [upsertDayMeals] (local generate, always `user_id = null`), this preserves the remote row's `user_id`. */
-    suspend fun upsertMealPlanFromRemote(row: MealPlanRow) = withContext(Dispatchers.Default) {
-        database.mealPlanQueries.upsertMealPlan(
-            id = row.id,
-            week_start_date = row.week_start_date,
-            calories = row.calories,
-            protein_g = row.protein_g,
-            carb_g = row.carb_g,
-            fat_g = row.fat_g,
-            weight_kg_at_generation = row.weight_kg_at_generation,
-            goal = row.goal,
-            created_at = row.created_at,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction (not one commit per row). Unlike [upsertDayMeals]
+     * (local generate, always `user_id = null`), this preserves the remote row's `user_id`. */
+    suspend fun upsertMealPlansFromRemote(rows: List<MealPlanRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.mealPlanQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.mealPlanQueries.upsertMealPlan(
+                        id = row.id,
+                        week_start_date = row.week_start_date,
+                        calories = row.calories,
+                        protein_g = row.protein_g,
+                        carb_g = row.carb_g,
+                        fat_g = row.fat_g,
+                        weight_kg_at_generation = row.weight_kg_at_generation,
+                        goal = row.goal,
+                        created_at = row.created_at,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }

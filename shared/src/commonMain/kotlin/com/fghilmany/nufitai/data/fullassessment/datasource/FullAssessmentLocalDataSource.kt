@@ -74,35 +74,39 @@ class FullAssessmentLocalDataSource(private val database: NuFitDatabase) {
         database.fullAssessmentResultQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getById(id: String): FullAssessmentResultRow? = withContext(Dispatchers.Default) {
-        database.fullAssessmentResultQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
         database.fullAssessmentResultQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertFromRemote(row: FullAssessmentResultRow) = withContext(Dispatchers.Default) {
-        database.fullAssessmentResultQueries.upsertFromRemote(
-            id = row.id,
-            completed_at = row.completed_at,
-            age = row.age,
-            gender = row.gender,
-            par_q_answers = row.par_q_answers,
-            hard_stop_flagged = row.hard_stop_flagged,
-            hard_stop_acknowledged_at = row.hard_stop_acknowledged_at,
-            equipment_preference = row.equipment_preference,
-            injury_history = row.injury_history,
-            injury_history_note = row.injury_history_note,
-            capacity_test = row.capacity_test,
-            goal = row.goal,
-            sessions_per_week = row.sessions_per_week,
-            selected_weekdays = row.selected_weekdays,
-            session_duration_minutes = row.session_duration_minutes,
-            activity_level = row.activity_level,
-            training_location = row.training_location,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction (not one commit per row). */
+    suspend fun upsertResultsFromRemote(rows: List<FullAssessmentResultRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.fullAssessmentResultQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.fullAssessmentResultQueries.upsertFromRemote(
+                        id = row.id,
+                        completed_at = row.completed_at,
+                        age = row.age,
+                        gender = row.gender,
+                        par_q_answers = row.par_q_answers,
+                        hard_stop_flagged = row.hard_stop_flagged,
+                        hard_stop_acknowledged_at = row.hard_stop_acknowledged_at,
+                        equipment_preference = row.equipment_preference,
+                        injury_history = row.injury_history,
+                        injury_history_note = row.injury_history_note,
+                        capacity_test = row.capacity_test,
+                        goal = row.goal,
+                        sessions_per_week = row.sessions_per_week,
+                        selected_weekdays = row.selected_weekdays,
+                        session_duration_minutes = row.session_duration_minutes,
+                        activity_level = row.activity_level,
+                        training_location = row.training_location,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }

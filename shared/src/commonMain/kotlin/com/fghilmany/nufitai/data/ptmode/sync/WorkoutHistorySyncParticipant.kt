@@ -30,14 +30,7 @@ class WorkoutHistorySyncParticipant(
         local.getChangedSessionsSince(since.toEpochMilliseconds()).map { it.toJson() }
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
-        rows.forEach { row ->
-            val id = row.getValue("id").jsonPrimitive.content
-            val remoteUpdatedAt = row.getValue("updated_at").jsonPrimitive.long
-            val existing = local.getSessionById(id)
-            if (existing == null || existing.updated_at < remoteUpdatedAt) {
-                local.upsertSessionFromRemote(row.toRow())
-            }
-        }
+        local.upsertSessionsFromRemote(rows.map { it.toRow() })
     }
 
     override suspend fun backfillUserId(userId: String) {

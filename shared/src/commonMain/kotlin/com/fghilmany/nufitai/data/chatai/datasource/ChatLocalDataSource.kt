@@ -45,11 +45,30 @@ class ChatLocalDataSource(private val database: NuFitDatabase) {
         database.chatMessageQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getById(id: String): ChatMessageRow? = withContext(Dispatchers.Default) {
-        database.chatMessageQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
         database.chatMessageQueries.backfillUserId(userId)
+    }
+
+    /** Sync pull -- batched in one transaction (not one commit per row). */
+    suspend fun upsertMessagesFromRemote(rows: List<ChatMessageRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.chatMessageQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.chatMessageQueries.upsertChatMessage(
+                        id = row.id,
+                        role = row.role,
+                        text = row.text,
+                        suggestion_exercise_id = row.suggestion_exercise_id,
+                        suggestion_replaces_exercise_id = row.suggestion_replaces_exercise_id,
+                        suggested_replies = row.suggested_replies,
+                        status = row.status,
+                        created_at = row.created_at,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }

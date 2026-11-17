@@ -166,33 +166,38 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.monthlyPlanQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getById(id: String): MonthlyPlanRow? = withContext(Dispatchers.Default) {
-        database.monthlyPlanQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
         database.monthlyPlanQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertFromRemote(row: MonthlyPlanRow) = withContext(Dispatchers.Default) {
-        database.monthlyPlanQueries.upsertFromRemote(
-            id = row.id,
-            started_at = row.started_at,
-            cycle_number = row.cycle_number,
-            source = row.source,
-            status = row.status,
-            plan_name = row.plan_name,
-            level_meta = row.level_meta,
-            goal_meta = row.goal_meta,
-            smart_goal_meta = row.smart_goal_meta,
-            active_flags = row.active_flags,
-            starting_level_per_pattern = row.starting_level_per_pattern,
-            mode = row.mode,
-            checkpoint_days = row.checkpoint_days,
-            deleted_at = row.deleted_at,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction (not one commit per row) so a pull of hundreds of
+     * rows doesn't cost ~100ms/row in individual SQLite commits. LWW per record still applies. */
+    suspend fun upsertPlansFromRemote(rows: List<MonthlyPlanRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.monthlyPlanQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.monthlyPlanQueries.upsertFromRemote(
+                        id = row.id,
+                        started_at = row.started_at,
+                        cycle_number = row.cycle_number,
+                        source = row.source,
+                        status = row.status,
+                        plan_name = row.plan_name,
+                        level_meta = row.level_meta,
+                        goal_meta = row.goal_meta,
+                        smart_goal_meta = row.smart_goal_meta,
+                        active_flags = row.active_flags,
+                        starting_level_per_pattern = row.starting_level_per_pattern,
+                        mode = row.mode,
+                        checkpoint_days = row.checkpoint_days,
+                        deleted_at = row.deleted_at,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 
     suspend fun getPlanDays(planId: String): List<PlanDayRow> = withContext(Dispatchers.Default) {
@@ -244,27 +249,31 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.planDayQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getPlanDayById(id: String): PlanDayRow? = withContext(Dispatchers.Default) {
-        database.planDayQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillPlanDayUserId(userId: String) = withContext(Dispatchers.Default) {
         database.planDayQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertPlanDayFromRemote(row: PlanDayRow) = withContext(Dispatchers.Default) {
-        database.planDayQueries.upsertFromRemote(
-            id = row.id,
-            monthly_plan_id = row.monthly_plan_id,
-            day_number = row.day_number,
-            type = row.type,
-            template_letter = row.template_letter,
-            warmup_general = row.warmup_general,
-            cardio = row.cardio,
-            cooldown_heart_rate = row.cooldown_heart_rate,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction, see [upsertPlansFromRemote] doc. */
+    suspend fun upsertPlanDaysFromRemote(rows: List<PlanDayRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.planDayQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.planDayQueries.upsertFromRemote(
+                        id = row.id,
+                        monthly_plan_id = row.monthly_plan_id,
+                        day_number = row.day_number,
+                        type = row.type,
+                        template_letter = row.template_letter,
+                        warmup_general = row.warmup_general,
+                        cardio = row.cardio,
+                        cooldown_heart_rate = row.cooldown_heart_rate,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 
     /** issue #83 follow-up (ADR-008 §3) -- planned_exercise sync, mirrors plan_day's. */
@@ -272,29 +281,34 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.plannedExerciseQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getPlannedExerciseById(id: String): PlannedExerciseRow? = withContext(Dispatchers.Default) {
-        database.plannedExerciseQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillPlannedExerciseUserId(userId: String) = withContext(Dispatchers.Default) {
         database.plannedExerciseQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertPlannedExerciseFromRemote(row: PlannedExerciseRow) = withContext(Dispatchers.Default) {
-        database.plannedExerciseQueries.upsertFromRemote(
-            id = row.id,
-            plan_day_id = row.plan_day_id,
-            slot = row.slot,
-            exercise_id = row.exercise_id,
-            sets = row.sets,
-            rep_range_or_duration = row.rep_range_or_duration,
-            rpe_target_min = row.rpe_target_min,
-            rpe_target_max = row.rpe_target_max,
-            reason_rule_ids = row.reason_rule_ids,
-            rest_seconds = row.rest_seconds,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction, see [upsertPlansFromRemote] doc. This is the
+     * highest-volume table (hundreds of rows per plan), so the biggest win from batching. */
+    suspend fun upsertPlannedExercisesFromRemote(rows: List<PlannedExerciseRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.plannedExerciseQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.plannedExerciseQueries.upsertFromRemote(
+                        id = row.id,
+                        plan_day_id = row.plan_day_id,
+                        slot = row.slot,
+                        exercise_id = row.exercise_id,
+                        sets = row.sets,
+                        rep_range_or_duration = row.rep_range_or_duration,
+                        rpe_target_min = row.rpe_target_min,
+                        rpe_target_max = row.rpe_target_max,
+                        reason_rule_ids = row.reason_rule_ids,
+                        rest_seconds = row.rest_seconds,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 
     /** issue #83 follow-up (ADR-008 §3) -- plan_day_session_log sync; columns were already
@@ -303,24 +317,28 @@ class MonthlyPlanLocalDataSource(private val database: NuFitDatabase) {
         database.planDaySessionLogQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getSessionLogById(id: String): PlanDaySessionLogRow? = withContext(Dispatchers.Default) {
-        database.planDaySessionLogQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillSessionLogUserId(userId: String) = withContext(Dispatchers.Default) {
         database.planDaySessionLogQueries.backfillUserId(userId)
     }
 
-    suspend fun upsertSessionLogFromRemote(row: PlanDaySessionLogRow) = withContext(Dispatchers.Default) {
-        database.planDaySessionLogQueries.upsertFromRemote(
-            id = row.id,
-            plan_day_id = row.plan_day_id,
-            completed_at = row.completed_at,
-            skipped_at = row.skipped_at,
-            rpe_reported = row.rpe_reported,
-            pain_reported = row.pain_reported,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** Sync pull -- batched in one transaction, see [upsertPlansFromRemote] doc. */
+    suspend fun upsertSessionLogsFromRemote(rows: List<PlanDaySessionLogRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.planDaySessionLogQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.planDaySessionLogQueries.upsertFromRemote(
+                        id = row.id,
+                        plan_day_id = row.plan_day_id,
+                        completed_at = row.completed_at,
+                        skipped_at = row.skipped_at,
+                        rpe_reported = row.rpe_reported,
+                        pain_reported = row.pain_reported,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }

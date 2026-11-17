@@ -28,15 +28,7 @@ class MonthlyPlanSyncParticipant(
         local.getChangedSince(since.toEpochMilliseconds()).map { it.toJson() }
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
-        rows.forEach { row ->
-            val id = row.getValue("id").jsonPrimitive.content
-            val remoteUpdatedAt = row.getValue("updated_at").jsonPrimitive.long
-            val existing = local.getById(id)
-            // LWW per record (techspec §5/§9 item 19): only apply if remote is newer.
-            if (existing == null || existing.updated_at < remoteUpdatedAt) {
-                local.upsertFromRemote(row.toRow())
-            }
-        }
+        local.upsertPlansFromRemote(rows.map { it.toRow() })
         healMultipleActivePlans()
     }
 

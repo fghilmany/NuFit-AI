@@ -28,16 +28,12 @@ class ParQSyncParticipant(
         local.getParQChangedSince(since.toEpochMilliseconds()).map { it.toJson() }
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
-        rows.forEach { row ->
-            val id = row.getValue("id").jsonPrimitive.content
-            val remoteUpdatedAt = row.getValue("updated_at").jsonPrimitive.long
-            val existing = local.getParQResultById(id)
-            if (existing == null || existing.updated_at < remoteUpdatedAt) {
-                val newRow = row.toRow()
-                val answers = json.decodeFromString<Map<String, Boolean>>(newRow.answers_json).map { it.key to it.value }
-                local.upsertParQFromRemote(newRow, answers)
-            }
+        val rowsWithAnswers = rows.map { row ->
+            val newRow = row.toRow()
+            val answers = json.decodeFromString<Map<String, Boolean>>(newRow.answers_json).map { it.key to it.value }
+            newRow to answers
         }
+        local.upsertParQResultsFromRemote(rowsWithAnswers)
     }
 
     override suspend fun backfillUserId(userId: String) {

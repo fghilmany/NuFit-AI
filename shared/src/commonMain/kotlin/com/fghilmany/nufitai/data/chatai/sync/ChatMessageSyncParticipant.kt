@@ -21,26 +21,7 @@ class ChatMessageSyncParticipant(
         local.getChangedSince(since.toEpochMilliseconds()).map { it.toJson() }
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
-        rows.forEach { row ->
-            val id = row.getValue("id").jsonPrimitive.content
-            val remoteUpdatedAt = row.getValue("updated_at").jsonPrimitive.long
-            val existing = local.getById(id)
-            // LWW per record (techspec §5/§9 item 19 precedent, auth-sync.md): only apply if remote is newer.
-            if (existing == null || existing.updated_at < remoteUpdatedAt) {
-                local.upsertMessage(
-                    id = id,
-                    role = row.getValue("role").jsonPrimitive.content,
-                    text = row.getValue("text").jsonPrimitive.content,
-                    suggestionExerciseId = row["suggestion_exercise_id"]?.jsonPrimitive?.contentOrNull,
-                    suggestionReplacesExerciseId = row["suggestion_replaces_exercise_id"]?.jsonPrimitive?.contentOrNull,
-                    suggestedRepliesJson = row["suggested_replies"]?.jsonPrimitive?.contentOrNull,
-                    status = row.getValue("status").jsonPrimitive.content,
-                    createdAt = row.getValue("created_at").jsonPrimitive.long,
-                    userId = row["user_id"]?.jsonPrimitive?.contentOrNull,
-                    updatedAt = remoteUpdatedAt,
-                )
-            }
-        }
+        local.upsertMessagesFromRemote(rows.map { it.toRow() })
     }
 
     override suspend fun backfillUserId(userId: String) {
@@ -59,4 +40,17 @@ class ChatMessageSyncParticipant(
         put("user_id", JsonPrimitive(user_id))
         put("updated_at", JsonPrimitive(updated_at))
     }
+
+    private fun JsonObject.toRow(): ChatMessageRow = ChatMessageRow(
+        id = getValue("id").jsonPrimitive.content,
+        role = getValue("role").jsonPrimitive.content,
+        text = getValue("text").jsonPrimitive.content,
+        suggestion_exercise_id = get("suggestion_exercise_id")?.jsonPrimitive?.contentOrNull,
+        suggestion_replaces_exercise_id = get("suggestion_replaces_exercise_id")?.jsonPrimitive?.contentOrNull,
+        suggested_replies = get("suggested_replies")?.jsonPrimitive?.contentOrNull,
+        status = getValue("status").jsonPrimitive.content,
+        created_at = getValue("created_at").jsonPrimitive.long,
+        user_id = get("user_id")?.jsonPrimitive?.contentOrNull,
+        updated_at = getValue("updated_at").jsonPrimitive.long,
+    )
 }

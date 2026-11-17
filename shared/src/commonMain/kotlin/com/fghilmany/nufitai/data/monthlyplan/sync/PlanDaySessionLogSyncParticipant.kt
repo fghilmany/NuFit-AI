@@ -27,14 +27,7 @@ class PlanDaySessionLogSyncParticipant(
         local.getSessionLogChangedSince(since.toEpochMilliseconds()).map { it.toJson() }
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
-        rows.forEach { row ->
-            val id = row.getValue("id").jsonPrimitive.content
-            val remoteUpdatedAt = row.getValue("updated_at").jsonPrimitive.long
-            val existing = local.getSessionLogById(id)
-            if (existing == null || existing.updated_at < remoteUpdatedAt) {
-                local.upsertSessionLogFromRemote(row.toRow())
-            }
-        }
+        local.upsertSessionLogsFromRemote(rows.map { it.toRow() })
     }
 
     override suspend fun backfillUserId(userId: String) {

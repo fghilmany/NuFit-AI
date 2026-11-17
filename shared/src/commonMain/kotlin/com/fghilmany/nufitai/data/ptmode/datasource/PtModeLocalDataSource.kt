@@ -104,27 +104,32 @@ class PtModeLocalDataSource(private val database: NuFitDatabase) {
         database.workoutSessionQueries.selectChangedSince(updatedAfter).executeAsList()
     }
 
-    suspend fun getSessionById(id: String): WorkoutSessionRow? = withContext(Dispatchers.Default) {
-        database.workoutSessionQueries.selectById(id).executeAsOneOrNull()
-    }
-
     suspend fun backfillSessionUserId(userId: String) = withContext(Dispatchers.Default) {
         database.workoutSessionQueries.backfillUserId(userId)
     }
 
-    /** techspec chat-ai.md §7 -- remote-sync upsert; unlike [upsertSession] (local writes, always `user_id = null`), this preserves the remote row's `user_id`. */
-    suspend fun upsertSessionFromRemote(row: WorkoutSessionRow) = withContext(Dispatchers.Default) {
-        database.workoutSessionQueries.insertWorkoutSession(
-            id = row.id,
-            plan_day_id = row.plan_day_id,
-            started_at = row.started_at,
-            completed_at = row.completed_at,
-            status = row.status,
-            current_exercise_index = row.current_exercise_index,
-            current_set_number = row.current_set_number,
-            rest_end_at = row.rest_end_at,
-            user_id = row.user_id,
-            updated_at = row.updated_at,
-        )
+    /** techspec chat-ai.md §7 -- remote-sync upsert; unlike [upsertSession] (local writes, always
+     * `user_id = null`), this preserves the remote row's `user_id`. Batched in one transaction
+     * (not one commit per row). */
+    suspend fun upsertSessionsFromRemote(rows: List<WorkoutSessionRow>) = withContext(Dispatchers.Default) {
+        database.transaction {
+            rows.forEach { row ->
+                val existing = database.workoutSessionQueries.selectById(row.id).executeAsOneOrNull()
+                if (existing == null || existing.updated_at < row.updated_at) {
+                    database.workoutSessionQueries.insertWorkoutSession(
+                        id = row.id,
+                        plan_day_id = row.plan_day_id,
+                        started_at = row.started_at,
+                        completed_at = row.completed_at,
+                        status = row.status,
+                        current_exercise_index = row.current_exercise_index,
+                        current_set_number = row.current_set_number,
+                        rest_end_at = row.rest_end_at,
+                        user_id = row.user_id,
+                        updated_at = row.updated_at,
+                    )
+                }
+            }
+        }
     }
 }
