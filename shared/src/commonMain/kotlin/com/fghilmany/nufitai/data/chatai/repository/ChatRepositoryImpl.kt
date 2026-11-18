@@ -4,7 +4,9 @@ import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.Failure
 import com.fghilmany.nufitai.core.error.runCatchingDatabase
 import com.fghilmany.nufitai.core.logging.AppLogger
+import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.data.chatai.datasource.ChatApiException
+import com.fghilmany.nufitai.data.chatai.datasource.ChatConversationLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatQuotaLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatRemoteDataSource
@@ -27,6 +29,7 @@ import kotlin.time.Instant
 class ChatRepositoryImpl(
     private val local: ChatLocalDataSource,
     private val quotaLocal: ChatQuotaLocalDataSource,
+    private val conversationLocal: ChatConversationLocalDataSource,
     private val remote: ChatRemoteDataSource,
     private val authRepository: AuthRepository,
 ) : ChatRepository {
@@ -34,7 +37,10 @@ class ChatRepositoryImpl(
     private val json = Json
 
     override suspend fun getHistory(): AppResult<List<ChatMessage>> = runCatchingDatabase {
-        local.getAllMessages().map { it.toEntity() }
+        val cutoff = conversationLocal.getStartedAfterEpochMillis()
+        local.getAllMessages()
+            .filter { cutoff == null || it.created_at >= cutoff }
+            .map { it.toEntity() }
     }
 
     override suspend fun insertMessage(message: ChatMessage): AppResult<Unit> = runCatchingDatabase {
@@ -71,7 +77,8 @@ class ChatRepositoryImpl(
         }
         logger.i { "sendToRemote starting" }
         return try {
-            val response = remote.send(ChatSendRequestDto(message = text), session.accessToken)
+            val cutoff = conversationLocal.getStartedAfterEpochMillis()?.let { Instant.fromEpochMilliseconds(it).toString() }
+            val response = remote.send(ChatSendRequestDto(message = text, conversationStartedAfter = cutoff), session.accessToken)
             val result = response.toEntity()
             quotaLocal.setQuota(result.quota.used, result.quota.max, result.quota.resetsAt.toEpochMilliseconds())
             logger.i { "sendToRemote succeeded, quota=${result.quota.used}/${result.quota.max}" }
@@ -100,6 +107,10 @@ class ChatRepositoryImpl(
     override suspend fun getQuota(): AppResult<ChatQuota?> = runCatchingDatabase {
         val (used, max, resetsAt) = quotaLocal.getQuota() ?: return@runCatchingDatabase null
         ChatQuota(used = used, max = max, resetsAt = Instant.fromEpochMilliseconds(resetsAt))
+    }
+
+    override suspend fun startNewChat(): AppResult<Unit> = runCatchingDatabase {
+        conversationLocal.setStartedAfterEpochMillis(currentInstant().toEpochMilliseconds())
     }
 
     private fun ChatMessageRow.toEntity(): ChatMessage = ChatMessage(

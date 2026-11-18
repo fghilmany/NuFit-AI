@@ -1,5 +1,6 @@
 package com.fghilmany.nufitai.core.di
 
+import com.fghilmany.nufitai.data.chatai.datasource.ChatConversationLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatExerciseOverrideLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatLocalDataSource
 import com.fghilmany.nufitai.data.chatai.datasource.ChatQuotaLocalDataSource
@@ -16,6 +17,7 @@ import com.fghilmany.nufitai.usecase.chatai.GetChatQuota
 import com.fghilmany.nufitai.usecase.chatai.ReconcileStuckChatMessages
 import com.fghilmany.nufitai.usecase.chatai.RetryFailedMessage
 import com.fghilmany.nufitai.usecase.chatai.SendChatMessage
+import com.fghilmany.nufitai.usecase.chatai.StartNewChat
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
@@ -30,8 +32,11 @@ val chatAiModule = module {
 
     single { ChatLocalDataSource(database = get()) }
     single { ChatQuotaLocalDataSource(settings = get()) }
+    single { ChatConversationLocalDataSource(settings = get()) }
     single { ChatRemoteDataSource(httpClient = get()) }
-    single<ChatRepository> { ChatRepositoryImpl(local = get(), quotaLocal = get(), remote = get(), authRepository = get()) }
+    single<ChatRepository> {
+        ChatRepositoryImpl(local = get(), quotaLocal = get(), conversationLocal = get(), remote = get(), authRepository = get())
+    }
 
     // GetActivePlanOverview/GetSessionStatus registered in monthlyPlanModule, GetCurrentTier in
     // entitlementModule, GetExerciseDetail in exerciseLibraryModule -- all load together in
@@ -42,6 +47,7 @@ val chatAiModule = module {
     factory { RetryFailedMessage(repository = get()) }
     factory { GetChatQuota(repository = get()) }
     factory { ReconcileStuckChatMessages(repository = get()) }
+    factory { StartNewChat(repository = get()) }
 
     viewModel { ChatGateViewModel(getCurrentTier = get()) }
     viewModel {
@@ -53,6 +59,7 @@ val chatAiModule = module {
             getChatQuota = get(),
             applyChatExerciseSuggestion = get(),
             getExerciseDetail = get(),
+            startNewChat = get(),
         )
     }
 }

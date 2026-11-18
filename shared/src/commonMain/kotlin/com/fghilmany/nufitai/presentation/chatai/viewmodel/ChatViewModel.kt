@@ -3,7 +3,11 @@ package com.fghilmany.nufitai.presentation.chatai.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
+import com.fghilmany.nufitai.core.util.currentInstant
+import com.fghilmany.nufitai.core.util.generateId
 import com.fghilmany.nufitai.domain.chatai.entity.ChatMessage
+import com.fghilmany.nufitai.domain.chatai.entity.ChatMessageRole
+import com.fghilmany.nufitai.domain.chatai.entity.ChatMessageStatus
 import com.fghilmany.nufitai.domain.chatai.entity.ChatQuota
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.usecase.chatai.ApplyChatExerciseSuggestion
@@ -12,6 +16,7 @@ import com.fghilmany.nufitai.usecase.chatai.GetChatQuota
 import com.fghilmany.nufitai.usecase.chatai.ReconcileStuckChatMessages
 import com.fghilmany.nufitai.usecase.chatai.RetryFailedMessage
 import com.fghilmany.nufitai.usecase.chatai.SendChatMessage
+import com.fghilmany.nufitai.usecase.chatai.StartNewChat
 import com.fghilmany.nufitai.usecase.exerciselibrary.GetExerciseDetail
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -50,6 +55,7 @@ class ChatViewModel(
     private val getChatQuota: GetChatQuota,
     private val applyChatExerciseSuggestion: ApplyChatExerciseSuggestion,
     private val getExerciseDetail: GetExerciseDetail,
+    private val startNewChat: StartNewChat,
 ) : ViewModel() {
     private val _state = MutableStateFlow(ChatState())
     val state: StateFlow<ChatState> = _state.asStateFlow()
@@ -66,11 +72,25 @@ class ChatViewModel(
         if (text.length <= COMPOSER_CHAR_LIMIT) _state.update { it.copy(draft = text) }
     }
 
-    /** AC-3/AC-6/§9 item 10 -- disabled while sending or quota-exhausted; offline sends still queue (SENDING->FAILED), never silently drop the draft. */
+    /** AC-3/AC-6/§9 item 10 -- disabled while sending or quota-exhausted; offline sends still queue (SENDING->FAILED), never silently drop the draft.
+     * The typed message is appended to [ChatState.messages] immediately (TD-CHAT-02) -- without
+     * this, the user's own bubble didn't appear until the whole round-trip finished, so all they
+     * saw while waiting was [ThinkingBubble]. This optimistic row's id is local-only; [refreshAfterSend]'s
+     * [loadHistory] replaces the whole list with the DB-backed one (which has [SendChatMessage]'s
+     * own id for the same row) once the real result is known, so it's never duplicated. */
     fun onSend() {
         val text = _state.value.draft.trim()
         if (text.isEmpty() || _state.value.isSending || _state.value.isQuotaExhausted) return
-        _state.update { it.copy(draft = "", isSending = true) }
+        val optimisticMessage = ChatMessage(
+            id = generateId(),
+            role = ChatMessageRole.USER,
+            text = text,
+            suggestion = null,
+            suggestedReplies = emptyList(),
+            status = ChatMessageStatus.SENDING,
+            createdAt = currentInstant(),
+        )
+        _state.update { it.copy(draft = "", isSending = true, messages = it.messages + optimisticMessage) }
         viewModelScope.launch {
             sendChatMessage(text)
             _state.update { it.copy(isSending = false) }
@@ -78,10 +98,17 @@ class ChatViewModel(
         }
     }
 
-    /** AC-6/AC-7 -- retries a FAILED message in place, same row id. */
+    /** AC-6/AC-7 -- retries a FAILED message in place, same row id. Flips that row to SENDING in
+     * [ChatState.messages] immediately (TD-CHAT-02) instead of leaving it shown as FAILED until
+     * the retry round-trip finishes. */
     fun onRetry(message: ChatMessage) {
         if (_state.value.isSending) return
-        _state.update { it.copy(isSending = true) }
+        _state.update { state ->
+            state.copy(
+                isSending = true,
+                messages = state.messages.map { if (it.id == message.id) it.copy(status = ChatMessageStatus.SENDING) else it },
+            )
+        }
         viewModelScope.launch {
             retryFailedMessage(message)
             _state.update { it.copy(isSending = false) }
@@ -106,6 +133,15 @@ class ChatViewModel(
 
     fun dismissApplyResult() {
         _state.update { it.copy(applyResult = null) }
+    }
+
+    /** "Chat Baru" (dev-requested, 18 Nov 2026) -- resets the conversation cutoff (nothing is
+     * deleted) then reloads, which now returns empty since every existing message predates it. */
+    fun onStartNewChat() {
+        viewModelScope.launch {
+            startNewChat()
+            loadHistory()
+        }
     }
 
     private suspend fun loadHistory() {

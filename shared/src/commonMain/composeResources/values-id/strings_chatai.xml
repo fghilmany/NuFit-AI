@@ -6,7 +6,7 @@
 
     <string name="chatai_top_bar_title">Chat AI</string>
     <string name="chatai_overflow_content_description">Menu lainnya</string>
-    <string name="chatai_overflow_clear_conversation">Hapus percakapan</string>
+    <string name="chatai_overflow_new_chat">Chat Baru</string>
 
     <string name="chatai_quota_label">%1$d/%2$d chat hari ini</string>
     <string name="chatai_quota_exhausted_body">Kuota chat kamu hari ini sudah habis. Upgrade ke Subscribe untuk limit lebih tinggi.</string>

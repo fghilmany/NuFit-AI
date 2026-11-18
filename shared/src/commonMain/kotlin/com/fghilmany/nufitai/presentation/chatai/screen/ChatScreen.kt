@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
@@ -21,6 +22,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,7 +51,7 @@ import nufitai.shared.generated.resources.chatai_empty_starter_1
 import nufitai.shared.generated.resources.chatai_empty_starter_2
 import nufitai.shared.generated.resources.chatai_empty_starter_3
 import nufitai.shared.generated.resources.chatai_empty_state_title
-import nufitai.shared.generated.resources.chatai_overflow_clear_conversation
+import nufitai.shared.generated.resources.chatai_overflow_new_chat
 import nufitai.shared.generated.resources.chatai_overflow_content_description
 import nufitai.shared.generated.resources.chatai_top_bar_title
 import org.jetbrains.compose.resources.stringResource
@@ -73,7 +75,7 @@ fun ChatScreen(
 
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         Column(modifier = Modifier.fillMaxSize()) {
-            TopBar()
+            TopBar(onNewChatClick = viewModel::onStartNewChat)
 
             state.quota?.let { quota ->
                 QuotaBanner(
@@ -141,7 +143,7 @@ fun ChatScreen(
 }
 
 @Composable
-private fun TopBar() {
+private fun TopBar(onNewChatClick: () -> Unit) {
     var overflowExpanded by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 24.dp, vertical = 16.dp),
@@ -153,9 +155,17 @@ private fun TopBar() {
             IconButton(onClick = { overflowExpanded = true }) {
                 Icon(Icons.Filled.MoreVert, contentDescription = stringResource(Res.string.chatai_overflow_content_description))
             }
-            // §9 item 13 -- placeholder only, full scope undefined by design; no-op until a real "clear conversation" usecase is scoped.
+            // Dev correction (18 Nov): was labeled "Clear conversation"/"Hapus percakapan" --
+            // wrong wording. Now wired to reset the conversation cutoff (ChatViewModel.onStartNewChat)
+            // -- nothing is deleted, old messages just drop out of view/context (dev-approved design).
             DropdownMenu(expanded = overflowExpanded, onDismissRequest = { overflowExpanded = false }) {
-                DropdownMenuItem(text = { Text(stringResource(Res.string.chatai_overflow_clear_conversation)) }, onClick = { overflowExpanded = false })
+                DropdownMenuItem(
+                    text = { Text(stringResource(Res.string.chatai_overflow_new_chat)) },
+                    onClick = {
+                        overflowExpanded = false
+                        onNewChatClick()
+                    },
+                )
             }
         }
     }
@@ -190,7 +200,25 @@ private fun MessageList(
     onExerciseClick: (exerciseId: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val listState = rememberLazyListState()
+    val totalItemCount = messages.size + if (isSending) 1 else 0
+    // Dev report (18 Nov): chat should open already scrolled to the latest message, and jump to
+    // the bottom again on send/reply -- without this, opening a long conversation lands on the
+    // oldest messages, and a new message/reply can land off-screen below the fold.
+    var hasScrolledInitially by remember { mutableStateOf(false) }
+    LaunchedEffect(totalItemCount) {
+        if (totalItemCount == 0) return@LaunchedEffect
+        val lastIndex = totalItemCount - 1
+        if (!hasScrolledInitially) {
+            listState.scrollToItem(lastIndex)
+            hasScrolledInitially = true
+        } else {
+            listState.animateScrollToItem(lastIndex)
+        }
+    }
+
     LazyColumn(
+        state = listState,
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),

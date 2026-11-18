@@ -34,4 +34,6 @@ class FakeChatRepository : ChatRepository {
     }
 
     override suspend fun getQuota(): AppResult<ChatQuota?> = AppResult.Success(quota)
+
+    override suspend fun startNewChat(): AppResult<Unit> = AppResult.Success(Unit)
 }

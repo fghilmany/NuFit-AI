@@ -6,7 +6,7 @@
 
     <string name="chatai_top_bar_title">Chat AI</string>
     <string name="chatai_overflow_content_description">More options</string>
-    <string name="chatai_overflow_clear_conversation">Clear conversation</string>
+    <string name="chatai_overflow_new_chat">New chat</string>
 
     <string name="chatai_quota_label">%1$d/%2$d chats today</string>
     <string name="chatai_quota_exhausted_body">You have used all your chats for today. Upgrade to Subscribe for a higher limit.</string>

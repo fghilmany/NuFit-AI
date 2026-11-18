@@ -19,4 +19,8 @@ interface ChatRepository {
     suspend fun sendToRemote(text: String): AppResult<ChatSendResult>
 
     suspend fun getQuota(): AppResult<ChatQuota?>
+
+    /** "New Chat" (dev-requested, 2026-11-18): sets the conversation cutoff to now -- [getHistory]
+     * and [sendToRemote]'s context both exclude anything before it. Nothing is deleted. */
+    suspend fun startNewChat(): AppResult<Unit>
 }
