@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -106,12 +108,17 @@ fun MealPreferenceScreen(onBack: () -> Unit, viewModel: MealPreferenceViewModel 
 
             state.error?.let { error -> Text(error, color = MaterialTheme.colorScheme.error) }
 
-            AppButton(
-                text = stringResource(Res.string.mealplan_preference_save_cta),
-                onClick = viewModel::onSave,
-                enabled = !state.isSaving,
-                modifier = Modifier.fillMaxWidth(),
-            )
+            // Dev report (18 Nov 2026): button was correctly disabled while isSaving, but nothing
+            // indicated why -- no spinner anywhere, just a dead button.
+            if (state.isSaving) {
+                Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
+            } else {
+                AppButton(
+                    text = stringResource(Res.string.mealplan_preference_save_cta),
+                    onClick = viewModel::onSave,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
     }
 }

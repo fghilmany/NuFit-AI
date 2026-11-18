@@ -96,6 +96,7 @@ fun ChatScreen(
                     messages = state.messages,
                     resolvedExercises = state.resolvedExercises,
                     applyResult = state.applyResult,
+                    applyingMessageId = state.applyingMessageId,
                     isSending = state.isSending,
                     onRetry = viewModel::onRetry,
                     onApplyToPlan = { messageId, replacesId, substituteId -> viewModel.onApplyToPlan(messageId, replacesId, substituteId) },
@@ -193,6 +194,7 @@ private fun MessageList(
     messages: List<ChatMessage>,
     resolvedExercises: Map<String, Exercise>,
     applyResult: ApplySuggestionResult?,
+    applyingMessageId: String?,
     isSending: Boolean,
     onRetry: (ChatMessage) -> Unit,
     onApplyToPlan: (messageId: String, replacesExerciseId: String, substituteExerciseId: String) -> Unit,
@@ -230,6 +232,7 @@ private fun MessageList(
                     val suggestion = message.suggestion
                     val resolvedExercise = suggestion?.let { resolvedExercises[it.exerciseId] }
                     val applyState = when {
+                        applyingMessageId == message.id -> ApplyCardState.Applying
                         applyResult is ApplySuggestionResult.Success && applyResult.messageId == message.id -> ApplyCardState.Applied
                         applyResult is ApplySuggestionResult.Error && applyResult.messageId == message.id -> ApplyCardState.Failed
                         else -> ApplyCardState.Idle

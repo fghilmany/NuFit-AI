@@ -1,11 +1,22 @@
 package com.fghilmany.nufitai.core.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanFormScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanGateScreen
 import com.fghilmany.nufitai.presentation.aicustomplan.screen.AiCustomPlanPreviewScreen
@@ -40,6 +51,24 @@ import com.fghilmany.nufitai.presentation.ptmode.screen.WorkoutSummaryScreen
 
 @Composable
 fun NuFitNavGraph(navController: NavHostController = rememberNavController()) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    LaunchedEffect(Unit) {
+        SnackbarController.messages.collect { message ->
+            snackbarHostState.showSnackbar(message)
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        NuFitNavHost(navController)
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 88.dp),
+        )
+    }
+}
+
+@Composable
+private fun NuFitNavHost(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Route.Splash) {
         composable<Route.Splash> {
             SplashScreen(

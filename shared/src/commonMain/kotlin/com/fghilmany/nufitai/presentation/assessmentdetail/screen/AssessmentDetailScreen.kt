@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -142,9 +143,11 @@ private fun AssessmentDetailContent(
 ) {
     when (state.retakeDialog) {
         RetakeDialogState.Confirming -> RetakeConfirmDialog(
+            isRetaking = false,
             onConfirm = { viewModel.onEvent(AssessmentDetailEvent.ConfirmRetake) },
             onCancel = { viewModel.onEvent(AssessmentDetailEvent.CancelRetake) },
         )
+        RetakeDialogState.Retaking -> RetakeConfirmDialog(isRetaking = true, onConfirm = {}, onCancel = {})
         RetakeDialogState.Blocked -> RetakeBlockedDialog(onDismiss = { viewModel.onEvent(AssessmentDetailEvent.CancelRetake) })
         RetakeDialogState.Hidden -> Unit
     }
@@ -287,13 +290,19 @@ private fun TabItem(label: String, isActive: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-private fun RetakeConfirmDialog(onConfirm: () -> Unit, onCancel: () -> Unit) {
+private fun RetakeConfirmDialog(isRetaking: Boolean, onConfirm: () -> Unit, onCancel: () -> Unit) {
     AlertDialog(
-        onDismissRequest = onCancel,
+        onDismissRequest = { if (!isRetaking) onCancel() },
         title = { Text(stringResource(Res.string.assessmentdetail_retake_dialog_title)) },
         text = { Text(stringResource(Res.string.assessmentdetail_retake_dialog_body)) },
-        confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(Res.string.assessmentdetail_retake_dialog_confirm)) } },
-        dismissButton = { TextButton(onClick = onCancel) { Text(stringResource(Res.string.common_action_cancel)) } },
+        confirmButton = {
+            if (isRetaking) {
+                CircularProgressIndicator(modifier = Modifier.size(24.dp))
+            } else {
+                TextButton(onClick = onConfirm) { Text(stringResource(Res.string.assessmentdetail_retake_dialog_confirm)) }
+            }
+        },
+        dismissButton = { TextButton(onClick = onCancel, enabled = !isRetaking) { Text(stringResource(Res.string.common_action_cancel)) } },
     )
 }
 

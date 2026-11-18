@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,11 +61,20 @@ fun ExerciseSuggestionCard(
             when (applyState) {
                 is ApplyCardState.Applied -> Text(stringResource(Res.string.chatai_suggestion_apply_success), style = MaterialTheme.typography.bodySmall, color = NuFitColors.Secondary)
                 is ApplyCardState.Failed -> Text(stringResource(Res.string.chatai_suggestion_apply_error_not_found), style = MaterialTheme.typography.bodySmall, color = NuFitColors.Error)
-                ApplyCardState.Idle -> Unit
+                ApplyCardState.Idle, ApplyCardState.Applying -> Unit
             }
 
+            // Dev report (18 Nov 2026): this button was never disabled and never showed any
+            // loading feedback while onApplyToPlan's network/DB call was in flight -- tappable
+            // repeatedly with no indication anything was happening.
             if (replacesExerciseId != null && applyState !is ApplyCardState.Applied) {
-                AppButton(text = stringResource(Res.string.chatai_suggestion_apply_cta), onClick = onApplyToPlan, modifier = Modifier.fillMaxWidth())
+                AppButton(onClick = onApplyToPlan, enabled = applyState != ApplyCardState.Applying, modifier = Modifier.fillMaxWidth()) {
+                    if (applyState == ApplyCardState.Applying) {
+                        CircularProgressIndicator(modifier = Modifier.size(20.dp))
+                    } else {
+                        Text(stringResource(Res.string.chatai_suggestion_apply_cta))
+                    }
+                }
             }
             AppButton(
                 onClick = onAskMore,
@@ -78,6 +89,7 @@ fun ExerciseSuggestionCard(
 
 sealed interface ApplyCardState {
     data object Idle : ApplyCardState
+    data object Applying : ApplyCardState
     data object Applied : ApplyCardState
     data object Failed : ApplyCardState
 }

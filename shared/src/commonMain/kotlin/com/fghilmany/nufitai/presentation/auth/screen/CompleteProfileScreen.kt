@@ -1,6 +1,7 @@
 package com.fghilmany.nufitai.presentation.auth.screen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -17,6 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -53,13 +59,21 @@ fun CompleteProfileScreen(onCompleted: () -> Unit, viewModel: CompleteProfileVie
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        val editing = state as? CompleteProfileState.Editing
+        // Dev report (18 Nov 2026): `state as? Editing` went null the instant Saving started, so
+        // the whole form (fields + button) vanished with nothing in its place -- just the
+        // title/subtitle on an otherwise blank screen while the save was in flight. Keeps the
+        // last Editing snapshot around so the form stays visible (disabled) during Saving.
+        var lastEditing by remember { mutableStateOf<CompleteProfileState.Editing?>(null) }
+        (state as? CompleteProfileState.Editing)?.let { lastEditing = it }
+        val editing = lastEditing
+        val isSaving = state is CompleteProfileState.Saving
         if (editing != null) {
             AppTextField(
                 value = editing.ageInput,
                 onValueChange = viewModel::onAgeChanged,
                 label = stringResource(Res.string.auth_complete_profile_age_label),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                enabled = !isSaving,
                 modifier = Modifier.fillMaxWidth(),
             )
 
@@ -68,12 +82,14 @@ fun CompleteProfileScreen(onCompleted: () -> Unit, viewModel: CompleteProfileVie
                 GenderToggle(
                     label = stringResource(Res.string.fullassessment_interview_gender_male),
                     isSelected = editing.gender == Gender.MALE,
+                    enabled = !isSaving,
                     modifier = Modifier.fillMaxWidth().padding(end = 0.dp),
                     onClick = { viewModel.onGenderChanged(Gender.MALE) },
                 )
                 GenderToggle(
                     label = stringResource(Res.string.fullassessment_interview_gender_female),
                     isSelected = editing.gender == Gender.FEMALE,
+                    enabled = !isSaving,
                     modifier = Modifier.fillMaxWidth(),
                     onClick = { viewModel.onGenderChanged(Gender.FEMALE) },
                 )
@@ -81,21 +97,25 @@ fun CompleteProfileScreen(onCompleted: () -> Unit, viewModel: CompleteProfileVie
 
             editing.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
 
-            AppButton(
-                text = stringResource(Res.string.common_action_save),
-                onClick = viewModel::save,
-                modifier = Modifier.fillMaxWidth(),
-            )
+            if (isSaving) {
+                Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
+            } else {
+                AppButton(
+                    text = stringResource(Res.string.common_action_save),
+                    onClick = viewModel::save,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun GenderToggle(label: String, isSelected: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+private fun GenderToggle(label: String, isSelected: Boolean, enabled: Boolean = true, modifier: Modifier = Modifier, onClick: () -> Unit) {
     if (isSelected) {
-        Button(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(12.dp)) { Text(label) }
+        Button(onClick = onClick, enabled = enabled, modifier = modifier, shape = RoundedCornerShape(12.dp)) { Text(label) }
     } else {
-        OutlinedButton(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(12.dp), colors = ButtonDefaults.outlinedButtonColors()) {
+        OutlinedButton(onClick = onClick, enabled = enabled, modifier = modifier, shape = RoundedCornerShape(12.dp), colors = ButtonDefaults.outlinedButtonColors()) {
             Text(label)
         }
     }

@@ -24,6 +24,10 @@ sealed interface RetakeDialogState {
     data object Hidden : RetakeDialogState
     data object Confirming : RetakeDialogState
 
+    /** Dev report (18 Nov 2026): confirmRetake() had no loading state at all -- the confirm
+     * button stayed tappable and nothing indicated the request was in flight. */
+    data object Retaking : RetakeDialogState
+
     /** UC-3 forward-compat guard (§5 GetAssessmentDetail doc) -- always unreachable until PT Mode exists. */
     data object Blocked : RetakeDialogState
 }
@@ -120,6 +124,7 @@ class AssessmentDetailViewModel(
     private fun confirmRetake() {
         val current = _state.value
         if (current !is AssessmentDetailState.Loaded || current.retakeDialog != RetakeDialogState.Confirming) return
+        _state.value = current.copy(retakeDialog = RetakeDialogState.Retaking)
 
         viewModelScope.launch {
             when (val result = retakeAssessment()) {

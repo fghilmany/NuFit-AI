@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.presentation.chatai.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.core.util.generateId
@@ -41,6 +42,9 @@ data class ChatState(
     val draft: String = "",
     val isSending: Boolean = false,
     val applyResult: ApplySuggestionResult? = null,
+    /** Dev report (18 Nov 2026): "Terapkan ke Plan" had no loading feedback at all. Id of the
+     * message whose suggestion is currently being applied, null when none is in flight. */
+    val applyingMessageId: String? = null,
     val loadError: String? = null,
 ) {
     val composerLimit: Int get() = COMPOSER_CHAR_LIMIT
@@ -123,10 +127,16 @@ class ChatViewModel(
 
     /** AC-4, BLOCKING -- "Terapkan ke Plan". */
     fun onApplyToPlan(messageId: String, replacesExerciseId: String, substituteExerciseId: String) {
+        if (_state.value.applyingMessageId != null) return
+        _state.update { it.copy(applyingMessageId = messageId) }
         viewModelScope.launch {
             when (val result = applyChatExerciseSuggestion(replacesExerciseId, substituteExerciseId)) {
-                is AppResult.Error -> _state.update { it.copy(applyResult = ApplySuggestionResult.Error(messageId, result.failure.message)) }
-                is AppResult.Success -> _state.update { it.copy(applyResult = ApplySuggestionResult.Success(messageId)) }
+                is AppResult.Error -> _state.update {
+                    it.copy(applyResult = ApplySuggestionResult.Error(messageId, result.failure.message), applyingMessageId = null)
+                }
+                is AppResult.Success -> _state.update {
+                    it.copy(applyResult = ApplySuggestionResult.Success(messageId), applyingMessageId = null)
+                }
             }
         }
     }
@@ -146,7 +156,12 @@ class ChatViewModel(
 
     private suspend fun loadHistory() {
         when (val result = getChatHistory()) {
-            is AppResult.Error -> _state.update { it.copy(loadError = result.failure.message) }
+            // loadError was set here but never read anywhere (ChatScreen.kt never checked it) --
+            // dev report 18 Nov: errors must surface, not fail silently.
+            is AppResult.Error -> {
+                _state.update { it.copy(loadError = result.failure.message) }
+                SnackbarController.showError(result.failure.message)
+            }
             is AppResult.Success -> {
                 _state.update { it.copy(messages = result.data.sortedBy { message -> message.createdAt }, loadError = null) }
                 resolveSuggestionExercises(result.data)
