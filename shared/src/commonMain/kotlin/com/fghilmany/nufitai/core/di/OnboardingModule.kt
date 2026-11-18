@@ -42,7 +42,7 @@ val onboardingModule = module {
     factory { GetAllBodyMeasurements(repository = get()) }
     factory { SubmitQuickAssessment(repository = get(), resolveQuickAssessment = get()) }
     factory { SaveBodyMeasurement(repository = get()) }
-    factory { GetLocalProfileStatus(repository = get()) }
+    factory { GetLocalProfileStatus(repository = get(), authRepository = get()) }
 
     // hasSeenMedicalDisclaimer registered in profileSettingsModule -- both load together in
     // KoinInit (mirrors QuickAssessmentViewModel's generateLocalTemplatePlan cross-module get()).
