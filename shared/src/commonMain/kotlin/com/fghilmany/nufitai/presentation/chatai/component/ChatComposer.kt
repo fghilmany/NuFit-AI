@@ -50,6 +50,8 @@ fun ChatComposer(
             onValueChange = onValueChange,
             placeholder = stringResource(Res.string.chatai_composer_placeholder),
             enabled = fieldEnabled,
+            singleLine = false,
+            maxLines = 5,
             modifier = Modifier.weight(1f),
         )
         val canSend = sendEnabled && fieldEnabled

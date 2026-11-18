@@ -20,6 +20,7 @@ fun AppTextField(
     placeholder: String? = null,
     enabled: Boolean = true,
     singleLine: Boolean = true,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     OutlinedTextField(
@@ -30,6 +31,7 @@ fun AppTextField(
         placeholder = placeholder?.let { { Text(it) } },
         enabled = enabled,
         singleLine = singleLine,
+        maxLines = maxLines,
         keyboardOptions = keyboardOptions,
         shape = RoundedCornerShape(InputCornerRadius),
     )
