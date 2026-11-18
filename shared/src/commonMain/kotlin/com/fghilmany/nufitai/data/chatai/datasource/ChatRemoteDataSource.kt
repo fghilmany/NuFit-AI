@@ -11,8 +11,18 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 
-class ChatApiException(val statusCode: Int, val responseBody: String = "", val quotaExceeded: Boolean = false) :
+/**
+ * [reason] is the server's typed `{"reason": "..."}` body on a 403 (`chat-send/index.ts`):
+ * `quota_exceeded`, `ai_access_blocked`, or `requires_login` -- null when the body isn't that
+ * shape (network/5xx error page) or the status isn't 403. Previously this only carried a
+ * `quotaExceeded: Boolean` set for EVERY 403 regardless of actual reason, so `ai_access_blocked`
+ * and `requires_login` were both misreported as "quota habis" to the repository layer.
+ */
+class ChatApiException(val statusCode: Int, val responseBody: String = "", val reason: String? = null) :
     Exception("Chat request failed with status $statusCode: $responseBody")
 
 /**
@@ -27,8 +37,9 @@ class ChatRemoteDataSource(private val httpClient: HttpClient) {
             setBody(request)
         }
         if (!response.status.isSuccess()) {
-            val quotaExceeded = response.status.value == 403
-            throw ChatApiException(response.status.value, response.bodyAsText(), quotaExceeded)
+            val bodyText = response.bodyAsText()
+            val reason = if (response.status.value == 403) parseReason(bodyText) else null
+            throw ChatApiException(response.status.value, bodyText, reason)
         }
         return response.body()
     }
@@ -37,4 +48,12 @@ class ChatRemoteDataSource(private val httpClient: HttpClient) {
         // Real Supabase Functions invoke URL (not the dashboard page) -- functions must be deployed first (ADR-008).
         const val BASE_URL = "https://wnruvcpeyxssxpqwptst.supabase.co/functions/v1"
     }
+}
+
+/** Returns null (not throw) on an unparseable body -- a 403 whose body isn't the expected
+ * `{"reason": "..."}` shape should still surface as a generic network error, not crash. */
+private fun parseReason(body: String): String? = try {
+    Json.parseToJsonElement(body).jsonObject["reason"]?.jsonPrimitive?.content
+} catch (e: Exception) {
+    null
 }

@@ -79,10 +79,16 @@ class ChatRepositoryImpl(
         } catch (e: CancellationException) {
             throw e
         } catch (e: ChatApiException) {
-            logger.e(e) { "sendToRemote failed -- HTTP ${e.statusCode}" }
+            logger.e(e) { "sendToRemote failed -- HTTP ${e.statusCode} reason=${e.reason}" }
             when {
                 e.statusCode == 401 -> AppResult.Error(Failure.Unauthorized())
-                e.quotaExceeded -> AppResult.Error(Failure.QuotaExceeded())
+                e.reason == "quota_exceeded" -> AppResult.Error(Failure.QuotaExceeded())
+                // No dedicated Failure case for these two yet (adding one means an exhaustive
+                // `when` audit across every Failure consumer) -- Unauthorized is the closest
+                // existing fit and, unlike the old "every 403 = quota exceeded" bug, at least no
+                // longer lies to the user that they're out of chat quota.
+                e.reason == "requires_login" -> AppResult.Error(Failure.Unauthorized("Perlu login untuk memakai Chat AI"))
+                e.reason == "ai_access_blocked" -> AppResult.Error(Failure.Unauthorized("Akses AI untuk akun ini sedang dibatasi"))
                 else -> AppResult.Error(Failure.Network("Chat backend error (${e.statusCode})"))
             }
         } catch (e: Exception) {
