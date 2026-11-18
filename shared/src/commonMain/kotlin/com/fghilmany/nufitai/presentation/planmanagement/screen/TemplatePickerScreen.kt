@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.domain.monthlyplan.entity.MonthlyPlan
 import com.fghilmany.nufitai.domain.onboarding.entity.Level
 import com.fghilmany.nufitai.domain.onboarding.entity.ResolvedSplit
@@ -62,7 +63,7 @@ fun TemplatePickerScreen(
             is TemplatePickerState.Step -> StepContent(current, viewModel)
             TemplatePickerState.Submitting -> LoadingBox()
             is TemplatePickerState.Completed -> LoadingBox() // brief -- LaunchedEffect navigates away
-            is TemplatePickerState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is TemplatePickerState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.restoreFromError(current.lastStep) })
         }
     }
 }

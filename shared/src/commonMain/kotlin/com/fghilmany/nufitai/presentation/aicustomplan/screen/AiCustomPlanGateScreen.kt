@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanGateState
@@ -75,7 +76,7 @@ fun AiCustomPlanGateScreen(
                     ctaLabel = stringResource(Res.string.aicustomplan_gate_cta_start_assessment),
                     onCta = onNavigateToFullAssessment,
                 )
-                is AiCustomPlanGateState.Error -> Text(current.message)
+                is AiCustomPlanGateState.Error -> ErrorRetryView(current.message, onRetry = viewModel::resolve)
             }
         }
     }

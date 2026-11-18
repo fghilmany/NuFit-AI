@@ -25,6 +25,10 @@ class ChatGateViewModel(
     val state: StateFlow<ChatGateState> = _state.asStateFlow()
 
     init {
+        resolve()
+    }
+
+    fun resolve() {
         viewModelScope.launch {
             when (val result = getCurrentTier()) {
                 is AppResult.Error -> _state.value = ChatGateState.Error(result.failure.message)

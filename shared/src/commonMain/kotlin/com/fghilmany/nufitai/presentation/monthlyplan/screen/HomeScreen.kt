@@ -45,6 +45,7 @@ import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.HomeViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.viewmodel.WeekEntry
 import com.fghilmany.nufitai.presentation.onboarding.component.ProgressBar
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.usecase.monthlyplan.SessionStatus
@@ -81,7 +82,7 @@ fun HomeScreen(
         when (val current = state) {
             HomeState.Loading -> LoadingBox()
             HomeState.Empty -> EmptyPlanState(onCreatePlanClick = onPlansClick)
-            is HomeState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is HomeState.Error -> ErrorRetryView(current.message, onRetry = viewModel::load)
             is HomeState.Loaded -> HomeContent(current, viewModel, onSessionClick, onStartSession, onAssessmentDetailClick, onExerciseLibraryClick)
         }
 

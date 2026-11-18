@@ -105,7 +105,10 @@ class AiCustomPlanPreviewViewModel(
         loadExercisesThenShowDraft()
     }
 
-    private fun loadExercisesThenShowDraft() {
+    /** Public so AiCustomPlanPreviewScreen's retry-on-error card (dev report 18 Nov 2026) can call
+     * it again -- the draft itself is untouched, so retrying just re-shows it; whatever action
+     * actually failed (regenerate/persist/swap/etc) needs to be re-tapped by the user. */
+    fun loadExercisesThenShowDraft() {
         viewModelScope.launch {
             val draft = draftHolder.current
             if (draft == null) {

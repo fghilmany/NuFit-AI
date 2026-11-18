@@ -41,7 +41,7 @@ class MealPlanGateViewModel(
         resolve()
     }
 
-    private fun resolve() {
+    fun resolve() {
         viewModelScope.launch {
             when (val tierResult = getCurrentTier()) {
                 is AppResult.Error -> _state.value = MealPlanGateState.Error(tierResult.failure.message)

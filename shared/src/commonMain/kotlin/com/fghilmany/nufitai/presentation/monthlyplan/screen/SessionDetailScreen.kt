@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.clip
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
@@ -93,7 +94,7 @@ fun SessionDetailScreen(
         Box(modifier = Modifier.weight(1f)) {
             when (val current = state) {
                 SessionDetailState.Loading -> LoadingBox()
-                is SessionDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+                is SessionDetailState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.load(planDayId) })
                 is SessionDetailState.Loaded -> SessionDetailContent(
                     state = current,
                     onStartSession = { onStartSession(planDayId) },

@@ -34,7 +34,7 @@ class AiCustomPlanGateViewModel(
         resolve()
     }
 
-    private fun resolve() {
+    fun resolve() {
         viewModelScope.launch {
             when (val tierResult = getCurrentTier()) {
                 is AppResult.Error -> _state.value = AiCustomPlanGateState.Error(tierResult.failure.message)

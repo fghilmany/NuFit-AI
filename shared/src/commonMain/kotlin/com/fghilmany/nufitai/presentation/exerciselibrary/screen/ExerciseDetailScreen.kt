@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.clip
 import com.fghilmany.nufitai.core.designsystem.component.BundledMediaImage
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.AlternativesRow
 import com.fghilmany.nufitai.presentation.exerciselibrary.component.CommonMistakesCard
@@ -63,7 +64,7 @@ fun ExerciseDetailScreen(
         Box(modifier = Modifier.weight(1f)) {
             when (val current = state) {
                 ExerciseDetailState.Loading -> LoadingBox()
-                is ExerciseDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+                is ExerciseDetailState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.load(exerciseId) })
                 is ExerciseDetailState.Loaded -> DetailContent(current, onAlternativeClick)
             }
         }

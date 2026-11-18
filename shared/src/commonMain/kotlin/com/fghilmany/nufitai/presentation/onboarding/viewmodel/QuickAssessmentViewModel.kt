@@ -44,7 +44,7 @@ sealed interface QuickAssessmentState {
     }
     data object Generating : QuickAssessmentState
     data class Completed(val result: QuickAssessmentResult) : QuickAssessmentState
-    data class Error(val message: String) : QuickAssessmentState
+    data class Error(val message: String, val lastStep: Step) : QuickAssessmentState
 }
 
 /**
@@ -155,15 +155,20 @@ class QuickAssessmentViewModel(
                             // mirroring CreateTemplatePlan/ActivateAiCustomPlan's "exactly 1 active
                             // plan" invariant instead of relying on this being first-run-only.
                             when (val archived = monthlyPlanRepository.archiveAllActivePlansExcept(planResult.data.id)) {
-                                is AppResult.Error -> _state.value = QuickAssessmentState.Error(archived.failure.message)
+                                is AppResult.Error -> _state.value = QuickAssessmentState.Error(archived.failure.message, step)
                                 is AppResult.Success -> _state.value = QuickAssessmentState.Completed(result.data)
                             }
                         }
-                        is AppResult.Error -> _state.value = QuickAssessmentState.Error(planResult.failure.message)
+                        is AppResult.Error -> _state.value = QuickAssessmentState.Error(planResult.failure.message, step)
                     }
                 }
-                is AppResult.Error -> _state.value = QuickAssessmentState.Error(result.failure.message)
+                is AppResult.Error -> _state.value = QuickAssessmentState.Error(result.failure.message, step)
             }
         }
+    }
+
+    /** Retry-on-error card (dev report 18 Nov 2026). */
+    fun restoreFromError(step: QuickAssessmentState.Step) {
+        _state.value = step
     }
 }

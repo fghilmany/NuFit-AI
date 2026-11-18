@@ -120,7 +120,11 @@ sealed interface FullAssessmentState {
     }
     data object Submitting : FullAssessmentState
     data class Completed(val result: FullAssessmentResult) : FullAssessmentState
-    data class Error(val message: String) : FullAssessmentState
+
+    /** Dev report (18 Nov 2026): a submit failure used to wipe the whole wizard's answers --
+     * [lastStep] keeps them so the retry card can restore the exact step the user was on
+     * instead of forcing them to refill everything from PAR_Q again. */
+    data class Error(val message: String, val lastStep: Step) : FullAssessmentState
 }
 
 sealed interface FullAssessmentEvent {
@@ -315,6 +319,12 @@ class FullAssessmentViewModel(
         _state.value = current.copy(phase = FullAssessmentPhase.INTERVIEW)
     }
 
+    /** Retry-on-error card (dev report 18 Nov 2026) -- restores the wizard to the step the user
+     * was on when submit failed, so they can just re-tap submit instead of refilling everything. */
+    fun restoreFromError(step: FullAssessmentState.Step) {
+        _state.value = step
+    }
+
     private fun submit() {
         val current = _state.value
         if (current !is FullAssessmentState.Step || !current.canSubmit) return
@@ -348,10 +358,10 @@ class FullAssessmentViewModel(
                     // surfaced as an error rather than silently discarding the completed result.
                     when (val activated = activatePlanFromFullAssessment(result.data)) {
                         is AppResult.Success -> _state.value = FullAssessmentState.Completed(result.data)
-                        is AppResult.Error -> _state.value = FullAssessmentState.Error(activated.failure.message)
+                        is AppResult.Error -> _state.value = FullAssessmentState.Error(activated.failure.message, current)
                     }
                 }
-                is AppResult.Error -> _state.value = FullAssessmentState.Error(result.failure.message)
+                is AppResult.Error -> _state.value = FullAssessmentState.Error(result.failure.message, current)
             }
         }
     }

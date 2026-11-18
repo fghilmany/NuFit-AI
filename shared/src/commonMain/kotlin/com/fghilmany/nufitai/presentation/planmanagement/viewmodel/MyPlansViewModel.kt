@@ -71,7 +71,8 @@ class MyPlansViewModel(
         _state.update { current -> if (current is MyPlansState.Loaded) transform(current) else current }
     }
 
-    private fun load() {
+    /** Public so MyPlansScreen's retry-on-error card (dev report 18 Nov 2026) can call it again. */
+    fun load() {
         viewModelScope.launch {
             val plans = when (val result = getAllPlansForManagement()) {
                 is AppResult.Success -> result.data

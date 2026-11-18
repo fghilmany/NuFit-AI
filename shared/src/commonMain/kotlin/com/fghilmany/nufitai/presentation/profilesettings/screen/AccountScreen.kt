@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.entitlement.entity.Tier
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
@@ -148,7 +149,7 @@ fun AccountScreen(
                     onNavigateToAssessmentDetail = onNavigateToAssessmentDetail,
                     onNavigateToCompleteProfile = onNavigateToCompleteProfile,
                 )
-                is AccountState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+                is AccountState.Error -> ErrorRetryView(current.message, onRetry = viewModel::resolve)
             }
         }
 

@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.mealplan.entity.MealLogStatus
 import com.fghilmany.nufitai.presentation.mealplan.component.label
@@ -58,7 +59,7 @@ fun MealDetailScreen(plannedMealId: String, onBack: () -> Unit, viewModel: MealD
 
         when (val current = state) {
             MealDetailState.Loading -> Box(Modifier.fillMaxSize(), Alignment.Center) { CircularProgressIndicator() }
-            is MealDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is MealDetailState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.load(plannedMealId) })
             is MealDetailState.Loaded -> Column(
                 modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),

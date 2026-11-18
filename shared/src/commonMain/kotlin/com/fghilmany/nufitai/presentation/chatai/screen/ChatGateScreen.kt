@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.presentation.chatai.viewmodel.ChatGateState
 import com.fghilmany.nufitai.presentation.chatai.viewmodel.ChatGateViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
@@ -55,7 +56,7 @@ fun ChatGateScreen(
                     ctaLabel = stringResource(Res.string.chatai_gate_cta_login),
                     onCta = onNavigateToLogin,
                 )
-                is ChatGateState.Error -> Text(current.message)
+                is ChatGateState.Error -> ErrorRetryView(current.message, onRetry = viewModel::resolve)
             }
         }
 

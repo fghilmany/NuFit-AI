@@ -82,7 +82,8 @@ class AssessmentDetailViewModel(
         }
     }
 
-    private fun load() {
+    /** Public so AssessmentDetailScreen's retry-on-error card (dev report 18 Nov 2026) can call it again. */
+    fun load() {
         viewModelScope.launch {
             when (val detailResult = getAssessmentDetail()) {
                 is AppResult.Success -> {

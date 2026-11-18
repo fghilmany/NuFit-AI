@@ -7,6 +7,7 @@
     <string name="common_action_skip">Lewati</string>
     <string name="common_action_done">Selesai</string>
     <string name="common_action_understood">Mengerti</string>
+    <string name="common_action_retry">Coba Lagi</string>
     <string name="common_action_yes">Ya</string>
     <string name="common_action_no">Tidak</string>
     <string name="common_app_name">NuFit AI</string>

@@ -32,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanStatus
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
@@ -76,7 +77,7 @@ fun MyPlansScreen(
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         when (val current = state) {
             MyPlansState.Loading -> LoadingBox()
-            is MyPlansState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is MyPlansState.Error -> ErrorRetryView(current.message, onRetry = viewModel::load)
             is MyPlansState.Loaded -> LoadedContent(current, viewModel, onCreateFromTemplate, onCreateWithAi, onExerciseLibraryClick)
         }
 

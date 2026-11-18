@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
@@ -68,7 +69,7 @@ fun ExerciseLibraryScreen(
 
         when (val current = state) {
             ExerciseLibraryState.Loading -> LoadingBox()
-            is ExerciseLibraryState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is ExerciseLibraryState.Error -> ErrorRetryView(current.message, onRetry = viewModel::load)
             is ExerciseLibraryState.Loaded -> LibraryContent(
                 exercises = current.exercises,
                 query = current.query,

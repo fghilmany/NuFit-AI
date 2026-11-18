@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.presentation.ptmode.component.PrBanner
 import com.fghilmany.nufitai.presentation.ptmode.component.RpeLevel
@@ -84,7 +85,7 @@ fun WorkoutSummaryScreen(
         when (val current = state) {
             WorkoutSummaryState.Loading -> LoadingBox()
             WorkoutSummaryState.Saved -> LoadingBox() // brief -- LaunchedEffect navigates away
-            is WorkoutSummaryState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+            is WorkoutSummaryState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.load(planDayId) })
             is WorkoutSummaryState.Loaded -> SummaryContent(
                 state = current,
                 onSelectRpe = { viewModel.onEvent(WorkoutSummaryEvent.SelectRpe(it)) },

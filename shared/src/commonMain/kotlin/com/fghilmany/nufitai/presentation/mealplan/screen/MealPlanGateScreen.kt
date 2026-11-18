@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.presentation.mealplan.viewmodel.MealPlanGateState
 import com.fghilmany.nufitai.presentation.mealplan.viewmodel.MealPlanGateViewModel
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
@@ -89,7 +90,7 @@ fun MealPlanGateScreen(
                         onCta = if (current.missingActivityLevel) onNavigateToFullAssessment else onNavigateToCompleteBodyData,
                     )
                 }
-                is MealPlanGateState.Error -> Text(current.message)
+                is MealPlanGateState.Error -> ErrorRetryView(current.message, onRetry = viewModel::resolve)
             }
         }
 

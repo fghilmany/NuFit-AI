@@ -82,7 +82,8 @@ class HomeViewModel(
         }
     }
 
-    private fun load() {
+    /** Public so HomeScreen's retry-on-error card (dev report 18 Nov 2026) can call it again. */
+    fun load() {
         viewModelScope.launch {
             when (val result = getActivePlanOverview()) {
                 is AppResult.Success -> {

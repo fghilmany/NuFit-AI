@@ -39,6 +39,14 @@ class DoctorConsultViewModel(
     val state: StateFlow<DoctorConsultState> = _state.asStateFlow()
 
     init {
+        load()
+    }
+
+    /** Public so DoctorConsultScreen's retry-on-error card (dev report 18 Nov 2026) can call it
+     * again -- also reused as the retry for a failed [continueFlow] (re-fetches the same Content,
+     * just loses the "acknowledged" checkbox, which is lower-stakes than threading its own
+     * restore path for a single checkbox). */
+    fun load() {
         viewModelScope.launch {
             when (val result = getLatestParQResult()) {
                 is AppResult.Success -> {

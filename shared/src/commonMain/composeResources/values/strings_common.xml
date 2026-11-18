@@ -7,6 +7,7 @@
     <string name="common_action_skip">Skip</string>
     <string name="common_action_done">Done</string>
     <string name="common_action_understood">Got it</string>
+    <string name="common_action_retry">Try again</string>
     <string name="common_action_yes">Yes</string>
     <string name="common_action_no">No</string>
     <string name="common_app_name">NuFit AI</string>

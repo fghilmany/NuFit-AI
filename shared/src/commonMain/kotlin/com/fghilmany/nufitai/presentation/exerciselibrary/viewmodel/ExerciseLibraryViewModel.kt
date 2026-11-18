@@ -73,7 +73,8 @@ class ExerciseLibraryViewModel(
         }
     }
 
-    private fun load() {
+    /** Public so ExerciseLibraryScreen's retry-on-error card (dev report 18 Nov 2026) can call it again. */
+    fun load() {
         viewModelScope.launch {
             when (val result = getExercisePool()) {
                 is AppResult.Success -> {

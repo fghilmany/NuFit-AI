@@ -26,7 +26,10 @@ sealed interface TemplatePickerState {
     }
     data object Submitting : TemplatePickerState
     data class Completed(val plan: MonthlyPlan) : TemplatePickerState
-    data class Error(val message: String) : TemplatePickerState
+
+    /** Dev report (18 Nov 2026): a submit failure used to wipe the picked level/goal/split --
+     * [lastStep] keeps them so the retry card restores the picker instead of starting over. */
+    data class Error(val message: String, val lastStep: Step) : TemplatePickerState
 }
 
 sealed interface TemplatePickerEvent {
@@ -87,8 +90,13 @@ class TemplatePickerViewModel(
             )
             when (result) {
                 is AppResult.Success -> _state.value = TemplatePickerState.Completed(result.data)
-                is AppResult.Error -> _state.value = TemplatePickerState.Error(result.failure.message)
+                is AppResult.Error -> _state.value = TemplatePickerState.Error(result.failure.message, current)
             }
         }
+    }
+
+    /** Retry-on-error card (dev report 18 Nov 2026). */
+    fun restoreFromError(step: TemplatePickerState.Step) {
+        _state.value = step
     }
 }

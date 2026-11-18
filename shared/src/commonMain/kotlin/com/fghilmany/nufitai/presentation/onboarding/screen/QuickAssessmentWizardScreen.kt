@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.EquipmentCategory
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentGridCard
 import com.fghilmany.nufitai.presentation.onboarding.component.EquipmentRowCard
@@ -76,7 +77,7 @@ fun QuickAssessmentWizardScreen(
         )
         QuickAssessmentState.Generating -> LoadingBox()
         is QuickAssessmentState.Completed -> LoadingBox() // brief -- LaunchedEffect above navigates away
-        is QuickAssessmentState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+        is QuickAssessmentState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.restoreFromError(current.lastStep) })
     }
 }
 

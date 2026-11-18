@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.domain.monthlyplan.entity.DayType
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
@@ -112,7 +113,7 @@ fun AiCustomPlanPreviewScreen(
                 AiCustomPlanPreviewState.Saved, AiCustomPlanPreviewState.Activated -> LoadingBox() // brief -- LaunchedEffect navigates away
                 is AiCustomPlanPreviewState.Loaded -> PreviewContent(current, viewModel)
                 is AiCustomPlanPreviewState.QuotaFull -> QuotaFullContent(current, viewModel)
-                is AiCustomPlanPreviewState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+                is AiCustomPlanPreviewState.Error -> ErrorRetryView(current.message, onRetry = viewModel::loadExercisesThenShowDraft)
             }
         }
     }

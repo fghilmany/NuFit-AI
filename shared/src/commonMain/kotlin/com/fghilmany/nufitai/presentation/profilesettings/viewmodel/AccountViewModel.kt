@@ -221,7 +221,8 @@ class AccountViewModel(
         )
     }
 
-    private fun resolve() {
+    /** Public so AccountScreen's retry-on-error card (dev report 18 Nov 2026) can call it again. */
+    fun resolve() {
         viewModelScope.launch {
             val bodyData = loadBodyData() ?: BodyDataOverview(
                 weightHistory = WeightHistorySummary(points = emptyList(), deltaKgVsThirtyDaysAgo = null),

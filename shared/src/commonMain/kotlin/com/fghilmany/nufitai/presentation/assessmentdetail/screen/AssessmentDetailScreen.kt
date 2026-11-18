@@ -50,6 +50,7 @@ import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.AssessmentD
 import com.fghilmany.nufitai.presentation.assessmentdetail.viewmodel.RetakeDialogState
 import com.fghilmany.nufitai.presentation.fullassessment.component.shortLabel as exerciseFlagShortLabel
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import com.fghilmany.nufitai.usecase.assessmentdetail.AssessmentDetailSummary
 import nufitai.shared.generated.resources.Res
@@ -122,12 +123,7 @@ fun AssessmentDetailScreen(
                     }
                 }
             }
-            is AssessmentDetailState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Text(current.message)
-                    AppButton(onClick = onBack) { Text(stringResource(Res.string.common_action_back)) }
-                }
-            }
+            is AssessmentDetailState.Error -> ErrorRetryView(current.message, onRetry = viewModel::load)
             is AssessmentDetailState.Loaded -> AssessmentDetailContent(current, viewModel, onOpenFullAssessment)
         }
 

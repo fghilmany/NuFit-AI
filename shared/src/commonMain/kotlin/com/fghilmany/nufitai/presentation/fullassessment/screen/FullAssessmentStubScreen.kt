@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.component.AppElevatedCard
 import com.fghilmany.nufitai.core.designsystem.component.AppTextField
@@ -119,7 +120,7 @@ fun FullAssessmentStubScreen(
                 is FullAssessmentState.Step -> StepContent(current, viewModel)
                 FullAssessmentState.Submitting -> LoadingBox()
                 is FullAssessmentState.Completed -> LoadingBox() // brief -- LaunchedEffect navigates away
-                is FullAssessmentState.Error -> Box(Modifier.fillMaxSize(), Alignment.Center) { Text(current.message) }
+                is FullAssessmentState.Error -> ErrorRetryView(current.message, onRetry = { viewModel.restoreFromError(current.lastStep) })
             }
         }
     }
