@@ -69,10 +69,7 @@ fun AiCustomPlanFormScreen(
         when (val current = state) {
             is AiCustomPlanFormState.Editing -> FormContent(current, viewModel)
             AiCustomPlanFormState.Generating -> LoadingBox()
-            is AiCustomPlanFormState.Error -> Column {
-                Text(current.failure.message, modifier = Modifier.padding(24.dp))
-                FormContent(current.retainedInput, viewModel)
-            }
+            is AiCustomPlanFormState.Error -> FormContent(current.retainedInput, viewModel)
             AiCustomPlanFormState.Generated -> LoadingBox() // brief -- LaunchedEffect navigates away
         }
     }

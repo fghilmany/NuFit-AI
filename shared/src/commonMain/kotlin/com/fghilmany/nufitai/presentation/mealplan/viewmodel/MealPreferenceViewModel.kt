@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.presentation.mealplan.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.mealplan.entity.MealMood
 import com.fghilmany.nufitai.domain.mealplan.entity.MealPreference
@@ -23,7 +24,6 @@ data class MealPreferenceState(
     val isLoading: Boolean = true,
     val isSaving: Boolean = false,
     val saved: Boolean = false,
-    val error: String? = null,
 )
 
 /** P-17 B (AC-5). */
@@ -37,7 +37,10 @@ class MealPreferenceViewModel(
     init {
         viewModelScope.launch {
             when (val result = getMealPreference()) {
-                is AppResult.Error -> _state.update { it.copy(isLoading = false, error = result.failure.message) }
+                is AppResult.Error -> {
+                    _state.update { it.copy(isLoading = false) }
+                    SnackbarController.showError(result.failure.message)
+                }
                 is AppResult.Success -> {
                     val preference = result.data
                     _state.update {
@@ -75,7 +78,7 @@ class MealPreferenceViewModel(
     fun onSave() {
         val current = _state.value
         viewModelScope.launch {
-            _state.update { it.copy(isSaving = true, error = null) }
+            _state.update { it.copy(isSaving = true) }
             val preference = MealPreference(
                 cuisineThemes = current.cuisineThemes,
                 mood = current.mood,
@@ -83,7 +86,10 @@ class MealPreferenceViewModel(
                 scheduleMode = current.scheduleMode,
             )
             when (val result = saveMealPreference(preference)) {
-                is AppResult.Error -> _state.update { it.copy(isSaving = false, error = result.failure.message) }
+                is AppResult.Error -> {
+                    _state.update { it.copy(isSaving = false) }
+                    SnackbarController.showError(result.failure.message)
+                }
                 is AppResult.Success -> _state.update { it.copy(isSaving = false, saved = true) }
             }
         }

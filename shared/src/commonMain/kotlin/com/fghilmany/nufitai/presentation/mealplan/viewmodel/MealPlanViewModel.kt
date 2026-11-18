@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.presentation.mealplan.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.util.currentInstant
 import com.fghilmany.nufitai.core.util.startOfWeek
@@ -38,7 +39,6 @@ data class MealPlanState(
     val generatingDayNumber: Int? = null,
     /** Null = no regenerate confirmation pending. Set when the tapped day already has non-PENDING logs. */
     val pendingRegenerateDay: Int? = null,
-    val error: String? = null,
     val showRegenerateSuggestion: Boolean = false,
     val reminderEnabled: Boolean = false,
     val reminderHasPermission: Boolean = true,
@@ -127,7 +127,7 @@ class MealPlanViewModel(
         if (target > _state.value.currentWeekStart) return
         viewModelScope.launch {
             when (val result = getMealPlanForWeek(target)) {
-                is AppResult.Error -> _state.update { it.copy(error = result.failure.message) }
+                is AppResult.Error -> SnackbarController.showError(result.failure.message)
                 is AppResult.Success -> {
                     val plan = result.data
                     // AC-6: a week that was never generated is only viewable if it's the current
@@ -144,32 +144,34 @@ class MealPlanViewModel(
         viewModelScope.launch {
             val plan = preloadedPlan ?: when (val result = getMealPlanForWeek(weekStart)) {
                 is AppResult.Error -> {
-                    _state.update { it.copy(weekStartDate = weekStart, error = result.failure.message) }
+                    _state.update { it.copy(weekStartDate = weekStart) }
+                    SnackbarController.showError(result.failure.message)
                     return@launch
                 }
                 is AppResult.Success -> result.data
             }
             if (plan == null) {
                 _state.update {
-                    it.copy(weekStartDate = weekStart, mealPlan = null, plannedMeals = emptyList(), showRegenerateSuggestion = false, error = null)
+                    it.copy(weekStartDate = weekStart, mealPlan = null, plannedMeals = emptyList(), showRegenerateSuggestion = false)
                 }
                 return@launch
             }
             val meals = when (val result = getPlannedMealsForPlan(plan.id)) {
                 is AppResult.Error -> {
-                    _state.update { it.copy(weekStartDate = weekStart, mealPlan = plan, error = result.failure.message) }
+                    _state.update { it.copy(weekStartDate = weekStart, mealPlan = plan) }
+                    SnackbarController.showError(result.failure.message)
                     return@launch
                 }
                 is AppResult.Success -> result.data
             }
             val suggest = (shouldSuggestRegenerate(plan) as? AppResult.Success)?.data ?: false
-            _state.update { it.copy(weekStartDate = weekStart, mealPlan = plan, plannedMeals = meals, showRegenerateSuggestion = suggest, error = null) }
+            _state.update { it.copy(weekStartDate = weekStart, mealPlan = plan, plannedMeals = meals, showRegenerateSuggestion = suggest) }
         }
     }
 
     private fun performGenerateDay(day: Int) {
         viewModelScope.launch {
-            _state.update { it.copy(generatingDayNumber = day, error = null) }
+            _state.update { it.copy(generatingDayNumber = day) }
 
             val bodyMeasurement = when (val result = getLatestBodyMeasurement()) {
                 is AppResult.Error -> return@launch fail(result.failure.message)
@@ -217,6 +219,7 @@ class MealPlanViewModel(
     }
 
     private fun fail(message: String) {
-        _state.update { it.copy(generatingDayNumber = null, error = message) }
+        _state.update { it.copy(generatingDayNumber = null) }
+        SnackbarController.showError(message)
     }
 }

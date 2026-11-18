@@ -106,8 +106,6 @@ fun MealPreferenceScreen(onBack: () -> Unit, viewModel: MealPreferenceViewModel 
                 )
             }
 
-            state.error?.let { error -> Text(error, color = MaterialTheme.colorScheme.error) }
-
             // Dev report (18 Nov 2026): button was correctly disabled while isSaving, but nothing
             // indicated why -- no spinner anywhere, just a dead button.
             if (state.isSaving) {

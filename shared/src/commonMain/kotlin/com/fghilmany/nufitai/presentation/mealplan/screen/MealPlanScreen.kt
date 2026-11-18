@@ -79,8 +79,6 @@ fun MealPlanScreen(
                 onNext = viewModel::onNextWeek,
             )
 
-            state.error?.let { error -> Text(error, color = NuFitColors.Error, modifier = Modifier.padding(horizontal = 16.dp)) }
-
             if (state.showRegenerateSuggestion) {
                 RegenerateSuggestionBanner(
                     onRegenerateClick = { state.todayDayNumber?.let(viewModel::onGenerateDayClick) },

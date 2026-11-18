@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.auth.AppleSignInLauncher
 import com.fghilmany.nufitai.core.auth.GoogleSignInLauncher
 import com.fghilmany.nufitai.core.auth.NativeSignInResult
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.auth.entity.AuthProvider
 import com.fghilmany.nufitai.usecase.auth.CancelConflictingSignIn
@@ -22,7 +23,6 @@ import kotlinx.coroutines.launch
 sealed interface LoginState {
     data object Idle : LoginState
     data object SigningIn : LoginState
-    data class Error(val message: String) : LoginState
     data class Success(val needsCompleteProfile: Boolean) : LoginState
 
     /** This is an existing account and this device already has local guest data -- [SignIn]
@@ -58,7 +58,10 @@ class LoginViewModel(
         _state.value = LoginState.ResolvingConflict
         viewModelScope.launch {
             when (val result = discardLocalDataAndSync()) {
-                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
+                is AppResult.Error -> {
+                    _state.value = LoginState.LocalDataConflict
+                    SnackbarController.showError(result.failure.message)
+                }
                 is AppResult.Success -> onSignedIn()
             }
         }
@@ -81,7 +84,10 @@ class LoginViewModel(
         _state.value = LoginState.ResolvingConflict
         viewModelScope.launch {
             when (val result = saveLocalDataAndSync()) {
-                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
+                is AppResult.Error -> {
+                    _state.value = LoginState.SaveLocalPlanPrompt
+                    SnackbarController.showError(result.failure.message)
+                }
                 is AppResult.Success -> onSignedIn()
             }
         }
@@ -94,7 +100,10 @@ class LoginViewModel(
         _state.value = LoginState.ResolvingConflict
         viewModelScope.launch {
             when (val result = discardLocalDataAndSync()) {
-                is AppResult.Error -> _state.value = LoginState.Error(result.failure.message)
+                is AppResult.Error -> {
+                    _state.value = LoginState.SaveLocalPlanPrompt
+                    SnackbarController.showError(result.failure.message)
+                }
                 is AppResult.Success -> onSignedIn()
             }
         }
@@ -105,7 +114,10 @@ class LoginViewModel(
         _state.value = LoginState.SigningIn
         viewModelScope.launch {
             when (val nativeResult = launchNative()) {
-                is AppResult.Error -> _state.value = LoginState.Error(nativeResult.failure.message)
+                is AppResult.Error -> {
+                    _state.value = LoginState.Idle
+                    SnackbarController.showError(nativeResult.failure.message)
+                }
                 is AppResult.Success -> when (
                     val signInResult = signIn(
                         provider,
@@ -114,7 +126,10 @@ class LoginViewModel(
                         nativeResult.data.profilePictureUrl,
                     )
                 ) {
-                    is AppResult.Error -> _state.value = LoginState.Error(signInResult.failure.message)
+                    is AppResult.Error -> {
+                        _state.value = LoginState.Idle
+                        SnackbarController.showError(signInResult.failure.message)
+                    }
                     is AppResult.Success -> when (signInResult.data) {
                         is SignInOutcome.SignedIn -> onSignedIn()
                         is SignInOutcome.LocalDataConflict -> _state.value = LoginState.LocalDataConflict

@@ -95,8 +95,6 @@ fun CompleteProfileScreen(onCompleted: () -> Unit, viewModel: CompleteProfileVie
                 )
             }
 
-            editing.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
-
             if (isSaving) {
                 Box(Modifier.fillMaxWidth(), Alignment.Center) { CircularProgressIndicator() }
             } else {

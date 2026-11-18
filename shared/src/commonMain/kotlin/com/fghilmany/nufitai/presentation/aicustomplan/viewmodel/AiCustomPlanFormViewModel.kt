@@ -2,6 +2,7 @@ package com.fghilmany.nufitai.presentation.aicustomplan.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fghilmany.nufitai.core.designsystem.snackbar.SnackbarController
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.Failure
 import com.fghilmany.nufitai.domain.aicustomplan.entity.AiPlanFormInput
@@ -175,6 +176,7 @@ class AiCustomPlanFormViewModel(
 
     private fun fail(failure: Failure, retainedInput: AiCustomPlanFormState.Editing) {
         _state.value = AiCustomPlanFormState.Error(failure, retainedInput)
+        SnackbarController.showError(failure.message)
     }
 }
 

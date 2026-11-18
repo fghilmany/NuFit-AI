@@ -217,9 +217,6 @@ fun LoginScreen(
                         }
                     }
                 }
-                if (current is LoginState.Error) {
-                    Text(current.message, color = MaterialTheme.colorScheme.error, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
-                }
                 TextButton(onClick = onSkip, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(Res.string.common_action_skip), textDecoration = TextDecoration.Underline)
                 }
