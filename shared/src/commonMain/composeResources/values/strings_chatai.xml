@@ -29,4 +29,6 @@
     <string name="chatai_message_retry_cta">Retry</string>
     <string name="chatai_message_sending_label">Sending…</string>
     <string name="chatai_thinking_label">NuFit AI is thinking</string>
+    <string name="chatai_message_copy_content_description">Copy message</string>
+    <string name="chatai_message_share_content_description">Share message</string>
 </resources>

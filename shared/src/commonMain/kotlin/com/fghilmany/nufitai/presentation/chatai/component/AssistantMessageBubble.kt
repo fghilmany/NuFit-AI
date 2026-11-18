@@ -12,17 +12,28 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.SmartToy
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import com.fghilmany.nufitai.core.share.ShareLauncher
 import com.fghilmany.nufitai.domain.chatai.entity.ChatMessage
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
+import nufitai.shared.generated.resources.Res
+import nufitai.shared.generated.resources.chatai_message_copy_content_description
+import nufitai.shared.generated.resources.chatai_message_share_content_description
+import org.jetbrains.compose.resources.stringResource
 
 /** Left-aligned white/card bubble with a small bot avatar (screenshot §2, chat-ai.md); may embed an [ExerciseSuggestionCard]. */
 @Composable
@@ -35,6 +46,8 @@ fun AssistantMessageBubble(
     onExerciseClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val clipboardManager = LocalClipboardManager.current
+    val shareLauncher = remember { ShareLauncher() }
     Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Box(
             modifier = Modifier.size(28.dp).background(NuFitColors.SecondaryContainer, CircleShape),
@@ -49,7 +62,25 @@ fun AssistantMessageBubble(
             Box(modifier = Modifier.background(bubbleColor, RoundedCornerShape(20.dp)).padding(horizontal = 16.dp, vertical = 10.dp)) {
                 Text(parseSimpleMarkdown(message.text), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnBackground)
             }
-            Text(formatMessageTime(message.createdAt), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp)) {
+                Text(formatMessageTime(message.createdAt), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                IconButton(onClick = { clipboardManager.setText(AnnotatedString(message.text)) }, modifier = Modifier.size(28.dp)) {
+                    Icon(
+                        Icons.Filled.ContentCopy,
+                        contentDescription = stringResource(Res.string.chatai_message_copy_content_description),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+                IconButton(onClick = { shareLauncher.shareText(message.text) }, modifier = Modifier.size(28.dp)) {
+                    Icon(
+                        Icons.Filled.Share,
+                        contentDescription = stringResource(Res.string.chatai_message_share_content_description),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
 
             if (message.suggestion != null && resolvedExercise != null) {
                 ExerciseSuggestionCard(
