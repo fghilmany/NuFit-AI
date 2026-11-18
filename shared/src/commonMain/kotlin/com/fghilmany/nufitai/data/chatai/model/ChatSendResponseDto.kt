@@ -22,6 +22,7 @@ data class ChatReplyDto(
     val text: String,
     val exerciseSuggestion: ExerciseSuggestionDto? = null,
     val suggestedReplies: List<String> = emptyList(),
+    val isPolicyResponse: Boolean = false,
 ) {
     fun toEntity(): ChatMessage = ChatMessage(
         id = generateId(),
@@ -31,6 +32,7 @@ data class ChatReplyDto(
         suggestedReplies = suggestedReplies,
         status = ChatMessageStatus.SENT,
         createdAt = currentInstant(),
+        isPolicyResponse = isPolicyResponse,
     )
 }
 

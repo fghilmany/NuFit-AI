@@ -25,4 +25,8 @@ data class ChatMessage(
     val suggestedReplies: List<String>,
     val status: ChatMessageStatus,
     val createdAt: Instant,
+    /** true when [text] is a fixed guard decision (chatGuard.ts REDIRECT/CLARIFY/SAFE_RESPONSE),
+     * not a real model answer -- lets the UI label/style it differently. Not persisted to the
+     * local DB yet (no schema column); lost on reload until that's added. */
+    val isPolicyResponse: Boolean = false,
 )

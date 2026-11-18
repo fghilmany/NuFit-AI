@@ -43,7 +43,10 @@ fun AssistantMessageBubble(
             Icon(Icons.Filled.SmartToy, contentDescription = null, tint = NuFitColors.OnSecondaryContainer, modifier = Modifier.size(16.dp))
         }
         Column(modifier = Modifier.widthIn(max = 280.dp)) {
-            Box(modifier = Modifier.background(NuFitColors.SurfaceContainerLowest, RoundedCornerShape(20.dp)).padding(horizontal = 16.dp, vertical = 10.dp)) {
+            // Guard-blocked/redirected replies (chatGuard.ts, not a real model answer) get a
+            // slightly darker bubble so the user can tell them apart from an actual AI answer.
+            val bubbleColor = if (message.isPolicyResponse) NuFitColors.SurfaceContainerLow else NuFitColors.SurfaceContainerLowest
+            Box(modifier = Modifier.background(bubbleColor, RoundedCornerShape(20.dp)).padding(horizontal = 16.dp, vertical = 10.dp)) {
                 Text(parseSimpleMarkdown(message.text), style = MaterialTheme.typography.bodyMedium, color = NuFitColors.OnBackground)
             }
             Text(formatMessageTime(message.createdAt), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 2.dp))
