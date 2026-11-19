@@ -14,7 +14,8 @@ inline fun <T, R> AppResult<T>.fold(onError: (Failure) -> R, onSuccess: (T) -> R
         is AppResult.Error -> onError(failure)
     }
 
-private val databaseLogger = AppLogger.tagged("Database")
+@PublishedApi
+internal val databaseLogger = AppLogger.tagged("Database")
 
 // Dev audit (20 Nov 2026): this used to surface the raw caught exception's message straight to
 // the UI (e.message is a SQLDelight/SQLite driver message, e.g. "UNIQUE constraint failed:

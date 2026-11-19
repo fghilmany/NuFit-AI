@@ -4,21 +4,21 @@ import com.fghilmany.nufitai.data.chatai.datasource.ChatLocalDataSource
 import com.fghilmany.nufitai.data.sync.contract.SyncParticipant
 import com.fghilmany.nufitai.db.Chat_message as ChatMessageRow
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.long
 import kotlin.time.Instant
 
-/** techspec chat-ai.md §6/§7 -- mirrors `MonthlyPlanSyncParticipant`'s worked-example pattern exactly. */
+// Migration 20261117000003 (chat_request_transactions) revoked insert/update/delete on
+// chat_message for the authenticated role -- chat-send's begin_chat_request/complete_chat_request
+// (service_role only) are now the sole writers, so old client-written rows can't be resurrected.
+// This participant is pull-only: push must always see zero changed rows.
 class ChatMessageSyncParticipant(
     private val local: ChatLocalDataSource,
 ) : SyncParticipant {
     override val tableName: String = "chat_message"
 
-    override suspend fun getChangedSince(since: Instant): List<JsonObject> =
-        local.getChangedSince(since.toEpochMilliseconds()).map { it.toJson() }
+    override suspend fun getChangedSince(since: Instant): List<JsonObject> = emptyList()
 
     override suspend fun upsertRemoteRows(rows: List<JsonObject>) {
         local.upsertMessagesFromRemote(rows.map { it.toRow() })
@@ -26,19 +26,6 @@ class ChatMessageSyncParticipant(
 
     override suspend fun backfillUserId(userId: String) {
         local.backfillUserId(userId)
-    }
-
-    private fun ChatMessageRow.toJson(): JsonObject = buildJsonObject {
-        put("id", JsonPrimitive(id))
-        put("role", JsonPrimitive(role))
-        put("text", JsonPrimitive(text))
-        put("suggestion_exercise_id", JsonPrimitive(suggestion_exercise_id))
-        put("suggestion_replaces_exercise_id", JsonPrimitive(suggestion_replaces_exercise_id))
-        put("suggested_replies", JsonPrimitive(suggested_replies))
-        put("status", JsonPrimitive(status))
-        put("created_at", JsonPrimitive(created_at))
-        put("user_id", JsonPrimitive(user_id))
-        put("updated_at", JsonPrimitive(updated_at))
     }
 
     private fun JsonObject.toRow(): ChatMessageRow = ChatMessageRow(

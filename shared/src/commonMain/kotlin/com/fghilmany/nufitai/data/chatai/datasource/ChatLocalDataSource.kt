@@ -40,11 +40,6 @@ class ChatLocalDataSource(private val database: NuFitDatabase) {
         database.chatMessageQueries.getSendingMessages().executeAsList()
     }
 
-    /** techspec chat-ai.md §7 -- sync engine cursor query, mirrors MonthlyPlanLocalDataSource's shape. */
-    suspend fun getChangedSince(updatedAfter: Long): List<ChatMessageRow> = withContext(Dispatchers.Default) {
-        database.chatMessageQueries.selectChangedSince(updatedAfter).executeAsList()
-    }
-
     suspend fun backfillUserId(userId: String) = withContext(Dispatchers.Default) {
         database.chatMessageQueries.backfillUserId(userId)
     }
