@@ -1,5 +1,6 @@
 package com.fghilmany.nufitai.presentation.onboarding.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,10 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,15 +21,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashState
 import com.fghilmany.nufitai.presentation.onboarding.viewmodel.SplashViewModel
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.common_app_name
+import nufitai.shared.generated.resources.ic_app_logo
 import nufitai.shared.generated.resources.onboarding_splash_loading_message
 import nufitai.shared.generated.resources.onboarding_splash_tagline
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -75,17 +75,11 @@ fun SplashScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Box(
-                modifier = Modifier.size(128.dp).background(NuFitColors.Primary, RoundedCornerShape(32.dp)),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.FitnessCenter,
-                    contentDescription = null,
-                    tint = Color.White,
-                    modifier = Modifier.size(56.dp),
-                )
-            }
+            Image(
+                painter = painterResource(Res.drawable.ic_app_logo),
+                contentDescription = null,
+                modifier = Modifier.size(128.dp).clip(RoundedCornerShape(32.dp)),
+            )
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(stringResource(Res.string.common_app_name), style = MaterialTheme.typography.headlineLarge, color = NuFitColors.Primary)
                 Text(
