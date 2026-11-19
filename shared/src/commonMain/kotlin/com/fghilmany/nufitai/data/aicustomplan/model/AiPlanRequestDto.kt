@@ -29,6 +29,7 @@ data class AiPlanFormInputDto(
     val equipmentPreference: Set<String>,
     val muscleFocus: Set<String>,
     val planDurationWeeks: Int,
+    val notes: String?,
 ) {
     companion object {
         fun from(input: AiPlanFormInput): AiPlanFormInputDto = AiPlanFormInputDto(
@@ -38,6 +39,7 @@ data class AiPlanFormInputDto(
             equipmentPreference = input.equipmentPreference.map { it.name }.toSet(),
             muscleFocus = input.muscleFocus.map { it.name }.toSet(),
             planDurationWeeks = input.planDurationWeeks,
+            notes = input.notes,
         )
     }
 }

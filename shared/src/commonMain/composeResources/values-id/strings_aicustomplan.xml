@@ -21,6 +21,8 @@
     <string name="aicustomplan_form_equipment_title">Alat yang Tersedia</string>
     <string name="aicustomplan_form_muscle_focus_title">Fokus Otot (Opsional)</string>
     <string name="aicustomplan_form_plan_duration_title">Durasi Program</string>
+    <string name="aicustomplan_form_notes_title">Catatan Tambahan</string>
+    <string name="aicustomplan_form_notes_placeholder">Preferensi lain yang belum ada pilihannya di atas (opsional)</string>
     <string name="aicustomplan_form_submit">Buatkan Plan Saya</string>
     <string name="aicustomplan_form_generating">NuFit AI sedang membuat plan kamu…</string>
 

@@ -33,6 +33,7 @@ sealed interface AiCustomPlanFormState {
         val equipmentPreference: Set<EquipmentCategory> = emptySet(),
         val muscleFocus: Set<MuscleGroup> = emptySet(),
         val planDurationWeeks: Int = 2,
+        val notes: String = "",
     ) : AiCustomPlanFormState {
         val canSubmit: Boolean get() = goal != null && equipmentPreference.isNotEmpty()
     }
@@ -53,6 +54,7 @@ sealed interface AiCustomPlanFormEvent {
     data class ToggleEquipment(val value: EquipmentCategory) : AiCustomPlanFormEvent
     data class ToggleMuscleFocus(val value: MuscleGroup) : AiCustomPlanFormEvent
     data class SetPlanDurationWeeks(val value: Int) : AiCustomPlanFormEvent
+    data class SetNotes(val value: String) : AiCustomPlanFormEvent
     data object Submit : AiCustomPlanFormEvent
 }
 
@@ -99,6 +101,7 @@ class AiCustomPlanFormViewModel(
                 it.copy(muscleFocus = it.muscleFocus.toggle(event.value))
             }
             is AiCustomPlanFormEvent.SetPlanDurationWeeks -> updateEditing { it.copy(planDurationWeeks = event.value) }
+            is AiCustomPlanFormEvent.SetNotes -> updateEditing { it.copy(notes = event.value) }
             AiCustomPlanFormEvent.Submit -> submit()
         }
     }
@@ -144,6 +147,7 @@ class AiCustomPlanFormViewModel(
                 equipmentPreference = editing.equipmentPreference,
                 muscleFocus = editing.muscleFocus,
                 planDurationWeeks = editing.planDurationWeeks,
+                notes = editing.notes.trim().ifBlank { null },
             )
             val clientConflicts = detectProfileConflicts(formInput, level)
 

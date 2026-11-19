@@ -21,6 +21,8 @@
     <string name="aicustomplan_form_equipment_title">Available Equipment</string>
     <string name="aicustomplan_form_muscle_focus_title">Muscle Focus (Optional)</string>
     <string name="aicustomplan_form_plan_duration_title">Plan Duration</string>
+    <string name="aicustomplan_form_notes_title">Additional Notes</string>
+    <string name="aicustomplan_form_notes_placeholder">Other preferences not covered above (optional)</string>
     <string name="aicustomplan_form_submit">Build My Plan</string>
     <string name="aicustomplan_form_generating">NuFit AI is building your plan…</string>
 

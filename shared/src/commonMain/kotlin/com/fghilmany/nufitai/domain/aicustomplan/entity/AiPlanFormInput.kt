@@ -12,4 +12,6 @@ data class AiPlanFormInput(
     val equipmentPreference: Set<EquipmentCategory>,
     val muscleFocus: Set<MuscleGroup>,
     val planDurationWeeks: Int,
+    /** Free-text, no preset options -- catch-all for preferences the structured fields above don't cover. */
+    val notes: String? = null,
 )

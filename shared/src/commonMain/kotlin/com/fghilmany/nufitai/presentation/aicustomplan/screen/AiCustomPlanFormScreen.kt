@@ -4,12 +4,12 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
+import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.MuscleGroup
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanFormEvent
 import com.fghilmany.nufitai.presentation.aicustomplan.viewmodel.AiCustomPlanFormState
@@ -36,6 +37,8 @@ import nufitai.shared.generated.resources.aicustomplan_form_equipment_title
 import nufitai.shared.generated.resources.aicustomplan_form_generating
 import nufitai.shared.generated.resources.aicustomplan_form_goal_title
 import nufitai.shared.generated.resources.aicustomplan_form_muscle_focus_title
+import nufitai.shared.generated.resources.aicustomplan_form_notes_placeholder
+import nufitai.shared.generated.resources.aicustomplan_form_notes_title
 import nufitai.shared.generated.resources.aicustomplan_form_plan_duration_title
 import nufitai.shared.generated.resources.aicustomplan_form_session_duration_title
 import nufitai.shared.generated.resources.aicustomplan_form_sessions_per_week_label
@@ -84,9 +87,13 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
         item { Text(stringResource(Res.string.aicustomplan_form_subtitle), style = MaterialTheme.typography.bodyMedium) }
 
         item { Text(stringResource(Res.string.aicustomplan_form_goal_title), style = MaterialTheme.typography.titleSmall) }
-        items(goalOptions) { (goal, copy) ->
-            ToggleButton(copy.title, editing.goal == goal, Modifier.fillMaxWidth()) {
-                viewModel.onEvent(AiCustomPlanFormEvent.SetGoal(goal))
+        item {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                goalOptions.forEach { (goal, copy) ->
+                    ToggleButton(copy.title, editing.goal == goal) {
+                        viewModel.onEvent(AiCustomPlanFormEvent.SetGoal(goal))
+                    }
+                }
             }
         }
 
@@ -119,17 +126,37 @@ private fun FormContent(editing: AiCustomPlanFormState.Editing, viewModel: AiCus
         }
 
         item { Text(stringResource(Res.string.aicustomplan_form_equipment_title), style = MaterialTheme.typography.titleSmall) }
-        items(equipmentOptions) { (equipment, copy) ->
-            ToggleButton(copy.title, equipment in editing.equipmentPreference, Modifier.fillMaxWidth()) {
-                viewModel.onEvent(AiCustomPlanFormEvent.ToggleEquipment(equipment))
+        item {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                equipmentOptions.forEach { (equipment, copy) ->
+                    ToggleButton(copy.title, equipment in editing.equipmentPreference) {
+                        viewModel.onEvent(AiCustomPlanFormEvent.ToggleEquipment(equipment))
+                    }
+                }
             }
         }
 
         item { Text(stringResource(Res.string.aicustomplan_form_muscle_focus_title), style = MaterialTheme.typography.titleSmall) }
-        items(MuscleGroup.entries.toList()) { muscleGroup ->
-            ToggleButton(muscleGroup.shortLabel(), muscleGroup in editing.muscleFocus, Modifier.fillMaxWidth()) {
-                viewModel.onEvent(AiCustomPlanFormEvent.ToggleMuscleFocus(muscleGroup))
+        item {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                MuscleGroup.entries.forEach { muscleGroup ->
+                    ToggleButton(muscleGroup.shortLabel(), muscleGroup in editing.muscleFocus) {
+                        viewModel.onEvent(AiCustomPlanFormEvent.ToggleMuscleFocus(muscleGroup))
+                    }
+                }
             }
+        }
+
+        item { Text(stringResource(Res.string.aicustomplan_form_notes_title), style = MaterialTheme.typography.titleSmall) }
+        item {
+            AppTextField(
+                value = editing.notes,
+                onValueChange = { viewModel.onEvent(AiCustomPlanFormEvent.SetNotes(it)) },
+                placeholder = stringResource(Res.string.aicustomplan_form_notes_placeholder),
+                singleLine = false,
+                maxLines = 3,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
 
         item { Text(stringResource(Res.string.aicustomplan_form_plan_duration_title), style = MaterialTheme.typography.titleSmall) }
