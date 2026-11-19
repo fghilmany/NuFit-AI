@@ -3,13 +3,16 @@ CREATE TABLE meal_preference (
     cuisine_themes TEXT NOT NULL,   -- JSON array
     mood TEXT,
     allergies TEXT NOT NULL,        -- JSON array
+    notes TEXT,                     -- free text, separate from allergies -- catch-all for prefs with no preset option
     schedule_mode TEXT NOT NULL DEFAULT 'AI_RANDOM'
 );
 
 -- Not synced this pass (device-local preference, quick to re-enter).
+-- No migration system in this project yet (no .sqm files) -- adding `notes` here requires a
+-- fresh local DB (uninstall/reinstall) during dev, same as every prior schema change.
 
 upsertMealPreference:
-INSERT OR REPLACE INTO meal_preference(id, cuisine_themes, mood, allergies, schedule_mode) VALUES (?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO meal_preference(id, cuisine_themes, mood, allergies, notes, schedule_mode) VALUES (?, ?, ?, ?, ?, ?);
 
 getMealPreference:
 SELECT * FROM meal_preference WHERE id = ?;

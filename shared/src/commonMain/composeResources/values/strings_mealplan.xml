@@ -56,11 +56,8 @@
     <string name="mealplan_preference_allergy_title">Allergies &amp; Restrictions</string>
     <string name="mealplan_preference_allergy_placeholder">Write your restriction here…</string>
     <string name="mealplan_preference_allergy_add">Add</string>
-    <string name="mealplan_preference_schedule_title">Schedule Preference</string>
-    <string name="mealplan_preference_schedule_ai_random_title">AI Random</string>
-    <string name="mealplan_preference_schedule_ai_random_body">Let AI surprise you with daily menus based on your nutrition profile.</string>
-    <string name="mealplan_preference_schedule_manual_title">Manual per Day</string>
-    <string name="mealplan_preference_schedule_manual_body">I want to choose the menu theme myself each day.</string>
+    <string name="mealplan_preference_notes_title">Additional Notes</string>
+    <string name="mealplan_preference_notes_placeholder">Other preferences not covered above (optional)</string>
     <string name="mealplan_preference_save_cta">Save Preferences</string>
 
     <string name="mealplan_reminder_toggle_label">Meal reminders</string>

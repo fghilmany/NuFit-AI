@@ -25,23 +25,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fghilmany.nufitai.core.designsystem.component.AppButton
-import com.fghilmany.nufitai.domain.mealplan.entity.MealScheduleMode
+import com.fghilmany.nufitai.core.designsystem.component.AppTextField
 import com.fghilmany.nufitai.presentation.mealplan.component.AllergyTagInput
 import com.fghilmany.nufitai.presentation.mealplan.component.CuisineChipRow
 import com.fghilmany.nufitai.presentation.mealplan.component.MoodGrid
-import com.fghilmany.nufitai.presentation.mealplan.component.ScheduleModeCard
 import com.fghilmany.nufitai.presentation.mealplan.viewmodel.MealPreferenceViewModel
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.mealplan_preference_allergy_title
 import nufitai.shared.generated.resources.mealplan_preference_cuisine_subtitle
 import nufitai.shared.generated.resources.mealplan_preference_cuisine_title
 import nufitai.shared.generated.resources.mealplan_preference_mood_title
+import nufitai.shared.generated.resources.mealplan_preference_notes_placeholder
+import nufitai.shared.generated.resources.mealplan_preference_notes_title
 import nufitai.shared.generated.resources.mealplan_preference_save_cta
-import nufitai.shared.generated.resources.mealplan_preference_schedule_ai_random_body
-import nufitai.shared.generated.resources.mealplan_preference_schedule_ai_random_title
-import nufitai.shared.generated.resources.mealplan_preference_schedule_manual_body
-import nufitai.shared.generated.resources.mealplan_preference_schedule_manual_title
-import nufitai.shared.generated.resources.mealplan_preference_schedule_title
 import nufitai.shared.generated.resources.mealplan_preference_top_bar_title
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -91,18 +87,12 @@ fun MealPreferenceScreen(onBack: () -> Unit, viewModel: MealPreferenceViewModel 
             }
 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(Res.string.mealplan_preference_schedule_title), style = MaterialTheme.typography.titleSmall)
-                ScheduleModeCard(
-                    title = stringResource(Res.string.mealplan_preference_schedule_ai_random_title),
-                    body = stringResource(Res.string.mealplan_preference_schedule_ai_random_body),
-                    isSelected = state.scheduleMode == MealScheduleMode.AI_RANDOM,
-                    onClick = { viewModel.onSetScheduleMode(MealScheduleMode.AI_RANDOM) },
-                )
-                ScheduleModeCard(
-                    title = stringResource(Res.string.mealplan_preference_schedule_manual_title),
-                    body = stringResource(Res.string.mealplan_preference_schedule_manual_body),
-                    isSelected = state.scheduleMode == MealScheduleMode.MANUAL_PER_DAY,
-                    onClick = { viewModel.onSetScheduleMode(MealScheduleMode.MANUAL_PER_DAY) },
+                Text(stringResource(Res.string.mealplan_preference_notes_title), style = MaterialTheme.typography.titleSmall)
+                AppTextField(
+                    value = state.notes,
+                    onValueChange = viewModel::onNotesChange,
+                    placeholder = stringResource(Res.string.mealplan_preference_notes_placeholder),
+                    modifier = Modifier.fillMaxWidth(),
                 )
             }
 

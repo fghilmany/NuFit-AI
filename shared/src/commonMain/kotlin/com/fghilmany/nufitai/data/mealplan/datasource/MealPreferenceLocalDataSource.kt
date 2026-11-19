@@ -13,7 +13,7 @@ class MealPreferenceLocalDataSource(private val database: NuFitDatabase) {
         database.mealPreferenceQueries.getMealPreference(SINGLETON_ID).executeAsOneOrNull()
     }
 
-    suspend fun upsertMealPreference(cuisineThemesJson: String, mood: String?, allergiesJson: String, scheduleMode: String) = withContext(Dispatchers.Default) {
-        database.mealPreferenceQueries.upsertMealPreference(SINGLETON_ID, cuisineThemesJson, mood, allergiesJson, scheduleMode)
+    suspend fun upsertMealPreference(cuisineThemesJson: String, mood: String?, allergiesJson: String, notes: String?, scheduleMode: String) = withContext(Dispatchers.Default) {
+        database.mealPreferenceQueries.upsertMealPreference(SINGLETON_ID, cuisineThemesJson, mood, allergiesJson, notes, scheduleMode)
     }
 }

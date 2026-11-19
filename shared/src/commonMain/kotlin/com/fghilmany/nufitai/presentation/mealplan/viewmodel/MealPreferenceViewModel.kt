@@ -7,6 +7,7 @@ import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.domain.mealplan.entity.MealMood
 import com.fghilmany.nufitai.domain.mealplan.entity.MealPreference
 import com.fghilmany.nufitai.domain.mealplan.entity.MealScheduleMode
+import com.fghilmany.nufitai.presentation.mealplan.component.CUISINE_THEME_FREE
 import com.fghilmany.nufitai.usecase.mealplan.GetMealPreference
 import com.fghilmany.nufitai.usecase.mealplan.SaveMealPreference
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,7 @@ data class MealPreferenceState(
     val mood: MealMood? = null,
     val allergies: List<String> = emptyList(),
     val allergyDraft: String = "",
+    val notes: String = "",
     val scheduleMode: MealScheduleMode = MealScheduleMode.AI_RANDOM,
     val isLoading: Boolean = true,
     val isSaving: Boolean = false,
@@ -49,6 +51,7 @@ class MealPreferenceViewModel(
                             cuisineThemes = preference?.cuisineThemes ?: emptySet(),
                             mood = preference?.mood,
                             allergies = preference?.allergies ?: emptyList(),
+                            notes = preference?.notes ?: "",
                             scheduleMode = preference?.scheduleMode ?: MealScheduleMode.AI_RANDOM,
                         )
                     }
@@ -57,8 +60,15 @@ class MealPreferenceViewModel(
         }
     }
 
+    /** "Bebas" (no preference) is mutually exclusive with every named theme -- picking one clears the other. */
     fun onToggleCuisineTheme(theme: String) {
-        _state.update { it.copy(cuisineThemes = if (theme in it.cuisineThemes) it.cuisineThemes - theme else it.cuisineThemes + theme) }
+        _state.update {
+            when {
+                theme == CUISINE_THEME_FREE -> it.copy(cuisineThemes = if (theme in it.cuisineThemes) emptySet() else setOf(theme))
+                theme in it.cuisineThemes -> it.copy(cuisineThemes = it.cuisineThemes - theme)
+                else -> it.copy(cuisineThemes = (it.cuisineThemes - CUISINE_THEME_FREE) + theme)
+            }
+        }
     }
 
     fun onSetMood(mood: MealMood) = _state.update { it.copy(mood = mood) }
@@ -73,7 +83,7 @@ class MealPreferenceViewModel(
 
     fun onRemoveAllergy(value: String) = _state.update { it.copy(allergies = it.allergies - value) }
 
-    fun onSetScheduleMode(mode: MealScheduleMode) = _state.update { it.copy(scheduleMode = mode) }
+    fun onNotesChange(value: String) = _state.update { it.copy(notes = value) }
 
     fun onSave() {
         val current = _state.value
@@ -83,6 +93,7 @@ class MealPreferenceViewModel(
                 cuisineThemes = current.cuisineThemes,
                 mood = current.mood,
                 allergies = current.allergies,
+                notes = current.notes.trim().ifBlank { null },
                 scheduleMode = current.scheduleMode,
             )
             when (val result = saveMealPreference(preference)) {

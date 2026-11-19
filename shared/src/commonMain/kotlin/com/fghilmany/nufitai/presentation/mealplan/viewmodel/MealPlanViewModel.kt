@@ -195,6 +195,7 @@ class MealPlanViewModel(
                     cuisineThemes = emptySet(),
                     mood = null,
                     allergies = emptyList(),
+                    notes = null,
                     scheduleMode = MealScheduleMode.AI_RANDOM,
                 )
             }

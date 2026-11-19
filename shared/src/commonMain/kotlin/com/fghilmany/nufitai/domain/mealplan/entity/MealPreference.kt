@@ -5,5 +5,7 @@ data class MealPreference(
     val cuisineThemes: Set<String>,
     val mood: MealMood?,
     val allergies: List<String>,
+    /** Free-text, no preset options -- catch-all for preferences the structured fields above don't cover. */
+    val notes: String?,
     val scheduleMode: MealScheduleMode,
 )

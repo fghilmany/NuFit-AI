@@ -22,6 +22,7 @@ class MealPreferenceRepositoryImpl(
             cuisineThemes = json.decodeFromString(row.cuisine_themes),
             mood = row.mood?.let { MealMood.valueOf(it) },
             allergies = json.decodeFromString(row.allergies),
+            notes = row.notes,
             scheduleMode = MealScheduleMode.valueOf(row.schedule_mode),
         )
     }
@@ -31,6 +32,7 @@ class MealPreferenceRepositoryImpl(
             cuisineThemesJson = json.encodeToString(preference.cuisineThemes),
             mood = preference.mood?.name,
             allergiesJson = json.encodeToString(preference.allergies),
+            notes = preference.notes,
             scheduleMode = preference.scheduleMode.name,
         )
     }

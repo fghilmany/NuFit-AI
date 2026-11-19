@@ -44,6 +44,7 @@ data class MealPreferenceDto(
     val cuisineThemes: Set<String>,
     val mood: String?,
     val allergies: List<String>,
+    val notes: String?,
     val scheduleMode: String,
 ) {
     companion object {
@@ -51,6 +52,7 @@ data class MealPreferenceDto(
             cuisineThemes = preference.cuisineThemes,
             mood = preference.mood?.name,
             allergies = preference.allergies,
+            notes = preference.notes,
             scheduleMode = preference.scheduleMode.name,
         )
     }

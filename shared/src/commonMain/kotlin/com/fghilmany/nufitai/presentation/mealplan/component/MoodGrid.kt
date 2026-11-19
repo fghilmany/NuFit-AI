@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +31,15 @@ private fun MealMood.label(): String = when (this) {
     MealMood.PEDAS -> stringResource(Res.string.mealplan_preference_mood_pedas)
 }
 
+/** Ergonomic fix (dev-requested, 19 Nov 2026): a plain text-only card forces the user to read
+ * before recognizing an option -- an emoji lets them scan instead ("recognition over recall"). */
+private fun MealMood.emoji(): String = when (this) {
+    MealMood.CEPAT -> "⚡"
+    MealMood.COMFORT -> "🍲"
+    MealMood.SEHAT -> "🥗"
+    MealMood.PEDAS -> "🌶️"
+}
+
 /** P-17 B "Suasana Hati (Mood)" -- 2x2 single-select grid. */
 @Composable
 fun MoodGrid(selected: MealMood?, onSelect: (MealMood) -> Unit, modifier: Modifier = Modifier) {
@@ -49,13 +59,15 @@ private fun MoodCard(mood: MealMood, isSelected: Boolean, onClick: () -> Unit, m
     AppElevatedCard(
         onClick = onClick,
         modifier = modifier.height(80.dp),
+        backgroundColor = if (isSelected) NuFitColors.PrimaryContainer else MaterialTheme.colorScheme.surfaceContainerLowest,
         border = if (isSelected) BorderStroke(2.dp, NuFitColors.Primary) else null,
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().fillMaxHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
+            Text(mood.emoji(), style = MaterialTheme.typography.titleLarge)
             Text(mood.label(), style = MaterialTheme.typography.bodyMedium)
         }
     }

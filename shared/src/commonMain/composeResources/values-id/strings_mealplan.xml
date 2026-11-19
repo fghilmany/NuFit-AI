@@ -56,11 +56,8 @@
     <string name="mealplan_preference_allergy_title">Alergi &amp; Pantangan</string>
     <string name="mealplan_preference_allergy_placeholder">Tulis pantanganmu di sini…</string>
     <string name="mealplan_preference_allergy_add">Tambah</string>
-    <string name="mealplan_preference_schedule_title">Preferensi Jadwal</string>
-    <string name="mealplan_preference_schedule_ai_random_title">AI Random</string>
-    <string name="mealplan_preference_schedule_ai_random_body">Biarkan AI mengatur kejutan menu harian berdasarkan profil nutrisimu.</string>
-    <string name="mealplan_preference_schedule_manual_title">Manual per Hari</string>
-    <string name="mealplan_preference_schedule_manual_body">Saya ingin memilih tema makanan sendiri setiap hari.</string>
+    <string name="mealplan_preference_notes_title">Catatan Tambahan</string>
+    <string name="mealplan_preference_notes_placeholder">Preferensi lain yang belum ada pilihannya di atas (opsional)</string>
     <string name="mealplan_preference_save_cta">Simpan Preferensi</string>
 
     <string name="mealplan_reminder_toggle_label">Reminder makan</string>
