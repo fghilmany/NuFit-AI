@@ -27,7 +27,7 @@
     <string name="mealplan_regenerate_confirm_action">Regenerate</string>
     <string name="mealplan_regenerate_confirm_cancel">Cancel</string>
 
-    <string name="mealplan_regenerate_suggestion_body">Your weight has changed — your calorie needs may be different now.</string>
+    <string name="mealplan_regenerate_suggestion_body">Your weight has changed - your calorie needs may be different now.</string>
     <string name="mealplan_regenerate_suggestion_cta">Recalculate</string>
 
     <string name="mealplan_empty_state_title">No meal plan yet for this week</string>
@@ -61,5 +61,5 @@
     <string name="mealplan_preference_save_cta">Save Preferences</string>
 
     <string name="mealplan_reminder_toggle_label">Meal reminders</string>
-    <string name="mealplan_reminder_permission_denied_note">Notification permission not granted — reminders won't appear until you enable it in system settings.</string>
+    <string name="mealplan_reminder_permission_denied_note">Notification permission not granted - reminders won't appear until you enable it in system settings.</string>
 </resources>

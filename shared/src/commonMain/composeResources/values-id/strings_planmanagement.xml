@@ -17,7 +17,7 @@
 
     <string name="planmanagement_source_template">TEMPLATE</string>
     <string name="planmanagement_source_ai">AI</string>
-    <string name="planmanagement_source_personalized">PERSONALIZED</string>
+    <string name="planmanagement_source_personalized">PERSONALISASI</string>
 
     <string name="planmanagement_action_activate">Aktifkan</string>
     <string name="planmanagement_action_restore">Pulihkan</string>

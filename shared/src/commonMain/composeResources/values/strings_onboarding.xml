@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="onboarding_splash_tagline">Smart training, real results</string>
-    <string name="onboarding_splash_loading_message">Preparing your experience...</string>
+    <string name="onboarding_splash_loading_message">Just a moment, getting things ready...</string>
 
     <string name="onboarding_entry_title">Let's get started</string>
-    <string name="onboarding_entry_body">Sign in to sync your progress across devices, or jump straight into a quick assessment -- no account needed.</string>
+    <string name="onboarding_entry_body">Sign in to sync your progress across devices, or jump straight into a quick assessment - no account needed.</string>
     <string name="onboarding_entry_cta_login">Sign in with account</string>
     <string name="onboarding_entry_cta_quick_assessment">Start Quick Assessment</string>
 
@@ -57,7 +57,7 @@
 
     <string name="onboarding_bodydata_top_bar_title">Body Data</string>
     <string name="onboarding_bodydata_heading">Body data (optional)</string>
-    <string name="onboarding_bodydata_body">Fill this in if you want, or skip it -- you can always fill it in later in settings.</string>
+    <string name="onboarding_bodydata_body">Fill this in if you want, or skip it - you can always fill it in later in settings.</string>
     <string name="onboarding_bodydata_height_label">Height (cm)</string>
     <string name="onboarding_bodydata_weight_label">Weight (kg)</string>
 

@@ -5,25 +5,25 @@
     <string name="auth_login_benefit_backup_title">Backup otomatis ke cloud</string>
     <string name="auth_login_benefit_backup_body">Data aman tersimpan selamanya.</string>
     <string name="auth_login_benefit_personalization_title">Program lebih personal</string>
-    <string name="auth_login_benefit_personalization_body">AI belajar dari kebiasaanmu.</string>
+    <string name="auth_login_benefit_personalization_body">Program makin pas, sesuai progres latihanmu.</string>
     <string name="auth_login_benefit_restore_title">Pulihkan data di HP baru</string>
     <string name="auth_login_benefit_restore_body">Pindah perangkat tanpa hambatan.</string>
     <string name="auth_login_cta_google">Lanjutkan dengan Google</string>
     <string name="auth_login_cta_apple">Masuk dengan Apple</string>
-    <string name="auth_login_legal">Dengan melanjutkan, Anda menyetujui Syarat Penggunaan &amp; Kebijakan Privasi NuFit AI.</string>
+    <string name="auth_login_legal">Dengan melanjutkan, kamu menyetujui Syarat Penggunaan &amp; Kebijakan Privasi NuFit AI.</string>
 
     <string name="auth_complete_profile_title">Lengkapi Profil Kamu</string>
-    <string name="auth_complete_profile_subtitle">Data ini dipakai untuk mempersonalisasi norma tes kamu.</string>
+    <string name="auth_complete_profile_subtitle">Data ini dipakai biar hasil tes fisik kamu lebih akurat, sesuai usia dan jenis kelamin.</string>
     <string name="auth_complete_profile_age_label">Usia</string>
     <string name="auth_complete_profile_gender_label">Jenis Kelamin</string>
 
     <string name="auth_login_conflict_title">Akun ini udah punya data</string>
-    <string name="auth_login_conflict_body">HP ini punya data lokal yang belum terhubung ke akun ini. Kalau lanjut, data itu bakal diganti data akun ini dari cloud -- data lokal di HP ini bakal hilang.</string>
+    <string name="auth_login_conflict_body">HP ini punya data lokal yang belum terhubung ke akun ini. Kalau lanjut, data itu bakal diganti data akun ini dari cloud - data lokal di HP ini bakal hilang.</string>
     <string name="auth_login_conflict_discard">Lanjut, ganti data lokal</string>
     <string name="auth_login_conflict_cancel">Batal, kembali</string>
 
     <string name="auth_login_save_plan_title">Simpan plan kamu sekarang?</string>
-    <string name="auth_login_save_plan_body">Akun ini belum punya plan tersimpan. Simpan plan yang sedang kamu jalani di HP ini, atau mulai kosong -- kamu tetap bisa bikin plan custom sendiri kapan pun lewat tab Rencana.</string>
+    <string name="auth_login_save_plan_body">Akun ini belum punya plan tersimpan. Simpan plan yang sedang kamu jalani di HP ini, atau mulai kosong - kamu tetap bisa bikin plan custom sendiri kapan pun lewat tab Rencana.</string>
     <string name="auth_login_save_plan_confirm">Simpan plan ini</string>
     <string name="auth_login_save_plan_decline">Mulai kosong</string>
 </resources>

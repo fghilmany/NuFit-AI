@@ -24,13 +24,13 @@
     <string name="ptmode_swap_sheet_empty">Tidak ada alternatif tersedia</string>
 
     <string name="ptmode_end_session_dialog_title">Akhiri sesi ini?</string>
-    <string name="ptmode_end_session_dialog_body">Kamu bisa melanjutkan nanti dari posisi terakhir, atau akhiri sekarang -- gerakan yang tersisa akan ditandai dilewati dan progres sejauh ini tetap tersimpan.</string>
+    <string name="ptmode_end_session_dialog_body">Kamu bisa melanjutkan nanti dari posisi terakhir, atau akhiri sekarang - gerakan yang tersisa akan ditandai dilewati dan progres sejauh ini tetap tersimpan.</string>
     <string name="ptmode_end_session_continue_later">Lanjutkan nanti</string>
     <string name="ptmode_end_session_end_now">Akhiri sekarang</string>
 
     <string name="ptmode_summary_title">Selesai!</string>
     <string name="ptmode_summary_headline">Sesi Selesai! Kamu Hebat!</string>
-    <string name="ptmode_summary_subtitle">Tubuhmu akan berterima kasih padamu nanti. Istirahatlah sejenak.</string>
+    <string name="ptmode_summary_subtitle">Kerja bagus! Istirahat yang cukup ya, biar otot kamu pulih maksimal.</string>
     <string name="ptmode_summary_close_content_description">Tutup</string>
     <string name="ptmode_summary_total_volume_label">Total Beban</string>
     <string name="ptmode_summary_volume_value">%1$s kg</string>

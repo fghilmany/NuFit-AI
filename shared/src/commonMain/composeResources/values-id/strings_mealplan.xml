@@ -27,7 +27,7 @@
     <string name="mealplan_regenerate_confirm_action">Generate Ulang</string>
     <string name="mealplan_regenerate_confirm_cancel">Batal</string>
 
-    <string name="mealplan_regenerate_suggestion_body">Berat badanmu berubah — kebutuhan kalorimu mungkin sudah berbeda sekarang.</string>
+    <string name="mealplan_regenerate_suggestion_body">Berat badanmu berubah - kebutuhan kalorimu mungkin sudah berbeda sekarang.</string>
     <string name="mealplan_regenerate_suggestion_cta">Hitung Ulang</string>
 
     <string name="mealplan_empty_state_title">Belum ada meal plan untuk minggu ini</string>
@@ -61,5 +61,5 @@
     <string name="mealplan_preference_save_cta">Simpan Preferensi</string>
 
     <string name="mealplan_reminder_toggle_label">Reminder makan</string>
-    <string name="mealplan_reminder_permission_denied_note">Izin notifikasi belum diaktifkan — reminder tidak akan muncul sampai kamu mengizinkannya di pengaturan sistem.</string>
+    <string name="mealplan_reminder_permission_denied_note">Izin notifikasi belum diaktifkan - reminder tidak akan muncul sampai kamu mengizinkannya di pengaturan sistem.</string>
 </resources>

@@ -5,7 +5,7 @@
 
     <string name="profilesettings_guest_hero_title">Simpan Progres Kamu</string>
     <string name="profilesettings_guest_hero_benefit_backup">Cadangkan data latihan</string>
-    <string name="profilesettings_guest_hero_benefit_personalize">Personalisasi lebih cerdas</string>
+    <string name="profilesettings_guest_hero_benefit_personalize">Program makin pas sesuai progresmu</string>
     <string name="profilesettings_guest_hero_cta_google">Masuk dengan Google</string>
 
     <string name="profilesettings_unnamed_user">Pengguna NuFit AI</string>
@@ -14,7 +14,7 @@
     <string name="profilesettings_sync_status_idle">Belum pernah sync</string>
     <string name="profilesettings_sync_status_syncing">Sedang sync…</string>
     <string name="profilesettings_sync_status_success">Terakhir sync %1$s</string>
-    <string name="profilesettings_sync_status_failed">Sync gagal — akan dicoba lagi otomatis</string>
+    <string name="profilesettings_sync_status_failed">Sync gagal - akan dicoba lagi otomatis</string>
     <string name="profilesettings_sync_now_action">Sync sekarang</string>
     <string name="profilesettings_logout_action">Logout</string>
 
@@ -23,7 +23,7 @@
     <string name="profilesettings_weight_label">BERAT BADAN</string>
     <string name="profilesettings_height_unit">cm</string>
     <string name="profilesettings_weight_unit">kg</string>
-    <string name="profilesettings_empty_value">—</string>
+    <string name="profilesettings_empty_value">-</string>
     <string name="profilesettings_weight_history_title">RIWAYAT BERAT BADAN</string>
     <string name="profilesettings_weight_history_empty">Belum ada data</string>
     <string name="profilesettings_weight_history_delta_format">%1$s kg (30 hari terakhir)</string>
@@ -75,6 +75,6 @@
     <string name="profilesettings_privacy_body">NuFit AI menyimpan data latihan dan profil kamu secara lokal di perangkat. Jika kamu login, data ini juga disimpan di server kami untuk keperluan backup dan sinkronisasi antar-perangkat.\n\nKami tidak membagikan data pribadimu ke pihak ketiga tanpa izin, kecuali diwajibkan oleh hukum.\n\nKamu dapat menghapus akun dan data cloud kamu kapan saja melalui menu Hapus Akun.</string>
 
     <string name="profilesettings_about_top_bar_title">Tentang Aplikasi</string>
-    <string name="profilesettings_about_body">NuFit AI adalah aplikasi pendamping latihan gym yang membantu kamu mendapatkan program latihan sesuai level dan tujuanmu — mulai dari template lokal hingga rencana yang dipersonalisasi AI.</string>
+    <string name="profilesettings_about_body">NuFit AI adalah aplikasi pendamping latihan gym yang membantu kamu mendapatkan program latihan sesuai level dan tujuanmu - mulai dari template lokal hingga rencana yang dipersonalisasi AI.</string>
     <string name="profilesettings_about_version">Versi %1$s</string>
 </resources>

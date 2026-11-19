@@ -11,13 +11,13 @@
     <string name="monthlyplan_home_this_week_title">Sesi Minggu Ini</string>
 
     <string name="monthlyplan_session_detail_top_bar_title">Detail Sesi</string>
-    <string name="monthlyplan_session_detail_description_templated">Sesi %1$s -- fokus pada pola gerak utama hari ini.</string>
+    <string name="monthlyplan_session_detail_description_templated">Sesi %1$s - fokus pada pola gerak utama hari ini.</string>
     <string name="monthlyplan_session_detail_description_fallback">Sesi latihan hari ini.</string>
     <string name="monthlyplan_session_detail_main_exercises_title">Latihan Utama</string>
     <string name="monthlyplan_session_detail_tip_title">Saran NuFit AI</string>
     <string name="monthlyplan_session_detail_tip_body">Fokus pada teknik yang benar sebelum menambah beban. Kualitas gerakan lebih penting dari jumlah repetisi.</string>
-    <string name="monthlyplan_session_detail_rest_body">Otot kamu justru pulih dan tumbuh lebih kuat saat istirahat, bukan saat latihan -- lewatkan ini dan progres bisa melambat, risiko cedera naik. Manfaatkan hari ini untuk rileks, peregangan ringan, atau tidur cukup.</string>
-    <string name="monthlyplan_session_detail_light_activity_body">Hari aktivitas ringan bikin tubuh tetap bergerak tanpa beban sesi latihan penuh -- bantu aliran darah dan mempercepat pemulihan. Coba jalan santai, peregangan ringan, atau sepedaan santai.</string>
+    <string name="monthlyplan_session_detail_rest_body">Otot kamu justru pulih dan tumbuh lebih kuat saat istirahat, bukan saat latihan - lewatkan ini dan progres bisa melambat, risiko cedera naik. Manfaatkan hari ini untuk rileks, peregangan ringan, atau tidur cukup.</string>
+    <string name="monthlyplan_session_detail_light_activity_body">Hari aktivitas ringan bikin tubuh tetap bergerak tanpa beban sesi latihan penuh - bantu aliran darah dan mempercepat pemulihan. Coba jalan santai, peregangan ringan, atau sepedaan santai.</string>
     <string name="monthlyplan_session_detail_start_button">Mulai Sesi Ini</string>
     <string name="monthlyplan_session_detail_exercise_meta">%1$dx %2$s • RPE %3$d-%4$d</string>
     <string name="monthlyplan_session_detail_ganti_button">Ganti</string>

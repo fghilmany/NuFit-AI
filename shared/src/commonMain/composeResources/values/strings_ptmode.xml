@@ -24,13 +24,13 @@
     <string name="ptmode_swap_sheet_empty">No alternatives available</string>
 
     <string name="ptmode_end_session_dialog_title">End this session?</string>
-    <string name="ptmode_end_session_dialog_body">You can continue later from where you left off, or end now -- the remaining exercises will be marked as skipped and your progress so far will be saved.</string>
+    <string name="ptmode_end_session_dialog_body">You can continue later from where you left off, or end now - the remaining exercises will be marked as skipped and your progress so far will be saved.</string>
     <string name="ptmode_end_session_continue_later">Continue later</string>
     <string name="ptmode_end_session_end_now">End now</string>
 
     <string name="ptmode_summary_title">Done!</string>
     <string name="ptmode_summary_headline">Session Complete! You're Awesome!</string>
-    <string name="ptmode_summary_subtitle">Your body will thank you later. Take a moment to rest.</string>
+    <string name="ptmode_summary_subtitle">Great work! Get some proper rest so your muscles can recover.</string>
     <string name="ptmode_summary_close_content_description">Close</string>
     <string name="ptmode_summary_total_volume_label">Total Volume</string>
     <string name="ptmode_summary_volume_value">%1$s kg</string>

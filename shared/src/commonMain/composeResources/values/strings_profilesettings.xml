@@ -5,7 +5,7 @@
 
     <string name="profilesettings_guest_hero_title">Save Your Progress</string>
     <string name="profilesettings_guest_hero_benefit_backup">Back up your workout data</string>
-    <string name="profilesettings_guest_hero_benefit_personalize">Smarter personalization</string>
+    <string name="profilesettings_guest_hero_benefit_personalize">Your program gets more tailored as you train</string>
     <string name="profilesettings_guest_hero_cta_google">Sign in with Google</string>
 
     <string name="profilesettings_unnamed_user">NuFit AI User</string>
@@ -14,7 +14,7 @@
     <string name="profilesettings_sync_status_idle">Not synced yet</string>
     <string name="profilesettings_sync_status_syncing">Syncing…</string>
     <string name="profilesettings_sync_status_success">Last synced %1$s</string>
-    <string name="profilesettings_sync_status_failed">Sync failed — will retry automatically</string>
+    <string name="profilesettings_sync_status_failed">Sync failed - will retry automatically</string>
     <string name="profilesettings_sync_now_action">Sync now</string>
     <string name="profilesettings_logout_action">Log out</string>
 
@@ -23,7 +23,7 @@
     <string name="profilesettings_weight_label">WEIGHT</string>
     <string name="profilesettings_height_unit">cm</string>
     <string name="profilesettings_weight_unit">kg</string>
-    <string name="profilesettings_empty_value">—</string>
+    <string name="profilesettings_empty_value">-</string>
     <string name="profilesettings_weight_history_title">WEIGHT HISTORY</string>
     <string name="profilesettings_weight_history_empty">No data yet</string>
     <string name="profilesettings_weight_history_delta_format">%1$s kg (last 30 days)</string>
@@ -75,6 +75,6 @@
     <string name="profilesettings_privacy_body">NuFit AI stores your workout and profile data locally on your device. If you sign in, this data is also stored on our servers for backup and cross-device sync.\n\nWe do not share your personal data with third parties without consent, except where required by law.\n\nYou can delete your account and cloud data at any time via the Delete Account menu.</string>
 
     <string name="profilesettings_about_top_bar_title">About the App</string>
-    <string name="profilesettings_about_body">NuFit AI is a gym companion app that helps you get a workout program suited to your level and goals — from local templates to an AI-personalized plan.</string>
+    <string name="profilesettings_about_body">NuFit AI is a gym companion app that helps you get a workout program suited to your level and goals - from local templates to an AI-personalized plan.</string>
     <string name="profilesettings_about_version">Version %1$s</string>
 </resources>

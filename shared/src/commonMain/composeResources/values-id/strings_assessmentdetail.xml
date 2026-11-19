@@ -18,7 +18,7 @@
     <string name="assessmentdetail_plan_description">Program 4 minggu yang fokus pada pengenalan gerakan dasar dan peningkatan metabolisme.</string>
     <string name="assessmentdetail_selected_plan_title">Rencana Terpilih</string>
     <string name="assessmentdetail_full_assessment_cta_title">Assessment Belum Lengkap</string>
-    <string name="assessmentdetail_full_assessment_cta_body">Buka fitur Nutrisi dan Analisis Postur AI dengan menyelesaikan assessment penuh.</string>
+    <string name="assessmentdetail_full_assessment_cta_body">Selesaikan Full Assessment buat buka fitur Nutrisi dan Analisis Postur AI.</string>
     <string name="assessmentdetail_full_assessment_cta_button">Masuk &amp; Lengkapi Assessment</string>
     <string name="assessmentdetail_retake_footer_link">Ulangi Assessment</string>
     <string name="assessmentdetail_tab_hasil">Hasil</string>
@@ -40,7 +40,7 @@
     <string name="assessmentdetail_no_assessment_body_logged_in">Plan kamu dibuat dari template tanpa assessment. Isi Full Assessment buat lihat hasil dan alasan klasifikasi di sini.</string>
     <string name="assessmentdetail_start_quick_assessment">Isi Quick Assessment</string>
     <string name="assessmentdetail_start_full_assessment">Isi Full Assessment</string>
-    <string name="assessmentdetail_history_empty">Belum ada riwayat lain -- riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
+    <string name="assessmentdetail_history_empty">Belum ada riwayat lain - riwayat akan muncul setelah kamu retake atau plan baru dibuat.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalisasi</string>
     <string name="assessmentdetail_history_source_ai_custom">AI Custom</string>

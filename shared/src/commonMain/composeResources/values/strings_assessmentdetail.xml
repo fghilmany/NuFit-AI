@@ -18,7 +18,7 @@
     <string name="assessmentdetail_plan_description">A 4-week program focused on learning basic movements and boosting metabolism.</string>
     <string name="assessmentdetail_selected_plan_title">Selected Plan</string>
     <string name="assessmentdetail_full_assessment_cta_title">Assessment Not Complete</string>
-    <string name="assessmentdetail_full_assessment_cta_body">Unlock Nutrition and AI Posture Analysis by completing the full assessment.</string>
+    <string name="assessmentdetail_full_assessment_cta_body">Complete the Full Assessment to unlock Nutrition and AI Posture Analysis.</string>
     <string name="assessmentdetail_full_assessment_cta_button">Sign In &amp; Complete Assessment</string>
     <string name="assessmentdetail_retake_footer_link">Retake Assessment</string>
     <string name="assessmentdetail_tab_hasil">Result</string>
@@ -40,7 +40,7 @@
     <string name="assessmentdetail_no_assessment_body_logged_in">Your plan was created from a template with no assessment. Fill in a Full Assessment to see a result and classification reason here.</string>
     <string name="assessmentdetail_start_quick_assessment">Fill in Quick Assessment</string>
     <string name="assessmentdetail_start_full_assessment">Fill in Full Assessment</string>
-    <string name="assessmentdetail_history_empty">No other history yet -- history will appear once you retake or a new plan is created.</string>
+    <string name="assessmentdetail_history_empty">No other history yet - history will appear once you retake or a new plan is created.</string>
     <string name="assessmentdetail_history_source_template">Template</string>
     <string name="assessmentdetail_history_source_personalized">Personalized</string>
     <string name="assessmentdetail_history_source_ai_custom">AI Custom</string>
