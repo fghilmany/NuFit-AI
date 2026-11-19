@@ -51,11 +51,11 @@ class AiCustomPlanRepositoryImpl(
                 401 -> AppResult.Error(Failure.Unauthorized())
                 403 -> AppResult.Error(Failure.Validation("Not subscribed or quota exceeded"))
                 422 -> AppResult.Error(Failure.Validation("AI request validation failed"))
-                else -> AppResult.Error(Failure.Network("AI backend error (${e.statusCode})"))
+                else -> AppResult.Error(Failure.Network("Couldn't generate your plan right now. Please try again."))
             }
         } catch (e: Exception) {
             logger.e(e) { "generatePlan failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
         }
     }
 }

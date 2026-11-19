@@ -77,12 +77,12 @@ class SyncRepositoryImpl(
         } catch (e: CancellationException) {
             throw e
         } catch (e: SyncApiException) {
-            val failure = if (e.statusCode == 401) Failure.Unauthorized() else Failure.Network("Sync backend error (${e.statusCode})")
+            val failure = if (e.statusCode == 401) Failure.Unauthorized() else Failure.Network("Couldn't sync your data right now. Please try again later.")
             logger.e(e) { "Sync failed -- HTTP ${e.statusCode}" }
             _status.value = SyncStatus.Failed(currentInstant(), failure)
             AppResult.Error(failure)
         } catch (e: Exception) {
-            val failure = Failure.Network(e.message ?: "Unknown network error")
+            val failure = Failure.Network("Couldn't connect. Please check your internet connection and try again.")
             logger.e(e) { "Sync failed -- ${e.message}" }
             _status.value = SyncStatus.Failed(currentInstant(), failure)
             AppResult.Error(failure)
@@ -99,7 +99,7 @@ class SyncRepositoryImpl(
             throw e
         } catch (e: Exception) {
             logger.e(e) { "clearAllLocalData failed -- ${e.message}" }
-            AppResult.Error(Failure.Database(e.message ?: "Failed to clear local data"))
+            AppResult.Error(Failure.Database("Couldn't clear your local data. Please try again."))
         }
     }
 
@@ -109,7 +109,7 @@ class SyncRepositoryImpl(
         throw e
     } catch (e: Exception) {
         logger.e(e) { "hasLocalUserData failed -- ${e.message}" }
-        AppResult.Error(Failure.Database(e.message ?: "Failed to check local data"))
+        AppResult.Error(Failure.Database("Couldn't check your local data. Please try again."))
     }
 
     override suspend fun hasRemoteUserData(userId: String, accessToken: String): AppResult<Boolean> = try {
@@ -117,11 +117,11 @@ class SyncRepositoryImpl(
     } catch (e: CancellationException) {
         throw e
     } catch (e: SyncApiException) {
-        val failure = if (e.statusCode == 401) Failure.Unauthorized() else Failure.Network("Sync backend error (${e.statusCode})")
+        val failure = if (e.statusCode == 401) Failure.Unauthorized() else Failure.Network("Couldn't check your account data right now. Please try again.")
         logger.e(e) { "hasRemoteUserData failed -- HTTP ${e.statusCode}" }
         AppResult.Error(failure)
     } catch (e: Exception) {
         logger.e(e) { "hasRemoteUserData failed -- ${e.message}" }
-        AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+        AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
     }
 }

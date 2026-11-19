@@ -7,6 +7,7 @@ import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.Failure
+import com.fghilmany.nufitai.core.logging.AppLogger
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import kotlinx.coroutines.CancellationException
@@ -17,9 +18,13 @@ import kotlinx.coroutines.CancellationException
  * onResume/onPause) since `getCredential()` needs one to show the account picker sheet.
  */
 actual class GoogleSignInLauncher actual constructor() {
+    private val logger = AppLogger.tagged("GoogleSignInLauncher")
+
     actual suspend fun launch(): AppResult<NativeSignInResult> {
         val activity = CurrentActivityHolder.activity
-            ?: return AppResult.Error(Failure.Network("No active screen to show the Google sign-in sheet"))
+            ?: return AppResult.Error(Failure.Network("Couldn't open sign-in right now. Please try again.")).also {
+                logger.w { "No active Activity to show the Google sign-in sheet" }
+            }
 
         val option = GetGoogleIdOption.Builder()
             .setFilterByAuthorizedAccounts(false)
@@ -38,19 +43,24 @@ actual class GoogleSignInLauncher actual constructor() {
         } catch (e: CancellationException) {
             throw e
         } catch (e: GetCredentialCancellationException) {
-            AppResult.Error(Failure.Network(e.message ?: "Google sign-in was cancelled"))
+            logger.i { "Google sign-in cancelled by user" }
+            AppResult.Error(Failure.Network("Google sign-in was cancelled."))
         } catch (e: GetCredentialException) {
+            logger.e(e) { "Google sign-in failed on first attempt, retrying once" }
             try {
                 fetchCredential(activity, request)
             } catch (e2: CancellationException) {
                 throw e2
             } catch (e2: GetCredentialException) {
-                AppResult.Error(Failure.Network(e2.message ?: "Google sign-in was cancelled or failed"))
+                logger.e(e2) { "Google sign-in failed on retry" }
+                AppResult.Error(Failure.Network("Couldn't sign in with Google. Please try again."))
             } catch (e2: Exception) {
-                AppResult.Error(Failure.Network(e2.message ?: "Unknown Google sign-in error"))
+                logger.e(e2) { "Google sign-in failed on retry (unexpected error)" }
+                AppResult.Error(Failure.Network("Couldn't sign in with Google. Please try again."))
             }
         } catch (e: Exception) {
-            AppResult.Error(Failure.Network(e.message ?: "Unknown Google sign-in error"))
+            logger.e(e) { "Google sign-in failed (unexpected error)" }
+            AppResult.Error(Failure.Network("Couldn't sign in with Google. Please try again."))
         }
     }
 

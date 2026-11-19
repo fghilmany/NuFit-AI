@@ -146,11 +146,11 @@ class MealPlanRepositoryImpl(
                 e.statusCode == 403 && e.quotaExceeded -> AppResult.Error(Failure.QuotaExceeded())
                 e.statusCode == 403 -> AppResult.Error(Failure.Validation("Not subscribed"))
                 e.statusCode == 422 -> AppResult.Error(Failure.Validation("Meal plan request validation failed"))
-                else -> AppResult.Error(Failure.Network("Meal plan backend error (${e.statusCode})"))
+                else -> AppResult.Error(Failure.Network("Couldn't generate your meal plan right now. Please try again."))
             }
         } catch (e: Exception) {
             logger.e(e) { "generateRemote failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
         }
     }
 

@@ -96,11 +96,11 @@ class ChatRepositoryImpl(
                 // longer lies to the user that they're out of chat quota.
                 e.reason == "requires_login" -> AppResult.Error(Failure.Unauthorized("Perlu login untuk memakai Chat AI"))
                 e.reason == "ai_access_blocked" -> AppResult.Error(Failure.Unauthorized("Akses AI untuk akun ini sedang dibatasi"))
-                else -> AppResult.Error(Failure.Network("Chat backend error (${e.statusCode})"))
+                else -> AppResult.Error(Failure.Network("Gagal mengirim pesan, coba lagi ya"))
             }
         } catch (e: Exception) {
             logger.e(e) { "sendToRemote failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Gagal terhubung, cek koneksi internet kamu dan coba lagi"))
         }
     }
 

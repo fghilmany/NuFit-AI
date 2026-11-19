@@ -43,11 +43,11 @@ class ProfileSettingsRepositoryImpl(
             logger.e(e) { "deleteAccount failed -- HTTP ${e.statusCode}" }
             when (e.statusCode) {
                 401 -> AppResult.Error(Failure.Unauthorized())
-                else -> AppResult.Error(Failure.Network("Delete-account backend error (${e.statusCode})"))
+                else -> AppResult.Error(Failure.Network("Couldn't delete your account right now. Please try again."))
             }
         } catch (e: Exception) {
             logger.e(e) { "deleteAccount failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
         }
     }
 }

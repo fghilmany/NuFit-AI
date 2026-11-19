@@ -38,11 +38,11 @@ class AuthRepositoryImpl(
             when (e.statusCode) {
                 401 -> AppResult.Error(Failure.Unauthorized())
                 422 -> AppResult.Error(Failure.Validation("Sign-in validation failed"))
-                else -> AppResult.Error(Failure.Network("Auth backend error (${e.statusCode})"))
+                else -> AppResult.Error(Failure.Network("Couldn't sign you in right now. Please try again."))
             }
         } catch (e: Exception) {
             logger.e(e) { "signIn failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
         }
     }
 
@@ -71,11 +71,11 @@ class AuthRepositoryImpl(
                 local.clearSession()
                 AppResult.Error(Failure.Unauthorized())
             } else {
-                AppResult.Error(Failure.Network("Auth backend error (${e.statusCode})"))
+                AppResult.Error(Failure.Network("Couldn't refresh your session right now. Please try again."))
             }
         } catch (e: Exception) {
             logger.e(e) { "Session refresh failed -- ${e.message}" }
-            AppResult.Error(Failure.Network(e.message ?: "Unknown network error"))
+            AppResult.Error(Failure.Network("Couldn't connect. Please check your internet connection and try again."))
         }
     }
 
