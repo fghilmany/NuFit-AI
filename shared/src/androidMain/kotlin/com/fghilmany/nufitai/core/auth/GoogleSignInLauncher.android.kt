@@ -1,7 +1,9 @@
 package com.fghilmany.nufitai.core.auth
 
+import android.app.Activity
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.error.Failure
@@ -25,23 +27,43 @@ actual class GoogleSignInLauncher actual constructor() {
             .build()
         val request = GetCredentialRequest.Builder().addCredentialOption(option).build()
 
+        // Dev report (19 Nov 2026): on a fresh install, the very first getCredential() call
+        // often fails with GetCredentialException because Google Play Services hasn't warmed up
+        // its credential-provider cache yet -- a second tap always worked. Retrying once
+        // internally fixes the symptom without making the user tap twice. Must NOT retry on
+        // GetCredentialCancellationException (the user closed the sheet themselves) -- retrying
+        // that would pop the sheet right back up immediately after they dismissed it.
         return try {
-            val response = CredentialManager.create(activity).getCredential(activity, request)
-            val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(response.credential.data)
-            AppResult.Success(
-                NativeSignInResult(
-                    idToken = googleIdTokenCredential.idToken,
-                    displayName = googleIdTokenCredential.displayName,
-                    profilePictureUrl = googleIdTokenCredential.profilePictureUri?.toString(),
-                ),
-            )
+            fetchCredential(activity, request)
         } catch (e: CancellationException) {
             throw e
+        } catch (e: GetCredentialCancellationException) {
+            AppResult.Error(Failure.Network(e.message ?: "Google sign-in was cancelled"))
         } catch (e: GetCredentialException) {
-            AppResult.Error(Failure.Network(e.message ?: "Google sign-in was cancelled or failed"))
+            try {
+                fetchCredential(activity, request)
+            } catch (e2: CancellationException) {
+                throw e2
+            } catch (e2: GetCredentialException) {
+                AppResult.Error(Failure.Network(e2.message ?: "Google sign-in was cancelled or failed"))
+            } catch (e2: Exception) {
+                AppResult.Error(Failure.Network(e2.message ?: "Unknown Google sign-in error"))
+            }
         } catch (e: Exception) {
             AppResult.Error(Failure.Network(e.message ?: "Unknown Google sign-in error"))
         }
+    }
+
+    private suspend fun fetchCredential(activity: Activity, request: GetCredentialRequest): AppResult<NativeSignInResult> {
+        val response = CredentialManager.create(activity).getCredential(activity, request)
+        val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(response.credential.data)
+        return AppResult.Success(
+            NativeSignInResult(
+                idToken = googleIdTokenCredential.idToken,
+                displayName = googleIdTokenCredential.displayName,
+                profilePictureUrl = googleIdTokenCredential.profilePictureUri?.toString(),
+            ),
+        )
     }
 
     companion object {
