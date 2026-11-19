@@ -2,7 +2,7 @@
 <resources>
     <!-- Sampled from iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/app-icon-1024.png's corner
          (the app icon's solid background) so the adaptive icon's background layer matches the
-         real icon. Updated 19 Nov 2026: real NuFit AI logo (dumbbell + AI node mark) replaced the
-         earlier blue placeholder cube icon -- this is that logo's dark green background. -->
-    <color name="ic_launcher_background">#0B412E</color>
+         real icon. Updated 19 Nov 2026: final logo (dumbbell + pulse-line accent) replaced the
+         earlier node-cluster mark - this is that logo's dark green background. -->
+    <color name="ic_launcher_background">#014932</color>
 </resources>
