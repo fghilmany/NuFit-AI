@@ -1,5 +1,6 @@
 package com.fghilmany.nufitai.presentation.auth.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +15,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CloudUpload
-import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material3.AlertDialog
@@ -67,6 +67,7 @@ import nufitai.shared.generated.resources.auth_login_subtitle
 import nufitai.shared.generated.resources.auth_login_title
 import nufitai.shared.generated.resources.common_action_skip
 import nufitai.shared.generated.resources.common_app_name
+import nufitai.shared.generated.resources.ic_app_logo
 import nufitai.shared.generated.resources.ic_apple_logo
 import nufitai.shared.generated.resources.ic_google_logo
 import org.jetbrains.compose.resources.painterResource
@@ -78,7 +79,8 @@ import org.koin.compose.viewmodel.koinViewModel
  * (locked decision #2) -- the decorative username/password card in the design is intentionally
  * NOT built. TODO(dev): the hero illustration (woman + AI robot high-fiving) isn't reproduced
  * here -- only a full-page mockup screenshot was available (the decorative form is baked into
- * its pixels), not a clean cropped export; swap the placeholder icon circle once one exists.
+ * its pixels), not a clean cropped export; the circle now shows the real app logo (19 Nov 2026)
+ * instead of a generic icon, but is still a stand-in for that full illustration.
  * The Google/Apple marks ARE real (`ic_google_logo`/`ic_apple_logo`, dev-supplied SVGs).
  */
 @Composable
@@ -124,11 +126,10 @@ fun LoginScreen(
                         modifier = Modifier.size(96.dp).clip(CircleShape).background(NuFitColors.SecondaryContainer),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(
-                            Icons.Filled.FitnessCenter,
+                        Image(
+                            painter = painterResource(Res.drawable.ic_app_logo),
                             contentDescription = null,
-                            tint = NuFitColors.OnSecondaryContainer,
-                            modifier = Modifier.size(48.dp),
+                            modifier = Modifier.size(64.dp).clip(CircleShape),
                         )
                     }
                 }
