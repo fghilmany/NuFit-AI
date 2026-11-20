@@ -19,19 +19,23 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import com.fghilmany.nufitai.presentation.monthlyplan.component.AssessmentDetailBanner
 import com.fghilmany.nufitai.presentation.monthlyplan.component.BottomNavBar
 import com.fghilmany.nufitai.presentation.monthlyplan.component.NavTab
@@ -54,6 +58,9 @@ import nufitai.shared.generated.resources.common_app_name
 import nufitai.shared.generated.resources.monthlyplan_home_empty_state
 import nufitai.shared.generated.resources.monthlyplan_home_empty_state_body
 import nufitai.shared.generated.resources.monthlyplan_home_empty_state_cta
+import nufitai.shared.generated.resources.monthlyplan_home_force_update_body
+import nufitai.shared.generated.resources.monthlyplan_home_force_update_cta
+import nufitai.shared.generated.resources.monthlyplan_home_force_update_title
 import nufitai.shared.generated.resources.monthlyplan_home_greeting
 import nufitai.shared.generated.resources.monthlyplan_home_greeting_named
 import nufitai.shared.generated.resources.monthlyplan_home_notification_content_description
@@ -77,6 +84,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
+    val forceUpdate by viewModel.forceUpdate.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         when (val current = state) {
@@ -101,6 +109,26 @@ fun HomeScreen(
             modifier = Modifier.align(Alignment.BottomStart),
         )
     }
+
+    forceUpdate?.let { ForceUpdateDialog(storeUrl = it.storeUrl) }
+}
+
+/** Non-dismissable -- no back-press, no tap-outside, no cancel button. The only way past this
+ * screen is tapping through to the store listing and actually updating. */
+@Composable
+private fun ForceUpdateDialog(storeUrl: String) {
+    val uriHandler = LocalUriHandler.current
+    AlertDialog(
+        onDismissRequest = {},
+        properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false),
+        title = { Text(stringResource(Res.string.monthlyplan_home_force_update_title)) },
+        text = { Text(stringResource(Res.string.monthlyplan_home_force_update_body)) },
+        confirmButton = {
+            TextButton(onClick = { uriHandler.openUri(storeUrl) }) {
+                Text(stringResource(Res.string.monthlyplan_home_force_update_cta))
+            }
+        },
+    )
 }
 
 @Composable

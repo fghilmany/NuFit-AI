@@ -33,6 +33,7 @@ fun initKoin(
         modules(
             databaseModule(driverFactory),
             networkModule(isDebugBuild),
+            appConfigModule,
             onboardingModule,
             exerciseLibraryModule,
             fullAssessmentModule,

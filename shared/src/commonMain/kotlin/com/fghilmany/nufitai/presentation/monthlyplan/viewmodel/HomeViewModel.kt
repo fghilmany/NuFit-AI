@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.util.currentInstant
+import com.fghilmany.nufitai.domain.appconfig.entity.ForceUpdateInfo
 import com.fghilmany.nufitai.domain.exerciselibrary.entity.Exercise
 import com.fghilmany.nufitai.domain.monthlyplan.entity.PlanDay
+import com.fghilmany.nufitai.usecase.appconfig.CheckForceUpdate
 import com.fghilmany.nufitai.usecase.auth.GetCurrentDisplayName
 import com.fghilmany.nufitai.usecase.exerciselibrary.GetExercisePool
 import com.fghilmany.nufitai.usecase.monthlyplan.GetActivePlanOverview
@@ -62,12 +64,19 @@ class HomeViewModel(
     private val getSessionStatus: GetSessionStatus,
     private val getCurrentDisplayName: GetCurrentDisplayName,
     private val getExercisePool: GetExercisePool,
+    private val checkForceUpdate: CheckForceUpdate,
 ) : ViewModel() {
     private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state: StateFlow<HomeState> = _state.asStateFlow()
 
+    // Deliberately separate from `state` -- a force-update check failing/pending must never
+    // block or reset the plan content itself (see CheckForceUpdate's own null-on-error contract).
+    private val _forceUpdate = MutableStateFlow<ForceUpdateInfo?>(null)
+    val forceUpdate: StateFlow<ForceUpdateInfo?> = _forceUpdate.asStateFlow()
+
     init {
         load()
+        viewModelScope.launch { _forceUpdate.value = checkForceUpdate() }
     }
 
     fun onEvent(event: HomeEvent) {

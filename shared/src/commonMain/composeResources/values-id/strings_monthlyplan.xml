@@ -4,6 +4,9 @@
     <string name="monthlyplan_home_empty_state_body">Buat plan latihan pertamamu supaya kamu selalu tahu apa yang harus dilakukan tiap ke gym.</string>
     <string name="monthlyplan_home_empty_state_cta">Buat Plan</string>
     <string name="monthlyplan_home_notification_content_description">Notifikasi</string>
+    <string name="monthlyplan_home_force_update_title">Update wajib</string>
+    <string name="monthlyplan_home_force_update_body">Versi baru NuFit AI wajib dipasang untuk melanjutkan pemakaian app. Update dulu ya.</string>
+    <string name="monthlyplan_home_force_update_cta">Update sekarang</string>
     <string name="monthlyplan_home_greeting">Halo! 👋</string>
     <string name="monthlyplan_home_greeting_named">Halo, %1$s! 👋</string>
     <string name="monthlyplan_home_week_progress">Minggu %1$d dari 4</string>

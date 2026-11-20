@@ -37,8 +37,9 @@ val monthlyPlanModule = module {
     factory { GetActivePlanOverview(repository = get()) }
     factory { SwapPlannedExercise(repository = get()) }
 
-    // getCurrentDisplayName registered in authModule; getExercisePool/getExerciseAlternatives in exerciseLibraryModule -- both load together in KoinInit.
-    viewModel { HomeViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getCurrentDisplayName = get(), getExercisePool = get()) }
+    // getCurrentDisplayName registered in authModule; getExercisePool/getExerciseAlternatives in
+    // exerciseLibraryModule; checkForceUpdate in appConfigModule -- all load together in KoinInit.
+    viewModel { HomeViewModel(getActivePlanOverview = get(), getSessionStatus = get(), getCurrentDisplayName = get(), getExercisePool = get(), checkForceUpdate = get()) }
     viewModel {
         SessionDetailViewModel(
             getActivePlanOverview = get(),

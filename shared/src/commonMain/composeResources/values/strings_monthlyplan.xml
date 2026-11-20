@@ -4,6 +4,9 @@
     <string name="monthlyplan_home_empty_state_body">Create your first training plan so you always know what to do at the gym.</string>
     <string name="monthlyplan_home_empty_state_cta">Create Plan</string>
     <string name="monthlyplan_home_notification_content_description">Notifications</string>
+    <string name="monthlyplan_home_force_update_title">Update required</string>
+    <string name="monthlyplan_home_force_update_body">A new version of NuFit AI is required to keep using the app. Please update to continue.</string>
+    <string name="monthlyplan_home_force_update_cta">Update now</string>
     <string name="monthlyplan_home_greeting">Hi! 👋</string>
     <string name="monthlyplan_home_greeting_named">Hi, %1$s! 👋</string>
     <string name="monthlyplan_home_week_progress">Week %1$d of 4</string>
