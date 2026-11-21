@@ -38,3 +38,12 @@
 -keepclasseswithmembers class com.fghilmany.nufitai.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
+
+# Navigation Compose's type-safe routes (Route.kt) resolve enum route arguments by looking up the
+# class with Class.forName(fullyQualifiedName) at runtime (NavTypeConverter_androidKt.parseEnum) --
+# this is separate from kotlinx.serialization's own reflection and isn't covered by the rules
+# above. R8 renaming/removing an enum breaks navigation on the first screen using it as a route
+# arg (hit on release build: LoginReturnTarget, used by Route.Login/CompleteProfile). Keep every
+# enum project-wide rather than tracking which ones are currently route args, so this doesn't
+# silently recur the next time a route gains an enum parameter.
+-keep class com.fghilmany.nufitai.** extends java.lang.Enum { *; }

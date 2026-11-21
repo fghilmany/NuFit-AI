@@ -53,6 +53,26 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    // Release keystore lives outside the repo entirely (/Users/faris/.../keystore/) -- never
+    // committed. Credentials read from local.properties (gitignored, same file sdk.dir/
+    // sentry.authToken live in). Add these 4 lines to local.properties:
+    //   release.storeFile=/Users/faris/Documents/learn/gym-app/keystore/release-key-store.jks
+    //   release.storePassword=...
+    //   release.keyAlias=...
+    //   release.keyPassword=...
+    // Missing on CI/a machine without the file -- release build variant just won't be signable
+    // there, debug is unaffected.
+    val releaseStoreFile = localProperties.getProperty("release.storeFile")
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = localProperties.getProperty("release.storePassword")
+                keyAlias = localProperties.getProperty("release.keyAlias")
+                keyPassword = localProperties.getProperty("release.keyPassword")
+            }
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -61,6 +81,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (releaseStoreFile != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {
