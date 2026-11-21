@@ -6,8 +6,13 @@
 <data-extraction-rules>
     <cloud-backup>
         <exclude domain="database" path="nufit.db" />
+        <!-- Encrypted session token (TokenStorage.android.kt) - the AES key lives in the Android
+             Keystore and never backs up with it, so a restored ciphertext would just be unreadable
+             garbage; excluding it avoids shipping that garbage at all. -->
+        <exclude domain="sharedpref" path="nufit_secure_token.xml" />
     </cloud-backup>
     <device-transfer>
         <exclude domain="database" path="nufit.db" />
+        <exclude domain="sharedpref" path="nufit_secure_token.xml" />
     </device-transfer>
 </data-extraction-rules>

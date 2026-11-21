@@ -1,3 +1,4 @@
+import io.sentry.kotlin.multiplatform.gradle.AppleDependencyProvider
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -7,6 +8,20 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.sqldelight)
+    // tech-stack.md's locked crash-reporting choice -- auto-adds the Sentry KMP dependency to
+    // commonMain and wires the per-target native setup (Android + iOS).
+    alias(libs.plugins.sentryKotlinMultiplatform)
+}
+
+// iOS isn't buildable yet (separate blockers: GifDecoder/TokenStorage.ios.kt, see
+// .projectmem/plan.md's open issues) -- the plugin's default AUTO provider tries a SwiftPM
+// install of Sentry Cocoa on every build regardless of target, which then resolves the WHOLE
+// commonMain dependency graph (incl. coil-gif, which has no iOS/klib variant) against iOS
+// cinterop and fails. NONE skips Cocoa install entirely; commonMain's Sentry KMP SDK (used by
+// the Android target) is unaffected. Flip back to AUTO once iOS actually builds.
+sentryKmp {
+    autoInstall.apple.provider.set(AppleDependencyProvider.NONE)
+    linker.enabled.set(false)
 }
 
 kotlin {
@@ -93,6 +108,10 @@ kotlin {
             // P-15 Google profile photo -- URL-based image load (coil-compose/coil-gif alone
             // never registered a network fetcher).
             implementation(libs.coil.network.ktor3)
+            // Declared explicitly even though the Sentry KMP Gradle plugin auto-adds it too --
+            // every other dependency in this project goes through the version catalog explicitly
+            // (ADR-pattern), Gradle just dedupes the duplicate.
+            implementation(libs.sentry.kotlin.multiplatform)
         }
         iosMain.dependencies {
             implementation(libs.sqldelight.native.driver)

@@ -40,6 +40,12 @@ googleid = "1.1.1"
 # Exercise Library data-source pivot (ADR-007) -- first use of Coil (already tech-stack.md's
 # named choice, never actually added until now). TODO(dev): confirm newest stable before build.
 coil = "3.2.0"
+# Crash reporting (tech-stack.md's locked choice -- Sentry KMP, not Crashlytics, for Kotlin/Native
+# iOS symbolication). search.maven.org's search index lags repo1.maven.org (the actual Maven
+# Central repo) for these artifacts -- it reported 0.13.0/5.8.0 as "latest", both many releases
+# stale. Verified against repo1.maven.org/maven-metadata.xml directly (2026-11-21) instead.
+sentryKmp = "0.30.0"
+sentryAndroidGradle = "6.27.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -104,6 +110,8 @@ coil-gif = { module = "io.coil-kt.coil3:coil-gif", version.ref = "coil" }
 # handled bundled ByteArray models until now, no network fetcher was registered.
 coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
+sentry-kotlin-multiplatform = { module = "io.sentry:sentry-kotlin-multiplatform", version.ref = "sentryKmp" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
@@ -112,3 +120,5 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+sentryKotlinMultiplatform = { id = "io.sentry.kotlin.multiplatform.gradle", version.ref = "sentryKmp" }
+sentryAndroid = { id = "io.sentry.android.gradle", version.ref = "sentryAndroidGradle" }

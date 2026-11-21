@@ -3,6 +3,8 @@ package com.fghilmany.nufitai.core.di
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.platformLogWriter
+import com.fghilmany.nufitai.core.crashreporting.SentryLogWriter
+import com.fghilmany.nufitai.core.crashreporting.initSentry
 import com.fghilmany.nufitai.core.db.DatabaseDriverFactory
 import com.fghilmany.nufitai.core.error.AppResult
 import com.fghilmany.nufitai.core.language.LocaleController
@@ -22,10 +24,14 @@ fun initKoin(
     isDebugBuild: Boolean = false,
     appDeclaration: KoinAppDeclaration = {},
 ) {
+    // Must start before anything else can throw/log -- Sentry can only capture what happens
+    // after Sentry.init() runs.
+    initSentry(isDebugBuild)
+
     // `libs.kermit` was already a dependency but nothing ever called Logger.setLogWriters --
     // without this, AppLogger's calls never reached Logcat/console (issue reported: "susah
-    // debug" with no logs showing up).
-    Logger.setLogWriters(platformLogWriter())
+    // debug" with no logs showing up). SentryLogWriter forwards Error/Assert severity on top.
+    Logger.setLogWriters(platformLogWriter(), SentryLogWriter())
     Logger.setMinSeverity(Severity.Debug)
 
     startKoin {

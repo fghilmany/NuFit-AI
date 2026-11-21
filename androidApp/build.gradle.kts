@@ -1,8 +1,17 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
+
+// Project-local, already gitignored (same file `sdk.dir` lives in -- never create a second
+// secrets file when this one already does the job for exactly this use case).
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
 
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.sentryAndroid)
 }
 
 kotlin {
@@ -46,7 +55,8 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -61,4 +71,20 @@ android {
         compose = true
         buildConfig = true
     }
+}
+
+// Uploads the R8 mapping file on release builds so Sentry can de-obfuscate stack traces --
+// without this, isMinifyEnabled = true (androidApp/build.gradle.kts) makes every Sentry crash
+// report unreadable. Dry-run (UUID generated, nothing uploaded) until a token is set.
+//
+// Reads the env var first (CI), then `local.properties` (dev's own machine, project-local,
+// already gitignored -- same file sdk.dir lives in). Add this line to local.properties:
+//   sentry.authToken=sntryu_xxxxx
+// Create a token at https://faris-ghilmany-studio.sentry.io/settings/auth-tokens/ (scope
+// project:releases), or `sentry token create faris-ghilmany-studio/<name>` from a real terminal.
+sentry {
+    org = "faris-ghilmany-studio"
+    projectName = "nufit-ai"
+    authToken = System.getenv("SENTRY_AUTH_TOKEN")
+        ?: localProperties.getProperty("sentry.authToken")
 }

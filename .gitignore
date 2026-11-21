@@ -10,6 +10,9 @@ local.properties
 captures
 .externalNativeBuild
 .cxx
+# Kotlin/Native SwiftPM cinterop checkout cache (Sentry KMP plugin's iOS auto-install) --
+# huge (sentry-cocoa alone is 800MB+), machine-local, never meant to be committed.
+.swiftpm-locks/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
