@@ -42,6 +42,7 @@ import com.fghilmany.nufitai.core.designsystem.component.AppButton
 import com.fghilmany.nufitai.core.designsystem.component.AppCard
 import com.fghilmany.nufitai.core.designsystem.component.ErrorRetryView
 import com.fghilmany.nufitai.core.designsystem.theme.NuFitColors
+import com.fghilmany.nufitai.core.util.APP_VERSION_NAME
 import com.fghilmany.nufitai.domain.entitlement.entity.Tier
 import com.fghilmany.nufitai.domain.fullassessment.entity.Gender
 import com.fghilmany.nufitai.domain.language.entity.AppLanguage
@@ -113,8 +114,6 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.math.roundToInt
 import kotlin.time.Instant
-
-private const val APP_VERSION = "1.0.0"
 
 /** P-15 (techspec profile-settings.md). */
 @Composable
@@ -635,7 +634,7 @@ private fun DangerZoneSection(onDeleteAccountClick: () -> Unit) {
             Text(stringResource(Res.string.profilesettings_delete_account_action), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Text(
-            stringResource(Res.string.profilesettings_version_footer, APP_VERSION),
+            stringResource(Res.string.profilesettings_version_footer, APP_VERSION_NAME),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -646,7 +645,7 @@ private fun DangerZoneSection(onDeleteAccountClick: () -> Unit) {
 private fun VersionFooter() {
     Box(modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 32.dp), contentAlignment = Alignment.Center) {
         Text(
-            stringResource(Res.string.profilesettings_version_footer, APP_VERSION),
+            stringResource(Res.string.profilesettings_version_footer, APP_VERSION_NAME),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

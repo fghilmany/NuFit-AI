@@ -11,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fghilmany.nufitai.core.util.APP_VERSION_NAME
 import com.fghilmany.nufitai.presentation.onboarding.component.OnboardingTopBar
 import nufitai.shared.generated.resources.Res
 import nufitai.shared.generated.resources.profilesettings_about_body
 import nufitai.shared.generated.resources.profilesettings_about_top_bar_title
 import nufitai.shared.generated.resources.profilesettings_about_version
 import org.jetbrains.compose.resources.stringResource
-
-private const val APP_VERSION = "1.0.0"
 
 @Composable
 fun AboutAppScreen(onBack: () -> Unit) {
@@ -30,7 +29,7 @@ fun AboutAppScreen(onBack: () -> Unit) {
         ) {
             Text(stringResource(Res.string.profilesettings_about_body), style = MaterialTheme.typography.bodyMedium)
             Text(
-                stringResource(Res.string.profilesettings_about_version, APP_VERSION),
+                stringResource(Res.string.profilesettings_about_version, APP_VERSION_NAME),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
